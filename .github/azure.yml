@@ -1,0 +1,46 @@
+name: Azure CI
+
+on:
+  push:
+    tags: release/[1-9]+.[0-9]+.[0-9]+
+
+env:
+  AZURE_WEBAPP_NAME: tickethub
+  AZURE_WEBAPP_PACKAGE_PATH: './_build'
+
+jobs:
+  build-and-deploy-azure:
+    runs-on: [windows-latest]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup MSbuild
+      uses: microsoft/setup-msbuild@v1.0.1
+   
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.2
+      
+    - name: Restore NuGet Packages
+      run: nuget restore TicketHub.sln
+    
+    - name: Build the Solution
+      run: msbuild TicketHub.sln /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl=.${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+      
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2.1.4
+      with:
+        name: AzureDepBundle
+        path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+    
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    
+    - name: Publish Artifacts to Azure
+      uses: Azure/webapps-deploy@v2
+      with:
+        app-name: ${{ env.AZURE_WEBAPP_NAME }}
+        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+        slot-name: production
