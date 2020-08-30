@@ -63,6 +63,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -142,6 +144,68 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008281253475_initial.cs" />
+    <Compile Include="Migrations\202008281253475_initial.designer.cs">
+      <DependentUpon>202008281253475_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008281343219_AddUsersTables.cs" />
+    <Compile Include="Migrations\202008281343219_AddUsersTables.designer.cs">
+      <DependentUpon>202008281343219_AddUsersTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008281346549_AlterLoginLogTableReference.cs" />
+    <Compile Include="Migrations\202008281346549_AlterLoginLogTableReference.designer.cs">
+      <DependentUpon>202008281346549_AlterLoginLogTableReference.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008281546468_AddShopTables.cs" />
+    <Compile Include="Migrations\202008281546468_AddShopTables.designer.cs">
+      <DependentUpon>202008281546468_AddShopTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008281720549_AddActionLogRemoveShopLog.cs" />
+    <Compile Include="Migrations\202008281720549_AddActionLogRemoveShopLog.designer.cs">
+      <DependentUpon>202008281720549_AddActionLogRemoveShopLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008300435509_AddUserWishIssueTable.cs" />
+    <Compile Include="Migrations\202008300435509_AddUserWishIssueTable.designer.cs">
+      <DependentUpon>202008300435509_AddUserWishIssueTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008300448084_AddOrderTables.cs" />
+    <Compile Include="Migrations\202008300448084_AddOrderTables.designer.cs">
+      <DependentUpon>202008300448084_AddOrderTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008300520281_AddTicketTable.cs" />
+    <Compile Include="Migrations\202008300520281_AddTicketTable.designer.cs">
+      <DependentUpon>202008300520281_AddTicketTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008300531398_AddRefundTables.cs" />
+    <Compile Include="Migrations\202008300531398_AddRefundTables.designer.cs">
+      <DependentUpon>202008300531398_AddRefundTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008300541198_AddTagTables.cs" />
+    <Compile Include="Migrations\202008300541198_AddTagTables.designer.cs">
+      <DependentUpon>202008300541198_AddTagTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Admin.cs" />
+    <Compile Include="Models\Issue.cs" />
+    <Compile Include="Models\IssueTag.cs" />
+    <Compile Include="Models\LoginLog.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderDetail.cs" />
+    <Compile Include="Models\Refund.cs" />
+    <Compile Include="Models\RefundDetail.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Shop.cs" />
+    <Compile Include="Models\ShopEmployee.cs" />
+    <Compile Include="Models\ActionLog.cs" />
+    <Compile Include="Models\ShopTag.cs" />
+    <Compile Include="Models\Tag.cs" />
+    <Compile Include="Models\Ticket.cs" />
+    <Compile Include="Models\TicketHubContext.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserFavoriteShop.cs" />
+    <Compile Include="Models\UserLogin.cs" />
+    <Compile Include="Models\UserRole.cs" />
+    <Compile Include="Models\UserWishIssue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -286,7 +350,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -298,6 +361,38 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202008281253475_initial.resx">
+      <DependentUpon>202008281253475_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008281343219_AddUsersTables.resx">
+      <DependentUpon>202008281343219_AddUsersTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008281346549_AlterLoginLogTableReference.resx">
+      <DependentUpon>202008281346549_AlterLoginLogTableReference.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008281546468_AddShopTables.resx">
+      <DependentUpon>202008281546468_AddShopTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008281720549_AddActionLogRemoveShopLog.resx">
+      <DependentUpon>202008281720549_AddActionLogRemoveShopLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008300435509_AddUserWishIssueTable.resx">
+      <DependentUpon>202008300435509_AddUserWishIssueTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008300448084_AddOrderTables.resx">
+      <DependentUpon>202008300448084_AddOrderTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008300520281_AddTicketTable.resx">
+      <DependentUpon>202008300520281_AddTicketTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008300531398_AddRefundTables.resx">
+      <DependentUpon>202008300531398_AddRefundTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008300541198_AddTagTables.resx">
+      <DependentUpon>202008300541198_AddTagTables.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
