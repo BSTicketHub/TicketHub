@@ -1,0 +1,136 @@
+﻿
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 bg-white shadow p-3">
+            <div>
+                <p>訂單列表</p>
+            </div>
+            <div class="btnList p-2 border-top d-flex flex-wrap">
+                <div class="col-4 input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">訂單編號</span>
+                    </div>
+                    <input type="text" class="form-control rounded-right" required>
+                </div>
+                <div class="col-4 input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" for="validatedInputGroupSelect">排序順序</span>
+                    </div>
+                    <select class="custom-select" id="validatedInputGroupSelect" required>
+                        @*<option value=""></option>*@
+                        <option value="1">依訂單時間</option>
+                        <option value="2">依訂單金額</option>
+                        <option value="3">依票券數量</option>
+                    </select>
+                </div>
+                <div class="col-4">
+                    <div class="input-group input-group-sm mb-3">
+                        <input class="form-control mr-0 search" type="search" placeholder="Search" aria-label="Search">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-outline-secondary input-group-text m-sm-0 py-0 px-2 rounded-right" type="button">
+                                <span class="iconify" data-icon="raphael:search" data-inline="false"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                <input class="align-middle" type="checkbox" value="" id="defaultCheck1">
+                            </th>
+                            <th>訂單編號</th>
+                            <th>消費者姓名</th>
+                            <th>訂單金額</th>
+                            <th>訂單時間</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input class="align-middle" type="checkbox" value="" id="defaultCheck1"></td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>7</td>
+                        </tr>
+                        <tr>
+                            <td><input class="align-middle" type="checkbox" value="" id="defaultCheck1"></td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section topCSS{
+    <style>
+        .table th {
+            padding: 10px;
+        }
+
+        .table td {
+            background-color: #eaeaea;
+            color: #444;
+            padding: 10px;
+            border-color: #fff;
+            border-width: 2px;
+        }
+
+        .table tbody tr:hover td {
+            background-color: #fff;
+            color: #26bcc7;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .btnList, .table, .dropdown-menu {
+            font-size: 12px;
+        }
+
+        .custom-select {
+            background: none;
+        }
+        .custom-select:focus, .form-control:focus{
+            box-shadow:none;
+        }
+
+        .btn:hover .iconify{
+            color: white;
+        }
+
+        btn .iconify {
+            font-size: 24px;
+        }
+    </style>
+}
+
+@section endJS{
+    <script>
+        let array = ["1", "2", "3", "4", "5"];
+        let tbody = document.querySelector(".table > tbody");
+
+        generateTableList(array);
+        function generateTableList(array) {
+            let tr = document.createElement("tr");
+            for (let i = 0; i < array.length; i++) {
+                let td = document.createElement("td");
+                td.innerText = array[i];
+                tr.appendChild(td);
+            }
+            tbody.appendChild(tr);
+        }
+    </script>
+
+}
+

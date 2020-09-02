@@ -7,6 +7,75 @@
     <title>@ViewBag.Title - 我的 ASP.NET 應用程式</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/chart")
+
+    <style>
+        * {
+            list-style-type: none;
+        }
+        *:focus, *:active{
+            outline-style: none;
+        }
+
+        .collapse li {
+            cursor: pointer;
+        }
+
+        .bluehover:hover {
+            color: #26bcc7;
+        }
+
+        .sidebar .div {
+            cursor: pointer;
+        }
+
+        .navbar .iconify {
+            line-height: 100%;
+        }
+
+        input.search {
+            border: 1px solid gray;
+            max-width: 180px;
+            max-height: 34px;
+        }
+
+        button.search {
+            max-height: 34px;
+            max-width: 34px;
+            line-height: 100%;
+        }
+
+            button.search:active {
+                background-color: #26bcc7;
+            }
+
+            button.search .iconify {
+                text-align: center;
+            }
+
+            button.search:active .iconify {
+                color: white;
+            }
+
+        .search:focus {
+            box-shadow: none;
+            border: 1px solid #26bcc7;
+        }
+
+        .iconscale {
+            transform: scale(1.5);
+            line-height: 100%;
+        }
+
+        .sidebar {
+            background-color: #2a2f36;
+            color: #9fa9b9;
+        }
+
+        .sidebar .collapse {
+            background-color: #393e47;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg">

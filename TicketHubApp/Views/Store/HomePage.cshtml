@@ -1,0 +1,499 @@
+﻿
+
+<div class="container">
+    <div class="row my-3 justify-content-around">
+        <div class="col-3 ticket">
+            <div class="ticket-content">
+                <p class="ticket-title">今日銷售金額</p>
+                <div class="d-flex justify-content-between m-2">
+                    <span class="iconify d-block" data-icon="emojione:admission-tickets" data-inline="false"></span>
+                    <div class="counter" data-target="5000">0</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3 ticket">
+            <div class="ticket-content">
+                <p class="ticket-title">今日訂單數</p>
+                <div class="d-flex justify-content-between m-2">
+                    <span class="iconify d-block" data-icon="emojione:admission-tickets" data-inline="false"></span>
+                    <div class="counter" data-target="5000">0</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3 ticket">
+            <div class="ticket-content">
+                <p class="ticket-title">今日票券數</p>
+                <div class="d-flex justify-content-between m-2">
+                    <span class="iconify d-block" data-icon="emojione:admission-tickets" data-inline="false"></span>
+                    <div class="counter" data-target="5000">0</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row my-5">
+        <div class="col-6 p-1">
+            <div class="bg-white shadow border p-2">
+                <div class="chartHeader border border-info border-right-0 mb-2 mr-3 d-flex justify-content-between">
+                    <p class="m-2">訪客流量</p>
+                    <div class="d-flex align-items-center">
+                        <button id="weekVisit" class="week m-0">周</button>
+                        <button id="monthVisit" class="month m-0">月</button>
+                    </div>
+                </div>
+                <canvas id="visitCount" height="200" class="my-2"></canvas>
+            </div>
+        </div>
+        <div class="col-6 p-1">
+            <div class="bg-white shadow border p-2">
+                <div class="chartHeader border border-info border-right-0 mb-2 mr-3 d-flex justify-content-between">
+                    <p class="m-2">銷售金額</p>
+                    <div class="d-flex align-items-center">
+                        <button id="weekMoney" class="week m-0">周</button>
+                        <button id="monthMoney" class="month m-0">月</button>
+                    </div>
+                </div>
+                <canvas id="moneyCount" height="200" class="m-2"></canvas>
+            </div>
+        </div>
+        <div class="col-6 p-1 mt-5">
+            <div class="bg-white shadow border p-2">
+                <div class="topTable">
+                    <p class="m-0 py-2 px-3">Best Tickets TOP5</p>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>名稱</th>
+                                <th>編號</th>
+                                <th>銷售數量</th>
+                                <th>銷售金額</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>王品牛排</td>
+                                <td>1123554332</td>
+                                <td>109</td>
+                                <td>300002</td>
+                            </tr>
+                            <tr>
+                                <td>王品牛排</td>
+                                <td>1123554332</td>
+                                <td>109</td>
+                                <td>300002</td>
+                            </tr>
+                            <tr>
+                                <td>王品牛排</td>
+                                <td>1123554332</td>
+                                <td>109</td>
+                                <td>300002</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 p-1 mt-5">
+            <div class="bg-white shadow border p-2">
+                <div class="topTable">
+                    <p class="m-0 py-2 px-3">Best Customers TOP5</p>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>名稱</th>
+                                <th>編號</th>
+                                <th>銷售數量</th>
+                                <th>銷售金額</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>王品牛排</td>
+                                <td>1123554332</td>
+                                <td>109</td>
+                                <td>300002</td>
+                            </tr>
+                            <tr>
+                                <td>王品牛排</td>
+                                <td>1123554332</td>
+                                <td>109</td>
+                                <td>300002</td>
+                            </tr>
+                            <tr>
+                                <td>王品牛排</td>
+                                <td>1123554332</td>
+                                <td>109</td>
+                                <td>300002</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section topCSS{
+    <style>
+        .ticket {
+            position: relative;
+            box-sizing: border-box;
+            width: 300px;
+            height: 150px;
+            /*margin: 150px auto 0;*/
+            padding: 10px;
+            border-radius: 10px;
+            /*background: #FBFBFB;*/
+            background-color: rgb(127, 156, 172);
+            box-shadow: 1px 1px 5px 0px;
+        } 
+
+        .ticket:after,
+        .ticket:before{
+            content: '';
+            position: absolute;
+            top: 2px;
+            height: 146px;
+            width: 6px;
+        }
+
+            .ticket:before {
+                left: -5px;
+                background: radial-gradient(circle, transparent, transparent 50%, rgb(127, 156, 172) 50%, rgb(127, 156, 172) 100%) -7px -8px/16px 16px repeat-y;
+            }
+            .ticket:after {
+                right: -5px;
+                background: radial-gradient(circle, transparent, transparent 50%, rgb(127, 156, 172) 50%, rgb(127, 156, 172) 100%) -3px -8px/16px 16px repeat-y;
+            }
+
+        .ticket-content {
+            box-sizing: border-box;
+            height: 100%;
+            width: 100%;
+            border: 1px dashed rgb(243, 249, 249);
+            color: rgb(243, 249, 249);
+            background-color: rgb(127, 156, 172);
+        }
+        .ticket-title {
+            /*margin: 0 0 0 10px;*/
+            color: rgb(127, 156, 172);
+            font-size: 24px;
+            font-weight: 900;
+            background-color: rgb(243, 249, 249);
+        }
+
+        .ticket .iconify{
+            width: 70px;
+            height: 70px;
+        }
+        .ticket .counter{
+            font-size: 50px;
+        }
+        .chartHeader {
+            border-color: #26bcc7 !important;
+            border-width: 2px !important;
+        }
+
+        /* 周 / 月 switch button */
+        .chartHeader button{
+            border: 1px solid #4da9db;
+            background-image: linear-gradient(90deg, #4da9db 100%, transparent 100%);
+            background-repeat: no-repeat;
+            transition: .5s;
+            line-height: 18px;
+            width: 30px;
+            height:24px;
+            font-size: 14px;
+        }
+        #week {
+            background-color: #4da9db;
+            color: #fff;
+            background-position: 30px;
+        }
+        #month {
+            background-color: #fff;
+            color: #4da9db;
+            background-position: -30px;
+        }
+        .chartHeader button:hover{
+            /*background-color: #4da9db;*/
+            color: #fff;
+            /*background-position: 0px 0px;*/
+        }
+        .chartHeader button:focus{
+            outline-style: none;
+        }
+
+        /*top table css*/
+        .topTable p {
+            background-color: #4caf50;
+            position: relative;
+            color: #fff;
+            top: -30px;
+            font-size: 24px;
+        }
+        .topTable .table{
+            margin-top: -28px;
+            font-size: 12px;
+        }
+        .topTable .table th{
+            color: #4caf50;
+            border: none;
+        }
+    </style>
+}
+
+@section endJS{
+    <script>
+    // 今日訂單數 & 今日銷售金額 & 今日票券數
+        let counters = document.querySelectorAll('.counter');
+        const speed = 200; // The lower the slower
+
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+
+                // Lower inc to slow and higher to slow
+                const inc = target / speed;
+
+                // console.log(inc);
+                // console.log(count);
+
+                // Check if target is reached
+                if (count < target) {
+                    // Add inc to count and output in counter
+                    counter.innerText = count + inc;
+                    // Call function every ms
+                    setTimeout(updateCount, 1);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+
+            updateCount();
+        });
+
+
+    // 造訪人數圖表 & 銷售金額圖表
+        var curDateTime = new Date()
+        var curYear = curDateTime.getFullYear();
+        var curMonth = curDateTime.getMonth();
+        var curDate = curDateTime.getDate();
+        function setLabel(chart, mode) {
+            let Labels = [];
+            if (mode == 'month') {
+                for (let i = 11; i >= 0; i--) {
+                    let tempDateTime = new Date(curYear, curMonth - i);
+                    let tempYear = tempDateTime.getFullYear();
+                    let tempMonth = tempDateTime.getMonth();
+                    Labels.push(`${tempYear}-${tempMonth + 1}`);
+                }
+            } else if (mode == 'week') {
+                for (let i = 6; i >= 0; i--) {
+                    let tempDateTime = new Date(curYear, curMonth, curDate - i);
+                    let tempYear = tempDateTime.getFullYear();
+                    let tempMonth = tempDateTime.getMonth();
+                    let tempDate = tempDateTime.getDate();
+                    Labels.push(`${tempYear}-${tempMonth}-${tempDate}`);
+                }
+            }
+            chart.data.labels = Labels;
+            chart.update();
+        }
+
+        var visitCanvas = document.getElementById('visitCount').getContext('2d');
+        var moneyCanvas = document.getElementById('moneyCount').getContext('2d');
+        var visitChart = createChart(visitCanvas, 'gray', '#26bcc7', null, [0, 10, 5, 2, 20, 30, 45]);
+        var moneyChart = createChart(moneyCanvas, 'gray', 'rgb(255, 99, 132)', null, [0, 10, 5, 2, 20, 30, 45]);
+
+        function createChart(Element, dotColor, lineColor, labels, data) {
+            let chart = new Chart(Element, {
+                // The type of chart we want to create
+                type: 'line',
+                // The data for our dataset
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'My First dataset',
+                        backgroundColor: dotColor,
+                        borderColor: lineColor,
+                        data: data,
+                        fill: false
+                    }]
+                },
+                // Configuration options go here
+                options: {
+                    scales: {
+                        xAxes: [{
+                            ticks: {
+                                fontSize: 8
+                            }
+                        }]
+                    }
+                }
+            });
+            return chart;
+        }
+
+        // 圖表 button switch
+        let weekVisitBtn = document.getElementById("weekVisit");
+        let monthVisitBtn = document.getElementById("monthVisit");
+        let weekMoneyBtn = document.getElementById("weekMoney");
+        let monthMoneyBtn = document.getElementById("monthMoney");
+
+        weekVisitBtn.addEventListener('click', function(){ switchWeekMonth(this, monthVisitBtn, "-30px", visitChart, 'week') });
+        monthVisitBtn.addEventListener('click', function () { switchWeekMonth(this, weekVisitBtn, "30px", visitChart, 'month') });
+        weekMoneyBtn.addEventListener('click', function () { switchWeekMonth(this, monthMoneyBtn, "-30px", moneyChart, 'week') });
+        monthMoneyBtn.addEventListener('click', function () { switchWeekMonth(this, weekMoneyBtn, "30px", moneyChart, 'month') });
+
+
+        function switchWeekMonth(switchNode, brotherNode, position, chart, mode) {
+            switchNode.style.color = "#fff";
+            switchNode.style.backgroundPosition = "0px 0px";
+            brotherNode.style.backgroundColor = "#fff";
+            brotherNode.style.color = "#4da9db";
+            brotherNode.style.backgroundPosition = position;
+            setLabel(chart, mode);
+        }
+
+        // 初始化
+        switchWeekMonth(weekVisitBtn, monthVisitBtn, "-30px", visitChart, 'week');
+        switchWeekMonth(weekMoneyBtn, monthMoneyBtn, "-30px", moneyChart, 'week');
+
+
+    // 
+    </script>
+
+
+    @*<script>
+        var Num1 = 30;
+        // write text plugin
+        Chart.pluginService.register({
+            afterUpdate: function (chart) {
+                if (chart.config.options.elements.center) {
+                    var helpers = Chart.helpers;
+                    var centerConfig = chart.config.options.elements.center;
+                    var globalConfig = Chart.defaults.global;
+                    var ctx = chart.chart.ctx;
+
+                    var fontStyle = helpers.getValueOrDefault(centerConfig.fontStyle, globalConfig.defaultFontStyle);
+                    var fontFamily = helpers.getValueOrDefault(centerConfig.fontFamily, globalConfig.defaultFontFamily);
+
+                    if (centerConfig.fontSize)
+                        var fontSize = centerConfig.fontSize;
+                    // figure out the best font size, if one is not specified
+                    else {
+                        ctx.save();
+                        var fontSize = helpers.getValueOrDefault(centerConfig.minFontSize, 1);
+                        var maxFontSize = helpers.getValueOrDefault(centerConfig.maxFontSize, 256);
+                        var maxText = helpers.getValueOrDefault(centerConfig.maxText, centerConfig.text);
+
+                        do {
+                            ctx.font = helpers.fontString(fontSize, fontStyle, fontFamily);
+                            var textWidth = ctx.measureText(maxText).width;
+
+                            // check if it fits, is within configured limits and that we are not simply toggling back and forth
+                            if (textWidth < chart.innerRadius * 2 && fontSize < maxFontSize)
+                                fontSize += 1;
+                            else {
+                                // reverse last step
+                                fontSize -= 1;
+                                break;
+                            }
+                        } while (true)
+                        ctx.restore();
+                    }
+
+                    // save properties
+                    chart.center = {
+                        font: helpers.fontString(fontSize, fontStyle, fontFamily),
+                        fillStyle: helpers.getValueOrDefault(centerConfig.fontColor, globalConfig.defaultFontColor)
+                    };
+                }
+            },
+            afterDraw: function (chart) {
+                if (chart.center) {
+                    var centerConfig = chart.config.options.elements.center;
+                    var ctx = chart.chart.ctx;
+
+                    ctx.save();
+                    ctx.font = chart.center.font;
+                    ctx.fillStyle = chart.center.fillStyle;
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    var centerX = (chart.chartArea.left + chart.chartArea.right) / 2;
+                    var centerY = (chart.chartArea.top + chart.chartArea.bottom) / 2;
+                    ctx.fillText(centerConfig.text, centerX, centerY);
+                    ctx.restore();
+                }
+            },
+        })
+
+        function chartConfig(data, color) {
+            let config = {
+                type: 'doughnut',
+                data: {
+                    datasets: [{
+                        data: [data, 100 - data],
+                        backgroundColor: color,
+                        hoverBackgroundColor: [
+                            "#FF6384",
+                            "#ccc"
+                        ]
+                    }]
+                },
+                options: {
+                    animation: {
+                        duration: 5000
+                    },
+                    responsive: true,
+                    legend: {
+                        display: false,
+                    },
+                    elements: {
+                        center: {
+                            // the longest text that could appear in the center
+                            maxText: '100%',
+                            text: Num1 + '%',
+                            fontColor: '#FF6684',
+                            fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+                            fontStyle: 'normal',
+                            //fontSize: 42,
+                            // if a fontSize is NOT specified, we will scale (within the below limits) maxText to take up the maximum space in the center
+                            // if these are not specified either, we default to 1 and 256
+                            minFontSize: 1,
+                            maxFontSize: 256,
+                        }
+                    }
+                }
+            };
+
+            return config
+        }
+        var ctx1 = document.getElementById("myChart1").getContext("2d");
+        var myChart1 = new Chart(ctx1, chartConfig(Num1, ["#FF6684", "#ccc"]));
+        setChartCounting(myChart1);
+
+        var ctx2 = document.getElementById("myChart2").getContext("2d");
+        var myChart2 = new Chart(ctx2, chartConfig(80, ["#00a000", "#ccc"]));
+        setChartCounting(myChart2);
+
+        var ctx3 = document.getElementById("myChart3").getContext("2d");
+        var myChart3 = new Chart(ctx3, chartConfig(50, ["#a6cde7", "#ccc"]));
+        setChartCounting(myChart3);
+
+        function setChartCounting(chart) {
+            let data = chart.config.data.datasets[0].data[0];
+            for (let i = 0; i <= data; i++) {
+                setTimeout(function () {
+                    chart.config.options.elements.center.text = i + '%';
+                }, (5000 / data) * i);
+            }
+        }
+
+    </script>*@
+
+}
+
+
+
