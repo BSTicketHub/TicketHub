@@ -10,8 +10,10 @@ namespace TicketHubApp.PlatformViewModels
     public class MemberViewModel
     {   
         [Key]
-        [DisplayName("帳號")]
         public int Id { get; set; }
+        [DisplayName("帳號")]
+        public string Account { get; set; }
+        public string Password { get; set; }
         [DisplayName("會員名稱")]
         public string Name { get; set; }
         [DisplayName("電子郵件")]

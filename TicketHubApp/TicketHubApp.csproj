@@ -63,6 +63,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -142,12 +144,18 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MemberManagementController.cs" />
+    <Compile Include="Controllers\MemberViewModelsController.cs" />
     <Compile Include="Controllers\PlatformController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009020820520_3rd.cs" />
+    <Compile Include="Migrations\202009020820520_3rd.designer.cs">
+      <DependentUpon>202009020820520_3rd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PlatformViewModels\MemberViewModel.cs" />
+    <Compile Include="PlatformViewModels\TicketHubPlatformContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -296,11 +304,15 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\MemberManagement\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutPlatform.cshtml" />
     <Content Include="Views\Platform\_ViewStart.cshtml" />
-    <Content Include="Views\MemberManagement\_ViewStart.cshtml" />
     <Content Include="Views\Platform\Index.cshtml" />
+    <Content Include="Views\MemberViewModels\Create.cshtml" />
+    <Content Include="Views\MemberViewModels\Delete.cshtml" />
+    <Content Include="Views\MemberViewModels\Details.cshtml" />
+    <Content Include="Views\MemberViewModels\Edit.cshtml" />
+    <Content Include="Views\MemberViewModels\Index.cshtml" />
+    <Content Include="Views\MemberViewModels\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -314,6 +326,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202009020820520_3rd.resx">
+      <DependentUpon>202009020820520_3rd.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

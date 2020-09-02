@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Platform</title>
+    <title>TieketHub</title>
     <link href="~/Assets_Platform/PlatformLayout.css" rel="stylesheet" />
 
     <script src="https://code.iconify.design/2/2.0.0-beta.5/iconify.min.js"></script>
@@ -50,43 +50,55 @@
         </nav>
 
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-2 col-12">
                 <ul class="list-group col-md-12">
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="~/Platform/Index">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
                             <span>報表分析</span>
                             <span class="iconify" data-icon="ion:bar-chart" data-inline="false"></span>
                             <span class="badge badge-primary badge-pill"></span>
-                    </li>
+                        </li>
+                    </a>
+                   
+                    <a href="~/MemberViewModels/Index">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>會員管理</span>
+                            <span class="iconify" data-icon="fa-solid:users" data-inline="false"></span>
+                            <span class="badge badge-primary badge-pill">2</span>
+                        </li>
+                    </a>
+                    <a href="#">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>商家管理</span>
+                            <span class="iconify" data-icon="whh:store" data-inline="false"></span>
+                            <span class="badge badge-primary badge-pill">1</span>
+                        </li>
+                    </a>
 
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <span>會員管理</span>
-                        <span class="iconify" data-icon="fa-solid:users" data-inline="false"></span>
-                        <span class="badge badge-primary badge-pill">2</span>
-                    </li>
+                    <a href="#">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>訂單管理</span>
+                            <span class="iconify" data-icon="ic:baseline-playlist-add-check" data-inline="false"></span>
+                            <span class="badge badge-primary badge-pill">1</span>
+                        </li>
+                    </a>
 
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <span>商家管理</span>
-                        <span class="iconify" data-icon="whh:store" data-inline="false"></span>
-                        <span class="badge badge-primary badge-pill">1</span>
-                    </li>
+                    <a href="#">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>票券管理</span>
+                            <span class="iconify" data-icon="whh:ticket" data-inline="false"></span>
+                            <span class="badge badge-primary badge-pill">1</span>
+                        </li>
+                    </a>
 
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <span>訂單管理</span>
-                        <span class="iconify" data-icon="ic:baseline-playlist-add-check" data-inline="false"></span>
-                        <span class="badge badge-primary badge-pill">1</span>
-                    </li>
-
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <span>票券管理</span>
-                        <span class="iconify" data-icon="whh:ticket" data-inline="false"></span>
-                        <span class="badge badge-primary badge-pill">1</span>
-                    </li>
-
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <span>客服管理</span>
-                        <span class="iconify" data-icon="si-glyph:customer-support" data-inline="false"></span>
-                        <span class="badge badge-primary badge-pill">1</span>
-                    </li>
+                    <a href="#">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>客服管理</span>
+                            <span class="iconify" data-icon="si-glyph:customer-support" data-inline="false"></span>
+                            <span class="badge badge-primary badge-pill">1</span>
+                        </li>
+                    </a>
+          
                 </ul>
             </div>
 
@@ -94,7 +106,6 @@
                 @RenderBody()
             </div>
         </div>
-        
     </div>
 
     @Scripts.Render("~/bundles/jquery")

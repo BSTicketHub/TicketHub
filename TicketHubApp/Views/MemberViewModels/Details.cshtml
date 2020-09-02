@@ -1,0 +1,38 @@
+﻿@model TicketHubApp.PlatformViewModels.MemberViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="row col-md-12">
+    <div class="col-md-6">
+        <h2 class="my-5">後台管理系統 / 會員管理 / 會員明細</h2>
+        <hr />
+        @* 會員頭像 *@
+        <img src="" alt="Alternate Text" />
+    </div>
+    <div class="col-md-6">
+        <ul>
+            <li>  @Html.DisplayNameFor(model => model.Id) :  @Html.DisplayFor(model => model.Id)</li>
+            <li>  @Html.DisplayNameFor(model => model.Account) :  @Html.DisplayFor(model => model.Account)</li>
+            <li>  @Html.DisplayNameFor(model => model.Name) :  @Html.DisplayFor(model => model.Name)</li>
+            <li>  @Html.DisplayNameFor(model => model.Email) :  @Html.DisplayFor(model => model.Email)</li>
+            <li>  @Html.DisplayNameFor(model => model.Mobile) :  @Html.DisplayFor(model => model.Mobile)</li>
+        </ul>
+        <a href="~/MemberViewModels/Edit/@Model.Id" class="btn btn-outline-success"><span class="iconify" data-icon="mdi:account-edit" data-inline="false"></span>修改會員資料</a>
+        <a href="~/MemberViewModels/Delete/@Model.Id" class="btn btn-outline-danger"><span class="iconify" data-icon="mdi:account-remove" data-inline="false"></span>刪除會員資料</a>
+        <a href="~/MemberViewModels/Index" class="btn btn-outline-secondary">回到會員列表</a>
+    </div>
+</div>
+
+@section endCSS{
+    <style>
+
+    </style>
+    
+}
+@section endJS{
+    <script>
+
+    </script>
+}
