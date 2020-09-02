@@ -19,12 +19,17 @@ namespace TicketHubApp
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js"));
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(                    
+                      "~/Scripts/jquery-3.5.1.slim.js",
+                      "~/Scripts/popper.min.js",
+                      "~/Scripts/bootstrap.min.js"));   
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap.min.css",
                       "~/Content/site.css"));
+            bundles.Add(new ScriptBundle("~/bundles/chartjs").Include(
+                      "~/Scripts/Chart.js"
+                ));
         }
     }
 }

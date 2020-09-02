@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platform</title>
+    <link href="~/Assets_Platform/PlatformLayout.css" rel="stylesheet" />
+
+    <script src="https://code.iconify.design/2/2.0.0-beta.5/iconify.min.js"></script>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/chartjs")
+
+    @RenderSection("topJS", required: false)
+    @RenderSection("topCSS", required: false)
+</head>
+<body>
+    <div class="container col-md-12">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">TicketHub</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse order-3" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#"><span class="iconify" data-icon="ion:bar-chart" data-inline="false"></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><span class="iconify" data-icon="mdi:bell" data-inline="false"></span></a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="iconify" data-icon="bx:bxs-user" data-inline="false"></span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#"><span class="iconify" data-icon="ion:gear-b" data-inline="false"></span>Setting</a>
+                            <a class="dropdown-item" href="#"><span class="iconify" data-icon="mdi:login-variant" data-inline="false"></span>Change Account</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#"><span class="iconify" data-icon="mdi:logout-variant" data-inline="false"></span>Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="row">
+            <div class="col-md-2">
+                <ul class="list-group col-md-12">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>報表分析</span>
+                        <span class="iconify" data-icon="ion:bar-chart" data-inline="false"></span>
+                        <span class="badge badge-primary badge-pill"></span>
+                    </li>
+
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>會員管理</span>
+                        <span class="iconify" data-icon="fa-solid:users" data-inline="false"></span>
+                        <span class="badge badge-primary badge-pill">2</span>
+                    </li>
+
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>商家管理</span>
+                        <span class="iconify" data-icon="whh:store" data-inline="false"></span>
+                        <span class="badge badge-primary badge-pill">1</span>
+                    </li>
+
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>訂單管理</span>
+                        <span class="iconify" data-icon="ic:baseline-playlist-add-check" data-inline="false"></span>
+                        <span class="badge badge-primary badge-pill">1</span>
+                    </li>
+
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>票券管理</span>
+                        <span class="iconify" data-icon="whh:ticket" data-inline="false"></span>
+                        <span class="badge badge-primary badge-pill">1</span>
+                    </li>
+
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>客服管理</span>
+                        <span class="iconify" data-icon="si-glyph:customer-support" data-inline="false"></span>
+                        <span class="badge badge-primary badge-pill">1</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="view col-md-10">
+                @RenderBody()
+            </div>
+        </div>
+        
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    @RenderSection("endJS", required:false)
+    @RenderSection("endCSS", required: false)
+</body>
+</html>
