@@ -1,0 +1,79 @@
+﻿@model IEnumerable<TicketHubApp.PlatformViewModels.MemberViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="my-5">後台管理系統 / 會員管理 / 會員列表</h2>
+<hr />
+<table class="table table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Account)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mobile)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Account)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mobile)
+                </td>
+                <td class="link">
+                    <a href="~/MemberViewModels/Edit/@item.Id"><span class="iconify" data-icon="mdi:account-edit" data-inline="false"></span></a>
+                    <a href="~/MemberViewModels/Details/@item.Id"><span class="iconify" data-icon="mdi:account-box-multiple" data-inline="false"></span></a>
+                    <a href="~/MemberViewModels/Delete/@item.Id"><span class="iconify" data-icon="mdi:account-remove" data-inline="false"></span></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<p> 
+    <a href="~/MemberViewModels/Create" class="btn btn-outline-success"><span class="iconify" data-icon="mdi:account-plus" data-inline="false"></span>  新增會員</a>
+</p>
+
+@section endCSS{
+    <style>
+        table tbody td[class="link"] a {
+            transition: 0.5s;
+            color: black !important;
+            padding: 10px 15px;
+            background-color: white;
+            border-radius : 10px;
+        }
+
+            table tbody td[class="link"] a:hover {
+                background-color: #26BEC9;
+            }
+                table tbody td[class="link"] a:hover svg {
+                    color: white;
+                }
+    </style>
+}
+
+@section endJS{
+    <script>
+
+    </script>    
+}

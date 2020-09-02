@@ -1,16 +1,18 @@
-﻿using System.Data.Entity.Migrations;
-using TicketHubApp.Models;
-
-namespace TicketHubApp.Migrations
+﻿namespace TicketHubApp.Migrations
 {
-    internal sealed class Configuration : DbMigrationsConfiguration<TicketHubContext>
+    using System;
+    using System.Data.Entity;
+    using System.Data.Entity.Migrations;
+    using System.Linq;
+
+    internal sealed class Configuration : DbMigrationsConfiguration<TicketHubApp.PlatformViewModels.TicketHubPlatformContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(TicketHubContext context)
+        protected override void Seed(TicketHubApp.PlatformViewModels.TicketHubPlatformContext context)
         {
             //  This method will be called after migrating to the latest version.
 
