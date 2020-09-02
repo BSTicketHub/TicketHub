@@ -1,154 +1,193 @@
 @import "_variables.scss";
 
 text {
-	cursor: default;
+    cursor: default;
 }
+
 h1 {
     font-size: 3rem;
     color: $back-paper;
     text-shadow: 0.2rem 0.2rem 0.8rem #000000;
 }
+
 body {
-	background-image: url("../Images/img-food.jpg");
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
+    background-image: url("../Images/img-food.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
+
 #login-backImg {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.65);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65);
 }
+
 #cust {
-	color: $cust-color-13;
-	h2 > span {
-		color: $cust-color-8;
-	}
-	input {
-		border-bottom: 1px solid $cust-color-13;
-	}
-	.ticketReceipt {
-		background-color: $cust-color-8;
-		.ticketImprint {
-			color: $cust-color-11;
-			text-shadow: 1px 1px 1px $cust-color-5;
-		}
-	}
+    color: $cust-color-13;
+
+    h2 > span {
+        color: $cust-color-8;
+    }
+
+    input {
+        border-bottom: 1px solid $cust-color-13;
+    }
+
+    .ticketReceipt {
+        background-color: $cust-color-8;
+
+        .ticketImprint {
+            color: $cust-color-11;
+            text-shadow: 1px 1px 1px $cust-color-5;
+        }
+    }
 }
+
 #shop {
-	color: $shop-color-13;
-	h2 > span {
-		color: $shop-color-8;
-	}
-	input {
-		border-bottom: 1px solid $shop-color-13;
-	}
-	.ticketReceipt {
-		background-color: $shop-color-8;
-		.ticketType {
-			color: $shop-color-11;
-			text-shadow: 1px 1px 1px $shop-color-5;
-		}
-	}
+    color: $shop-color-13;
+
+    h2 > span {
+        color: $shop-color-8;
+    }
+
+    input {
+        border-bottom: 1px solid $shop-color-13;
+    }
+
+    .ticketReceipt {
+        background-color: $shop-color-8;
+
+        .ticketType {
+            color: $shop-color-11;
+            text-shadow: 1px 1px 1px $shop-color-5;
+        }
+    }
 }
+
 #platform {
-	color: $platform-color-13;
-	h2 > span {
-		color: $platform-color-8;
-	}
-	input {
-		border-bottom: 1px solid $platform-color-13;
-	}
-	.ticketReceipt {
-		background-color: $platform-color-8;
-		.ticketType {
-			color: $platform-color-11;
-			text-shadow: 1px 1px 1px $platform-color-5;
-		}
-	}
+    color: $platform-color-13;
+
+    h2 > span {
+        color: $platform-color-8;
+    }
+
+    input {
+        border-bottom: 1px solid $platform-color-13;
+    }
+
+    .ticketReceipt {
+        background-color: $platform-color-8;
+
+        .ticketType {
+            color: $platform-color-11;
+            text-shadow: 1px 1px 1px $platform-color-5;
+        }
+    }
 }
 
 .login-card {
-	position: absolute;
-	width: 90%;
-	transition: left 1s ease-in-out;
-	left: 9%;
-	z-index: 20;
-	&:not(.active) {
-		left: -83%;
-		z-index: 10;
-	}
-	input {
-		background: transparent;
-		border-top: 0;
-		border-left: 0;
-		border-right: 0;
-		border-radius: 0.3rem 0.3rem 0 0;
-		&:focus {
-			outline: none;
-		}
-	}
-}
-.tickets {
-	border-radius: 12px;
-	box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.5), 6px 6px 20px 0 rgba(0, 0, 0, 0.4);
-	transition: 0.8s;
-}
-.ticketStub {
-	background-color: $back-paper;
-	border-bottom: 2px dashed black;
-	transform-origin: right 5%;
-	.coupon-img {
-		background-image: url("../Images/asian-food-decorative.jpg");
-		background-size: cover;
-		background-repeat: no-repeat;
-	}
-	.coupon-login {
-		border-top: 2px solid $line-gray;
-	}
-}
-.ticketReceipt {
-	border-top: 2px dashed black;
-	transform-origin: left 90%;
-	.login {
-		text-decoration: none;
-		color: $back-paper;
-		font-weight: 400;
-		font-size: 1.1rem;
+    position: absolute;
+    width: 90%;
+    transition: left 1s ease-in-out;
+    left: 9%;
+    z-index: 20;
 
-		&:hover {
-			color: $back-paper;
-			font-weight: bold;
-			text-decoration: none;
-		}
-	}
+    &:not(.active) {
+        left: -83%;
+        z-index: 10;
+    }
+
+    input {
+        background: transparent;
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        border-radius: 0.3rem 0.3rem 0 0;
+
+        &:focus {
+            outline: none;
+        }
+    }
 }
+
+.tickets {
+    border-radius: 12px;
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.5), 6px 6px 20px 0 rgba(0, 0, 0, 0.4);
+    transition: 0.8s;
+}
+
+.ticketStub {
+    background-color: $back-paper;
+    border-bottom: 2px dashed black;
+    transform-origin: right 5%;
+
+    .coupon-img {
+        background-image: url("../Images/asian-food-decorative.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .coupon-login {
+        border-top: 2px solid $line-gray;
+    }
+}
+
+.ticketReceipt {
+    border-top: 2px dashed black;
+    transform-origin: left 90%;
+
+    .login {
+        background-color: transparent;
+        border: none;
+        color: $back-paper;
+        font-weight: 400;
+        font-size: 1.1rem;
+
+        &:hover {
+            color: $back-paper;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
 @media screen and (min-width: 992px) {
-	.login-card {
-		width: 75%;
-		left: 13.85%;
-		&:not(.active) {
-			left: -80%;
-		}
-	}
-	.ticketStub {
-		border-right: 2px dashed black;
-		border-bottom: none;
-		.coupon-login {
-			border-left: 2px solid $line-gray;
-			border-top: none;
-		}
-	}
-	.ticketReceipt {
-		border-left: 2px dashed black;
-		border-top: none;
-		.barcode-content {
-			transform: rotate(90deg) translate(0%, 5%);
-		}
-		.login {
-			font-weight: 200;
-			transform: rotateZ(90deg) translate(17%, 0%);
-		}
-	}
+    .login-card {
+        width: 75%;
+        left: 13.85%;
+
+        &:not(.active) {
+            left: -80%;
+        }
+    }
+
+    .ticketStub {
+        border-right: 2px dashed black;
+        border-bottom: none;
+
+        .coupon-login {
+            border-left: 2px solid $line-gray;
+            border-top: none;
+        }
+    }
+
+    .ticketReceipt {
+        border-left: 2px dashed black;
+        border-top: none;
+
+        .barcode-content {
+            transform: rotate(90deg) translate(0%, 5%);
+        }
+
+        .login {
+            font-weight: 200;
+            transform: rotateZ(90deg) translate(12%, 0%);
+        }
+    }
 }
