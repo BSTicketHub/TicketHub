@@ -1,79 +1,80 @@
-﻿
-<div class="col-md-12">
-    <h2>後台管理系統 / 報表分析<span class="iconify" data-icon="carbon:dashboard" data-inline="false"></span></h2>
-    
+﻿<div class="col-md-12">
+    <h2>後台管理系統 / 報表分析</h2>
 </div>
 
-<div class="card col-md-5 h-50 mx-auto my-1">
-    <h5 class="card-header"></h5>
-    <div class="card-body">
-        <canvas id="memberChart" width="400" height="400"></canvas>
-        <a href="#" class="btn btn-success">YEAR 年</a>
-        <a href="#" class="btn btn-success">MONTH 月</a>
-        <a href="#" class="btn btn-success">WEEK 週</a>
+<div class="view">
+    <div class="card col-md-5 m-auto">
+        <div class="card-header">
+            
+        </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <canvas id="memberChart" width="400" height="400"></canvas>
+                <a href="#" class="btn btn-secondary">YEAR 年</a>
+                <a href="#" class="btn btn-secondary">MONTH 月</a>
+                <a href="#" class="btn btn-secondary">WEEK 週</a>
+                <footer class="blockquote-footer">by week<cite title="Source Title"></cite></footer>
+            </blockquote>
+        </div>
+    </div>
+
+    <div class="card  col-md-5 m-auto">
+        <div class="card-header">
+            
+        </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <canvas id="storeChart" width="400" height="400"></canvas>
+                <a href="#" class="btn btn-secondary">YEAR 年</a>
+                <a href="#" class="btn btn-secondary">MONTH 月</a>
+                <a href="#" class="btn btn-secondary">WEEK 週</a>
+                <footer class="blockquote-footer">by week<cite title="Source Title"></cite></footer>
+            </blockquote>
+        </div>
+    </div>
+
+    <div class="card  col-md-5 m-auto">
+        <div class="card-header">
+           
+        </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <canvas id="orderChart" width="400" height="400"></canvas>
+                <a href="#" class="btn btn-secondary">YEAR 年</a>
+                <a href="#" class="btn btn-secondary">MONTH 月</a>
+                <a href="#" class="btn btn-secondary">WEEK 週</a>
+                <footer class="blockquote-footer">by week<cite title="Source Title"></cite></footer>
+            </blockquote>
+        </div>
+    </div>
+
+    <div class="card  col-md-5 m-auto">
+        <div class="card-header">
+            
+        </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <canvas id="ticketChart" width="400" height="400"></canvas>
+                <a href="#" class="btn btn-secondary">YEAR 年</a>
+                <a href="#" class="btn btn-secondary">MONTH 月</a>
+                <a href="#" class="btn btn-secondary">WEEK 週</a>
+                <footer class="blockquote-footer">by week<cite title="Source Title"></cite></footer>
+            </blockquote>
+        </div>
     </div>
 </div>
-
-<div class="card col-md-5 h-50 mx-auto">
-    <h5 class="card-header"></h5>
-    <div class="card-body">
-        <canvas id="storeChart" width="400" height="400"></canvas>
-        <a href="#" class="btn btn-success">YEAR 年</a>
-        <a href="#" class="btn btn-success">MONTH 月</a>
-        <a href="#" class="btn btn-success">WEEK 週</a>
-    </div>
-</div>
-
-<div class="card col-md-5 h-50 mx-auto">
-    <h5 class="card-header"></h5>
-    <div class="card-body">
-        <canvas id="orderChart" width="400" height="400"></canvas>
-        <a href="#" class="btn btn-success">YEAR 年</a>
-        <a href="#" class="btn btn-success">MONTH 月</a>
-        <a href="#" class="btn btn-success">WEEK 週</a>
-    </div>
-</div>
-
-<div class="card col-md-5 h-50 mx-auto">
-    <h5 class="card-header"></h5>
-    <div class="card-body">
-        <canvas id="ticketChart" width="400" height="400"></canvas>
-        <a href="#" class="btn btn-success">YEAR 年</a>
-        <a href="#" class="btn btn-success">MONTH 月</a>
-        <a href="#" class="btn btn-success">WEEK 週</a>
-    </div>
-</div>
-
 @section endCSS{
     <style>
-        h2{
-            margin: 10px !important;
-        }
         .card{
-            height:400px !important;
             transition:0.3s;
-            box-shadow: rgba(0, 0, 0, 0.5), 5px 5px inset;
         }
         .card:hover{
-            transform: scale(1.05);
-            z-index: 2;
+            transform:scale(1.05);
         }
             .card .card-header {
-               background: #26BEC9;
-               opacity: 0.5;
+                background-color: #26BEC9;
+                opacity: 0.5;
             }
-        .card a{
-            display:none;
-            transition: 0.3s;
-            margin:auto;
-        }
-        .card:hover a{
-            display:inline-block;
-        }
-        canvas{
-            margin: 20px 0px !important;
-            height: 90% !important;
-        }
     </style>
 }
 
@@ -81,12 +82,12 @@
     <script>
         var ctx = document.getElementById('memberChart').getContext('2d');
         var myChart = new Chart(ctx, {
-            type: 'line',
+            type: 'bar',
             data: {
-                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                labels: ['Mon', 'Tue', 'Wed', 'Thr', 'Fri', 'Sat', 'Sun'],
                 datasets: [{
-                    label: '會員人數',
-                    data: [12, 19, 3, 5, 2, 3, 20],
+                    label: 'Members',
+                    data: [12, 19, 3, 5, 2, 3],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
@@ -107,27 +108,12 @@
                 }]
             },
             options: {
-                legend: {
-                    labels: {
-                        fontSize: 20,
-                    }
-                },
                 scales: {
                     yAxes: [{
                         ticks: {
-                            fontSize: 20,
-                        }
-                    }],
-
-                    xAxes: [{
-                        ticks: {
-                            fontSize: 20,
+                            beginAtZero: true
                         }
                     }]
-                },
-                tooltips: {
-                    titleFontSize: 20,
-                    bodyFontSize: 20,
                 }
             }
         });
@@ -136,9 +122,9 @@
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                labels: ['Mon', 'Tue', 'Wed', 'Thr', 'Fri', 'Sat', 'Sun'],
                 datasets: [{
-                    label: '商店家數',
+                    label: 'Shops',
                     data: [12, 19, 3, 5, 2, 3],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
@@ -160,27 +146,12 @@
                 }]
             },
             options: {
-                legend: {
-                    labels: {
-                        fontSize: 20,
-                    }
-                },
                 scales: {
                     yAxes: [{
                         ticks: {
-                            fontSize: 20,
-                        }
-                    }],
-
-                    xAxes: [{
-                        ticks: {
-                            fontSize: 20,
+                            beginAtZero: true
                         }
                     }]
-                },
-                tooltips: {
-                    titleFontSize: 20,
-                    bodyFontSize: 20,
                 }
             }
         });
@@ -189,9 +160,9 @@
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                labels: ['Mon', 'Tue', 'Wed', 'Thr', 'Fri', 'Sat', 'Sun'],
                 datasets: [{
-                    label: '訂單數量',
+                    label: 'Orders',
                     data: [12, 19, 3, 5, 2, 3],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
@@ -213,27 +184,12 @@
                 }]
             },
             options: {
-                legend: {
-                    labels: {
-                        fontSize: 20,
-                    }
-                },
                 scales: {
                     yAxes: [{
                         ticks: {
-                            fontSize: 20,
-                        }
-                    }],
-
-                    xAxes: [{
-                        ticks: {
-                            fontSize: 20,
+                            beginAtZero: true
                         }
                     }]
-                },
-                tooltips: {
-                    titleFontSize: 20,
-                    bodyFontSize: 20,
                 }
             }
         });
@@ -242,9 +198,9 @@
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                labels: ['Mon', 'Tue', 'Wed', 'Thr', 'Fri', 'Sat', 'Sun'],
                 datasets: [{
-                    label: '票券數量',
+                    label: 'Tickets',
                     data: [12, 19, 3, 5, 2, 3],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
@@ -266,27 +222,12 @@
                 }]
             },
             options: {
-                legend: {
-                    labels: {
-                        fontSize: 20,
-                    }
-                },
                 scales: {
                     yAxes: [{
                         ticks: {
-                            fontSize: 20,
-                        }
-                    }],
-
-                    xAxes: [{
-                        ticks: {
-                            fontSize: 20,
+                            beginAtZero: true
                         }
                     }]
-                },
-                tooltips: {
-                    titleFontSize: 20,
-                    bodyFontSize: 20,
                 }
             }
         });

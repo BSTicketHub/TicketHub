@@ -142,10 +142,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MemberManagementController.cs" />
     <Compile Include="Controllers\PlatformController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="PlatformViewModels\MemberViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -294,9 +296,11 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Platform\Index.cshtml" />
+    <Content Include="Views\MemberManagement\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutPlatform.cshtml" />
     <Content Include="Views\Platform\_ViewStart.cshtml" />
+    <Content Include="Views\MemberManagement\_ViewStart.cshtml" />
+    <Content Include="Views\Platform\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

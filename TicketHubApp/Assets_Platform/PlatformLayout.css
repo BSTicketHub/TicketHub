@@ -1,8 +1,8 @@
 ﻿*{
     margin: 0 !important;
     box-sizing : border-box;
-
 }
+
 body{
     padding: 0px !important;
 }
@@ -14,13 +14,8 @@ body{
     display :flex;
 }
 nav{
-    position: sticky !important;
-    padding: 20px !important;
-    font-size : 40px;
+    font-size : 30px;
     background-color: #26BEC9 !important;
-}
-nav a{
-    font-size:40px !important;
 }
 .view{
     display:flex;
@@ -30,8 +25,9 @@ nav a{
 .container .row ul li{
     padding: 40px 30px;
     transition : 0.3s;
+    color:black;
 }
-    .container .row ul li:hover {
+    .container .row ul li:hover{
         color: white;
         background-color: #26BEC9;
         transform : scale(1.05);
