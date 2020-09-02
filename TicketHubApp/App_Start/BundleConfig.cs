@@ -25,6 +25,19 @@ namespace TicketHubApp
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            //Login page bundles
+            bundles.Add(new StyleBundle("~/Assets/CSS/Login").Include(
+                "~/Content/bootstrap.css",
+                "~/Assets/CSS/login.css"));
+            bundles.Add(new ScriptBundle("~/Assets/JavaScript/Login").Include(
+                "~/Scripts/jquery-{version}.js",
+                "~/Scripts/jquery.validate*",
+                "~/Scripts/bootstrap.js",
+                "~/Assets/JavaScript/Common/iconify.min.js",
+                "~/Scripts/moment.js",
+                "~/Assets/JavaScript/Common/JsBarcode.all.min.js"
+                ));
         }
     }
 }
