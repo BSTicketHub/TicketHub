@@ -1,0 +1,25 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Assets/CSS/Login")
+</head>
+<body>
+    <div id="login-backImg"></div>
+    <div class="container d-flex justify-content-center position-relative p-0">
+        @RenderBody();
+    </div>
+
+    @Scripts.Render("~/Assets/JavaScript/Login")
+    <script type="module" src="~/Assets/JavaScript/Login/login.js"></script>
+</body>
+</html>

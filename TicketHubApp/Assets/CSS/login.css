@@ -103,22 +103,22 @@ body {
       color: #9d620e;
       text-shadow: 1px 1px 1px #fcc16d; }
 
-.login-container {
+.login-card {
   position: absolute;
   width: 90%;
   transition: left 1s ease-in-out;
   left: 9%;
   z-index: 20; }
-  .login-container:not(.active) {
+  .login-card:not(.active) {
     left: -83%;
     z-index: 10; }
-  .login-container input {
+  .login-card input {
     background: transparent;
     border-top: 0;
     border-left: 0;
     border-right: 0;
     border-radius: 0.3rem 0.3rem 0 0; }
-    .login-container input:focus {
+    .login-card input:focus {
       outline: none; }
 
 .tickets {
@@ -151,10 +151,10 @@ body {
       text-decoration: none; }
 
 @media screen and (min-width: 992px) {
-  .login-container {
+  .login-card {
     width: 75%;
     left: 13.85%; }
-    .login-container:not(.active) {
+    .login-card:not(.active) {
       left: -80%; }
   .ticketStub {
     border-right: 2px dashed black;

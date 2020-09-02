@@ -12,7 +12,7 @@ export function registerTicketLoginTransition() {
 }
 
 export function registerLoginContainers() {
-	let loginContainers = document.querySelectorAll(".login-container");
+	let loginContainers = document.querySelectorAll(".login-card");
 	loginContainers.forEach(function (c) {
 		c.addEventListener("transitionrun", function () {
 			let container = this;
