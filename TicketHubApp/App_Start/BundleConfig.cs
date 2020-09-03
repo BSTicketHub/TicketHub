@@ -27,10 +27,10 @@ namespace TicketHubApp
                       "~/Content/site.css"));
 
             //Login page bundles
-            bundles.Add(new StyleBundle("~/Content/Login").Include(
-                "~/Content/bootstrap.css",
-                "~/Assets/CSS/login.css"));
-            bundles.Add(new ScriptBundle("~/bundles/Login").Include(
+            bundles.Add(new StyleBundle("~/bundles/css/Login")
+                .Include("~/Content/bootstrap.css")
+                .Include("~/Assets/CSS/login.css", new CssRewriteUrlTransform()));
+            bundles.Add(new ScriptBundle("~/bundles/js/Login").Include(
                 "~/Scripts/jquery-{version}.js",
                 "~/Scripts/jquery.validate*",
                 "~/Scripts/bootstrap.js",
