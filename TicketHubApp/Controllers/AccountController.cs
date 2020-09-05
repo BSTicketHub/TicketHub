@@ -15,6 +15,5 @@ namespace TicketHubApp.Controllers
         {
             return View();
         }
-
     }
 }

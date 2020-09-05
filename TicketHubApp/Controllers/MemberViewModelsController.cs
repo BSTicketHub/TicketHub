@@ -1,9 +1,13 @@
-﻿using System;
+﻿using Dapper;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
+using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Mvc;
 using TicketHubApp.PlatformViewModels;
@@ -13,15 +17,47 @@ namespace TicketHubApp.Controllers
     public class MemberViewModelsController : Controller
     {
         private TicketHubPlatformContext db = new TicketHubPlatformContext();
+        static string connString = ConfigurationManager.ConnectionStrings["TicketHubPlatformConnection"].ConnectionString;
 
         // GET: MemberViewModels
         public ActionResult Index()
         {
-            return View(db.members.ToList());
+            return View(db.members.Take(5).ToList());
+        }
+
+        [HttpPost]
+        public ActionResult SearchByUserName(string UserName)
+        {
+            List<MemberViewModel> memberList = db.members.Where(m => m.UserName.Contains(UserName)).ToList();
+
+            return View("Index", memberList);
+        }
+        [HttpPost]
+        public ActionResult SearchByAccount(string Account)
+        {
+            List<MemberViewModel> memberList = db.members.Where(m => m.Account.Contains(Account)).ToList();
+
+            return View("Index", memberList);
+        }
+
+        [HttpPost]
+        public ActionResult SearchByMobile(string Mobile)
+        {
+            List<MemberViewModel> memberList = db.members.Where(m => m.Mobile.Contains(Mobile)).ToList();
+
+            return View("Index", memberList);
+        }
+
+        [HttpPost]
+        public ActionResult SearchByEmail(string Email)
+        {
+            List<MemberViewModel> memberList = db.members.Where(m => m.Email.Contains(Email)).ToList();
+
+            return View("Index", memberList);
         }
 
         // GET: MemberViewModels/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(Guid? id)
         {
             if (id == null)
             {
@@ -46,10 +82,11 @@ namespace TicketHubApp.Controllers
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Account,Password,Name,Email,Mobile")] MemberViewModel memberViewModel)
+        public ActionResult Create([Bind(Include = "Id,Account,UserName,Mobile,Email")] MemberViewModel memberViewModel)
         {
             if (ModelState.IsValid)
             {
+                memberViewModel.Id = Guid.NewGuid();
                 db.members.Add(memberViewModel);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -59,7 +96,7 @@ namespace TicketHubApp.Controllers
         }
 
         // GET: MemberViewModels/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(Guid? id)
         {
             if (id == null)
             {
@@ -78,7 +115,7 @@ namespace TicketHubApp.Controllers
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Account,Password,Name,Email,Mobile")] MemberViewModel memberViewModel)
+        public ActionResult Edit([Bind(Include = "Id,Account,UserName,Mobile,Email")] MemberViewModel memberViewModel)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +127,7 @@ namespace TicketHubApp.Controllers
         }
 
         // GET: MemberViewModels/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(Guid? id)
         {
             if (id == null)
             {
@@ -107,7 +144,7 @@ namespace TicketHubApp.Controllers
         // POST: MemberViewModels/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(Guid id)
         {
             MemberViewModel memberViewModel = db.members.Find(id);
             db.members.Remove(memberViewModel);

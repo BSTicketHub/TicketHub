@@ -1,11 +1,22 @@
 ﻿@model IEnumerable<TicketHubApp.PlatformViewModels.MemberViewModel>
 
-@{
-    ViewBag.Title = "Index";
-}
-
+    <h2>@ViewBag.key</h2>
 <h2 class="my-5">後台管理系統 / 會員管理 / 會員列表</h2>
 <hr />
+
+<form action="SearchByUserName" method="post">
+    <select>
+        <option value="UserName" title="請輸入會員名稱" class="SearchByUserName">依照會員名稱</option>
+        <option value="Account" title="請輸入會員帳號" class="SearchByAccount">依照會員帳號</option>
+        <option value="Email" title="請輸入會員電子郵件" class="SearchByEmail">依照會員電子郵件</option>
+        <option value="Mobile" title="請輸入會員手機號碼" class="SearchByMobile">依照會員手機號碼</option>
+    </select>
+
+    <label for="Search">搜尋會員</label>
+    <input type="text" name="UserName" value="" id="Search" placeholder="請輸入會員名稱..." />
+    <input type="submit" value="搜尋" />
+</form>
+
 <table class="table table-bordered table-striped table-hover">
     <thead>
         <tr>
@@ -13,7 +24,7 @@
                 @Html.DisplayNameFor(model => model.Account)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.UserName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Email)
@@ -27,12 +38,12 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
+            <tr onclick="goToDetail('@item.Id')">
                 <td>
                     @Html.DisplayFor(modelItem => item.Account)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.DisplayFor(modelItem => item.UserName)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Email)
@@ -49,7 +60,7 @@
         }
     </tbody>
 </table>
-<p> 
+<p>
     <a href="~/MemberViewModels/Create" class="btn btn-outline-success"><span class="iconify" data-icon="mdi:account-plus" data-inline="false"></span>  新增會員</a>
 </p>
 
@@ -60,12 +71,13 @@
             color: black !important;
             padding: 10px 15px;
             background-color: white;
-            border-radius : 10px;
+            border-radius: 10px;
         }
 
             table tbody td[class="link"] a:hover {
                 background-color: #26BEC9;
             }
+
                 table tbody td[class="link"] a:hover svg {
                     color: white;
                 }
@@ -74,6 +86,19 @@
 
 @section endJS{
     <script>
+        function goToDetail(id) {
+            window.location.assign("Details/" + id);
+        }
+        // 下拉式選單 change 事件
+        let select = document.querySelector('select');
+        
 
-    </script>    
+        select.addEventListener('change', function () {
+            console.log(this.options[this.selectedIndex].value);
+            document.querySelector('#Search').name = this.options[this.selectedIndex].value;
+            console.log(this.options[this.selectedIndex].class);
+            document.querySelector('#Search').placeholder = this.options[this.selectedIndex].title;
+            document.querySelector('form').action = this.options[this.selectedIndex].className;
+        });
+    </script>
 }
