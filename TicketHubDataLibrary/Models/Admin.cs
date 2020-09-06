@@ -8,6 +8,7 @@ namespace TicketHubDataLibrary.Models
     public class Admin
     {
         [Display(Name = "管理者代號")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         [Display(Name = "管理者名稱")]
         [Required]

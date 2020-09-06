@@ -8,12 +8,16 @@ namespace TicketHubDataLibrary.Models
     public class User
     {
         [Display(Name = "使用者代號")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         [Display(Name = "使用者名稱")]
         [Required]
         public string UserName { get; set; }
         [Required]
         public string PasswordHash { get; set; }
+        public string PasswordSalt { get; set; }
+        public int PasswordWorkFactor { get; set; }
+
         [Display(Name = "手機號碼")]
         public string Mobile { get; set; }
         [Display(Name = "電子郵件")]

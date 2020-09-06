@@ -93,6 +93,14 @@
     <Compile Include="Migrations\202008300541198_AddTagTables.Designer.cs">
       <DependentUpon>202008300541198_AddTagTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009061521074_AutoGenGUID.cs" />
+    <Compile Include="Migrations\202009061521074_AutoGenGUID.designer.cs">
+      <DependentUpon>202009061521074_AutoGenGUID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009061525265_AddUserSaltColumns.cs" />
+    <Compile Include="Migrations\202009061525265_AddUserSaltColumns.designer.cs">
+      <DependentUpon>202009061525265_AddUserSaltColumns.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActionLog.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -151,6 +159,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008300541198_AddTagTables.resx">
       <DependentUpon>202008300541198_AddTagTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009061521074_AutoGenGUID.resx">
+      <DependentUpon>202009061521074_AutoGenGUID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009061525265_AddUserSaltColumns.resx">
+      <DependentUpon>202009061525265_AddUserSaltColumns.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
