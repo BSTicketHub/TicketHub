@@ -1,0 +1,22 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/bundles/css/CustomerDetail")
+</head>
+<body>
+        @RenderBody();
+
+    @Scripts.Render("~/bundles/js/CustomerDetail")
+    <script type="module" src="~/Assets/JavaScript/Login/login.js"></script>
+</body>
+</html>

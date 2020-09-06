@@ -141,14 +141,22 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomerDetailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModels\CustomerDetailViewModel.cs" />
     <Compile Include="Models\ViewModels\LoginViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\CSS\CustomerDetail.css">
+      <DependentUpon>CustomerDetail.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\CustomerDetail.min.css">
+      <DependentUpon>CustomerDetail.css</DependentUpon>
+    </Content>
     <Content Include="Assets\CSS\login.css">
       <DependentUpon>login.scss</DependentUpon>
     </Content>
@@ -156,9 +164,11 @@
       <DependentUpon>login.css</DependentUpon>
     </Content>
     <Content Include="Assets\Images\asian-food-decorative.jpg" />
+    <Content Include="Assets\Images\camera.png" />
     <Content Include="Assets\JavaScript\Common\iconify.min.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.min.js" />
+    <Content Include="Assets\JavaScript\CustomerDetail\CustomerDetail.js" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -314,6 +324,7 @@
   <ItemGroup>
     <Content Include="Assets\CSS\login.scss" />
     <Content Include="Assets\CSS\_variables.scss" />
+    <Content Include="Assets\CSS\CustomerDetail.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -325,6 +336,8 @@
     <Content Include="Scripts\moment-with-locales.min.js.map" />
     <Content Include="Views\Account\LoginPlatform.cshtml" />
     <Content Include="Views\Account\_LoginLayout.cshtml" />
+    <Content Include="Views\CustomerDetail\CustomerPage.cshtml" />
+    <Content Include="Views\CustomerDetail\_CustomerDetailLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
