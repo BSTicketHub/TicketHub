@@ -50,6 +50,16 @@ namespace TicketHubApp
                 "~/Scripts/moment.js",
                 "~/Assets/JavaScript/CustomerDetail/CustomerDetail.js"
                 ));
+            //ShopList bundles
+            bundles.Add(new StyleBundle("~/bundles/css/ShopList")
+                .Include("~/Content/bootstrap.css")
+                .Include("~/Assets/CSS/ShopList.min.css"));
+            bundles.Add(new ScriptBundle("~/bundles/js/ShopList").Include(
+                "~/Scripts/bootstrap.js",
+                "~/Assets/JavaScript/Common/iconify.min.js",
+                "~/Scripts/moment.js",
+                "~/Assets/JavaScript/ShopList/ShopList.js"
+                ));
         }
     }
 }

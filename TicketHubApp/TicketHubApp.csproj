@@ -143,6 +143,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomerDetailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ShopListController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -163,12 +164,19 @@
     <Content Include="Assets\CSS\login.min.css">
       <DependentUpon>login.css</DependentUpon>
     </Content>
+    <Content Include="Assets\CSS\ShopList.css">
+      <DependentUpon>ShopList.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\ShopList.min.css">
+      <DependentUpon>ShopList.css</DependentUpon>
+    </Content>
     <Content Include="Assets\Images\asian-food-decorative.jpg" />
     <Content Include="Assets\Images\camera.png" />
     <Content Include="Assets\JavaScript\Common\iconify.min.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.min.js" />
     <Content Include="Assets\JavaScript\CustomerDetail\CustomerDetail.js" />
+    <Content Include="Assets\JavaScript\ShopList\ShopList.js" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -325,6 +333,7 @@
     <Content Include="Assets\CSS\login.scss" />
     <Content Include="Assets\CSS\_variables.scss" />
     <Content Include="Assets\CSS\CustomerDetail.scss" />
+    <Content Include="Assets\CSS\ShopList.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -338,6 +347,8 @@
     <Content Include="Views\Account\_LoginLayout.cshtml" />
     <Content Include="Views\CustomerDetail\CustomerPage.cshtml" />
     <Content Include="Views\CustomerDetail\_CustomerDetailLayout.cshtml" />
+    <Content Include="Views\ShopList\ShopList.cshtml" />
+    <Content Include="Views\ShopList\_ShopListLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

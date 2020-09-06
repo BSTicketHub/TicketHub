@@ -6,5 +6,13 @@
   {
     "outputFile": "Assets/CSS/CustomerDetail.css",
     "inputFile": "Assets/CSS/CustomerDetail.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/StoreList.css",
+    "inputFile": "Assets/CSS/StoreList.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/ShopList.css",
+    "inputFile": "Assets/CSS/ShopList.scss"
   }
 ]
