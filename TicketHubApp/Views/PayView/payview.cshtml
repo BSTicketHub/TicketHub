@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "payview";
+}
+
+<h2>payview</h2>
+
+<div class="container">
+    <ol class="row cartProcess">
+        <li class="breadcrumb-item"><a class="breadcrumb-item active" aria-current="page" href="#">購物車</a></li>
+        <a class="breadcrumb-item " href="#">填寫資料與付款</a>
+        <a class="breadcrumb-item active" aria-current="page" href="#">訂購完成</a>
+    </ol>
+</div>
+    <div class="container col-8">
+        <div class="card">
+            <h5 class="card-header">訂購人資料</h5>
+            <div class="card-body">
+                <!-- <h5 class="card-title"></h5> -->
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <label for="inputFirstName4">
+                                名字
+                                <abbr class="form-required">*</abbr>
+                            </label>
+                            <input type="text" class="form-control" placeholder="First name" required>
+
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="inputLastName4">
+                                姓
+                                <abbr class="form-required">*</abbr>
+                            </label>
+                            <input type="text" class="form-control" placeholder="Last name" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">
+                                Email
+                                <abbr class="form-required">*</abbr>
+                            </label>
+                            <input type="email" class="form-control" id="inputEmail4" placeholder="Email" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputPhone4">
+                                手機號碼
+                                <abbr class="form-required">*</abbr>
+
+                            </label>
+                            <input type="tel" minlength="8" maxlength="10" class="form-control" id="inputPassword4"
+                                   placeholder="Mobile" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">繼續</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <div class="container bg-white col-8">
+        <div class="cartContent box p-3">
+            <div class="mt-5">
+                <h5>付款明細</h5>
+            </div>
+            <hr>
+            <div class="">
+                <div class="table-box ">
+                    <div class="text-center statistics d-flex">
+                        <div id="productImg" class="col-3 d-flex flex-wrap">
+                            <P class="w-100">img</P>
+                        </div>
+                        <div id="productTitle" class="col-3 d-flex flex-wrap">
+                            <p class="w-100">票券名稱</p>
+                        </div>
+                        <div id="unit" class="col-2 d-flex flex-wrap">
+                            <p class="w-100">張數</p>
+                        </div>
+                        <!-- <div><p>單價</p></div> -->
+                        <div id="totalPrice" class="col-2 d-flex flex-wrap">
+                            <p class="w-100">總價</p>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div class="d-flex justify-content-end account">
+                <div id="kindOf" class="align-self-center ml-2 mr-2"></div>
+                <div id="totalPay" class="align-self-center ml-2 mr-2"></div>
+                <button id="goPay" class="btn btn-primary">確認結帳 </button>
+            </div>
+        

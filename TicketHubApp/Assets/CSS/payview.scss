@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: "微軟正黑體";
+    text-decoration: none;
+}
+
+abbr{
+    color: red;
+}
+
+.statistics {
+    div{
+        div{
+            height: 100px;
+        }
+    }
+}
+
+.account{
+    height: 70px;
+    div{
+        p{
+            margin: 0;
+        }
+        // margin: 20px;
+    }
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #26BEC9 !important;
+    border-color: #26BEC9;
+}   

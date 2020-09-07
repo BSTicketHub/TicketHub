@@ -8,6 +8,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/bundles/css/CustomerDetail")
+    @Styles.Render("~/bundles/css/Cart")
 </head>
 <body>
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
@@ -49,7 +50,7 @@
             </form>
         </div>
     </nav>
-    <div class="container body-content">
+    <div class="container mt-3 body-content">
         @RenderBody()
         <hr />
         <footer>
@@ -60,6 +61,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/js/CustomerDetail")
+    @Scripts.Render("~/bundles/js/Cart")
     @RenderSection("scripts", required: false)
 </body>
 </html>

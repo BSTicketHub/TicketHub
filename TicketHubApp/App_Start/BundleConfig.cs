@@ -60,6 +60,40 @@ namespace TicketHubApp
                 "~/Scripts/moment.js",
                 "~/Assets/JavaScript/ShopList/ShopList.js"
                 ));
+
+            //Cart page bundles
+            bundles.Add(new StyleBundle("~/bundles/css/Cart")
+                .Include("~/Content/bootstrap.css")
+                .Include("~/Assets/CSS/Cart.min.css", new CssRewriteUrlTransform()));
+            bundles.Add(new ScriptBundle("~/bundles/js/Cart").Include(
+                "~/Scripts/jquery-{version}.js",
+                "~/Scripts/bootstrap.js",
+                "~/Assets/JavaScript/Common/iconify.min.js",
+                "~/Scripts/moment.js",
+                "~/Assets/JavaScript/Cart/Cart.js"
+                ));
+
+            //payview page bundles
+            bundles.Add(new StyleBundle("~/bundles/css/payview")
+                .Include("~/Content/bootstrap.css")
+                .Include("~/Assets/CSS/payview.min.css", new CssRewriteUrlTransform()));
+            bundles.Add(new ScriptBundle("~/bundles/js/Cart").Include(
+                "~/Scripts/jquery-{version}.js",
+                "~/Scripts/bootstrap.js",
+                "~/Assets/JavaScript/Common/iconify.min.js",
+                "~/Scripts/moment.js",
+                "~/Assets/JavaScript/Cart/payview.js"
+                ));
+
+            bundles.Add(new StyleBundle("~/bundles/css/payview")
+                .Include("~/Content/bootstrap.css")
+                .Include("~/Assets/CSS/ticket-description.min.css", new CssRewriteUrlTransform()));
+            bundles.Add(new ScriptBundle("~/bundles/js/Cart").Include(
+                "~/Scripts/jquery-{version}.js",
+                "~/Scripts/bootstrap.js",
+                "~/Assets/JavaScript/Common/iconify.min.js",
+                "~/Scripts/moment.js"
+                ));
         }
     }
 }
