@@ -1,25 +1,30 @@
 ﻿@model IEnumerable<TicketHubApp.PlatformViewModels.MemberViewModel>
 
-    <h2>@ViewBag.key</h2>
-<h2 class="my-5">後台管理系統 / 會員管理 / 會員列表</h2>
-<hr />
 
-<form action="SearchByUserName" method="post">
-    <select>
-        <option value="UserName" title="請輸入會員名稱" class="SearchByUserName">依照會員名稱</option>
-        <option value="Account" title="請輸入會員帳號" class="SearchByAccount">依照會員帳號</option>
-        <option value="Email" title="請輸入會員電子郵件" class="SearchByEmail">依照會員電子郵件</option>
-        <option value="Mobile" title="請輸入會員手機號碼" class="SearchByMobile">依照會員手機號碼</option>
-    </select>
+<div>
+    <h2 class="my-5">後台管理系統 / 會員管理 / 會員列表</h2>
 
-    <label for="Search">搜尋會員</label>
-    <input type="text" name="UserName" value="" id="Search" placeholder="請輸入會員名稱..." />
-    <input type="submit" value="搜尋" />
-</form>
+    <form action="SearchByUserName" method="post">
+        <select>
+            <option value="UserName" title="請輸入會員名稱" class="SearchByUserName">依照會員名稱</option>
+            <option value="Account" title="請輸入會員帳號" class="SearchByAccount">依照會員帳號</option>
+            <option value="Email" title="請輸入會員電子郵件" class="SearchByEmail">依照會員電子郵件</option>
+            <option value="Mobile" title="請輸入會員手機號碼" class="SearchByMobile">依照會員手機號碼</option>
+        </select>
+
+        <label for="Search">搜尋會員</label>
+        <input type="text" name="UserName" value="" id="Search" placeholder="請輸入會員名稱..." />
+        <input type="submit" value="搜尋" />
+    </form>
+</div>
+
 
 <table class="table table-bordered table-striped table-hover">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Account)
             </th>
@@ -39,6 +44,9 @@
         @foreach (var item in Model)
         {
             <tr onclick="goToDetail('@item.Id')">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Account)
                 </td>
@@ -81,6 +89,10 @@
                 table tbody td[class="link"] a:hover svg {
                     color: white;
                 }
+
+        .card {
+            display: none;
+        }
     </style>
 }
 
@@ -89,9 +101,9 @@
         function goToDetail(id) {
             window.location.assign("Details/" + id);
         }
+
         // 下拉式選單 change 事件
         let select = document.querySelector('select');
-        
 
         select.addEventListener('change', function () {
             console.log(this.options[this.selectedIndex].value);

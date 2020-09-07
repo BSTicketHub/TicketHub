@@ -3,9 +3,22 @@
 @{
     ViewBag.Title = "Index";
 }
+<div>
+    <h2 class="my-5">後台管理系統 / 商家管理 / 商家列表</h2>
+    <form action="SearchByShopName" method="post">
+        <select>
+            <option value="ShopName" title="請輸入商家名稱" class="SearchByShopName">依照商家名稱</option>
+            <option value="Phone" title="請輸入商家電話" class="SearchByPhone">依照商家電話</option>
+            <option value="Fax" title="請輸入商家傳真號碼" class="SearchByFax">依照商家傳真號碼</option>
+            <option value="Website" title="請輸入商家網址" class="SearchByWebsite">依照商家網站</option>
+        </select>
 
-<h2>後台管理系統 / 商家管理 / 商家列表</h2>
-<hr />
+        <label for="Search">搜尋商家</label>
+        <input type="text" name="ShopName" value="" id="Search" placeholder="請輸入商家名稱" />
+        <input type="submit" value="搜尋" />
+    </form>
+</div>
+
 
 <table class="table table-striped table-hover col-md-12">
     <thead>
@@ -97,5 +110,16 @@
         function goToDetail(id) {
             window.location.assign("Details/" + id);
         }
+
+        // 下拉式選單 change 事件
+        let select = document.querySelector('select');
+
+        select.addEventListener('change', function () {
+            console.log(this.options[this.selectedIndex].value);
+            document.querySelector('#Search').name = this.options[this.selectedIndex].value;
+            console.log(this.options[this.selectedIndex].class);
+            document.querySelector('#Search').placeholder = this.options[this.selectedIndex].title;
+            document.querySelector('form').action = this.options[this.selectedIndex].className;
+        });
     </script>
 }

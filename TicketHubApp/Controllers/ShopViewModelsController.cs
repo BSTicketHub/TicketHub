@@ -20,6 +20,35 @@ namespace TicketHubApp.Controllers
             return View(db.shops.ToList());
         }
 
+        [HttpPost]
+        public ActionResult SearchByShopName(string ShopName)
+        {
+            List<ShopViewModel> shopList = db.shops.Where(s => s.ShopName.Contains(ShopName)).ToList();
+            return View("Index", shopList);
+        }
+
+        [HttpPost]
+
+        public ActionResult SearchByPhone(string Phone)
+        {
+            List<ShopViewModel> shopList = db.shops.Where(s => s.Phone.Contains(Phone)).ToList();
+            return View("Index", shopList);
+        }
+
+        [HttpPost]
+        public ActionResult SearchByFax(string Fax)
+        {
+            List<ShopViewModel> shopList = db.shops.Where(s => s.Fax.Contains(Fax)).ToList();
+            return View("Index", shopList);
+        }
+
+        [HttpPost]
+        public ActionResult SearchByWebsite(string Website)
+        {
+            List<ShopViewModel> shopList = db.shops.Where(s => s.Website.Contains(Website)).ToList();
+            return View("Index", shopList);
+        }
+
         // GET: ShopViewModels/Details/5
         public ActionResult Details(Guid? id)
         {

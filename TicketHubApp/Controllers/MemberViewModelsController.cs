@@ -17,17 +17,16 @@ namespace TicketHubApp.Controllers
     public class MemberViewModelsController : Controller
     {
         private TicketHubPlatformContext db = new TicketHubPlatformContext();
-        static string connString = ConfigurationManager.ConnectionStrings["TicketHubPlatformConnection"].ConnectionString;
 
         // GET: MemberViewModels
         public ActionResult Index()
         {
-            return View(db.members.Take(5).ToList());
+            return View(db.members.ToList());
         }
 
         [HttpPost]
         public ActionResult SearchByUserName(string UserName)
-        {
+        {   
             List<MemberViewModel> memberList = db.members.Where(m => m.UserName.Contains(UserName)).ToList();
 
             return View("Index", memberList);
