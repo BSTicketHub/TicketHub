@@ -363,13 +363,10 @@
   <ItemGroup>
     <Content Include="Assets\CSS\login.scss" />
     <Content Include="Assets\CSS\_variables.scss" />
-<<<<<<< HEAD
     <Content Include="Assets\CSS\tempCSS\fontawesome-webfont.eot" />
     <Content Include="Assets\CSS\tempCSS\fontawesome-webfont.ttf" />
-=======
     <Content Include="Assets\CSS\CustomerDetail.scss" />
     <Content Include="Assets\CSS\ShopList.scss" />
->>>>>>> f6061f1b0f0f14c6728896126e207174eca1d6a2
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
