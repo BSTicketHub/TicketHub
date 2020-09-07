@@ -27,11 +27,23 @@ namespace TicketHubApp.Controllers
 
         public ActionResult CreateProduct()
         {
-            return View();
-        }
+            var categoryList = new List<SelectListItem>()
+            {
+                new SelectListItem{Text = "台式", Value= "category-1"},
+                new SelectListItem{Text = "日式", Value= "category-2"},
+                new SelectListItem{Text = "韓式", Value= "category-3"},
+                new SelectListItem{Text = "中式", Value= "category-4"},
+                new SelectListItem{Text = "美式", Value= "category-5"},
+                new SelectListItem{Text = "泰式", Value= "category-6"},
+                new SelectListItem{Text = "西式", Value= "category-7"},
+                new SelectListItem{Text = "法式", Value= "category-8"},
+                new SelectListItem{Text = "印度料理", Value= "category-9"},
+                new SelectListItem{Text = "越南料理", Value= "category-10"}
+            };
+            categoryList.Where(q => q.Value == "category-1").First().Selected = true;
 
-        public ActionResult CreateProduct2()
-        {
+            ViewBag.CategoryList = categoryList;
+
             return View();
         }
 
@@ -46,6 +58,16 @@ namespace TicketHubApp.Controllers
         }
 
         public ActionResult OrderDetails()
+        {
+            return View();
+        }
+
+        public ActionResult TicketDetails()
+        {
+            return View();
+        }
+
+        public ActionResult SalesReport()
         {
             return View();
         }
