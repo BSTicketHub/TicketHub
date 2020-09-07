@@ -1,4 +1,5 @@
 ﻿:root {
+  --favorite: #d87093;
   --line-gray: #adadad;
   --back-paper: #fffefa;
   --cust-color-1: #e4f4f5;
@@ -141,7 +142,8 @@ body {
   border-top: 2px dashed black;
   transform-origin: left 90%; }
   .ticketReceipt .login {
-    text-decoration: none;
+    background-color: transparent;
+    border: none;
     color: #fffefa;
     font-weight: 400;
     font-size: 1.1rem; }
@@ -149,6 +151,8 @@ body {
       color: #fffefa;
       font-weight: bold;
       text-decoration: none; }
+    .ticketReceipt .login:focus {
+      outline: none; }
 
 @media screen and (min-width: 992px) {
   .login-card {
@@ -169,4 +173,4 @@ body {
       transform: rotate(90deg) translate(0%, 5%); }
     .ticketReceipt .login {
       font-weight: 200;
-      transform: rotateZ(90deg) translate(17%, 0%); } }
+      transform: rotateZ(90deg) translate(12%, 0%); } }

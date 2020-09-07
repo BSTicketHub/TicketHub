@@ -1,0 +1,145 @@
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+.container {
+    .row {
+        >div {
+            height: auto;
+        }
+
+        .restaurant-area {
+            .tag-list {
+                >div {
+                    font-size: 20px;
+                    background-color: #26BEC9;
+                    color: white
+                }
+            }
+
+            .restaurant-list {
+                .restaurant {
+                    height: 250px;
+
+                    .img-area {
+                        width: 30%;
+                        height: 100%;
+
+                        .img {
+                            background-image: url("https://picsum.photos/400/300/?random=1");
+                            background-size: cover;
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+
+                    .text-area {
+                        width: 70%;
+                        height: 100%;
+
+                        p {
+                            margin: 8px;
+                            font-size: 14px;
+
+                            &.position,
+                            &.address,
+                            &.phone,
+                            &.openTime {
+                                font-size: 12px;
+                                color: rgb(133, 133, 133);
+                            }
+                        }
+
+                        .favorite {
+                            color: palevioletred;
+                            font-size: 20px;
+                            right: 10px;
+                            top: 10px;
+                        }
+
+                        .show-ticket {
+                            font-size: 12px;
+                            color: rgb(133, 133, 133);
+                            right: 10px;
+                            bottom: 0;
+
+                            &:hover {
+                                cursor: pointer;
+                                color: rgb(68, 68, 68);
+                            }
+                        }
+                    }
+
+                    .ticket-area {
+                        z-index: 10;
+                        width: 100%;
+                        height: 0px;
+                        top: 100%;
+                        left: 30%;
+                        overflow: auto;
+                        transition: .5s;
+                        
+                        &.show {
+                            height: 250px;
+                        }
+                        
+                        .ticket-list {
+                            .ticket {
+                                &:hover {
+                                    background-color: #eee;
+                                    cursor: pointer;
+                                }
+
+                                height: 100px;
+                                // border-left:3px solid #26BEC9;
+
+                                .img-area {
+                                    width: 30%;
+
+                                    .img {
+                                        background-image: url("https://picsum.photos/400/300/?random=1");
+                                        background-size: cover;
+                                    }
+                                }
+
+                                .text-area {
+                                    width: 70%;
+
+                                    p {
+                                        margin: 0;
+                                        font-size: 8px;
+                                    }
+
+                                    .oPrice {
+                                        right: 5px;
+                                        bottom: 15px;
+                                        text-decoration-line: line-through;
+                                        color: rgb(133, 133, 133);
+                                    }
+
+                                    .nPrice {
+                                        right: 5px;
+                                        bottom: 0;
+                                        color: #26BEC9;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .map-area {
+            padding: 0!important;
+            height: 100vh;
+            position: sticky;
+            top: 0px;
+
+            .map {
+                height: inherit;
+            }
+        }
+
+    }
+}

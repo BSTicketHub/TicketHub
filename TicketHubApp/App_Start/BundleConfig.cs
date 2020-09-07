@@ -19,29 +19,51 @@ namespace TicketHubApp
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/Chart.js"));
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(                    
+                      "~/Scripts/jquery-3.5.1.slim.js",
+                      "~/Scripts/popper.min.js",
+                      "~/Scripts/bootstrap.min.js"));   
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css",
-                      "~/Content/Chart.css"));
-
+                      "~/Content/bootstrap.min.css",
+                      "~/Content/site.css"));
             //Login page bundles
-            bundles.Add(new StyleBundle("~/Assets/CSS/Login").Include(
-                "~/Content/bootstrap.css",
-                "~/Assets/CSS/login.css"));
-            bundles.Add(new ScriptBundle("~/Assets/JavaScript/Login").Include(
+            bundles.Add(new StyleBundle("~/bundles/css/Login")
+                .Include("~/Content/bootstrap.css")
+                .Include("~/Assets/CSS/login.min.css", new CssRewriteUrlTransform()));
+
+            bundles.Add(new ScriptBundle("~/bundles/js/Login").Include(
                 "~/Scripts/jquery-{version}.js",
                 "~/Scripts/jquery.validate*",
                 "~/Scripts/bootstrap.js",
                 "~/Assets/JavaScript/Common/iconify.min.js",
                 "~/Scripts/moment.js",
-                "~/Assets/JavaScript/Common/JsBarcode.all.min.js"
+                "~/Assets/JavaScript/Common/JsBarcode.all.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/chartjs").Include(
+                      "~/Scripts/Chart.js"
                 ));
-            bundles.Add(new ScriptBundle("~/bundles/chart").Include(
-                      "~/Scripts/Chart.js"));
+
+            //CustomerPage bundles
+            bundles.Add(new StyleBundle("~/bundles/css/CustomerDetail")
+                .Include("~/Content/bootstrap.css")
+                .Include("~/Assets/CSS/CustomerDetail.min.css"));
+            bundles.Add(new ScriptBundle("~/bundles/js/CustomerDetail").Include(
+                "~/Scripts/bootstrap.js",
+                "~/Assets/JavaScript/Common/iconify.min.js",
+                "~/Scripts/moment.js",
+                "~/Assets/JavaScript/CustomerDetail/CustomerDetail.js"
+                ));
+            //ShopList bundles
+            bundles.Add(new StyleBundle("~/bundles/css/ShopList")
+                .Include("~/Content/bootstrap.css")
+                .Include("~/Assets/CSS/ShopList.min.css"));
+            bundles.Add(new ScriptBundle("~/bundles/js/ShopList").Include(
+                "~/Scripts/bootstrap.js",
+                "~/Assets/JavaScript/Common/iconify.min.js",
+                "~/Scripts/moment.js",
+                "~/Assets/JavaScript/ShopList/ShopList.js"
+                ));
         }
     }
 }
