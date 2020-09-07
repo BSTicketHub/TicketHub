@@ -26,6 +26,10 @@ namespace TicketHubApp
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
+            //Login page bundles
+            bundles.Add(new StyleBundle("~/bundles/css/Login")
+                .Include("~/Content/bootstrap.css")
+                .Include("~/Assets/CSS/login.min.css", new CssRewriteUrlTransform()));
             bundles.Add(new ScriptBundle("~/bundles/js/Login").Include(
                 "~/Scripts/jquery-{version}.js",
                 "~/Scripts/jquery.validate*",
@@ -37,6 +41,23 @@ namespace TicketHubApp
             bundles.Add(new ScriptBundle("~/bundles/chartjs").Include(
                       "~/Scripts/Chart.js"
                 ));
+
+            //Home page
+            bundles.Add(new StyleBundle("~/bundles/css/Home")
+                .Include("~/Content/bootstrap.css")
+                .Include("~/Assets/CSS/tempCSS/owl.carousel.min.css")
+                .Include("~/Assets/CSS/tempCSS/owl.theme.default.css")
+                .Include("~/Assets/CSS/tempCSS/temphome.css")
+                );
+
+            bundles.Add(new ScriptBundle("~/bundles/js/Home").Include(
+                //"~/Scripts/jquery-3.5.1.min.js",
+                //"~/Scripts/bootstrap.js",
+                //"~/Assets/JavaScript/Home/popper.min.js",
+                "~/Assets/JavaScript/Common/iconify.min.js",
+                "~/Scripts/moment.js",
+                "~/Assets/JavaScript/Home/owl.carousel.min.js",
+                "~/Assets/JavaScript/Home/home.js"));
 
             //CustomerPage bundles
             bundles.Add(new StyleBundle("~/bundles/css/CustomerDetail")
