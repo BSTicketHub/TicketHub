@@ -241,9 +241,6 @@
     <Content Include="Assets\JavaScript\ShopList\ShopList.js" />
     <Content Include="Assets\CSS\StoreBasic.css" />
     <Content Include="Assets\Images\ticket_test_Img.jpg" />
-    <Content Include="Assets\JavaScript\Common\iconify.min.js" />
-    <Content Include="Assets\JavaScript\Common\JsBarcode.all.js" />
-    <Content Include="Assets\JavaScript\Common\JsBarcode.all.min.js" />
     <Content Include="Assets\CSS\Store\StoreBasic.css" />
     <Content Include="Assets\Javascript\StoreBasic.js" />
     <Content Include="Content\bootstrap-grid.css" />
