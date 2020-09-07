@@ -32,6 +32,12 @@ namespace TicketHubApp
                 name: "MemberViewModels",
                 url: "MemberViewModels/{action}",
                 defaults: new { controller = "MemberViewModels", action = "Index"});
+                defaults: new { controller = "MemberViewModels", action = "Index" });
+            routes.MapRoute(
+                name: "Store",
+                url: "Store/{action}",
+                defaults: new { controller = "Store", action = "HomePage" }
+            );
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
