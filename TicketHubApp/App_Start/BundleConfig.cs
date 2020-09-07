@@ -19,13 +19,14 @@ namespace TicketHubApp
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js"));
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(                    
+                      "~/Scripts/jquery-3.5.1.slim.js",
+                      "~/Scripts/popper.min.js",
+                      "~/Scripts/bootstrap.min.js"));   
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap.min.css",
                       "~/Content/site.css"));
-
             //Login page bundles
             bundles.Add(new StyleBundle("~/bundles/css/Login")
                 .Include("~/Content/bootstrap.css")
@@ -37,7 +38,10 @@ namespace TicketHubApp
                 "~/Scripts/bootstrap.js",
                 "~/Assets/JavaScript/Common/iconify.min.js",
                 "~/Scripts/moment.js",
-                "~/Assets/JavaScript/Common/JsBarcode.all.min.js"
+                "~/Assets/JavaScript/Common/JsBarcode.all.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/chartjs").Include(
+                      "~/Scripts/Chart.js"
                 ));
 
             //Home page
