@@ -55,7 +55,7 @@ namespace TicketHubApp
                 "~/Assets/JavaScript/Common/iconify.min.js",
                 "~/Scripts/moment.js",
                 "~/Assets/JavaScript/Home/owl.carousel.min.js",
-                "~/Assets/JavaScript/Home/home.js"
+                "~/Assets/JavaScript/Home/home.js"));
 
             //CustomerPage bundles
             bundles.Add(new StyleBundle("~/bundles/css/CustomerDetail")
