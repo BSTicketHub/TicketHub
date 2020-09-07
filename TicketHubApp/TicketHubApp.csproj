@@ -142,6 +142,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PayViewController.cs" />
+    <Compile Include="Controllers\ProductCartController.cs" />
+    <Compile Include="Controllers\ticketDescriptionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -149,13 +152,46 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\CSS\Cart.css">
+      <DependentUpon>Cart.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Cart.min.css">
+      <DependentUpon>Cart.css</DependentUpon>
+    </Content>
     <Content Include="Assets\CSS\login.css">
       <DependentUpon>login.scss</DependentUpon>
     </Content>
     <Content Include="Assets\CSS\login.min.css">
       <DependentUpon>login.css</DependentUpon>
     </Content>
+    <Content Include="Assets\CSS\payview.css">
+      <DependentUpon>payview.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\payview.min.css">
+      <DependentUpon>payview.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\ticket-description.css">
+      <DependentUpon>ticket-description.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\ticket-description.min.css">
+      <DependentUpon>ticket-description.css</DependentUpon>
+    </Content>
     <Content Include="Assets\Images\asian-food-decorative.jpg" />
+    <Content Include="Assets\Images\img\bar.jpg" />
+    <Content Include="Assets\Images\img\delete.png" />
+    <Content Include="Assets\Images\img\deletecan.png" />
+    <Content Include="Assets\Images\img\fakemap.jpg" />
+    <Content Include="Assets\Images\img\filled-like.png" />
+    <Content Include="Assets\Images\img\gardan.jpg" />
+    <Content Include="Assets\Images\img\googlemap.jpg" />
+    <Content Include="Assets\Images\img\iconfinder_Favourite_5349748.png" />
+    <Content Include="Assets\Images\img\iconfinder_heart_1055045.png" />
+    <Content Include="Assets\Images\img\iconfinder_Multimedia_-22_6644790.png" />
+    <Content Include="Assets\Images\img\images1280.jpg" />
+    <Content Include="Assets\Images\img\like.png" />
+    <Content Include="Assets\Images\img\place-marker.png" />
+    <Content Include="Assets\JavaScript\Cart\Cart.js" />
+    <Content Include="Assets\JavaScript\Cart\payview.js" />
     <Content Include="Assets\JavaScript\Common\iconify.min.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.min.js" />
@@ -314,6 +350,9 @@
   <ItemGroup>
     <Content Include="Assets\CSS\login.scss" />
     <Content Include="Assets\CSS\_variables.scss" />
+    <Content Include="Assets\CSS\Cart.scss" />
+    <Content Include="Assets\CSS\payview.scss" />
+    <Content Include="Assets\CSS\ticket-description.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -325,6 +364,9 @@
     <Content Include="Scripts\moment-with-locales.min.js.map" />
     <Content Include="Views\Account\LoginPlatform.cshtml" />
     <Content Include="Views\Account\_LoginLayout.cshtml" />
+    <Content Include="Views\ProductCart\Cart.cshtml" />
+    <Content Include="Views\PayView\payview.cshtml" />
+    <Content Include="Views\ticketDescription\Ticketdescription.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

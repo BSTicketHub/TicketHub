@@ -2,5 +2,17 @@
   {
     "outputFile": "Assets/CSS/login.css",
     "inputFile": "Assets/CSS/login.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/Cart.css",
+    "inputFile": "Assets/CSS/Cart.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/payview.css",
+    "inputFile": "Assets/CSS/payview.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/ticket-description.css",
+    "inputFile": "Assets/CSS/ticket-description.scss"
   }
 ]
