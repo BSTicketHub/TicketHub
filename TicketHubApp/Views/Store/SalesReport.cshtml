@@ -1,0 +1,83 @@
+﻿
+
+
+<div class="container SalesReport">
+    <div class="row justify-content-center">
+        <div class="col-12 d-flex bg-white p-3 shadow align-items-center my-5">
+            <div class="form-group col-5">
+                <label for="datetimepicker-released" class="d-block">開始日期</label>
+                <input type="date" class="w-100 form-control form-control-sm" id="meeting-time" name="meeting-time" value="">
+            </div>
+            <div class="form-group col-5">
+                <label for="datetimepicker-released" class="d-block">結束日期</label>
+                <input type="date" class="w-100 form-control form-control-sm" id="meeting-time" name="meeting-time" value="">
+            </div>
+            <span class="searchBtn d-block mt-3 rounded-pill">報表搜尋</span>
+        </div>
+        <div class="col-8 bg-white shadow p-0">
+            <div class="col-12 border-bottom p-2">商店分析</div>
+            <div class="col-12 bg-white p-3 border-bottom">
+                <div class="d-flex justify-content-between StoreRepoTitle">
+                    <p>總營業額</p>
+                    <p>$ <span>0</span></p>
+                </div>
+                <p class="StoreRepoNote">已完成的票券總金額之加總</p>
+            </div>
+            <div class="col-12 bg-white p-3 border-bottom">
+                <div class="d-flex justify-content-between StoreRepoTitle">
+                    <p>總票券量</p>
+                    <p><span>0</span> 張</p>
+                </div>
+                <p class="StoreRepoNote">已完成的票券總量</p>
+            </div>
+            <div class="col-12 bg-white p-3 border-bottom">
+                <div class="d-flex justify-content-between StoreRepoTitle">
+                    <p>顧客總人數</p>
+                    <p><span>0</span> 張</p>
+                </div>
+                <p class="StoreRepoNote">已訂購完成的顧客總人數</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@section topCSS{
+    <style>
+        .SalesReport p{
+            margin: 0;
+        }
+
+        .searchBtn {
+            background-color: #2a94db;
+            color: #fff;
+            border: 1px solid #2a94db;
+            padding: 3px 10px;
+        }
+
+            .searchBtn:hover {
+                background-color: #fff;
+                color: #2a94db;
+            }
+
+            .searchBtn:focus {
+                outline: none;
+            }
+
+            .searchBtn:active {
+                background-color: #2a94db;
+                color: #fff;
+            }
+
+        .StoreRepoTitle {
+            font-size: 14px;
+            color: #444444;
+        }
+
+        .StoreRepoNote {
+            font-size: 12px;
+            color: #a1a7ab;
+        }
+    </style>    
+}

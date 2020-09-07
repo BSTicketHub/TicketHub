@@ -1,0 +1,82 @@
+﻿@model TicketHubApp.ViewModels.StoreTicketListViewModel
+
+@{
+    ViewBag.Title = "TicketDetails";
+}
+
+<h2>TicketDetails</h2>
+
+<div>
+    <h4>StoreTicketListViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveredDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliveredDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Exchanged)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Exchanged)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExchangedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExchangedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Voided)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Voided)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VoidedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VoidedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IssueId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IssueId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
+    @Html.ActionLink("Back to List", "Index")
+</p>
