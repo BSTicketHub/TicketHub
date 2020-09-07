@@ -1,31 +1,1531 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿
+@{
+    ViewBag.Title = "Index";
 }
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 
-<div class="jumbotron">
-    <h1 class="display-4">ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div class="top-bar" style="justify-content: space-between;">
+    <div class="text-left">
+        <span class="iconify mt-1" data-icon="fa-solid:phone-alt" data-inline="false" style=""></span>
+        <a href="tel:02-23457778" title="phone">
+            (123) 456-7890
+        </a>
+        <span class="iconify mt-1 ml-1" data-icon="clarity:user-solid" data-inline="false"></span>
+        <a href="" title="">
+            客服資訊
+        </a>
+    </div>
 </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <a class="navbar-brand" href="#">
+        <img src="/Assets/Images/Home/logo.png" alt="logo"
+             style="width: 100px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-link" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown active" style="display: flex;align-items: center;">
+                <a href="" class="nav-link">關於我們</a>
+            </li>
+            <li class="nav-item dropdown active" style="display: flex;align-items: center;">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    熱門票劵
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a href="" class="dropdown-item">異國料理</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="" class="dropdown-item">自助百匯</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="" class="dropdown-item">早午餐</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="" class="dropdown-item">下午餐</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="" class="dropdown-item">素食餐廳</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown active" style="display: flex;align-items: center;">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    吃到飽
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a href="" class="dropdown-item">燒肉</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="" class="dropdown-item">火鍋</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="" class="dropdown-item">熱炒</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="" class="dropdown-item">超值餐廳</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown active" style="display: flex;align-items: center;">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    限時特惠
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a href="" class="dropdown-item">異國料理</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="" class="dropdown-item">自助百匯</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="" class="dropdown-item">早午餐</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="" class="dropdown-item">下午餐</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="" class="dropdown-item">素食餐廳</a>
+                </div>
+            </li>
+            <li class="dropdown member-dropdown member-item mr-3" style="display: flex;align-items: center;">
+                <a class="mt-2" data-toggle="dropdown">
+                    <div class="editor-logo"></div>
+                </a>
+                <ul aria-labelledby="dLabel" class="dropdown-menu " dropdown-menu-right>
+                    <li class="list-item profile">
+                        <a href="">
+                            <div class="editor-logo">
+                            </div>
+                            <div class="list-item-title">
+                                <div class="title">XXX</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li class="list-item">
+                        <a href="">
+                            <span class="list-item-title">折扣券</span>
+                            <span class="list-item-addon text-warning">0</span>
+                        </a>
+                    </li>
+                    <li class="list-item">
+                        <a id="side-navber-order" href="">
+                            <span class="list-item-title">訂單管理</span>
+                        </a>
+                    </li>
+                    <li class="list-item">
+                        <a id="side-navber-msg" href="">
+                            <span class="list-item-title">訊息管理</span>
+                        </a>
+                    </li>
+                    <li class="list-item">
+                        <a id="side-navbar-wish-list" href="">
+                            <span class="list-item-title">我的收藏</span>
+                        </a>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li class="logout">
+                        <a href="">
+                            登出
+                        </a>
+                    </li>
+                </ul> <span class="dropdown-arrow"></span>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0 mr-3">
+            <button class="btn btn-outline-info my-2 my-sm-0 px-4" type="submit">
+                <span class="iconify" data-icon="clarity:shopping-cart-solid" data-inline="false"
+                      style="font-size: 20px;"></span>
+            </button>
+        </form>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-link" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+</nav>
+<div class="home-banner">
+    <div class="banner-img">
+        <div class="bannerimg-position">
+            <img class="displayimg" alt="TicketHub封面" src="/Assets/Images/Home/128-1200x650.jpg">
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-link" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <div class="banner-text">
+        <div class="text-Xcenter">
+            <div class="banner-textstyle">
+                <div class="text-block">
+                    <h1 class="title-font">
+                        盡情揮灑生活的色彩，更多票劵等待發現
+                    </h1>
+                    <p class="p-font">
+                        規劃不一樣的旅程，探索近在咫尺的美食。
+                    </p>
+                </div>
+                <div class="seach-bar">
+                    <li class="dropdown">
+                        <a class="seach-title" data-toggle="dropdown">
+                            探索城市
+                            <span class="iconify" data-icon="dashicons:arrow-down-alt2" data-inline="false"></span>
+                        </a>
+                        <ul id="" data-col="2" class="dropdown-menu dropdown-menu-col show-dropdown"
+                            dropdown-menu-right>
+                            <li id="" class="active"><a href="">雙北</a></li>
+                            <li id="" class=""><a href="">桃竹苗</a></li>
+                            <li id="" class=""><a href="">中彰投</a></li>
+                            <li id="" class=""><a href="">花東</a></li>
+                            <li id="" class=""><a href="">基宜</a></li>
+                            <li id="" class=""><a href="">高屏</a></li>
+                            <li id="" class=""><a href="">雲嘉南</a></li>
+                            <li id="" class=""><a href="">澎金馬</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown ml-5">
+                        <a class="seach-title" data-toggle="dropdown">
+                            探索美食
+                            <span class="iconify" data-icon="dashicons:arrow-down-alt2" data-inline="false"></span>
+                        </a>
+                        <ul id="" data-col="3" class="dropdown-menu dropdown-menu-col show-dropdown">
+                            <li id="" class="active"><a href="">中式料理</a></li>
+                            <li id="" class=""><a href="">韓式料理</a></li>
+                            <li id="" class=""><a href="">日式料理</a></li>
+                            <li id="" class=""><a href="">泰式料理</a></li>
+                            <li id="" class=""><a href="">港式料理</a></li>
+                            <li id="" class=""><a href="">義式料理</a></li>
+                            <li id="" class=""><a href="">蔬食料理</a></li>
+                            <li id="" class=""><a href="">烘培點心</a></li>
+                            <li id="" class=""><a href="">特選餐廳</a></li>
+                        </ul>
+                    </li>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
+<div class="container">
+    <br>
+    <div class="row mb-3">
+        <div class="col-lg-7 col-md-6">
+            <div class="row">
+                <div class="col-12">
+                    <div class="carousel-autoplay owl-carousel owl-theme owl-loaded owl-drag">
+                        <div class="owl-stage-outer">
+                            <div class="owl-stage">
+                                <div class="owl-item">
+                                    <div class="item">
+                                        <a href="" target="">
+                                            <img class="img-lg owl-lazy" data-src="" alt="銀行刷好康"
+                                                 src="https://picsum.photos/500/400/?random=1" style="opacity: 1;">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="owl-item">
+                                    <div class="item">
+                                        <a href="" target="">
+                                            <img class="img-lg owl-lazy" data-src="" alt="臺灣美食行動Go"
+                                                 src="https://picsum.photos/500/400/?random=1" style="opacity: 1;">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="owl-item">
+                                    <div class="item">
+                                        <a href="" target="">
+                                            <img class="img-lg owl-lazy" data-src="" alt="消費享回饋"
+                                                 src="https://picsum.photos/500/400/?random=1" style="opacity: 1;">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="owl-item">
+                                    <div class="item">
+                                        <a href="" target="">
+                                            <img class="img-lg owl-lazy" data-src="" alt="宅配+APP結帳再打75折"
+                                                 src="https://picsum.photos/500/400/?random=1" style="opacity: 1;">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="owl-item">
+                                    <div class="item">
+                                        <a href="" target="">
+                                            <img class="img-lg owl-lazy" data-src="" alt="假日特賣會"
+                                                 src="https://picsum.photos/500/400/?random=1" style="opacity: 1;">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="block-icon">
+                        <div class="class-icon">
+                            <button class="card-shop btn">
+                                <img src="/Assets/Images/Home/travel.png" alt="">
+                            </button>
+                            <h5>旅遊娛樂</h5>
+                        </div>
+                        <div class="class-icon">
+                            <button class="card-shop btn">
+                                <img src="/Assets/Images/Home/takeout.png" alt="">
+                            </button>
+                            <h5>美食外帶</h5>
+                        </div>
+                        <div class="class-icon">
+                            <button class="card-shop btn">
+                                <img src="/Assets/Images/Home/food.png" alt="">
+                            </button>
+                            <h5>餐廳美食</h5>
+                        </div>
+                        <div class="class-icon">
+                            <button class="card-shop btn">
+                                <img src="/Assets/Images/Home/bed.png" alt="">
+                            </button>
+                            <h5>星級住宿</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5 col-md-6">
+            <div class="card">
+                <div class="card-tab">
+                    <h5>限時搶購</h5>
+                    <div class="countdown-timer" id="ddCountdown__panel" data-untilts="223313">
+                        <div class="timer" id="ddCountdown__hour">62</div>
+                        <div class="timer-"> : </div>
+                        <div class="timer" id="ddCountdown__min">01</div>
+                        <div class="timer-"> : </div>
+                        <div class="timer" id="ddCountdown__second">00</div>
+                    </div>
+                </div>
+                <div class="carousel1 owl-carousel owl-theme owl-loaded owl-drag mt-1">
+                    <div class="owl-stage-outer">
+                        <div class="owl-stage">
+                            <div class="owl-item">
+                                <div class="">
+                                    <a href="" target="">
+                                        <img class="d-block w-100  img-md2" data-src="" alt="銀行刷好康"
+                                             src="https://picsum.photos/500/400/?random=4">
+                                    </a>
+                                </div>
+                                <div class="mt-3 card-text">
+                                    <h5>優惠資訊 »</h5>
+                                    <div class="d-flex tagBox tag-right">
+                                        <div class="tag tag-blue">
+                                            最新
+                                        </div>
+                                        <div class="tag tag-green">
+                                            國旅卡
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <p>【限時優惠】南投九族文化村門票＆加贈日月潭纜車票</p>
+                                    <div class="review-score product-star">
+                                        <span class="iconify" data-icon="bi:star-fill" data-inline="false"></span>
+                                        <span class="iconify" data-icon="bi:star-fill" data-inline="false"></span>
+                                        <span class="iconify" data-icon="bi:star-fill" data-inline="false"></span>
+                                        <span class="iconify" data-icon="bi:star-fill" data-inline="false"></span>
+                                        <span class="iconify" data-icon="bi:star-fill" data-inline="false"></span>
+                                        <span class="">(1553)</span>
+                                    </div>
+                                    <div class="priceBox">
+                                        <div class="price d-flex">
+                                            <div class="original line-through ml-auto">$3872</div>
+                                            <div class="current">
+                                                $2840<span class="t-09">起</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-block btn-info mt-2">查看更多</button>
+                                </div>
+                            </div>
+                            <div class="owl-item">
+                                <div class="">
+                                    <a href="" target="">
+                                        <img class="d-block w-100  img-md2" data-src="" alt="臺灣美食行動Go"
+                                             src="https://picsum.photos/500/400/?random=8">
+                                    </a>
+                                </div>
+                                <div class="mt-3 card-text">
+                                    <h5>優惠資訊 »</h5>
+                                    <div class="d-flex tagBox tag-right">
+                                        <div class="tag tag-blue">
+                                            最新
+                                        </div>
+                                        <div class="tag tag-green">
+                                            國旅卡
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <p>【限時優惠】南投九族文化村門票＆加贈日月潭纜車票</p>
+                                    <div class="priceBox">
+                                        <div class="price d-flex">
+                                            <div class="original line-through ml-auto">$3872</div>
+                                            <div class="current">
+                                                $2840<span class="t-09">起</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-block btn-info mt-2">查看更多</button>
+                                </div>
+                            </div>
+                            <div class="owl-item">
+                                <div class="">
+                                    <a href="" target="">
+                                        <img class="d-block w-100 img-md2" data-src="" alt="消費享回饋"
+                                             src="https://picsum.photos/500/400/?random=12">
+                                    </a>
+                                </div>
+                                <div class="mt-3 card-text">
+                                    <h5>優惠資訊 »</h5>
+                                    <div class="d-flex tagBox tag-right">
+                                        <div class="tag tag-blue">
+                                            最新
+                                        </div>
+                                        <div class="tag tag-green">
+                                            國旅卡
+                                        </div>
+                                        <div class="tag tag-orange">
+                                            首賣
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <p>【線上優惠】台北士林｜陶板屋3人同行，一人免費</p>
+                                    <div class="priceBox">
+                                        <div class="price d-flex">
+                                            <div class="original line-through ml-auto">$3872</div>
+                                            <div class="current">
+                                                $2840<span class="t-09">起</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-block btn-info mt-2">查看更多</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="class-lable mt-5 text-center">
+        <h3>特選星級餐廳</h3>
+        <hr>
+    </div>
+    <div class="mt-4 mb-5">
+        <div class="row">
+            <div class="carousel2 owl-carousel todaysubspecial-carousel owl-loaded owl-drag">
+                <div class="owl-stage-outer">
+                    <div class="owl-stage">
+                        <div class="owl-item active">
+                            <div class="col-md-12">
+                                <div class="product-item">
+                                    <a href="">
+                                        <div class="product-img">
+                                            <img class="img-sm" data-src="" alt="台北君悅酒店-凱菲屋"
+                                                 src="https://picsum.photos/400/400/?random=3" style="">
+                                        </div>
+                                        <div class="product-detail">
+                                            <h3>台北君悅酒店-凱菲屋</h3>
+                                            <div class="review-score product-star mb-2 text-center">
+                                                <div class="review-score product-star">
+                                                    <span class="iconify" data-icon="bi:star-fill"
+                                                          data-inline="false"></span>
+                                                    <span class="iconify" data-icon="bi:star-fill"
+                                                          data-inline="false"></span>
+                                                    <span class="iconify" data-icon="bi:star-fill"
+                                                          data-inline="false"></span>
+                                                    <span class="iconify" data-icon="bi:star-fill"
+                                                          data-inline="false"></span>
+                                                    <span class="iconify" data-icon="bi:star-fill"
+                                                          data-inline="false"></span>
+                                                    <span class="">(1553)</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <hr>
+                                                    <div class="priceBox">
+                                                        <div class="price d-flex">
+
+                                                            <div class="original line-through ml-auto">$3872</div>
+                                                            <div class="current">
+                                                                $2840<span class="t-09">起</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="Remaining">剩37份</div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="addcart" type="button">放入購物車</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owl-item active">
+                            <div class="col-md-12">
+                                <div class="product-item">
+                                    <a href="">
+                                        <div class="product-img">
+                                            <img class="img-sm" data-src="" alt="台北君悅酒店-凱菲屋"
+                                                 src="https://picsum.photos/400/400/?random=3" style="">
+                                        </div>
+                                        <div class="product-detail">
+                                            <h3>台北君悅酒店-凱菲屋</h3>
+                                            <div class="review-score product-star mb-2 text-center">
+                                                <div class="review-score product-star">
+                                                    <span class="iconify" data-icon="bi:star-fill"
+                                                          data-inline="false"></span>
+                                                    <span class="iconify" data-icon="bi:star-fill"
+                                                          data-inline="false"></span>
+                                                    <span class="iconify" data-icon="bi:star-fill"
+                                                          data-inline="false"></span>
+                                                    <span class="iconify" data-icon="bi:star-fill"
+                                                          data-inline="false"></span>
+                                                    <span class="iconify" data-icon="bi:star-fill"
+                                                          data-inline="false"></span>
+                                                    <span class="">(1553)</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <hr>
+                                                    <div class="priceBox">
+                                                        <div class="price d-flex">
+
+                                                            <div class="original line-through ml-auto">$3872</div>
+                                                            <div class="current">
+                                                                $2840<span class="t-09">起</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="Remaining">剩37份</div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="addcart" type="button">放入購物車</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owl-item active">
+                            <div class="col-md-12">
+                                <div class="product-item">
+                                    <a href="">
+                                        <div class="product-img">
+                                            <img class="img-sm" data-src="" alt="台北君悅酒店-凱菲屋"
+                                                 src="https://picsum.photos/400/400/?random=3" style="">
+                                        </div>
+                                        <div class="product-detail">
+                                            <h3>台北君悅酒店-凱菲屋</h3>
+                                            <div class="review-score product-star mb-2 text-center">
+                                                <div class="review-score product-star">
+                                                    <span class="iconify" data-icon="bi:star-fill"
+                                                          data-inline="false"></span>
+                                                    <span class="iconify" data-icon="bi:star-fill"
+                                                          data-inline="false"></span>
+                                                    <span class="iconify" data-icon="bi:star-fill"
+                                                          data-inline="false"></span>
+                                                    <span class="iconify" data-icon="bi:star-fill"
+                                                          data-inline="false"></span>
+                                                    <span class="iconify" data-icon="bi:star-fill"
+                                                          data-inline="false"></span>
+                                                    <span class="">(1553)</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <hr>
+                                                    <div class="priceBox">
+                                                        <div class="price d-flex">
+
+                                                            <div class="original line-through ml-auto">$3872</div>
+                                                            <div class="current">
+                                                                $2840<span class="t-09">起</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="Remaining">剩37份</div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="addcart" type="button">放入購物車</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owl-item active">
+                            <div class="col-md-12">
+                                <div class="product-item">
+                                    <a href="">
+                                        <div class="product-img">
+                                            <img class="img-sm" data-src="" alt="台北君悅酒店-凱菲屋"
+                                                 src="https://picsum.photos/400/400/?random=3" style="">
+                                        </div>
+                                        <div class="product-detail">
+                                            <h3>台北君悅酒店-凱菲屋</h3>
+                                            <div class="review-score product-star mb-2 text-center">
+                                                <div class="review-score product-star">
+                                                    <span class="iconify" data-icon="bi:star-fill"
+                                                          data-inline="false"></span>
+                                                    <span class="iconify" data-icon="bi:star-fill"
+                                                          data-inline="false"></span>
+                                                    <span class="iconify" data-icon="bi:star-fill"
+                                                          data-inline="false"></span>
+                                                    <span class="iconify" data-icon="bi:star-fill"
+                                                          data-inline="false"></span>
+                                                    <span class="iconify" data-icon="bi:star-fill"
+                                                          data-inline="false"></span>
+                                                    <span class="">(1553)</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <hr>
+                                                    <div class="priceBox">
+                                                        <div class="price d-flex">
+
+                                                            <div class="original line-through ml-auto">$3872</div>
+                                                            <div class="current">
+                                                                $2840<span class="t-09">起</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="Remaining">剩37份</div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="addcart" type="button">放入購物車</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owl-item active">
+                            <div class="col-md-12">
+                                <div class="product-item">
+                                    <a href="">
+                                        <div class="product-img">
+                                            <img class="img-sm" data-src="" alt="台北君悅酒店-凱菲屋"
+                                                 src="https://picsum.photos/400/400/?random=3" style="">
+                                        </div>
+                                        <div class="product-detail">
+                                            <h3>台北君悅酒店-凱菲屋</h3>
+                                            <div class="review-score product-star mb-2 text-center">
+                                                <div class="review-score product-star">
+                                                    <span class="iconify" data-icon="bi:star-fill"
+                                                          data-inline="false"></span>
+                                                    <span class="iconify" data-icon="bi:star-fill"
+                                                          data-inline="false"></span>
+                                                    <span class="iconify" data-icon="bi:star-fill"
+                                                          data-inline="false"></span>
+                                                    <span class="iconify" data-icon="bi:star-fill"
+                                                          data-inline="false"></span>
+                                                    <span class="iconify" data-icon="bi:star-fill"
+                                                          data-inline="false"></span>
+                                                    <span class="">(1553)</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <hr>
+                                                    <div class="priceBox">
+                                                        <div class="price d-flex">
+
+                                                            <div class="original line-through ml-auto">$3872</div>
+                                                            <div class="current">
+                                                                $2840<span class="t-09">起</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="Remaining">剩37份</div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="addcart" type="button">放入購物車</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owl-item active">
+                            <div class="col-md-12">
+                                <div class="product-item">
+                                    <a href="">
+                                        <div class="product-img">
+                                            <img class="img-sm" data-src="" alt="台北君悅酒店-凱菲屋"
+                                                 src="https://picsum.photos/400/400/?random=3" style="">
+                                        </div>
+                                        <div class="product-detail">
+                                            <h3>台北君悅酒店-凱菲屋</h3>
+                                            <div class="review-score product-star mb-2 text-center">
+                                                <div class="review-score product-star">
+                                                    <span class="iconify" data-icon="bi:star-fill"
+                                                          data-inline="false"></span>
+                                                    <span class="iconify" data-icon="bi:star-fill"
+                                                          data-inline="false"></span>
+                                                    <span class="iconify" data-icon="bi:star-fill"
+                                                          data-inline="false"></span>
+                                                    <span class="iconify" data-icon="bi:star-fill"
+                                                          data-inline="false"></span>
+                                                    <span class="iconify" data-icon="bi:star-fill"
+                                                          data-inline="false"></span>
+                                                    <span class="">(1553)</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <hr>
+                                                    <div class="priceBox">
+                                                        <div class="price d-flex">
+
+                                                            <div class="original line-through ml-auto">$3872</div>
+                                                            <div class="current">
+                                                                $2840<span class="t-09">起</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="Remaining">剩37份</div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="addcart" type="button">放入購物車</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="class-lable text-center">
+        <h3>熱賣票劵</h3>
+        <hr>
+    </div>
+    <div class="mt-4 mb-5">
+        <div class="row">
+            <div class="carousel2 owl-carousel todaysubspecial-carousel owl-loaded owl-drag">
+                <div class="owl-stage-outer">
+                    <div class="owl-stage">
+                        <div class="owl-item active">
+                            <div class="col-md-12">
+                                <div class="product-item">
+                                    <a href="">
+                                        <div class="product-img">
+                                            <div class="discount-label">7.3折</div>
+                                            <img class="img-sm" data-src="" alt="台北君悅酒店-凱菲屋"
+                                                 src="https://picsum.photos/400/400/?random=3" style="">
+                                        </div>
+                                        <div class="product-detail">
+                                            <h3>台北君悅酒店-凱菲屋</h3>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="priceBox">
+                                                        <div class="price d-flex">
+                                                            <div class="original line-through ml-auto">$3872</div>
+                                                            <div class="current">
+                                                                $2840<span class="t-09">起</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="Remaining">剩37份</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="addcart" type="button">放入購物車</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owl-item active">
+                            <div class="col-md-12">
+                                <div class="product-item">
+                                    <a href="">
+                                        <div class="product-img">
+                                            <div class="discount-label">7.3折</div>
+                                            <img class="img-sm" data-src="" alt="台北君悅酒店-凱菲屋"
+                                                 src="https://picsum.photos/400/400/?random=3" style="">
+                                        </div>
+                                        <div class="product-detail">
+                                            <h3>台北君悅酒店-凱菲屋</h3>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="priceBox">
+                                                        <div class="price d-flex">
+                                                            <div class="original line-through ml-auto">$3872</div>
+                                                            <div class="current">
+                                                                $2840<span class="t-09">起</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="Remaining">剩37份</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="addcart" type="button">放入購物車</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owl-item active">
+                            <div class="col-md-12">
+                                <div class="product-item">
+                                    <a href="">
+                                        <div class="product-img">
+                                            <div class="discount-label">7.3折</div>
+                                            <img class="img-sm" data-src="" alt="台北君悅酒店-凱菲屋"
+                                                 src="https://picsum.photos/400/400/?random=3" style="">
+                                        </div>
+                                        <div class="product-detail">
+                                            <h3>台北君悅酒店-凱菲屋</h3>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="priceBox">
+                                                        <div class="price d-flex">
+                                                            <div class="original line-through ml-auto">$3872</div>
+                                                            <div class="current">
+                                                                $2840<span class="t-09">起</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="Remaining">剩37份</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="addcart" type="button">放入購物車</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owl-item active">
+                            <div class="col-md-12">
+                                <div class="product-item">
+                                    <a href="">
+                                        <div class="product-img">
+                                            <div class="discount-label">7.3折</div>
+                                            <img class="img-sm" data-src="" alt="台北君悅酒店-凱菲屋"
+                                                 src="https://picsum.photos/400/400/?random=3" style="">
+                                        </div>
+                                        <div class="product-detail">
+                                            <h3>台北君悅酒店-凱菲屋</h3>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="priceBox">
+                                                        <div class="price d-flex">
+                                                            <div class="original line-through ml-auto">$3872</div>
+                                                            <div class="current">
+                                                                $2840<span class="t-09">起</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="Remaining">剩37份</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="addcart" type="button">放入購物車</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owl-item active">
+                            <div class="col-md-12">
+                                <div class="product-item">
+                                    <a href="">
+                                        <div class="product-img">
+                                            <div class="discount-label">7.3折</div>
+                                            <img class="img-sm" data-src="" alt="台北君悅酒店-凱菲屋"
+                                                 src="https://picsum.photos/400/400/?random=3" style="">
+                                        </div>
+                                        <div class="product-detail">
+                                            <h3>台北君悅酒店-凱菲屋</h3>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="priceBox">
+                                                        <div class="price d-flex">
+                                                            <div class="original line-through ml-auto">$3872</div>
+                                                            <div class="current">
+                                                                $2840<span class="t-09">起</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="Remaining">剩37份</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="addcart" type="button">放入購物車</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owl-item active">
+                            <div class="col-md-12">
+                                <div class="product-item">
+                                    <a href="">
+                                        <div class="product-img">
+                                            <div class="discount-label">7.3折</div>
+                                            <img class="img-sm" data-src="" alt="台北君悅酒店-凱菲屋"
+                                                 src="https://picsum.photos/400/400/?random=3" style="">
+                                        </div>
+                                        <div class="product-detail">
+                                            <h3>台北君悅酒店-凱菲屋</h3>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="priceBox">
+                                                        <div class="price d-flex">
+                                                            <div class="original line-through ml-auto">$3872</div>
+                                                            <div class="current">
+                                                                $2840<span class="t-09">起</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="Remaining">剩37份</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="addcart" type="button">放入購物車</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="class-lable text-center">
+        <h3>最新推出</h3>
+        <hr>
+    </div>
+    <div class="row mt-4 mb-5">
+        <div class="col-md-4 col-sm-12">
+            <div class="product-item">
+                <a href="" target="_blank">
+                    <div class="product-img lazyload-img">
+                        <img class="img-md img-fluid lazyload" src="https://picsum.photos/600/500/?random=6"
+                             data-original="" title="春芳號">
+                        <div class="map-subject">
+                            <div class="label-icon i-map">
+                                <span class="local-tag">信義區</span>
+                            </div>
+                            <div class="label-status">
+                                <span class="status-tag">免預約</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="wish-btn">
+                        <span class="iconify" data-icon="clarity:heart-solid" data-inline="false"
+                              style="color: #ffffff;"></span>
+                    </div>
+                </a>
+                <div class="product-detail">
+                    <h3 class="ellipsis">春芳號</h3>
+                    <h4 class="ellipsis">平假日皆可抵用100元消費金額</h4>
+                    <div class="tagblock">
+                        <div class="d-flex flex-row tagBox">
+                            <div class="tag tag-blue">
+                                最新
+                            </div>
+                            <div class="tag tag-green">
+                                國旅卡
+                            </div>
+                            <div class="tag tag-red">
+                                可外帶
+                            </div>
+                            <div class="tag tag-orange">
+                                首賣
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pricewrap">
+                        <div class="d-flex flex-row">
+                            <div class="priceBox ml-auto">
+                                <div class="price d-flex">
+                                    <div class="original line-through">
+                                        $100
+                                    </div>
+                                    <div class="current">
+                                        $75
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <div class="ml-auto sales-volume">
+                                售44份
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-secondary" id="">
+                                        <span class="iconify"
+                                              data-icon="ant-design:minus-outlined"
+                                              data-inline="false"></span>
+                                    </button>
+                                </div>
+                                <input type="number" class="form-control"
+                                       ng-model="AddToCartDirectiveCtrl.AddedQuantity" ns-input-number-limit="" max=""
+                                       min="1" value="1">
+                                <div class="input-group-append">
+                                    <button class="btn btn-secondary" id="">
+                                        <span class="iconify"
+                                              data-icon="codicon:add" data-inline="false"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-block btn-info">加入購買</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-12">
+            <div class="product-item">
+                <a href="" target="_blank">
+                    <div class="product-img lazyload-img">
+                        <img class="img-md img-fluid lazyload" src="https://picsum.photos/600/500/?random=6"
+                             data-original="" title="春芳號">
+                        <div class="map-subject">
+                            <div class="label-icon i-map">
+                                <span class="local-tag">信義區</span>
+                            </div>
+                            <div class="label-status">
+                                <span class="status-tag">免預約</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="wish-btn">
+                        <span class="iconify" data-icon="clarity:heart-solid" data-inline="false"
+                              style="color: #ffffff;"></span>
+                    </div>
+                </a>
+                <div class="product-detail">
+                    <h3 class="ellipsis">春芳號</h3>
+                    <h4 class="ellipsis">平假日皆可抵用100元消費金額</h4>
+                    <div class="tagblock">
+                        <div class="d-flex flex-row tagBox">
+                            <div class="tag tag-blue">
+                                最新
+                            </div>
+                            <div class="tag tag-green">
+                                國旅卡
+                            </div>
+                            <div class="tag tag-red">
+                                可外帶
+                            </div>
+                            <div class="tag tag-orange">
+                                首賣
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pricewrap">
+                        <div class="d-flex flex-row">
+                            <div class="priceBox ml-auto">
+                                <div class="price d-flex">
+                                    <div class="original line-through">
+                                        $100
+                                    </div>
+                                    <div class="current">
+                                        $75
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <div class="ml-auto sales-volume">
+                                售44份
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-secondary" id="">
+                                        <span class="iconify"
+                                              data-icon="ant-design:minus-outlined"
+                                              data-inline="false"></span>
+                                    </button>
+                                </div>
+                                <input type="number" class="form-control"
+                                       ng-model="AddToCartDirectiveCtrl.AddedQuantity" ns-input-number-limit="" max=""
+                                       min="1" value="1">
+                                <div class="input-group-append">
+                                    <button class="btn btn-secondary" id="">
+                                        <span class="iconify"
+                                              data-icon="codicon:add" data-inline="false"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-block btn-info">加入購買</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-12">
+            <div class="product-item">
+                <a href="" target="_blank">
+                    <div class="product-img lazyload-img">
+                        <img class="img-md img-fluid lazyload" src="https://picsum.photos/600/500/?random=6"
+                             data-original="" title="春芳號">
+                        <div class="map-subject">
+                            <div class="label-icon i-map">
+                                <span class="local-tag">信義區</span>
+                            </div>
+                            <div class="label-status">
+                                <span class="status-tag">免預約</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="wish-btn">
+                        <span class="iconify" data-icon="clarity:heart-solid" data-inline="false"
+                              style="color: #ffffff;"></span>
+                    </div>
+                </a>
+                <div class="product-detail">
+                    <h3 class="ellipsis">春芳號</h3>
+                    <h4 class="ellipsis">平假日皆可抵用100元消費金額</h4>
+                    <div class="tagblock">
+                        <div class="d-flex flex-row tagBox">
+                            <div class="tag tag-blue">
+                                最新
+                            </div>
+                            <div class="tag tag-green">
+                                國旅卡
+                            </div>
+                            <div class="tag tag-red">
+                                可外帶
+                            </div>
+                            <div class="tag tag-orange">
+                                首賣
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pricewrap">
+                        <div class="d-flex flex-row">
+                            <div class="priceBox ml-auto">
+                                <div class="price d-flex">
+                                    <div class="original line-through">
+                                        $100
+                                    </div>
+                                    <div class="current">
+                                        $75
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <div class="ml-auto sales-volume">
+                                售44份
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-secondary" id="">
+                                        <span class="iconify"
+                                              data-icon="ant-design:minus-outlined"
+                                              data-inline="false"></span>
+                                    </button>
+                                </div>
+                                <input type="number" class="form-control"
+                                       ng-model="AddToCartDirectiveCtrl.AddedQuantity" ns-input-number-limit="" max=""
+                                       min="1" value="1">
+                                <div class="input-group-append">
+                                    <button class="btn btn-secondary" id="">
+                                        <span class="iconify"
+                                              data-icon="codicon:add" data-inline="false"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-block btn-info">加入購買</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-12">
+            <div class="product-item">
+                <a href="" target="_blank">
+                    <div class="product-img lazyload-img">
+                        <img class="img-md img-fluid lazyload" src="https://picsum.photos/600/500/?random=6"
+                             data-original="" title="春芳號">
+                        <div class="map-subject">
+                            <div class="label-icon i-map">
+                                <span class="local-tag">信義區</span>
+                            </div>
+                            <div class="label-status">
+                                <span class="status-tag">免預約</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="wish-btn">
+                        <span class="iconify" data-icon="clarity:heart-solid" data-inline="false"
+                              style="color: #ffffff;"></span>
+                    </div>
+                </a>
+                <div class="product-detail">
+                    <h3 class="ellipsis">春芳號</h3>
+                    <h4 class="ellipsis">平假日皆可抵用100元消費金額</h4>
+                    <div class="tagblock">
+                        <div class="d-flex flex-row tagBox">
+                            <div class="tag tag-blue">
+                                最新
+                            </div>
+                            <div class="tag tag-green">
+                                國旅卡
+                            </div>
+                            <div class="tag tag-red">
+                                可外帶
+                            </div>
+                            <div class="tag tag-orange">
+                                首賣
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pricewrap">
+                        <div class="d-flex flex-row">
+                            <div class="priceBox ml-auto">
+                                <div class="price d-flex">
+                                    <div class="original line-through">
+                                        $100
+                                    </div>
+                                    <div class="current">
+                                        $75
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <div class="ml-auto sales-volume">
+                                售44份
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-secondary" id="">
+                                        <span class="iconify"
+                                              data-icon="ant-design:minus-outlined"
+                                              data-inline="false"></span>
+                                    </button>
+                                </div>
+                                <input type="number" class="form-control"
+                                       ng-model="AddToCartDirectiveCtrl.AddedQuantity" ns-input-number-limit="" max=""
+                                       min="1" value="1">
+                                <div class="input-group-append">
+                                    <button class="btn btn-secondary" id="">
+                                        <span class="iconify"
+                                              data-icon="codicon:add" data-inline="false"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-block btn-info">加入購買</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-12">
+            <div class="product-item">
+                <a href="" target="_blank">
+                    <div class="product-img lazyload-img">
+                        <img class="img-md img-fluid lazyload" src="https://picsum.photos/600/500/?random=6"
+                             data-original="" title="春芳號">
+                        <div class="map-subject">
+                            <div class="label-icon i-map">
+                                <span class="local-tag">信義區</span>
+                            </div>
+                            <div class="label-status">
+                                <span class="status-tag">免預約</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="wish-btn">
+                        <span class="iconify" data-icon="clarity:heart-solid" data-inline="false"
+                              style="color: #ffffff;"></span>
+                    </div>
+                </a>
+                <div class="product-detail">
+                    <h3 class="ellipsis">春芳號</h3>
+                    <h4 class="ellipsis">平假日皆可抵用100元消費金額</h4>
+                    <div class="tagblock">
+                        <div class="d-flex flex-row tagBox">
+                            <div class="tag tag-blue">
+                                最新
+                            </div>
+                            <div class="tag tag-green">
+                                國旅卡
+                            </div>
+                            <div class="tag tag-red">
+                                可外帶
+                            </div>
+                            <div class="tag tag-orange">
+                                首賣
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pricewrap">
+                        <div class="d-flex flex-row">
+                            <div class="priceBox ml-auto">
+                                <div class="price d-flex">
+                                    <div class="original line-through">
+                                        $100
+                                    </div>
+                                    <div class="current">
+                                        $75
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <div class="ml-auto sales-volume">
+                                售44份
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-secondary" id="">
+                                        <span class="iconify"
+                                              data-icon="ant-design:minus-outlined"
+                                              data-inline="false"></span>
+                                    </button>
+                                </div>
+                                <input type="number" class="form-control"
+                                       ng-model="AddToCartDirectiveCtrl.AddedQuantity" ns-input-number-limit="" max=""
+                                       min="1" value="1">
+                                <div class="input-group-append">
+                                    <button class="btn btn-secondary" id="">
+                                        <span class="iconify"
+                                              data-icon="codicon:add" data-inline="false"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-block btn-info">加入購買</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-12">
+            <div class="product-item">
+                <a href="" target="_blank">
+                    <div class="product-img lazyload-img">
+                        <img class="img-md img-fluid lazyload" src="https://picsum.photos/600/500/?random=6"
+                             data-original="" title="春芳號">
+                        <div class="map-subject">
+                            <div class="label-icon i-map">
+                                <span class="local-tag">信義區</span>
+                            </div>
+                            <div class="label-status">
+                                <span class="status-tag">免預約</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="wish-btn">
+                        <span class="iconify" data-icon="clarity:heart-solid" data-inline="false"
+                              style="color: #ffffff;"></span>
+                    </div>
+                </a>
+                <div class="product-detail">
+                    <h3 class="ellipsis">春芳號</h3>
+                    <h4 class="ellipsis">平假日皆可抵用100元消費金額</h4>
+                    <div class="tagblock">
+                        <div class="d-flex flex-row tagBox">
+                            <div class="tag tag-blue">
+                                最新
+                            </div>
+                            <div class="tag tag-green">
+                                國旅卡
+                            </div>
+                            <div class="tag tag-red">
+                                可外帶
+                            </div>
+                            <div class="tag tag-orange">
+                                首賣
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pricewrap">
+                        <div class="d-flex flex-row">
+                            <div class="priceBox ml-auto">
+                                <div class="price d-flex">
+                                    <div class="original line-through">
+                                        $100
+                                    </div>
+                                    <div class="current">
+                                        $75
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <div class="ml-auto sales-volume">
+                                售44份
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-secondary" id="">
+                                        <span class="iconify"
+                                              data-icon="ant-design:minus-outlined"
+                                              data-inline="false"></span>
+                                    </button>
+                                </div>
+                                <input type="number" class="form-control"
+                                       ng-model="AddToCartDirectiveCtrl.AddedQuantity" ns-input-number-limit="" max=""
+                                       min="1" value="1">
+                                <div class="input-group-append">
+                                    <button class="btn btn-secondary" id="">
+                                        <span class="iconify"
+                                              data-icon="codicon:add" data-inline="false"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-block btn-info">加入購買</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-4 text-center">
+            <button class="btn btn-success btn-block">顯示更多票劵</button>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<!-- ------ -->
+<button class="" id="btnScroll">▲<h6>Top</h6></button>
+<!-- ------ -->
+<div class="footbg">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="f-item">
+                    <div class="icon">
+                        <span class="iconify" data-icon="fa-solid:utensils" data-inline="false"
+                              style="font-size: 48px; color:#ffffff"></span>
+                    </div>
+                    <div class="text">
+                        <h5>熱門類別</h5>
+                        <hr>
+                        <a href="">異國料理</a>
+                        <a href="">自助百匯</a>
+                        <a href="">早午餐</a>
+                        <a href="">下午茶</a>
+                        <a href="">素食餐廳</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="f-item">
+                    <div class="icon">
+                        <span class="iconify" data-icon="fa-solid:home" data-inline="false"
+                              style="font-size: 48px; color:#ffffff"></span>
+                    </div>
+                    <div class="text">
+                        <h5>合作夥伴</h5>
+                        <hr>
+                        <a href="">成為供應商</a>
+                        <a href="">供應商登入</a>
+                        <a href="">行銷規劃</a>
+                        <a href="">人才招募</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="f-item">
+                    <div class="icon">
+                        <span class="iconify" data-icon="fa-solid:ticket-alt" data-inline="false"
+                              style="font-size: 48px; color:#ffffff"></span>
+                    </div>
+                    <div class="text">
+                        <h5>票劵資訊</h5>
+                        <hr>
+                        <a href="">瀏覽紀錄</a>
+                        <a href="">訂單查詢</a>
+                        <a href="">消費者登入</a>
+                        <a href="">票劵使用紀錄</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="f-item">
+                    <div class="icon">
+                        <img src="/Assets/Images/Home/ticketHub.png" alt="">
+                    </div>
+                    <div class="text-mb">
+                        <h4>TicketHub</h4>
+                        <div class="btns">
+                            <button>
+                                <span class="iconify" data-icon="ant-design:twitter-outlined"
+                                      data-inline="false" style="margin-top: -8px;"></span>
+                            </button>
+                            <button>
+                                <span class="iconify" data-icon="bx:bxl-facebook" data-inline="false"
+                                      style="margin-top: -8px;"></span>
+                            </button>
+                            <button>
+                                <span class="iconify" data-icon="bx:bxl-pinterest-alt" data-inline="false"
+                                      style="margin-top: -8px;"></span>
+                            </button>
+                            <button>
+                                <span class="iconify" data-icon="bx:bxl-linkedin" data-inline="false"
+                                      style="margin-top: -8px;"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footbar">
+    <p>Copyright © 2020 TicketHub</p>
 </div>

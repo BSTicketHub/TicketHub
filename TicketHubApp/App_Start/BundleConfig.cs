@@ -38,6 +38,25 @@ namespace TicketHubApp
                 "~/Scripts/moment.js",
                 "~/Assets/JavaScript/Common/JsBarcode.all.min.js"
                 ));
+
+            //Home page
+            bundles.Add(new StyleBundle("~/bundles/css/Home")
+                .Include("~/Content/bootstrap.css")
+                .Include("~/Assets/CSS/tempCSS/owl.carousel.min.css")
+                .Include("~/Assets/CSS/tempCSS/owl.theme.default.css")
+                .Include("~/Assets/CSS/tempCSS/temphome.css")
+                );
+
+            bundles.Add(new ScriptBundle("~/bundles/js/Home").Include(
+                //"~/Scripts/jquery-3.5.1.min.js",
+                //"~/Scripts/bootstrap.js",
+                //"~/Assets/JavaScript/Home/popper.min.js",
+                "~/Assets/JavaScript/Common/iconify.min.js",
+                "~/Scripts/moment.js",
+                "~/Assets/JavaScript/Home/owl.carousel.min.js",
+                "~/Assets/JavaScript/Home/home.js"
+
+                ));
         }
     }
 }
