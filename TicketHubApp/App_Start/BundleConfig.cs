@@ -40,7 +40,6 @@ namespace TicketHubApp
                 "~/Assets/JavaScript/Common/JsBarcode.all.min.js"
                 ));
 
-<<<<<<< HEAD
             //Home page
             bundles.Add(new StyleBundle("~/bundles/css/Home")
                 .Include("~/Content/bootstrap.css")
@@ -58,7 +57,6 @@ namespace TicketHubApp
                 "~/Assets/JavaScript/Home/owl.carousel.min.js",
                 "~/Assets/JavaScript/Home/home.js"
 
-=======
             //CustomerPage bundles
             bundles.Add(new StyleBundle("~/bundles/css/CustomerDetail")
                 .Include("~/Content/bootstrap.css")
@@ -78,7 +76,6 @@ namespace TicketHubApp
                 "~/Assets/JavaScript/Common/iconify.min.js",
                 "~/Scripts/moment.js",
                 "~/Assets/JavaScript/ShopList/ShopList.js"
->>>>>>> f6061f1b0f0f14c6728896126e207174eca1d6a2
                 ));
         }
     }
