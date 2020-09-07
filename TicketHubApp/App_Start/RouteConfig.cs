@@ -19,7 +19,6 @@ namespace TicketHubApp
                 defaults: new { controller = "Account", action = "Login" }
             );
             routes.MapRoute(
-<<<<<<< HEAD
                 name: "CustomerDetail",
                 url: "CustomerDetail/{action}",
                 defaults: new { controller = "CustomerDetail", action = "CustomerPage" }
@@ -32,15 +31,13 @@ namespace TicketHubApp
             routes.MapRoute(
                 name: "MemberViewModels",
                 url: "MemberViewModels/{action}",
-                defaults: new { controller = "MemberViewModels", action = "Index"});
+                defaults: new { controller = "MemberViewModels", action = "Index" });
             routes.MapRoute(
-=======
                 name: "Store",
                 url: "Store/{action}",
                 defaults: new { controller = "Store", action = "HomePage" }
             );
             routes.MapRoute(
->>>>>>> Store_Index
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
