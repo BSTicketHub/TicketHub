@@ -11,7 +11,8 @@
     @RenderSection("topCSS", required:false)
     @RenderSection("topJS", required:false)
 
-    <link href="~/Assets/CSS/StoreBasic.css" rel="stylesheet" />
+    <link href="~/Assets/CSS/Store/StoreBasic.css" rel="stylesheet" />
+
 </head>
 <body style="background-color: #fafafa;">
     <nav class="navbar navbar-expand-lg navbar-light bg-light bg-white mb-3" style="border-bottom: 15px solid #26bcc7;">
@@ -74,9 +75,8 @@
                 </div>
                 <div class="collapse" id="productManegement">
                     <ul>
-                        <li>@Html.ActionLink("票券上架", "CreateProduct2", "Store", null, new { @class = "liColor pl-5" })</li>
+                        <li>@Html.ActionLink("票券上架", "CreateProduct", "Store", null, new { @class = "liColor pl-5" })</li>
                         <li>@Html.ActionLink("票券列表", "ProductList", "Store", null, new { @class = "liColor pl-5" })</li>
-                        <li>@Html.ActionLink("歷史票券", "ProductList", "Store", null, new { @class = "liColor pl-5" })</li>
                     </ul>
                 </div>
                 <div class="div" data-toggle="collapse" aria-controls="sellingAnalysis" data-target="#sellingAnalysis">
