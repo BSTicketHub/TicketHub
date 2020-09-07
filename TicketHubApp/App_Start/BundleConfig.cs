@@ -30,6 +30,7 @@ namespace TicketHubApp
             bundles.Add(new StyleBundle("~/bundles/css/Login")
                 .Include("~/Content/bootstrap.css")
                 .Include("~/Assets/CSS/login.min.css", new CssRewriteUrlTransform()));
+
             bundles.Add(new ScriptBundle("~/bundles/js/Login").Include(
                 "~/Scripts/jquery-{version}.js",
                 "~/Scripts/jquery.validate*",
@@ -39,6 +40,7 @@ namespace TicketHubApp
                 "~/Assets/JavaScript/Common/JsBarcode.all.min.js"
                 ));
 
+<<<<<<< HEAD
             //Home page
             bundles.Add(new StyleBundle("~/bundles/css/Home")
                 .Include("~/Content/bootstrap.css")
@@ -56,6 +58,27 @@ namespace TicketHubApp
                 "~/Assets/JavaScript/Home/owl.carousel.min.js",
                 "~/Assets/JavaScript/Home/home.js"
 
+=======
+            //CustomerPage bundles
+            bundles.Add(new StyleBundle("~/bundles/css/CustomerDetail")
+                .Include("~/Content/bootstrap.css")
+                .Include("~/Assets/CSS/CustomerDetail.min.css"));
+            bundles.Add(new ScriptBundle("~/bundles/js/CustomerDetail").Include(
+                "~/Scripts/bootstrap.js",
+                "~/Assets/JavaScript/Common/iconify.min.js",
+                "~/Scripts/moment.js",
+                "~/Assets/JavaScript/CustomerDetail/CustomerDetail.js"
+                ));
+            //ShopList bundles
+            bundles.Add(new StyleBundle("~/bundles/css/ShopList")
+                .Include("~/Content/bootstrap.css")
+                .Include("~/Assets/CSS/ShopList.min.css"));
+            bundles.Add(new ScriptBundle("~/bundles/js/ShopList").Include(
+                "~/Scripts/bootstrap.js",
+                "~/Assets/JavaScript/Common/iconify.min.js",
+                "~/Scripts/moment.js",
+                "~/Assets/JavaScript/ShopList/ShopList.js"
+>>>>>>> f6061f1b0f0f14c6728896126e207174eca1d6a2
                 ));
         }
     }

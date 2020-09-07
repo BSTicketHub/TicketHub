@@ -1,0 +1,201 @@
+@import "_variables.scss";
+
+body{
+    font-family: 'Noto Sans TC', sans-serif;
+}
+.sidebar, .info{
+    height: 700px;
+}
+.sidebar {
+    background-color: #eee;
+
+    .img-area {
+        .img {
+            background-image: url("https://picsum.photos/400/400/?random=1");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: relative;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+
+            .camera {
+                display: inline-block;
+                background-color: #fff;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                position: absolute;
+                top: 120px;
+                right: 10px;
+            }
+        }
+
+        .username {
+            font-size: 20px;
+        }
+    }
+
+    .sidebar-nav {
+        > div {
+            position: relative;
+            transition: .3s;
+
+            &:hover {
+                background-color: $cust-color-3;
+                cursor: pointer;
+            }
+
+            &.focus {
+                color: white;
+                background-color: $cust-color-10;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    width: 8px;
+                    height: 40px;
+                    top: 12px;
+                    left: -2px;
+                    right: 0;
+                    bottom: 0;
+                    background-color: $cust-color-8;
+                }
+            }
+            .iconify{
+                font-size: 24px;
+            }
+        }
+
+        p {
+            margin: 0;
+            font-size: 20px;
+        }
+    }
+}
+
+.info{
+
+    background-color:#eee;
+    
+    .info-area{
+        background-color: white;
+    }
+    h3{
+        display: inline-block;
+        border-bottom: 3px solid $cust-color-8;
+    }
+
+    .container{
+        .row{
+            transition: .5s;
+            >div{
+                // border-top: 1px solid #26BEC9;
+                border-left: 6px solid $cust-color-8;
+                // border-bottom: 3px solid #26BEC9;
+                >p{
+                    font-size: 20px;
+                    margin: 0;
+                }
+                &.my-ticket{
+                    border:none
+                }
+                .edit-icon{
+                    cursor:pointer;
+                    font-size:24px;  
+                }
+            }
+            .wish-Ticket{
+                height: 250px;
+                .img-area{
+                    width: 30%;
+                }
+                .text-area{
+                    width: 70%;
+                }
+                .position{
+                    font-size: 12px;
+                    color: $line-gray;
+                }
+                .oPrice{
+                    font-size: 12px;
+                    text-decoration-line: line-through;
+                    color: $line-gray;
+                    bottom: 20px;
+                    right: 20px;
+                }
+                .nPrice{
+                    color: $cust-color-8;
+                    bottom: -5px;
+                    right: 15px;
+                }
+                .favorite{
+                    font-size: 24px;
+                    top: 10px;
+                    right: 10px;
+                    color: palevioletred;
+                }
+            }
+            .valid-ticket, .invalid-ticket{
+                border-left: 6px solid $cust-color-8;
+                height: 150px;
+                .img-area{
+                    width: 25%;
+                }
+                .text-area{
+                    width: 75%;
+                }
+                .valid-time{
+                    span{
+                        color: $cust-color-8;
+                    }
+                }
+                .use-time{
+                    span{
+                        color: $shop-color-8;
+                    }
+                }
+                .go-detail{
+                    font-size: 24px;
+                    color: $line-gray;
+                    top: 55px;
+                    right: 10px;
+                }
+            }
+            .favorite-store{
+                height: 250px;
+                .img-area{
+                    width: 30%;
+                }
+                .text-area{
+                    width: 70%;
+                }
+                .position, .address, .phone, .openTime{
+                    font-size: 12px;
+                    color: $line-gray;
+                }
+                .favorite{
+                    font-size: 24px;
+                    top: 10px;
+                    right: 10px;
+                    color: $favorite;
+                }
+            }
+        }
+    }
+
+}
+
+.modal{
+    label{
+        position: relative;
+        &::before{
+            content: "*";
+            color: red;
+            position: absolute;
+            top: 0px;
+            left: -7px;
+        }
+    }
+}
