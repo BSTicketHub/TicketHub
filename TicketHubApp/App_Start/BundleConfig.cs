@@ -67,7 +67,7 @@ namespace TicketHubApp
                 "~/Scripts/bootstrap.js",
                 "~/Assets/JavaScript/Common/iconify.min.js",
                 "~/Scripts/moment.js",
-                "~/Assets/JavaScript/CustomerDetail/CustomerDetail.js"
+                "~/Assets/JavaScript/Customer/CustomerDetail.js"
                 ));
             //ShopList bundles
             bundles.Add(new StyleBundle("~/bundles/css/ShopList")
@@ -77,7 +77,7 @@ namespace TicketHubApp
                 "~/Scripts/bootstrap.js",
                 "~/Assets/JavaScript/Common/iconify.min.js",
                 "~/Scripts/moment.js",
-                "~/Assets/JavaScript/ShopList/ShopList.js"
+                "~/Assets/JavaScript/Shop/ShopList.js"
                 ));
             bundles.Add(new ScriptBundle("~/bundles/chart").Include(
                       "~/Scripts/Chart.js"));

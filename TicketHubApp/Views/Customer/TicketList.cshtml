@@ -1,0 +1,321 @@
+﻿@model IEnumerable<TicketHubApp.Models.ViewModels.StoreTicketListViewModel>
+
+@{
+    Layout = "~/Views/Shared/_Layout_TicketList.cshtml";
+}
+
+<div class="container ticketList">
+    <div class="row">
+        @*side bar*@
+        <div class="col-md-3 p-0">
+            <div class="bg-white mr-4 my-3 p-3 rounded">
+                <div class="blockTitle d-flex align-items-center justify-content-between mb-2" data-toggle="collapse" aria-controls="countryCollapse" data-target="#countryCollapse">
+                    <p class="m-0">地區</p>
+                    <span class="iconify" data-icon="ic:outline-keyboard-arrow-down" data-inline="false"></span>
+                </div>
+                <div id="countryCollapse" class="collapse">
+                    @*add button*@
+                </div>
+            </div>
+            <div class="bg-white mr-4 my-3 p-3 rounded">
+                <div class="blockTitle d-flex align-items-center justify-content-between" data-toggle="collapse" aria-controls="categoryCollapse" data-target="#categoryCollapse">
+                    <p class="m-0">餐廳類別</p>
+                    <span class="iconify" data-icon="ic:outline-keyboard-arrow-down" data-inline="false"></span>
+                </div>
+                <div>
+                    <ul class="collapse mb-0 p-0" id="categoryCollapse">
+                        @*add category node*@
+                    </ul>
+                </div>
+            </div>
+            <div class="bg-white mr-4 my-3 p-3 rounded">
+                <div>
+                    <p class="blockTitle blockTitleCancel">價錢(TWD)</p>
+                    <div>
+                        <input type="text" id="amount" class="my-2" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                        <div id="slider-range" class="slider"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9 p-0 ml-auto">
+            <div class="bg-white mt-3 p-3 d-flex flex-wrap align-items-center rounded-top">
+                <span class="ticketListCount mx-2 font-weight-bold" id="ticketListCount"></span>
+                <span> 張票券</span>
+                <div id="moneySelected" class="mx-2"></div>
+                <div id="countrySelected" class="mx-2"></div>
+                <div id="categorySelected" class="mx-2"></div>
+            </div>
+            <div class="bg-white border-top p-3 ticketList-Sort rounded-bottom">
+                <span>排序: | </span>
+                <a>熱門程度</a>
+                <span> | </span>
+                <a>用戶評價</a>
+                <span> | </span>
+                <a>價格 : 低到高</a>
+            </div>
+            @Html.Partial("_Ticket")
+            @Html.Partial("_Ticket")
+            @Html.Partial("_Ticket")
+            @Html.Partial("_Ticket")
+            @Html.Partial("_Ticket")
+        </div>
+
+    </div>
+</div>
+
+@section topCSS{
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+
+    <link href="~/Assets/CSS/TicketList.min.css" rel="stylesheet" />
+
+<<<<<<< HEAD:TicketHubApp/Views/TicketList/TicketList.cshtml
+    <style>body{ background-color: #f4f4f4; }</style>
+   
+=======
+            .ticketList-button-green:hover {
+                background-color: #26bec9;
+                color: #fff;
+            }
+
+            .ticketList-button-green:active {
+                color: #26bec9;
+                background-color: #fff;
+            }
+
+        .countryCheckInput:checked + label {
+            background-color: #26bec9;
+            color: #fff;
+        }
+
+
+        .slider .ui-slider-handle {
+            background: #fff;
+            border-radius: 50%;
+            top: -7px;
+        }
+
+            .slider .ui-slider-handle:hover {
+                cursor: pointer;
+            }
+
+        .slider .ui-widget-header {
+            background: linear-gradient(45deg,#64b3f4,#26bec9 50%);
+        }
+
+        .ui-widget.ui-widget-content {
+            background-color: #eee;
+            border: none;
+        }
+
+        .ui-slider-horizontal {
+            height: 6px;
+        }
+
+        .categoryLi {
+            font-size: 14px;
+            color: #333333;
+        }
+
+            .categoryLi input {
+                color: #26bec9;
+                background-color: #26bec9;
+                border-color: #26bec9;
+            }
+
+        /*ticketList Header*/
+        .ticketListCount {
+            color: #26bec9;
+            font-size: 18px;
+        }
+
+        .ticketList-Sort {
+            color: #666666;
+        }
+
+            .ticketList-Sort a {
+                font-weight: 700;
+                font-size: 14px;
+            }
+
+            .ticketList-Sort > a:hover {
+                color: #26bec9 !important;
+                cursor: pointer;
+            }
+
+        .ticketList-SelectBtn {
+            border: 1px solid #666666;
+            color: #666666;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 1px 10px;
+        }
+
+        /*ticket*/
+        .wishHeart {
+            width: 24px;
+            height: 24px;
+            color: #999999;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+
+            .wishHeart:hover {
+                color: #ccc;
+            }
+
+        .ticketListTicket h3 {
+            font-weight: 700;
+        }
+
+        .ticketImg {
+            background-image: url(/Assets/Images/ticket_test_Img.jpg);
+            width: 270px;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .description {
+            font-size: 14px;
+            color: #666666;
+            height: 2.5rem;
+            overflow: hidden;
+        }
+
+        .star {
+            color: #aaa;
+        }
+
+        .star-checked {
+            color: #26bec9;
+        }
+
+        .ticketListOldPrice {
+            font-size: 12px;
+            color: #999999;
+            text-decoration: line-through;
+        }
+
+        .ticketListSalesPrice {
+            font-size: 14px;
+            color: #999999;
+            font-weight: 700;
+        }
+
+            .ticketListSalesPrice span {
+                font-size: 20px;
+                color: #26bec9;
+            }
+    </style>
+>>>>>>> cc98d382cb8e5451a97cde85d4b7df598155f2f4:TicketHubApp/Views/Customer/TicketList.cshtml
+}
+
+@section endJS{
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <script src="~/Assets/JavaScript/Common/iconify.min.js"></script>
+
+    <script>
+        // ticket list header -> tickets counting
+        let ticketCounting = @Model.Count();
+        let countNode = document.getElementById("ticketListCount");
+        countNode.innerText = ticketCounting;
+
+
+        // ticket category node create
+        var categoryList = ["中式", "西式", "台式", "美式"];
+        let categoryCollapseNode = document.getElementById("categoryCollapse");
+        for (let i = 0; i < categoryList.length; i++) {
+            let li = document.createElement("li");
+            li.classList.add("p-2", "border-bottom", "categoryLi");
+            let div = document.createElement("div");
+            div.classList.add("form-check", "ml-5");
+            let input = document.createElement("input");
+            input.classList.add("form-check-input");
+            input.type = "checkbox";
+            input.id = `category${i}`;
+
+            input.addEventListener("click", () => { setSelectedButton(input, "categorySelected", categoryList[i]) });
+
+            let label = document.createElement("label");
+            label.classList.add("form-check-label");
+            label.innerText = categoryList[i];
+            label.setAttribute("for", `category${i}`);
+
+            div.appendChild(input);
+            div.appendChild(label);
+            li.appendChild(div);
+            categoryCollapseNode.appendChild(li);
+        }
+
+        // country node create
+        var countryList = ["臺北", "新北", "基隆", "桃園", "新竹", "苗栗",
+            "臺中", "彰化", "南投", "雲林", "嘉義", "臺南", "高雄", "屏東",
+            "宜蘭", "花蓮", "臺東", "澎湖", "金門", "連江"];
+
+        var countryListClass = ["ticketList-button", "ticketList-button-green", "my-1", "mr-1", "rounded-pill"];
+
+        let countryNode = document.getElementById("countryCollapse");
+        for (let i = 0; i < countryList.length; i++) {
+            let input = document.createElement("input");
+            input.classList.add("ticketListBtnCheck");
+            input.setAttribute("type", "checkbox");
+            input.setAttribute("id", `countryCheck${i}`);
+            input.setAttribute("value", countryList[i]);
+            input.setAttribute("style", "display: none;");
+
+            input.addEventListener("click", () => { setSelectedButton(input, "countrySelected", countryList[i]) });
+
+            let label = document.createElement("label");
+            label.setAttribute("for", `countryCheck${i}`);
+            countryListClass.forEach((item) => { label.classList.add(item); });
+            label.innerText = countryList[i];
+
+            countryNode.appendChild(input);
+            countryNode.appendChild(label);
+        }
+
+        // function country / category / money selected button create
+        function setSelectedButton(selectedNode, parentNodeId, innertext) {
+            if (selectedNode.checked == true) {
+                let span = document.createElement("span");
+                span.classList.add("ticketList-SelectBtn", "my-1", "mr-1", "rounded-pill", "bg-light");
+                span.setAttribute("id", `${selectedNode.id}Sel`);
+                span.innerText = innertext;
+                document.getElementById(parentNodeId).appendChild(span);
+            } else {
+                let child = document.getElementById(`${selectedNode.id}Sel`);
+                document.getElementById(parentNodeId).removeChild(child);
+            }
+        }
+
+        // sider bar (jquery ui)
+        $(function () {
+            $("#slider-range").slider({
+                range: true,
+                min: 100,
+                max: 10000,
+                values: [75, 300],
+                slide: function (event, ui) {
+                    $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                }
+            });
+            $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+                " - $" + $("#slider-range").slider("values", 1));
+
+            $("#slider-range").bind("slidechange", function (event, ui) {
+                let moneySelect = document.getElementById("moneySel");
+                if (moneySelect != null) {
+                    moneySelect.innerText = "$" + ui.values[0] + " ~ $" + ui.values[1];
+                } else {
+                    let span = document.createElement("span");
+                    span.classList.add("ticketList-SelectBtn", "my-1", "mr-1", "rounded-pill", "bg-light");
+                    span.setAttribute("id", "moneySel");
+                    span.innerText = "$" + ui.values[0] + " ~ $" + ui.values[1];
+                    document.getElementById("moneySelected").appendChild(span);
+                }
+            });
+        });
+
+    </script>
+}

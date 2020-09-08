@@ -6,6 +6,7 @@ namespace TicketHubDataLibrary.Models
 {
     public class Refund
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         public DateTime AppliedDate { get; set; }
         public Guid UserId { get; set; }
