@@ -1,6 +1,8 @@
-﻿using System.Runtime.InteropServices;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using TicketHubApp.Interfaces;
 using TicketHubApp.Models.ViewModels;
+using TicketHubApp.Services;
+using TicketHubDataLibrary.Models;
 
 namespace TicketHubApp.Controllers
 {
@@ -9,6 +11,10 @@ namespace TicketHubApp.Controllers
         [HttpGet]
         public ActionResult Login()
         {
+            if (TempData["CustErrMsg"] != null)
+            {
+                ViewBag.CustErrMsg = TempData["CustErrMsg"];
+            }
             return View();
         }
 
@@ -18,19 +24,49 @@ namespace TicketHubApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                return RedirectToAction("Index", "Home");
+                AccountService accountService = new AccountService();
+                if (viewModel.IsSignUp)
+                {
+                    IResult resultCreate = accountService.CreateUser(viewModel);
+                    if (!resultCreate.Success)
+                    {
+                        TempData["CustErrMsg"] = resultCreate.Message;
+                        return RedirectToAction("Login");
+                    }
+                }
+
+                IResult resultValidate = accountService.ValidateUser(viewModel);
+                if (!resultValidate.Success)
+                {
+                    TempData["CustErrMsg"] = resultValidate.Message;
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
             }
-            return View("Login");
+            return RedirectToAction("Login");
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult ShopLogin(LoginViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                return RedirectToAction("Index", "Home");
+                AccountService accountService = new AccountService();
+
+                IResult resultValidate = accountService.ValidateShopUser(viewModel);
+                if (!resultValidate.Success)
+                {
+                    TempData["ShopErrMsg"] = resultValidate.Message;
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
             }
-            return View("Login");
+            return RedirectToAction("Login");
         }
 
         [HttpGet]

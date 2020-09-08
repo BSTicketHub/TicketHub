@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TicketHubDataLibrary.Models
+namespace TicketHubApp.Models.ViewModels
 {
-    public class Ticket
+    public class StoreTicketListViewModel
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         public DateTime DeliveredDate { get; set; }
         public bool Exchanged { get; set; }
@@ -14,13 +16,13 @@ namespace TicketHubDataLibrary.Models
         public DateTime VoidedDate { get; set; }
 
         public Guid IssueId { get; set; }
-        [ForeignKey("IssueId")]
-        public Issue Issue { get; set; }
+        //[ForeignKey("IssueId")]
+        //public Issue Issue { get; set; }
         public Guid UserId { get; set; }
-        [ForeignKey("UserId")]
-        public User User { get; set; }
+        //[ForeignKey("UserId")]
+        //public User User { get; set; }
         public Guid OrderId { get; set; }
-        [ForeignKey("OrderId")]
-        public Order Order { get; set; }
+        //[ForeignKey("OrderId")]
+        //public Order Order { get; set; }
     }
 }
