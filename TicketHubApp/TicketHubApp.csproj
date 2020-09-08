@@ -181,6 +181,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\StoreTicketListViewModel.cs" />
     <Compile Include="ViewModels\StoreViewModel.cs" />
+    <Compile Include="WebAPI\ProductController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\CSS\CustomerDetail.css">
@@ -199,6 +200,12 @@
     <Content Include="Assets\CSS\tempCSS\owl.carousel.min.css" />
     <Content Include="Assets\CSS\tempCSS\owl.theme.default.css" />
     <Content Include="Assets\CSS\tempCSS\temphome.css" />
+    <Content Include="Assets\CSS\TicketList.css">
+      <DependentUpon>TicketList.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\TicketList.min.css">
+      <DependentUpon>TicketList.css</DependentUpon>
+    </Content>
     <Content Include="Assets\Images\asian-food-decorative.jpg" />
     <Content Include="Assets\Images\Home\128-1200x650.jpg" />
     <Content Include="Assets\Images\Home\921-1200x650.jpg" />
@@ -239,7 +246,6 @@
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.min.js" />
     <Content Include="Assets\JavaScript\CustomerDetail\CustomerDetail.js" />
     <Content Include="Assets\JavaScript\ShopList\ShopList.js" />
-    <Content Include="Assets\CSS\StoreBasic.css" />
     <Content Include="Assets\Images\ticket_test_Img.jpg" />
     <Content Include="Assets\CSS\Store\StoreBasic.css" />
     <Content Include="Assets\Javascript\StoreBasic.js" />
@@ -295,7 +301,6 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-reboot.min.css.map" />
@@ -461,7 +466,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Html\" />
     <Folder Include="Assets\JavaScript\Store\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\CSS\login.scss" />
@@ -470,6 +474,7 @@
     <Content Include="Assets\CSS\tempCSS\fontawesome-webfont.ttf" />
     <Content Include="Assets\CSS\CustomerDetail.scss" />
     <Content Include="Assets\CSS\ShopList.scss" />
+    <Content Include="Assets\CSS\TicketList.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

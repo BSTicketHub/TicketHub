@@ -46,8 +46,10 @@ $platform-color-15: #1f1403;
 $line-gray: #adadad;
 $back-paper: #fffefa;
 $favorite: #d87093;
+$background: #f5f5f5;
 
 :root {
+	--background: #{$background};
 	--favorite: #{$favorite};
 	--line-gray: #{$line-gray};
 	--back-paper: #{$back-paper};

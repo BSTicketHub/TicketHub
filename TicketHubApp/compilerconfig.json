@@ -14,5 +14,13 @@
   {
     "outputFile": "Assets/CSS/ShopList.css",
     "inputFile": "Assets/CSS/ShopList.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/TicketList.css",
+    "inputFile": "Assets/CSS/TicketList.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/_variables.css",
+    "inputFile": "Assets/CSS/_variables.scss"
   }
 ]

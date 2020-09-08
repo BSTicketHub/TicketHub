@@ -48,46 +48,46 @@
         <div class="row">
             <div class="sidebar col-2 border text-left px-0 position-sticky" style="top: 0px;height:600px">
                 <div class="border-bottom text-center" style="height: 100px; line-height: 100px;">Build School Logo</div>
-                <div class="div" data-toggle="collapse" aria-controls="storeManegement" data-target="#storeManegement">
+                <div class="div py-2 pl-4" data-toggle="collapse" aria-controls="storeManegement" data-target="#storeManegement">
                     <span class="iconify" data-icon="zmdi:store" data-inline="false"></span>
                     <span>商家管理</span>
                     <span class="iconify ml-5" data-icon="ic:outline-keyboard-arrow-down" data-inline="false"></span>
                 </div>
                 <div class="collapse" id="storeManegement">
                     <ul>
-                        <li>@Html.ActionLink("商家資訊", "StoreInformation", "Store", null, new { @class="liColor pl-5" })</li>
+                        <li class="py-2 pl-4">@Html.ActionLink("商家資訊", "StoreInformation", "Store", null, new { @class="liColor pl-5" })</li>
                     </ul>
                 </div>
-                <div class="div" data-toggle="collapse" aria-controls="orderManegement" data-target="#orderManegement">
+                <div class="div py-2 pl-4" data-toggle="collapse" aria-controls="orderManegement" data-target="#orderManegement">
                     <span class="iconify" data-icon="ion:newspaper-sharp" data-inline="false"></span>
                     <span >訂單管理</span>
                     <span class="iconify ml-5" data-icon="ic:outline-keyboard-arrow-down" data-inline="false"></span>
                 </div>
                 <div class="collapse" id="orderManegement">
                     <ul>
-                        <li>@Html.ActionLink("訂單查詢", "OrderList", "Store", null, new { @class = "liColor pl-5" })</li>
+                        <li class=" py-2 pl-4">@Html.ActionLink("訂單查詢", "OrderList", "Store", null, new { @class = "liColor pl-5" })</li>
                     </ul>
                 </div>
-                <div class="div" data-toggle="collapse" aria-controls="productManegement" data-target="#productManegement">
+                <div class="div py-2 pl-4" data-toggle="collapse" aria-controls="productManegement" data-target="#productManegement">
                     <span class="iconify" data-icon="carbon:ticket" data-inline="false"></span>
                     <span>商品管理</span>
                     <span class="iconify ml-5" data-icon="ic:outline-keyboard-arrow-down" data-inline="false"></span>
                 </div>
                 <div class="collapse" id="productManegement">
                     <ul>
-                        <li>@Html.ActionLink("票券上架", "CreateProduct", "Store", null, new { @class = "liColor pl-5" })</li>
-                        <li>@Html.ActionLink("票券列表", "ProductList", "Store", null, new { @class = "liColor pl-5" })</li>
+                        <li class="py-2 pl-4">@Html.ActionLink("票券上架", "CreateProduct", "Store", null, new { @class = "liColor pl-5" })</li>
+                        <li class=" py-2 pl-4">@Html.ActionLink("票券列表", "ProductList", "Store", null, new { @class = "liColor pl-5" })</li>
                     </ul>
                 </div>
-                <div class="div" data-toggle="collapse" aria-controls="sellingAnalysis" data-target="#sellingAnalysis">
+                <div class="div py-2 pl-4" data-toggle="collapse" aria-controls="sellingAnalysis" data-target="#sellingAnalysis">
                     <span class="iconify" data-icon="carbon:text-link-analysis" data-inline="false"></span>
                     <span>銷售分析</span>
                     <span class="iconify ml-5" data-icon="ic:outline-keyboard-arrow-down" data-inline="false"></span>
                 </div>
                 <div class="collapse" id="sellingAnalysis">
                     <ul>
-                        <li>銷售排行</li>
-                        <li>圖表分析</li>
+                        <li class=" py-2 pl-4">銷售排行</li>
+                        <li class=" py-2 pl-4">圖表分析</li>
                     </ul>
                 </div>
             </div>
@@ -107,9 +107,8 @@
     <script src="~/Scripts/umd/popper.js"></script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-    <script src="~/Assets/Javascript/StoreBasic.js"></script>
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+    @RenderSection("scripts", required: false)
     @RenderSection("endCSS", required:false)
     @RenderSection("endJS", required:false)
 </body>
