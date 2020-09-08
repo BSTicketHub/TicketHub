@@ -8,6 +8,7 @@ namespace TicketHubDataLibrary.Models
     public class Shop
     {
         [Display(Name = "商家代號")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         public string ShopName { get; set; }
         public string Phone { get; set; }

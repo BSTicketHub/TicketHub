@@ -1,4 +1,5 @@
-﻿using System.Data.Entity.Migrations;
+﻿using System;
+using System.Data.Entity.Migrations;
 using TicketHubDataLibrary.Models;
 
 namespace TicketHubDataLibrary.Migrations
@@ -12,10 +13,11 @@ namespace TicketHubDataLibrary.Migrations
 
         protected override void Seed(TicketHubContext context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method
-            //  to avoid creating duplicate seed data.
+            context.Role.AddOrUpdate(r => r.Id,
+                new Role { Id = Guid.Parse("8962DF55-017B-4A47-B78A-7261D81532DC"), Name = "Customer" },
+                new Role { Id = Guid.Parse("13832714-14D8-42FD-A1E8-8B7A6729C245"), Name = "ShopOwner" },
+                new Role { Id = Guid.Parse("26356D75-867A-4733-9FF8-6F1D39C3D4E6"), Name = "ShopEmployee" }
+                );
         }
     }
 }
