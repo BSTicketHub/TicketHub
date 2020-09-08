@@ -101,6 +101,14 @@
     <Compile Include="Migrations\202009061525265_AddUserSaltColumns.designer.cs">
       <DependentUpon>202009061525265_AddUserSaltColumns.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009080121397_RemoveUserRole.cs" />
+    <Compile Include="Migrations\202009080121397_RemoveUserRole.designer.cs">
+      <DependentUpon>202009080121397_RemoveUserRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009080143492_AddRelationUserRole.cs" />
+    <Compile Include="Migrations\202009080143492_AddRelationUserRole.designer.cs">
+      <DependentUpon>202009080143492_AddRelationUserRole.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActionLog.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -121,7 +129,6 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserFavoriteShop.cs" />
     <Compile Include="Models\UserLogin.cs" />
-    <Compile Include="Models\UserRole.cs" />
     <Compile Include="Models\UserWishIssue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -165,6 +172,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009061525265_AddUserSaltColumns.resx">
       <DependentUpon>202009061525265_AddUserSaltColumns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009080121397_RemoveUserRole.resx">
+      <DependentUpon>202009080121397_RemoveUserRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009080143492_AddRelationUserRole.resx">
+      <DependentUpon>202009080143492_AddRelationUserRole.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

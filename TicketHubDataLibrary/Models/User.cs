@@ -24,7 +24,7 @@ namespace TicketHubDataLibrary.Models
         public string Email { get; set; }
         public bool EmailConfirmed { get; set; }
 
-        public ICollection<UserRole> UserRoles { get; set; }
+        public ICollection<Role> Roles { get; set; }
         public ICollection<UserLogin> UserLogins { get; set; }
         [ForeignKey("UserId")]
         public ICollection<LoginLog> LoginLogs { get; set; }
