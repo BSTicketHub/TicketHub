@@ -1,5 +1,8 @@
 ﻿@model IEnumerable<TicketHubApp.ViewModels.StoreTicketListViewModel>
 
+@{
+    Layout = "~/Views/Shared/_Layout_TicketList.cshtml";
+}
 
 <div class="container ticketList-color">
     <div class="row">
@@ -308,10 +311,10 @@
             font-weight: 700;
         }
 
-        .ticketListSalesPrice span {
-            font-size: 20px;
-            color: #26bec9;
-        }
+            .ticketListSalesPrice span {
+                font-size: 20px;
+                color: #26bec9;
+            }
     </style>
 }
 

@@ -1,29 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using TicketHubApp.PlatformViewModels;
+using TicketHubDataLibrary.Models;
 
 namespace TicketHubApp.Controllers
 {
-    public class ShopViewModelsController : Controller
+    public class PlatformShopController : Controller
     {
-        private TicketHubPlatformContext db = new TicketHubPlatformContext();
+        private TicketHubContext db = new TicketHubContext();
 
         // GET: ShopViewModels
         public ActionResult Index()
         {
-            return View(db.shops.ToList());
+            return View(db.Shop.ToList());
         }
 
         [HttpPost]
         public ActionResult SearchByShopName(string ShopName)
         {
-            List<ShopViewModel> shopList = db.shops.Where(s => s.ShopName.Contains(ShopName)).ToList();
+            List<Shop> shopList = db.Shop.Where(s => s.ShopName.Contains(ShopName)).ToList();
             return View("Index", shopList);
         }
 
@@ -31,21 +30,21 @@ namespace TicketHubApp.Controllers
 
         public ActionResult SearchByPhone(string Phone)
         {
-            List<ShopViewModel> shopList = db.shops.Where(s => s.Phone.Contains(Phone)).ToList();
+            List<Shop> shopList = db.Shop.Where(s => s.Phone.Contains(Phone)).ToList();
             return View("Index", shopList);
         }
 
         [HttpPost]
         public ActionResult SearchByFax(string Fax)
         {
-            List<ShopViewModel> shopList = db.shops.Where(s => s.Fax.Contains(Fax)).ToList();
+            List<Shop> shopList = db.Shop.Where(s => s.Fax.Contains(Fax)).ToList();
             return View("Index", shopList);
         }
 
         [HttpPost]
         public ActionResult SearchByWebsite(string Website)
         {
-            List<ShopViewModel> shopList = db.shops.Where(s => s.Website.Contains(Website)).ToList();
+            List<Shop> shopList = db.Shop.Where(s => s.Website.Contains(Website)).ToList();
             return View("Index", shopList);
         }
 
@@ -56,7 +55,7 @@ namespace TicketHubApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ShopViewModel shopViewModel = db.shops.Find(id);
+            Shop shopViewModel = db.Shop.Find(id);
             if (shopViewModel == null)
             {
                 return HttpNotFound();
@@ -79,9 +78,9 @@ namespace TicketHubApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                shopViewModel.Id = Guid.NewGuid();
-                db.shops.Add(shopViewModel);
-                db.SaveChanges();
+                //shopViewModel.Id = Guid.NewGuid();
+                //db.Shop.Add(shopViewModel);
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -95,7 +94,7 @@ namespace TicketHubApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ShopViewModel shopViewModel = db.shops.Find(id);
+            Shop shopViewModel = db.Shop.Find(id);
             if (shopViewModel == null)
             {
                 return HttpNotFound();
@@ -126,7 +125,7 @@ namespace TicketHubApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ShopViewModel shopViewModel = db.shops.Find(id);
+            Shop shopViewModel = db.Shop.Find(id);
             if (shopViewModel == null)
             {
                 return HttpNotFound();
@@ -139,8 +138,8 @@ namespace TicketHubApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            ShopViewModel shopViewModel = db.shops.Find(id);
-            db.shops.Remove(shopViewModel);
+            Shop shopViewModel = db.Shop.Find(id);
+            db.Shop.Remove(shopViewModel);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

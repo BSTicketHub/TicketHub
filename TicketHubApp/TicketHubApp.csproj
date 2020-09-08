@@ -144,14 +144,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CustomerDetailController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ShopListController.cs" />
-    <Compile Include="Controllers\MemberViewModelsController.cs" />
     <Compile Include="Controllers\PlatformController.cs" />
-    <Compile Include="Controllers\ShopViewModelsController.cs" />
-    <Compile Include="Controllers\StoreController.cs" />
-    <Compile Include="Controllers\TicketListController.cs" />
+    <Compile Include="Controllers\ShopController.cs" />
+    <Compile Include="Controllers\PlatformMamberController.cs" />
+    <Compile Include="Controllers\PlatformShopController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -161,27 +159,9 @@
     <Compile Include="Models\OperationResult.cs" />
     <Compile Include="Models\ViewModels\CustomerDetailViewModel.cs" />
     <Compile Include="Models\ViewModels\LoginViewModel.cs" />
-    <Compile Include="Migrations\202009030532197_init.cs" />
-    <Compile Include="Migrations\202009030532197_init.designer.cs">
-      <DependentUpon>202009030532197_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009030540150_2nd.cs" />
-    <Compile Include="Migrations\202009030540150_2nd.designer.cs">
-      <DependentUpon>202009030540150_2nd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009030544235_3rd.cs" />
-    <Compile Include="Migrations\202009030544235_3rd.designer.cs">
-      <DependentUpon>202009030544235_3rd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009030555015_update-datatype.cs" />
-    <Compile Include="Migrations\202009030555015_update-datatype.designer.cs">
-      <DependentUpon>202009030555015_update-datatype.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="PlatformViewModels\AdminViewModel.cs" />
-    <Compile Include="PlatformViewModels\MemberViewModel.cs" />
-    <Compile Include="PlatformViewModels\ShopViewModel.cs" />
-    <Compile Include="PlatformViewModels\TicketHubPlatformContext.cs" />
+    <Compile Include="Models\ViewModels\AdminViewModel.cs" />
+    <Compile Include="Models\ViewModels\MemberViewModel.cs" />
+    <Compile Include="Models\ViewModels\ShopViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\RoleManager.cs" />
@@ -240,17 +220,14 @@
     <Content Include="Assets\CSS\ShopList.min.css">
       <DependentUpon>ShopList.css</DependentUpon>
     </Content>
-    <Content Include="Assets\Images\asian-food-decorative.jpg" />
     <Content Include="Assets\Images\camera.png" />
     <Content Include="Assets\JavaScript\Common\iconify.min.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.min.js" />
-    <Content Include="Assets\JavaScript\CustomerDetail\CustomerDetail.js" />
-    <Content Include="Assets\JavaScript\ShopList\ShopList.js" />
-    <Content Include="Assets\CSS\StoreBasic.css" />
+    <Content Include="Assets\JavaScript\Customer\CustomerDetail.js" />
+    <Content Include="Assets\JavaScript\Shop\ShopList.js" />
     <Content Include="Assets\Images\ticket_test_Img.jpg" />
-    <Content Include="Assets\CSS\Store\StoreBasic.css" />
-    <Content Include="Assets\Javascript\StoreBasic.js" />
+    <Content Include="Assets\CSS\Shop\StoreBasic.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -456,20 +433,17 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Store\HomePage.cshtml" />
+    <Content Include="Views\Shop\HomePage.cshtml" />
     <Content Include="Views\Shared\_Layout_Store.cshtml" />
-    <Content Include="Views\Store\_ViewStart.cshtml" />
-    <Content Include="Views\Store\ProductList.cshtml" />
-    <Content Include="Views\Store\CreateProduct.cshtml" />
-    <Content Include="Views\Store\StoreInformation.cshtml" />
-    <Content Include="Views\Store\OrderList.cshtml" />
-    <Content Include="Views\Store\OrderDetails.cshtml" />
+    <Content Include="Views\Shop\_ViewStart.cshtml" />
+    <Content Include="Views\Shop\ProductList.cshtml" />
+    <Content Include="Views\Shop\CreateProduct.cshtml" />
+    <Content Include="Views\Shop\StoreInformation.cshtml" />
+    <Content Include="Views\Shop\OrderList.cshtml" />
+    <Content Include="Views\Shop\OrderDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Assets\Html\" />
-    <Folder Include="Assets\JavaScript\Store\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\CSS\login.scss" />
@@ -489,32 +463,30 @@
     <Content Include="Scripts\moment-with-locales.min.js.map" />
     <Content Include="Views\Account\LoginPlatform.cshtml" />
     <Content Include="Views\Account\_LoginLayout.cshtml" />
-    <Content Include="Views\CustomerDetail\CustomerPage.cshtml" />
-    <Content Include="Views\CustomerDetail\_CustomerDetailLayout.cshtml" />
-    <Content Include="Views\ShopList\ShopList.cshtml" />
-    <Content Include="Views\ShopList\_ShopListLayout.cshtml" />
-    <Content Include="Views\MemberViewModels\Create.cshtml" />
-    <Content Include="Views\MemberViewModels\Delete.cshtml" />
-    <Content Include="Views\MemberViewModels\Details.cshtml" />
-    <Content Include="Views\MemberViewModels\Edit.cshtml" />
-    <Content Include="Views\MemberViewModels\Index.cshtml" />
-    <Content Include="Views\MemberViewModels\_ViewStart.cshtml" />
+    <Content Include="Views\Customer\CustomerPage.cshtml" />
+    <Content Include="Views\Customer\_CustomerDetailLayout.cshtml" />
+    <Content Include="Views\Shop\ShopList.cshtml" />
+    <Content Include="Views\Shop\_ShopListLayout.cshtml" />
+    <Content Include="Views\PlatformMember\Create.cshtml" />
+    <Content Include="Views\PlatformMember\Delete.cshtml" />
+    <Content Include="Views\PlatformMember\Details.cshtml" />
+    <Content Include="Views\PlatformMember\Edit.cshtml" />
+    <Content Include="Views\PlatformMember\Index.cshtml" />
+    <Content Include="Views\PlatformMember\_ViewStart.cshtml" />
     <Content Include="Views\Platform\Index.cshtml" />
-    <Content Include="Views\Platform\_ViewStart.cshtml" />
-    <Content Include="Views\ShopViewModels\Create.cshtml" />
-    <Content Include="Views\ShopViewModels\Delete.cshtml" />
-    <Content Include="Views\ShopViewModels\Details.cshtml" />
-    <Content Include="Views\ShopViewModels\Edit.cshtml" />
-    <Content Include="Views\ShopViewModels\Index.cshtml" />
-    <Content Include="Views\ShopViewModels\_ViewStart.cshtml" />
+    <Content Include="Views\PlatformShop\_ViewStart.cshtml" />
+    <Content Include="Views\PlatformShop\Create.cshtml" />
+    <Content Include="Views\PlatformShop\Delete.cshtml" />
+    <Content Include="Views\PlatformShop\Details.cshtml" />
+    <Content Include="Views\PlatformShop\Edit.cshtml" />
+    <Content Include="Views\PlatformShop\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutPlatform.cshtml" />
-    <Content Include="Views\Store\TicketDetails.cshtml" />
-    <Content Include="Views\TicketList\TicketList.cshtml" />
+    <Content Include="Views\Shop\TicketDetails.cshtml" />
+    <Content Include="Views\Customer\TicketList.cshtml" />
     <Content Include="Views\Shared\_Layout_TicketList.cshtml" />
-    <Content Include="Views\TicketList\_ViewStart.cshtml" />
-    <Content Include="Views\Store\SalesReport.cshtml" />
-    <Content Include="Views\TicketList\test.cshtml" />
+    <Content Include="Views\Shop\SalesReport.cshtml" />
     <Content Include="Views\Shared\_Ticket.cshtml" />
+    <Content Include="Views\Platform\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -527,20 +499,6 @@
       <Project>{aff9edbe-7fd2-4ebc-8850-dc51c5b0f5a6}</Project>
       <Name>TicketHubDataLibrary</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202009030532197_init.resx">
-      <DependentUpon>202009030532197_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009030540150_2nd.resx">
-      <DependentUpon>202009030540150_2nd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009030544235_3rd.resx">
-      <DependentUpon>202009030544235_3rd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009030555015_update-datatype.resx">
-      <DependentUpon>202009030555015_update-datatype.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

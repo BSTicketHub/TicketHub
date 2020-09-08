@@ -1,14 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using TicketHubApp.ViewModels;
 
 namespace TicketHubApp.Controllers
 {
-    public class StoreController : Controller
+    public class ShopController : Controller
     {
+        // GET: ShopList
+        public ActionResult ShopList()
+        {
+            return View();
+        }
+
         // GET: Store
         public ActionResult Index()
         {
