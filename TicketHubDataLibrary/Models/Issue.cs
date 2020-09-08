@@ -6,6 +6,7 @@ namespace TicketHubDataLibrary.Models
 {
     public class Issue
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         public string Title { get; set; }
         public string Memo { get; set; }
