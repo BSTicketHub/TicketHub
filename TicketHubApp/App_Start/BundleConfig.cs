@@ -42,14 +42,17 @@ namespace TicketHubApp
             bundles.Add(new StyleBundle("~/bundles/css/Platform").Include(
                     "~/Content/bootstrap.css",
                     "~/Assets/CSS/Platform/Platform_Layout.min.css",
-                    "~/Assets/CSS/Platform/DashBoard/Member.min.css"
+                    "~/Assets/CSS/Platform/DashBoard/Member.min.css",
+                    "~/Assets/CSS/Platform/datatables.min.css",
+                    "~/Assets/CSS/Platform/jquery.dataTables.css"
                     ));
             bundles.Add(new ScriptBundle("~/bundles/js/Platform").Include(
                       "~/Scripts/Chart.js",
                       "~/Scripts/modernizr-*",
                       "~/Scripts/jquery-{version}.js",
                       "~/Scripts/bootstrap.js",
-                      "~/Assets/JavaScript/Common/iconify.min.js"
+                      "~/Assets/JavaScript/Common/iconify.min.js",
+                      "~/Assets/JavaScript/Platform/datatables.min.js"
                 ));
 
             //Home page
@@ -90,7 +93,7 @@ namespace TicketHubApp
                 "~/Assets/JavaScript/Shop/ShopList.js"
                 ));
 
- 
+
             bundles.Add(new ScriptBundle("~/bundles/chart").Include(
                       "~/Scripts/Chart.js"));
         }

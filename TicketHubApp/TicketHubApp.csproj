@@ -146,11 +146,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ShopListController.cs" />
-    <Compile Include="Controllers\MemberManagementController.cs" />
-    <Compile Include="Controllers\PlatformController.cs" />
+    <Compile Include="Controllers\PlatformDashBoardController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
-    <Compile Include="Controllers\PlatformMamberController.cs" />
+    <Compile Include="Controllers\PlatformMemberController.cs" />
     <Compile Include="Controllers\PlatformShopController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -162,8 +160,7 @@
     <Compile Include="Models\ViewModels\CustomerDetailViewModel.cs" />
     <Compile Include="Models\ViewModels\LoginViewModel.cs" />
     <Compile Include="Models\ViewModels\AdminViewModel.cs" />
-    <Compile Include="Models\ViewModels\MemberViewModel.cs" />
-    <Compile Include="Models\ViewModels\ShopViewModel.cs" />
+    <Compile Include="Models\ViewModels\PlatformMemberViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\RoleManager.cs" />
@@ -185,6 +182,8 @@
     <Content Include="Assets\CSS\login.min.css">
       <DependentUpon>login.css</DependentUpon>
     </Content>
+    <Content Include="Assets\CSS\Platform\datatables.min.css" />
+    <Content Include="Assets\CSS\Platform\jquery.dataTables.min.css" />
     <Content Include="Assets\CSS\Platform\Platform_Layout.css">
       <DependentUpon>Platform_Layout.scss</DependentUpon>
     </Content>
@@ -235,6 +234,7 @@
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.min.js" />
     <Content Include="Assets\JavaScript\Customer\CustomerDetail.js" />
+    <Content Include="Assets\JavaScript\Platform\datatables.min.js" />
     <Content Include="Assets\JavaScript\Shop\ShopList.js" />
     <Content Include="Assets\Images\ticket_test_Img.jpg" />
     <Content Include="Assets\CSS\Shop\StoreBasic.css" />
@@ -455,7 +455,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Html\" />
-    <Folder Include="Assets\JavaScript\Platform\" />
     <Folder Include="Assets\JavaScript\Store\" />
   </ItemGroup>
   <ItemGroup>
@@ -481,30 +480,13 @@
     <Content Include="Views\CustomerDetail\_CustomerDetailLayout.cshtml" />
     <Content Include="Views\ShopList\ShopList.cshtml" />
     <Content Include="Views\ShopList\_ShopListLayout.cshtml" />
-    <Content Include="Views\MemberManagement\Create.cshtml" />
-    <Content Include="Views\MemberManagement\Delete.cshtml" />
-    <Content Include="Views\MemberManagement\Details.cshtml" />
-    <Content Include="Views\MemberManagement\Edit.cshtml" />
-    <Content Include="Views\MemberManagement\Index.cshtml" />
-    <Content Include="Views\MemberManagement\_ViewStart.cshtml" />
     <Content Include="Views\Customer\CustomerPage.cshtml" />
     <Content Include="Views\Customer\_CustomerDetailLayout.cshtml" />
     <Content Include="Views\Shop\ShopList.cshtml" />
     <Content Include="Views\Shop\_ShopListLayout.cshtml" />
-    <Content Include="Views\PlatformMember\Create.cshtml" />
-    <Content Include="Views\PlatformMember\Delete.cshtml" />
-    <Content Include="Views\PlatformMember\Details.cshtml" />
-    <Content Include="Views\PlatformMember\Edit.cshtml" />
     <Content Include="Views\PlatformMember\Index.cshtml" />
     <Content Include="Views\PlatformMember\_ViewStart.cshtml" />
-    <Content Include="Views\Platform\Index.cshtml" />
-    <Content Include="Views\Platform\_ViewStart.cshtml" />
-    <Content Include="Views\ShopViewModels\Create.cshtml" />
-    <Content Include="Views\ShopViewModels\Delete.cshtml" />
-    <Content Include="Views\ShopViewModels\Details.cshtml" />
-    <Content Include="Views\ShopViewModels\Edit.cshtml" />
-    <Content Include="Views\ShopViewModels\Index.cshtml" />
-    <Content Include="Views\ShopViewModels\_ViewStart.cshtml" />
+    <Content Include="Views\PlatformDashBoard\MemberDashBoard.cshtml" />
     <Content Include="Views\Shared\_Layout_Platform.cshtml" />
     <Content Include="Views\Store\TicketDetails.cshtml" />
     <Content Include="Views\TicketList\TicketList.cshtml" />
@@ -514,13 +496,16 @@
     <Content Include="Views\PlatformShop\Details.cshtml" />
     <Content Include="Views\PlatformShop\Edit.cshtml" />
     <Content Include="Views\PlatformShop\Index.cshtml" />
-    <Content Include="Views\Shared\_LayoutPlatform.cshtml" />
     <Content Include="Views\Shop\TicketDetails.cshtml" />
     <Content Include="Views\Customer\TicketList.cshtml" />
     <Content Include="Views\Shared\_Layout_TicketList.cshtml" />
     <Content Include="Views\Shop\SalesReport.cshtml" />
     <Content Include="Views\Shared\_Ticket.cshtml" />
-    <Content Include="Views\Platform\_ViewStart.cshtml" />
+    <Content Include="Views\PlatformDashBoard\_ViewStart.cshtml" />
+    <Content Include="Views\PlatformMember\MemberDetail.cshtml" />
+    <Content Include="Views\PlatformMember\CreateMember.cshtml" />
+    <Content Include="Views\PlatformMember\EditMember.cshtml" />
+    <Content Include="Views\PlatformMember\DeleteMember.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
