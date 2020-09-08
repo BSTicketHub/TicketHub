@@ -29,12 +29,13 @@
             modelBuilder.Entity<Ticket>().HasRequired(t => t.Order).WithMany().WillCascadeOnDelete(false);
             modelBuilder.Entity<RefundDetail>().HasRequired(rd => rd.Refund).WithMany().WillCascadeOnDelete(false);
             modelBuilder.Entity<RefundDetail>().HasRequired(rd => rd.Ticket).WithMany().WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<User>().HasMany(e => e.Roles).WithMany(e => e.Users).Map(m => m.ToTable("UserRoles"));
         }
 
         public DbSet<User> User { get; set; }
         public DbSet<Admin> Admin { get; set; }
         public DbSet<Role> Role { get; set; }
-        public DbSet<UserRole> UserRole { get; set; }
         public DbSet<UserLogin> UserLogin { get; set; }
         public DbSet<LoginLog> LoginLog { get; set; }
         public DbSet<ActionLog> ActionLog { get; set; }

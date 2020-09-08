@@ -1,0 +1,254 @@
+﻿@model TicketHubApp.ViewModels.StoreViewModel
+
+
+@using (Html.BeginForm())
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="upLoadImg bg-white p-3 shadow position-relative text-center">
+                    <form action="/somewhere/to/upload" enctype="multipart/form-data">
+
+                        <input id="upLoadImg" type="file" onchange="readURL(this)" targetID="preview_progressbarTW_img" accept="image/gif, image/jpeg, image/png" class="position-absolute" style="left:10px; " />
+
+                        <img id="preview_progressbarTW_img" class="showimg" src="#" />
+                    </form>
+                </div>
+                <div class="description bg-white my-3 p-3 shadow">
+                    <form class="d-flex flex-wrap">
+                        @*商品名稱*@
+                        <div class="form-group col-12">
+                            <label for="formGroupExampleInput">商品名稱</label>
+                            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control form-control-sm", @placeholder = "請輸入商品名稱", @id = "textTitle" } })
+                            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                        </div>
+                        @*票券類別*@
+                        @*<div class="form-group col-12">
+                                <label for="formGroupExampleInput">票券類別</label>
+                                @Html.DropDownListFor(m => m.category, (IEnumerable<SelectListItem>)ViewBag.CategoryList, new { @class = "form-control form-control-sm" })
+                            </div>*@
+                        @*商品定價*@
+                        <div class="form-group col-4">
+                            <label for="formGroupExampleInput">商品定價</label>
+                            @Html.EditorFor(model => model.OriginalPrice, new { htmlAttributes = new { @class = "form-control form-control-sm", @placeholder = "請輸入商品原價", @id = "originalPrice" } })
+                            @Html.ValidationMessageFor(model => model.OriginalPrice, "", new { @class = "text-danger" })
+                        </div>
+                        @*商品售價*@
+                        <div class="form-group col-4">
+                            <label for="formGroupExampleInput">商品售價</label>
+                            @Html.EditorFor(model => model.DiscountPrice, new { htmlAttributes = new { @class = "form-control form-control-sm", @placeholder = "請輸入商品原價", @id = "salePrice" } })
+                            @Html.ValidationMessageFor(model => model.DiscountPrice, "", new { @class = "text-danger" })
+                        </div>
+                        @*販售數量*@
+                        <div class="form-group col-4">
+                            <label for="formGroupExampleInput">販售數量</label>
+                            @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control form-control-sm", @placeholder = "請輸入商品原價" } })
+                            @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+                        </div>
+                        @*上架日期*@
+                        <div class="form-group col-6">
+                            <label for="datetimepicker-released" class="d-block">上架日期</label>
+                            @Html.EditorFor(model => model.ReleasedDate, new { htmlAttributes = new { @type = "datetime-local", @class = "form-control form-control-sm", @placeholder = "請選擇上架時間" } })
+                        </div>
+                        @*下架日期*@
+                        <div class="form-group col-6">
+                            <label for="datetimepicker-released" class="d-block">下架日期</label>
+                            @Html.EditorFor(model => model.ClosedDate, new { htmlAttributes = new { @type = "datetime-local", @class = "form-control form-control-sm", @placeholder = "請選擇下架時間" } })
+                        </div>
+                    </form>
+                </div>
+                <div class="description bg-white my-3 p-3 shadow">
+                    <div class="form-group col-12">
+                        <label for="exampleFormControlTextarea1">商品描述</label>
+                        @Html.TextAreaFor(model => model.Memo, new { @rows = "8", @class = "form-control form-control-sm", @placeholder = "請輸入票券說明內容", @id = "memo" })
+                    </div>
+                    <div class="col-12 d-flex">
+                        <button type="button" onclick="showModal()" class="ml-auto d-block" data-toggle="modal" data-target="#exampleModalCenter">
+                            預覽
+                        </button>
+                        <button class="ml-2 d-block">新增</button>
+                    </div>
+                    <!-- Button trigger modal -->
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">票券預覽</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div id="showDialog" class="row px-1 m-auto" style="height:298px; width: 834px;">
+                                        @Html.Partial("_Ticket")
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+@section endJS{
+    <script>
+        // set upload Image
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var imageTagID = input.getAttribute("targetID");
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var img = document.getElementById(imageTagID);
+                    img.setAttribute("src", e.target.result)
+                    console.log(e);
+                }
+                reader.readAsDataURL(input.files[0]);
+                console.log(input)
+            }
+        }
+        // 預覽功能
+        function showModal() {
+            let upLoadImage = document.getElementById("preview_progressbarTW_img").getAttribute("src");
+            let textTitle = document.getElementById("textTitle").value;
+            let memo = document.getElementById("memo").value;
+            let originalPrice = document.getElementById("originalPrice").value;
+            let salePrice = document.getElementById("salePrice").value;
+
+            let ticketImg = document.querySelector(".ticketImg");
+            let title = document.querySelector(".ticketListTicket h3");
+            let description = document.querySelector(".ticketListTicket p.description");
+            let ticketListOldPrice = document.querySelector(".ticketListOldPrice");
+            let ticketListSalesPrice = document.querySelector(".ticketListSalesPrice");
+
+            ticketImg.setAttribute('style', `background-image: url(${upLoadImage})`);
+            title.innerText = textTitle;
+            description.innerText = memo;
+            ticketListOldPrice.innerText = originalPrice;
+            ticketListSalesPrice.innerText = salePrice;
+        }
+
+    </script>
+}
+
+
+@section topCSS{
+    <style>
+        .showimg{
+            width: 277px;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .upLoadImg {
+            height: 280px;
+        }
+
+        .description {
+            font-size: 14px;
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+            border: 2px solid #26bcc7;
+        }
+
+        .form-control:focus {
+            color: #26bcc7;
+        }
+
+        button {
+            background-color: #2a94db;
+            color: #fff;
+            border: 1px solid #2a94db;
+            border-radius: 2px;
+            padding: 3px 10px;
+        }
+
+            button:hover {
+                background-color: #fff;
+                color: #2a94db;
+            }
+
+            button:focus {
+                outline: none;
+            }
+
+            button:active {
+                background-color: #2a94db;
+                color: #fff;
+            }
+
+        .modal-body {
+            background-color: #eaeaea;
+        }
+
+        .modal-xl {
+            max-width: 900px;
+        }
+
+        /*ticket*/
+        .ticketListTicket .wishHeart {
+            width: 24px;
+            height: 24px;
+            color: #999999;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+
+            .ticketListTicket .wishHeart:hover {
+                color: #ccc;
+            }
+
+        .ticketListTicket h3 {
+            font-weight: 700;
+        }
+
+        .ticketListTicket .ticketImg {
+            width: 270px;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .ticketListTicket .description {
+            font-size: 14px;
+            color: #666666;
+            height: 2.5rem;
+            overflow: hidden;
+        }
+
+        .ticketListTicket .star {
+            color: #aaa;
+        }
+
+        .ticketListTicket .star-checked {
+            color: #26bec9;
+        }
+
+        .ticketListTicket .ticketListOldPrice {
+            font-size: 12px;
+            color: #999999;
+            text-decoration: line-through;
+        }
+
+        .ticketListTicket .ticketListSalesPrice {
+            font-size: 14px;
+            color: #999999;
+            font-weight: 700;
+        }
+
+            .ticketListTicket .ticketListSalesPrice span {
+                font-size: 20px;
+                color: #26bec9;
+            }
+    </style>
+}
