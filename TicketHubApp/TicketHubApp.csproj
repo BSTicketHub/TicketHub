@@ -226,6 +226,11 @@
       <DependentUpon>ShopList.css</DependentUpon>
     </Content>
     <Content Include="Assets\Images\camera.png" />
+    <Content Include="Assets\JavaScript\Common\iconify.min.js" />
+    <Content Include="Assets\JavaScript\Common\JsBarcode.all.js" />
+    <Content Include="Assets\JavaScript\Common\JsBarcode.all.min.js" />
+    <Content Include="Assets\JavaScript\CustomerDetail\CustomerDetail.js" />
+    <Content Include="Assets\JavaScript\ShopList\ShopList.js" />
     <Content Include="Assets\JavaScript\Customer\CustomerDetail.js" />
     <Content Include="Assets\JavaScript\Shop\ShopList.js" />
     <Content Include="Assets\Images\ticket_test_Img.jpg" />
