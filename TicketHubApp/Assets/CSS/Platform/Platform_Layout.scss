@@ -1,14 +1,18 @@
-﻿body {
+﻿@import "../_variables.scss";
+
+body {
     padding: 0 !important;
+    background-color: #f4f4f4 !important;
 
     .container {
         padding: 0 !important;
 
-        nav{
-            #adminPhoto{
-                border-radius:50%;
+        nav {
+            #adminPhoto {
+                border-radius: 50%;
             }
         }
+
         .sidebar {
             .card-body {
                 transition: 0.3s;
@@ -17,13 +21,18 @@
                     text-decoration: none;
                     color: black;
                 }
-            }
 
-            .card-body:hover {
-                background-color: rgb(255, 216, 0);
+                &:hover {
+                    background-color: rgba(240, 240, 240, 0.5);
+                }
 
-                a {
-                    color: white;
+                &:active {
+                    border-left: 5px solid $platform-color-5;
+                    background-color: white;
+
+                    a {
+                        color: $platform-color-5
+                    }
                 }
             }
         }

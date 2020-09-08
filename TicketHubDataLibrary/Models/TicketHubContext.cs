@@ -53,5 +53,6 @@
         public DbSet<IssueTag> IssueTag { get; set; }
         public DbSet<ShopTag> ShopTag { get; set; }
 
+
     }
 }
