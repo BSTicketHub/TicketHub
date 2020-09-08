@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "ShopList";
+    Layout = "~/Views/ShopList/_ShopListLayout.cshtml";
+}
+@section scripts{
+    <script defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyO1vy0QaITVTahKLSJYfw_bgPxI7H7IU&callback=initMap">
+    </script>
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-7 restaurant-area border border-right-0 rounded">
+            <h3 class="mt-4 ml-3">台北美食</h3>
+            <div class="tag-list ml-3 my-4">
+                <div class="badge badge-pill mx-1">台北</div>
+                <div class="badge badge-pill mx-1">中式</div>
+                <div class="badge badge-pill mx-1">標籤</div>
+                <div class="badge badge-pill mx-1">標籤</div>
+            </div>
+            <div class="restaurant-list">
+                <div class="restaurant d-flex flex-wrap mx-2 my-3 position-relative">
+                    <div class="img-area">
+                        <div class="img border-right-0 rounded-left">
+                        </div>
+                    </div>
+                    <div class="text-area border border-left-0 rounded-right position-relative">
+                        <h6 class="my-3 ml-4">【東區最夯牛排館】 就是間牛排館</h6>
+                        <p class="mx-4">
+                            ticketContent.innerText = "Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Facere ut atque nobis voluptatum asperiores maxime numquam. Quos minus nobis adipisci?"
+                        </p>
+                        <p class="position ml-4 mb-2"><span class="iconify mr-2" data-icon="fa-solid:map-marker-alt" data-inline="false"></span></i>台北 / 大安區</p>
+                        <p class="address ml-4 mb-2"><span class="iconify mr-2" data-icon="whh:house" data-inline="false"></span>復興南路一段279巷4號</p>
+                        <p class="phone ml-4 mb-2"><span class="iconify mr-2" data-icon="bx:bxs-phone" data-inline="false"></span>(02)2706-1068</p>
+                        <p class="openTime ml-4 mb-2"><span class="iconify mr-2" data-icon="fa-solid:clock" data-inline="false"></span>17:00 - 02:00</p>
+                        <p class="show-ticket position-absolute">顯示店家票券<span class="iconify ml-1" data-icon="fe:arrow-down" data-inline="false"></span></p>
+
+                        <span class="iconify position-absolute favorite" data-icon="bx:bxs-heart" data-inline="false"></span>
+                    </div>
+                    <div class="ticket-area bg-white rounded mx-2 position-absolute">
+                        <div class="ticket-list">
+                            <div class="ticket border-bottom w-auto d-flex my-3 mx-3 pb-2">
+                                <div class="img-area h-100">
+                                    <div class="img"></div>
+                                </div>
+                                <div class="text-area position-relative">
+                                    <h6>【Build School限時超激優惠】 忠孝新生一日遊</h6>
+                                    <p class="mx-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime pariatur illum beatae natus atque inventore reiciendis omnis commodi labore harum?</p>
+                                    <p class="oPrice position-absolute">TWD99999</p>
+                                    <p class="nPrice position-absolute">TWD1000</p>
+                                </div>
+                            </div>
+                            <div class="ticket border-bottom w-auto d-flex my-3 mx-3 pb-2">
+                                <div class="img-area h-100">
+                                    <div class="img"></div>
+                                </div>
+                                <div class="text-area position-relative">
+                                    <h6>【Build School限時超激優惠】 忠孝新生一日遊</h6>
+                                    <p class="mx-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime pariatur illum beatae natus atque inventore reiciendis omnis commodi labore harum?</p>
+                                    <p class="oPrice position-absolute">TWD99999</p>
+                                    <p class="nPrice position-absolute">TWD1000</p>
+                                </div>
+                            </div>
+                            <div class="ticket border-bottom w-auto d-flex my-3 mx-3 pb-2">
+                                <div class="img-area h-100">
+                                    <div class="img"></div>
+                                </div>
+                                <div class="text-area position-relative">
+                                    <h6>【Build School限時超激優惠】 忠孝新生一日遊</h6>
+                                    <p class="mx-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime pariatur illum beatae natus atque inventore reiciendis omnis commodi labore harum?</p>
+                                    <p class="oPrice position-absolute">TWD99999</p>
+                                    <p class="nPrice position-absolute">TWD1000</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="map-area col-5">
+            <div id="map" class="map w-100">
+            </div>
+        </div>
+    </div>
+
+
