@@ -2,10 +2,10 @@
 
 namespace TicketHubApp.Controllers
 {
-    public class PlatformController : Controller
+    public class PlatformDashBoardController : Controller
     {
         // GET: Platform
-        public ActionResult Index()
+        public ActionResult MemberDashBoard()
         {
             return View();
         }
