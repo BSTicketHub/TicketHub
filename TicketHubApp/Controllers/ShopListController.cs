@@ -8,6 +8,7 @@ namespace TicketHubApp.Controllers
 {
     public class ShopListController : Controller
     {
+        private TicketHubContext _context = new TicketHubContext();
         // GET: ShopList
         public ActionResult ShopList()
         {
