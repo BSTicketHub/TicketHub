@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Linq;
 using TicketHubApp.Interfaces;
 using TicketHubApp.Models;
+using TicketHubApp.Models.ServiceModels;
 using TicketHubApp.Models.ViewModels;
-using TicketHubApp.Services.Models;
 using TicketHubDataLibrary.Models;
 
 namespace TicketHubApp.Services

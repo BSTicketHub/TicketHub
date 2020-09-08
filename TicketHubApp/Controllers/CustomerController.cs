@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 using TicketHubApp.Models.ViewModels;
-using TicketHubApp.ViewModels;
 
 namespace TicketHubApp.Controllers
 {

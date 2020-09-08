@@ -166,9 +166,9 @@
     <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\RoleManager.cs" />
     <Compile Include="Services\UserManager.cs" />
-    <Compile Include="Services\Models\UserToken.cs" />
-    <Compile Include="ViewModels\StoreTicketListViewModel.cs" />
-    <Compile Include="ViewModels\StoreViewModel.cs" />
+    <Compile Include="Models\ServiceModels\UserToken.cs" />
+    <Compile Include="Models\ViewModels\StoreTicketListViewModel.cs" />
+    <Compile Include="Models\ViewModels\StoreViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\CSS\CustomerDetail.css">

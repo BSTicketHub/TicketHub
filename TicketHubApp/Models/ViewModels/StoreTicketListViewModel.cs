@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TicketHubApp.ViewModels
+namespace TicketHubApp.Models.ViewModels
 {
     public class StoreTicketListViewModel
     {

@@ -1,4 +1,4 @@
-﻿namespace TicketHubApp.Services.Models
+﻿namespace TicketHubApp.Models.ServiceModels
 {
     public class UserToken
     {

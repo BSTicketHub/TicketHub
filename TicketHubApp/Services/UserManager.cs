@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Security.Cryptography;
 using TicketHubApp.Interfaces;
 using TicketHubApp.Models;
-using TicketHubApp.Models.ViewModels;
-using TicketHubApp.Services.Models;
+using TicketHubApp.Models.ServiceModels;
 using TicketHubDataLibrary.Models;
 using static TicketHubApp.Services.RoleManager;
 
