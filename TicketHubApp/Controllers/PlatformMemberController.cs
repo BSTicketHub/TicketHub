@@ -17,6 +17,7 @@ namespace TicketHubApp.Controllers
         // GET: Users
         public ActionResult Index()
         {   
+            
             return View();
         }
 

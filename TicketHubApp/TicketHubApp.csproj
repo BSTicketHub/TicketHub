@@ -235,6 +235,7 @@
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.min.js" />
     <Content Include="Assets\JavaScript\Customer\CustomerDetail.js" />
     <Content Include="Assets\JavaScript\Platform\datatables.min.js" />
+    <Content Include="Assets\JavaScript\Platform\PlatformMemberIndex.js" />
     <Content Include="Assets\JavaScript\Shop\ShopList.js" />
     <Content Include="Assets\Images\ticket_test_Img.jpg" />
     <Content Include="Assets\CSS\Shop\StoreBasic.css" />
