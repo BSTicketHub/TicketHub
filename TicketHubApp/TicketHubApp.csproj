@@ -163,18 +163,12 @@
     <Compile Include="Models\ViewModels\MemberViewModel.cs" />
     <Compile Include="Models\ViewModels\ShopViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-<<<<<<< HEAD
-    <Compile Include="ViewModels\StoreTicketListViewModel.cs" />
-    <Compile Include="ViewModels\StoreViewModel.cs" />
-    <Compile Include="WebAPI\ProductController.cs" />
-=======
     <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\RoleManager.cs" />
     <Compile Include="Services\UserManager.cs" />
     <Compile Include="Models\ServiceModels\UserToken.cs" />
     <Compile Include="Models\ViewModels\StoreTicketListViewModel.cs" />
     <Compile Include="Models\ViewModels\StoreViewModel.cs" />
->>>>>>> cc98d382cb8e5451a97cde85d4b7df598155f2f4
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\CSS\CustomerDetail.css">
@@ -236,13 +230,10 @@
     <Content Include="Assets\JavaScript\Common\iconify.min.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.min.js" />
-<<<<<<< HEAD
     <Content Include="Assets\JavaScript\CustomerDetail\CustomerDetail.js" />
     <Content Include="Assets\JavaScript\ShopList\ShopList.js" />
-=======
     <Content Include="Assets\JavaScript\Customer\CustomerDetail.js" />
     <Content Include="Assets\JavaScript\Shop\ShopList.js" />
->>>>>>> cc98d382cb8e5451a97cde85d4b7df598155f2f4
     <Content Include="Assets\Images\ticket_test_Img.jpg" />
     <Content Include="Assets\CSS\Shop\StoreBasic.css" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -460,11 +451,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-<<<<<<< HEAD
-    <Folder Include="Assets\Html\" />
-    <Folder Include="Assets\JavaScript\Store\" />
-=======
->>>>>>> cc98d382cb8e5451a97cde85d4b7df598155f2f4
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\CSS\login.scss" />
