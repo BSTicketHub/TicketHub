@@ -162,6 +162,7 @@
     <Compile Include="Models\ViewModels\AdminViewModel.cs" />
     <Compile Include="Models\ViewModels\MemberViewModel.cs" />
     <Compile Include="Models\ViewModels\ShopViewModel.cs" />
+    <Compile Include="Models\ViewModels\SimpleIssueViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\RoleManager.cs" />
@@ -472,6 +473,7 @@
     <Content Include="Views\Shop\SalesReport.cshtml" />
     <Content Include="Views\Shared\_Ticket.cshtml" />
     <Content Include="Views\Platform\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_ShopCardPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
