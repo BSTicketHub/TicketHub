@@ -5,9 +5,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - 我的 ASP.NET 應用程式</title>
-    @Styles.Render("~/Content/css")
+    @Styles.Render("~/bundles/css/bootstrap")
     @Styles.Render("~/bundles/css/Home")
-    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/js/modernizr")
 </head>
 <body>
     <div class="top-bar" style="justify-content: space-between;">
@@ -232,8 +232,10 @@
         </div>
     </footer>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/js/jquery")
+    @Scripts.Render("~/bundles/js/bootstrap")
+    @Scripts.Render("~/bundles/js/iconify")
+    @Scripts.Render("~/bundles/js/momentjs")
     @Scripts.Render("~/bundles/js/Home")
 
     @RenderSection("scripts", required: false)

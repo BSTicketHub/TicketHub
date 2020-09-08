@@ -184,8 +184,8 @@
       <DependentUpon>login.css</DependentUpon>
     </Content>
     <Content Include="Assets\CSS\tempCSS\home.css" />
-    <Content Include="Assets\CSS\tempCSS\owl.carousel.min.css" />
-    <Content Include="Assets\CSS\tempCSS\owl.theme.default.css" />
+    <Content Include="Assets\CSS\Common\owl.carousel.min.css" />
+    <Content Include="Assets\CSS\Common\owl.theme.default.css" />
     <Content Include="Assets\CSS\tempCSS\temphome.css" />
     <Content Include="Assets\Images\asian-food-decorative.jpg" />
     <Content Include="Assets\Images\Home\128-1200x650.jpg" />
@@ -212,8 +212,7 @@
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.min.js" />
     <Content Include="Assets\JavaScript\Home\home.js" />
-    <Content Include="Assets\JavaScript\Home\owl.carousel.min.js" />
-    <Content Include="Assets\JavaScript\Home\popper.min.js" />
+    <Content Include="Assets\JavaScript\Common\owl.carousel.min.js" />
     <Content Include="Assets\CSS\ShopList.css">
       <DependentUpon>ShopList.scss</DependentUpon>
     </Content>
@@ -221,9 +220,6 @@
       <DependentUpon>ShopList.css</DependentUpon>
     </Content>
     <Content Include="Assets\Images\camera.png" />
-    <Content Include="Assets\JavaScript\Common\iconify.min.js" />
-    <Content Include="Assets\JavaScript\Common\JsBarcode.all.js" />
-    <Content Include="Assets\JavaScript\Common\JsBarcode.all.min.js" />
     <Content Include="Assets\JavaScript\Customer\CustomerDetail.js" />
     <Content Include="Assets\JavaScript\Shop\ShopList.js" />
     <Content Include="Assets\Images\ticket_test_Img.jpg" />
@@ -280,7 +276,6 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-reboot.min.css.map" />
@@ -448,10 +443,10 @@
   <ItemGroup>
     <Content Include="Assets\CSS\login.scss" />
     <Content Include="Assets\CSS\_variables.scss" />
-    <Content Include="Assets\CSS\tempCSS\fontawesome-webfont.eot" />
-    <Content Include="Assets\CSS\tempCSS\fontawesome-webfont.ttf" />
     <Content Include="Assets\CSS\CustomerDetail.scss" />
     <Content Include="Assets\CSS\ShopList.scss" />
+    <Content Include="Assets\CSS\tempCSS\fontawesome-webfont.eot" />
+    <Content Include="Assets\CSS\tempCSS\fontawesome-webfont.ttf" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
