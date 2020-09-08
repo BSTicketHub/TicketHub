@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace TicketHubApp.Controllers
 {
-    public class DashBoardController : Controller
+    public class PlatformController : Controller
     {
         // GET: Platform
         public ActionResult Index()

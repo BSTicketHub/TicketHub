@@ -41,7 +41,8 @@ namespace TicketHubApp
             //Platform bundles
             bundles.Add(new StyleBundle("~/bundles/css/Platform").Include(
                     "~/Content/bootstrap.css",
-                    "~/Assets/CSS/Platform/Platform_Layout.min.css"
+                    "~/Assets/CSS/Platform/Platform_Layout.min.css",
+                    "~/Assets/CSS/Platform/DashBoard/Member.min.css"
                     ));
             bundles.Add(new ScriptBundle("~/bundles/js/Platform").Include(
                       "~/Scripts/Chart.js",

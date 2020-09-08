@@ -14,7 +14,7 @@ using TicketHubApp.PlatformViewModels;
 
 namespace TicketHubApp.Controllers
 {
-    public class MemberViewModelsController : Controller
+    public class MemberManagementController : Controller
     {
         private TicketHubPlatformContext db = new TicketHubPlatformContext();
 
