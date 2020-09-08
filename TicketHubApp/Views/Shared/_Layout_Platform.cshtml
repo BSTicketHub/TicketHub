@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TieketHub</title>
+
+    @Styles.Render("~/bundles/css/Platform")
+</head>
+
+<body>
+    <div class="container col-md-12">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+            <a class="navbar-brand" href="#">
+                <img src="~/Assets/Images/Platform/logo.png" alt="logo"
+                     style="width: 100px;">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="~/Assets/Images/Platform/bmw01.jpg" alt="" width="30" height=" 30" id="adminPhoto" />
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a href="" class="dropdown-item">管理者資訊</a>
+                            <a href="" class="dropdown-item">切換管理者帳號</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="" class="dropdown-item">登出</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="sidebar row col-md-12 p-0">
+            <div class="col-md-2">
+                <div class="accordion" id="accordionExample">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <button class="btn btn-block text-center" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    報表分析
+                                </button>
+                            </h2>
+                        </div>
+
+                        <div id="collapseOne" class="collapse show text-center" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <a href="#">會員報表</a>
+                            </div>
+                            <div class="card-body">
+                                <a href="#">商家報表</a>
+                            </div>
+                            <div class="card-body">
+                                <a href="#">訂單報表</a>
+                            </div>
+                            <div class="card-body">
+                                <a href="#">票券報表</a>
+                            </div>
+                            <div class="card-body">
+                                <a href="#">營收報表</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h2 class="mb-0">
+                                <button class="btn btn-block text-center collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    會員管理
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseTwo" class="collapse text-center" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <a href="#">會員列表</a>
+                            </div>
+                            <div class="card-body">
+                                <a href="#">新增會員</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                            <h2 class="mb-0">
+                                <button class="btn btn-block text-center collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    商家管理
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseThree" class="collapse text-center" aria-labelledby="headingThree" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <a href="#">商家列表</a>
+                            </div>
+                            <div class="card-body">
+                                <a href="#">新增商家</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingFour">
+                            <h2 class="mb-0">
+                                <button class="btn btn-block text-center collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    訂單管理
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseFour" class="collapse text-center" aria-labelledby="headingFour" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <a href="#">訂單列表</a>
+                            </div>
+                            <div class="card-body">
+                                <a href="#">新增訂單</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingFive">
+                            <h2 class="mb-0">
+                                <button class="btn btn-block text-center collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    票券管理
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseFive" class="collapse text-center" aria-labelledby="headingFive" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <a href="#">票券列表</a>
+                            </div>
+                            <div class="card-body">
+                                <a href="#">新增票券</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="view col-md-10">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/js/Platform")
+</body>
+</html>

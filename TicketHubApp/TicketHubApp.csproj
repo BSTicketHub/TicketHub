@@ -148,7 +148,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShopListController.cs" />
     <Compile Include="Controllers\MemberViewModelsController.cs" />
-    <Compile Include="Controllers\PlatformController.cs" />
+    <Compile Include="Controllers\DashBoardController.cs" />
     <Compile Include="Controllers\ShopViewModelsController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Controllers\TicketListController.cs" />
@@ -195,6 +195,12 @@
     <Content Include="Assets\CSS\login.min.css">
       <DependentUpon>login.css</DependentUpon>
     </Content>
+    <Content Include="Assets\CSS\Platform\Platform_Layout.css">
+      <DependentUpon>Platform_Layout.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Platform\Platform_Layout.min.css">
+      <DependentUpon>Platform_Layout.css</DependentUpon>
+    </Content>
     <Content Include="Assets\CSS\tempCSS\home.css" />
     <Content Include="Assets\CSS\tempCSS\owl.carousel.min.css" />
     <Content Include="Assets\CSS\tempCSS\owl.theme.default.css" />
@@ -220,6 +226,8 @@
     <Content Include="Assets\Images\Home\takeout.png" />
     <Content Include="Assets\Images\Home\ticketHub.png" />
     <Content Include="Assets\Images\Home\travel.png" />
+    <Content Include="Assets\Images\Platform\bmw01.jpg" />
+    <Content Include="Assets\Images\Platform\logo.png" />
     <Content Include="Assets\JavaScript\Common\iconify.min.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.min.js" />
@@ -460,8 +468,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Html\" />
+    <Folder Include="Assets\JavaScript\Platform\" />
     <Folder Include="Assets\JavaScript\Store\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\CSS\login.scss" />
@@ -470,6 +478,7 @@
     <Content Include="Assets\CSS\tempCSS\fontawesome-webfont.ttf" />
     <Content Include="Assets\CSS\CustomerDetail.scss" />
     <Content Include="Assets\CSS\ShopList.scss" />
+    <Content Include="Assets\CSS\Platform\Platform_Layout.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -491,15 +500,15 @@
     <Content Include="Views\MemberViewModels\Edit.cshtml" />
     <Content Include="Views\MemberViewModels\Index.cshtml" />
     <Content Include="Views\MemberViewModels\_ViewStart.cshtml" />
-    <Content Include="Views\Platform\Index.cshtml" />
-    <Content Include="Views\Platform\_ViewStart.cshtml" />
+    <Content Include="Views\DashBoard\Index.cshtml" />
+    <Content Include="Views\DashBoard\_ViewStart.cshtml" />
     <Content Include="Views\ShopViewModels\Create.cshtml" />
     <Content Include="Views\ShopViewModels\Delete.cshtml" />
     <Content Include="Views\ShopViewModels\Details.cshtml" />
     <Content Include="Views\ShopViewModels\Edit.cshtml" />
     <Content Include="Views\ShopViewModels\Index.cshtml" />
     <Content Include="Views\ShopViewModels\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_LayoutPlatform.cshtml" />
+    <Content Include="Views\Shared\_Layout_Platform.cshtml" />
     <Content Include="Views\Store\TicketDetails.cshtml" />
     <Content Include="Views\TicketList\TicketList.cshtml" />
     <Content Include="Views\Shared\_Layout_TicketList.cshtml" />

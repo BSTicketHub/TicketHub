@@ -1,0 +1,31 @@
+﻿body {
+    padding: 0 !important;
+
+    .container {
+        padding: 0 !important;
+
+        nav{
+            #adminPhoto{
+                border-radius:50%;
+            }
+        }
+        .sidebar {
+            .card-body {
+                transition: 0.3s;
+
+                a {
+                    text-decoration: none;
+                    color: black;
+                }
+            }
+
+            .card-body:hover {
+                background-color: rgb(255, 216, 0);
+
+                a {
+                    color: white;
+                }
+            }
+        }
+    }
+}

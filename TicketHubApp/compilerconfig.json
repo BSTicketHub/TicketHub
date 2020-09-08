@@ -14,5 +14,9 @@
   {
     "outputFile": "Assets/CSS/ShopList.css",
     "inputFile": "Assets/CSS/ShopList.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/Platform/Platform_Layout.css",
+    "inputFile": "Assets/CSS/Platform/Platform_Layout.scss"
   }
 ]
