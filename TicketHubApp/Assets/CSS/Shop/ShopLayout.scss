@@ -1,0 +1,73 @@
+﻿@import "../_variables.scss";
+
+.shopLayout {
+    background-color: #f4f4f4;
+
+    .navbar {
+        border-bottom: 10px solid $shop-color-5;
+
+        .navbar-brand {
+            color: $shop-color-5;
+            font-weight: 900;
+        }
+    }
+
+    .sidebar {
+        top: 0px;
+        height: 600px;
+        background-color: #fff;
+        color: #212529;
+
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        .shopLogo {
+            height: 150px;
+            background-image: url("../../Images/shop_logo.jpg");
+            background-size: cover;
+            background-position: center;
+            /*border: 5px solid $shop-color-5;*/
+        }
+
+        .collapse {
+            background-color: #fff;
+
+            li {
+                cursor: pointer;
+
+                &:hover {
+                    cursor: pointer;
+                    color: #fff;
+                    background-color: #eeeeee;
+
+                    a {
+                        color: #000;
+                    }
+                }
+            }
+        }
+
+        .div {
+            cursor: pointer;
+        }
+
+        .liColor {
+            color: #212529;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+
+    .catalogue {
+        height: 30px;
+    }
+}
+
+* {
+    list-style-type: none;
+}

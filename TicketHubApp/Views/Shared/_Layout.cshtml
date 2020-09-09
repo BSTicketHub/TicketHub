@@ -8,6 +8,7 @@
     @Styles.Render("~/bundles/css/bootstrap")
     @Styles.Render("~/bundles/css/Home")
     @Scripts.Render("~/bundles/js/modernizr")
+    @RenderSection("topCSS", required:false)
 </head>
 <body>
     <div class="top-bar" style="justify-content: space-between;">
@@ -21,10 +22,16 @@
                 客服資訊
             </a>
         </div>
-        @Html.Partial("_LoginPartial")
+        <div class="text-right">
+
+            <span class="iconify mt-1 ml-1" data-icon="carbon:user-speaker" data-inline="false"></span>
+            <a href="" title="">
+                關於我們
+            </a>
+        </div>
     </div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-        <a class="navbar-brand" href="#">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top pl-2 pr-2">
+        <a class="navbar-brand ml-2" href="#">
             <img src="/Assets/Images/Home/logo.png" alt="logo"
                  style="width: 100px;">
         </a>
@@ -32,13 +39,20 @@
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item dropdown active" style="display: flex;align-items: center;">
-                    <a href="" class="nav-link">關於我們</a>
-                </li>
-                <li class="nav-item dropdown active" style="display: flex;align-items: center;">
+            <form class="form-inline my-2 my-lg-0 ml-3">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="輸入地點、餐廳或美食">
+                    <div class="input-group-append">
+                        <button class="btn btn-info pl-3 pr-3" type="button" id="">
+                            <span class="iconify"
+                                  data-icon="bx:bx-search" data-inline="false"></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <ul class="navbar-nav ml-auto mr-3">
+                <li class="nav-item dropdown active" style="display: flex;align-items: center;padding-bottom: 0;">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         熱門票劵
@@ -55,7 +69,7 @@
                         <a href="" class="dropdown-item">素食餐廳</a>
                     </div>
                 </li>
-                <li class="nav-item dropdown active" style="display: flex;align-items: center;">
+                <li class="nav-item dropdown active" style="display: flex;align-items: center;padding-bottom: 0;">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         吃到飽
@@ -70,7 +84,7 @@
                         <a href="" class="dropdown-item">超值餐廳</a>
                     </div>
                 </li>
-                <li class="nav-item dropdown active" style="display: flex;align-items: center;">
+                <li class="nav-item dropdown active" style="display: flex;align-items: center;padding-bottom: 0;">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         限時特惠
@@ -87,21 +101,22 @@
                         <a href="" class="dropdown-item">素食餐廳</a>
                     </div>
                 </li>
-                <li class="dropdown member-dropdown member-item mr-3" style="display: flex;align-items: center;">
+                <li class="dropdown member-dropdown member-item mr-3 ml-3"
+                    style="display: flex;align-items: center;padding-bottom: 0;">
                     <a class="mt-2" data-toggle="dropdown">
                         <div class="editor-logo"></div>
                     </a>
-                    <ul aria-labelledby="dLabel" class="dropdown-menu" dropdown-menu-right>
+                    <ul aria-labelledby="dLabel" class="dropdown-menu " dropdown-menu-right>
                         <li class="list-item profile">
-                            <a href="">
-                                <div class="editor-logo">
-                                </div>
-                                <div class="list-item-title">
-                                    <div class="title">XXX</div>
-                                </div>
-                            </a>
+                            <div class="editor-logo"></div>
+                            <div class="list-item-title">
+                                <div class="title">XXX</div>
+                            </div>
+                            <button class="btn btn-info">
+                                登入 / 註冊
+                            </button>
                         </li>
-                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-divider"></li>
                         <li class="list-item">
                             <a href="">
                                 <span class="list-item-title">折扣券</span>
@@ -123,7 +138,7 @@
                                 <span class="list-item-title">我的收藏</span>
                             </a>
                         </li>
-                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-divider"></li>
                         <li class="logout">
                             <a href="">
                                 登出
@@ -132,106 +147,169 @@
                     </ul> <span class="dropdown-arrow"></span>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0 mr-3">
-                <button class="btn btn-outline-info my-2 my-sm-0 px-2" type="submit">
-                    <span class="iconify" data-icon="clarity:shopping-cart-solid" data-inline="false"
-                          style="font-size: 20px;"></span>
-                </button>
-            </form>
+
+            <ul class="form-inline py-3 my-lg-0 pr-2 mr-5 poition-relative" onmousemove="shopCart()" onclick=""
+                onmouseout="shopCartMove()">
+                <li class="dropdown cart-dropdown hidden-sm hidden-xs open dropleft">
+                    <a class="cart-link" style="color: #26bec9;">
+                        <span class="iconify" data-icon="clarity:shopping-cart-solid" data-inline="false"
+                              style="font-size: 30px;"></span>
+                        <div class="badge span-badge bg-danger">
+                            1
+                        </div>
+                    </a>
+                    <div class="dropdown-menu show-dropdown showCart"
+                         style="width: 400px;right: -30px;position: absolute;">
+                        <div class="cart-group">
+                            <div class="cart-item">
+                                <a href="">
+                                    <div class="product-img img-bg">
+                                    </div>
+                                </a>
+                                <div class="cart-detail">
+                                    <div class="product-detail">
+                                        <h3>
+                                            <a href="">
+                                                高雄 - 墾丁｜定點共乘接送｜直達高雄高鐵
+                                            </a>
+                                        </h3>
+                                        <div class="product-option">【高雄出發】</div>
+                                    </div>
+                                    <div class="text-tag">2020-09-12 11:00</div>
+                                    <div class="text-tag">人數 x 1</div>
+                                    <div class="product-pricing ">
+                                        <h4>TWD 388</h4>
+                                    </div>
+                                </div>
+                                <div class="product-action">
+                                    <button type="button" class="btn btn-light" data-toggle="modal"
+                                            data-target="#CartModal">
+                                        <span class="iconify" data-icon="bi:trash" data-inline="false"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cart-footer">
+                            <div class="text-tag">共 1 件商品</div>
+                            <button href="" class="btn btn-info">
+                                查看購物車
+                            </button>
+                        </div>
+                    </div> <span class="dropdown-arrow"></span>
+                </li>
+            </ul>
         </div>
     </nav>
+    <div class="modal fade" id="CartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">刪除商品</h5>
+                    <button type="button" class="close btn" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    您確定要刪除所選商品嗎？
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-danger">刪除</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     @RenderBody()
     <hr />
-    <footer>
-        <div class="footbg">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="f-item">
-                            <div class="icon">
-                                <span class="iconify" data-icon="fa-solid:utensils" data-inline="false"
-                                      style="font-size: 48px; color:#ffffff"></span>
-                            </div>
-                            <div class="text">
-                                <h5>熱門類別</h5>
-                                <hr>
-                                <a href="">異國料理</a>
-                                <a href="">自助百匯</a>
-                                <a href="">早午餐</a>
-                                <a href="">下午茶</a>
-                                <a href="">素食餐廳</a>
-                            </div>
+    <div class="footbg">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="f-item">
+                        <div class="icon">
+                            <span class="iconify" data-icon="fa-solid:utensils" data-inline="false"
+                                  style="font-size: 48px; color:#ffffff"></span>
+                        </div>
+                        <div class="text">
+                            <h5>熱門類別</h5>
+                            <hr>
+                            <a href="">異國料理</a>
+                            <a href="">自助百匯</a>
+                            <a href="">早午餐</a>
+                            <a href="">下午茶</a>
+                            <a href="">素食餐廳</a>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="f-item">
-                            <div class="icon">
-                                <span class="iconify" data-icon="fa-solid:home" data-inline="false"
-                                      style="font-size: 48px; color:#ffffff"></span>
-                            </div>
-                            <div class="text">
-                                <h5>合作夥伴</h5>
-                                <hr>
-                                <a href="">成為供應商</a>
-                                <a href="">供應商登入</a>
-                                <a href="">行銷規劃</a>
-                                <a href="">人才招募</a>
-                            </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="f-item">
+                        <div class="icon">
+                            <span class="iconify" data-icon="fa-solid:home" data-inline="false"
+                                  style="font-size: 48px; color:#ffffff"></span>
+                        </div>
+                        <div class="text">
+                            <h5>合作夥伴</h5>
+                            <hr>
+                            <a href="">成為供應商</a>
+                            <a href="">供應商登入</a>
+                            <a href="">行銷規劃</a>
+                            <a href="">人才招募</a>
                         </div>
                     </div>
+                </div>
 
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="f-item">
-                            <div class="icon">
-                                <span class="iconify" data-icon="fa-solid:ticket-alt" data-inline="false"
-                                      style="font-size: 48px; color:#ffffff"></span>
-                            </div>
-                            <div class="text">
-                                <h5>票劵資訊</h5>
-                                <hr>
-                                <a href="">瀏覽紀錄</a>
-                                <a href="">訂單查詢</a>
-                                <a href="">消費者登入</a>
-                                <a href="">票劵使用紀錄</a>
-                            </div>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="f-item">
+                        <div class="icon">
+                            <span class="iconify" data-icon="fa-solid:ticket-alt" data-inline="false"
+                                  style="font-size: 48px; color:#ffffff"></span>
+                        </div>
+                        <div class="text">
+                            <h5>票劵資訊</h5>
+                            <hr>
+                            <a href="">瀏覽紀錄</a>
+                            <a href="">訂單查詢</a>
+                            <a href="">消費者登入</a>
+                            <a href="">票劵使用紀錄</a>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="f-item">
-                            <div class="icon">
-                                <img src="/Assets/Images/Home/ticketHub.png" alt="">
-                            </div>
-                            <div class="text-mb">
-                                <h4>TicketHub</h4>
-                                <div class="btns">
-                                    <button>
-                                        <span class="iconify" data-icon="ant-design:twitter-outlined"
-                                              data-inline="false" style="margin-top: -8px;"></span>
-                                    </button>
-                                    <button>
-                                        <span class="iconify" data-icon="bx:bxl-facebook" data-inline="false"
-                                              style="margin-top: -8px;"></span>
-                                    </button>
-                                    <button>
-                                        <span class="iconify" data-icon="bx:bxl-pinterest-alt" data-inline="false"
-                                              style="margin-top: -8px;"></span>
-                                    </button>
-                                    <button>
-                                        <span class="iconify" data-icon="bx:bxl-linkedin" data-inline="false"
-                                              style="margin-top: -8px;"></span>
-                                    </button>
-                                </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="f-item">
+                        <div class="icon">
+                            <img src="/Assets/Images/Home/ticketHub.png" alt="">
+                        </div>
+                        <div class="text-mb">
+                            <h4>TicketHub</h4>
+                            <div class="btns">
+                                <button>
+                                    <span class="iconify" data-icon="ant-design:twitter-outlined"
+                                          data-inline="false" style="margin-top: -8px;"></span>
+                                </button>
+                                <button>
+                                    <span class="iconify" data-icon="bx:bxl-facebook" data-inline="false"
+                                          style="margin-top: -8px;"></span>
+                                </button>
+                                <button>
+                                    <span class="iconify" data-icon="bx:bxl-pinterest-alt" data-inline="false"
+                                          style="margin-top: -8px;"></span>
+                                </button>
+                                <button>
+                                    <span class="iconify" data-icon="bx:bxl-linkedin" data-inline="false"
+                                          style="margin-top: -8px;"></span>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="footbar">
-            <p>Copyright © 2020 TicketHub</p>
-        </div>
-    </footer>
+    </div>
+    <div class="footbar">
+        <p>Copyright © 2020 TicketHub</p>
+    </div>
 
     @Scripts.Render("~/bundles/js/jquery")
     @Scripts.Render("~/bundles/js/bootstrap")
@@ -239,6 +317,9 @@
     @Scripts.Render("~/bundles/js/momentjs")
     @Scripts.Render("~/bundles/js/Home")
 
+
     @RenderSection("scripts", required: false)
+    @RenderSection("endCSS", required: false)
+    @RenderSection("endJS", required: false)
 </body>
 </html>

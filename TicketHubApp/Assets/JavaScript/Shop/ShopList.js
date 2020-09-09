@@ -1,9 +1,11 @@
-let showTicket = document.querySelector('.show-ticket')
-showTicket.addEventListener('click', function () {
-    let ticketArea = document.querySelector('.ticket-area');
-    ticketArea.classList.toggle('show');
-    ticketArea.classList.toggle('border');
-})
+let showTicket = document.querySelectorAll('.show-ticket')
+let ticketArea = document.querySelectorAll('.ticket-area');
+for (let i = 0; i < ticketArea.length; i++) {
+    showTicket[i].addEventListener('click', function () {
+        ticketArea[i].classList.toggle('show');
+        ticketArea[i].classList.toggle('border');
+    })
+}
 
 function initMap() {
     //這間餐廳在這裡 25.042848, 121.540344

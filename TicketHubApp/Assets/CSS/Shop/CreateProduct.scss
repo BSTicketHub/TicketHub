@@ -1,0 +1,54 @@
+﻿
+.createProduct {
+    .showimg {
+        width: 277px;
+        height: 250px;
+        object-fit: cover;
+    }
+
+    .upLoadImg {
+        height: 280px;
+    }
+
+    .description {
+        font-size: 14px;
+    }
+
+    .form-control {
+        &:focus {
+            box-shadow: none;
+            border: 2px solid #26bcc7;
+            color: #26bcc7;
+        }
+    }
+
+    button {
+        background-color: #2a94db;
+        color: #fff;
+        border: 1px solid #2a94db;
+        border-radius: 2px;
+        padding: 3px 10px;
+
+        &:hover {
+            background-color: #fff;
+            color: #2a94db;
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &:active {
+            background-color: #2a94db;
+            color: #fff;
+        }
+    }
+
+    .modal-body {
+        background-color: #eaeaea;
+    }
+
+    .modal-xl {
+        max-width: 900px;
+    }
+}
