@@ -208,6 +208,7 @@
     <Content Include="Assets\Images\img\place-marker.png" />
     <Content Include="Assets\JavaScript\Cart\Cart.js" />
     <Content Include="Assets\JavaScript\Cart\payview.js" />
+    <Content Include="Assets\JavaScript\Product\ticket-description.js" />
     <Content Include="Assets\JavaScript\Common\iconify.min.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.min.js" />
@@ -378,6 +379,7 @@
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\ShaoChen - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\moment.min.js.map" />
