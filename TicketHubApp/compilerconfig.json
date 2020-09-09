@@ -25,11 +25,6 @@
     "sourceMap": false
   },
   {
-    "outputFile": "Assets/CSS/_variables.css",
-    "inputFile": "Assets/CSS/_variables.scss",
-    "sourceMap": false
-  },
-  {
     "outputFile": "Assets/CSS/Shop/ShopLayout.css",
     "inputFile": "Assets/CSS/Shop/ShopLayout.scss",
     "sourceMap": false

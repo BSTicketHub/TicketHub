@@ -278,12 +278,6 @@
     <Content Include="Assets\CSS\TicketList.min.css">
       <DependentUpon>TicketList.css</DependentUpon>
     </Content>
-    <Content Include="Assets\CSS\_variables.css">
-      <DependentUpon>_variables.scss</DependentUpon>
-    </Content>
-    <Content Include="Assets\CSS\_variables.min.css">
-      <DependentUpon>_variables.css</DependentUpon>
-    </Content>
     <Content Include="Assets\Images\asian-food-decorative.jpg" />
     <Content Include="Assets\Images\Home\128-1200x650.jpg" />
     <Content Include="Assets\Images\Home\921-1200x650.jpg" />
