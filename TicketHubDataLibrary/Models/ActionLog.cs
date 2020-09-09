@@ -5,6 +5,7 @@ namespace TicketHubDataLibrary.Models
 {
     public class ActionLog
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         public string Action { get; set; }
         public string Message { get; set; }

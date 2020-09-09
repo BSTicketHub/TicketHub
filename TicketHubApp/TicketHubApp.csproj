@@ -47,6 +47,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.35\lib\net461\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -141,8 +144,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CustomerDetailController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PlatformDashBoardController.cs" />
+    <Compile Include="Controllers\ShopController.cs" />
+    <Compile Include="Controllers\PlatformMemberController.cs" />
+    <Compile Include="Controllers\PlatformShopController.cs" />
     <Compile Include="Controllers\ShopListController.cs" />
     <Compile Include="Controllers\PayViewController.cs" />
     <Compile Include="Controllers\ProductCartController.cs" />
@@ -150,9 +157,25 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\IResult.cs" />
+    <Compile Include="Models\GenericRepository.cs" />
+    <Compile Include="Models\OperationResult.cs" />
     <Compile Include="Models\ViewModels\CustomerDetailViewModel.cs" />
     <Compile Include="Models\ViewModels\LoginViewModel.cs" />
+    <Compile Include="Models\ViewModels\AdminViewModel.cs" />
+    <Compile Include="Models\ViewModels\PlatformMemberViewModel.cs" />
+    <Compile Include="Models\ViewModels\MemberViewModel.cs" />
+    <Compile Include="Models\ViewModels\ShopViewModel.cs" />
+    <Compile Include="Models\ViewModels\SimpleIssueViewModel.cs" />
+    <Compile Include="Models\ViewModels\PlatformShopViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AccountService.cs" />
+    <Compile Include="Services\RoleManager.cs" />
+    <Compile Include="Services\UserManager.cs" />
+    <Compile Include="Models\ServiceModels\UserToken.cs" />
+    <Compile Include="Models\ViewModels\StoreTicketListViewModel.cs" />
+    <Compile Include="Models\ViewModels\StoreViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\CSS\CustomerDetail.css">
@@ -173,6 +196,46 @@
     <Content Include="Assets\CSS\login.min.css">
       <DependentUpon>login.css</DependentUpon>
     </Content>
+    <Content Include="Assets\CSS\Platform\datatables.min.css" />
+    <Content Include="Assets\CSS\Platform\jquery.dataTables.min.css" />
+    <Content Include="Assets\CSS\Platform\Platform_Layout.css">
+      <DependentUpon>Platform_Layout.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Platform\Platform_Layout.min.css">
+      <DependentUpon>Platform_Layout.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\tempCSS\home.css" />
+    <Content Include="Assets\CSS\Common\owl.carousel.min.css" />
+    <Content Include="Assets\CSS\Common\owl.theme.default.css" />
+    <Content Include="Assets\CSS\tempCSS\temphome.css" />
+    <Content Include="Assets\Images\asian-food-decorative.jpg" />
+    <Content Include="Assets\Images\Home\128-1200x650.jpg" />
+    <Content Include="Assets\Images\Home\921-1200x650.jpg" />
+    <Content Include="Assets\Images\Home\930-1200x650.jpg" />
+    <Content Include="Assets\Images\Home\947-1200x650.jpg" />
+    <Content Include="Assets\Images\Home\about-1.png" />
+    <Content Include="Assets\Images\Home\about-2.png" />
+    <Content Include="Assets\Images\Home\about-3.png" />
+    <Content Include="Assets\Images\Home\bed.png" />
+    <Content Include="Assets\Images\Home\food.png" />
+    <Content Include="Assets\Images\Home\foodbg.jpg" />
+    <Content Include="Assets\Images\Home\ic_star4_0.svg" />
+    <Content Include="Assets\Images\Home\ic_star4_1.svg" />
+    <Content Include="Assets\Images\Home\ic_star4_2.svg" />
+    <Content Include="Assets\Images\Home\ic_star4_3.svg" />
+    <Content Include="Assets\Images\Home\ic_star4_4.svg" />
+    <Content Include="Assets\Images\Home\logo.png" />
+    <Content Include="Assets\Images\Home\person.jpg" />
+    <Content Include="Assets\Images\Home\takeout.png" />
+    <Content Include="Assets\Images\Home\ticketHub.png" />
+    <Content Include="Assets\Images\Home\travel.png" />
+    <Content Include="Assets\Images\Platform\bmw01.jpg" />
+    <Content Include="Assets\Images\Platform\logo.png" />
+    <Content Include="Assets\JavaScript\Common\iconify.min.js" />
+    <Content Include="Assets\JavaScript\Common\JsBarcode.all.js" />
+    <Content Include="Assets\JavaScript\Common\JsBarcode.all.min.js" />
+    <Content Include="Assets\JavaScript\Home\home.js" />
+    <Content Include="Assets\JavaScript\Common\owl.carousel.min.js" />
     <Content Include="Assets\CSS\ShopList.css">
       <DependentUpon>ShopList.scss</DependentUpon>
     </Content>
@@ -193,6 +256,12 @@
     </Content>
     <Content Include="Assets\Images\asian-food-decorative.jpg" />
     <Content Include="Assets\Images\camera.png" />
+    <Content Include="Assets\JavaScript\Customer\CustomerDetail.js" />
+    <Content Include="Assets\JavaScript\Platform\datatables.min.js" />
+    <Content Include="Assets\JavaScript\Platform\PlatformMemberIndex.js" />
+    <Content Include="Assets\JavaScript\Shop\ShopList.js" />
+    <Content Include="Assets\Images\ticket_test_Img.jpg" />
+    <Content Include="Assets\CSS\Shop\StoreBasic.css" />
     <Content Include="Assets\Images\img\bar.jpg" />
     <Content Include="Assets\Images\img\delete.png" />
     <Content Include="Assets\Images\img\deletecan.png" />
@@ -220,6 +289,49 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Assets\Images\img-food.jpg" />
+    <Content Include="Content\Chart.css" />
+    <Content Include="Content\Chart.min.css" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -241,6 +353,8 @@
     <Content Include="Scripts\bootstrap.js.map" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\Chart.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
@@ -256,6 +370,8 @@
     <Content Include="Scripts\jquery-3.5.1.slim.js" />
     <Content Include="Scripts\jquery-3.5.1.slim.min.js" />
     <Content Include="Scripts\jquery-3.5.1.slim.min.map" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -361,15 +477,30 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Shop\HomePage.cshtml" />
+    <Content Include="Views\Shared\_Layout_Store.cshtml" />
+    <Content Include="Views\Shop\_ViewStart.cshtml" />
+    <Content Include="Views\Shop\ProductList.cshtml" />
+    <Content Include="Views\Shop\CreateProduct.cshtml" />
+    <Content Include="Views\Shop\StoreInformation.cshtml" />
+    <Content Include="Views\Shop\OrderList.cshtml" />
+    <Content Include="Views\Shop\OrderDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Assets\Html\" />
+    <Folder Include="Assets\JavaScript\Store\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\CSS\login.scss" />
     <Content Include="Assets\CSS\_variables.scss" />
     <Content Include="Assets\CSS\CustomerDetail.scss" />
     <Content Include="Assets\CSS\ShopList.scss" />
+    <Content Include="Assets\CSS\tempCSS\fontawesome-webfont.eot" />
+    <Content Include="Assets\CSS\tempCSS\fontawesome-webfont.ttf" />
+    <Content Include="Assets\CSS\CustomerDetail.scss" />
+    <Content Include="Assets\CSS\ShopList.scss" />
+    <Content Include="Assets\CSS\Platform\Platform_Layout.scss" />
     <Content Include="Assets\CSS\Cart.scss" />
     <Content Include="Assets\CSS\payview.scss" />
     <Content Include="Assets\CSS\ticket-description.scss" />
@@ -388,6 +519,30 @@
     <Content Include="Views\CustomerDetail\_CustomerDetailLayout.cshtml" />
     <Content Include="Views\ShopList\ShopList.cshtml" />
     <Content Include="Views\ShopList\_ShopListLayout.cshtml" />
+    <Content Include="Views\Customer\CustomerPage.cshtml" />
+    <Content Include="Views\Customer\_CustomerDetailLayout.cshtml" />
+    <Content Include="Views\Shop\ShopList.cshtml" />
+    <Content Include="Views\Shop\_ShopListLayout.cshtml" />
+    <Content Include="Views\PlatformMember\Index.cshtml" />
+    <Content Include="Views\PlatformMember\_ViewStart.cshtml" />
+    <Content Include="Views\PlatformDashBoard\MemberDashBoard.cshtml" />
+    <Content Include="Views\Shared\_Layout_Platform.cshtml" />
+    <Content Include="Views\Store\TicketDetails.cshtml" />
+    <Content Include="Views\TicketList\TicketList.cshtml" />
+    <Content Include="Views\PlatformShop\_ViewStart.cshtml" />
+    <Content Include="Views\Shop\TicketDetails.cshtml" />
+    <Content Include="Views\Customer\TicketList.cshtml" />
+    <Content Include="Views\Shared\_Layout_TicketList.cshtml" />
+    <Content Include="Views\Shop\SalesReport.cshtml" />
+    <Content Include="Views\Shared\_Ticket.cshtml" />
+    <Content Include="Views\PlatformDashBoard\_ViewStart.cshtml" />
+    <Content Include="Views\PlatformMember\MemberDetail.cshtml" />
+    <Content Include="Views\PlatformMember\CreateMember.cshtml" />
+    <Content Include="Views\PlatformMember\EditMember.cshtml" />
+    <Content Include="Views\PlatformMember\DeleteMember.cshtml" />
+    <Content Include="Views\Platform\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_ShopCardPartial.cshtml" />
+    <Content Include="Views\PlatformShop\Index.cshtml" />
     <Content Include="Views\ProductCart\Cart.cshtml" />
     <Content Include="Views\PayView\payview.cshtml" />
     <Content Include="Views\ticketDescription\Ticketdescription.cshtml" />

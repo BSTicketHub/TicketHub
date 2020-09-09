@@ -1,0 +1,69 @@
+﻿:root {
+  --favorite: #d87093;
+  --line-gray: #adadad;
+  --back-paper: #fffefa;
+  --cust-color-1: #e4f4f5;
+  --cust-color-2: #c8e9ec;
+  --cust-color-3: #addee2;
+  --cust-color-4: #91d3d8;
+  --cust-color-5: #76c9cf;
+  --cust-color-6: #5abec5;
+  --cust-color-7: #3fb3bc;
+  --cust-color-8: #23a8b2;
+  --cust-color-9: #1f939c;
+  --cust-color-10: #1a7e85;
+  --cust-color-11: #16696f;
+  --cust-color-12: #125459;
+  --cust-color-13: #0d3f43;
+  --cust-color-14: #092a2c;
+  --cust-color-15: #041516;
+  --shop-color-1: #ffe6eb;
+  --shop-color-2: #ffced6;
+  --shop-color-3: #ffb5c2;
+  --shop-color-4: #ff9dad;
+  --shop-color-5: #ff8499;
+  --shop-color-6: #ff6b85;
+  --shop-color-7: #ff5370;
+  --shop-color-8: #ff3a5c;
+  --shop-color-9: #df3351;
+  --shop-color-10: #bf2b45;
+  --shop-color-11: #9f2439;
+  --shop-color-12: #801d2e;
+  --shop-color-13: #601622;
+  --shop-color-14: #400e17;
+  --shop-color-15: #20070b;
+  --platform-color-1: #fef3e2;
+  --platform-color-2: #fee6c5;
+  --platform-color-3: #fddaa8;
+  --platform-color-4: #fdce8b;
+  --platform-color-5: #fcc16d;
+  --platform-color-6: #fcb550;
+  --platform-color-7: #fba833;
+  --platform-color-8: #fb9c16;
+  --platform-color-9: #dc8913;
+  --platform-color-10: #bc7510;
+  --platform-color-11: #9d620e;
+  --platform-color-12: #7d4e0b;
+  --platform-color-13: #5e3b08;
+  --platform-color-14: #3f2705;
+  --platform-color-15: #1f1403; }
+
+body {
+  padding: 0 !important;
+  background-color: #f4f4f4 !important; }
+  body .container {
+    padding: 0 !important; }
+    body .container nav #adminPhoto {
+      border-radius: 50%; }
+    body .container .sidebar .card-body {
+      transition: 0.3s; }
+      body .container .sidebar .card-body a {
+        text-decoration: none;
+        color: black; }
+      body .container .sidebar .card-body:hover {
+        background-color: rgba(240, 240, 240, 0.5); }
+      body .container .sidebar .card-body:active {
+        border-left: 5px solid #fcc16d;
+        background-color: white; }
+        body .container .sidebar .card-body:active a {
+          color: #fcc16d; }

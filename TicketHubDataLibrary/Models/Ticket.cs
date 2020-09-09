@@ -5,6 +5,7 @@ namespace TicketHubDataLibrary.Models
 {
     public class Ticket
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         public DateTime DeliveredDate { get; set; }
         public bool Exchanged { get; set; }

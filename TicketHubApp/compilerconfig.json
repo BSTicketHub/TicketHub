@@ -16,6 +16,14 @@
     "inputFile": "Assets/CSS/ShopList.scss"
   },
   {
+    "outputFile": "Assets/CSS/Platform/Platform_Layout.css",
+    "inputFile": "Assets/CSS/Platform/Platform_Layout.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/Platform/DashBoard/Member.css",
+    "inputFile": "Assets/CSS/Platform/DashBoard/Member.scss"
+  },
+  {
     "outputFile": "Assets/CSS/Cart.css",
     "inputFile": "Assets/CSS/Cart.scss"
   },

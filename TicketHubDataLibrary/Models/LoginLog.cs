@@ -5,6 +5,7 @@ namespace TicketHubDataLibrary.Models
 {
     public class LoginLog
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         public string Message { get; set; }
         public DateTime LogedDate { get; set; }

@@ -6,6 +6,7 @@ namespace TicketHubDataLibrary.Models
 {
     public class Order
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         public DateTime OrderedDate { get; set; }
         public Guid UserId { get; set; }
