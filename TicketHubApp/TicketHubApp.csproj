@@ -306,7 +306,6 @@
     <Content Include="Assets\JavaScript\Shop\ShopInfo.js" />
     <Content Include="Assets\JavaScript\Shop\ShopList.js" />
     <Content Include="Assets\Images\ticket_test_Img.jpg" />
-    <Content Include="Assets\CSS\Shop\StoreBasic.css" />
     <Content Include="Assets\Images\img\bar.jpg" />
     <Content Include="Assets\Images\img\delete.png" />
     <Content Include="Assets\Images\img\deletecan.png" />
@@ -537,8 +536,6 @@
     <Content Include="Assets\CSS\ShopList.scss" />
     <Content Include="Assets\CSS\tempCSS\fontawesome-webfont.eot" />
     <Content Include="Assets\CSS\tempCSS\fontawesome-webfont.ttf" />
-    <Content Include="Assets\CSS\CustomerDetail.scss" />
-    <Content Include="Assets\CSS\ShopList.scss" />
     <Content Include="Assets\CSS\TicketList.scss" />
     <Content Include="Assets\CSS\Shop\ShopLayout.scss" />
     <Content Include="Assets\CSS\Shop\CreateProduct.scss" />
@@ -572,7 +569,6 @@
     <Content Include="Views\PlatformMember\_ViewStart.cshtml" />
     <Content Include="Views\PlatformDashBoard\MemberDashBoard.cshtml" />
     <Content Include="Views\Shared\_Layout_Platform.cshtml" />
-    <Content Include="Views\Store\TicketDetails.cshtml" />
     <Content Include="Views\PlatformShop\_ViewStart.cshtml" />
     <Content Include="Views\Shop\TicketDetails.cshtml" />
     <Content Include="Views\Customer\TicketList.cshtml" />
