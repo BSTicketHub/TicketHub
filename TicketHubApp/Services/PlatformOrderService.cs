@@ -12,69 +12,37 @@ namespace TicketHubApp.Services
 {
     public class PlatformOrderService
     {
-        private DbContext _context;
-        private IRepository<Order> _orderRepository;
-        private IRepository<OrderDetail> _orderDetailRepository;
-
-        private IRepository<Order> OrderRepository
+       public List<PlatformOrderViewModel> GetAllOrders()
         {
-            get
-            {
-                if (_context == null)
-                {
-                    _context = new TicketHubContext();
-                }
-                if (_orderRepository == null)
-                {
-                    _orderRepository = new GenericRepository<Order>(_context);
-                }
-                return _orderRepository;
-            }
+            var result = new List<PlatformOrderViewModel>();
+            var context = new TicketHubContext();
+            
+            var orderRepository = new GenericRepository<Order>(context);
+            var orderDetailRepository = new GenericRepository<OrderDetail>(context);
+
+            var temp = from o in orderRepository.GetAll()
+                       join od in orderDetailRepository.GetAll()
+                       on o.Id equals od.OrderId
+                       select new {
+                           Id = o.Id,
+                           OrderDate = o.OrderedDate,
+                           UserId = o.UserId,
+                           UserName = o.User.UserName,
+                           Price = od.Price,
+                       };
+
+            var group = from t in temp
+                        group t by new { t.Id, t.OrderDate, t.UserId, t.UserName } into g
+                        select new PlatformOrderViewModel
+                        {
+                            Id = g.Key.Id,
+                            UserId = g.Key.UserId,
+                            OrderDate = g.Key.OrderDate,
+                            UserName = g.Key.UserName,
+                            TotalPrice = g.Sum(x => x.Price)
+                        };
+
+            return group.ToList();
         }
-
-        private IRepository<OrderDetail> OrderDetailRepository
-        {
-            get
-            {
-                if (_context == null)
-                {
-                    _context = new TicketHubContext();
-                }
-                if (_orderDetailRepository == null)
-                {
-                    _orderDetailRepository = new GenericRepository<OrderDetail>(_context);
-                }
-                return _orderDetailRepository;
-            }
-        }
-
-        public PlatformOrderService()
-        {
-        }
-        public PlatformOrderService(DbContext context)
-        {
-            _context = context;
-        }
-
-        //public List<PlatformOrderViewModel> GetAllOrders()
-        //{   
-        //    IQueryable<Order> orderList = OrderRepository.GetAll();
-        //    IQueryable<OrderDetail> orderDetailList = OrderDetailRepository.GetAll();
-
-        //    List<PlatformOrderViewModel> orders = new List<PlatformOrderViewModel>(orderList.Count());
-
-        //    foreach (var item in orderList)
-        //    {            
-        //        PlatformOrderViewModel order = new PlatformOrderViewModel
-        //        {
-        //            Id = item.Id,
-        //            OrderDate = item.OrderedDate,
-        //            UserId = item.UserId,
-        //            TotalPrice = orderDetailList.Where(x => x.OrderId == item.Id).Sum(x => x.Price)
-        //        };
-        //        orders.Add(order);
-        //    }
-        //    return orders;
-        //}
     }
 }

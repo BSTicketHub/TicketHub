@@ -173,6 +173,7 @@
     <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\PlatformMemberService.cs" />
     <Compile Include="Services\PlatformOrderService.cs" />
+    <Compile Include="Services\PlatformShopService.cs" />
     <Compile Include="Services\RoleManager.cs" />
     <Compile Include="Services\UserManager.cs" />
     <Compile Include="Models\ServiceModels\UserToken.cs" />
@@ -203,6 +204,12 @@
     </Content>
     <Content Include="Assets\CSS\login.min.css">
       <DependentUpon>login.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Platform\Platform_Layout.css">
+      <DependentUpon>Platform_Layout.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Platform\Platform_Layout.min.css">
+      <DependentUpon>Platform_Layout.css</DependentUpon>
     </Content>
     <Content Include="Assets\CSS\Shop\CreateProduct.css">
       <DependentUpon>CreateProduct.scss</DependentUpon>

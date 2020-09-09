@@ -11,12 +11,12 @@ namespace TicketHubApp.Controllers
     public class PlatformOrderController : Controller
     {
         // GET: PlatformOrder
-        //public ActionResult Index()
-        //{
-        //    PlatformOrderService service = new PlatformOrderService();
-        //    var orders = service.GetAllOrders();
+        public ActionResult Index()
+        {
+            PlatformOrderService service = new PlatformOrderService();
+            var orders = service.GetAllOrders();
 
-        //    return View(orders);
-        //}
+            return View(orders);
+        }
     }
 }

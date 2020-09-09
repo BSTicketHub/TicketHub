@@ -12,35 +12,12 @@ namespace TicketHubApp.Services
 {
     public class PlatformMemberService
     {
-        private DbContext _context;
-        private IRepository<User> _userRepository;
-        private IRepository<User> Repository
-        {
-            get
-            {
-                if (_context == null)
-                {
-                    _context = new TicketHubContext();
-                }
-                if (_userRepository == null)
-                {
-                    _userRepository = new GenericRepository<User>(_context);
-                }
-                return _userRepository;
-            }
-        }
-
-        public PlatformMemberService()
-        {
-        }
-        public PlatformMemberService(DbContext context)
-        {
-            _context = context;
-        }
-
         public List<PlatformMemberViewModel> GetAllMembers()
         {
-            IQueryable<User> memberList = Repository.GetAll();
+            TicketHubContext context = new TicketHubContext();
+            GenericRepository<User> repository = new GenericRepository<User>(context);
+
+            IQueryable<User> memberList = repository.GetAll();
             List<PlatformMemberViewModel> members = new List<PlatformMemberViewModel>(memberList.Count());
 
             foreach (var item in memberList)
