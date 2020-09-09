@@ -7,13 +7,13 @@ namespace TicketHubDataLibrary.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class AddTicketTable : IMigrationMetadata
+    public sealed partial class IncludeIdentityTablesAndDropOtherTables : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddTicketTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(IncludeIdentityTablesAndDropOtherTables));
         
         string IMigrationMetadata.Id
         {
-            get { return "202008300520281_AddTicketTable"; }
+            get { return "202009090357204_IncludeIdentityTablesAndDropOtherTables"; }
         }
         
         string IMigrationMetadata.Source

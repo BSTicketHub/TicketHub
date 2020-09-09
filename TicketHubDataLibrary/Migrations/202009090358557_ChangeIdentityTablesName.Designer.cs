@@ -7,13 +7,13 @@ namespace TicketHubDataLibrary.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class AddShopTables : IMigrationMetadata
+    public sealed partial class ChangeIdentityTablesName : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddShopTables));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangeIdentityTablesName));
         
         string IMigrationMetadata.Id
         {
-            get { return "202008281546468_AddShopTables"; }
+            get { return "202009090358557_ChangeIdentityTablesName"; }
         }
         
         string IMigrationMetadata.Source

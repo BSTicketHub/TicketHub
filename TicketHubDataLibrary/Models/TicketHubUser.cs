@@ -3,7 +3,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace TicketHubApp.Models
+namespace TicketHubDataLibrary.Models
 {
     public class TicketHubUser : IdentityUser
     {

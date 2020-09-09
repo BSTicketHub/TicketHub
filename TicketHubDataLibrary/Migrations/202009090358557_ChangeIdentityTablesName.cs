@@ -1,4 +1,4 @@
-﻿namespace TicketHubApp.Migrations
+﻿namespace TicketHubDataLibrary.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

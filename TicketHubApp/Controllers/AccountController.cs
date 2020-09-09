@@ -3,10 +3,9 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using TicketHubApp.Interfaces;
-using TicketHubApp.Models;
+using Microsoft.Owin.Security;
 using TicketHubApp.Models.ViewModels;
-using TicketHubApp.Services;
+using TicketHubDataLibrary.Models;
 
 namespace TicketHubApp.Controllers
 {
@@ -24,7 +23,13 @@ namespace TicketHubApp.Controllers
             get => _userManager ?? HttpContext.GetOwinContext().Get<AppIdentityUserManager>();
             private set => _userManager = value;
         }
-
+        private IAuthenticationManager AuthenticationManager
+        {
+            get { return HttpContext.GetOwinContext().Authentication; }
+        }
+        public AccountController()
+        {
+        }
         public AccountController(AppIdentityUserManager userManager, AppIdentitySignInManager signInManager)
         {
             UserManager = userManager;
@@ -34,42 +39,8 @@ namespace TicketHubApp.Controllers
         [HttpGet]
         public ActionResult Login()
         {
-            if (TempData["CustErrMsg"] != null)
-            {
-                ViewBag.CustErrMsg = TempData["CustErrMsg"];
-            }
             return View();
         }
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult UserLogin(LoginViewModel viewModel)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        AccountService accountService = new AccountService();
-        //        if (viewModel.IsSignUp)
-        //        {
-        //            IResult resultCreate = accountService.CreateUser(viewModel);
-        //            if (!resultCreate.Success)
-        //            {
-        //                TempData["CustErrMsg"] = resultCreate.Message;
-        //                return RedirectToAction("Login");
-        //            }
-        //        }
-
-        //        IResult resultValidate = accountService.ValidateUser(viewModel);
-        //        if (!resultValidate.Success)
-        //        {
-        //            TempData["CustErrMsg"] = resultValidate.Message;
-        //        }
-        //        else
-        //        {
-        //            return RedirectToAction("Index", "Home");
-        //        }
-        //    }
-        //    return RedirectToAction("Login");
-        //}
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -83,23 +54,71 @@ namespace TicketHubApp.Controllers
             //註冊
             if (viewModel.IsSignUp)
             {
-                var user = new TicketHubUser
+                var user = UserManager.FindByEmail(viewModel.Email);
+                if (user != null)
                 {
-                    UserName = viewModel.Account,
-                    Email = viewModel.Account
+                    //登入
+                    return await SignIn(viewModel);
+                }
+
+                var newUser = new TicketHubUser
+                {
+                    UserName = viewModel.Email,
+                    Email = viewModel.Email
                 };
 
-                var createResult = await UserManager.CreateAsync(user, viewModel.Password);
+                var createResult = await UserManager.CreateAsync(newUser, viewModel.Password);
 
                 if (!createResult.Succeeded)
                 {
                     AddErrors(createResult);
-                    return RedirectToAction("Login");
+                    return View("Login");
                 }
             }
 
             //登入
-            var signInResult = await SignInManager.PasswordSignInAsync(viewModel.Account, viewModel.Password, viewModel.RememberMe, shouldLockout: false);
+            return await SignIn(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ShopLoginAsync(LoginViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Login");
+            }
+
+            return await SignIn(viewModel);
+        }
+
+        [HttpGet]
+        public ActionResult LoginPlatform()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> LoginPlatformAsync(LoginViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+            return await SignIn(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogOff()
+        {
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            return RedirectToAction("Index", "Home");
+        }
+
+        private async Task<ActionResult> SignIn(LoginViewModel viewModel)
+        {
+            var signInResult = await SignInManager.PasswordSignInAsync(viewModel.Email, viewModel.Password, viewModel.RememberMe, shouldLockout: false);
             switch (signInResult)
             {
                 case SignInStatus.Success:
@@ -111,45 +130,8 @@ namespace TicketHubApp.Controllers
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "登入嘗試失試。");
-                    return View(viewModel);
+                    return View("Login", viewModel);
             }
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult ShopLogin(LoginViewModel viewModel)
-        {
-            if (ModelState.IsValid)
-            {
-                AccountService accountService = new AccountService();
-
-                IResult resultValidate = accountService.ValidateShopUser(viewModel);
-                if (!resultValidate.Success)
-                {
-                    TempData["ShopErrMsg"] = resultValidate.Message;
-                }
-                else
-                {
-                    return RedirectToAction("Index", "Home");
-                }
-            }
-            return RedirectToAction("Login");
-        }
-
-        [HttpGet]
-        public ActionResult LoginPlatform()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult LoginPlatform(LoginViewModel viewModel)
-        {
-            if (ModelState.IsValid)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            return View("LoginPlatform");
         }
 
         private void AddErrors(IdentityResult result)

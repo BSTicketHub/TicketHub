@@ -1,9 +1,9 @@
-﻿namespace TicketHubApp.Migrations
+﻿namespace TicketHubDataLibrary.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialIdentityContext : DbMigration
+    public partial class IncludeIdentityTablesAndDropOtherTables : DbMigration
     {
         public override void Up()
         {

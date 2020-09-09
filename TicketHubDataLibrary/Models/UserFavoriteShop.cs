@@ -9,8 +9,8 @@ namespace TicketHubDataLibrary.Models
         [Key]
         [Column(Order = 1)]
         [ForeignKey("User")]
-        public Guid UserId { get; set; }
-        public User User { get; set; }
+        public string UserId { get; set; }
+        public TicketHubUser User { get; set; }
         [Key]
         [Column(Order = 2)]
         [ForeignKey("Shop")]

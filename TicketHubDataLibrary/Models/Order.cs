@@ -9,9 +9,9 @@ namespace TicketHubDataLibrary.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         public DateTime OrderedDate { get; set; }
-        public Guid UserId { get; set; }
+        public string UserId { get; set; }
         [ForeignKey("UserId")]
-        public User User { get; set; }
+        public TicketHubUser User { get; set; }
 
         [ForeignKey("OrderId")]
         public ICollection<OrderDetail> OrderDetails { get; set; }

@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
+using System.Collections.Generic;
 using System.Data.Entity.Migrations;
+using System.Linq;
 using TicketHubDataLibrary.Models;
 
 namespace TicketHubDataLibrary.Migrations
@@ -13,11 +16,13 @@ namespace TicketHubDataLibrary.Migrations
 
         protected override void Seed(TicketHubContext context)
         {
-            context.Role.AddOrUpdate(r => r.Id,
-                new Role { Id = Guid.Parse("8962DF55-017B-4A47-B78A-7261D81532DC"), Name = "Customer" },
-                new Role { Id = Guid.Parse("13832714-14D8-42FD-A1E8-8B7A6729C245"), Name = "ShopOwner" },
-                new Role { Id = Guid.Parse("26356D75-867A-4733-9FF8-6F1D39C3D4E6"), Name = "ShopEmployee" }
-                );
+            context.Roles.AddOrUpdate(
+                new IdentityRole { Id = "1", Name = RoleName.ADMINISTRATOR },
+                new IdentityRole { Id = "2", Name = RoleName.PLATFORM_ADMIN },
+                new IdentityRole { Id = "3", Name = RoleName.SHOP_MANAGER },
+                new IdentityRole { Id = "4", Name = RoleName.SHOP_EMPLOYEE },
+                new IdentityRole { Id = "5", Name = RoleName.CUSTOMER }
+            );
         }
     }
 }

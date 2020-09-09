@@ -4,7 +4,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
 using System;
-using TicketHubApp.Models;
+using TicketHubDataLibrary.Models;
 
 namespace TicketHubApp
 {
@@ -14,7 +14,7 @@ namespace TicketHubApp
         public void ConfigureAuth(IAppBuilder app)
         {
             // 設定資料庫內容、使用者管理員和登入管理員，以針對每個要求使用單一執行個體
-            app.CreatePerOwinContext(UserIdentityContext.Create);
+            app.CreatePerOwinContext(TicketHubContext.Create);
             app.CreatePerOwinContext<AppIdentityUserManager>(AppIdentityUserManager.Create);
             app.CreatePerOwinContext<AppIdentitySignInManager>(AppIdentitySignInManager.Create);
 

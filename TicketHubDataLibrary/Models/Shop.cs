@@ -20,9 +20,9 @@ namespace TicketHubDataLibrary.Models
         public DateTime AppliedDate { get; set; }
         public DateTime ModifiedDate { get; set; }
         public DateTime ValidatedDate { get; set; }
-        public Guid? ReviewerId { get; set; }
+        public string ReviewerId { get; set; }
         [ForeignKey("ReviewerId")]
-        public Admin Admin { get; set; }
+        public TicketHubUser User { get; set; }
         public ICollection<ShopEmployee> ShopEmployees { get; set; }
         public ICollection<ShopTag> ShopTags { get; set; }
     }

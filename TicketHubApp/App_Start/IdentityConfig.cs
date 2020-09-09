@@ -6,7 +6,7 @@ using Microsoft.Owin.Security;
 using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using TicketHubApp.Models;
+using TicketHubDataLibrary.Models;
 
 namespace TicketHubApp
 {
@@ -36,7 +36,7 @@ namespace TicketHubApp
 
         public static AppIdentityUserManager Create(IdentityFactoryOptions<AppIdentityUserManager> options, IOwinContext context)
         {
-            var manager = new AppIdentityUserManager(new UserStore<TicketHubUser>(context.Get<UserIdentityContext>()));
+            var manager = new AppIdentityUserManager(new UserStore<TicketHubUser>(context.Get<TicketHubContext>()));
 
             // 設定 usernames 驗證邏輯
             manager.UserValidator = new UserValidator<TicketHubUser>(manager)
