@@ -1,15 +1,34 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using TicketHubApp.Models.ViewModels;
+using TicketHubDataLibrary.Models;
 
 namespace TicketHubApp.Controllers
 {
     public class ShopController : Controller
     {
+        private TicketHubContext _context = new TicketHubContext();
         // GET: ShopList
         public ActionResult ShopList()
         {
-            return View();
+            return View(_context.Shop.Select(x => new ShopViewModel
+            {
+                ShopName = x.ShopName,
+                ShopIntro = x.ShopIntro,
+                City = x.City,
+                District = x.District,
+                Address = x.Address,
+                Phone = x.Phone,
+                Issues = _context.Issue.Where(y => y.ShopId == x.Id).Select(y => new SimpleIssueViewModel
+                {
+                    Id = y.Id,
+                    DiscountPrice = y.DiscountPrice,
+                    Memo = y.Memo,
+                    OriginalPrice = y.OriginalPrice,
+                    Title = y.Title
+                })
+            })) ;
         }
 
         // GET: Store
