@@ -506,8 +506,6 @@
     <Content Include="Scripts\moment-with-locales.min.js.map" />
     <Content Include="Views\Account\LoginPlatform.cshtml" />
     <Content Include="Views\Account\_LoginLayout.cshtml" />
-    <Content Include="Views\ShopList\ShopList.cshtml" />
-    <Content Include="Views\ShopList\_ShopListLayout.cshtml" />
     <Content Include="Views\Customer\CustomerPage.cshtml" />
     <Content Include="Views\Customer\_CustomerDetailLayout.cshtml" />
     <Content Include="Views\Shop\ShopList.cshtml" />
@@ -517,7 +515,6 @@
     <Content Include="Views\PlatformDashBoard\MemberDashBoard.cshtml" />
     <Content Include="Views\Shared\_Layout_Platform.cshtml" />
     <Content Include="Views\Store\TicketDetails.cshtml" />
-    <Content Include="Views\TicketList\TicketList.cshtml" />
     <Content Include="Views\PlatformShop\_ViewStart.cshtml" />
     <Content Include="Views\Shop\TicketDetails.cshtml" />
     <Content Include="Views\Customer\TicketList.cshtml" />
