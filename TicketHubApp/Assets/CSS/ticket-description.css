@@ -8,7 +8,9 @@
 
 .img-banner {
   height: 300px;
-  width: 100%; }
+  width: 100%;
+  background-image: url(../Images/img/gardan.jpg);
+  background-size: cover; }
 
 .container h1 {
   color: #25bbc5; }
@@ -29,7 +31,14 @@
   top: 10px; }
 
 .cartbtn {
-  background-color: #25bbc5 !important; }
+  background-color: #25bbc5 !important;
+  /* border: 1px solid #25bbc5; */
+  outline: none;
+  border: none;
+  text-align: center; }
+  .cartbtn:focus {
+    outline: none !important;
+    box-shadow: none; }
 
 .cardbody .btn-primary {
   border-color: #25bbc5 !important;
@@ -84,3 +93,7 @@
 .originprice {
   text-decoration: line-through;
   color: #ccc; }
+
+#mapApi {
+  height: 400px;
+  width: 100%; }

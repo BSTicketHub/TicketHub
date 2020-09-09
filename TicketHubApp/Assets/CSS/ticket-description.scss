@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -6,98 +6,117 @@
     text-decoration: none;
 }
 
-.img-banner{
+.img-banner {
     height: 300px;
     width: 100%;
+    background-image: url(../Images/img/gardan.jpg);
+    background-size: cover;
 }
 
-.container h1{
+.container h1 {
     color: #25bbc5;
 }
-.foodstyle{
+
+.foodstyle {
     padding: 30px;
 }
-.location{
+
+.location {
     padding: 15px;
 }
 
-.place_marker{
+.place_marker {
     width: 20px;
-    margin:4px;
+    margin: 4px;
 }
-.rightcar{
+
+.rightcar {
     position: sticky;
     right: 0;
     top: 10px;
 }
 
 
-.cartbtn{
-    background-color:#25bbc5 !important
+.cartbtn {
+    background-color: #25bbc5 !important;
     /* border: 1px solid #25bbc5; */
+    outline: none;
+    border: none;
+    text-align: center;
+
+    &:focus {
+        outline: none !important;
+        box-shadow: none;
+    }
 }
 
 .cardbody .btn-primary {
     border-color: #25bbc5 !important;
-    background-color: #25bbc5 !important ;
+    background-color: #25bbc5 !important;
 }
 
-.map{
+.map {
     width: 300px;
     height: 200px;
 }
 
-.dropdown .btn-secondary{
+.dropdown .btn-secondary {
     border-color: #25bbc5 !important;
-    background-color: #25bbc5 !important ;
+    background-color: #25bbc5 !important;
 }
-.path{
+
+.path {
     position: sticky;
     right: 0;
     top: 10px;
 }
 
-.path a{
+.path a {
     text-decoration: none;
     font-weight: 600;
-
 }
 
-.pathlink{
+.pathlink {
     color: #ccc;
     margin-left: 23px;
-    line-height :40px;    
+    line-height: 40px;
 }
 
-.pathinfo{
-    color:#25bbc5;
+.pathinfo {
+    color: #25bbc5;
     border-left: 3px solid #25bbc5;
     padding-left: 20px;
-    line-height :40px;  
+    line-height: 40px;
     text-decoration: none;
 }
 
-.pathlink:hover{
-        color:#25bbc5;
-        /* padding-bottom: 20px; */
-        transition: 0.2s;
-}
-.pathinfo:hover{
-        color:#25bbc5;
-        /* padding-bottom: 20px; */
-        transition: 0.5s;
+.pathlink:hover {
+    color: #25bbc5;
+    /* padding-bottom: 20px; */
+    transition: 0.2s;
 }
 
-.pastview{
+.pathinfo:hover {
+    color: #25bbc5;
+    /* padding-bottom: 20px; */
+    transition: 0.5s;
+}
+
+.pastview {
     box-sizing: border-box;
 }
 
-.icon{
+.icon {
     position: absolute;
     right: 0;
 }
 
-.originprice{
-    text-decoration:line-through;
-    color:#ccc;
+.originprice {
+    text-decoration: line-through;
+    color: #ccc;
+}
+
+#mapApi {
+    height: 400px;
+    width: 100%;
 }
