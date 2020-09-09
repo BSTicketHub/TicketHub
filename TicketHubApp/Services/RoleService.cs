@@ -7,7 +7,7 @@ using TicketHubDataLibrary.Models;
 
 namespace TicketHubApp.Services
 {
-    public class RoleManager
+    public class RoleService
     {
         public enum Roles
         {
@@ -32,10 +32,10 @@ namespace TicketHubApp.Services
                 return _userRepository;
             }
         }
-        public RoleManager()
+        public RoleService()
         {
         }
-        public RoleManager(DbContext context)
+        public RoleService(DbContext context)
         {
             _context = context;
         }

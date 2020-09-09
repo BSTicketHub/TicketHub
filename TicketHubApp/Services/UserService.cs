@@ -6,11 +6,11 @@ using TicketHubApp.Interfaces;
 using TicketHubApp.Models;
 using TicketHubApp.Models.ServiceModels;
 using TicketHubDataLibrary.Models;
-using static TicketHubApp.Services.RoleManager;
+using static TicketHubApp.Services.RoleService;
 
 namespace TicketHubApp.Services
 {
-    public class UserManager
+    public class UserService
     {
         private DbContext _context;
         private IRepository<User> _userRepository;
@@ -32,13 +32,13 @@ namespace TicketHubApp.Services
         public int SaltLength { get; private set; }
         public int HashLength { get; private set; }
         public int Iteration { get; private set; }
-        public UserManager() : this(null)
+        public UserService() : this(null)
         {
         }
-        public UserManager(DbContext context) : this(256, 256, 5, context)
+        public UserService(DbContext context) : this(256, 256, 5, context)
         {
         }
-        public UserManager(int saltLength, int hasLength, int iteration, DbContext context)
+        public UserService(int saltLength, int hasLength, int iteration, DbContext context)
         {
             SaltLength = saltLength;
             HashLength = hasLength;
@@ -92,7 +92,7 @@ namespace TicketHubApp.Services
         /// <returns></returns>
         public void AddUserWithRole(User user, Roles roleType)
         {
-            Role role = new RoleManager(_context).GetRole(roleType);
+            Role role = new RoleService(_context).GetRole(roleType);
             user = GetUser(user.Id); //get user again with same context
             user.Roles.Add(role);
             Repository.SaveChanges();
@@ -105,7 +105,7 @@ namespace TicketHubApp.Services
         /// <returns></returns>
         public bool UserHasRole(User user, Roles roleType)
         {
-            string roleName = new RoleManager(_context).GetRoleName(roleType);
+            string roleName = new RoleService(_context).GetRoleName(roleType);
             user = GetUser(user.Id); //get user again with same context
             return user.Roles.Any(r => r.Name == roleName);
         }

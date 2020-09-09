@@ -14,7 +14,7 @@ namespace TicketHubApp.Services
             IResult result = new OperationResult();
             try
             {
-                UserManager userManager = new UserManager();
+                UserService userManager = new UserService();
                 bool hasUser = userManager.HasUser(viewModel.Account);
                 if (!hasUser)
                 {
@@ -29,7 +29,7 @@ namespace TicketHubApp.Services
                         PasswordWorkFactor = token.PasswordWorkFactor
                     };
                     User createdUser = userManager.AddUser(user);
-                    userManager.AddUserWithRole(createdUser, RoleManager.Roles.Customer);
+                    userManager.AddUserWithRole(createdUser, RoleService.Roles.Customer);
                 }
                 result.Success = true;
             }
@@ -51,7 +51,7 @@ namespace TicketHubApp.Services
             IResult result = new OperationResult();
             try
             {
-                UserManager userManager = new UserManager();
+                UserService userManager = new UserService();
                 bool hasUser = userManager.HasUser(viewModel.Account);
 
                 if (hasUser)
@@ -83,14 +83,14 @@ namespace TicketHubApp.Services
             IResult result = new OperationResult();
             try
             {
-                UserManager userManager = new UserManager();
+                UserService userManager = new UserService();
                 bool hasUser = userManager.HasUser(viewModel.Account);
 
                 if (hasUser)
                 {
                     User user = userManager.GetUser(viewModel.Account);
                     bool isValid = userManager.IsValidUser(user, viewModel.Password);
-                    bool hasRole = userManager.UserHasRole(user, RoleManager.Roles.ShopEmployee);
+                    bool hasRole = userManager.UserHasRole(user, RoleService.Roles.ShopEmployee);
 
                     result.Success = isValid && hasRole;
                     result.Message = isValid && hasRole ? "User Valid" : "User InValid";
