@@ -8,47 +8,18 @@ using System.Web.Mvc;
 using TicketHubApp.Interfaces;
 using TicketHubApp.Models;
 using TicketHubApp.Models.ViewModels;
+using TicketHubApp.Services;
 using TicketHubDataLibrary.Models;
 
 namespace TicketHubApp.Controllers
 {
     public class PlatformMemberController : Controller
-    {
-        private DbContext _context;
-        private IRepository<User> _userRepository;
-        private IRepository<User> Repository
-        {
-            get
-            {
-                if (_context == null)
-                {
-                    _context = new TicketHubContext();
-                }
-                if (_userRepository == null)
-                {
-                    _userRepository = new GenericRepository<User>(_context);
-                }
-                return _userRepository;
-            }
-        }
-
+    { 
         // GET: Users
         public ActionResult Index()
         {
-            IQueryable<User> memberList = Repository.GetAll();
-            List<PlatformMemberViewModel> members = new List<PlatformMemberViewModel>(memberList.Count());           
-            foreach(var item in memberList)
-            {
-                var member = new PlatformMemberViewModel
-                {
-                    Id = item.Id,
-                    UserName = item.UserName,
-                    Mobile = item.Mobile,
-                    Email = item.Email,
-                };
-                members.Add(member);
-            }
-
+            PlatformMemberService service = new PlatformMemberService();
+            var members = service.GetAllMembers();
             return View(members);
         }
 
@@ -61,7 +32,6 @@ namespace TicketHubApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateMember([Bind(Include ="Id, UserName, Mobile, Email")] PlatformMemberViewModel memberVM)
         {   
-
             return View();
         }
 
