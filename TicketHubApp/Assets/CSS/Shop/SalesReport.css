@@ -1,0 +1,27 @@
+﻿.SalesReport p {
+  margin: 0; }
+
+.searchBtn {
+  background-color: #2a94db;
+  color: #fff;
+  border: 1px solid #2a94db;
+  padding: 3px 10px; }
+
+.searchBtn:hover {
+  background-color: #fff;
+  color: #2a94db; }
+
+.searchBtn:focus {
+  outline: none; }
+
+.searchBtn:active {
+  background-color: #2a94db;
+  color: #fff; }
+
+.StoreRepoTitle {
+  font-size: 14px;
+  color: #444444; }
+
+.StoreRepoNote {
+  font-size: 12px;
+  color: #a1a7ab; }

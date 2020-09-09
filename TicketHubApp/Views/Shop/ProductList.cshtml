@@ -1,5 +1,5 @@
 ﻿
-<div class="container">
+<div class="container productList">
     <div class="row">
         <div class="col-12 bg-white shadow p-3">
             <div>
@@ -17,9 +17,9 @@
                 </div>
                 <button class="btn btn-sm blueBtn py-1 px-2">刪除商品</button>
             </div>
-            <div style="overflow:auto; height: 300px;">
+            <div class="tableBlock">
                 <table class="table table-hover">
-                    <thead class="position-sticky" style="height:0px;">
+                    <thead class="position-sticky">
                         <tr>
                             <th>
                                 <input class="align-middle" type="checkbox" value="" id="defaultCheck1">
@@ -36,7 +36,7 @@
                         <tr onclick="ticketClick()">
                             <td class="align-middle"><input type="checkbox" value="" id="defaultCheck1"></td>
                             <td class="p-0 align-middle">
-                                <img src="~/Assets/Images/ticket_test_Img.jpg" style="height: 40px;" class="align-middle d-inline-block"/>
+                                <img src="~/Assets/Images/ticket_test_Img.jpg" class="align-middle d-inline-block"/>
                             </td>
                             <td>3</td>
                             <td>4</td>
@@ -47,7 +47,7 @@
                         <tr>
                             <td>1</td>
                             <td class="p-0 align-middle">
-                                <img src="~/Assets/Images/ticket_test_Img.jpg" style="height: 40px;" class="align-middle d-inline-block" />
+                                <img src="~/Assets/Images/ticket_test_Img.jpg" class="align-middle d-inline-block" />
                             </td>
                             <td>3</td>
                             <td>4</td>
@@ -128,9 +128,9 @@
                     <a class="dropdown-item" href="#">依商品編號</a>
                 </div>
             </div>
-            <div style="overflow:auto; height: 300px;">
+            <div class="tableBlock">
                 <table class="table table-hover">
-                    <thead class="position-sticky" style="height:0px;">
+                    <thead class="position-sticky">
                         <tr>
                             <th></th>
                             <th>商品圖片</th>
@@ -188,60 +188,14 @@
 
 
 @section topCSS{
-    <style>
-        .table th{
-            padding: 10px;
-        }
-
-        .table td {
-            background-color: #eaeaea;
-            color: #444;
-            padding: 10px;
-            border-color: #fff;
-            border-width: 2px;  
-        }
-
-        .table tbody tr:hover td {
-            background-color: #fff;
-            color: #26bcc7;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .btnList, .table, .dropdown-menu {
-            font-size: 12px;
-        }
-
-        .blueBtn {
-            background-color: #2a94db;
-            color: #fff;
-            border: 1px solid #2a94db;
-            border-radius: 2px;
-            padding: 3px 10px;
-        }
-
-            .blueBtn:hover {
-                background-color: #fff;
-                color: #2a94db;
-            }
-
-            .blueBtn:focus {
-                outline: none;
-                box-shadow: none;
-            }
-
-            .blueBtn:active {
-                background-color: #2a94db;
-                color: #fff;
-            }
-    </style>
+    <link href="~/Assets/CSS/Shop/productList.min.css" rel="stylesheet" />
 }
 
 @section endJS{
     <script>
 
         function ticketClick() {
-            window.location.assign("CreateProduct2");
+            window.location.assign("CreateProduct");
         }
     </script>    
 }

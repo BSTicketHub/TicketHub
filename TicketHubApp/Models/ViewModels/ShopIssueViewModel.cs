@@ -6,13 +6,14 @@ using System.Web;
 
 namespace TicketHubApp.Models.ViewModels
 {
-    public class StoreViewModel
+    public class ShopIssueViewModel
     {
         public int Id { get; set; }
         public int shopId { get; set; }
         [Required]
         [StringLength(128, MinimumLength = 3, ErrorMessage ="最少需要3個字元!")]
         public string Title { get; set; }
+        public string Category { get; set; }
         public string Memo { get; set; }
         [Required(ErrorMessage ="請輸入原價")]
         public decimal OriginalPrice { get; set; }

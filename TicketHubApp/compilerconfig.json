@@ -22,5 +22,33 @@
   {
     "outputFile": "Assets/CSS/_variables.css",
     "inputFile": "Assets/CSS/_variables.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/Shop/ShopLayout.css",
+    "inputFile": "Assets/CSS/Shop/ShopLayout.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/Shop/CreateProduct.css",
+    "inputFile": "Assets/CSS/Shop/CreateProduct.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/Common/Ticket.css",
+    "inputFile": "Assets/CSS/Common/Ticket.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/Shop/productList.css",
+    "inputFile": "Assets/CSS/Shop/productList.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/Shop/HomePage.css",
+    "inputFile": "Assets/CSS/Shop/HomePage.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/Shop/ShopInfo.css",
+    "inputFile": "Assets/CSS/Shop/ShopInfo.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/Shop/SalesReport.css",
+    "inputFile": "Assets/CSS/Shop/SalesReport.scss"
   }
 ]

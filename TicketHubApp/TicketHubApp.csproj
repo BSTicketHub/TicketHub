@@ -168,9 +168,15 @@
     <Compile Include="Services\UserManager.cs" />
     <Compile Include="Models\ServiceModels\UserToken.cs" />
     <Compile Include="Models\ViewModels\StoreTicketListViewModel.cs" />
-    <Compile Include="Models\ViewModels\StoreViewModel.cs" />
+    <Compile Include="Models\ViewModels\ShopIssueViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\CSS\Common\Ticket.css">
+      <DependentUpon>Ticket.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Common\Ticket.min.css">
+      <DependentUpon>Ticket.css</DependentUpon>
+    </Content>
     <Content Include="Assets\CSS\CustomerDetail.css">
       <DependentUpon>CustomerDetail.scss</DependentUpon>
     </Content>
@@ -182,6 +188,39 @@
     </Content>
     <Content Include="Assets\CSS\login.min.css">
       <DependentUpon>login.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Shop\CreateProduct.css">
+      <DependentUpon>CreateProduct.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Shop\CreateProduct.min.css">
+      <DependentUpon>CreateProduct.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Shop\HomePage.css">
+      <DependentUpon>HomePage.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Shop\HomePage.min.css">
+      <DependentUpon>HomePage.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Shop\productList.css">
+      <DependentUpon>productList.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Shop\productList.min.css">
+      <DependentUpon>productList.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Shop\SalesReport.css">
+      <DependentUpon>SalesReport.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Shop\SalesReport.min.css">
+      <DependentUpon>SalesReport.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Shop\ShopInfo.css">
+      <DependentUpon>ShopInfo.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Shop\ShopInfo.min.css">
+      <DependentUpon>ShopInfo.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Shop\ShopLayout.min.css">
+      <DependentUpon>ShopLayout.css</DependentUpon>
     </Content>
     <Content Include="Assets\CSS\tempCSS\home.css" />
     <Content Include="Assets\CSS\Common\owl.carousel.min.css" />
@@ -214,6 +253,8 @@
     <Content Include="Assets\Images\Home\takeout.png" />
     <Content Include="Assets\Images\Home\ticketHub.png" />
     <Content Include="Assets\Images\Home\travel.png" />
+    <Content Include="Assets\Images\Shop\logo.png" />
+    <Content Include="Assets\Images\shop_logo.jpg" />
     <Content Include="Assets\JavaScript\Common\iconify.min.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.min.js" />
@@ -232,9 +273,12 @@
     <Content Include="Assets\JavaScript\CustomerDetail\CustomerDetail.js" />
     <Content Include="Assets\JavaScript\ShopList\ShopList.js" />
     <Content Include="Assets\JavaScript\Customer\CustomerDetail.js" />
+    <Content Include="Assets\JavaScript\Shop\createProduct.js" />
+    <Content Include="Assets\JavaScript\Shop\HomePage.js" />
+    <Content Include="Assets\JavaScript\Shop\ShopInfo.js" />
     <Content Include="Assets\JavaScript\Shop\ShopList.js" />
     <Content Include="Assets\Images\ticket_test_Img.jpg" />
-    <Content Include="Assets\CSS\Shop\StoreBasic.css" />
+    <Content Include="Assets\CSS\Shop\ShopLayout.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -451,6 +495,14 @@
     <Content Include="Assets\CSS\CustomerDetail.scss" />
     <Content Include="Assets\CSS\ShopList.scss" />
     <Content Include="Assets\CSS\TicketList.scss" />
+    <Content Include="Assets\CSS\Shop\ShopLayout.scss" />
+    <Content Include="Assets\CSS\Shop\CreateProduct.scss" />
+    <Content Include="Assets\CSS\Common\Ticket.scss" />
+    <Content Include="Assets\CSS\Shop\productList.scss" />
+    <Content Include="Assets\CSS\Shop\HomePage.scss" />
+    <Content Include="Assets\CSS\Shop\ShopInfo.scss" />
+    <Content Include="Assets\CSS\Shop\SalesReport.scss" />
+    <Content Include="Assets\CSS\Shop\TicketDeatail.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
