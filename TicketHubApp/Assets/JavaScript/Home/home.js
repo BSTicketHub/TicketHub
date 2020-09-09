@@ -129,3 +129,19 @@ function untilTsCaculateDD() {
     $('#ddCountdown__panel').html(html);
     setTimeout(untilTsCaculateDD, 1000);
 }
+
+//購物車
+let showCart = document.getElementsByClassName("showCart")[0];
+showCart.style.display = "none";
+let open_display = document.getElementsByClassName("open")[0];
+
+
+function shopCart() {
+    showCart.style.display = "block";
+}
+
+function shopCartMove() {
+    showCart.style.display = "none";
+    open_display.classList.toggle("open");
+}
+
