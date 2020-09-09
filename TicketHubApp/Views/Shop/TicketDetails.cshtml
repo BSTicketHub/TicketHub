@@ -1,82 +1,66 @@
-﻿@model TicketHubApp.ViewModels.StoreTicketListViewModel
+﻿
+<div class="container ticketDetail">
+    <div class="row">
+        <div class="col-12 bg-white shadow p-3">
+            @Html.Partial("_Ticket")
+        </div>
 
-@{
-    ViewBag.Title = "TicketDetails";
+        <div class="col-12 bg-white shadow my-5 p-3">
+            <table id="datatable" class="display">
+                <thead>
+                    <tr>
+                        <th>訂單編號</th>
+                        <th>會員姓名</th>
+                        <th>數量</th>
+                        <th>以使用數量</th>
+                        <th>剩餘數量</th>
+                        <th>會員手機</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>12321321</td>
+                        <td>Job</td>
+                        <td>5</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>0912345678</td>
+                    </tr>
+                    <tr>
+                        <td>12198721</td>
+                        <td>Marry</td>
+                        <td>2</td>
+                        <td>0</td>
+                        <td>2</td>
+                        <td>0922222222</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section topCSS{
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+
+
+    @*for datatable css*@
+    <style>
+        #datatable_filter input{
+            border-radius: 5px;
+        }
+    </style>
 }
 
-<h2>TicketDetails</h2>
+@section endJS{
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 
-<div>
-    <h4>StoreTicketListViewModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.DeliveredDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DeliveredDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Exchanged)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Exchanged)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ExchangedDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ExchangedDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Voided)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Voided)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.VoidedDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.VoidedDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IssueId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IssueId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UserId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UserId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.OrderId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.OrderId)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
-    @Html.ActionLink("Back to List", "Index")
-</p>
+    <script>
+        $(document).ready(function () {
+            $('#datatable').DataTable({
+                //paging: false,
+                scrollY: 250
+            });
+        });
+    </script>
+} 

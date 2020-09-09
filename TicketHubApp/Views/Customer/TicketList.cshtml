@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<TicketHubApp.Models.ViewModels.StoreTicketListViewModel>
 
 @{
-    Layout = "~/Views/Shared/_Layout_TicketList.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container ticketList-color">
+<div class="container ticketList">
     <div class="row">
         @*side bar*@
         <div class="col-md-3 p-0">
             <div class="bg-white mr-4 my-3 p-3 rounded">
-                <div class="ticketList-blockTitle d-flex align-items-center justify-content-between mb-2" data-toggle="collapse" aria-controls="countryCollapse" data-target="#countryCollapse">
+                <div class="blockTitle d-flex align-items-center justify-content-between mb-2" data-toggle="collapse" aria-controls="countryCollapse" data-target="#countryCollapse">
                     <p class="m-0">地區</p>
                     <span class="iconify" data-icon="ic:outline-keyboard-arrow-down" data-inline="false"></span>
                 </div>
@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="bg-white mr-4 my-3 p-3 rounded">
-                <div class="ticketList-blockTitle d-flex align-items-center justify-content-between" data-toggle="collapse" aria-controls="categoryCollapse" data-target="#categoryCollapse">
+                <div class="blockTitle d-flex align-items-center justify-content-between" data-toggle="collapse" aria-controls="categoryCollapse" data-target="#categoryCollapse">
                     <p class="m-0">餐廳類別</p>
                     <span class="iconify" data-icon="ic:outline-keyboard-arrow-down" data-inline="false"></span>
                 </div>
@@ -30,7 +30,7 @@
             </div>
             <div class="bg-white mr-4 my-3 p-3 rounded">
                 <div>
-                    <p class="ticketList-blockTitle PointerNone">價錢(TWD)</p>
+                    <p class="blockTitle blockTitleCancel">價錢(TWD)</p>
                     <div>
                         <input type="text" id="amount" class="my-2" readonly style="border:0; color:#f6931f; font-weight:bold;">
                         <div id="slider-range" class="slider"></div>
@@ -40,7 +40,7 @@
         </div>
         <div class="col-md-9 p-0 ml-auto">
             <div class="bg-white mt-3 p-3 d-flex flex-wrap align-items-center rounded-top">
-                <span class="ticketListCount mx-2" id="ticketListCount"></span>
+                <span class="ticketListCount mx-2 font-weight-bold" id="ticketListCount"></span>
                 <span> 張票券</span>
                 <div id="moneySelected" class="mx-2"></div>
                 <div id="countrySelected" class="mx-2"></div>
@@ -54,271 +54,30 @@
                 <span> | </span>
                 <a>價格 : 低到高</a>
             </div>
-
-            @Html.Partial("_Ticket");
-            @Html.Partial("_Ticket");
-            @Html.Partial("_Ticket");
-            @Html.Partial("_Ticket");
-            @Html.Partial("_Ticket");
-
+            @Html.Partial("_Ticket")
+            @Html.Partial("_Ticket")
+            @Html.Partial("_Ticket")
+            @Html.Partial("_Ticket")
+            @Html.Partial("_Ticket")
         </div>
 
     </div>
 </div>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.DeliveredDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Exchanged)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ExchangedDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Voided)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VoidedDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IssueId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OrderId)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeliveredDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Exchanged)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ExchangedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Voided)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VoidedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IssueId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderId)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
-        </tr>
-    }
-
-</table>
-
-
 @section topCSS{
-    <style>
-        body {
-            background-color: #f5f5f5;
-        }
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
 
-        .ticketList-greenColor {
-            color: #26bec9;
-        }
+    <link href="~/Assets/CSS/TicketList.min.css" rel="stylesheet" />
+    <link href="~/Assets/CSS/Common/Ticket.min.css" rel="stylesheet" />
 
-        .ticketList-color {
-            color: #333333;
-        }
-
-        .ticketList-blockTitle {
-            font-weight: bold;
-        }
-
-            /*aside bar*/
-            .ticketList-blockTitle:hover {
-                cursor: pointer;
-            }
-
-        .PointerNone:hover {
-            cursor: default;
-        }
-
-        .ticketList-button {
-            border-width: 1px;
-            border-style: solid;
-            font-size: 14px;
-            padding: 2px 12px;
-        }
-
-            .ticketList-button:focus {
-                outline: none;
-            }
-
-            .ticketList-button:hover {
-                cursor: pointer;
-            }
-
-        .ticketList-button-green {
-            border-color: #26bec9;
-            color: #26bec9;
-            background-color: #fff;
-        }
-
-            .ticketList-button-green:hover {
-                background-color: #26bec9;
-                color: #fff;
-            }
-
-            .ticketList-button-green:active {
-                color: #26bec9;
-                background-color: #fff;
-            }
-
-        .countryCheckInput:checked + label {
-            background-color: #26bec9;
-            color: #fff;
-        }
-
-
-        .slider .ui-slider-handle {
-            background: #fff;
-            border-radius: 50%;
-            top: -7px;
-        }
-
-            .slider .ui-slider-handle:hover {
-                cursor: pointer;
-            }
-
-        .slider .ui-widget-header {
-            background: linear-gradient(45deg,#64b3f4,#26bec9 50%);
-        }
-
-        .ui-widget.ui-widget-content {
-            background-color: #eee;
-            border: none;
-        }
-
-        .ui-slider-horizontal {
-            height: 6px;
-        }
-
-        .categoryLi {
-            font-size: 14px;
-            color: #333333;
-        }
-
-            .categoryLi input {
-                color: #26bec9;
-                background-color: #26bec9;
-                border-color: #26bec9;
-            }
-
-        /*ticketList Header*/
-        .ticketListCount {
-            color: #26bec9;
-            font-size: 18px;
-        }
-
-        .ticketList-Sort {
-            color: #666666;
-        }
-
-            .ticketList-Sort a {
-                font-weight: 700;
-                font-size: 14px;
-            }
-
-            .ticketList-Sort > a:hover {
-                color: #26bec9 !important;
-                cursor: pointer;
-            }
-
-        .ticketList-SelectBtn {
-            border: 1px solid #666666;
-            color: #666666;
-            font-size: 12px;
-            font-weight: 700;
-            padding: 1px 10px;
-        }
-
-        /*ticket*/
-        .wishHeart {
-            width: 24px;
-            height: 24px;
-            color: #999999;
-            position: absolute;
-            right: 10px;
-            top: 10px;
-        }
-
-            .wishHeart:hover {
-                color: #ccc;
-            }
-
-        .ticketListTicket h3 {
-            font-weight: 700;
-        }
-
-        .ticketImg {
-            background-image: url(/Assets/Images/ticket_test_Img.jpg);
-            width: 270px;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-
-        .description {
-            font-size: 14px;
-            color: #666666;
-            height: 2.5rem;
-            overflow: hidden;
-        }
-
-        .star {
-            color: #aaa;
-        }
-
-        .star-checked {
-            color: #26bec9;
-        }
-
-        .ticketListOldPrice {
-            font-size: 12px;
-            color: #999999;
-            text-decoration: line-through;
-        }
-
-        .ticketListSalesPrice {
-            font-size: 14px;
-            color: #999999;
-            font-weight: 700;
-        }
-
-            .ticketListSalesPrice span {
-                font-size: 20px;
-                color: #26bec9;
-            }
-    </style>
+    <style>body{ background-color: #f4f4f4; }</style>
+   
 }
 
 @section endJS{
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <script src="~/Assets/JavaScript/Common/iconify.min.js"></script>
+
     <script>
         // ticket list header -> tickets counting
         let ticketCounting = @Model.Count();
@@ -357,14 +116,14 @@
             "臺中", "彰化", "南投", "雲林", "嘉義", "臺南", "高雄", "屏東",
             "宜蘭", "花蓮", "臺東", "澎湖", "金門", "連江"];
 
-        var coubtryListClass = ["ticketList-button", "ticketList-button-green", "my-1", "mr-1", "rounded-pill"];
+        var countryListClass = ["ticketList-button", "ticketList-button-green", "my-1", "mr-1", "rounded-pill"];
 
         let countryNode = document.getElementById("countryCollapse");
         for (let i = 0; i < countryList.length; i++) {
             let input = document.createElement("input");
+            input.classList.add("ticketListBtnCheck");
             input.setAttribute("type", "checkbox");
             input.setAttribute("id", `countryCheck${i}`);
-            input.setAttribute("class", "countryCheckInput");
             input.setAttribute("value", countryList[i]);
             input.setAttribute("style", "display: none;");
 
@@ -372,7 +131,7 @@
 
             let label = document.createElement("label");
             label.setAttribute("for", `countryCheck${i}`);
-            coubtryListClass.forEach((item) => { label.classList.add(item); });
+            countryListClass.forEach((item) => { label.classList.add(item); });
             label.innerText = countryList[i];
 
             countryNode.appendChild(input);
