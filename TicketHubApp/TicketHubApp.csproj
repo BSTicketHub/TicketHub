@@ -164,7 +164,6 @@
     <Compile Include="Models\ViewModels\LoginViewModel.cs" />
     <Compile Include="Models\ViewModels\AdminViewModel.cs" />
     <Compile Include="Models\ViewModels\PlatformMemberViewModel.cs" />
-    <Compile Include="Models\ViewModels\MemberViewModel.cs" />
     <Compile Include="Models\ViewModels\ShopViewModel.cs" />
     <Compile Include="Models\ViewModels\SimpleIssueViewModel.cs" />
     <Compile Include="Models\ViewModels\PlatformShopViewModel.cs" />
@@ -507,8 +506,6 @@
     <Content Include="Scripts\moment-with-locales.min.js.map" />
     <Content Include="Views\Account\LoginPlatform.cshtml" />
     <Content Include="Views\Account\_LoginLayout.cshtml" />
-    <Content Include="Views\CustomerDetail\CustomerPage.cshtml" />
-    <Content Include="Views\CustomerDetail\_CustomerDetailLayout.cshtml" />
     <Content Include="Views\ShopList\ShopList.cshtml" />
     <Content Include="Views\ShopList\_ShopListLayout.cshtml" />
     <Content Include="Views\Customer\CustomerPage.cshtml" />
