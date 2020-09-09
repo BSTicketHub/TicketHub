@@ -74,11 +74,13 @@ namespace TicketHubApp.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult EditMember([Bind(Include = "Id, UserName, Mobile, Email")] PlatformMemberViewModel memberVM)
         {
             return View();
         }
+
         public ActionResult DeleteMember(int? id)
         {
             return View();
