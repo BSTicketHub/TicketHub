@@ -1,4 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Security;
 using TicketHubApp.Interfaces;
 using TicketHubApp.Models.ViewModels;
 using TicketHubApp.Services;
@@ -42,6 +45,9 @@ namespace TicketHubApp.Controllers
                 }
                 else
                 {
+                    var cookie = accountService.GenCookie(viewModel.Account);
+                    Response.Cookies.Add(cookie);
+
                     return RedirectToAction("Index", "Home");
                 }
             }

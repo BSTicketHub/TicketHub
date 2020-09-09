@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Linq;
+using System.Web;
+using System.Web.Security;
 using TicketHubApp.Interfaces;
 using TicketHubApp.Models;
 using TicketHubApp.Models.ServiceModels;
@@ -39,6 +42,28 @@ namespace TicketHubApp.Services
                 result.Message = ex.Message;
             }
             return result;
+        }
+
+        public HttpCookie GenCookie(string account)
+        {
+            UserManager userManager = new UserManager();
+
+            User user = userManager.GetUser(account);
+            var roles = user.Roles.Select(x=>x.Name);
+
+            var ticket = new FormsAuthenticationTicket(
+                        version: 1,
+                        name: account, //可以放使用者Id
+                        issueDate: DateTime.UtcNow,//現在UTC時間
+                        expiration: DateTime.UtcNow.AddMinutes(30),//Cookie有效時間=現在時間往後+30分鐘
+                        isPersistent: true,// 是否要記住我 true or false
+                        userData: string.Join(",", roles), //可以放使用者角色名稱
+                        cookiePath: FormsAuthentication.FormsCookiePath
+                    );
+
+            var encryptedTicket = FormsAuthentication.Encrypt(ticket); //把驗證的表單加密
+            var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+            return cookie;
         }
 
         /// <summary>
