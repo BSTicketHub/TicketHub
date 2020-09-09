@@ -295,8 +295,6 @@
     <Content Include="Assets\JavaScript\Common\iconify.min.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.min.js" />
-    <Content Include="Assets\JavaScript\CustomerDetail\CustomerDetail.js" />
-    <Content Include="Assets\JavaScript\ShopList\ShopList.js" />
     <Content Include="Assets\JavaScript\Customer\CustomerDetail.js" />
     <Content Include="Assets\JavaScript\Platform\datatables.min.js" />
     <Content Include="Assets\JavaScript\Platform\PlatformMemberIndex.js" />
@@ -527,7 +525,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Html\" />
-    <Folder Include="Assets\JavaScript\Store\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\CSS\login.scss" />
