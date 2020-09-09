@@ -150,7 +150,6 @@
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Controllers\PlatformMemberController.cs" />
     <Compile Include="Controllers\PlatformShopController.cs" />
-    <Compile Include="Controllers\ShopListController.cs" />
     <Compile Include="Controllers\PayViewController.cs" />
     <Compile Include="Controllers\ProductCartController.cs" />
     <Compile Include="Controllers\ticketDescriptionController.cs" />
@@ -254,7 +253,6 @@
     <Content Include="Assets\CSS\ticket-description.min.css">
       <DependentUpon>ticket-description.css</DependentUpon>
     </Content>
-    <Content Include="Assets\Images\asian-food-decorative.jpg" />
     <Content Include="Assets\Images\camera.png" />
     <Content Include="Assets\JavaScript\Customer\CustomerDetail.js" />
     <Content Include="Assets\JavaScript\Platform\datatables.min.js" />
@@ -277,11 +275,6 @@
     <Content Include="Assets\Images\img\place-marker.png" />
     <Content Include="Assets\JavaScript\Cart\Cart.js" />
     <Content Include="Assets\JavaScript\Cart\payview.js" />
-    <Content Include="Assets\JavaScript\Common\iconify.min.js" />
-    <Content Include="Assets\JavaScript\Common\JsBarcode.all.js" />
-    <Content Include="Assets\JavaScript\Common\JsBarcode.all.min.js" />
-    <Content Include="Assets\JavaScript\CustomerDetail\CustomerDetail.js" />
-    <Content Include="Assets\JavaScript\ShopList\ShopList.js" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -334,7 +327,6 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-reboot.min.css.map" />
@@ -498,8 +490,6 @@
     <Content Include="Assets\CSS\ShopList.scss" />
     <Content Include="Assets\CSS\tempCSS\fontawesome-webfont.eot" />
     <Content Include="Assets\CSS\tempCSS\fontawesome-webfont.ttf" />
-    <Content Include="Assets\CSS\CustomerDetail.scss" />
-    <Content Include="Assets\CSS\ShopList.scss" />
     <Content Include="Assets\CSS\Platform\Platform_Layout.scss" />
     <Content Include="Assets\CSS\Cart.scss" />
     <Content Include="Assets\CSS\payview.scss" />
