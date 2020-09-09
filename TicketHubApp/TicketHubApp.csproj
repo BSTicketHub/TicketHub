@@ -161,7 +161,6 @@
     <Compile Include="Models\ViewModels\LoginViewModel.cs" />
     <Compile Include="Models\ViewModels\AdminViewModel.cs" />
     <Compile Include="Models\ViewModels\PlatformMemberViewModel.cs" />
-    <Compile Include="Models\ViewModels\MemberViewModel.cs" />
     <Compile Include="Models\ViewModels\ShopViewModel.cs" />
     <Compile Include="Models\ViewModels\SimpleIssueViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
