@@ -60,6 +60,23 @@ namespace TicketHubApp
                 "~/Scripts/moment.js",
                 "~/Assets/JavaScript/Common/JsBarcode.all.min.js"));
 
+            //Platform bundles
+            bundles.Add(new StyleBundle("~/bundles/css/Platform").Include(
+                    "~/Content/bootstrap.css",
+                    "~/Assets/CSS/Platform/Platform_Layout.min.css",
+                    "~/Assets/CSS/Platform/DashBoard/Member.min.css",
+                    "~/Assets/CSS/Platform/datatables.min.css",
+                    "~/Assets/CSS/Platform/jquery.dataTables.css"
+                    ));
+            bundles.Add(new ScriptBundle("~/bundles/js/Platform").Include(
+                      "~/Scripts/Chart.js",
+                      "~/Scripts/modernizr-*",
+                      "~/Scripts/jquery-{version}.js",
+                      "~/Scripts/bootstrap.js",
+                      "~/Assets/JavaScript/Common/iconify.min.js",
+                      "~/Assets/JavaScript/Platform/datatables.min.js"
+                ));
+
             //Home page
             bundles.Add(new StyleBundle("~/bundles/css/Home").Include(
                 "~/Assets/CSS/Common/owl.carousel.min.css",
@@ -90,6 +107,27 @@ namespace TicketHubApp
                 "~/Assets/JavaScript/Common/iconify.min.js",
                 "~/Scripts/moment.js",
                 "~/Assets/JavaScript/Shop/ShopList.js"
+                ));
+
+            //Cart page bundles
+            bundles.Add(new StyleBundle("~/bundles/css/Cart")
+                .Include("~/Assets/CSS/Cart.min.css", new CssRewriteUrlTransform()));
+            bundles.Add(new ScriptBundle("~/bundles/js/Cart").Include(
+                "~/Assets/JavaScript/Cart/Cart.js"
+                ));
+
+            //payview page bundles
+            bundles.Add(new StyleBundle("~/bundles/css/payview")
+                .Include("~/Assets/CSS/payview.min.css", new CssRewriteUrlTransform()));
+            bundles.Add(new ScriptBundle("~/bundles/js/payview").Include(
+                "~/Assets/JavaScript/Cart/payview.js"
+                ));
+
+            //ticket-description bundles
+            bundles.Add(new StyleBundle("~/bundles/css/ticket-description")
+                .Include("~/Assets/CSS/ticket-description.min.css", new CssRewriteUrlTransform()));
+            bundles.Add(new ScriptBundle("~/bundles/js/ticket-description").Include(
+                "~/Assets/JavaScript/Product/ticket-description.js"
                 ));
             bundles.Add(new ScriptBundle("~/bundles/chart").Include(
                       "~/Scripts/Chart.js"));

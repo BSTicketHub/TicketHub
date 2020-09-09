@@ -50,5 +50,25 @@
   {
     "outputFile": "Assets/CSS/Shop/SalesReport.css",
     "inputFile": "Assets/CSS/Shop/SalesReport.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/Platform/Platform_Layout.css",
+    "inputFile": "Assets/CSS/Platform/Platform_Layout.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/Platform/DashBoard/Member.css",
+    "inputFile": "Assets/CSS/Platform/DashBoard/Member.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/Cart.css",
+    "inputFile": "Assets/CSS/Cart.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/payview.css",
+    "inputFile": "Assets/CSS/payview.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/ticket-description.css",
+    "inputFile": "Assets/CSS/ticket-description.scss"
   }
 ]

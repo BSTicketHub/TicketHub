@@ -52,5 +52,7 @@
         public DbSet<Tag> Tag { get; set; }
         public DbSet<IssueTag> IssueTag { get; set; }
         public DbSet<ShopTag> ShopTag { get; set; }
+
+
     }
 }

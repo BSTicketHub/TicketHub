@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Cart";
+}
+
+<h2>Cart</h2>
+
+<div class="container">
+    <ol class="row cartProcess">
+        <li class="breadcrumb-item"><a href="#">購物車</a></li>
+        <a class="breadcrumb-item active" aria-current="page" href="#">填寫資料與付款</a>
+        <a class="breadcrumb-item active" aria-current="page" href="#">訂購完成</a>
+        <!-- 文字無法貼齊 -->
+    </ol>
+</div>
+<div class="container bg-white col-10">
+    <div class="cartContent box p-3">
+        <div>
+            <h2>購物車</h2>
+        </div>
+        <hr>
+        <div class="">
+            <div class="table-box">
+                <div class="text-center statistics d-flex">
+                    <div id="productImg" class="col-2 d-flex flex-wrap">
+                        <P class="w-100">img</P>
+                    </div>
+                    <div id="productTitle" class="col-3 d-flex flex-wrap">
+                        <p class="w-100">票券名稱</p>
+                    </div>
+                    <div id="unit" class="col-3 d-flex flex-wrap">
+                        <p class="w-100">張數</p>
+                    </div>
+                    <div id="totalPrice" class="col-3 d-flex flex-wrap">
+                        <p class="w-100">總價</p>
+                    </div>
+                    <div id="deleteCan" class="col-1 d-flex flex-wrap">
+                        <p class="w-100">刪除</p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="d-flex align-item-end justify-content-end">
+            <input id="gopay" type="button" value="前往結帳" class="btn btn-primary">
+        </div>
