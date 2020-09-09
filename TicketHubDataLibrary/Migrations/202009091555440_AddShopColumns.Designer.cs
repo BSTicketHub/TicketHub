@@ -7,13 +7,13 @@ namespace TicketHubDataLibrary.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class AddShopProp : IMigrationMetadata
+    public sealed partial class AddShopColumns : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddShopProp));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddShopColumns));
         
         string IMigrationMetadata.Id
         {
-            get { return "202009080955522_AddShopProp"; }
+            get { return "202009091555440_AddShopColumns"; }
         }
         
         string IMigrationMetadata.Source

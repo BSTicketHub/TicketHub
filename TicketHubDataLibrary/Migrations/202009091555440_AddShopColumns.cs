@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AddShopProp : DbMigration
+    public partial class AddShopColumns : DbMigration
     {
         public override void Up()
         {

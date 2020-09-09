@@ -96,9 +96,9 @@
     <Compile Include="Migrations\202009090425180_AddAllTables.designer.cs">
       <DependentUpon>202009090425180_AddAllTables.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202009080955522_AddShopProp.cs" />
-    <Compile Include="Migrations\202009080955522_AddShopProp.designer.cs">
-      <DependentUpon>202009080955522_AddShopProp.cs</DependentUpon>
+    <Compile Include="Migrations\202009091555440_AddShopColumns.cs" />
+    <Compile Include="Migrations\202009091555440_AddShopColumns.designer.cs">
+      <DependentUpon>202009091555440_AddShopColumns.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActionLog.cs" />
@@ -138,8 +138,8 @@
     <EmbeddedResource Include="Migrations\202009090425180_AddAllTables.resx">
       <DependentUpon>202009090425180_AddAllTables.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009080955522_AddShopProp.resx">
-      <DependentUpon>202009080955522_AddShopProp.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009091555440_AddShopColumns.resx">
+      <DependentUpon>202009091555440_AddShopColumns.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
