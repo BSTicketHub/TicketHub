@@ -616,7 +616,6 @@
     <Content Include="Views\PlatformMember\CreateMember.cshtml" />
     <Content Include="Views\PlatformMember\EditMember.cshtml" />
     <Content Include="Views\PlatformMember\DeleteMember.cshtml" />
-    <Content Include="Views\Platform\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_ShopCardPartial.cshtml" />
     <Content Include="Views\PlatformShop\Index.cshtml" />
     <Content Include="Views\ProductCart\Cart.cshtml" />
