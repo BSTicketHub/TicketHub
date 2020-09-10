@@ -105,14 +105,20 @@ body {
       color: #9d620e;
       text-shadow: 1px 1px 1px #fcc16d; }
 
+.login-container {
+  width: 90%;
+  margin: auto; }
+
 .login-card {
   position: absolute;
   width: 90%;
+  left: 10%;
+  margin-left: auto;
+  margin-right: auto;
   transition: left 1s ease-in-out;
-  left: 9%;
   z-index: 20; }
   .login-card:not(.active) {
-    left: -83%;
+    left: -85%;
     z-index: 10; }
   .login-card input {
     background: transparent;
@@ -160,10 +166,9 @@ body {
   position: absolute;
   right: 0; }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 768px) {
   .login-card {
-    width: 75%;
-    left: 13.85%; }
+    width: 80%; }
     .login-card:not(.active) {
       left: -80%; }
   .ticketStub {
@@ -180,3 +185,10 @@ body {
     .ticketReceipt .login {
       font-weight: 200;
       transform: rotateZ(90deg) translate(12%, 0%); } }
+
+@media screen and (min-width: 1200px) {
+  .login-card {
+    width: 75%;
+    left: 12.5%; }
+    .login-card:not(.active) {
+      left: -75%; } }
