@@ -583,6 +583,9 @@
     <Content Include="Views\ProductCart\Cart.cshtml" />
     <Content Include="Views\PayView\payview.cshtml" />
     <Content Include="Views\ticketDescription\Ticketdescription.cshtml" />
+    <Content Include="Views\Home\_RecommenCard.cshtml" />
+    <Content Include="Views\Home\_BestSellerCard.cshtml" />
+    <Content Include="Views\Home\_SortNewCard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
