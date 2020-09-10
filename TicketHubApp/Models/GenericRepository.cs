@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Linq;
 using TicketHubApp.Interfaces;
+using TicketHubDataLibrary.Models;
 
 namespace TicketHubApp.Models
 {
@@ -13,7 +14,7 @@ namespace TicketHubApp.Models
         {
             if (context == null)
             {
-                throw new ArgumentException();
+                _context = new TicketHubContext();
             }
             _context = context;
         }
