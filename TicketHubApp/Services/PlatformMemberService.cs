@@ -15,9 +15,9 @@ namespace TicketHubApp.Services
         public List<PlatformMemberViewModel> GetAllMembers()
         {
             TicketHubContext context = new TicketHubContext();
-            GenericRepository<User> repository = new GenericRepository<User>(context);
+            GenericRepository<TicketHubUser> repository = new GenericRepository<TicketHubUser>(context);
 
-            IQueryable<User> memberList = repository.GetAll();
+            IQueryable<TicketHubUser> memberList = repository.GetAll();
             List<PlatformMemberViewModel> members = new List<PlatformMemberViewModel>(memberList.Count());
 
             foreach (var item in memberList)
@@ -25,9 +25,9 @@ namespace TicketHubApp.Services
                 var member = new PlatformMemberViewModel
                 {
                     Id = item.Id,
-                    UserName = item.UserName,
-                    Mobile = item.Mobile,
-                    Email = item.Email,
+                    UserAccount = item.UserName,
+                    PasswordHash = item.PasswordHash,
+                    Mobile = item.PhoneNumber,
                 };
                 members.Add(member);
             }

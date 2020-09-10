@@ -29,7 +29,7 @@ namespace TicketHubApp.Models.ViewModels
         public DateTime ReleasedDate { get; set; }
         public DateTime ClosedDate { get; set; }
         [Display(Name = "發行人代號")]
-        public Guid IssuerId { get; set; }
+        public string IssuerId { get; set; }
         public string UserName { get; set; }
         [Display(Name = "票券所屬商家代號")]
         public Guid ShopId { get; set; }

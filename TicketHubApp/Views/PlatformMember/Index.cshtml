@@ -20,13 +20,13 @@
                     @Html.DisplayNameFor(model => model.Id)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.UserName)
+                    @Html.DisplayNameFor(model => model.UserAccount)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Mobile)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Email)
+                    @Html.DisplayNameFor(model => model.PasswordHash)
                 </th>
                 <th></th>
             </tr>
@@ -39,13 +39,13 @@
                         @Html.DisplayFor(modelItem => item.Id)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.UserName)
+                        @Html.DisplayFor(modelItem => item.UserAccount)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Mobile)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Email)
+                        @Html.DisplayFor(modelItem => item.PasswordHash)
                     </td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

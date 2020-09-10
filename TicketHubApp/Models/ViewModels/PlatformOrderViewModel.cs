@@ -14,7 +14,7 @@ namespace TicketHubApp.Models.ViewModels
         [Display(Name = "訂單日期")]
         public DateTime OrderDate{ get; set; }
         [Display(Name = "消費者編號")]
-        public Guid UserId { get; set; }
+        public string UserId { get; set; }
         [Display(Name = "消費者名稱")]
         public string UserName { get; set; }
         [Display(Name = "訂單總金額")]
