@@ -108,6 +108,10 @@
     <Compile Include="Migrations\202009101005134_AddCategoryTableIssueImgPath.designer.cs">
       <DependentUpon>202009101005134_AddCategoryTableIssueImgPath.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009101117452_AddSexColumnToUser.cs" />
+    <Compile Include="Migrations\202009101117452_AddSexColumnToUser.designer.cs">
+      <DependentUpon>202009101117452_AddSexColumnToUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActionLog.cs" />
     <Compile Include="Models\Category.cs" />
@@ -157,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009101005134_AddCategoryTableIssueImgPath.resx">
       <DependentUpon>202009101005134_AddCategoryTableIssueImgPath.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009101117452_AddSexColumnToUser.resx">
+      <DependentUpon>202009101117452_AddSexColumnToUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
