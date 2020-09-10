@@ -778,6 +778,7 @@ li {
 .list-item-title .title {
     position: relative;
     top: -20px;
+    padding-left: 5px;
 }
 
 .profile {
@@ -1292,7 +1293,7 @@ h3.title-group-item {
         }
 
 .cart-dropdown {
-    padding-top: 10px;
+    padding-top: 8px;
     padding-bottom: 0px;
     display: block;
 }
@@ -1386,9 +1387,9 @@ h3.title-group-item {
 
     /* 購物車標題 */
     .cart-detail .product-detail > h3 {
+        text-overflow: ellipsis;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        height: 52px;
         max-height: 52px;
         font-size: 1.3rem;
         color: #333;
@@ -1402,6 +1403,7 @@ h3.title-group-item {
 }
 
     .cart-item .product-detail > h3 a {
+        text-overflow: ellipsis;
         color: #333
     }
 
@@ -1441,8 +1443,13 @@ h3.title-group-item {
 .cart-dropdown .cart-footer {
     display: flex;
     justify-content: space-between;
+    width: 430px;
+    position: relative;
+    bottom: 0;
+    margin-right: auto;
+    margin-left: auto;
     align-items: center;
-    padding: 10px 15px;
+    padding: 10px;
     background-color: #fff;
     border-top: 1px solid #eaeaea;
 }
@@ -1464,4 +1471,16 @@ h3.title-group-item {
 
 .dropdown-menu-right {
     right: 100px;
+}
+
+@media (min-width:768px) and (max-width:991px) {
+    .hidden-sm {
+        display: none !important
+    }
+}
+
+@media (max-width:767px) {
+    .hidden-xs {
+        display: none !important
+    }
 }
