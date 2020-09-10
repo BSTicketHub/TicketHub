@@ -229,6 +229,9 @@
     <Content Include="Assets\CSS\Shop\ShopInfo.min.css">
       <DependentUpon>ShopInfo.css</DependentUpon>
     </Content>
+    <Content Include="Assets\CSS\Shop\ShopLayout.css">
+      <DependentUpon>ShopLayout.scss</DependentUpon>
+    </Content>
     <Content Include="Assets\CSS\Shop\ShopLayout.min.css">
       <DependentUpon>ShopLayout.css</DependentUpon>
     </Content>
