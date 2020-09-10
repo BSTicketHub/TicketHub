@@ -28,5 +28,6 @@ namespace TicketHubDataLibrary.Models
         public TicketHubUser User { get; set; }
         public ICollection<ShopEmployee> ShopEmployees { get; set; }
         public ICollection<ShopTag> ShopTags { get; set; }
+        public ICollection<ShopCategory> ShopCategories { get; set; }
     }
 }
