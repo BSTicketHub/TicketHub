@@ -16,9 +16,9 @@ namespace TicketHubDataLibrary.Models
         public Guid IssueId { get; set; }
         [ForeignKey("IssueId")]
         public Issue Issue { get; set; }
-        public Guid UserId { get; set; }
+        public string UserId { get; set; }
         [ForeignKey("UserId")]
-        public User User { get; set; }
+        public TicketHubUser User { get; set; }
         public Guid OrderId { get; set; }
         [ForeignKey("OrderId")]
         public Order Order { get; set; }

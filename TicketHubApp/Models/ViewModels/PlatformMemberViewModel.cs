@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace TicketHubApp.Models.ViewModels
 {
     public class PlatformMemberViewModel
     {
         [Display(Name = "使用者代號")]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         [Display(Name = "使用者名稱")]
         [Required]
         public string UserName { get; set; }
