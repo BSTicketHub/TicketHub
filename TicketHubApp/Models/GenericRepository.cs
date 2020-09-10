@@ -11,7 +11,11 @@ namespace TicketHubApp.Models
         public DbContext Context { get { return _context; } }
         public GenericRepository(DbContext context)
         {
-            _context = context ?? throw new ArgumentException();
+            if (context == null)
+            {
+                throw new ArgumentException();
+            }
+            _context = context;
         }
         public void Create(TEntity entity)
         {
