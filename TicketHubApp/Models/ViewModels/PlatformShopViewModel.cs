@@ -25,8 +25,11 @@ namespace TicketHubApp.Models.ViewModels
         [Display(Name = "網站")]
         public string Website { get; set; }
         public string BannerImg { get; set; }
+        [Display(Name ="申請時間")]
+        [DataType(DataType.DateTime)]
         public DateTime AppliedDate { get; set; }
-        public DateTime ModifiedDate { get; set; }
+        [Display(Name = "修改時間")]
+        public DateTime ModifiedDate { get; set; }       
         public DateTime ValidatedDate { get; set; }
         public Guid? ReviewerId { get; set; }
     }

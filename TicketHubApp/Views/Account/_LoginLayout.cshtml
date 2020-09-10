@@ -9,9 +9,11 @@
     @Styles.Render("~/bundles/css/Login")
 </head>
 <body>
-    <div id="login-backImg"></div>
+    <div id="login-backImg">
+        @Html.Partial("_ValidationSummary", ViewData.ModelState)
+    </div>
     <div class="container d-flex justify-content-center position-relative p-0">
-        @RenderBody();
+        @RenderBody()
     </div>
 
     @Scripts.Render("~/bundles/js/Login")

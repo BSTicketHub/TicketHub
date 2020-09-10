@@ -1,74 +1,87 @@
-﻿[
+[
   {
     "outputFile": "Assets/CSS/login.css",
-    "inputFile": "Assets/CSS/login.scss"
+    "inputFile": "Assets/CSS/login.scss",
+    "sourceMap": false
   },
   {
     "outputFile": "Assets/CSS/CustomerDetail.css",
-    "inputFile": "Assets/CSS/CustomerDetail.scss"
+    "inputFile": "Assets/CSS/CustomerDetail.scss",
+    "sourceMap": false
   },
   {
     "outputFile": "Assets/CSS/StoreList.css",
-    "inputFile": "Assets/CSS/StoreList.scss"
+    "inputFile": "Assets/CSS/StoreList.scss",
+    "sourceMap": false
   },
   {
     "outputFile": "Assets/CSS/ShopList.css",
-    "inputFile": "Assets/CSS/ShopList.scss"
+    "inputFile": "Assets/CSS/ShopList.scss",
+    "sourceMap": false
   },
   {
     "outputFile": "Assets/CSS/TicketList.css",
-    "inputFile": "Assets/CSS/TicketList.scss"
-  },
-  {
-    "outputFile": "Assets/CSS/_variables.css",
-    "inputFile": "Assets/CSS/_variables.scss"
+    "inputFile": "Assets/CSS/TicketList.scss",
+    "sourceMap": false
   },
   {
     "outputFile": "Assets/CSS/Shop/ShopLayout.css",
-    "inputFile": "Assets/CSS/Shop/ShopLayout.scss"
+    "inputFile": "Assets/CSS/Shop/ShopLayout.scss",
+    "sourceMap": false
   },
   {
     "outputFile": "Assets/CSS/Shop/CreateProduct.css",
-    "inputFile": "Assets/CSS/Shop/CreateProduct.scss"
+    "inputFile": "Assets/CSS/Shop/CreateProduct.scss",
+    "sourceMap": false
   },
   {
     "outputFile": "Assets/CSS/Common/Ticket.css",
-    "inputFile": "Assets/CSS/Common/Ticket.scss"
+    "inputFile": "Assets/CSS/Common/Ticket.scss",
+    "sourceMap": false
   },
   {
     "outputFile": "Assets/CSS/Shop/productList.css",
-    "inputFile": "Assets/CSS/Shop/productList.scss"
+    "inputFile": "Assets/CSS/Shop/productList.scss",
+    "sourceMap": false
   },
   {
     "outputFile": "Assets/CSS/Shop/HomePage.css",
-    "inputFile": "Assets/CSS/Shop/HomePage.scss"
+    "inputFile": "Assets/CSS/Shop/HomePage.scss",
+    "sourceMap": false
   },
   {
     "outputFile": "Assets/CSS/Shop/ShopInfo.css",
-    "inputFile": "Assets/CSS/Shop/ShopInfo.scss"
+    "inputFile": "Assets/CSS/Shop/ShopInfo.scss",
+    "sourceMap": false
   },
   {
     "outputFile": "Assets/CSS/Shop/SalesReport.css",
-    "inputFile": "Assets/CSS/Shop/SalesReport.scss"
+    "inputFile": "Assets/CSS/Shop/SalesReport.scss",
+    "sourceMap": false
   },
   {
     "outputFile": "Assets/CSS/Platform/Platform_Layout.css",
-    "inputFile": "Assets/CSS/Platform/Platform_Layout.scss"
+    "inputFile": "Assets/CSS/Platform/Platform_Layout.scss",
+    "sourceMap": false
   },
   {
     "outputFile": "Assets/CSS/Platform/DashBoard/Member.css",
-    "inputFile": "Assets/CSS/Platform/DashBoard/Member.scss"
+    "inputFile": "Assets/CSS/Platform/DashBoard/Member.scss",
+    "sourceMap": false
   },
   {
     "outputFile": "Assets/CSS/Cart.css",
-    "inputFile": "Assets/CSS/Cart.scss"
+    "inputFile": "Assets/CSS/Cart.scss",
+    "sourceMap": false
   },
   {
     "outputFile": "Assets/CSS/payview.css",
-    "inputFile": "Assets/CSS/payview.scss"
+    "inputFile": "Assets/CSS/payview.scss",
+    "sourceMap": false
   },
   {
     "outputFile": "Assets/CSS/ticket-description.css",
-    "inputFile": "Assets/CSS/ticket-description.scss"
+    "inputFile": "Assets/CSS/ticket-description.scss",
+    "sourceMap": false
   }
 ]

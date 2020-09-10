@@ -5,9 +5,10 @@ namespace TicketHubApp.Models.ViewModels
     public class LoginViewModel
     {
         [Required]
-        public string Account { get; set; }
+        public string Email { get; set; }
         [Required]
         public string Password { get; set; }
+        public bool RememberMe { get; set; }
         public bool IsSignUp { get; set; }
     }
 }

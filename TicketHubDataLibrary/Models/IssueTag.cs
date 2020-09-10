@@ -14,7 +14,7 @@ namespace TicketHubDataLibrary.Models
         [Key]
         [Column(Order = 2)]
         [ForeignKey("Tag")]
-        public Guid TagId { get; set; }
+        public int TagId { get; set; }
         public Tag Tag { get; set; }
     }
 }

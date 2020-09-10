@@ -18,12 +18,12 @@ namespace TicketHubDataLibrary.Models
         public DateTime ReleasedDate { get; set; }
         public DateTime ClosedDate { get; set; }
         [ForeignKey("User")]
-        public Guid IssuerId { get; set; }
-        public User User { get; set; }
+        public string IssuerId { get; set; }
+        public TicketHubUser User { get; set; }
         [ForeignKey("Shop")]
         public Guid ShopId { get; set; }
         public Shop Shop { get; set; }
 
-        public ICollection<IssueTag> IssueTas { get; set; }
+        public ICollection<IssueTag> IssueTags { get; set; }
     }
 }
