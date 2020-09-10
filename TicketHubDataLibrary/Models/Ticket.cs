@@ -8,10 +8,10 @@ namespace TicketHubDataLibrary.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         public DateTime DeliveredDate { get; set; }
-        public bool Exchanged { get; set; }
-        public DateTime ExchangedDate { get; set; }
-        public bool Voided { get; set; }
-        public DateTime VoidedDate { get; set; }
+        public bool? Exchanged { get; set; }
+        public DateTime? ExchangedDate { get; set; }
+        public bool? Voided { get; set; }
+        public DateTime? VoidedDate { get; set; }
 
         public Guid IssueId { get; set; }
         [ForeignKey("IssueId")]
