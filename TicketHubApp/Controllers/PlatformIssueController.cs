@@ -12,10 +12,11 @@ namespace TicketHubApp.Controllers
         // GET: PlatformIssue
         public ActionResult Index()
         {
-            PlatformIssueService service = new PlatformIssueService();
-            var orders = service.GetAllIssues();
+            //PlatformIssueService service = new PlatformIssueService();
+            //var orders = service.GetAllIssues();
 
-            return View(orders);
+            //return View(orders);
+            return View();
         }
     }
 }
