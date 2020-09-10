@@ -12,7 +12,7 @@
 </nav>
 
 <div class="shadow p-3">
-    <table class="table display" id="myTable">
+    <table class="table display" id="myTable" style="width:100%">
         <thead>
             <tr>
                 <th>
@@ -37,9 +37,6 @@
                     @Html.DisplayNameFor(model => model.Website)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.BannerImg)
-                </th>
-                <th>
                     @Html.DisplayNameFor(model => model.AppliedDate)
                 </th>
                 <th>
@@ -58,49 +55,46 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Id)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ShopName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Phone)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Fax)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Address)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Website)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.BannerImg)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AppliedDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ModifiedDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ValidatedDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ReviewerId)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShopName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fax)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Website)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AppliedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModifiedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValidatedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReviewerId)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
             }
         </tbody>
 
@@ -116,10 +110,6 @@
         $('#myTable').DataTable({
             "scrollX": true,
             "stateSave": true,
-
-            "columnDefs": [
-                { "width": "150px", "targets": 12 },
-            ]
         });
     });
 </script>

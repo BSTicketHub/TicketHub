@@ -28,6 +28,9 @@ namespace TicketHubApp.Services
                     Fax = item.Fax,
                     Address = item.Address,
                     Email = item.Email,
+                    AppliedDate = item.AppliedDate,
+                    ModifiedDate = item.ModifiedDate,
+                    ValidatedDate = item.ValidatedDate,
                     Website = item.Website
                 };
                 shops.Add(shop);

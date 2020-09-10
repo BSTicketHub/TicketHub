@@ -4,6 +4,8 @@
     ViewBag.Title = "Index";
 }
 
+
+
 <nav aria-label="breadcrumb" class="shadow">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">後台管理系統</a></li>
@@ -64,7 +66,7 @@
 
 <script>
     $(document).ready(function () {
-        var table = $('#myTable').DataTable({
+        $('#myTable').DataTable({
             "scrollX": true,
             "stateSave": true,
         });
