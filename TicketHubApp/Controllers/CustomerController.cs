@@ -58,7 +58,6 @@ namespace TicketHubApp.Controllers
             var info = new CustomerInfoViewModel()
             {
                 Id = user.Id,
-                Address = user.Address,
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber,
                 UserName = user.UserName
