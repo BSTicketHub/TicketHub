@@ -69,11 +69,15 @@ namespace TicketHubApp.Controllers
                 };
 
                 var createResult = await UserManager.CreateAsync(newUser, viewModel.Password);
-
-                if (!createResult.Succeeded)
+                if (createResult.Succeeded)
+                {
+                    await UserManager.AddToRoleAsync(newUser.Id, RoleName.CUSTOMER);
+                }
+                else
                 {
                     AddErrors(createResult);
                     return View("Login");
+
                 }
             }
 
