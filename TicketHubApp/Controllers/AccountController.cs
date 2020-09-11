@@ -15,13 +15,33 @@ namespace TicketHubApp.Controllers
         private AppIdentityUserManager _userManager;
         public AppIdentitySignInManager SignInManager
         {
-            get => _signInManager ?? HttpContext.GetOwinContext().Get<AppIdentitySignInManager>();
-            private set => _signInManager = value;
+            get
+            {
+                if (_signInManager == null)
+                {
+                    return HttpContext.GetOwinContext().Get<AppIdentitySignInManager>();
+                }
+                return _signInManager;
+            }
+            private set
+            {
+                _signInManager = value;
+            }
         }
         public AppIdentityUserManager UserManager
         {
-            get => _userManager ?? HttpContext.GetOwinContext().Get<AppIdentityUserManager>();
-            private set => _userManager = value;
+            get
+            {
+                if (_userManager == null)
+                {
+                    return HttpContext.GetOwinContext().Get<AppIdentityUserManager>();
+                }
+                return _userManager;
+            }
+            private set
+            {
+                _userManager = value;
+            }
         }
         private IAuthenticationManager AuthenticationManager
         {
@@ -37,14 +57,15 @@ namespace TicketHubApp.Controllers
         }
 
         [HttpGet]
-        public ActionResult Login()
+        public ActionResult Login(string returnUrl)
         {
+            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> UserLogin(LoginViewModel viewModel)
+        public async Task<ActionResult> UserLogin(LoginViewModel viewModel, string returnUrl)
         {
             if (!ModelState.IsValid)
             {
@@ -58,7 +79,7 @@ namespace TicketHubApp.Controllers
                 if (user != null)
                 {
                     //登入
-                    return await SignIn(viewModel);
+                    return await SignIn(viewModel, returnUrl);
                 }
 
                 var newUser = new TicketHubUser
@@ -77,19 +98,19 @@ namespace TicketHubApp.Controllers
             }
 
             //登入
-            return await SignIn(viewModel);
+            return await SignIn(viewModel, returnUrl);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ShopLoginAsync(LoginViewModel viewModel)
+        public async Task<ActionResult> ShopLoginAsync(LoginViewModel viewModel, string returnUrl)
         {
             if (!ModelState.IsValid)
             {
                 return RedirectToAction("Login");
             }
 
-            return await SignIn(viewModel);
+            return await SignIn(viewModel, returnUrl);
         }
 
         [HttpGet]
@@ -99,13 +120,13 @@ namespace TicketHubApp.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> LoginPlatformAsync(LoginViewModel viewModel)
+        public async Task<ActionResult> LoginPlatformAsync(LoginViewModel viewModel, string returnUrl)
         {
             if (!ModelState.IsValid)
             {
                 return View(viewModel);
             }
-            return await SignIn(viewModel);
+            return await SignIn(viewModel, returnUrl);
         }
 
         [HttpPost]
@@ -116,17 +137,17 @@ namespace TicketHubApp.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        private async Task<ActionResult> SignIn(LoginViewModel viewModel)
+        private async Task<ActionResult> SignIn(LoginViewModel viewModel, string returnUrl)
         {
             var signInResult = await SignInManager.PasswordSignInAsync(viewModel.Email, viewModel.Password, viewModel.RememberMe, shouldLockout: false);
             switch (signInResult)
             {
                 case SignInStatus.Success:
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { RememberMe = viewModel.RememberMe });
+                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = viewModel.RememberMe });
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "登入嘗試失試。");
@@ -140,6 +161,15 @@ namespace TicketHubApp.Controllers
             {
                 ModelState.AddModelError("", error);
             }
+        }
+
+        private ActionResult RedirectToLocal(string returnUrl)
+        {
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            return RedirectToAction("Index", "Home");
         }
     }
 

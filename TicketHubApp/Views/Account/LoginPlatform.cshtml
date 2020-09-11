@@ -12,24 +12,16 @@
         <div class="col-12 col-md-10 ticketStub tickets d-flex flex-column flex-md-row py-2">
             <div class="col-12 col-md-6 coupon-img text-center d-flex flex-column justify-content-center">
                 <h1>Get More Money!</h1>
-                @{
-                    if (ViewBag.PlatformErrMsg != null)
-                    {
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>@ViewBag.PlatformErrMsg</strong>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    }
-                }
             </div>
             <div class="col-12 col-md-6 coupon-login p-2">
                 <h2>Manage <span>TicketHub!</span></h2>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia, laudantium!</p>
                 <div class="input-group">
-                    <span><span class="iconify" data-icon="mdi:account-circle" data-inline="false"></span> Account: @Html.ValidationMessageFor(model => model.Account, "", new { @class = "text-danger" })</span>
-                    <input class="w-100 my-1" type="email" name="Account" id="platform-account" placeholder="example@tickethub.com" data-val="true" data-val-required="required" />
+                    <div class="input-label w-100 d-flex justify-content-between">
+                        <span><span class="iconify" data-icon="mdi:account-circle" data-inline="false"></span> Account: @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })</span>
+                        <label class="m-0">Remember <input class="remember" type="checkbox" name="RememberMe" value="true" id="platform-remember" data-target="platform" /></label>
+                    </div>
+                    <input class="w-100 my-1" type="email" name="Email" id="platform-email" placeholder="example@tickethub.com" data-val="true" data-val-required="required" />
                 </div>
                 <div class="input-group">
                     <span><span class="iconify" data-icon="ic:baseline-vpn-key" data-inline="false"></span> Password: @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })</span>

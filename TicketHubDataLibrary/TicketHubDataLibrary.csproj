@@ -100,9 +100,24 @@
     <Compile Include="Migrations\202009091555440_AddShopColumns.designer.cs">
       <DependentUpon>202009091555440_AddShopColumns.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009100626415_TicketExchangeNullable.cs" />
+    <Compile Include="Migrations\202009100626415_TicketExchangeNullable.designer.cs">
+      <DependentUpon>202009100626415_TicketExchangeNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009101005134_AddCategoryTableIssueImgPath.cs" />
+    <Compile Include="Migrations\202009101005134_AddCategoryTableIssueImgPath.designer.cs">
+      <DependentUpon>202009101005134_AddCategoryTableIssueImgPath.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009101117452_AddSexColumnToUser.cs" />
+    <Compile Include="Migrations\202009101117452_AddSexColumnToUser.designer.cs">
+      <DependentUpon>202009101117452_AddSexColumnToUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActionLog.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Issue.cs" />
+    <Compile Include="Models\ShopCategory.cs" />
+    <Compile Include="Models\IssueCategory.cs" />
     <Compile Include="Models\IssueTag.cs" />
     <Compile Include="Models\LoginLog.cs" />
     <Compile Include="Models\Order.cs" />
@@ -140,6 +155,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009091555440_AddShopColumns.resx">
       <DependentUpon>202009091555440_AddShopColumns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009100626415_TicketExchangeNullable.resx">
+      <DependentUpon>202009100626415_TicketExchangeNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009101005134_AddCategoryTableIssueImgPath.resx">
+      <DependentUpon>202009101005134_AddCategoryTableIssueImgPath.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009101117452_AddSexColumnToUser.resx">
+      <DependentUpon>202009101117452_AddSexColumnToUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

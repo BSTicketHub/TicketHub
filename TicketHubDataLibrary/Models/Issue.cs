@@ -10,6 +10,7 @@ namespace TicketHubDataLibrary.Models
         public Guid Id { get; set; }
         public string Title { get; set; }
         public string Memo { get; set; }
+        public string ImgPath { get; set; }
         public decimal OriginalPrice { get; set; }
         public decimal DiscountPrice { get; set; }
         public decimal DiscountRatio { get; set; }
@@ -25,5 +26,6 @@ namespace TicketHubDataLibrary.Models
         public Shop Shop { get; set; }
 
         public ICollection<IssueTag> IssueTags { get; set; }
+        public ICollection<IssueCategory> IssueCategories { get; set; }
     }
 }

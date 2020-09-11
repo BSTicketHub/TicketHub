@@ -12,7 +12,7 @@ namespace TicketHubDataLibrary.Models
         // 如果您的目標是其他資料庫和 (或) 提供者，請修改
         // 應用程式組態檔中的 'TicketHubContext' 連接字串。
         public TicketHubContext()
-            : base("LocalConnection", throwIfV1Schema: false)
+            : base("AzureConnection", throwIfV1Schema: false)
         {
         }
 
@@ -59,5 +59,8 @@ namespace TicketHubDataLibrary.Models
         public DbSet<Tag> Tag { get; set; }
         public DbSet<IssueTag> IssueTag { get; set; }
         public DbSet<ShopTag> ShopTag { get; set; }
+        public DbSet<Category> Category { get; set; }
+        public DbSet<IssueCategory> IssueCategory { get; set; }
+        public DbSet<ShopCategory> ShopCategory { get; set; }
     }
 }
