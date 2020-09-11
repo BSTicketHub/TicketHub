@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Web.Mvc;
 using TicketHubApp.Models.ViewModels;
+using TicketHubDataLibrary.Models;
 
 namespace TicketHubApp.Controllers
 {
     public class CustomerController : Controller
     {
+        private TicketHubContext _context = new TicketHubContext();
         // GET: CustomerDetail
         public ActionResult CustomerPage()
         {
@@ -45,6 +49,21 @@ namespace TicketHubApp.Controllers
             };
 
             return View(tickets);
+        }
+
+        public ActionResult GetCustomerInfo()
+        {
+            var userId = "91142d0f-9681-4b41-86d6-8a583b52bc98";
+            var user = _context.Users.FirstOrDefault(x => x.Id == userId);
+            var info = new CustomerInfoViewModel()
+            {
+                Id = user.Id,
+                Address = user.Address,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                UserName = user.UserName
+            };
+            return Json(info, JsonRequestBehavior.AllowGet);
         }
     }
 }
