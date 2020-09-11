@@ -25,18 +25,19 @@ namespace TicketHubDataLibrary.Migrations
                 new IdentityRole { Id = "5", Name = RoleName.CUSTOMER }
             );
 
-            string[] userNames = new string[] { "admin", "platform", "manager", "employee", "cust" };
-            GenUsers(context, userNames);
-
-        }
-
-        private void GenUsers(TicketHubContext context, string[] userNames)
-        {
             var userStore = new UserStore<TicketHubUser>(context);
             var userManager = new UserManager<TicketHubUser>(userStore);
             var roleStore = new RoleStore<IdentityRole>(context);
             var roleManager = new RoleManager<IdentityRole>(roleStore);
 
+            string[] userNames = new string[] { "admin", "platform", "manager", "employee", "cust" };
+            GenUsers(userManager, roleManager, userNames);
+
+            GenShop(context, userManager);
+        }
+
+        private void GenUsers(UserManager<TicketHubUser> userManager, RoleManager<IdentityRole> roleManager, string[] userNames)
+        {
             for (int i = 1; i <= 5; i++)
             {
                 var name = userNames[i - 1];
@@ -65,6 +66,48 @@ namespace TicketHubDataLibrary.Migrations
                     userManager.AddToRole(user.Id, roleName);
                 }
             }
+        }
+
+        private void GenShop(TicketHubContext context, UserManager<TicketHubUser> userManager)
+        {
+            List<Issue> issues = new List<Issue>();
+            for (int i = 1; i <= 9; i++)
+            {
+                var shop = new Shop
+                {
+                    ShopName = $"ExampleShop{i}",
+                    ShopIntro = $"This is introduction of ExampleShop{i}.",
+                    Phone = "02-345-6789",
+                    Fax = "02-987-6543",
+                    City = "台北市",
+                    District = "大安區",
+                    Address = "忠孝東路三段96號11號樓之1",
+                    Zip = "106",
+                    Email = $"BuildSchool_{i}@tickethub.com",
+                    Website = "https://www.build-school.com/",
+                    AppliedDate = DateTime.Now,
+                };
+
+                var shopManager = userManager.FindByEmail($"manager{i}@tickethub.com");
+                for (int j = 1; j <= 5; j++)
+                {
+                    Issue issue = new Issue
+                    {
+                        Title = $"ExampleShop{i} Issue{j}",
+                        Memo = $"This is memo of ExampleShop{i} Issue{j}",
+                        OriginalPrice = i * j * 131,
+                        DiscountRatio = 0.85m,
+                        DiscountPrice = i * j * 131 * 0.85m,
+                        Amount = 60 * j,
+                        IssuedDate = DateTime.Now,
+                        ReleasedDate = DateTime.Now,
+                        User = shopManager,
+                        Shop = shop,
+                    };
+                    issues.Add(issue);
+                }
+            }
+            context.Issue.AddOrUpdate(i => i.Title, issues.ToArray());
         }
     }
 }

@@ -9,7 +9,7 @@ using TicketHubDataLibrary.Models;
 namespace TicketHubApp.Services
 {
     public class PlatformShopService
-    {   
+    {
         public List<PlatformShopViewModel> GetAllShops()
         {
             TicketHubContext context = new TicketHubContext();
@@ -29,8 +29,8 @@ namespace TicketHubApp.Services
                     Address = item.Address,
                     Email = item.Email,
                     AppliedDate = item.AppliedDate,
-                    ModifiedDate = item.ModifiedDate,
-                    ValidatedDate = item.ValidatedDate,
+                    ModifiedDate = (DateTime)item.ModifiedDate,
+                    ValidatedDate = (DateTime)item.ValidatedDate,
                     Website = item.Website
                 };
                 shops.Add(shop);

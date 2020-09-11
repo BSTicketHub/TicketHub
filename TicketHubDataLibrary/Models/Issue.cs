@@ -17,7 +17,7 @@ namespace TicketHubDataLibrary.Models
         public decimal Amount { get; set; }
         public DateTime IssuedDate { get; set; }
         public DateTime ReleasedDate { get; set; }
-        public DateTime ClosedDate { get; set; }
+        public DateTime? ClosedDate { get; set; }
         [ForeignKey("User")]
         public string IssuerId { get; set; }
         public TicketHubUser User { get; set; }
