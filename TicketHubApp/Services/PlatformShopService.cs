@@ -10,33 +10,27 @@ namespace TicketHubApp.Services
 {
     public class PlatformShopService
     {   
-        public List<PlatformShopViewModel> GetAllShops()
+        public DataTableViewModel GetShopsTableData()
         {
             TicketHubContext context = new TicketHubContext();
             GenericRepository<Shop> repository = new GenericRepository<Shop>(context);
             IQueryable<Shop> shopList = repository.GetAll();
+            DataTableViewModel table = new DataTableViewModel();
+            table.data = new List<List<string>>();
 
-            List<PlatformShopViewModel> shops = new List<PlatformShopViewModel>(shopList.Count());
-
-            foreach (var item in shopList)
+            foreach(var item in shopList)
             {
-                var shop = new PlatformShopViewModel
-                {
-                    Id = item.Id,
-                    ShopName = item.ShopName,
-                    Phone = item.Phone,
-                    Fax = item.Fax,
-                    Address = item.Address,
-                    Email = item.Email,
-                    AppliedDate = item.AppliedDate,
-                    ModifiedDate = item.ModifiedDate,
-                    ValidatedDate = item.ValidatedDate,
-                    Website = item.Website
-                };
-                shops.Add(shop);
-            }
+                List<string> dataInstance = new List<string>();
 
-            return shops;
+                dataInstance.Add(item.Id.ToString());
+                dataInstance.Add(item.ShopName);
+                dataInstance.Add(item.Email);
+                dataInstance.Add(item.Phone);
+                dataInstance.Add(item.ModifiedDate.ToString("yyyy-MM-dd"));
+
+                table.data.Add(dataInstance);
+            }
+            return table;
         }
     }
 }

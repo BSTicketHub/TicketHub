@@ -171,7 +171,6 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -179,7 +178,7 @@
     <Compile Include="Controllers\PlatformIssueController.cs" />
     <Compile Include="Controllers\PlatformOrderController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
-    <Compile Include="Controllers\PlatformMemberController.cs" />
+    <Compile Include="Controllers\PlatformUserController.cs" />
     <Compile Include="Controllers\PlatformShopController.cs" />
     <Compile Include="Controllers\PayViewController.cs" />
     <Compile Include="Controllers\ProductCartController.cs" />
@@ -195,14 +194,15 @@
     <Compile Include="Models\ViewModels\LoginViewModel.cs" />
     <Compile Include="Models\ViewModels\AdminViewModel.cs" />
     <Compile Include="Models\ViewModels\PlatformIssueViewModel.cs" />
-    <Compile Include="Models\ViewModels\PlatformMemberViewModel.cs" />
+    <Compile Include="Models\ViewModels\PlatformUserViewModel.cs" />
     <Compile Include="Models\ViewModels\PlatformOrderViewModel.cs" />
+    <Compile Include="Models\ViewModels\DataTableViewModel.cs" />
     <Compile Include="Models\ViewModels\ShopViewModel.cs" />
     <Compile Include="Models\ViewModels\SimpleIssueViewModel.cs" />
     <Compile Include="Models\ViewModels\PlatformShopViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\PlatformIssueService.cs" />
-    <Compile Include="Services\PlatformMemberService.cs" />
+    <Compile Include="Services\PlatformUserService.cs" />
     <Compile Include="Services\PlatformOrderService.cs" />
     <Compile Include="Services\PlatformShopService.cs" />
     <Compile Include="Models\ViewModels\StoreTicketListViewModel.cs" />
@@ -603,8 +603,8 @@
     <Content Include="Views\Customer\_CustomerDetailLayout.cshtml" />
     <Content Include="Views\Shop\ShopList.cshtml" />
     <Content Include="Views\Shop\_ShopListLayout.cshtml" />
-    <Content Include="Views\PlatformMember\Index.cshtml" />
-    <Content Include="Views\PlatformMember\_ViewStart.cshtml" />
+    <Content Include="Views\PlatformUser\Index.cshtml" />
+    <Content Include="Views\PlatformUser\_ViewStart.cshtml" />
     <Content Include="Views\PlatformDashBoard\MemberDashBoard.cshtml" />
     <Content Include="Views\Shared\_Layout_Platform.cshtml" />
     <Content Include="Views\PlatformShop\_ViewStart.cshtml" />
@@ -614,10 +614,10 @@
     <Content Include="Views\Shop\SalesReport.cshtml" />
     <Content Include="Views\Shared\_Ticket.cshtml" />
     <Content Include="Views\PlatformDashBoard\_ViewStart.cshtml" />
-    <Content Include="Views\PlatformMember\MemberDetail.cshtml" />
-    <Content Include="Views\PlatformMember\CreateMember.cshtml" />
-    <Content Include="Views\PlatformMember\EditMember.cshtml" />
-    <Content Include="Views\PlatformMember\DeleteMember.cshtml" />
+    <Content Include="Views\PlatformUser\MemberDetail.cshtml" />
+    <Content Include="Views\PlatformUser\CreateMember.cshtml" />
+    <Content Include="Views\PlatformUser\EditMember.cshtml" />
+    <Content Include="Views\PlatformUser\DeleteMember.cshtml" />
     <Content Include="Views\Platform\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_ShopCardPartial.cshtml" />
     <Content Include="Views\PlatformShop\Index.cshtml" />
@@ -629,6 +629,7 @@
     <Content Include="Views\PlatformIssue\Index.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_ValidationSummary.cshtml" />
+    <Content Include="Views\PlatformIssue\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

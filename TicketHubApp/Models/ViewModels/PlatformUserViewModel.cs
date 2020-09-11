@@ -2,7 +2,7 @@
 
 namespace TicketHubApp.Models.ViewModels
 {
-    public class PlatformMemberViewModel
+    public class PlatformUserViewModel
     {
         [Display(Name = "使用者代號")]
         public string Id { get; set; }

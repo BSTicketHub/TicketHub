@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -7,27 +8,26 @@ using System.Web.Mvc;
 using TicketHubApp.Interfaces;
 using TicketHubApp.Models;
 using TicketHubApp.Models.ViewModels;
-using TicketHubApp.PlatformViewModels;
 using TicketHubApp.Services;
 using TicketHubDataLibrary.Models;
 
 namespace TicketHubApp.Controllers
 {
-    public class PlatformShopController : Controller
+    public class PlatformUserController : Controller
     {
- 
-        // GET: Shops
+        // GET: Users
         public ActionResult Index()
         {
-            return View();             
+            return View();
         }
 
-        public ActionResult GetShopsJson()
+        public ActionResult GetUsersJson()
         {
-            PlatformShopService service = new PlatformShopService();
-            var shopsTableData = service.GetShopsTableData();
+            PlatformUserService service = new PlatformUserService();
+            var usersTableData = service.GetUsersTableData();
 
-            return Json(shopsTableData, JsonRequestBehavior.AllowGet);
+            return Json(usersTableData, JsonRequestBehavior.AllowGet);
         }
+
     }
 }
