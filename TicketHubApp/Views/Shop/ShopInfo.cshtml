@@ -1,0 +1,72 @@
+﻿
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="description bg-white my-3 p-3 shadow">
+                <form class="d-flex flex-wrap">
+                    <div class="form-group col-6">
+                        <label for="formGroupExampleInput">商店名稱</label>
+                        <input type="text" class="form-control form-control-sm" id="" placeholder="請輸入商店名稱">
+                    </div>
+                    <div class="form-group col-12">
+                        <label for="formGroupExampleInput">Email</label>
+                        <input type="text" class="form-control form-control-sm" id="" placeholder="請輸入Email">
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="formGroupExampleInput">連絡電話</label>
+                        <input type="text" class="form-control form-control-sm" id="" placeholder="請輸入連絡電話">
+                    </div>
+                    <div class="form-group col-2">
+                        <label for="formGroupExampleInput">地區</label>
+                        <select class="form-control form-control-sm" id="country" required>
+                            @*add option by js*@
+                        </select>
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="formGroupExampleInput">傳真號碼</label>
+                        <input type="text" class="form-control form-control-sm" id="" placeholder="請輸入傳真號碼">
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="formGroupExampleInput">地址</label>
+                        <input type="text" class="form-control form-control-sm" id="" placeholder="請輸入地址">
+                    </div>
+                    <div class="form-group col-12">
+                        <label for="formGroupExampleInput">網址連結</label>
+                        <input type="text" class="form-control form-control-sm" id="" placeholder="請輸入網址連結">
+                    </div>
+                </form>
+            </div>
+            <div class="upLoadImg bg-white my-3 p-3 shadow">
+                <form class="col-12" action="/somewhere/to/upload" enctype="multipart/form-data">
+
+                    <input type="file" onchange="readURL(this)" targetID="preview_progressbarTW_img" accept="image/gif, image/jpeg, image/png" />
+                    <span class="small text-dark">建議尺寸 : 1048 x 300</span>
+
+                    <img id="preview_progressbarTW_img" src="#" class="my-2" style="height: 200px; width: 698px;" />
+                </form>
+            </div>
+            <div class="description bg-white my-3 p-3 shadow">
+                <div class="form-group col-12">
+                    <label for="exampleFormControlTextarea1">商品描述</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="8"></textarea>
+                </div>
+                <div class="col-12">
+                    <button class="ml-auto d-block">儲存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section endJS{
+    <script src="~/Assets/JavaScript/Shop/ShopInfo.js"></script>
+}
+
+
+@section topCSS{
+    <link href="~/Assets/CSS/Shop/ShopInfo.min.css" rel="stylesheet" />
+}
+

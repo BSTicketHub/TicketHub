@@ -1,0 +1,66 @@
+﻿
+<div class="container ticketDetail">
+    <div class="row">
+        <div class="col-12 bg-white shadow p-3 border">
+            @Html.Partial("_Ticket")
+        </div>
+
+        <div class="col-12 bg-white shadow my-5 p-3">
+            <table id="datatable" class="display">
+                <thead>
+                    <tr>
+                        <th>訂單編號</th>
+                        <th>會員姓名</th>
+                        <th>數量</th>
+                        <th>以使用數量</th>
+                        <th>剩餘數量</th>
+                        <th>會員手機</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>12321321</td>
+                        <td>Job</td>
+                        <td>5</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>0912345678</td>
+                    </tr>
+                    <tr>
+                        <td>12198721</td>
+                        <td>Marry</td>
+                        <td>2</td>
+                        <td>0</td>
+                        <td>2</td>
+                        <td>0922222222</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section topCSS{
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+
+    <link href="~/Assets/CSS/Common/Ticket.min.css" rel="stylesheet" />
+    @*for datatable css*@
+    <style>
+        #datatable_filter input{
+            border-radius: 5px;
+        }
+    </style>
+}
+
+@section endJS{
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#datatable').DataTable({
+                //paging: false,
+                scrollY: 250
+            });
+        });
+    </script>
+} 

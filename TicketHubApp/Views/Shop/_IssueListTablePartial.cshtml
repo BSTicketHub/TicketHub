@@ -1,0 +1,13 @@
+﻿@model TicketHubApp.Models.ViewModels.ShopIssueViewModel
+
+<tr onclick="ticketClick(this)">
+    <td class="align-middle"><input type="checkbox" value="" id="defaultCheck1"></td>
+    <td class="p-0 align-middle">
+        <img src="~/Assets/Images/ticket_test_Img.jpg" class="align-middle d-inline-block" />
+    </td>
+    <td>@Model.Title</td>
+    <td>@Model.Id</td>
+    <td>@Model.DiscountPrice</td>
+    <td>@Model.Status</td>
+    <td>@Model.IssuedDate</td>
+</tr>
