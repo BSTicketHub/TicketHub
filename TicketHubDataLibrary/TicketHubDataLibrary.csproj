@@ -104,9 +104,32 @@
     <Compile Include="Migrations\202009100626415_TicketExchangeNullable.designer.cs">
       <DependentUpon>202009100626415_TicketExchangeNullable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009101005134_AddCategoryTableIssueImgPath.cs" />
+    <Compile Include="Migrations\202009101005134_AddCategoryTableIssueImgPath.designer.cs">
+      <DependentUpon>202009101005134_AddCategoryTableIssueImgPath.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009101117452_AddSexColumnToUser.cs" />
+    <Compile Include="Migrations\202009101117452_AddSexColumnToUser.designer.cs">
+      <DependentUpon>202009101117452_AddSexColumnToUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009110842207_AddShopZipAlterColumnToDatetime2.cs" />
+    <Compile Include="Migrations\202009110842207_AddShopZipAlterColumnToDatetime2.designer.cs">
+      <DependentUpon>202009110842207_AddShopZipAlterColumnToDatetime2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009110846279_AlterShopDatetimeNullable.cs" />
+    <Compile Include="Migrations\202009110846279_AlterShopDatetimeNullable.designer.cs">
+      <DependentUpon>202009110846279_AlterShopDatetimeNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009110944447_AlterIssueClosedDateNullable.cs" />
+    <Compile Include="Migrations\202009110944447_AlterIssueClosedDateNullable.designer.cs">
+      <DependentUpon>202009110944447_AlterIssueClosedDateNullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActionLog.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Issue.cs" />
+    <Compile Include="Models\ShopCategory.cs" />
+    <Compile Include="Models\IssueCategory.cs" />
     <Compile Include="Models\IssueTag.cs" />
     <Compile Include="Models\LoginLog.cs" />
     <Compile Include="Models\Order.cs" />
@@ -147,6 +170,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009100626415_TicketExchangeNullable.resx">
       <DependentUpon>202009100626415_TicketExchangeNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009101005134_AddCategoryTableIssueImgPath.resx">
+      <DependentUpon>202009101005134_AddCategoryTableIssueImgPath.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009101117452_AddSexColumnToUser.resx">
+      <DependentUpon>202009101117452_AddSexColumnToUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009110842207_AddShopZipAlterColumnToDatetime2.resx">
+      <DependentUpon>202009110842207_AddShopZipAlterColumnToDatetime2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009110846279_AlterShopDatetimeNullable.resx">
+      <DependentUpon>202009110846279_AlterShopDatetimeNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009110944447_AlterIssueClosedDateNullable.resx">
+      <DependentUpon>202009110944447_AlterIssueClosedDateNullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

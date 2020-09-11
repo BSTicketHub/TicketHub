@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Data.Entity;
 
 namespace TicketHubDataLibrary.Models
@@ -24,6 +25,8 @@ namespace TicketHubDataLibrary.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Properties<DateTime>().Configure(c => c.HasColumnType("datetime2"));
 
             //Custom Identity tables name
             //modelBuilder.Entity<TicketHubUser>().ToTable("Users").Property(p => p.Id).HasColumnName("UserId");
@@ -59,7 +62,8 @@ namespace TicketHubDataLibrary.Models
         public DbSet<Tag> Tag { get; set; }
         public DbSet<IssueTag> IssueTag { get; set; }
         public DbSet<ShopTag> ShopTag { get; set; }
-
-
+        public DbSet<Category> Category { get; set; }
+        public DbSet<IssueCategory> IssueCategory { get; set; }
+        public DbSet<ShopCategory> ShopCategory { get; set; }
     }
 }

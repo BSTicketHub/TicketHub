@@ -17,16 +17,18 @@ namespace TicketHubDataLibrary.Models
         public string City { get; set; }
         public string District { get; set; }
         public string Address { get; set; }
+        public string Zip { get; set; }
         public string Email { get; set; }
         public string Website { get; set; }
         public string BannerImg { get; set; }
         public DateTime AppliedDate { get; set; }
-        public DateTime ModifiedDate { get; set; }
-        public DateTime ValidatedDate { get; set; }
+        public DateTime? ModifiedDate { get; set; }
+        public DateTime? ValidatedDate { get; set; }
         public string ReviewerId { get; set; }
         [ForeignKey("ReviewerId")]
         public TicketHubUser User { get; set; }
         public ICollection<ShopEmployee> ShopEmployees { get; set; }
         public ICollection<ShopTag> ShopTags { get; set; }
+        public ICollection<ShopCategory> ShopCategories { get; set; }
     }
 }

@@ -2,8 +2,11 @@
 
 @{
     ViewBag.Title = "CustomerPage";
-    Layout = "~/Views/Customer/_CustomerDetailLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+@Styles.Render("~/bundles/css/CustomerDetail")
+
 
 <div class="container">
     <div class="row">
@@ -73,4 +76,9 @@
         </div>
     </div>
 </div>
+
+@Scripts.Render("~/bundles/js/jquery")
+@Scripts.Render("~/bundles/js/bootstrap")
+@Scripts.Render("~/bundles/js/CustomerDetail")
+
 

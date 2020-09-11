@@ -191,6 +191,7 @@
     <Compile Include="Models\GenericRepository.cs" />
     <Compile Include="Models\OperationResult.cs" />
     <Compile Include="Models\ViewModels\CustomerDetailViewModel.cs" />
+    <Compile Include="Models\ViewModels\CustomerInfoViewModel.cs" />
     <Compile Include="Models\ViewModels\LoginViewModel.cs" />
     <Compile Include="Models\ViewModels\AdminViewModel.cs" />
     <Compile Include="Models\ViewModels\PlatformIssueViewModel.cs" />
@@ -565,7 +566,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Html\" />
-    <Folder Include="Models\ServiceModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\CSS\login.scss" />
@@ -600,7 +600,6 @@
     <Content Include="Views\Account\LoginPlatform.cshtml" />
     <Content Include="Views\Account\_LoginLayout.cshtml" />
     <Content Include="Views\Customer\CustomerPage.cshtml" />
-    <Content Include="Views\Customer\_CustomerDetailLayout.cshtml" />
     <Content Include="Views\Shop\ShopList.cshtml" />
     <Content Include="Views\Shop\_ShopListLayout.cshtml" />
     <Content Include="Views\PlatformUser\Index.cshtml" />
@@ -626,9 +625,11 @@
     <Content Include="Views\ticketDescription\Ticketdescription.cshtml" />
     <Content Include="Views\PlatformOrder\Index.cshtml" />
     <Content Include="Views\PlatformOrder\_ViewStart.cshtml" />
-    <Content Include="Views\PlatformIssue\Index.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_ValidationSummary.cshtml" />
+    <Content Include="Views\Home\_RecommenCard.cshtml" />
+    <Content Include="Views\Home\_BestSellerCard.cshtml" />
+    <Content Include="Views\Home\_SortNewCard.cshtml" />
     <Content Include="Views\PlatformIssue\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -642,6 +643,9 @@
       <Project>{aff9edbe-7fd2-4ebc-8850-dc51c5b0f5a6}</Project>
       <Name>TicketHubDataLibrary</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

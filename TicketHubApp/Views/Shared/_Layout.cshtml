@@ -4,6 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/Assets/Images/Home/ticketHub.png" rel="shortcut icon" type="image/ico">
     <title>@ViewBag.Title - 我的 ASP.NET 應用程式</title>
     @Styles.Render("~/bundles/css/bootstrap")
     @Styles.Render("~/bundles/css/Home")
@@ -106,7 +107,7 @@
 
             <ul class="form-inline py-3 my-lg-0 pr-2 mr-5 poition-relative" onmousemove="shopCart()" onclick=""
                 onmouseout="shopCartMove()">
-                <li class="dropdown cart-dropdown hidden-sm hidden-xs open dropleft">
+                <li class="dropdown cart-dropdown open dropleft">
                     <a class="cart-link" style="color: #26bec9;">
                         <span class="iconify" data-icon="clarity:shopping-cart-solid" data-inline="false"
                               style="font-size: 30px;"></span>
@@ -114,9 +115,36 @@
                             1
                         </div>
                     </a>
-                    <div class="dropdown-menu show-dropdown showCart"
-                         style="width: 400px;right: -30px;position: absolute;">
+                    <div class="dropdown-menu show-dropdown showCart hidden-sm hidden-xs"
+                         style="width: 450px;max-height:500px;overflow:auto;right: -30px;">
                         <div class="cart-group">
+                            <div class="cart-item">
+                                <a href="">
+                                    <div class="product-img img-bg">
+                                    </div>
+                                </a>
+                                <div class="cart-detail">
+                                    <div class="product-detail">
+                                        <h3>
+                                            <a href="">
+                                                高雄 - 墾丁｜定點共乘接送｜直達高雄高鐵
+                                            </a>
+                                        </h3>
+                                        <div class="product-option">【高雄出發】</div>
+                                    </div>
+                                    <div class="text-tag">2020-09-12 11:00</div>
+                                    <div class="text-tag">人數 x 1</div>
+                                    <div class="product-pricing ">
+                                        <h4>TWD 388</h4>
+                                    </div>
+                                </div>
+                                <div class="product-action">
+                                    <button type="button" class="btn btn-light" data-toggle="modal"
+                                            data-target="#CartModal">
+                                        <span class="iconify" data-icon="bi:trash" data-inline="false"></span>
+                                    </button>
+                                </div>
+                            </div>
                             <div class="cart-item">
                                 <a href="">
                                     <div class="product-img img-bg">
@@ -147,11 +175,11 @@
                         </div>
                         <div class="cart-footer">
                             <div class="text-tag">共 1 件商品</div>
-                            <button href="" class="btn btn-info">
+                            <button href="#" class="btn btn-info">
                                 查看購物車
                             </button>
                         </div>
-                    </div> <span class="dropdown-arrow"></span>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -167,7 +195,37 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    您確定要刪除所選商品嗎？
+                    <div class="cart-group">
+                        <div class="cart-item">
+                            <a href="">
+                                <div class="product-img img-bg">
+                                </div>
+                            </a>
+                            <div class="cart-detail">
+                                <div class="product-detail">
+                                    <h3>
+                                        <a href="">
+                                            高雄 - 墾丁｜定點共乘接送｜直達高雄高鐵
+                                        </a>
+                                    </h3>
+                                    <div class="product-option">【高雄出發】</div>
+                                </div>
+                                <div class="text-tag">2020-09-12 11:00</div>
+                                <div class="text-tag">人數 x 1</div>
+                                <div class="product-pricing ">
+                                    <h4>TWD 388</h4>
+                                </div>
+                            </div>
+                            <div class="product-action">
+                                <button type="button" class="btn btn-light" data-toggle="modal"
+                                        data-target="#CartModal">
+                                    <span class="iconify" data-icon="bi:trash" data-inline="false"></span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <h5 class="alert alert-danger mb-0">您確定要刪除所選商品嗎？</h5>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
@@ -178,7 +236,6 @@
     </div>
 
     @RenderBody()
-    <hr />
     <div class="footbg">
         <div class="container-fluid">
             <div class="row">
