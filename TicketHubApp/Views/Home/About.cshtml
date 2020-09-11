@@ -1,7 +1,83 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 
-<p>Use this area to provide additional information.</p>
+<div class="parallax"></div>
+<div class="container mt-5 mb-5">
+    <div class="row mt-3">
+        <div class="col-12 about-maintitle">
+            <h3>給愛好美食的你</h3>
+            <!-- <hr> -->
+        </div>
+        <div class="col-12 about-maintext">
+            <p>
+                深入挖掘在美食、體驗行程，提供易於使用的預訂平台、訂票平台，我們把安排旅程變得更簡單、更即時，也讓旅人玩得更自在、更盡興、更安全；
+                我們希望平台推薦的美食、推送的優惠可以受到更多人的喜愛。
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-sm-12">
+            <div class="about-icon">
+                <img src="/Assets/Images/Home/about-1.png" alt="">
+                <div class="text">
+                    <h3>TicketHub</h3>
+                    <p>總公司</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-12">
+            <div class="about-icon">
+                <img src="/Assets/Images/Home/about-2.png" alt="">
+                <div class="text">
+                    <h3>20 +</h3>
+                    <p>城市</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-12">
+            <div class="about-icon">
+                <img src="/Assets/Images/Home/about-3.png" alt="">
+                <div class="text">
+                    <h3>10K +</h3>
+                    <p>美食+旅遊+住宿</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="about-info">
+    <div class="container">
+        <div class="row mt-5 mb-5" d-flex justify-content-center>
+            <div class="col-lg-6 col-sm-12">
+                <div class="about-infoimg">
+                    <img src="https://picsum.photos/400/400/?random=1">
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12">
+                <div class="about-infotext mt-5">
+                    <h4>TicketHub創辦人</h4>
+                    <hr>
+                    <p>
+                        身為一位熱愛美食的旅人，王曉明深耕線上票劵銷售，帶起網購自由行、餐劵風潮，歷經餐旅產業的變革卻能屢次掌握市場先機。
+                        王曉明敢於擁抱挑戰、開創新局，並擅於跳脫框架思考，更能精準洞悉市場產業趨勢，早一步預見「目的地旅遊」興起的浪潮，於2016年創立TicketHub，提供旅人來自世界各地的多樣化在地體驗行程，讓旅行能更深入當地，在規劃上也更輕鬆、更自由。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section endJS
+{
+    @*<script>
+            function shopCart() {
+                showCart.style.display = "block";
+            }
+
+            function shopCartMove() {
+                showCart.style.display = "none";
+            }
+        </script>*@
+}

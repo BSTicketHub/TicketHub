@@ -12,9 +12,9 @@
     @RenderSection("topCSS", required: false)
 </head>
 <body>
-    <div class="top-bar" style="justify-content: space-between;">
+    <div class="top-bar">
         <div class="text-left">
-            <span class="iconify mt-1" data-icon="fa-solid:phone-alt" data-inline="false" style=""></span>
+            <span class="iconify mt-1" data-icon="fa-solid:phone-alt" data-inline="false"></span>
             <a href="tel:02-23457778" title="phone">
                 (123) 456-7890
             </a>
@@ -26,16 +26,13 @@
         <div class="text-right">
 
             <span class="iconify mt-1 ml-1" data-icon="carbon:user-speaker" data-inline="false"></span>
-            <a href="" title="">
+            <a href="/Home/About" title="">
                 關於我們
             </a>
         </div>
     </div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top pl-2 pr-2">
-        <a class="navbar-brand ml-2" href="#">
-            <img src="/Assets/Images/Home/logo.png" alt="logo"
-                 style="width: 100px;">
-        </a>
+        <a class="navbar-brand ml-2" href="/Home/Index"> <img src="/Assets/Images/Home/logo.png" alt="logo" width="100"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -53,7 +50,7 @@
                 </div>
             </form>
             <ul class="navbar-nav ml-auto mr-3">
-                <li class="nav-item dropdown active" style="display: flex;align-items: center;padding-bottom: 0;">
+                <li class="nav-item dropdown active d-align-items">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         熱門票劵
@@ -70,7 +67,7 @@
                         <a href="" class="dropdown-item">素食餐廳</a>
                     </div>
                 </li>
-                <li class="nav-item dropdown active" style="display: flex;align-items: center;padding-bottom: 0;">
+                <li class="nav-item dropdown active d-align-items">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         吃到飽
@@ -85,7 +82,7 @@
                         <a href="" class="dropdown-item">超值餐廳</a>
                     </div>
                 </li>
-                <li class="nav-item dropdown active" style="display: flex;align-items: center;padding-bottom: 0;">
+                <li class="nav-item dropdown active d-align-items">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         限時特惠
@@ -102,22 +99,66 @@
                         <a href="" class="dropdown-item">素食餐廳</a>
                     </div>
                 </li>
-                @Html.Partial("_LoginPartial")
+                <li class="dropdown member-dropdown member-item mr-3 ml-3 d-align-items">
+                    <a class="mt-2" data-toggle="dropdown">
+                        <div class="editor-logo"></div>
+                    </a>
+                    <ul aria-labelledby="dLabel" class="dropdown-menu " dropdown-menu-right>
+                        <li class="list-item profile">
+                            <div class="editor-logo"></div>
+                            <div class="list-item-title">
+                                <div class="title">XXX</div>
+                            </div>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li class="list-item">
+                            <a href="">
+                                <span class="list-item-title">我的票劵</span>
+                                <span class="list-item-addon text-warning">0</span>
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a id="side-navber-order" href="">
+                                <span class="list-item-title">瀏覽紀錄</span>
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a id="side-navber-msg" href="">
+                                <span class="list-item-title">收藏餐廳</span>
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a id="side-navbar-wish-list" href="">
+                                <span class="list-item-title">收藏票劵</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li class="logout">
+                            <a href="">
+                                登出
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="d-align-items">
+                    <button class="btn btn-info" onclick="location.href='/Account/Login'">
+                        登入 / 註冊
+                    </button>
+                </li>
             </ul>
 
-            <ul class="form-inline py-3 my-lg-0 pr-2 mr-5 poition-relative" onmousemove="shopCart()" onclick=""
+            <ul class="form-inline navbar-nav mr-5 poition-relative" onmousemove="shopCart()" onclick=""
                 onmouseout="shopCartMove()">
-                <li class="dropdown cart-dropdown open dropleft">
-                    <a class="cart-link" style="color: #26bec9;">
-                        <span class="iconify" data-icon="clarity:shopping-cart-solid" data-inline="false"
-                              style="font-size: 30px;"></span>
+                <li class="dropdown cart-dropdown dropleft">
+                    <a class="cart-link">
+                        <span class="iconify icon-f-30" data-icon="clarity:shopping-cart-solid"
+                              data-inline="false"></span>
                         <div class="badge span-badge bg-danger">
                             1
                         </div>
                     </a>
-                    <div class="dropdown-menu show-dropdown showCart hidden-sm hidden-xs"
-                         style="width: 450px;max-height:500px;overflow:auto;right: -30px;">
-                        <div class="cart-group">
+                    <div class="dropdown-menu show-dropdown showCart hidden-sm hidden-xs cart-dropdown-menu">
+                        <div class="cart-group cart_delete_item">
                             <div class="cart-item">
                                 <a href="">
                                     <div class="product-img img-bg">
@@ -174,7 +215,7 @@
                             </div>
                         </div>
                         <div class="cart-footer">
-                            <div class="text-tag">共 1 件商品</div>
+                            <div class="text-tag">共<span id="">1</span>件商品</div>
                             <button href="#" class="btn btn-info">
                                 查看購物車
                             </button>
@@ -195,7 +236,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="cart-group">
+                    <div class="cart-group" id="cart_delete_item">
                         <div class="cart-item">
                             <a href="">
                                 <div class="product-img img-bg">
@@ -229,22 +270,23 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-danger">刪除</button>
+                    <button type="button" class="btn btn-danger" id="delete_btn" onclick="delete_item()"
+                            data-dismiss="modal">
+                        刪除
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
     @RenderBody()
-    <hr />
     <div class="footbg">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="f-item">
                         <div class="icon">
-                            <span class="iconify" data-icon="fa-solid:utensils" data-inline="false"
-                                  style="font-size: 48px; color:#ffffff"></span>
+                            <span class="iconify icon-footer" data-icon="fa-solid:utensils" data-inline="false"></span>
                         </div>
                         <div class="text">
                             <h5>熱門類別</h5>
@@ -260,8 +302,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="f-item">
                         <div class="icon">
-                            <span class="iconify" data-icon="fa-solid:home" data-inline="false"
-                                  style="font-size: 48px; color:#ffffff"></span>
+                            <span class="iconify icon-footer" data-icon="fa-solid:home" data-inline="false"></span>
                         </div>
                         <div class="text">
                             <h5>合作夥伴</h5>
@@ -277,8 +318,8 @@
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="f-item">
                         <div class="icon">
-                            <span class="iconify" data-icon="fa-solid:ticket-alt" data-inline="false"
-                                  style="font-size: 48px; color:#ffffff"></span>
+                            <span class="iconify icon-footer" data-icon="fa-solid:ticket-alt"
+                                  data-inline="false"></span>
                         </div>
                         <div class="text">
                             <h5>票劵資訊</h5>
@@ -299,20 +340,20 @@
                             <h4>TicketHub</h4>
                             <div class="btns">
                                 <button>
-                                    <span class="iconify" data-icon="ant-design:twitter-outlined"
-                                          data-inline="false" style="margin-top: -8px;"></span>
+                                    <span class="iconify icon-mb-8" data-icon="ant-design:twitter-outlined"
+                                          data-inline="false"></span>
                                 </button>
                                 <button>
-                                    <span class="iconify" data-icon="bx:bxl-facebook" data-inline="false"
-                                          style="margin-top: -8px;"></span>
+                                    <span class="iconify icon-mb-8" data-icon="bx:bxl-facebook"
+                                          data-inline="false"></span>
                                 </button>
                                 <button>
-                                    <span class="iconify" data-icon="bx:bxl-pinterest-alt" data-inline="false"
-                                          style="margin-top: -8px;"></span>
+                                    <span class="iconify icon-mb-8" data-icon="bx:bxl-pinterest-alt"
+                                          data-inline="false"></span>
                                 </button>
                                 <button>
-                                    <span class="iconify" data-icon="bx:bxl-linkedin" data-inline="false"
-                                          style="margin-top: -8px;"></span>
+                                    <span class="iconify icon-mb-8" data-icon="bx:bxl-linkedin"
+                                          data-inline="false"></span>
                                 </button>
                             </div>
                         </div>

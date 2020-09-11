@@ -227,6 +227,12 @@
     <Content Include="Assets\CSS\Cart.min.css">
       <DependentUpon>Cart.css</DependentUpon>
     </Content>
+    <Content Include="Assets\CSS\home.css">
+      <DependentUpon>home.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\home.min.css">
+      <DependentUpon>home.css</DependentUpon>
+    </Content>
     <Content Include="Assets\CSS\login.css">
       <DependentUpon>login.scss</DependentUpon>
     </Content>
@@ -275,9 +281,14 @@
     <Content Include="Assets\CSS\Shop\ShopLayout.min.css">
       <DependentUpon>ShopLayout.css</DependentUpon>
     </Content>
-    <Content Include="Assets\CSS\tempCSS\home.css" />
     <Content Include="Assets\CSS\Common\owl.carousel.min.css" />
     <Content Include="Assets\CSS\Common\owl.theme.default.css" />
+    <Content Include="Assets\CSS\tempCSS\home.css">
+      <DependentUpon>home.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\tempCSS\home.min.css">
+      <DependentUpon>home.css</DependentUpon>
+    </Content>
     <Content Include="Assets\CSS\tempCSS\temphome.css" />
     <Content Include="Assets\CSS\TicketList.css">
       <DependentUpon>TicketList.scss</DependentUpon>
@@ -585,6 +596,8 @@
     <Content Include="Assets\CSS\Cart.scss" />
     <Content Include="Assets\CSS\payview.scss" />
     <Content Include="Assets\CSS\ticket-description.scss" />
+    <Content Include="Assets\CSS\tempCSS\home.scss" />
+    <Content Include="Assets\CSS\home.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

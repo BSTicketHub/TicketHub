@@ -16,8 +16,8 @@
     </a>
     <a href="">
         <div class="wish-btn">
-            <span class="iconify" data-icon="clarity:heart-solid" data-inline="false"
-                  style="color: #ffffff;"></span>
+            <span class="iconify icon-c-white" data-icon="clarity:heart-solid"
+                  data-inline="false"></span>
         </div>
     </a>
     <div class="product-detail">
@@ -63,17 +63,17 @@
             <div class="col-md-6">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <button class="btn btn-secondary" id="">
+                        <button class="btn btn-secondary" id="" onclick="sub()">
                             <span class="iconify"
                                   data-icon="ant-design:minus-outlined"
                                   data-inline="false"></span>
                         </button>
                     </div>
-                    <input type="number" class="form-control"
+                    <input type="number" id="cartcount" class="form-control"
                            ng-model="AddToCartDirectiveCtrl.AddedQuantity" ns-input-number-limit="" max=""
                            min="1" value="1">
                     <div class="input-group-append">
-                        <button class="btn btn-secondary" id="">
+                        <button class="btn btn-secondary" id="" onclick="add()">
                             <span class="iconify"
                                   data-icon="codicon:add" data-inline="false"></span>
                         </button>
