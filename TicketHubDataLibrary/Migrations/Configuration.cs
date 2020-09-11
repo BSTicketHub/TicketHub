@@ -49,7 +49,7 @@ namespace TicketHubDataLibrary.Migrations
         {
             if (!(context.Users.Any(u => u.UserName == userName)))
             {
-                var userToInsert = new TicketHubUser { UserName = userName, PhoneNumber = "0987654321", Email = $"{userName}@tickethub.com" };
+                var userToInsert = new TicketHubUser { UserName = $"{userName}@tickethub.com", PhoneNumber = "0987654321", Email = $"{userName}@tickethub.com" };
                 userManager.Create(userToInsert, "Pwd12345.");
                 userManager.AddToRole(userToInsert.Id, roleName);
             }
