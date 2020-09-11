@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Data.Entity;
 
 namespace TicketHubDataLibrary.Models
@@ -12,7 +13,7 @@ namespace TicketHubDataLibrary.Models
         // 如果您的目標是其他資料庫和 (或) 提供者，請修改
         // 應用程式組態檔中的 'TicketHubContext' 連接字串。
         public TicketHubContext()
-            : base("AzureConnection", throwIfV1Schema: false)
+            : base("LocalConnection", throwIfV1Schema: false)
         {
         }
 
@@ -24,6 +25,8 @@ namespace TicketHubDataLibrary.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Properties<DateTime>().Configure(c => c.HasColumnType("datetime2"));
 
             //Custom Identity tables name
             //modelBuilder.Entity<TicketHubUser>().ToTable("Users").Property(p => p.Id).HasColumnName("UserId");

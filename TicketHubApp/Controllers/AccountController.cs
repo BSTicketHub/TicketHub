@@ -15,13 +15,33 @@ namespace TicketHubApp.Controllers
         private AppIdentityUserManager _userManager;
         public AppIdentitySignInManager SignInManager
         {
-            get => _signInManager ?? HttpContext.GetOwinContext().Get<AppIdentitySignInManager>();
-            private set => _signInManager = value;
+            get
+            {
+                if (_signInManager == null)
+                {
+                    return HttpContext.GetOwinContext().Get<AppIdentitySignInManager>();
+                }
+                return _signInManager;
+            }
+            private set
+            {
+                _signInManager = value;
+            }
         }
         public AppIdentityUserManager UserManager
         {
-            get => _userManager ?? HttpContext.GetOwinContext().Get<AppIdentityUserManager>();
-            private set => _userManager = value;
+            get
+            {
+                if (_userManager == null)
+                {
+                    return HttpContext.GetOwinContext().Get<AppIdentityUserManager>();
+                }
+                return _userManager;
+            }
+            private set
+            {
+                _userManager = value;
+            }
         }
         private IAuthenticationManager AuthenticationManager
         {
@@ -69,11 +89,15 @@ namespace TicketHubApp.Controllers
                 };
 
                 var createResult = await UserManager.CreateAsync(newUser, viewModel.Password);
-
-                if (!createResult.Succeeded)
+                if (createResult.Succeeded)
+                {
+                    await UserManager.AddToRoleAsync(newUser.Id, RoleName.CUSTOMER);
+                }
+                else
                 {
                     AddErrors(createResult);
                     return View("Login");
+
                 }
             }
 
