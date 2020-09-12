@@ -1,10 +1,9 @@
 ﻿
 @{
-    ViewBag.Title = "CustomerPage";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@Styles.Render("~/bundles/css/CustomerDetail")
+@Styles.Render("~/bundles/css/CustomerPage")
 
 
 <div class="container">
@@ -78,6 +77,10 @@
 
 @Scripts.Render("~/bundles/js/jquery")
 @Scripts.Render("~/bundles/js/bootstrap")
-@Scripts.Render("~/bundles/js/CustomerDetail")
+@Scripts.Render("~/bundles/js/CustomerPage")
+
+@section endJS{
+    <script type="module" src="~/Assets/JavaScript/Customer/CustomerInfo.js"></script>
+}
 
 

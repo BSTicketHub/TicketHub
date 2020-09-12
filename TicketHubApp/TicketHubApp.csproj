@@ -214,17 +214,17 @@
     <Content Include="Assets\CSS\Common\Ticket.min.css">
       <DependentUpon>Ticket.css</DependentUpon>
     </Content>
-    <Content Include="Assets\CSS\CustomerDetail.css">
-      <DependentUpon>CustomerDetail.scss</DependentUpon>
-    </Content>
-    <Content Include="Assets\CSS\CustomerDetail.min.css">
-      <DependentUpon>CustomerDetail.css</DependentUpon>
-    </Content>
     <Content Include="Assets\CSS\Cart.css">
       <DependentUpon>Cart.scss</DependentUpon>
     </Content>
     <Content Include="Assets\CSS\Cart.min.css">
       <DependentUpon>Cart.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\CustomerPage.css">
+      <DependentUpon>CustomerPage.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\CustomerPage.min.css">
+      <DependentUpon>CustomerPage.css</DependentUpon>
     </Content>
     <Content Include="Assets\CSS\home.css">
       <DependentUpon>home.scss</DependentUpon>
@@ -328,6 +328,10 @@
     <Content Include="Assets\JavaScript\Common\iconify.min.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.min.js" />
+    <Content Include="Assets\JavaScript\Customer\FavoriteShop.js" />
+    <Content Include="Assets\JavaScript\Customer\MyTicket.js" />
+    <Content Include="Assets\JavaScript\Customer\WishList.js" />
+    <Content Include="Assets\JavaScript\Customer\_CustomerEvent.js" />
     <Content Include="Assets\JavaScript\Home\home.js" />
     <Content Include="Assets\JavaScript\Common\owl.carousel.min.js" />
     <Content Include="Assets\CSS\ShopList.css">
@@ -343,7 +347,7 @@
       <DependentUpon>ticket-description.css</DependentUpon>
     </Content>
     <Content Include="Assets\Images\camera.png" />
-    <Content Include="Assets\JavaScript\Customer\CustomerDetail.js" />
+    <Content Include="Assets\JavaScript\Customer\CustomerInfo.js" />
     <Content Include="Assets\JavaScript\Home\jquery.sticky.js" />
     <Content Include="Assets\JavaScript\Platform\datatables.min.js" />
     <Content Include="Assets\JavaScript\Platform\PlatformMemberIndex.js" />
@@ -577,7 +581,7 @@
   <ItemGroup>
     <Content Include="Assets\CSS\login.scss" />
     <Content Include="Assets\CSS\_variables.scss" />
-    <Content Include="Assets\CSS\CustomerDetail.scss" />
+    <Content Include="Assets\CSS\CustomerPage.scss" />
     <Content Include="Assets\CSS\ShopList.scss" />
     <Content Include="Assets\CSS\tempCSS\fontawesome-webfont.eot" />
     <Content Include="Assets\CSS\tempCSS\fontawesome-webfont.ttf" />
@@ -607,7 +611,7 @@
     <Content Include="Scripts\moment-with-locales.min.js.map" />
     <Content Include="Views\Account\LoginPlatform.cshtml" />
     <Content Include="Views\Account\_LoginLayout.cshtml" />
-    <Content Include="Views\Customer\CustomerPage.cshtml" />
+    <Content Include="Views\Customer\CustomerInfo.cshtml" />
     <Content Include="Views\Shop\ShopList.cshtml" />
     <Content Include="Views\Shop\_ShopListLayout.cshtml" />
     <Content Include="Views\PlatformUser\Index.cshtml" />
@@ -638,6 +642,9 @@
     <Content Include="Views\Home\_BestSellerCard.cshtml" />
     <Content Include="Views\Home\_SortNewCard.cshtml" />
     <Content Include="Views\PlatformIssue\_ViewStart.cshtml" />
+    <Content Include="Views\Customer\MyTicket.cshtml" />
+    <Content Include="Views\Customer\WishList.cshtml" />
+    <Content Include="Views\Customer\FavoriteShop.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

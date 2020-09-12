@@ -15,22 +15,18 @@
             </li>
             <li class="dropdown-divider"></li>
             <li class="list-item">
-                @Html.ActionLink("會員資訊", "CustomerPage", "Customer")
+                @Html.ActionLink("會員資訊", "CustomerInfo", "Customer")
             </li>
             <li class="list-item">
-                <a id="side-navber-order" href="">
-                    <span class="list-item-title">我的票券</span>
-                </a>
+                @Html.ActionLink("我的票券", "MyTicket", "Customer")
             </li>
             <li class="list-item">
-                <a id="side-navber-msg" href="">
-                    <span class="list-item-title">收藏票券</span>
-                </a>
+                @Html.ActionLink("收藏票券", "WishList", "Customer")
+
             </li>
             <li class="list-item">
-                <a id="side-navbar-wish-list" href="">
-                    <span class="list-item-title">收藏餐廳</span>
-                </a>
+                @Html.ActionLink("收藏餐廳", "FavoriteShop", "Customer")
+
             </li>
             <li class="dropdown-divider"></li>
             <li class="logout">

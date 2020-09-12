@@ -11,7 +11,22 @@ namespace TicketHubApp.Controllers
     public class CustomerController : Controller
     { 
         // GET: CustomerDetail
-        public ActionResult CustomerPage()
+        public ActionResult CustomerInfo()
+        {
+            return View();
+        }
+
+        public ActionResult MyTicket()
+        {
+            return View();
+        }
+
+        public ActionResult WishList()
+        {
+            return View();
+        }
+
+        public ActionResult FavoriteShop()
         {
             return View();
         }

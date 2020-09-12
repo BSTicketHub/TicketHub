@@ -1,27 +1,27 @@
-//import { Collapse } from "../../../Scripts/bootstrap.bundle";
-let CustomerSidebarItems = Array.from(document.querySelectorAll('.sidebar-nav > div'));
-let sideBarUserName = document.querySelector('.sidebar .username');
-// let editBtn = document.querySelector('.edit-btn');
-// editBtn.setAttribute('isedit', false);
+﻿export function CreatePage(firstPage) {
 
-function clearFocused() {
-    for (let i of CustomerSidebarItems) {
-        if (i.classList.contains('focus')) {
-            i.classList.remove('focus')
+    let CustomerSidebarItems = Array.from(document.querySelectorAll('.sidebar-nav > div'));
+    let sideBarUserName = document.querySelector('.sidebar .username');
+
+
+    function clearFocused() {
+        for (let i of CustomerSidebarItems) {
+            if (i.classList.contains('focus')) {
+                i.classList.remove('focus')
+            }
         }
     }
-}
 
-function clearInfoArea() {
-    let infoArea = Array.from(document.querySelectorAll('.info *'))
-    console.log(infoArea)
-    for (let i of infoArea) {
-        i.remove();
+    function clearInfoArea() {
+        let infoArea = Array.from(document.querySelectorAll('.info *'))
+        console.log(infoArea)
+        for (let i of infoArea) {
+            i.remove();
+        }
     }
-}
 
-$.ajax({
-        url: "Customer/GetCustomerInfo",
+    $.ajax({
+        url: "GetCustomerInfo",
         type: "GET",
         dataType: "json",
         success: function (response) {
@@ -43,7 +43,7 @@ $.ajax({
 
 
 
-            function createInfoArea(target = document.querySelectorAll(".sidebar-nav > div")[0]) {
+            function createInfoArea(target = firstPage) {
                 let infoArea = document.querySelector('.col-9')
                 let content = document.createElement('div');
                 content.classList.add('info-area', 'p-4', 'rounded');
@@ -234,7 +234,7 @@ $.ajax({
 
                         $.ajax({ cache: false });
                         $.ajax({
-                            url: "Customer/ChangeInfoData",
+                            url: "ChangeInfoData",
                             method: "post",
                             contentType: "application/json",
                             data: JSON.stringify({
@@ -496,5 +496,5 @@ $.ajax({
         error: function () {
             alert("WRONG")
         }
-})
-
+    })
+}

@@ -1,0 +1,53 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Styles.Render("~/bundles/css/CustomerPage")
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-3 sidebar">
+            <div class="img-area bg-white my-3 pt-3 d-flex flex-column rounded">
+                <div class="img mx-auto">
+                    <div class="camera d-flex justify-content-center align-items-center">
+                        <img src="~/Assets/Images/camera.png" alt="updatePicture">
+                    </div>
+                </div>
+                <p class="username text-center my-4"></p>
+            </div>
+            <div class="sidebar-nav d-flex flex-column bg-white mt-4 rounded">
+                <div class="myinfo d-flex align-items-center px-3 py-3 rounded">
+                    <span class="iconify mr-2" data-icon="raphael:smallgear" data-inline="false"></span>
+                    <p>會員資訊</p>
+                </div>
+                <div class="myticket d-flex align-items-center px-3 py-3">
+                    <span class="iconify mr-2" data-icon="fa-solid:ticket-alt" data-inline="false"></span>
+                    <p>我的票券</p>
+                </div>
+                <div class="wishlist d-flex align-items-center px-3 py-3">
+                    <span class="iconify mr-2" data-icon="clarity:heart-solid" data-inline="false"></span>
+                    <p>收藏票券</p>
+                </div>
+                <div class="wishlist-store d-flex align-items-center px-3 py-3 focus">
+                    <span class="iconify mr-2" data-icon="whh:house" data-inline="false"></span>
+                    <p>收藏餐廳</p>
+                </div>
+                <div class="browsing d-flex align-items-center px-3 py-3 rounded">
+                    <span class="iconify mr-2" data-icon="bi:eye-fill" data-inline="false"></span>
+                    <p>瀏覽記錄</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-9 info px-4 py-3">
+        </div>
+    </div>
+</div>
+
+
+@Scripts.Render("~/bundles/js/jquery")
+@Scripts.Render("~/bundles/js/bootstrap")
+
+@section endJS{
+    <script type="module" src="~/Assets/JavaScript/Customer/FavoriteShop.js"></script>
+}
