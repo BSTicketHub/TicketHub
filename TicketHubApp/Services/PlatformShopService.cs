@@ -26,7 +26,8 @@ namespace TicketHubApp.Services
                 dataInstance.Add(item.ShopName);
                 dataInstance.Add(item.Email);
                 dataInstance.Add(item.Phone);
-                dataInstance.Add(item.ModifiedDate.ToString("yyyy-MM-dd"));
+                dataInstance.Add(item.AppliedDate.ToString());
+                dataInstance.Add(item.ModifiedDate.ToString());
 
                 table.data.Add(dataInstance);
             }
