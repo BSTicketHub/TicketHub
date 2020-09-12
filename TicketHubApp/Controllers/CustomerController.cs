@@ -9,16 +9,11 @@ using TicketHubDataLibrary.Models;
 namespace TicketHubApp.Controllers
 {
     public class CustomerController : Controller
-    {
-        private TicketHubContext _context = new TicketHubContext();
+    { 
         // GET: CustomerDetail
         public ActionResult CustomerPage()
         {
-            var viewModel = new List<CustomerDetailViewModel>()
-            {
-                new CustomerDetailViewModel{UserName = "Jack", Email = "abc@123", Mobile = "0963157894" }
-            };
-            return View(viewModel);
+            return View();
         }
 
         public ActionResult TicketList()
@@ -53,16 +48,44 @@ namespace TicketHubApp.Controllers
 
         public ActionResult GetCustomerInfo()
         {
-            var userId = "91142d0f-9681-4b41-86d6-8a583b52bc98";
-            var user = _context.Users.FirstOrDefault(x => x.Id == userId);
-            var info = new CustomerInfoViewModel()
+            using (var _context = TicketHubContext.Create())
             {
-                Id = user.Id,
-                Email = user.Email,
-                PhoneNumber = user.PhoneNumber,
-                UserName = user.UserName
-            };
-            return Json(info, JsonRequestBehavior.AllowGet);
+                var user = _context.Users.Find("c0133ac3-93c9-4ecf-abe5-9dd90911459b");
+                var info = new CustomerInfoViewModel()
+                {
+                    Id = user.Id,
+                    Email = user.Email,
+                    PhoneNumber = user.PhoneNumber,
+                    UserName = user.UserName,
+                    Sex = user.Sex
+                };
+                return Json(info, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult ChangeInfoData(string Id, string UserName, string Sex, string Email, string PhoneNumber)
+        {
+            using (var _context = TicketHubContext.Create())
+            {
+                var user = _context.Users.Find(Id);
+                user.UserName = UserName;
+                user.Sex = Sex;
+                user.Email = Email;
+                user.PhoneNumber = PhoneNumber;
+
+                _context.SaveChanges();
+
+                var info = new CustomerInfoViewModel()
+                {
+                    Id = user.Id,
+                    Email = user.Email,
+                    PhoneNumber = user.PhoneNumber,
+                    UserName = user.UserName,
+                    Sex = user.Sex
+                };
+                return Json(info, JsonRequestBehavior.AllowGet);
+            }
         }
     }
 }

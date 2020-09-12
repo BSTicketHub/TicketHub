@@ -99,47 +99,7 @@
                         <a href="" class="dropdown-item">素食餐廳</a>
                     </div>
                 </li>
-                <li class="dropdown member-dropdown member-item mr-3 ml-3 d-align-items">
-                    <a class="mt-2" data-toggle="dropdown">
-                        <div class="editor-logo"></div>
-                    </a>
-                    <ul aria-labelledby="dLabel" class="dropdown-menu " dropdown-menu-right>
-                        <li class="list-item profile">
-                            <div class="editor-logo"></div>
-                            <div class="list-item-title">
-                                <div class="title">XXX</div>
-                            </div>
-                        </li>
-                        <li class="dropdown-divider"></li>
-                        <li class="list-item">
-                            <a href="">
-                                <span class="list-item-title">我的票劵</span>
-                                <span class="list-item-addon text-warning">0</span>
-                            </a>
-                        </li>
-                        <li class="list-item">
-                            <a id="side-navber-order" href="">
-                                <span class="list-item-title">瀏覽紀錄</span>
-                            </a>
-                        </li>
-                        <li class="list-item">
-                            <a id="side-navber-msg" href="">
-                                <span class="list-item-title">收藏餐廳</span>
-                            </a>
-                        </li>
-                        <li class="list-item">
-                            <a id="side-navbar-wish-list" href="">
-                                <span class="list-item-title">收藏票劵</span>
-                            </a>
-                        </li>
-                        <li class="dropdown-divider"></li>
-                        <li class="logout">
-                            <a href="">
-                                登出
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                @Html.Partial("_LoginPartial")
                 <li class="d-align-items">
                     <button class="btn btn-info" onclick="location.href='/Account/Login'">
                         登入 / 註冊
