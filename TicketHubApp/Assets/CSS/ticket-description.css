@@ -28,7 +28,7 @@
 .rightcar {
   position: sticky;
   right: 0;
-  top: 10px; }
+  top: 100px; }
 
 .cartbtn {
   background-color: #25bbc5 !important;
@@ -40,7 +40,7 @@
     outline: none !important;
     box-shadow: none; }
 
-.cardbody .btn-primary {
+.btn-primary {
   border-color: #25bbc5 !important;
   background-color: #25bbc5 !important; }
 
@@ -85,10 +85,6 @@
 
 .pastview {
   box-sizing: border-box; }
-
-.icon {
-  position: absolute;
-  right: 0; }
 
 .originprice {
   text-decoration: line-through;

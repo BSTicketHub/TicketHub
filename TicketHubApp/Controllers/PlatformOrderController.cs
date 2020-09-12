@@ -13,10 +13,17 @@ namespace TicketHubApp.Controllers
         // GET: PlatformOrder
         public ActionResult Index()
         {
+            return View();
+        }
+
+
+        public ActionResult GetOrdersJsonData()
+        {
             PlatformOrderService service = new PlatformOrderService();
             var orders = service.GetAllOrders();
 
-            return View(orders);
+            return Json(orders, JsonRequestBehavior.AllowGet);
         }
+
     }
 }

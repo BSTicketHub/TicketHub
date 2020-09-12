@@ -5,9 +5,7 @@
     font-family: "微軟正黑體";
     text-decoration: none;
 }
-.box{
-    height: 200px;
-}
+
 
 .check{
     margin: 3px;
@@ -20,10 +18,14 @@
     margin: auto;
 }
 
-.cartitems{
-    height: 100px;
-    width: 100px;
-    margin: auto;
+.carttitle {
+    font-size: 14px;
+    font-weight: 700;
+    text-align: left;
+}
+
+.fontsize {
+    font-size: 14px;
 }
 
 
@@ -40,7 +42,23 @@
     border-color: #26BEC9;
 }
 
+#moneyImg{
+    background-image:url("../Images/img/bar.jpg");
+    background-repeat:no-repeat;
+    background-size: cover;
+}
 
+.moneyBox{
+    font-size:14px;
+    >div{
+        height:150px;
+    }
+}
+
+#ticketName{
+    font-size:16px;
+    font-weight:700;
+}
 
 
 

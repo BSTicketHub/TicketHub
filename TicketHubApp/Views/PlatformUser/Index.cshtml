@@ -1,5 +1,4 @@
-﻿@model IEnumerable<TicketHubApp.Models.ViewModels.PlatformOrderViewModel>
-
+﻿
 @{
     ViewBag.Title = "Index";
 }
@@ -7,19 +6,19 @@
 <nav aria-label="breadcrumb" class="shadow">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">後台管理系統</a></li>
-        <li class="breadcrumb-item"><a href="#">訂單管理</a></li>
-        <li class="breadcrumb-item active" aria-current="page">訂單列表</li>
+        <li class="breadcrumb-item"><a href="#">會員管理</a></li>
+        <li class="breadcrumb-item active" aria-current="page">會員列表</li>
     </ol>
 </nav>
 
 <div class="shadow p-3">
-    <table class="display" id="orderTable" style="width:100%">
+    <table id="userTable" class="display" style="width:100%">
         <thead>
             <tr>
-                <th>訂單編號</th>
-                <th>訂購者編號</th>
-                <th>訂購者帳號</th>
-                <th>訂單總金額</th>
+                <th>會員代號</th>
+                <th>會員帳號</th>
+                <th>會員手機</th>
+                <th>密碼雜湊</th>
             </tr>
         </thead>
     </table>
@@ -31,10 +30,10 @@
 
 <script>
     $(document).ready(function () {
-        $('#orderTable').DataTable({
-            "ajax": '../PlatformOrder/GetOrdersJsonData',
+        $('#userTable').DataTable({
+            "ajax": '../PlatformUser/GetUsersJson',
             "scrollX": true,
-            "stateSave": true,
+            "stateSave": true,  
         });
     });
 </script>
