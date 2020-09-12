@@ -33,7 +33,8 @@ namespace TicketHubDataLibrary.Migrations
             string[] userNames = new string[] { "admin", "platform", "manager", "employee", "cust" };
             GenUsers(userManager, roleManager, userNames);
 
-            GenShop(context, userManager);
+            GenShop(context);
+            GenIssue(context, userManager);
         }
 
         private void GenUsers(UserManager<TicketHubUser> userManager, RoleManager<IdentityRole> roleManager, string[] userNames)
@@ -48,7 +49,6 @@ namespace TicketHubDataLibrary.Migrations
                 }
             }
         }
-
         private void GenUser(UserManager<TicketHubUser> userManager, string userName, string roleName)
         {
             var userEmail = $"{userName}@tickethub.com";
@@ -67,10 +67,10 @@ namespace TicketHubDataLibrary.Migrations
                 }
             }
         }
-
-        private void GenShop(TicketHubContext context, UserManager<TicketHubUser> userManager)
+        private void GenShop(TicketHubContext context)
         {
-            List<Issue> issues = new List<Issue>();
+            List<Shop> shops = new List<Shop>();
+
             for (int i = 1; i <= 9; i++)
             {
                 var shop = new Shop
@@ -87,7 +87,18 @@ namespace TicketHubDataLibrary.Migrations
                     Website = "https://www.build-school.com/",
                     AppliedDate = DateTime.Now,
                 };
+                shops.Add(shop);
+            }
+            context.Shop.AddOrUpdate(s => s.ShopName, shops.ToArray());
+        }
+        private void GenIssue(TicketHubContext context, UserManager<TicketHubUser> userManager)
+        {
+            var shops = context.Shop.Where(x => x.ShopName.StartsWith("ExampleShop")).ToList();
 
+            List<Issue> issues = new List<Issue>();
+            foreach (var shop in shops)
+            {
+                var i = int.Parse(shop.ShopName.Substring(11));
                 var shopManager = userManager.FindByEmail($"manager{i}@tickethub.com");
                 for (int j = 1; j <= 5; j++)
                 {
@@ -102,12 +113,12 @@ namespace TicketHubDataLibrary.Migrations
                         IssuedDate = DateTime.Now,
                         ReleasedDate = DateTime.Now,
                         User = shopManager,
-                        Shop = shop,
+                        ShopId = shop.Id
                     };
                     issues.Add(issue);
                 }
             }
-            context.Issue.AddOrUpdate(i => i.Title, issues.ToArray());
+            context.Issue.AddOrUpdate(x => x.Title, issues.ToArray());
         }
     }
 }
