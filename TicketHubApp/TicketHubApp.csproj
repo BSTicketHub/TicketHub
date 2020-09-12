@@ -305,7 +305,11 @@
     <Content Include="Assets\Images\Home\about-1.png" />
     <Content Include="Assets\Images\Home\about-2.png" />
     <Content Include="Assets\Images\Home\about-3.png" />
+    <Content Include="Assets\Images\Home\about-4.png" />
+    <Content Include="Assets\Images\Home\about-5.png" />
+    <Content Include="Assets\Images\Home\about-6.png" />
     <Content Include="Assets\Images\Home\bed.png" />
+    <Content Include="Assets\Images\Home\customer_service.jpg" />
     <Content Include="Assets\Images\Home\food.png" />
     <Content Include="Assets\Images\Home\foodbg.jpg" />
     <Content Include="Assets\Images\Home\ic_star4_0.svg" />
@@ -315,6 +319,7 @@
     <Content Include="Assets\Images\Home\ic_star4_4.svg" />
     <Content Include="Assets\Images\Home\logo.png" />
     <Content Include="Assets\Images\Home\person.jpg" />
+    <Content Include="Assets\Images\Home\tab-background1.png" />
     <Content Include="Assets\Images\Home\takeout.png" />
     <Content Include="Assets\Images\Home\ticketHub.png" />
     <Content Include="Assets\Images\Home\travel.png" />
@@ -347,6 +352,7 @@
     </Content>
     <Content Include="Assets\Images\camera.png" />
     <Content Include="Assets\JavaScript\Customer\CustomerDetail.js" />
+    <Content Include="Assets\JavaScript\Home\jquery.sticky.js" />
     <Content Include="Assets\JavaScript\Platform\datatables.min.js" />
     <Content Include="Assets\JavaScript\Platform\PlatformMemberIndex.js" />
     <Content Include="Assets\JavaScript\Product\ticket-description.js" />

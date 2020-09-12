@@ -1,17 +1,947 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<div class="tab-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-8">
+                <div class="tab-title">
+                    <h2 class="text-center">
+                        您需要什麼幫助呢？
+                    </h2>
+                    <p>客服時間 (週一至週五 9:00AM ~ 6:00PM)</p>
+                    <p>我們為客戶解決任何問題。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div id="" class="hidden-sm hidden-xs sticky-wrapper">
+                <div class="height-100"></div>
+                <div id="faq" class="list-group">
+                    <a class="list-group-item list-group-item-action" id="" href="#faq-3">新手上路</a>
+                    <a class="list-group-item list-group-item-action" id="" href="#faq-4">如何訂購</a>
+                    <a class="list-group-item list-group-item-action" id="" href="#faq-5">兌換券使用說明</a>
+                    <a class="list-group-item list-group-item-action" id="" href="#faq-8">如何退費</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9 col-md-12 col-sm-12">
+            <div id="faq-link">
+                <div class="accordion" id="faq-3">
+                    <div class="height-100"></div>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+                    <h3 class=""><i class="icon i-faq-3 mr-2"></i>新手上路</h3>
+                    <div class="card">
+                        <div class="card-header" id="heading-3-1">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link question" id="question-3-1" type="button"
+                                        data-toggle="collapse" data-target="#collapse-3-1" aria-expanded="true"
+                                        aria-controls="collapse-3-1">
+                                    TickerHub 優惠活動之使用須知？
+                                    <i class="i-questiondropdown"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse-3-1" class="collapse answer" aria-labelledby="heading-3-1"
+                             data-parent="#faq-3">
+                            <div class="card-body bg-text">
+                                <p>
+                                    TickerHub 提供的優惠活動<font color="red">不得與其他優惠合併使用</font>
+                                    ，恕無法兌換現金，為保障您的權益，請務必持TickerHub
+                                    APP內的兌換券序號、手機簡訊或列印email兌換券到店使用，以示消費此兌換券。<br>
+                                    如購買的兌換券逾期未使用，依兌換券規範可辦理退費，惟旅行、展覽、演出、實體票券或其他特殊商品，請依該檔次之退費規範辦理。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading-3-2">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link question" id="question-3-2" type="button"
+                                        data-toggle="collapse" data-target="#collapse-3-2" aria-expanded="true"
+                                        aria-controls="collapse-3-2">
+                                    如何在 TickerHub 購買優惠活動？
+                                    <i class="i-questiondropdown"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse-3-2" class="collapse answer" aria-labelledby="heading-3-2"
+                             data-parent="#faq-3">
+                            <div class="card-body bg-text">
+                                <p>
+                                    Step1. 請至任一頻道(餐券、美容舒壓、生活娛樂、購物、旅行)中選擇您要購買的優惠活動。<br>
+                                    Step2. 點選「馬上購買」並依頁面指示依續輸入訂購資訊(請選擇分店、方案、數量、個人資料、發票形式以及付費方式)。<br>
+                                    Step3. 付費完成並經銀行入帳予 TickerHub，您的訂購手機及 email 將收到兌換券序號。(註一)<br>
+                                    <font color="red">
+                                        (提醒您：如您使用TickerHub
+                                        APP購買商品後，請先確認是否已完成手機驗證綁定，若已完成則於一分鐘內就會收到購買成功的推播通知，點選『前往』即可查看兌換券序號，手機簡訊將不另外發送。)
+                                    </font><br>
+                                    Step4. 到店消費時務必出示此兌換券已茲證明已購買此優惠活動。(註二)<br>
+                                    <br>
+                                    (註一)購買購物頻道 及 宅配購物+頻道的優惠活動，交易完成後系統將發送「商品交易完成通知」至您的訂購手機及 email
+                                    。<br>
+                                    (註二)購物頻道 及 宅配購物+頻道 出貨即履行完成交易。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading-3-3">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link question" id="question-3-3" type="button"
+                                        data-toggle="collapse" data-target="#collapse-3-3" aria-expanded="true"
+                                        aria-controls="collapse-3-3">
+                                    在 TickerHub 購物，是否需要註冊成為會員？
+                                    <i class="i-questiondropdown"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse-3-3" class="collapse answer" aria-labelledby="heading-3-3"
+                             data-parent="#faq-3">
+                            <div class="card-body bg-text">
+                                <p>
+                                    不需註冊會員。<br>
+                                    您於 TickerHub 購買時所留下的 e-mail 、姓名及電話為重要付費憑據，請務必於購買時留下正確的資訊，以便發送兌換券。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading-3-4">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link question" id="question-3-4" type="button"
+                                        data-toggle="collapse" data-target="#collapse-3-4" aria-expanded="true"
+                                        aria-controls="collapse-3-4">
+                                    TickerHub 是否有提供店家履約保證？
+                                    <i class="i-questiondropdown"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse-3-4" class="collapse answer" aria-labelledby="heading-3-4"
+                             data-parent="#faq-3">
+                            <div class="card-body bg-text">
+                                <p>
+                                    本兌換序號之金額，已經『中國信託商業銀行』提供足額履約保證；保證期間自購買日起一年，於前開保證期間屆滿後，自動解除全部保證責任。但保證期間內更換金融機構者，由更換後之金融機構接續提供履約保證。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading-3-5">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link question" id="question-3-5" type="button"
+                                        data-toggle="collapse" data-target="#collapse-3-5" aria-expanded="true"
+                                        aria-controls="collapse-3-5">
+                                    如何查詢購買紀錄？
+                                    <i class="i-questiondropdown"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse-3-5" class="collapse answer" aria-labelledby="heading-3-5"
+                             data-parent="#faq-3">
+                            <div class="card-body bg-text">
+                                <p>
+                                    PC電腦版：<br>
+                                    Step1. 請點選頁面上方的「訂單查詢」，依頁面指示完成手機認證。<br>
+                                    Step2. 購買紀錄依照「優惠票券→未使用 / 已核銷 / 已失效」、「宅配購物→未出貨 / 已出貨 /
+                                    已退貨」排序。<br>
+                                    <br>
+                                    TickerHub APP / mweb：<br>
+                                    Step1. 請點選畫面下方的 我的 / 登入，依頁面指示完成手機認證。<br>
+                                    Step2. 點選畫面下方的 我的 / 訂單查詢，購買紀錄依照「優惠票券→未使用 / 已核銷 / 已失效」、「宅配購物→未出貨
+                                    / 已出貨 / 已退貨」排序。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading-3-6">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link question" id="question-3-6" type="button"
+                                        data-toggle="collapse" data-target="#collapse-3-6" aria-expanded="true"
+                                        aria-controls="collapse-3-6">
+                                    下單優惠活動後，是否可以變更訂單內容？
+                                    <i class="i-questiondropdown"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse-3-6" class="collapse answer" aria-labelledby="heading-3-6"
+                             data-parent="#faq-3">
+                            <div class="card-body bg-text">
+                                <p>
+                                    請您下單前務必優先考量訂購數量 / 分店 / 付費方式 /
+                                    宅配收件人資料，若已下單完成，則無法再變更訂購資訊，如消費者確有更改訂單內容之需要，請直接申請該筆訂單退款並重新訂購。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading-3-7">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link question" id="question-3-7" type="button"
+                                        data-toggle="collapse" data-target="#collapse-3-7" aria-expanded="true"
+                                        aria-controls="collapse-3-7">
+                                    送出資料後，發現 e-mail 或手機號碼填寫錯誤，該怎麼辦？
+                                    <i class="i-questiondropdown"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse-3-7" class="collapse answer" aria-labelledby="heading-3-7"
+                             data-parent="#faq-3">
+                            <div class="card-body bg-text">
+                                <p>
+                                    由於訂購時您填寫的e-mail
+                                    及手機號碼為日後寄發兌換券之重要依據，為確保您的消費權益，e-mail及手機號碼填寫錯誤則無法修正，故提醒您務必於填寫時，留意相關資料
+                                    e-mail 及手機號碼之正確性。此外，若需辦理退貨但因e-mail
+                                    錯誤而導致無法收到退貨折讓單時，則煩請來電客服中心，將由專人為您進行折讓單之e-mail補寄。謝謝您！
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading-3-8">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link question" id="question-3-8" type="button"
+                                        data-toggle="collapse" data-target="#collapse-3-8" aria-expanded="true"
+                                        aria-controls="collapse-3-8">
+                                    若優惠活動已完售，就無法再訂購嗎？
+                                    <i class="i-questiondropdown"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse-3-8" class="collapse answer" aria-labelledby="heading-3-8"
+                             data-parent="#faq-3">
+                            <div class="card-body bg-text">
+                                <p>
+                                    因為 TickerHub
+                                    的優惠活動皆是限時限量，因此若此檔優惠活動已完售，則無法再訂購，建議您下次若有喜歡的優惠活動，可先下單購買！<br>
+                                    貼心提醒：歡迎您訂閱「TickerHub 電子報」，讓您天天掌握吃喝玩樂最新優惠訊息！
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading-3-9">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link question" id="question-3-9" type="button"
+                                        data-toggle="collapse" data-target="#collapse-3-9" aria-expanded="true"
+                                        aria-controls="collapse-3-9">
+                                    消費者服務回覆
+                                    <i class="i-questiondropdown"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse-3-9" class="collapse answer" aria-labelledby="heading-3-9"
+                             data-parent="#faq-3">
+                            <div class="card-body bg-text">
+                                <p>
+                                    <img style="width: 100%" src="/Assets/Images/Home/customer_service.jpg">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading-3-10">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link question" id="question-3-10" type="button"
+                                        data-toggle="collapse" data-target="#collapse-3-10" aria-expanded="true"
+                                        aria-controls="collapse-3-10">
+                                    如何訂閱 TickerHub 電子報?
+                                    <i class="i-questiondropdown"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse-3-10" class="collapse answer" aria-labelledby="heading-3-10"
+                             data-parent="#faq-3">
+                            <div class="card-body bg-text">
+                                <p>
+                                    方法一：請至 TickerHub 首頁左上角點選「訂閱 TickerHub
+                                    電子報」，選擇您要訂閱的城市，再輸入接收電子報的email即可。<br>
+                                    方法二：請您致電 TickerHub 客服 02-27111758，我們將協助您訂閱電子報。<br>
+                                    <br>
+                                    提醒您：若在訂閱完成24小時後仍未在收件夾收到電子報，請您至垃圾郵件夾開啟並點選這不是垃圾信。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading-3-11">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link question" id="question-3-11" type="button"
+                                        data-toggle="collapse" data-target="#collapse-3-11" aria-expanded="true"
+                                        aria-controls="collapse-3-11">
+                                    如何使用線上預約服務？
+                                    <i class="i-questiondropdown"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse-3-11" class="collapse answer" aria-labelledby="heading-3-11"
+                             data-parent="#faq-3">
+                            <div class="card-body bg-text">
+                                <p>
+                                    如您使用PC電腦版、MWEB版：<br>
+                                    請至 <a href="" target="_blank">線上預約系統</a>
+                                    輸入兌換券序號及手機號碼，點選「立即預約」送出即完成預約；如需取消預約，請改選擇「取消預約」即可。<br>
+                                    <br>
+                                    如您使用TickerHub APP版：<br>
+                                    Step1. 請您點選APP畫面下方的我的 / 訂單查詢 / 需預約的優惠活動 / 預約<br>
+                                    Step2. 確認兌換券序號及手機門號都已帶入資訊後即可點選立即預約<br>
+                                    Step3. 請選擇預約日期及時段後點選確定送出，再次確認預約資訊後點選確定<br>
+                                    Step4. 查看頁面顯示預約成功即完成
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading-3-12">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link question" id="question-3-12" type="button"
+                                        data-toggle="collapse" data-target="#collapse-3-12" aria-expanded="true"
+                                        aria-controls="collapse-3-12">
+                                    TickerHub APP如何綁定？
+                                    <i class="i-questiondropdown"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse-3-12" class="collapse answer" aria-labelledby="heading-3-12"
+                             data-parent="#faq-3">
+                            <div class="card-body bg-text">
+                                <p>
+                                    Step1. 請點選 APP 畫面下方的「我的→登入」 <br>
+                                    Step2. 進入手機認證畫面，請點選「同意條款並驗證號碼」。<br>
+                                    Step3. 收到驗證碼簡訊後，部分手機型號會將驗證碼自動帶入欄位並完成，部分手機型號需自行輸入驗證碼即可完成驗證。<br>
+                                    <br>
+                                    ※完成登入驗證後，您可透過 個人設定 / 我的帳號 / E-mail確認
+                                    進行確認或變更；如您欲綁定的E-mail不在可選擇的列表當中，請致電客服中心02-27111758，將有專人協助處理。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion" id="faq-4">
+                    <div class="height-100"></div>
+
+                    <h3 class=""><i class="icon i-faq-4 mr-2"></i>如何訂購</h3>
+                    <div class="card">
+                        <div class="card-header" id="heading-4-1">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link question" id="question-4-1" type="button"
+                                        data-toggle="collapse" data-target="#collapse-4-1" aria-expanded="true"
+                                        aria-controls="collapse-4-1">
+                                    付款方式
+                                    <i class="i-questiondropdown"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse-4-1" class="collapse answer" aria-labelledby="heading-4-1"
+                             data-parent="#faq-4">
+                            <div class="card-body bg-text">
+                                <p>
+                                    TickerHub提供以下幾種付款方式：(宅配購物+請另以結帳頁面為準)<br>
+                                    <br>
+                                    <font color="blue">【信用卡】</font>
+                                    台灣地區發行之Visa、MasterCard、JCB、Visa金融卡。<br>
+                                    <br>
+                                    <font color="blue">【ATM轉帳】</font>
+                                    請至ATM櫃員機/網路ATM轉帳，需於訂單完成隔日的23:59前完成繳費，如訂單完成時間為23:00後則繳款期限再順延至次日23:59前。(跨行轉帳銀行端將收取15元手續費)<br>
+                                    <br>
+                                    <font color="blue">【Web ATM】</font>
+                                    限PC下單使用，需自備讀卡機並於下單同時完成繳費。(跨行轉帳銀行端將收取15元手續費)<br>
+                                    <br>
+                                    <font color="blue">【全家Famiport付款】</font>
+                                    請至全家便利商店繳款，需於訂單完成隔日23:59前完成繳費，如交易時間為23:00後則繳款期限再順延至次日23:59前。(免手續費/單筆繳費金額上限2萬元)<br>
+                                    ※ 操作方式：全家 FamiPort
+                                    機台操作步驟→選擇「繳費」→選擇「代碼繳費」→請詳細閱讀下列條款→輸入繳費代碼（共14碼）→再次確認繳費代碼→確認金額、項目無誤後，列印繳費單→臨櫃繳費。<br>
+                                    <br>
+                                    <font color="red">
+                                        提醒您! 超商繳費收據不可做為兌換使用!<br>
+                                        繳費後待TickerHub入帳，兌換券序號將即時傳送至您的訂購手機及email，到店消費時務必出示兌換券序號。
+                                    </font>
+                                    <br>
+                                    <br>
+                                    <font color="blue">【LINE Pay】</font>請先註冊為LINE
+                                    Pay會員，可使用LINE點數/LINE Points折抵，依頁面顯示部分商品不適用此付款方式。(限台灣地區發卡)<br>
+                                    <br>
+                                    <font color="blue">【Apple Pay】</font>限APP下單使用，請先完成Apple
+                                    Pay信用卡綁定，依頁面顯示部分商品不適用此付款方式。(JCB卡需為iOS 10.2以上方可使用)<br>
+                                    <br>
+                                    <font color="blue">【Google Pay】</font>限APP下單使用，請先完成Google
+                                    Pay信用卡綁定，依頁面顯示部分商品不適用此付款方式。 (App版本限v6.6.3以上)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading-4-2">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link question" id="question-4-2" type="button"
+                                        data-toggle="collapse" data-target="#collapse-4-2" aria-expanded="true"
+                                        aria-controls="collapse-4-2">
+                                    信用卡付款相關說明
+                                    <i class="i-questiondropdown"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse-4-2" class="collapse answer" aria-labelledby="heading-4-2"
+                             data-parent="#faq-4">
+                            <div class="card-body bg-text">
+                                <p>
+                                    1.
+                                    TickerHub由國泰世華及中國信託代收信用卡費用，付費全程採用SSL加密，除發卡銀行外，無人可取得或記錄您的信用卡資訊。<br>
+                                    <br>
+                                    2.
+                                    當您依步驟刷卡成功，頁面將立即顯示付費成功的畫面，同時您將收到兌換券或交易完成通知信，並且在登入後於訂單查詢中查看到該筆訂單。<br>
+                                    <br>
+                                    3. 您的信用卡需具有線上刷卡功能，倘若刷卡失敗請您可致電發卡銀行確認失敗原因。<br>
+                                    <br>
+                                    4. 使用國泰世華之信用卡刷卡金額滿$1000元可享分三期0利率，除不盡餘額於第一期收取。<br>
+                                    <br>
+                                    <b>
+                                        <font color="red">
+                                            TickerHub 已於2020/06/15
+                                            終止提供分期服務，感謝您一路以來的支持，謝謝。
+                                        </font>
+                                    </b>
+                                    <br>
+                                    ※分期訂單不可轉購物金，退費僅可以原信用卡刷退方式辦理。<br>
+                                    ※公益檔次及依頁面顯示部分商品不適用分期付款。<br>
+                                    ※使用【LINE Pay】、【Apple Pay】、【Google Pay】綁定國泰卡不適用分期。<br>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading-4-3">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link question" id="question-4-3" type="button"
+                                        data-toggle="collapse" data-target="#collapse-4-3" aria-expanded="true"
+                                        aria-controls="collapse-4-3">
+                                    常見 ATM 交易失敗的原因：
+                                    <i class="i-questiondropdown"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse-4-3" class="collapse answer" aria-labelledby="heading-4-3"
+                             data-parent="#faq-4">
+                            <div class="card-body bg-text">
+                                <p>
+                                    1. 超過轉帳時間。<br>
+                                    2. 虛擬 ATM 帳號或金額不正確。<br>
+                                    3. 卡片無轉帳功能。<br>
+                                    若有任何操作上的疑問，請與 TickerHub 客服中心聯繫，客服人員將為您查詢確認。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading-4-4">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link question" id="question-4-4" type="button"
+                                        data-toggle="collapse" data-target="#collapse-4-4" aria-expanded="true"
+                                        aria-controls="collapse-4-4">
+                                    若使用 ATM 付費方案，繳費期限為何？
+                                    <i class="i-questiondropdown"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse-4-4" class="collapse answer" aria-labelledby="heading-4-4"
+                             data-parent="#faq-4">
+                            <div class="card-body bg-text">
+                                <p>
+                                    若使用 ATM 付費方案下單完成，則手機簡訊及訂購信箱中將收到 ATM 轉帳通知信，請您依通知信中所顯示的日期晚上 12
+                                    點前轉帳並經銀行入帳予本公司即可。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading-4-5">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link question" id="question-4-5" type="button"
+                                        data-toggle="collapse" data-target="#collapse-4-5" aria-expanded="true"
+                                        aria-controls="collapse-4-5">
+                                    若使用 ATM 繳費，只能用訂購人的卡片進行轉帳嗎？
+                                    <i class="i-questiondropdown"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse-4-5" class="collapse answer" aria-labelledby="heading-4-5"
+                             data-parent="#faq-4">
+                            <div class="card-body bg-text">
+                                <p>
+                                    請您放心，若使用 ATM
+                                    繳費不一定要使用訂購人本人的提款卡，您也可以請親朋好友代您繳費，只要在繳費期限內輸入您收到的虛擬帳號和金額即可。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading-4-6">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link question" id="question-4-6" type="button"
+                                        data-toggle="collapse" data-target="#collapse-4-6" aria-expanded="true"
+                                        aria-controls="collapse-4-6">
+                                    已過 ATM 繳費期限而未繳費，該怎麼辦？
+                                    <i class="i-questiondropdown"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse-4-6" class="collapse answer" aria-labelledby="heading-4-6"
+                             data-parent="#faq-4">
+                            <div class="card-body bg-text">
+                                <p>
+                                    TickerHub 的 ATM 付費方案所產生的帳戶皆為虛擬帳戶，請務必於繳費期限內將指定金額轉帳至指定帳戶中，若超過 ATM
+                                    繳費期限而未完成繳費，則此筆訂單無效。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading-4-7">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link question" id="question-4-7" type="button"
+                                        data-toggle="collapse" data-target="#collapse-4-7" aria-expanded="true"
+                                        aria-controls="collapse-4-7">
+                                    如何確認轉帳成功？
+                                    <i class="i-questiondropdown"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse-4-7" class="collapse answer" aria-labelledby="heading-4-7"
+                             data-parent="#faq-4">
+                            <div class="card-body bg-text">
+                                <p>
+                                    Step1.
+                                    轉帳完成後系統最遲於次一工作日入帳，入帳後將即時傳送訂購成功通知信、兌換券至您的訂購信箱中；另外手機簡訊或TickerHub
+                                    APP也將收到通知。 ※如欲加快訂購速度，建議可改以信用卡方式付款，以利快速入帳。<br>
+                                    <br>
+                                    Step2.
+                                    若轉帳完成後之次一工作日仍未收到兌換券，請您先查看ATM交易明細收據中是否有轉帳失敗的訊息，並且補登存簿確認是否有扣款紀錄。<br>
+                                    <br>
+                                    Step3. 如仍有帳務上其他疑問，請與 TickerHub 客服中心聯繫，客服人員將為您查詢確認。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading-4-8">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link question" id="question-4-8" type="button"
+                                        data-toggle="collapse" data-target="#collapse-4-8" aria-expanded="true"
+                                        aria-controls="collapse-4-8">
+                                    若原本選了ATM付費，是否可以改為其他付費方式？
+                                    <i class="i-questiondropdown"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse-4-8" class="collapse answer" aria-labelledby="heading-4-8"
+                             data-parent="#faq-4">
+                            <div class="card-body bg-text">
+                                <p>
+                                    不好意思，若已使用 ATM 下單完成，則無法再變更其他付費方式。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading-4-9">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link question" id="question-4-9" type="button"
+                                        data-toggle="collapse" data-target="#collapse-4-9" aria-expanded="true"
+                                        aria-controls="collapse-4-9">
+                                    轉帳完成後，TickerHub 如何知道這是我付費的？
+                                    <i class="i-questiondropdown"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse-4-9" class="collapse answer" aria-labelledby="heading-4-9"
+                             data-parent="#faq-4">
+                            <div class="card-body bg-text">
+                                <p>
+                                    請您放心，若在 TickerHub 使用 ATM
+                                    付費方式，則每一筆訂單皆產生一組專屬虛擬轉帳帳號，只要您在繳費期限內，將此筆訂單正確的金額轉入(轉帳人不需為訂購人)，直至此筆金額經銀行入帳予本公司，您的訂購信箱及手機中將收到兌換券。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading-4-10">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link question" id="question-4-10" type="button"
+                                        data-toggle="collapse" data-target="#collapse-4-10" aria-expanded="true"
+                                        aria-controls="collapse-4-10">
+                                    轉帳後的交易明細收據是否需保留以便查核？
+                                    <i class="i-questiondropdown"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse-4-10" class="collapse answer" aria-labelledby="heading-4-10"
+                             data-parent="#faq-4">
+                            <div class="card-body bg-text">
+                                <p>
+                                    若您使用 ATM 轉帳交易，請務必保留明細表至您收到訂購成功的通知信及兌換券。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading-4-11">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link question" id="question-4-11" type="button"
+                                        data-toggle="collapse" data-target="#collapse-4-11" aria-expanded="true"
+                                        aria-controls="collapse-4-11">
+                                    購物商品尚未送達，為什麼信用卡已經請款呢?
+                                    <i class="i-questiondropdown"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse-4-11" class="collapse answer" aria-labelledby="heading-4-11"
+                             data-parent="#faq-4">
+                            <div class="card-body bg-text">
+                                <p>
+                                    由於信用卡交易需先獲得銀行授權准予請款，訂單才視為成立並由店家為您進行出貨安排；故倘若尚未收到購物商品前，當筆交易金額已列入您信用卡帳單中，還請您依據帳單所示期限先行繳款。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion" id="faq-5">
+                    <div class="height-100"></div>
+
+                    <h3 class=""><i class="icon i-faq-5 mr-2"></i>兌換券使用說明</h3>
+                    <div class="card">
+                        <div class="card-header" id="heading-5-1">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link question" id="question-5-1" type="button"
+                                        data-toggle="collapse" data-target="#collapse-5-1" aria-expanded="true"
+                                        aria-controls="collapse-5-1">
+                                    兌換券什麼時候寄出？
+                                    <i class="i-questiondropdown"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse-5-1" class="collapse answer" aria-labelledby="heading-5-1"
+                             data-parent="#faq-5">
+                            <div class="card-body bg-text">
+                                <p>
+                                    當您完成訂單並付費成功後，系統將立即發送兌換券至您的e-mail
+                                    以及手機中；此券為到店家消費享有優惠的依據，請務必妥善保存。<br>
+                                    <br>
+                                    <font color="red">
+                                        如您使用TickerHub
+                                        APP購買商品後，一分鐘內就會收到購買成功的推播通知，點選『前往』即可查看兌換券序號，手機簡訊將不另外發送。
+                                    </font>
+                                    兌換券序號全都在APP的「訂單查詢」裡，再也不用擔心誤刪/找不到簡訊/換手機，登入APP就能輕鬆查看所有兌換券。<br>
+                                    <br>
+                                    ※ 提醒您，請將APP / 個人設定 確認推播通知狀態為"打開"。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading-5-2">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link question" id="question-5-2" type="button"
+                                        data-toggle="collapse" data-target="#collapse-5-2" aria-expanded="true"
+                                        aria-controls="collapse-5-2">
+                                    若兌換券遺失，該如何補發？
+                                    <i class="i-questiondropdown"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse-5-2" class="collapse answer" aria-labelledby="heading-5-2"
+                             data-parent="#faq-5">
+                            <div class="card-body bg-text">
+                                <p>
+                                    方法1：建議<a href="">
+                                        下載TickerHub
+                                        APP
+                                    </a>，所有的兌換券序號全都在APP的「訂單查詢」裡，再也不用擔心誤刪/找不到簡訊/換手機，只要登入APP就能輕鬆查看所有兌換券。<br>
+                                    <br>
+                                    方法2：撥打TickerHub 客服專線：(123) 456-7890
+                                    ，依照語音導引輸入您的訂單編號，系統將即時為您補發兌換券簡訊或兌換券email。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading-5-3">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link question" id="question-5-3" type="button"
+                                        data-toggle="collapse" data-target="#collapse-5-3" aria-expanded="true"
+                                        aria-controls="collapse-5-3">
+                                    如何使用 TickerHub 兌換券到店消費？
+                                    <i class="i-questiondropdown"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse-5-3" class="collapse answer" aria-labelledby="heading-5-3"
+                             data-parent="#faq-5">
+                            <div class="card-body bg-text">
+                                <p>
+                                    Step1.
+                                    請於優惠兌換期內使用，並遵循兌換券使用規定，如為需預約檔次請先完成預約訂位並主動告知使用TickerHub兌換券。<br>
+                                    Step2. 確認預約訂位完成後，請務必於預約時段持兌換券(出示TickerHub APP內的兌換券序號/qr
+                                    code或是採用自主核銷功能，如無使用TickerHub
+                                    APP則請持兌換券簡訊或email兌換券列印)到店供店家工作人員核對。<br>
+                                    Step3. 待店家工作人員確認資料無誤，即可使用兌換券享有優惠方案。<br>
+                                    <br>
+                                    <font color="red">
+                                        ※提醒您：使用自主核銷功能時，請務必確認您核銷的店家及方案是否正確，序號一經核銷將隨時失效；敬請主動出示核銷成功畫面予店家人員確認。
+                                    </font>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading-5-4">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link question" id="question-5-4" type="button"
+                                        data-toggle="collapse" data-target="#collapse-5-4" aria-expanded="true"
+                                        aria-controls="collapse-5-4">
+                                    TickerHub 兌換券可以分享給他人使用嗎？
+                                    <i class="i-questiondropdown"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse-5-4" class="collapse answer" aria-labelledby="heading-5-4"
+                             data-parent="#faq-5">
+                            <div class="card-body bg-text">
+                                <p>
+                                    可以，您可透過以下方式分享兌換券序號給您的親友。<br>
+                                    <br>
+                                    1. 每筆交易TickerHub均會寄送兌換券e-mail，請將e-mail列印、截圖或轉發。<br>
+                                    2. 請以 mweb/PC 登入訂單查詢，將兌換券序號截圖後分享。 <br>
+                                    3. 請以 App 登入訂單查詢<br>
+                                    ios：將兌換券序號截圖後分享。<br>
+                                    Android：基於安全性原則，App無法截圖另存，請點擊訂單詳細頁右上角的相機圖案，按下以後，再使用最下方的分享功能進行分享。<br>
+                                    4. 目前僅使用PC下單會發送兌換券簡訊，您可自行轉發簡訊。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading-5-5">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link question" id="question-5-5" type="button"
+                                        data-toggle="collapse" data-target="#collapse-5-5" aria-expanded="true"
+                                        aria-controls="collapse-5-5">
+                                    若兌換券超過優惠使用期間，還可以使用嗎？
+                                    <i class="i-questiondropdown"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse-5-5" class="collapse answer" aria-labelledby="heading-5-5"
+                             data-parent="#faq-5">
+                            <div class="card-body bg-text">
+                                <p>
+                                    消費者若逾優惠使用期未使用兌換券，即不得使用該兌換券要求店家提供該商品或服務，或抵用相同金額之商品或服務。消費者原購買兌換券所支付之金額可向本網站申請退費(<a href="" target="_blank">如何自行申請退費？</a>)。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading-5-6">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link question" id="question-5-6" type="button"
+                                        data-toggle="collapse" data-target="#collapse-5-6" aria-expanded="true"
+                                        aria-controls="collapse-5-6">
+                                    關於優惠活動的「等值用餐金額」如何計算？
+                                    <i class="i-questiondropdown"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse-5-6" class="collapse answer" aria-labelledby="heading-5-6"
+                             data-parent="#faq-5">
+                            <div class="card-body bg-text">
+                                <p>
+                                    若優惠活動方案為抵用等值用餐金額，則以當次消費金額外加服務費後再折抵該檔優惠活動可抵用金額計算，不足部分以現金付費。<br>
+                                    <br>
+                                    範例：<br>
+                                    以 $599 元(可抵原價 $1000 元)購買一檔優惠商品，當次消費 $1100 元，結帳時出示一張兌換券，可折抵
+                                    $1000 元，因此只需再付 $100 元即可。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion" id="faq-8">
+                    <div class="height-100"></div>
+
+                    <h3 class=""><i class="icon i-faq-8 mr-2"></i>如何退費</h3>
+                    <div class="card">
+                        <div class="card-header" id="heading-8-1">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link question" id="question-8-1" type="button"
+                                        data-toggle="collapse" data-target="#collapse-8-1" aria-expanded="true"
+                                        aria-controls="collapse-8-1">
+                                    如何自行申請退費？
+                                    <i class="i-questiondropdown"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse-8-1" class="collapse answer" aria-labelledby="heading-8-1"
+                             data-parent="#faq-8">
+                            <div class="card-body bg-text">
+                                <p>
+                                    <b>
+                                        <font color="red">
+                                            <br>
+                                            ※ 旅行檔次退費依據觀光局定型化契約以及兌換券規範辦理。<br>
+                                            ※
+                                            特定期間之展覽(如創作、文物)以及特定場次之演出(如演唱會、戲劇、講演)等退費，依行政院公布之定型化契約以及兌換券規範辦理。<br>
+                                            ※ 紙本票券(餐券、住宿券、...等)之退費辦法，<a href=""
+                                                                        target="_blank">詳請參考</a>。<br>
+                                            ※ 宅配購物+ 頻道之退費方式，詳請參考(<a href=""
+                                                                    target="_blank">退貨退款如何辦理?</a>)。<br>
+                                            ※
+                                            信用卡刷退將退回原付款之信用卡中，刷退約需十個工作天；因信用卡結帳日期依各發卡銀行而異，您的款項可能會顯示在次月的帳單中。
+                                        </font>
+                                    </b><br>
+                                    <br>
+                                    <b>
+                                        <font color="blue">TickerHub APP / mweb：</font>
+                                    </b><br>
+                                    step1. 請點選畫面下方的 我的 / 登入，依頁面指示完成手機認證。<br>
+                                    step2. 點選畫面下方的我的 / 訂單查詢 / 優惠票券(宅配購物) / 未使用(未出貨/已出貨) / 我的訂單 下拉至底端
+                                    點選「申請退費」，請勾選您要退費的兌換券序號(可部分退費)，並選擇退費原因。<br>
+                                    step3. 請選擇退費方式送出後，申請退費流程即完成。(宅配與紙本票券檔次需待店家收到退貨商品確認無誤方進行退費)<br>
+                                    <br>
+                                    轉購物金：系統將於 1 小時內為您進行購物金的轉換，屆時購物金會留存於訂購信箱。<br>
+                                    退費：依原付費方式退費且需回傳折讓單，約十個工作天(信用卡刷退、ATM/Fami
+                                    需提供退款帳號，如銀行為：國泰、彰化、台北富邦、聯邦、永豐、台新或開戶者姓名含有特殊字需另提供身分證字號，以免退費失敗)。
+                                    <br>
+                                    <br>
+                                    <b>
+                                        <font color="blue">PC電腦版：</font>
+                                    </b><br>
+                                    Step1. 請點選頁面上方的「訂單查詢」，依頁面指示完成手機認證。<br>
+                                    Step2. 點選訂單查詢 / 優惠票券(宅配購物) / 未使用(未出貨/已出貨) / 我的訂單 下拉至底端
+                                    點選「申請退費」，請勾選您要退費的兌換券序號(可部分退費)，並選擇退費原因。<br>
+                                    step3. 請選擇退費方式送出後，申請退費流程即完成。(宅配與紙本票券檔次需待店家收到退貨商品確認無誤方進行退費)<br>
+                                    <br>
+                                    轉購物金：系統將於 1 小時內為您進行購物金的轉換，屆時購物金會留存於訂購信箱。<br>
+                                    退費：依原付費方式退費且需回傳折讓單，約十個工作天(信用卡刷退、ATM/Fami
+                                    需提供退款帳號，如銀行為：國泰、彰化、台北富邦、聯邦、永豐、台新或開戶者姓名含有特殊字需另提供身分證字號，以免退費失敗)。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading-8-3">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link question" id="question-8-3" type="button"
+                                        data-toggle="collapse" data-target="#collapse-8-3" aria-expanded="true"
+                                        aria-controls="collapse-8-3">
+                                    如何填寫折讓單？填寫完畢應如何處理？
+                                    <i class="i-questiondropdown"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse-8-3" class="collapse answer" aria-labelledby="heading-8-3"
+                             data-parent="#faq-8">
+                            <div class="card-body bg-text">
+                                <p>
+                                    step1. 請於訂購信箱中，下載「折讓證明單_請填寫寄回聯」，並列印為紙本<br>
+                                    <br>
+                                    step2. 在折讓證明單中簽名/蓋章，如折讓單的買受人為：<br>
+                                    <span style="margin-left: 60px;">a. 個人戶：請簽名即可</span><br>
+                                    <span style="margin-left: 60px;">b. 公司戶：請蓋公司發票章</span><br>
+                                    <font color="red">
+                                        提醒您：折讓單的買受人為個人戶時(二聯式發票)，建議您選擇"電子折讓單"將不需再簽回紙本折讓單，由本公司直接代為處理銷貨退回及折讓證明單，以加速退貨退款作業。
+                                    </font><br>
+                                    <br>
+                                    step3. 簽名/蓋章後，請利用以下管道回傳至 TickerHub 客服中心<br>
+                                    <span style="margin-left: 60px;">a. 傳真至 (02)2711-1757</span><br>
+                                    <span style="margin-left: 60px;">
+                                        b.
+                                        拍照傳送至客服信箱：support@TickerHub.com
+                                    </span><br>
+                                    <span style="margin-left: 60px;">
+                                        c. 紙本郵寄至：106 台北市大安區市民大道四段 100 號
+                                        4 樓 - TickerHub 客服中心收
+                                    </span><br>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading-8-6">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link question" id="question-8-6" type="button"
+                                        data-toggle="collapse" data-target="#collapse-8-6" aria-expanded="true"
+                                        aria-controls="collapse-8-6">
+                                    紙本票券(餐券、住宿券、...等)退費辦法
+                                    <i class="i-questiondropdown"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse-8-6" class="collapse answer" aria-labelledby="heading-8-6"
+                             data-parent="#faq-8">
+                            <div class="card-body bg-text">
+                                <p>
+                                    1. <b>
+                                        <font color="red">票券經簽收後提供7天鑑賞期</font>
+                                    </b>，鑑賞期內如欲辦理退貨，請至「<a href="">
+                                        TickerHub
+                                        客服中心-申請退費
+                                    </a>」辦理。<br>
+                                    2. 請保持票券之完整性並妥善包裝，不得部份退費。<br>
+                                    3.
+                                    請於申請退費後3個工作天內，將「票券和訂購人姓名、電話」掛號寄回指定地址，逾期未寄回請恕無法受理退費(以郵戳為憑)，並請保留寄件收據；待店家確認完畢，系統將為您進行退費流程。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="heading-8-8">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link question" id="question-8-8" type="button"
+                                        data-toggle="collapse" data-target="#collapse-8-8" aria-expanded="true"
+                                        aria-controls="collapse-8-8">
+                                    關於「退費保障政策」
+                                    <i class="i-questiondropdown"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse-8-8" class="collapse answer" aria-labelledby="heading-8-8"
+                             data-parent="#faq-8">
+                            <div class="card-body bg-text">
+                                <p>
+                                    購買TickerHub優惠票券只要未使用(含已過期)，保證隨時可退費(註1)，唯「開票手續費」(註2)不在退費範圍。<br>
+                                    <br>
+                                    (註1)<br>
+                                    ※ 旅行檔次退費依據觀光局定型化契約以及兌換券規範辦理。<br>
+                                    ※
+                                    特定期間之展覽(如創作、文物)以及特定場次之演出(如演唱會、戲劇、講演)等退費，依行政院公布之定型化契約以及兌換券規範辦理。<br>
+                                    ※ 紙本票券(餐券、住宿券、...等)之退費辦法，<a style="text-decoration: underline;" href=""
+                                                                target="_blank">詳請參考</a>。<br>
+                                    <br>
+                                    (註2)<br>
+                                    <b>
+                                        <font color="red">
+                                            請注意，購買TickerHub優惠票券之同時，將另收取「開票手續費」，以協助您完成電子開票程序。此部分費用依照『通訊交易解除權合理例外情事適用準則第2條第5項』之規定，票券一經開立送達至您帳號後，即視為一經提供即完成之線上服務，不在票券退費的範圍內
+                                        </font>
+                                    </b>，但如為不可歸責消費者因素被迫退費(如店家歇業等)則不在此限。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<button class="" id="btnScroll">▲<h6>Top</h6></button>
+<!-- ------ -->
+@section endJS
+{
+    <script src="~/Assets/JavaScript/Home/jquery.sticky.js"></script>
+}
