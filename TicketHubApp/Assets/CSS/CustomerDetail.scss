@@ -48,8 +48,8 @@ body{
             }
 
             &.focus {
-                color: white;
-                background-color: $cust-color-10;
+                color: $cust-color-8;
+                background-color: white;
 
                 &::before {
                     content: "";

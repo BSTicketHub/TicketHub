@@ -87,15 +87,22 @@ body {
     }
 }
 
+.login-container {
+    width: 90%;
+    margin: auto;
+}
+
 .login-card {
     position: absolute;
     width: 90%;
+    left: 10%;
+    margin-left: auto;
+    margin-right: auto;
     transition: left 1s ease-in-out;
-    left: 9%;
     z-index: 20;
 
     &:not(.active) {
-        left: -83%;
+        left: -85%;
         z-index: 10;
     }
 
@@ -157,13 +164,18 @@ body {
     }
 }
 
-@media screen and (min-width: 992px) {
+.valid-summary {
+    z-index: 25;
+    position: absolute;
+    right: 0;
+}
+
+@media screen and (min-width: 768px) {
     .login-card {
-        width: 75%;
-        left: 13.85%;
+        width: 80%;
 
         &:not(.active) {
-            left: -80%;
+            left: -80%
         }
     }
 
@@ -188,6 +200,17 @@ body {
         .login {
             font-weight: 200;
             transform: rotateZ(90deg) translate(12%, 0%);
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .login-card {
+        width: 75%;
+        left: 12.5%;
+
+        &:not(.active) {
+            left: -75%
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Linq;
 using TicketHubApp.Interfaces;
+using TicketHubDataLibrary.Models;
 
 namespace TicketHubApp.Models
 {
@@ -11,7 +12,11 @@ namespace TicketHubApp.Models
         public DbContext Context { get { return _context; } }
         public GenericRepository(DbContext context)
         {
-            _context = context ?? throw new ArgumentException();
+            if (context == null)
+            {
+                _context = new TicketHubContext();
+            }
+            _context = context;
         }
         public void Create(TEntity entity)
         {

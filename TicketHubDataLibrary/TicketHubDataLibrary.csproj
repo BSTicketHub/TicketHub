@@ -40,6 +40,33 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.3\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -57,82 +84,67 @@
     <Compile Include="Migrations\202008281253475_initial.Designer.cs">
       <DependentUpon>202008281253475_initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202008281343219_AddUsersTables.cs" />
-    <Compile Include="Migrations\202008281343219_AddUsersTables.Designer.cs">
-      <DependentUpon>202008281343219_AddUsersTables.cs</DependentUpon>
+    <Compile Include="Migrations\202009090357204_IncludeIdentityTablesAndDropOtherTables.cs" />
+    <Compile Include="Migrations\202009090357204_IncludeIdentityTablesAndDropOtherTables.designer.cs">
+      <DependentUpon>202009090357204_IncludeIdentityTablesAndDropOtherTables.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202008281346549_AlterLoginLogTableReference.cs" />
-    <Compile Include="Migrations\202008281346549_AlterLoginLogTableReference.Designer.cs">
-      <DependentUpon>202008281346549_AlterLoginLogTableReference.cs</DependentUpon>
+    <Compile Include="Migrations\202009090358557_ChangeIdentityTablesName.cs" />
+    <Compile Include="Migrations\202009090358557_ChangeIdentityTablesName.designer.cs">
+      <DependentUpon>202009090358557_ChangeIdentityTablesName.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202008281546468_AddShopTables.cs" />
-    <Compile Include="Migrations\202008281546468_AddShopTables.Designer.cs">
-      <DependentUpon>202008281546468_AddShopTables.cs</DependentUpon>
+    <Compile Include="Migrations\202009090425180_AddAllTables.cs" />
+    <Compile Include="Migrations\202009090425180_AddAllTables.designer.cs">
+      <DependentUpon>202009090425180_AddAllTables.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202008281720549_AddActionLogRemoveShopLog.cs" />
-    <Compile Include="Migrations\202008281720549_AddActionLogRemoveShopLog.Designer.cs">
-      <DependentUpon>202008281720549_AddActionLogRemoveShopLog.cs</DependentUpon>
+    <Compile Include="Migrations\202009091555440_AddShopColumns.cs" />
+    <Compile Include="Migrations\202009091555440_AddShopColumns.designer.cs">
+      <DependentUpon>202009091555440_AddShopColumns.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202008300435509_AddUserWishIssueTable.cs" />
-    <Compile Include="Migrations\202008300435509_AddUserWishIssueTable.Designer.cs">
-      <DependentUpon>202008300435509_AddUserWishIssueTable.cs</DependentUpon>
+    <Compile Include="Migrations\202009100626415_TicketExchangeNullable.cs" />
+    <Compile Include="Migrations\202009100626415_TicketExchangeNullable.designer.cs">
+      <DependentUpon>202009100626415_TicketExchangeNullable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202008300448084_AddOrderTables.cs" />
-    <Compile Include="Migrations\202008300448084_AddOrderTables.Designer.cs">
-      <DependentUpon>202008300448084_AddOrderTables.cs</DependentUpon>
+    <Compile Include="Migrations\202009101005134_AddCategoryTableIssueImgPath.cs" />
+    <Compile Include="Migrations\202009101005134_AddCategoryTableIssueImgPath.designer.cs">
+      <DependentUpon>202009101005134_AddCategoryTableIssueImgPath.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202008300520281_AddTicketTable.cs" />
-    <Compile Include="Migrations\202008300520281_AddTicketTable.Designer.cs">
-      <DependentUpon>202008300520281_AddTicketTable.cs</DependentUpon>
+    <Compile Include="Migrations\202009101117452_AddSexColumnToUser.cs" />
+    <Compile Include="Migrations\202009101117452_AddSexColumnToUser.designer.cs">
+      <DependentUpon>202009101117452_AddSexColumnToUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202008300531398_AddRefundTables.cs" />
-    <Compile Include="Migrations\202008300531398_AddRefundTables.Designer.cs">
-      <DependentUpon>202008300531398_AddRefundTables.cs</DependentUpon>
+    <Compile Include="Migrations\202009110842207_AddShopZipAlterColumnToDatetime2.cs" />
+    <Compile Include="Migrations\202009110842207_AddShopZipAlterColumnToDatetime2.designer.cs">
+      <DependentUpon>202009110842207_AddShopZipAlterColumnToDatetime2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202008300541198_AddTagTables.cs" />
-    <Compile Include="Migrations\202008300541198_AddTagTables.Designer.cs">
-      <DependentUpon>202008300541198_AddTagTables.cs</DependentUpon>
+    <Compile Include="Migrations\202009110846279_AlterShopDatetimeNullable.cs" />
+    <Compile Include="Migrations\202009110846279_AlterShopDatetimeNullable.designer.cs">
+      <DependentUpon>202009110846279_AlterShopDatetimeNullable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202009061521074_AutoGenGUID.cs" />
-    <Compile Include="Migrations\202009061521074_AutoGenGUID.designer.cs">
-      <DependentUpon>202009061521074_AutoGenGUID.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009061525265_AddUserSaltColumns.cs" />
-    <Compile Include="Migrations\202009061525265_AddUserSaltColumns.designer.cs">
-      <DependentUpon>202009061525265_AddUserSaltColumns.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009080121397_RemoveUserRole.cs" />
-    <Compile Include="Migrations\202009080121397_RemoveUserRole.designer.cs">
-      <DependentUpon>202009080121397_RemoveUserRole.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009080143492_AddRelationUserRole.cs" />
-    <Compile Include="Migrations\202009080143492_AddRelationUserRole.designer.cs">
-      <DependentUpon>202009080143492_AddRelationUserRole.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009080955522_AddShopProp.cs" />
-    <Compile Include="Migrations\202009080955522_AddShopProp.designer.cs">
-      <DependentUpon>202009080955522_AddShopProp.cs</DependentUpon>
+    <Compile Include="Migrations\202009110944447_AlterIssueClosedDateNullable.cs" />
+    <Compile Include="Migrations\202009110944447_AlterIssueClosedDateNullable.designer.cs">
+      <DependentUpon>202009110944447_AlterIssueClosedDateNullable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActionLog.cs" />
-    <Compile Include="Models\Admin.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Issue.cs" />
+    <Compile Include="Models\ShopCategory.cs" />
+    <Compile Include="Models\IssueCategory.cs" />
     <Compile Include="Models\IssueTag.cs" />
     <Compile Include="Models\LoginLog.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\Refund.cs" />
     <Compile Include="Models\RefundDetail.cs" />
-    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\RoleName.cs" />
     <Compile Include="Models\Shop.cs" />
     <Compile Include="Models\ShopEmployee.cs" />
     <Compile Include="Models\ShopTag.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\Ticket.cs" />
     <Compile Include="Models\TicketHubContext.cs" />
-    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\TicketHubUser.cs" />
     <Compile Include="Models\UserFavoriteShop.cs" />
-    <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Models\UserWishIssue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -144,47 +156,35 @@
     <EmbeddedResource Include="Migrations\202008281253475_initial.resx">
       <DependentUpon>202008281253475_initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008281343219_AddUsersTables.resx">
-      <DependentUpon>202008281343219_AddUsersTables.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009090357204_IncludeIdentityTablesAndDropOtherTables.resx">
+      <DependentUpon>202009090357204_IncludeIdentityTablesAndDropOtherTables.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008281346549_AlterLoginLogTableReference.resx">
-      <DependentUpon>202008281346549_AlterLoginLogTableReference.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009090358557_ChangeIdentityTablesName.resx">
+      <DependentUpon>202009090358557_ChangeIdentityTablesName.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008281546468_AddShopTables.resx">
-      <DependentUpon>202008281546468_AddShopTables.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009090425180_AddAllTables.resx">
+      <DependentUpon>202009090425180_AddAllTables.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008281720549_AddActionLogRemoveShopLog.resx">
-      <DependentUpon>202008281720549_AddActionLogRemoveShopLog.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009091555440_AddShopColumns.resx">
+      <DependentUpon>202009091555440_AddShopColumns.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008300435509_AddUserWishIssueTable.resx">
-      <DependentUpon>202008300435509_AddUserWishIssueTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009100626415_TicketExchangeNullable.resx">
+      <DependentUpon>202009100626415_TicketExchangeNullable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008300448084_AddOrderTables.resx">
-      <DependentUpon>202008300448084_AddOrderTables.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009101005134_AddCategoryTableIssueImgPath.resx">
+      <DependentUpon>202009101005134_AddCategoryTableIssueImgPath.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008300520281_AddTicketTable.resx">
-      <DependentUpon>202008300520281_AddTicketTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009101117452_AddSexColumnToUser.resx">
+      <DependentUpon>202009101117452_AddSexColumnToUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008300531398_AddRefundTables.resx">
-      <DependentUpon>202008300531398_AddRefundTables.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009110842207_AddShopZipAlterColumnToDatetime2.resx">
+      <DependentUpon>202009110842207_AddShopZipAlterColumnToDatetime2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008300541198_AddTagTables.resx">
-      <DependentUpon>202008300541198_AddTagTables.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009110846279_AlterShopDatetimeNullable.resx">
+      <DependentUpon>202009110846279_AlterShopDatetimeNullable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009061521074_AutoGenGUID.resx">
-      <DependentUpon>202009061521074_AutoGenGUID.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009061525265_AddUserSaltColumns.resx">
-      <DependentUpon>202009061525265_AddUserSaltColumns.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009080121397_RemoveUserRole.resx">
-      <DependentUpon>202009080121397_RemoveUserRole.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009080143492_AddRelationUserRole.resx">
-      <DependentUpon>202009080143492_AddRelationUserRole.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009080955522_AddShopProp.resx">
-      <DependentUpon>202009080955522_AddShopProp.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009110944447_AlterIssueClosedDateNullable.resx">
+      <DependentUpon>202009110944447_AlterIssueClosedDateNullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

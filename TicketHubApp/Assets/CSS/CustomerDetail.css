@@ -84,8 +84,8 @@ body {
       background-color: #addee2;
       cursor: pointer; }
     .sidebar .sidebar-nav > div.focus {
-      color: white;
-      background-color: #1a7e85; }
+      color: #23a8b2;
+      background-color: white; }
       .sidebar .sidebar-nav > div.focus::before {
         content: "";
         position: absolute;

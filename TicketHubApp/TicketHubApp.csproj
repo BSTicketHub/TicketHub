@@ -56,12 +56,39 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.3\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -141,14 +168,17 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PlatformDashBoardController.cs" />
+    <Compile Include="Controllers\PlatformIssueController.cs" />
+    <Compile Include="Controllers\PlatformOrderController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
-    <Compile Include="Controllers\PlatformMemberController.cs" />
+    <Compile Include="Controllers\PlatformUserController.cs" />
     <Compile Include="Controllers\PlatformShopController.cs" />
     <Compile Include="Controllers\ProductCartController.cs" />
     <Compile Include="Controllers\ticketDescriptionController.cs" />
@@ -160,19 +190,24 @@
     <Compile Include="Models\GenericRepository.cs" />
     <Compile Include="Models\OperationResult.cs" />
     <Compile Include="Models\ViewModels\CustomerDetailViewModel.cs" />
+    <Compile Include="Models\ViewModels\CustomerInfoViewModel.cs" />
     <Compile Include="Models\ViewModels\LoginViewModel.cs" />
     <Compile Include="Models\ViewModels\AdminViewModel.cs" />
-    <Compile Include="Models\ViewModels\PlatformMemberViewModel.cs" />
+    <Compile Include="Models\ViewModels\PlatformIssueViewModel.cs" />
+    <Compile Include="Models\ViewModels\PlatformUserViewModel.cs" />
+    <Compile Include="Models\ViewModels\PlatformOrderViewModel.cs" />
+    <Compile Include="Models\ViewModels\DataTableViewModel.cs" />
     <Compile Include="Models\ViewModels\ShopViewModel.cs" />
     <Compile Include="Models\ViewModels\SimpleIssueViewModel.cs" />
     <Compile Include="Models\ViewModels\PlatformShopViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\AccountService.cs" />
-    <Compile Include="Services\RoleManager.cs" />
-    <Compile Include="Services\UserManager.cs" />
-    <Compile Include="Models\ServiceModels\UserToken.cs" />
+    <Compile Include="Services\PlatformIssueService.cs" />
+    <Compile Include="Services\PlatformUserService.cs" />
+    <Compile Include="Services\PlatformOrderService.cs" />
+    <Compile Include="Services\PlatformShopService.cs" />
     <Compile Include="Models\ViewModels\StoreTicketListViewModel.cs" />
     <Compile Include="Models\ViewModels\ShopIssueViewModel.cs" />
+    <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\CSS\Common\Ticket.css">
@@ -193,11 +228,23 @@
     <Content Include="Assets\CSS\Cart.min.css">
       <DependentUpon>Cart.css</DependentUpon>
     </Content>
+    <Content Include="Assets\CSS\home.css">
+      <DependentUpon>home.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\home.min.css">
+      <DependentUpon>home.css</DependentUpon>
+    </Content>
     <Content Include="Assets\CSS\login.css">
       <DependentUpon>login.scss</DependentUpon>
     </Content>
     <Content Include="Assets\CSS\login.min.css">
       <DependentUpon>login.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Platform\Platform_Layout.css">
+      <DependentUpon>Platform_Layout.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Platform\Platform_Layout.min.css">
+      <DependentUpon>Platform_Layout.css</DependentUpon>
     </Content>
     <Content Include="Assets\CSS\Shop\CreateProduct.css">
       <DependentUpon>CreateProduct.scss</DependentUpon>
@@ -229,12 +276,20 @@
     <Content Include="Assets\CSS\Shop\ShopInfo.min.css">
       <DependentUpon>ShopInfo.css</DependentUpon>
     </Content>
+    <Content Include="Assets\CSS\Shop\ShopLayout.css">
+      <DependentUpon>ShopLayout.scss</DependentUpon>
+    </Content>
     <Content Include="Assets\CSS\Shop\ShopLayout.min.css">
       <DependentUpon>ShopLayout.css</DependentUpon>
     </Content>
-    <Content Include="Assets\CSS\tempCSS\home.css" />
     <Content Include="Assets\CSS\Common\owl.carousel.min.css" />
     <Content Include="Assets\CSS\Common\owl.theme.default.css" />
+    <Content Include="Assets\CSS\tempCSS\home.css">
+      <DependentUpon>home.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\tempCSS\home.min.css">
+      <DependentUpon>home.css</DependentUpon>
+    </Content>
     <Content Include="Assets\CSS\tempCSS\temphome.css" />
     <Content Include="Assets\CSS\TicketList.css">
       <DependentUpon>TicketList.scss</DependentUpon>
@@ -285,9 +340,6 @@
       <DependentUpon>ticket-description.css</DependentUpon>
     </Content>
     <Content Include="Assets\Images\camera.png" />
-    <Content Include="Assets\JavaScript\Common\iconify.min.js" />
-    <Content Include="Assets\JavaScript\Common\JsBarcode.all.js" />
-    <Content Include="Assets\JavaScript\Common\JsBarcode.all.min.js" />
     <Content Include="Assets\JavaScript\Customer\CustomerDetail.js" />
     <Content Include="Assets\JavaScript\Platform\datatables.min.js" />
     <Content Include="Assets\JavaScript\Platform\PlatformMemberIndex.js" />
@@ -537,6 +589,8 @@
     <Content Include="Assets\CSS\Platform\Platform_Layout.scss" />
     <Content Include="Assets\CSS\Cart.scss" />
     <Content Include="Assets\CSS\ticket-description.scss" />
+    <Content Include="Assets\CSS\tempCSS\home.scss" />
+    <Content Include="Assets\CSS\home.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -550,11 +604,10 @@
     <Content Include="Views\Account\LoginPlatform.cshtml" />
     <Content Include="Views\Account\_LoginLayout.cshtml" />
     <Content Include="Views\Customer\CustomerPage.cshtml" />
-    <Content Include="Views\Customer\_CustomerDetailLayout.cshtml" />
     <Content Include="Views\Shop\ShopList.cshtml" />
     <Content Include="Views\Shop\_ShopListLayout.cshtml" />
-    <Content Include="Views\PlatformMember\Index.cshtml" />
-    <Content Include="Views\PlatformMember\_ViewStart.cshtml" />
+    <Content Include="Views\PlatformUser\Index.cshtml" />
+    <Content Include="Views\PlatformUser\_ViewStart.cshtml" />
     <Content Include="Views\PlatformDashBoard\MemberDashBoard.cshtml" />
     <Content Include="Views\Shared\_Layout_Platform.cshtml" />
     <Content Include="Views\PlatformShop\_ViewStart.cshtml" />
@@ -564,15 +617,23 @@
     <Content Include="Views\Shop\SalesReport.cshtml" />
     <Content Include="Views\Shared\_Ticket.cshtml" />
     <Content Include="Views\PlatformDashBoard\_ViewStart.cshtml" />
-    <Content Include="Views\PlatformMember\MemberDetail.cshtml" />
-    <Content Include="Views\PlatformMember\CreateMember.cshtml" />
-    <Content Include="Views\PlatformMember\EditMember.cshtml" />
-    <Content Include="Views\PlatformMember\DeleteMember.cshtml" />
+    <Content Include="Views\PlatformUser\MemberDetail.cshtml" />
+    <Content Include="Views\PlatformUser\CreateMember.cshtml" />
+    <Content Include="Views\PlatformUser\EditMember.cshtml" />
+    <Content Include="Views\PlatformUser\DeleteMember.cshtml" />
     <Content Include="Views\Platform\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_ShopCardPartial.cshtml" />
     <Content Include="Views\PlatformShop\Index.cshtml" />
     <Content Include="Views\ProductCart\Cart.cshtml" />
     <Content Include="Views\ticketDescription\Ticketdescription.cshtml" />
+    <Content Include="Views\PlatformOrder\Index.cshtml" />
+    <Content Include="Views\PlatformOrder\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_ValidationSummary.cshtml" />
+    <Content Include="Views\Home\_RecommenCard.cshtml" />
+    <Content Include="Views\Home\_BestSellerCard.cshtml" />
+    <Content Include="Views\Home\_SortNewCard.cshtml" />
+    <Content Include="Views\PlatformIssue\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -585,6 +646,9 @@
       <Project>{aff9edbe-7fd2-4ebc-8850-dc51c5b0f5a6}</Project>
       <Name>TicketHubDataLibrary</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

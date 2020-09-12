@@ -1,10 +1,10 @@
-﻿namespace TicketHubDataLibrary.Models
-{
-    using System;
-    using System.Data.Entity;
-    using System.Linq;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
+using System.Data.Entity;
 
-    public class TicketHubContext : DbContext
+namespace TicketHubDataLibrary.Models
+{
+    public class TicketHubContext : IdentityDbContext<TicketHubUser>
     {
         // 您的內容已設定為使用應用程式組態檔 (App.config 或 Web.config)
         // 中的 'TicketHubContext' 連接字串。根據預設，這個連接字串的目標是
@@ -13,13 +13,29 @@
         // 如果您的目標是其他資料庫和 (或) 提供者，請修改
         // 應用程式組態檔中的 'TicketHubContext' 連接字串。
         public TicketHubContext()
-            : base("name=LocalConnection")
+            : base("LocalConnection", throwIfV1Schema: false)
         {
+        }
+
+        public static TicketHubContext Create()
+        {
+            return new TicketHubContext();
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Properties<DateTime>().Configure(c => c.HasColumnType("datetime2"));
+
+            //Custom Identity tables name
+            //modelBuilder.Entity<TicketHubUser>().ToTable("Users").Property(p => p.Id).HasColumnName("UserId");
+            modelBuilder.Entity<TicketHubUser>().ToTable("Users");
+            modelBuilder.Entity<IdentityUserRole>().ToTable("UserRoles");
+            modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogins");
+            modelBuilder.Entity<IdentityUserClaim>().ToTable("UserClaims");
+            modelBuilder.Entity<IdentityRole>().ToTable("Roles");
+
             modelBuilder.Entity<UserWishIssue>().HasRequired(wi => wi.Issue).WithMany().WillCascadeOnDelete(false);
             modelBuilder.Entity<UserWishIssue>().HasRequired(wi => wi.User).WithMany().WillCascadeOnDelete(false);
             modelBuilder.Entity<OrderDetail>().HasRequired(od => od.Issue).WithMany().WillCascadeOnDelete(false);
@@ -29,14 +45,8 @@
             modelBuilder.Entity<Ticket>().HasRequired(t => t.Order).WithMany().WillCascadeOnDelete(false);
             modelBuilder.Entity<RefundDetail>().HasRequired(rd => rd.Refund).WithMany().WillCascadeOnDelete(false);
             modelBuilder.Entity<RefundDetail>().HasRequired(rd => rd.Ticket).WithMany().WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<User>().HasMany(e => e.Roles).WithMany(e => e.Users).Map(m => m.ToTable("UserRoles"));
         }
 
-        public DbSet<User> User { get; set; }
-        public DbSet<Admin> Admin { get; set; }
-        public DbSet<Role> Role { get; set; }
-        public DbSet<UserLogin> UserLogin { get; set; }
         public DbSet<LoginLog> LoginLog { get; set; }
         public DbSet<ActionLog> ActionLog { get; set; }
         public DbSet<Shop> Shop { get; set; }
@@ -52,7 +62,8 @@
         public DbSet<Tag> Tag { get; set; }
         public DbSet<IssueTag> IssueTag { get; set; }
         public DbSet<ShopTag> ShopTag { get; set; }
-
-
+        public DbSet<Category> Category { get; set; }
+        public DbSet<IssueCategory> IssueCategory { get; set; }
+        public DbSet<ShopCategory> ShopCategory { get; set; }
     }
 }

@@ -20,10 +20,6 @@
     "inputFile": "Assets/CSS/TicketList.scss"
   },
   {
-    "outputFile": "Assets/CSS/_variables.css",
-    "inputFile": "Assets/CSS/_variables.scss"
-  },
-  {
     "outputFile": "Assets/CSS/Shop/ShopLayout.css",
     "inputFile": "Assets/CSS/Shop/ShopLayout.scss"
   },
@@ -70,5 +66,13 @@
   {
     "outputFile": "Assets/CSS/ticket-description.css",
     "inputFile": "Assets/CSS/ticket-description.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/tempCSS/home.css",
+    "inputFile": "Assets/CSS/tempCSS/home.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/home.css",
+    "inputFile": "Assets/CSS/home.scss"
   }
 ]

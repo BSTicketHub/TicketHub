@@ -129,3 +129,51 @@ function untilTsCaculateDD() {
     $('#ddCountdown__panel').html(html);
     setTimeout(untilTsCaculateDD, 1000);
 }
+
+//導航欄購物車
+let showCart = document.getElementsByClassName("showCart")[0];
+showCart.style.display = "none";
+let open_display = document.getElementsByClassName("open")[0];
+
+
+function shopCart() {
+    showCart.style.display = "block";
+}
+
+function shopCartMove() {
+    showCart.style.display = "none";
+}
+
+// 刪除購物車
+function delete_item() {
+    //var deleteBtn = document.getElementById("delete_btn");
+    //var deleteContext = document.getElementById("cart_delete_item");
+}
+$("#delete_btn").click(function (e) {
+    e.preventDefault();
+    var myobj = document.getElementById("cart_delete_item");
+    myobj.remove();
+    $(".cart_delete_item").hide();
+    $(".alert").hide(this);
+});
+
+
+// 數量增加
+function add() {
+    var txt = document.getElementById("cartcount");
+    var a = txt.value;
+    a++;
+    txt.value = a;
+}
+
+// 數量减少
+function sub() {
+    var txt = document.getElementById("cartcount");
+    var a = txt.value;
+    if (a > 1) {
+        a--;
+        txt.value = a;
+    } else {
+        txt.value = 1;
+    }
+}

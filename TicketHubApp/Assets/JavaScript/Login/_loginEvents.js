@@ -31,7 +31,12 @@ export function registerLoginContainers() {
         c.addEventListener("mouseover", function () {
             let container = this;
             if (!container.classList.contains("active") && !container.classList.contains("running")) {
-                container.style.left = "-74%";
+                let screenWidth = screen.width;
+                if (screenWidth >= 1200) {
+                    container.style.left = "-68%";
+                } else if (screenWidth >= 768) {
+                    container.style.left = "-72%";
+                }
             }
         });
         c.addEventListener("mouseleave", function () {
