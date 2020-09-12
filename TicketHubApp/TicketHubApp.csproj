@@ -150,7 +150,6 @@
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Controllers\PlatformMemberController.cs" />
     <Compile Include="Controllers\PlatformShopController.cs" />
-    <Compile Include="Controllers\PayViewController.cs" />
     <Compile Include="Controllers\ProductCartController.cs" />
     <Compile Include="Controllers\ticketDescriptionController.cs" />
     <Compile Include="Global.asax.cs">
@@ -279,12 +278,6 @@
     <Content Include="Assets\CSS\ShopList.min.css">
       <DependentUpon>ShopList.css</DependentUpon>
     </Content>
-    <Content Include="Assets\CSS\payview.css">
-      <DependentUpon>payview.scss</DependentUpon>
-    </Content>
-    <Content Include="Assets\CSS\payview.min.css">
-      <DependentUpon>payview.css</DependentUpon>
-    </Content>
     <Content Include="Assets\CSS\ticket-description.css">
       <DependentUpon>ticket-description.scss</DependentUpon>
     </Content>
@@ -318,7 +311,6 @@
     <Content Include="Assets\Images\img\like.png" />
     <Content Include="Assets\Images\img\place-marker.png" />
     <Content Include="Assets\JavaScript\Cart\Cart.js" />
-    <Content Include="Assets\JavaScript\Cart\payview.js" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -544,7 +536,6 @@
     <Content Include="Assets\CSS\Shop\TicketDeatail.scss" />
     <Content Include="Assets\CSS\Platform\Platform_Layout.scss" />
     <Content Include="Assets\CSS\Cart.scss" />
-    <Content Include="Assets\CSS\payview.scss" />
     <Content Include="Assets\CSS\ticket-description.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
@@ -581,7 +572,6 @@
     <Content Include="Views\Shared\_ShopCardPartial.cshtml" />
     <Content Include="Views\PlatformShop\Index.cshtml" />
     <Content Include="Views\ProductCart\Cart.cshtml" />
-    <Content Include="Views\PayView\payview.cshtml" />
     <Content Include="Views\ticketDescription\Ticketdescription.cshtml" />
   </ItemGroup>
   <ItemGroup>
