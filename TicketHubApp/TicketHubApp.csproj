@@ -180,7 +180,6 @@
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Controllers\PlatformUserController.cs" />
     <Compile Include="Controllers\PlatformShopController.cs" />
-    <Compile Include="Controllers\PayViewController.cs" />
     <Compile Include="Controllers\ProductCartController.cs" />
     <Compile Include="Controllers\ticketDescriptionController.cs" />
     <Compile Include="Global.asax.cs">
@@ -304,7 +303,11 @@
     <Content Include="Assets\Images\Home\about-1.png" />
     <Content Include="Assets\Images\Home\about-2.png" />
     <Content Include="Assets\Images\Home\about-3.png" />
+    <Content Include="Assets\Images\Home\about-4.png" />
+    <Content Include="Assets\Images\Home\about-5.png" />
+    <Content Include="Assets\Images\Home\about-6.png" />
     <Content Include="Assets\Images\Home\bed.png" />
+    <Content Include="Assets\Images\Home\customer_service.jpg" />
     <Content Include="Assets\Images\Home\food.png" />
     <Content Include="Assets\Images\Home\foodbg.jpg" />
     <Content Include="Assets\Images\Home\ic_star4_0.svg" />
@@ -314,6 +317,7 @@
     <Content Include="Assets\Images\Home\ic_star4_4.svg" />
     <Content Include="Assets\Images\Home\logo.png" />
     <Content Include="Assets\Images\Home\person.jpg" />
+    <Content Include="Assets\Images\Home\tab-background1.png" />
     <Content Include="Assets\Images\Home\takeout.png" />
     <Content Include="Assets\Images\Home\ticketHub.png" />
     <Content Include="Assets\Images\Home\travel.png" />
@@ -332,12 +336,6 @@
     <Content Include="Assets\CSS\ShopList.min.css">
       <DependentUpon>ShopList.css</DependentUpon>
     </Content>
-    <Content Include="Assets\CSS\payview.css">
-      <DependentUpon>payview.scss</DependentUpon>
-    </Content>
-    <Content Include="Assets\CSS\payview.min.css">
-      <DependentUpon>payview.css</DependentUpon>
-    </Content>
     <Content Include="Assets\CSS\ticket-description.css">
       <DependentUpon>ticket-description.scss</DependentUpon>
     </Content>
@@ -346,6 +344,7 @@
     </Content>
     <Content Include="Assets\Images\camera.png" />
     <Content Include="Assets\JavaScript\Customer\CustomerDetail.js" />
+    <Content Include="Assets\JavaScript\Home\jquery.sticky.js" />
     <Content Include="Assets\JavaScript\Platform\datatables.min.js" />
     <Content Include="Assets\JavaScript\Platform\PlatformMemberIndex.js" />
     <Content Include="Assets\JavaScript\Product\ticket-description.js" />
@@ -368,7 +367,6 @@
     <Content Include="Assets\Images\img\like.png" />
     <Content Include="Assets\Images\img\place-marker.png" />
     <Content Include="Assets\JavaScript\Cart\Cart.js" />
-    <Content Include="Assets\JavaScript\Cart\payview.js" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -594,7 +592,6 @@
     <Content Include="Assets\CSS\Shop\TicketDeatail.scss" />
     <Content Include="Assets\CSS\Platform\Platform_Layout.scss" />
     <Content Include="Assets\CSS\Cart.scss" />
-    <Content Include="Assets\CSS\payview.scss" />
     <Content Include="Assets\CSS\ticket-description.scss" />
     <Content Include="Assets\CSS\tempCSS\home.scss" />
     <Content Include="Assets\CSS\home.scss" />
@@ -632,7 +629,6 @@
     <Content Include="Views\Shared\_ShopCardPartial.cshtml" />
     <Content Include="Views\PlatformShop\Index.cshtml" />
     <Content Include="Views\ProductCart\Cart.cshtml" />
-    <Content Include="Views\PayView\payview.cshtml" />
     <Content Include="Views\ticketDescription\Ticketdescription.cshtml" />
     <Content Include="Views\PlatformOrder\Index.cshtml" />
     <Content Include="Views\PlatformOrder\_ViewStart.cshtml" />

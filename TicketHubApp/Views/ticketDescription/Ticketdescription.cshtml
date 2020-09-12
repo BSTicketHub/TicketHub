@@ -3,6 +3,8 @@
     ViewBag.Title = "Ticketdescription";
 }
 
+@Styles.Render("~/bundles/css/ticket-description")
+
 <div class="container">
     <div class="foodstyle">
         <div class="row d-flex justify-content-between">
@@ -297,12 +299,12 @@
     </div>
 </div>
 
-<script defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbOibXZPeCKpq5tbdQZD0B5By6Z3MkQHc&callback=initMap">
-</script>
 
 @section Scripts {
     @Scripts.Render("~/bundles/js/ticket-description")
+    <script defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbOibXZPeCKpq5tbdQZD0B5By6Z3MkQHc&callback=initMap">
+    </script>
 
 }
 

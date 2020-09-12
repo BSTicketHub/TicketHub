@@ -116,21 +116,12 @@ namespace TicketHubApp
                 "~/Assets/JavaScript/Cart/Cart.js"
                 ));
 
-            //payview page bundles
-            bundles.Add(new StyleBundle("~/bundles/css/payview")
-                .Include("~/Assets/CSS/payview.min.css", new CssRewriteUrlTransform()));
-            bundles.Add(new ScriptBundle("~/bundles/js/payview").Include(
-                "~/Assets/JavaScript/Cart/payview.js"
-                ));
-
             //ticket-description bundles
             bundles.Add(new StyleBundle("~/bundles/css/ticket-description")
                 .Include("~/Assets/CSS/ticket-description.min.css", new CssRewriteUrlTransform()));
             bundles.Add(new ScriptBundle("~/bundles/js/ticket-description").Include(
                 "~/Assets/JavaScript/Product/ticket-description.js"
                 ));
-            bundles.Add(new ScriptBundle("~/bundles/chart").Include(
-                      "~/Scripts/Chart.js"));
 
             //Shop bundles
             bundles.Add(new StyleBundle("~/bundles/css/Shop")

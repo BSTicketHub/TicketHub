@@ -33,7 +33,7 @@
 .rightcar {
     position: sticky;
     right: 0;
-    top: 10px;
+    top: 100px;
 }
 
 
@@ -50,7 +50,7 @@
     }
 }
 
-.cardbody .btn-primary {
+.btn-primary {
     border-color: #25bbc5 !important;
     background-color: #25bbc5 !important;
 }
@@ -104,11 +104,6 @@
 
 .pastview {
     box-sizing: border-box;
-}
-
-.icon {
-    position: absolute;
-    right: 0;
 }
 
 .originprice {
