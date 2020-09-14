@@ -3,7 +3,10 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 using System;
+using System.Configuration;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using TicketHubDataLibrary.Models;
@@ -12,10 +15,29 @@ namespace TicketHubApp
 {
     public class EmailService : IIdentityMessageService
     {
-        public Task SendAsync(IdentityMessage message)
+        public async Task SendAsync(IdentityMessage message)
         {
             // 將您的電子郵件服務外掛到這裡以傳送電子郵件。
-            return Task.FromResult(0);
+            await ConfigSendGridasync(message);
+        }
+
+        private async Task ConfigSendGridasync(IdentityMessage message)
+        {
+            string fromEmail = ConfigurationManager.AppSettings["FromEmail"].ToString();
+            string fromName = ConfigurationManager.AppSettings["FromName"].ToString();
+            string apiKey = ConfigurationManager.AppSettings["SendGridApiKey"].ToString();
+
+            var sgMessage = new SendGridMessage
+            {
+                From = new EmailAddress(fromEmail, fromName),
+                Subject = message.Subject,
+                HtmlContent = message.Body
+            };
+            sgMessage.AddTo(message.Destination);
+
+
+            var client = new SendGridClient(apiKey);
+            var response = await client.SendEmailAsync(sgMessage);
         }
     }
 
