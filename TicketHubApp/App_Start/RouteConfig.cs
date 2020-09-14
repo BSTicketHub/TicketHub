@@ -52,7 +52,7 @@ namespace TicketHubApp
             routes.MapRoute(
                 name: "ProductDescription",
                 url: "ProductDescription/{action}",
-                defaults: new { controller = "ProductDescription", action = "ProductDescription" }
+                defaults: new { controller = "ProductDescription", action = "Index"}
             );
         }
     }

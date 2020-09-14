@@ -197,6 +197,7 @@
     <Compile Include="Models\ViewModels\PlatformUserViewModel.cs" />
     <Compile Include="Models\ViewModels\PlatformOrderViewModel.cs" />
     <Compile Include="Models\ViewModels\DataTableViewModel.cs" />
+    <Compile Include="Models\ViewModels\ProductDetailViewModel.cs" />
     <Compile Include="Models\ViewModels\ShopViewModel.cs" />
     <Compile Include="Models\ViewModels\SimpleIssueViewModel.cs" />
     <Compile Include="Models\ViewModels\PlatformShopViewModel.cs" />
@@ -616,15 +617,9 @@
     <Content Include="Views\Shop\SalesReport.cshtml" />
     <Content Include="Views\Shared\_Ticket.cshtml" />
     <Content Include="Views\PlatformDashBoard\_ViewStart.cshtml" />
-    <Content Include="Views\PlatformUser\MemberDetail.cshtml" />
-    <Content Include="Views\PlatformUser\CreateMember.cshtml" />
-    <Content Include="Views\PlatformUser\EditMember.cshtml" />
-    <Content Include="Views\PlatformUser\DeleteMember.cshtml" />
-    <Content Include="Views\Platform\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_ShopCardPartial.cshtml" />
     <Content Include="Views\PlatformShop\Index.cshtml" />
     <Content Include="Views\ProductCart\ProductCart.cshtml" />
-    <Content Include="Views\ProductDescription\ProductDescription.cshtml" />
     <Content Include="Views\PlatformOrder\Index.cshtml" />
     <Content Include="Views\PlatformOrder\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
@@ -632,7 +627,8 @@
     <Content Include="Views\Home\_RecommenCard.cshtml" />
     <Content Include="Views\Home\_BestSellerCard.cshtml" />
     <Content Include="Views\Home\_SortNewCard.cshtml" />
-    <Content Include="Views\PlatformIssue\_ViewStart.cshtml" />
+    <Content Include="Views\ProductDescription\ProductDetail.cshtml" />
+    <Content Include="Views\ProductDescription\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
