@@ -76,11 +76,7 @@
     "inputFile": "Assets/CSS/home.scss"
   },
   {
-    "outputFile": "Assets/CSS/ProductDescription.css",
-    "inputFile": "Assets/CSS/ProductDescription.scss"
-  },
-  {
-    "outputFile": "Assets/CSS/ProductCart.css",
-    "inputFile": "Assets/CSS/ProductCart.scss"
+    "outputFile": "Assets/CSS/CustomerPage.css",
+    "inputFile": "Assets/CSS/CustomerPage.scss"
   }
 ]

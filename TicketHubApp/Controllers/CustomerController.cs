@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -10,15 +11,26 @@ namespace TicketHubApp.Controllers
 {
     public class CustomerController : Controller
     {
-        private TicketHubContext _context = new TicketHubContext();
+        private TicketHubContext _context = TicketHubContext.Create();
         // GET: CustomerDetail
-        public ActionResult CustomerPage()
+        public ActionResult CustomerInfo()
         {
-            var viewModel = new List<CustomerDetailViewModel>()
-            {
-                new CustomerDetailViewModel{UserName = "Jack", Email = "abc@123", Mobile = "0963157894" }
-            };
-            return View(viewModel);
+            return View();
+        }
+
+        public ActionResult MyTicket()
+        {
+            return View();
+        }
+
+        public ActionResult WishList()
+        {
+            return View();
+        }
+
+        public ActionResult FavoriteShop()
+        {
+            return View();
         }
 
         public ActionResult TicketList()
@@ -53,16 +65,54 @@ namespace TicketHubApp.Controllers
 
         public ActionResult GetCustomerInfo()
         {
-            var userId = "91142d0f-9681-4b41-86d6-8a583b52bc98";
-            var user = _context.Users.FirstOrDefault(x => x.Id == userId);
-            var info = new CustomerInfoViewModel()
+                var currentUserId = User.Identity.GetUserId();
+                var user = _context.Users.Find(currentUserId);
+                var info = new CustomerInfoViewModel()
+                {
+                    Id = user.Id,
+                    Email = user.Email,
+                    PhoneNumber = user.PhoneNumber,
+                    UserName = user.UserName,
+                    Sex = user.Sex,
+                    FavoriteShop = from s in _context.Shop
+                                   join ufs in _context.UserFavoriteShop on s.Id equals ufs.ShopId
+                                   select new ShopViewModel
+                                   {
+                                       Id = s.Id,
+                                       ShopName = s.ShopName,
+                                       ShopIntro = s.ShopIntro,
+                                       City = s.City,
+                                       District = s.District,
+                                       Address = s.Address,
+                                       Phone = s.Phone
+                                   }
+                };
+                return Json(info, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult ChangeInfoData(string Id, string UserName, string Sex, string Email, string PhoneNumber)
+        {
+            using (var _context = TicketHubContext.Create())
             {
-                Id = user.Id,
-                Email = user.Email,
-                PhoneNumber = user.PhoneNumber,
-                UserName = user.UserName
-            };
-            return Json(info, JsonRequestBehavior.AllowGet);
+                var user = _context.Users.Find(Id);
+                user.UserName = UserName;
+                user.Sex = Sex;
+                user.Email = Email;
+                user.PhoneNumber = PhoneNumber;
+
+                _context.SaveChanges();
+
+                var info = new CustomerInfoViewModel()
+                {
+                    Id = user.Id,
+                    Email = user.Email,
+                    PhoneNumber = user.PhoneNumber,
+                    UserName = user.UserName,
+                    Sex = user.Sex
+                };
+                return Json(info, JsonRequestBehavior.AllowGet);
+            }
         }
     }
 }

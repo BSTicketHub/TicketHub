@@ -177,3 +177,14 @@ function sub() {
         txt.value = 1;
     }
 }
+//手風琴
+$(document).ready(function () {
+    $("#faq").sticky({
+        topSpacing: 100,
+        bottomSpacing: 800,
+        // zIndex: 1
+    });
+    $('body').scrollspy({
+        target: '#faq'
+    })
+});

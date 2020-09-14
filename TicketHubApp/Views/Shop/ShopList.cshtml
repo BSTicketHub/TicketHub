@@ -1,9 +1,11 @@
 ﻿@model IEnumerable<TicketHubApp.Models.ViewModels.ShopViewModel>
 
 @{
-    ViewBag.Title = "ShopList";
-    Layout = "~/Views/Shop/_ShopListLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+@Styles.Render("~/bundles/css/ShopList")
+
 @section scripts{
     <script defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyO1vy0QaITVTahKLSJYfw_bgPxI7H7IU&callback=initMap">
@@ -21,10 +23,10 @@
                 <div class="badge badge-pill mx-1">標籤</div>
             </div>
             <div class="restaurant-list">
-               @foreach(var restaurant in Model)
-               {
-                   @Html.Partial("_ShopCardPartial", restaurant);
-               }
+                @foreach (var restaurant in Model)
+                {
+                    @Html.Partial("_ShopCardPartial", restaurant);
+                }
             </div>
         </div>
         <div class="map-area col-5">
@@ -34,4 +36,48 @@
     </div>
 </div>
 
+@Scripts.Render("~/bundles/js/jquery")
+@Scripts.Render("~/bundles/js/bootstrap")
+@Scripts.Render("~/bundles/js/ShopList")
+
+@section endJS{
+    <script>
+
+        function addToFavorite(shopId) {
+            $.ajax({
+                cache: false,
+                url: "AddToFavoriteList",
+                method: "post",
+                data:{
+                    ShopId: shopId,
+                    UserId: "@ViewBag.UserId"
+                },
+                success: function () {
+                    alert("success");
+                },
+                error: function () {
+                    alert("failed");
+                }
+            });
+        }
+
+        function deleteFromFavorite(shopId) {
+            $.ajax({
+                cache: false,
+                url: "DeleteFromFavoriteList",
+                method: "post",
+                data:{
+                    ShopId: shopId,
+                    UserId: "@ViewBag.UserId"
+                },
+                success: function () {
+                    alert("success");
+                },
+                error: function () {
+                    alert("failed");
+                }
+            });
+        }
+    </script>
+}
 
