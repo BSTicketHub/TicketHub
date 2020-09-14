@@ -624,10 +624,6 @@
     <Content Include="Views\Shop\SalesReport.cshtml" />
     <Content Include="Views\Shared\_Ticket.cshtml" />
     <Content Include="Views\PlatformDashBoard\_ViewStart.cshtml" />
-    <Content Include="Views\PlatformUser\MemberDetail.cshtml" />
-    <Content Include="Views\PlatformUser\CreateMember.cshtml" />
-    <Content Include="Views\PlatformUser\EditMember.cshtml" />
-    <Content Include="Views\PlatformUser\DeleteMember.cshtml" />
     <Content Include="Views\Platform\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_ShopCardPartial.cshtml" />
     <Content Include="Views\PlatformShop\Index.cshtml" />
