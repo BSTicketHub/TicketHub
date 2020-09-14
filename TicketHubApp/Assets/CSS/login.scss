@@ -25,7 +25,7 @@ body {
 }
 
 #cust,
-#regist-success {
+#info-success {
     color: $cust-color-13;
 
     h2 > span {
@@ -47,12 +47,8 @@ body {
     }
 }
 
-#regist-success {
-    width: 35%;
-    min-width: 350px;
-}
-
-#shop {
+#shop,
+#info-fail {
     color: $shop-color-13;
 
     h2 > span {
@@ -63,7 +59,8 @@ body {
         border-bottom: 1px solid $shop-color-13;
     }
 
-    .ticketReceipt {
+    .ticketReceipt,
+    .ticketReceiptVertical {
         background-color: $shop-color-8;
 
         .ticketType {
@@ -71,6 +68,12 @@ body {
             text-shadow: 1px 1px 1px $shop-color-5;
         }
     }
+}
+
+#info-success,
+#info-fail {
+    width: 35%;
+    min-width: 350px;
 }
 
 #platform {
@@ -173,21 +176,24 @@ body {
     }
 }
 
-.success-icon {
+.info-icon {
     display: block;
     margin: auto;
     font-size: 10rem;
-    color: green;
+
+    &.success {
+        color: green;
+    }
+
+    &.fail {
+        color: red;
+    }
 }
 
 .valid-summary {
     z-index: 25;
     position: absolute;
     right: 0;
-}
-
-.text-gray {
-    color: gray;
 }
 
 @media screen and (min-width: 768px) {

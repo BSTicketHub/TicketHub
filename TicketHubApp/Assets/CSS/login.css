@@ -70,41 +70,51 @@ body {
   background-color: rgba(0, 0, 0, 0.65); }
 
 #cust,
-#regist-success {
+#info-success {
   color: #0d3f43; }
   #cust h2 > span,
-  #regist-success h2 > span {
+  #info-success h2 > span {
     color: #23a8b2; }
   #cust input,
-  #regist-success input {
+  #info-success input {
     border-bottom: 1px solid #0d3f43; }
   #cust .ticketReceipt,
   #cust .ticketReceiptVertical,
-  #regist-success .ticketReceipt,
-  #regist-success .ticketReceiptVertical {
+  #info-success .ticketReceipt,
+  #info-success .ticketReceiptVertical {
     background-color: #23a8b2; }
     #cust .ticketReceipt .ticketImprint,
     #cust .ticketReceiptVertical .ticketImprint,
-    #regist-success .ticketReceipt .ticketImprint,
-    #regist-success .ticketReceiptVertical .ticketImprint {
+    #info-success .ticketReceipt .ticketImprint,
+    #info-success .ticketReceiptVertical .ticketImprint {
       color: #16696f;
       text-shadow: 1px 1px 1px #76c9cf; }
 
-#regist-success {
-  width: 35%;
-  min-width: 350px; }
-
-#shop {
+#shop,
+#info-fail {
   color: #601622; }
-  #shop h2 > span {
+  #shop h2 > span,
+  #info-fail h2 > span {
     color: #ff3a5c; }
-  #shop input {
+  #shop input,
+  #info-fail input {
     border-bottom: 1px solid #601622; }
-  #shop .ticketReceipt {
+  #shop .ticketReceipt,
+  #shop .ticketReceiptVertical,
+  #info-fail .ticketReceipt,
+  #info-fail .ticketReceiptVertical {
     background-color: #ff3a5c; }
-    #shop .ticketReceipt .ticketType {
+    #shop .ticketReceipt .ticketType,
+    #shop .ticketReceiptVertical .ticketType,
+    #info-fail .ticketReceipt .ticketType,
+    #info-fail .ticketReceiptVertical .ticketType {
       color: #9f2439;
       text-shadow: 1px 1px 1px #ff8499; }
+
+#info-success,
+#info-fail {
+  width: 35%;
+  min-width: 350px; }
 
 #platform {
   color: #5e3b08; }
@@ -181,19 +191,19 @@ body {
     .ticketReceiptVertical .login:focus {
       outline: none; }
 
-.success-icon {
+.info-icon {
   display: block;
   margin: auto;
-  font-size: 10rem;
-  color: green; }
+  font-size: 10rem; }
+  .info-icon.success {
+    color: green; }
+  .info-icon.fail {
+    color: red; }
 
 .valid-summary {
   z-index: 25;
   position: absolute;
   right: 0; }
-
-.text-gray {
-  color: gray; }
 
 @media screen and (min-width: 768px) {
   .login-card {

@@ -652,8 +652,8 @@
     <Content Include="Views\Customer\MyTicket.cshtml" />
     <Content Include="Views\Customer\WishList.cshtml" />
     <Content Include="Views\Customer\FavoriteShop.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\RegistSuccess.cshtml" />
+    <Content Include="Views\Account\EmailConfirmed.cshtml" />
+    <Content Include="Views\Account\RegisterSuccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
