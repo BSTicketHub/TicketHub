@@ -1,7 +1,7 @@
 ﻿@model TicketHubApp.Models.ViewModels.ShopIssueViewModel
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("EditIssue", "Shop", FormMethod.Post, new { encType = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -12,9 +12,9 @@
                 <div class="upLoadImg bg-white p-3 shadow position-relative text-center">
                     @*<form action="/somewhere/to/upload" enctype="multipart/form-data">*@
 
-                    <input id="upLoadImg" type="file" name="TicketImg" onchange="readURL(this)" targetID="preview_progressbarTW_img" accept="image/gif, image/jpeg, image/png" class="position-absolute" style="left:10px; " />
+                    <input id="upLoadImg" type="file" name="ImgFile" onchange="readURL(this)" targetID="preview_progressbarTW_img" accept="image/gif, image/jpeg, image/png" class="position-absolute" style="left:10px; " />
 
-                    <img id="preview_progressbarTW_img" class="showimg" src="#" />
+                    <img id="preview_progressbarTW_img" class="showimg" src="@Model.ImgPath" />
                     @*</form>*@
                 </div>
                 <div class="description bg-white my-3 p-3 shadow">
@@ -22,6 +22,7 @@
                         @*商品名稱*@
                         <div class="form-group col-12">
                             <label for="formGroupExampleInput">商品名稱</label>
+                            @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @readonly = "true", @class = "d-none" } })
                             @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control form-control-sm", @placeholder = "請輸入商品名稱", @id = "textTitle" } })
                             @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
                         </div>
@@ -51,7 +52,7 @@
                         @*上架日期*@
                         <div class="form-group col-6">
                             <label for="datetimepicker-released" class="d-block">上架日期</label>
-                            @Html.EditorFor(model => model.ReleasedDate, new { htmlAttributes = new { @type = "datetime", @class = "form-control form-control-sm", @placeholder = "請選擇上架時間" } })
+                            @Html.EditorFor(model => model.ReleasedDate, new { htmlAttributes = new { @type = "datetime-local", @class = "form-control form-control-sm", @placeholder = "請選擇上架時間" } })
                         </div>
                         @*下架日期*@
                         <div class="form-group col-6">

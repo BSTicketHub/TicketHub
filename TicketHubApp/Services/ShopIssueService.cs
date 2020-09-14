@@ -9,6 +9,8 @@ using TicketHubDataLibrary;
 using TicketHubDataLibrary.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.Ajax.Utilities;
+using TicketHubApp.Services;
+using System.Data.Entity;
 
 namespace TicketHubApp.Services
 {
@@ -25,11 +27,14 @@ namespace TicketHubApp.Services
                 //var user = System.Web.HttpContext.Current.User.Identity.GetUserId();
                 //var employee = employeeRepo.GetAll().Where((x) => x.UserId == user).FirstOrDefault();
 
+                var imgurService = new ImgurService();
+                var imgPath = imgurService.UploadImgur(input.ImgFile);
+
                 var entity = new Issue
                 {
                     Title = input.Title,
                     Memo = input.Memo,
-                    ImgPath = input.TicketImg,
+                    ImgPath = imgPath,
                     OriginalPrice = input.OriginalPrice,
                     DiscountPrice = input.DiscountPrice,
                     DiscountRatio = input.OriginalPrice / input.DiscountPrice,
@@ -37,8 +42,8 @@ namespace TicketHubApp.Services
                     IssuedDate = DateTime.Now,
                     ReleasedDate = input.ReleasedDate,
                     ClosedDate = input.ClosedDate,
-                    IssuerId = "26c751ea-d1ce-45bf-8a65-78f0d48ce2c4", //IssuerId = user,
-                    ShopId = Guid.Parse("fa10840d-3a73-4374-aafd-d592a3623ec1") //ShopId = employee.ShopId
+                    IssuerId = "6a2b0a3d-9de5-470d-8519-3bba75de4246", //IssuerId = user,
+                    ShopId = Guid.Parse("2298405e-54f4-ea11-9700-cb781453451a") //ShopId = employee.ShopId
                 };
 
                 issueRepo.Create(entity);
@@ -67,10 +72,9 @@ namespace TicketHubApp.Services
 
                 var entity = new Issue
                 {
-                    Id = Guid.Parse("bcb2db96-15ef-4d87-93bc-504e5bb95f3d"),
+                    Id = input.Id,
                     Title = input.Title,
                     Memo = input.Memo,
-                    ImgPath = input.TicketImg,
                     OriginalPrice = input.OriginalPrice,
                     DiscountPrice = input.DiscountPrice,
                     DiscountRatio = input.OriginalPrice / input.DiscountPrice,
@@ -78,9 +82,19 @@ namespace TicketHubApp.Services
                     IssuedDate = DateTime.Now,
                     ReleasedDate = input.ReleasedDate,
                     ClosedDate = input.ClosedDate,
-                    IssuerId = "26c751ea-d1ce-45bf-8a65-78f0d48ce2c4", //IssuerId = user,
-                    ShopId = Guid.Parse("fa10840d-3a73-4374-aafd-d592a3623ec1") //ShopId = employee.ShopId
+                    IssuerId = "6a2b0a3d-9de5-470d-8519-3bba75de4246", //IssuerId = user,
+                    ShopId = Guid.Parse("2298405e-54f4-ea11-9700-cb781453451a") //ShopId = employee.ShopId
                 };
+
+                if (input.ImgFile != null)
+                {
+                    var imgurService = new ImgurService();
+                    entity.ImgPath = imgurService.UploadImgur(input.ImgFile);
+                }
+                else
+                {
+                    entity.ImgPath = input.ImgPath;
+                }
 
                 issueRepo.Update(entity);
                 context.SaveChanges();
@@ -96,28 +110,66 @@ namespace TicketHubApp.Services
             return result;
         }
     
-        public ShopIssueListViewModel GetAll()
+        public ShopIssueListViewModel GetAll(int? order)
         {
             var result = new ShopIssueListViewModel();
             result.Items = new List<ShopIssueViewModel>();
             TicketHubContext context = new TicketHubContext();
             GenericRepository<Issue> issueRepo = new GenericRepository<Issue>(context);
+            GenericRepository<OrderDetail> orderDetailRepo = new GenericRepository<OrderDetail>(context);
 
-            foreach (var item in issueRepo.GetAll().OrderBy((x) => x.IssuedDate))
+            var issues = from i in issueRepo.GetAll()
+                         select new ShopIssueViewModel
+                         {
+                             ImgPath = i.ImgPath,
+                             Title = i.Title,
+                             Id = i.Id,
+                             DiscountPrice = i.DiscountPrice,
+                             Status = (DateTime.Compare(i.ReleasedDate, DateTime.Now) > 0) ?
+                                ((DateTime.Compare((DateTime)i.ClosedDate, DateTime.Now) < 0) ? "已下架" : "上架") : "未上架",
+                             IssuedDate = i.IssuedDate,
+                             ReleasedDate = i.ReleasedDate,
+                             //SalesAmount =
+                             //   (from i2 in issueRepo.GetAll()
+                             //   join od in orderDetailRepo.GetAll() on i.Id equals od.IssueId
+                             //   group i2 by i2.IssuerId into iod
+                             //   where i.Id == iod.Key
+                             //   select new { salesamount = (int)iod.Sum((x) => x.Amount) })
+                         };
+                                
+            switch (order)
             {
-                var p = new ShopIssueViewModel()
-                {
-                    TicketImg = item.ImgPath,
-                    Title = item.Title,
-                    Id = item.Id,
-                    DiscountPrice = item.DiscountPrice,
-                    Status = (DateTime.Compare(item.ReleasedDate, DateTime.Now) > 0) ?
-                            ((DateTime.Compare((DateTime)item.ClosedDate, DateTime.Now) < 0) ? "已下架" : "上架") : "未上架",
-                    IssuedDate = item.IssuedDate
-                };
-
-                result.Items.Add(p);
+                //case 1:
+                //    issues = issues.OrderByDescending(i => i.SalesAmount);
+                //    break;
+                case 2:
+                    issues = issues.OrderBy(i => i.ReleasedDate);
+                    break;
+                case 3:
+                    issues = issues.OrderByDescending(i => i.Id);
+                    break;
+                default:
+                    issues = issues.OrderByDescending(i => i.DiscountPrice);
+                    break;
             }
+
+            //foreach (var item in issues)
+            //{
+            //    var p = new ShopIssueViewModel()
+            //    {
+            //        ImgPath = item.ImgPath,
+            //        Title = item.Title,
+            //        Id = item.Id,
+            //        DiscountPrice = item.DiscountPrice,
+            //        Status = (DateTime.Compare(item.ReleasedDate, DateTime.Now) > 0) ?
+            //                ((DateTime.Compare((DateTime)item.ClosedDate, DateTime.Now) < 0) ? "已下架" : "上架") : "未上架",
+            //        IssuedDate = item.IssuedDate
+            //    };
+
+            //    result.Items.Add(p);
+            //}
+
+            result.Items = issues.ToList();
             return result;
         }
 
@@ -131,7 +183,7 @@ namespace TicketHubApp.Services
             {
                 Id = item.Id,
                 shopId = item.ShopId,
-                TicketImg = item.ImgPath,
+                ImgPath = item.ImgPath,
                 Title = item.Title,
                 Memo = item.Memo,
                 OriginalPrice = item.OriginalPrice,

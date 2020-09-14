@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web.Mvc;
 using TicketHubApp.Models.ViewModels;
 using TicketHubDataLibrary.Models;
+using TicketHubApp.Services;
+using System;
 
 namespace TicketHubApp.Controllers
 {
@@ -43,49 +46,103 @@ namespace TicketHubApp.Controllers
             return View();
         }
 
-        public ActionResult ProductList()
+        public ActionResult IssueList(int? orderValue)
         {
-            return View();
+            var service = new ShopIssueService();
+            var viewModel = service.GetAll(orderValue).Items;
+            
+            return View(viewModel);
         }
 
-        public ActionResult CreateProduct()
+        public ActionResult CreateIssue()
         {
-            var categoryList = new List<SelectListItem>()
-            {
-                new SelectListItem{Text = "台式", Value= "category-1"},
-                new SelectListItem{Text = "日式", Value= "category-2"},
-                new SelectListItem{Text = "韓式", Value= "category-3"},
-                new SelectListItem{Text = "中式", Value= "category-4"},
-                new SelectListItem{Text = "美式", Value= "category-5"},
-                new SelectListItem{Text = "泰式", Value= "category-6"},
-                new SelectListItem{Text = "西式", Value= "category-7"},
-                new SelectListItem{Text = "法式", Value= "category-8"},
-                new SelectListItem{Text = "印度料理", Value= "category-9"},
-                new SelectListItem{Text = "越南料理", Value= "category-10"}
-            };
-            categoryList.Where(q => q.Value == "category-1").First().Selected = true;
-
+            var categoryList = new TagService().GenCategory();
             ViewBag.CategoryList = categoryList;
 
             return View();
         }
 
-        public ActionResult StoreInformation()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateIssue(ShopIssueViewModel shopissueVM)
+        {
+            var categoryList = new TagService().GenCategory();
+            ViewBag.CategoryList = categoryList;
+
+            if (ModelState.IsValid)
+            {
+                var service = new ShopIssueService();
+                var result = service.Create(shopissueVM);
+                if (result.Success)
+                {
+                    return RedirectToAction("IssueList");
+                }
+                else
+                {
+                    ViewBag.Message = "新增失敗!";
+                    System.Console.WriteLine(result.Message);
+                    return View(shopissueVM);
+                }
+            }
+            return View();
+        }
+
+        public ActionResult EditIssue(string id)
+        {
+            var categoryList = new TagService().GenCategory();
+            ViewBag.CategoryList = categoryList;
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var service = new ShopIssueService();
+            ShopIssueViewModel shopissueVM = service.GetIssue(Guid.Parse(id));
+            if (shopissueVM == null)
+            {
+                return HttpNotFound();
+            }
+
+            TempData["ImgPath"] = shopissueVM.ImgPath;
+            return View(shopissueVM);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditIssue(ShopIssueViewModel shopissueVM)
+        {
+            var categoryList = new TagService().GenCategory();
+            ViewBag.CategoryList = categoryList;
+
+            if (TempData["ImgPath"] != null)
+            {
+                shopissueVM.ImgPath = (string)TempData["ImgPath"];
+            }
+
+            if (ModelState.IsValid)
+            {
+                var service = new ShopIssueService();
+                var result = service.Update(shopissueVM);
+                if (result.Success)
+                {
+                    return RedirectToAction("IssueList");
+                }
+                else
+                {
+                    ViewBag.Message = "更新失敗!";
+                    System.Console.WriteLine(result.Message);
+                    return View(shopissueVM);
+                }
+            }
+            return View();
+        }
+
+        public ActionResult ShopInfo()
         {
             return View();
         }
 
-        public ActionResult OrderList()
-        {
-            return View();
-        }
-
-        public ActionResult OrderDetails()
-        {
-            return View();
-        }
-
-        public ActionResult TicketDetails()
+        public ActionResult IssueDetails()
         {
             return View();
         }
@@ -93,6 +150,12 @@ namespace TicketHubApp.Controllers
         public ActionResult SalesReport()
         {
             return View();
+        }
+
+        public string testImg(System.Web.HttpPostedFileBase file)
+        {
+            Console.WriteLine(file);
+            return file.ToString();
         }
     }
 }

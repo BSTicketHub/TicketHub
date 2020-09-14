@@ -1,18 +1,18 @@
 ﻿@model TicketHubApp.Models.ViewModels.ShopIssueViewModel
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("CreateIssue", "Shop", FormMethod.Post, new { encType = "multipart/form-data" }))
 {
-    @Html.AntiForgeryToken()
+            @Html.AntiForgeryToken()
 
-    <div class="container createProduct">
+            <div class="container createProduct">
         <div class="row">
             <div class="col-12">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="upLoadImg bg-white p-3 shadow position-relative text-center">
                     @*<form action="/somewhere/to/upload" enctype="multipart/form-data">*@
 
-                        <input id="upLoadImg" type="file" name="TicketImg" onchange="readURL(this)" targetID="preview_progressbarTW_img" accept="image/gif, image/jpeg, image/png" class="position-absolute" style="left:10px; " />
+                        <input id="upLoadImg" type="file" name="ImgFile" onchange="readURL(this)" targetID="preview_progressbarTW_img" accept="image/gif, image/jpeg, image/png" class="position-absolute" style="left:10px; " />
 
                         <img id="preview_progressbarTW_img" class="showimg" src="#" />
                     @*</form>*@
@@ -26,10 +26,10 @@
                             @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
                         </div>
                         @*票券類別*@
-                        @*<div class="form-group col-12">
+                        <div class="form-group col-12">
                             <label for="formGroupExampleInput">票券類別</label>
                             @Html.DropDownListFor(m => m.Category, (IEnumerable<SelectListItem>)ViewBag.CategoryList, new { @class = "form-control form-control-sm" })
-                        </div>*@
+                        </div>
                         @*商品定價*@
                         <div class="form-group col-4">
                             <label for="formGroupExampleInput">商品定價</label>

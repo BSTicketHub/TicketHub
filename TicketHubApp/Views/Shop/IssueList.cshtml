@@ -7,15 +7,21 @@
                 <p>票券列表</p>
             </div>
             <div class="btnList p-2 border-top">
-                @Html.ActionLink("票券上架", "CreateProduct2", "Store", null, new { @class = "btn blueBtn" })
-                <button class="btn btn-sm blueBtn py-1 px-2 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    編輯排序
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">依銷售數量</a>
-                    <a class="dropdown-item" href="#">依上架時間</a>
-                    <a class="dropdown-item" href="#">依商品編號</a>
-                </div>
+                @Html.ActionLink("票券上架", "CreateIssue", "Shop", null, new { @class = "btn blueBtn" })
+                @*<button class="btn btn-sm blueBtn py-1 px-2 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        編輯排序
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">依銷售數量</a>
+                        <a class="dropdown-item" href="#">依上架時間</a>
+                        <a class="dropdown-item" href="#">依商品編號</a>
+                    </div>*@
+                <select class="custom-select blueBtn custom-select-sm w-auto pr-4" id="order">
+                    <option selected>編輯排序</option>
+                    <option value="1">依銷售數量</option>
+                    <option value="2">依上架時間</option>
+                    <option value="3">依商品編號</option>
+                </select>
                 <button class="btn btn-sm blueBtn py-1 px-2">刪除商品</button>
             </div>
             <div class="tableBlock">
@@ -34,7 +40,7 @@
                         </tr>
                     </thead>
                     <tbody id="ticketList">
-                        @foreach(var issue in Model)
+                        @foreach (var issue in Model)
                         {
                             @Html.Partial("_IssueListTablePartial", issue)
                         }
@@ -54,7 +60,7 @@
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="#">依銷售數量</a>
                     <a class="dropdown-item" href="#">依上架時間</a>
-                    <a class="dropdown-item" href="#">依商品編號</a>
+                    <a class="dropdown-item" href="#">依商品價格</a>
                 </div>
             </div>
             <div class="tableBlock">
@@ -98,7 +104,16 @@
 
         function ticketClick(tr) {
             let id = tr.children[3].innerText;
-            window.location.assign("EditIssue"+"?id="+id);
+            window.location.assign("EditIssue" + "?id=" + id);
         }
-    </script>    
+    </script>
+
+    <script>
+        let selectOrder = document.getElementById("order");
+        selectOrder.addEventListener("change", function ordering() {
+            window.location.assign("IssueList" + "?orderValue=" + this.value);
+        });
+
+        
+    </script>
 }
