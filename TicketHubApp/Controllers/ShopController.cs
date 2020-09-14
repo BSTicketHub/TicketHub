@@ -11,7 +11,6 @@ using System.Web.Mvc;
 using TicketHubApp.Models.ViewModels;
 using TicketHubDataLibrary.Models;
 using TicketHubApp.Services;
-using System;
 
 namespace TicketHubApp.Controllers
 {
