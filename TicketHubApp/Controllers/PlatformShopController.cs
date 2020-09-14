@@ -19,10 +19,15 @@ namespace TicketHubApp.Controllers
         // GET: Shops
         public ActionResult Index()
         {
-            PlatformShopService service = new PlatformShopService();
-            var members = service.GetAllShops();
-            return View(members);             
+            return View();             
         }
 
+        public ActionResult GetShopsJson()
+        {
+            PlatformShopService service = new PlatformShopService();
+            var shopsTableData = service.GetShopsTableData();
+
+            return Json(shopsTableData, JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace TicketHubDataLibrary.Models
         // 如果您的目標是其他資料庫和 (或) 提供者，請修改
         // 應用程式組態檔中的 'TicketHubContext' 連接字串。
         public TicketHubContext()
-            : base("LocalConnection", throwIfV1Schema: false)
+            : base("AzureConnection", throwIfV1Schema: false)
         {
         }
 

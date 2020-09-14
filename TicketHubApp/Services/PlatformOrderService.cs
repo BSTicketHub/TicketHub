@@ -12,18 +12,19 @@ namespace TicketHubApp.Services
 {
     public class PlatformOrderService
     {
-       public List<PlatformOrderViewModel> GetAllOrders()
+        public DataTableViewModel GetAllOrders()
         {
             var result = new List<PlatformOrderViewModel>();
             var context = new TicketHubContext();
-            
+
             var orderRepository = new GenericRepository<Order>(context);
             var orderDetailRepository = new GenericRepository<OrderDetail>(context);
 
             var temp = from o in orderRepository.GetAll()
                        join od in orderDetailRepository.GetAll()
                        on o.Id equals od.OrderId
-                       select new {
+                       select new
+                       {
                            Id = o.Id,
                            OrderDate = o.OrderedDate,
                            UserId = o.UserId,
@@ -42,7 +43,22 @@ namespace TicketHubApp.Services
                             TotalPrice = g.Sum(x => x.Price)
                         };
 
-            return group.ToList();
+            DataTableViewModel table = new DataTableViewModel();
+            table.data = new List<List<string>>();
+
+            foreach (var item in group)
+            {
+                List<string> dataInstance = new List<string>();
+
+                dataInstance.Add(item.Id.ToString());
+                dataInstance.Add(item.UserId);
+                dataInstance.Add(item.UserName);
+                dataInstance.Add(item.TotalPrice.ToString());
+
+                table.data.Add(dataInstance);
+            }
+
+            return table;
         }
     }
 }
