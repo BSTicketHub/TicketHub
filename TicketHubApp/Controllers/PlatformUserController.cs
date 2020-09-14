@@ -29,5 +29,12 @@ namespace TicketHubApp.Controllers
             return Json(usersTableData, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult UserDetail(string id)
+        {
+            PlatformUserService service = new PlatformUserService();
+            var user = service.GetUser(id);
+
+            return View(user);
+        }
     }
 }

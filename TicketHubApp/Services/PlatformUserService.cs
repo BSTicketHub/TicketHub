@@ -1,4 +1,5 @@
 ﻿using Microsoft.Ajax.Utilities;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security.Provider;
 using System;
 using System.Collections.Generic;
@@ -19,8 +20,19 @@ namespace TicketHubApp.Services
         {
             TicketHubContext context = new TicketHubContext();
             GenericRepository<TicketHubUser> repository = new GenericRepository<TicketHubUser>(context);
+            GenericRepository<IdentityUserRole> roleRepository = new GenericRepository<IdentityUserRole>(context);
 
-            IQueryable<TicketHubUser> memberList = repository.GetAll();
+            var memberList = from u in repository.GetAll()
+                             join r in roleRepository.GetAll()
+                             on u.Id equals r.UserId
+                             where r.RoleId == "5"
+                             select new PlatformUserViewModel
+                             {
+                                 Id = u.Id,
+                                 UserAccount = u.UserName,
+                                 Mobile = u.PhoneNumber,
+                             };
+
             DataTableViewModel table = new DataTableViewModel();
             table.data = new List<List<string>>();
 
@@ -29,13 +41,32 @@ namespace TicketHubApp.Services
                 List<string> dataInstance = new List<string>();
 
                 dataInstance.Add(item.Id);
-                dataInstance.Add(item.UserName);
-                dataInstance.Add(item.PhoneNumber ?? "null");
-                dataInstance.Add(item.PasswordHash);
+                dataInstance.Add(item.UserAccount);
+                dataInstance.Add(item.Mobile ?? "NA");
 
                 table.data.Add(dataInstance);
             }
+
             return table;
         }
+
+
+        public PlatformUserViewModel GetUser(string id)
+        {   
+
+            TicketHubContext context = new TicketHubContext();
+            GenericRepository<TicketHubUser> repository = new GenericRepository<TicketHubUser>(context);
+            var user = repository.GetAll().FirstOrDefault(x => x.Id == id);
+
+            var userVM = new PlatformUserViewModel
+            { 
+                Id = user.Id,
+                UserAccount = user.UserName,
+                Mobile = user.PhoneNumber
+            };
+
+            return userVM;
+        }
+
     }
 }
