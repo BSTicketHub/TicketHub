@@ -39,11 +39,11 @@
                 })
             }
 
-            createInfoArea();
+            createInfoArea(firstPage);
 
 
 
-            function createInfoArea(target = firstPage) {
+            function createInfoArea(target = document.querySelectorAll(".sidebar-nav > div")[0]) {
                 let infoArea = document.querySelector('.col-9')
                 let content = document.createElement('div');
                 content.classList.add('info-area', 'p-4', 'rounded');
@@ -422,75 +422,77 @@
             }
 
             function createFavoriteStore() {
-                let storeDiv = document.createElement('div');
-                storeDiv.classList.add('favorite-store', 'w-100', 'rounded', 'd-flex', 'mb-3', 'shadow')
+                for (let i = 0; i < response.FavoriteShop.length; i++) {
+                    let storeDiv = document.createElement('div');
+                    storeDiv.classList.add('favorite-store', 'w-100', 'rounded', 'd-flex', 'mb-3', 'shadow')
 
-                let imgDiv = document.createElement('div');
-                imgDiv.classList.add('img-area')
-                let textDiv = document.createElement('div')
-                textDiv.classList.add('text-area', 'border', 'border-left-0', 'rounded-right', 'position-relative')
-                storeDiv.append(imgDiv, textDiv);
+                    let imgDiv = document.createElement('div');
+                    imgDiv.classList.add('img-area')
+                    let textDiv = document.createElement('div')
+                    textDiv.classList.add('text-area', 'border', 'border-left-0', 'rounded-right', 'position-relative')
+                    storeDiv.append(imgDiv, textDiv);
 
-                let img = document.createElement('div')
-                img.style.backgroundImage = "url('https://picsum.photos/400/300/?random=1')";
-                img.style.backgroundSize = "cover";
-                img.classList.add('w-100', 'h-100')
-                imgDiv.append(img);
+                    let img = document.createElement('div')
+                    img.style.backgroundImage = "url('https://picsum.photos/400/300/?random=1')";
+                    img.style.backgroundSize = "cover";
+                    img.classList.add('w-100', 'h-100')
+                    imgDiv.append(img);
 
-                let ticketTitle = document.createElement('h6');
-                ticketTitle.classList.add('my-3', 'ml-4')
-                ticketTitle.innerText = "【東區最夯牛排館】 就是間牛排館"
-                textDiv.append(ticketTitle);
+                    let ticketTitle = document.createElement('h6');
+                    ticketTitle.classList.add('my-3', 'ml-4')
+                    ticketTitle.innerText = `${response.FavoriteShop[i].ShopName}`
+                    textDiv.append(ticketTitle);
 
-                let ticketContent = document.createElement('p');
-                ticketContent.classList.add('mx-4')
-                ticketContent.innerText = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere ut atque nobis voluptatum asperiores maxime numquam. Quos minus nobis adipisci?"
-                textDiv.append(ticketContent);
+                    let ticketContent = document.createElement('p');
+                    ticketContent.classList.add('mx-4')
+                    ticketContent.innerText = `${response.FavoriteShop[i].ShopIntro}`
+                    textDiv.append(ticketContent);
 
-                let position = document.createElement('p');
-                let positionIcon = document.createElement('i');
-                positionIcon.classList.add('iconify', 'mr-2');
-                positionIcon.setAttribute('data-icon', 'fa-solid:map-marker-alt');
-                position.classList.add('position', 'ml-4', 'mb-2');
-                position.innerText = "台北 / 大安區";
-                textDiv.append(position);
-                position.prepend(positionIcon);
+                    let position = document.createElement('p');
+                    let positionIcon = document.createElement('i');
+                    positionIcon.classList.add('iconify', 'mr-2');
+                    positionIcon.setAttribute('data-icon', 'fa-solid:map-marker-alt');
+                    position.classList.add('position', 'ml-4', 'mb-2');
+                    position.innerText = `${response.FavoriteShop[i].City} / ${response.FavoriteShop[i].District}`;
+                    textDiv.append(position);
+                    position.prepend(positionIcon);
 
-                let address = document.createElement('p');
-                let addressIcon = document.createElement('i');
-                address.classList.add('address', 'ml-4', 'mb-2');
-                addressIcon.classList.add('iconify', 'mr-2');
-                addressIcon.setAttribute('data-icon', 'whh:house');
-                address.innerText = "復興南路一段279巷4號"
-                textDiv.append(address);
-                address.prepend(addressIcon);
+                    let address = document.createElement('p');
+                    let addressIcon = document.createElement('i');
+                    address.classList.add('address', 'ml-4', 'mb-2');
+                    addressIcon.classList.add('iconify', 'mr-2');
+                    addressIcon.setAttribute('data-icon', 'whh:house');
+                    address.innerText = `${response.FavoriteShop[i].Address}`
+                    textDiv.append(address);
+                    address.prepend(addressIcon);
 
-                let phone = document.createElement('p');
-                let phoneIcon = document.createElement('i');
-                phone.classList.add('phone', 'ml-4', 'mb-2');
-                phoneIcon.classList.add('iconify', 'mr-2');
-                phoneIcon.setAttribute('data-icon', 'bx:bxs-phone');
-                phone.innerText = "(02)2706-1068"
-                textDiv.append(phone);
-                phone.prepend(phoneIcon);
+                    let phone = document.createElement('p');
+                    let phoneIcon = document.createElement('i');
+                    phone.classList.add('phone', 'ml-4', 'mb-2');
+                    phoneIcon.classList.add('iconify', 'mr-2');
+                    phoneIcon.setAttribute('data-icon', 'bx:bxs-phone');
+                    phone.innerText = `${response.FavoriteShop[i].Phone}`
+                    textDiv.append(phone);
+                    phone.prepend(phoneIcon);
 
-                let openTime = document.createElement('p');
-                let openTimeIcon = document.createElement('i');
-                openTime.classList.add('openTime', 'ml-4', 'mb-2');
-                openTimeIcon.classList.add('iconify', 'mr-2');
-                openTimeIcon.setAttribute('data-icon', 'fa-solid:clock');
-                openTime.innerText = "17:00 - 02:00"
-                textDiv.append(openTime);
-                openTime.prepend(openTimeIcon);
+                    let openTime = document.createElement('p');
+                    let openTimeIcon = document.createElement('i');
+                    openTime.classList.add('openTime', 'ml-4', 'mb-2');
+                    openTimeIcon.classList.add('iconify', 'mr-2');
+                    openTimeIcon.setAttribute('data-icon', 'fa-solid:clock');
+                    openTime.innerText = `${response.FavoriteShop[i].Phone}`
+                    textDiv.append(openTime);
+                    openTime.prepend(openTimeIcon);
 
 
-                let favorite = document.createElement('i');
-                favorite.classList.add('favorite', 'iconify', 'position-absolute');
-                favorite.setAttribute('data-icon', 'bx:bxs-heart');
-                textDiv.append(favorite);
+                    let favorite = document.createElement('i');
+                    favorite.classList.add('favorite', 'iconify', 'position-absolute');
+                    favorite.setAttribute('data-icon', 'bx:bxs-heart');
+                    textDiv.append(favorite);
 
-                let wishList = document.querySelector('.info-area .container .row')
-                wishList.append(storeDiv);
+                    let wishList = document.querySelector('.info-area .container .row')
+                    wishList.append(storeDiv);
+                }
             }
         },
         error: function () {

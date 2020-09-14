@@ -613,7 +613,6 @@
     <Content Include="Views\Account\_LoginLayout.cshtml" />
     <Content Include="Views\Customer\CustomerInfo.cshtml" />
     <Content Include="Views\Shop\ShopList.cshtml" />
-    <Content Include="Views\Shop\_ShopListLayout.cshtml" />
     <Content Include="Views\PlatformUser\Index.cshtml" />
     <Content Include="Views\PlatformUser\_ViewStart.cshtml" />
     <Content Include="Views\PlatformDashBoard\MemberDashBoard.cshtml" />
