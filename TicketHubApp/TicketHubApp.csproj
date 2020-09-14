@@ -56,6 +56,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Imgur.API, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Imgur.API.5.0.0\lib\netstandard2.0\Imgur.API.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -64,6 +67,9 @@
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.3\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
@@ -90,6 +96,9 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="RestSharp, Version=106.11.4.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.11.4\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="SendGrid, Version=9.21.0.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
       <HintPath>..\packages\SendGrid.9.21.0\lib\net452\SendGrid.dll</HintPath>
     </Reference>
@@ -97,10 +106,35 @@
       <HintPath>..\packages\starkbank-ecdsa.1.2.0\lib\net452\StarkbankEcdsa.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.4.7.1\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.4.7.2\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -202,15 +236,19 @@
     <Compile Include="Models\ViewModels\PlatformUserViewModel.cs" />
     <Compile Include="Models\ViewModels\PlatformOrderViewModel.cs" />
     <Compile Include="Models\ViewModels\DataTableViewModel.cs" />
+    <Compile Include="Models\ViewModels\ShopIssueListViewModel.cs" />
     <Compile Include="Models\ViewModels\ShopViewModel.cs" />
     <Compile Include="Models\ViewModels\SimpleIssueViewModel.cs" />
     <Compile Include="Models\ViewModels\PlatformShopViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\PlatformUserService.cs" />
+    <Compile Include="Services\ImgurService.cs" />
     <Compile Include="Services\PlatformOrderService.cs" />
     <Compile Include="Services\PlatformShopService.cs" />
     <Compile Include="Models\ViewModels\StoreTicketListViewModel.cs" />
     <Compile Include="Models\ViewModels\ShopIssueViewModel.cs" />
+    <Compile Include="Services\ShopIssueService.cs" />
+    <Compile Include="Services\TagService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -573,13 +611,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Shop\HomePage.cshtml" />
-    <Content Include="Views\Shared\_Layout_Store.cshtml" />
+    <Content Include="Views\Shared\_Layout_Shop.cshtml" />
     <Content Include="Views\Shop\_ViewStart.cshtml" />
-    <Content Include="Views\Shop\ProductList.cshtml" />
-    <Content Include="Views\Shop\CreateProduct.cshtml" />
-    <Content Include="Views\Shop\StoreInformation.cshtml" />
-    <Content Include="Views\Shop\OrderList.cshtml" />
-    <Content Include="Views\Shop\OrderDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -620,23 +653,16 @@
     <Content Include="Views\Account\_LoginLayout.cshtml" />
     <Content Include="Views\Customer\CustomerInfo.cshtml" />
     <Content Include="Views\Shop\ShopList.cshtml" />
-    <Content Include="Views\Shop\_ShopListLayout.cshtml" />
     <Content Include="Views\PlatformUser\Index.cshtml" />
     <Content Include="Views\PlatformUser\_ViewStart.cshtml" />
     <Content Include="Views\PlatformDashBoard\MemberDashBoard.cshtml" />
     <Content Include="Views\Shared\_Layout_Platform.cshtml" />
     <Content Include="Views\PlatformShop\_ViewStart.cshtml" />
-    <Content Include="Views\Shop\TicketDetails.cshtml" />
     <Content Include="Views\Customer\TicketList.cshtml" />
     <Content Include="Views\Shared\_Layout_TicketList.cshtml" />
     <Content Include="Views\Shop\SalesReport.cshtml" />
     <Content Include="Views\Shared\_Ticket.cshtml" />
     <Content Include="Views\PlatformDashBoard\_ViewStart.cshtml" />
-    <Content Include="Views\PlatformUser\MemberDetail.cshtml" />
-    <Content Include="Views\PlatformUser\CreateMember.cshtml" />
-    <Content Include="Views\PlatformUser\EditMember.cshtml" />
-    <Content Include="Views\PlatformUser\DeleteMember.cshtml" />
-    <Content Include="Views\Platform\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_ShopCardPartial.cshtml" />
     <Content Include="Views\PlatformShop\Index.cshtml" />
     <Content Include="Views\ProductCart\Cart.cshtml" />
@@ -648,10 +674,15 @@
     <Content Include="Views\Home\_RecommenCard.cshtml" />
     <Content Include="Views\Home\_BestSellerCard.cshtml" />
     <Content Include="Views\Home\_SortNewCard.cshtml" />
-    <Content Include="Views\PlatformIssue\_ViewStart.cshtml" />
     <Content Include="Views\Customer\MyTicket.cshtml" />
     <Content Include="Views\Customer\WishList.cshtml" />
     <Content Include="Views\Customer\FavoriteShop.cshtml" />
+    <Content Include="Views\Shop\_IssueListTablePartial.cshtml" />
+    <Content Include="Views\Shop\CreateIssue.cshtml" />
+    <Content Include="Views\Shop\EditIssue.cshtml" />
+    <Content Include="Views\Shop\IssueDetails.cshtml" />
+    <Content Include="Views\Shop\IssueList.cshtml" />
+    <Content Include="Views\Shop\ShopInfo.cshtml" />
     <Content Include="Views\Account\EmailConfirmed.cshtml" />
     <Content Include="Views\Account\RegisterSuccess.cshtml" />
   </ItemGroup>

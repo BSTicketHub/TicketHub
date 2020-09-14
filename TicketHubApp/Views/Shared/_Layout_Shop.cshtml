@@ -32,7 +32,7 @@
                 </div>
                 <div class="collapse show" id="storeManegement">
                     <ul>
-                        <li class="py-3 pl-4">@Html.ActionLink("商家資訊", "StoreInformation", "Shop", null, new { @class="liColor pl-5" })</li>
+                        <li class="py-3 pl-4">@Html.ActionLink("商家資訊", "ShopInfo", "Shop", null, new { @class="liColor pl-5" })</li>
                     </ul>
                 </div>
                 <div class="div py-3 pl-4 border-bottom" data-toggle="collapse" aria-controls="productManegement" data-target="#productManegement">
@@ -42,8 +42,8 @@
                 </div>
                 <div class="collapse show" id="productManegement">
                     <ul>
-                        <li class="py-3 pl-4">@Html.ActionLink("票券上架", "CreateProduct", "Shop", null, new { @class = "liColor pl-5" })</li>
-                        <li class=" py-3 pl-4">@Html.ActionLink("票券列表", "ProductList", "Shop", null, new { @class = "liColor pl-5" })</li>
+                        <li class="py-3 pl-4">@Html.ActionLink("票券上架", "CreateIssue", "Shop", null, new { @class = "liColor pl-5" })</li>
+                        <li class=" py-3 pl-4">@Html.ActionLink("票券列表", "IssueList", "Shop", null, new { @class = "liColor pl-5" })</li>
                     </ul>
                 </div>
                 <div class="div py-3 pl-4 border-bottom" data-toggle="collapse" aria-controls="sellingAnalysis" data-target="#sellingAnalysis">
