@@ -42,8 +42,8 @@ namespace TicketHubApp.Services
                     IssuedDate = DateTime.Now,
                     ReleasedDate = input.ReleasedDate,
                     ClosedDate = input.ClosedDate,
-                    IssuerId = "6a2b0a3d-9de5-470d-8519-3bba75de4246", //IssuerId = user,
-                    ShopId = Guid.Parse("2298405e-54f4-ea11-9700-cb781453451a") //ShopId = employee.ShopId
+                    IssuerId = "26c751ea-d1ce-45bf-8a65-78f0d48ce2c4", //IssuerId = user,
+                    ShopId = Guid.Parse("FA10840D-3A73-4374-AAFD-D592A3623EC1") //ShopId = employee.ShopId
                 };
 
                 issueRepo.Create(entity);
@@ -82,8 +82,8 @@ namespace TicketHubApp.Services
                     IssuedDate = DateTime.Now,
                     ReleasedDate = input.ReleasedDate,
                     ClosedDate = input.ClosedDate,
-                    IssuerId = "6a2b0a3d-9de5-470d-8519-3bba75de4246", //IssuerId = user,
-                    ShopId = Guid.Parse("2298405e-54f4-ea11-9700-cb781453451a") //ShopId = employee.ShopId
+                    IssuerId = "26c751ea-d1ce-45bf-8a65-78f0d48ce2c4", //IssuerId = user,
+                    ShopId = Guid.Parse("FA10840D-3A73-4374-AAFD-D592A3623EC1") //ShopId = employee.ShopId
                 };
 
                 if (input.ImgFile != null)
