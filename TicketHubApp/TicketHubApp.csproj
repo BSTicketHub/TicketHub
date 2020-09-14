@@ -624,7 +624,6 @@
     <Content Include="Views\Shop\SalesReport.cshtml" />
     <Content Include="Views\Shared\_Ticket.cshtml" />
     <Content Include="Views\PlatformDashBoard\_ViewStart.cshtml" />
-    <Content Include="Views\Platform\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_ShopCardPartial.cshtml" />
     <Content Include="Views\PlatformShop\Index.cshtml" />
     <Content Include="Views\ProductCart\Cart.cshtml" />
@@ -636,7 +635,6 @@
     <Content Include="Views\Home\_RecommenCard.cshtml" />
     <Content Include="Views\Home\_BestSellerCard.cshtml" />
     <Content Include="Views\Home\_SortNewCard.cshtml" />
-    <Content Include="Views\PlatformIssue\_ViewStart.cshtml" />
     <Content Include="Views\Customer\MyTicket.cshtml" />
     <Content Include="Views\Customer\WishList.cshtml" />
     <Content Include="Views\Customer\FavoriteShop.cshtml" />
