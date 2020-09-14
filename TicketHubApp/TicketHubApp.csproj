@@ -221,7 +221,6 @@
     <Compile Include="Controllers\PlatformUserController.cs" />
     <Compile Include="Controllers\PlatformShopController.cs" />
     <Compile Include="Controllers\ProductCartController.cs" />
-    <Compile Include="Controllers\ticketDescriptionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -257,12 +256,6 @@
     </Content>
     <Content Include="Assets\CSS\Common\Ticket.min.css">
       <DependentUpon>Ticket.css</DependentUpon>
-    </Content>
-    <Content Include="Assets\CSS\Cart.css">
-      <DependentUpon>Cart.scss</DependentUpon>
-    </Content>
-    <Content Include="Assets\CSS\Cart.min.css">
-      <DependentUpon>Cart.css</DependentUpon>
     </Content>
     <Content Include="Assets\CSS\CustomerPage.css">
       <DependentUpon>CustomerPage.scss</DependentUpon>
@@ -384,18 +377,11 @@
     <Content Include="Assets\CSS\ShopList.min.css">
       <DependentUpon>ShopList.css</DependentUpon>
     </Content>
-    <Content Include="Assets\CSS\ticket-description.css">
-      <DependentUpon>ticket-description.scss</DependentUpon>
-    </Content>
-    <Content Include="Assets\CSS\ticket-description.min.css">
-      <DependentUpon>ticket-description.css</DependentUpon>
-    </Content>
     <Content Include="Assets\Images\camera.png" />
     <Content Include="Assets\JavaScript\Customer\CustomerInfo.js" />
     <Content Include="Assets\JavaScript\Home\jquery.sticky.js" />
     <Content Include="Assets\JavaScript\Platform\datatables.min.js" />
     <Content Include="Assets\JavaScript\Platform\PlatformMemberIndex.js" />
-    <Content Include="Assets\JavaScript\Product\ticket-description.js" />
     <Content Include="Assets\JavaScript\Shop\createProduct.js" />
     <Content Include="Assets\JavaScript\Shop\HomePage.js" />
     <Content Include="Assets\JavaScript\Shop\ShopInfo.js" />
@@ -617,6 +603,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Html\" />
+    <Folder Include="Assets\JavaScript\Product\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\CSS\login.scss" />
@@ -635,8 +622,6 @@
     <Content Include="Assets\CSS\Shop\SalesReport.scss" />
     <Content Include="Assets\CSS\Shop\TicketDeatail.scss" />
     <Content Include="Assets\CSS\Platform\Platform_Layout.scss" />
-    <Content Include="Assets\CSS\Cart.scss" />
-    <Content Include="Assets\CSS\ticket-description.scss" />
     <Content Include="Assets\CSS\tempCSS\home.scss" />
     <Content Include="Assets\CSS\home.scss" />
     <None Include="compilerconfig.json" />
