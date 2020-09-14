@@ -1,10 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using System.IO;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using TicketHubApp.Models.ViewModels;
+using TicketHubApp.Services;
 using TicketHubDataLibrary.Models;
 
 namespace TicketHubApp.Controllers
@@ -72,16 +74,21 @@ namespace TicketHubApp.Controllers
                 return RedirectToAction("Login");
             }
 
+            var user = UserManager.FindByEmail(viewModel.Email);
+            if (user != null)
+            {
+                if (!await UserManager.IsEmailConfirmedAsync(user.Id))
+                {
+                    ModelState.AddModelError("", "You must have a confirmed email to log on.");
+                    return View("Login", viewModel);
+                }
+                //登入
+                return await SignIn(viewModel, returnUrl);
+            }
+
             //註冊
             if (viewModel.IsSignUp)
             {
-                var user = UserManager.FindByEmail(viewModel.Email);
-                if (user != null)
-                {
-                    //登入
-                    return await SignIn(viewModel, returnUrl);
-                }
-
                 var newUser = new TicketHubUser
                 {
                     UserName = viewModel.Email,
@@ -92,17 +99,30 @@ namespace TicketHubApp.Controllers
                 if (createResult.Succeeded)
                 {
                     await UserManager.AddToRoleAsync(newUser.Id, RoleName.CUSTOMER);
+                    await SendEmailConfirmationAsync(newUser);
+                    return View("RegistSuccess");
                 }
                 else
                 {
                     AddErrors(createResult);
                     return View("Login");
-
                 }
             }
 
-            //登入
-            return await SignIn(viewModel, returnUrl);
+            ModelState.AddModelError("", "登入嘗試失試。");
+            return View("Login", viewModel);
+        }
+
+        // GET: /Account/ConfirmEmail
+        [AllowAnonymous]
+        public async Task<ActionResult> ConfirmEmail(string userId, string code)
+        {
+            if (userId == null || code == null)
+            {
+                return View("Error");
+            }
+            var result = await UserManager.ConfirmEmailAsync(userId, code);
+            return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 
         [HttpPost]
@@ -157,6 +177,20 @@ namespace TicketHubApp.Controllers
                     ModelState.AddModelError("", "登入嘗試失試。");
                     return View("Login", viewModel);
             }
+        }
+
+        private async Task SendEmailConfirmationAsync(TicketHubUser newUser)
+        {
+            string code = await UserManager.GenerateEmailConfirmationTokenAsync(newUser.Id);
+            var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = newUser.Id, code = code }, protocol: Request.Url.Scheme);
+            string body = string.Empty;
+            using (StreamReader reader = new StreamReader(Server.MapPath("~/Views/Shared/MailTemplate/AccountConfirmation.html")))
+            {
+                body = reader.ReadToEnd();
+            }
+            body = body.Replace("{ConfirmationLink}", callbackUrl);
+            body = body.Replace("{UserName}", newUser.Email);
+            await UserManager.SendEmailAsync(newUser.Id, "Confirm your TicketHub account", body);
         }
 
         private void AddErrors(IdentityResult result)

@@ -69,17 +69,30 @@ body {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.65); }
 
-#cust {
+#cust,
+#regist-success {
   color: #0d3f43; }
-  #cust h2 > span {
+  #cust h2 > span,
+  #regist-success h2 > span {
     color: #23a8b2; }
-  #cust input {
+  #cust input,
+  #regist-success input {
     border-bottom: 1px solid #0d3f43; }
-  #cust .ticketReceipt {
+  #cust .ticketReceipt,
+  #cust .ticketReceiptVertical,
+  #regist-success .ticketReceipt,
+  #regist-success .ticketReceiptVertical {
     background-color: #23a8b2; }
-    #cust .ticketReceipt .ticketImprint {
+    #cust .ticketReceipt .ticketImprint,
+    #cust .ticketReceiptVertical .ticketImprint,
+    #regist-success .ticketReceipt .ticketImprint,
+    #regist-success .ticketReceiptVertical .ticketImprint {
       color: #16696f;
       text-shadow: 1px 1px 1px #76c9cf; }
+
+#regist-success {
+  width: 35%;
+  min-width: 350px; }
 
 #shop {
   color: #601622; }
@@ -134,37 +147,53 @@ body {
   box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.5), 6px 6px 20px 0 rgba(0, 0, 0, 0.4);
   transition: 0.8s; }
 
-.ticketStub {
+.ticketStub,
+.ticketStubVertical {
   background-color: #fffefa;
   border-bottom: 2px dashed black;
   transform-origin: right 5%; }
-  .ticketStub .coupon-img {
+  .ticketStub .coupon-img,
+  .ticketStubVertical .coupon-img {
     background-image: url("../Images/asian-food-decorative.jpg");
     background-size: cover;
     background-repeat: no-repeat; }
-  .ticketStub .coupon-login {
+  .ticketStub .coupon-login,
+  .ticketStubVertical .coupon-login {
     border-top: 2px solid #adadad; }
 
-.ticketReceipt {
+.ticketReceipt,
+.ticketReceiptVertical {
   border-top: 2px dashed black;
   transform-origin: left 90%; }
-  .ticketReceipt .login {
+  .ticketReceipt .login,
+  .ticketReceiptVertical .login {
     background-color: transparent;
     border: none;
     color: #fffefa;
     font-weight: 400;
     font-size: 1.1rem; }
-    .ticketReceipt .login:hover {
+    .ticketReceipt .login:hover,
+    .ticketReceiptVertical .login:hover {
       color: #fffefa;
       font-weight: bold;
       text-decoration: none; }
-    .ticketReceipt .login:focus {
+    .ticketReceipt .login:focus,
+    .ticketReceiptVertical .login:focus {
       outline: none; }
+
+.success-icon {
+  display: block;
+  margin: auto;
+  font-size: 10rem;
+  color: green; }
 
 .valid-summary {
   z-index: 25;
   position: absolute;
   right: 0; }
+
+.text-gray {
+  color: gray; }
 
 @media screen and (min-width: 768px) {
   .login-card {
