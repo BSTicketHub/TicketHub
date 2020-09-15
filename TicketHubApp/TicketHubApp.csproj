@@ -217,6 +217,7 @@
     <Compile Include="Controllers\PlatformDashBoardController.cs" />
     <Compile Include="Controllers\PlatformIssueController.cs" />
     <Compile Include="Controllers\PlatformOrderController.cs" />
+    <Compile Include="Controllers\ProductDescriptionController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Controllers\PlatformUserController.cs" />
     <Compile Include="Controllers\PlatformShopController.cs" />
@@ -285,6 +286,10 @@
     <Content Include="Assets\CSS\Platform\Platform_Layout.min.css">
       <DependentUpon>Platform_Layout.css</DependentUpon>
     </Content>
+    <Content Include="Assets\CSS\ProductCart.css" />
+    <Content Include="Assets\CSS\ProductCart.min.css" />
+    <Content Include="Assets\CSS\ProductDescription.css" />
+    <Content Include="Assets\CSS\ProductDescription.min.css" />
     <Content Include="Assets\CSS\Shop\CreateProduct.css">
       <DependentUpon>CreateProduct.scss</DependentUpon>
     </Content>
@@ -369,6 +374,7 @@
     <Content Include="Assets\JavaScript\Common\iconify.min.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.min.js" />
+    <Content Include="Assets\JavaScript\Common\ControlFavorite.js" />
     <Content Include="Assets\JavaScript\Customer\FavoriteShop.js" />
     <Content Include="Assets\JavaScript\Customer\MyTicket.js" />
     <Content Include="Assets\JavaScript\Customer\WishList.js" />
@@ -386,6 +392,8 @@
     <Content Include="Assets\JavaScript\Home\jquery.sticky.js" />
     <Content Include="Assets\JavaScript\Platform\datatables.min.js" />
     <Content Include="Assets\JavaScript\Platform\PlatformMemberIndex.js" />
+    <Content Include="Assets\JavaScript\ProductCart\ProductCart.js" />
+    <Content Include="Assets\JavaScript\Product\ProductDescription.js" />
     <Content Include="Assets\JavaScript\Shop\createProduct.js" />
     <Content Include="Assets\JavaScript\Shop\HomePage.js" />
     <Content Include="Assets\JavaScript\Shop\ShopInfo.js" />
@@ -628,6 +636,8 @@
     <Content Include="Assets\CSS\Platform\Platform_Layout.scss" />
     <Content Include="Assets\CSS\tempCSS\home.scss" />
     <Content Include="Assets\CSS\home.scss" />
+    <Content Include="Assets\CSS\ProductCart.scss" />
+    <Content Include="Assets\CSS\ProductDescription.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -654,8 +664,6 @@
     <Content Include="Views\PlatformDashBoard\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_ShopCardPartial.cshtml" />
     <Content Include="Views\PlatformShop\Index.cshtml" />
-    <Content Include="Views\ProductCart\Cart.cshtml" />
-    <Content Include="Views\ticketDescription\Ticketdescription.cshtml" />
     <Content Include="Views\PlatformOrder\Index.cshtml" />
     <Content Include="Views\PlatformOrder\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
@@ -674,6 +682,8 @@
     <Content Include="Views\Shop\ShopInfo.cshtml" />
     <Content Include="Views\Account\EmailConfirmed.cshtml" />
     <Content Include="Views\Account\RegisterSuccess.cshtml" />
+    <Content Include="Views\ProductCart\ProductCart.cshtml" />
+    <Content Include="Views\ProductDescription\ProductDescription.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

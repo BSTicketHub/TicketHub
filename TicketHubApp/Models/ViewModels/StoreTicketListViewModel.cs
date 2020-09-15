@@ -9,20 +9,11 @@ namespace TicketHubApp.Models.ViewModels
     public class StoreTicketListViewModel
     {
         public Guid Id { get; set; }
-        public DateTime DeliveredDate { get; set; }
-        public bool Exchanged { get; set; }
-        public DateTime ExchangedDate { get; set; }
-        public bool Voided { get; set; }
-        public DateTime VoidedDate { get; set; }
-
-        public Guid IssueId { get; set; }
-        //[ForeignKey("IssueId")]
-        //public Issue Issue { get; set; }
-        public Guid UserId { get; set; }
-        //[ForeignKey("UserId")]
-        //public User User { get; set; }
-        public Guid OrderId { get; set; }
-        //[ForeignKey("OrderId")]
-        //public Order Order { get; set; }
+        public string Title { get; set; }
+        public string Memo { get; set; }
+        public string ImgPath { get; set; }
+        public decimal OriginalPrice { get; set; }
+        public decimal DiscountPrice { get; set; }
+        public decimal DiscountRatio { get; set; }
     }
 }

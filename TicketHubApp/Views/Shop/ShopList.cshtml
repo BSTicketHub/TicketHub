@@ -43,7 +43,9 @@
 @section endJS{
     <script>
 
-        function addToFavorite(shopId) {
+        @*function addToFavorite(shopId) {
+            console.dir(event.target)
+            event.target.setAttribute('data-icon', 'bi:heart-fill')
             $.ajax({
                 cache: false,
                 url: "AddToFavoriteList",
@@ -59,22 +61,29 @@
                     alert("failed");
                 }
             });
-        }
+        }*@
 
-        function deleteFromFavorite(shopId) {
+        function controlFromFavorite(Icon) {
+
             $.ajax({
                 cache: false,
-                url: "DeleteFromFavoriteList",
+                url: "../Shop/ToggleFavoriteList",
                 method: "post",
-                data:{
-                    ShopId: shopId,
+                data: {
+                    ShopId: Icon.getAttributeNode('shopid').value,
                     UserId: "@ViewBag.UserId"
                 },
                 success: function () {
-                    alert("success");
                 },
                 error: function () {
                     alert("failed");
+                },
+                complete: function () {
+                    if (Icon.getAttribute('data-icon') == "bi:heart-fill") {
+                        Icon.setAttribute('data-icon', 'bi:heart')
+                    } else {
+                        Icon.setAttribute('data-icon', 'bi:heart-fill')
+                    }
                 }
             });
         }
