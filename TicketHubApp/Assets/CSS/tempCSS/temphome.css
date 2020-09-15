@@ -471,13 +471,13 @@ li {
 
 @media (min-width: 589px) {
     .banner-img {
-        padding-top: max(550px);
+        padding-top: 550px;
     }
 }
 
 @media (min-width: 950px) {
     .banner-img {
-        padding-top: max(570px);
+        padding-top: 570px;
     }
 }
 
@@ -601,7 +601,6 @@ li {
     transition: .25s;
     box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
     overflow-y: auto;
-    overscroll-behavior-y: contain
 }
 
     .dropdown-menu > .active > a,
@@ -1383,7 +1382,7 @@ h3.title-group-item {
 
 .img-bg,
 .product-item .product-img {
-    background-image: url(https://picsum.photos/100/100/?random=1);
+    /*background-image: url(https://picsum.photos/100/100/?random=1);*/
 }
 
 .cart-item .product-img:hover {
@@ -1558,7 +1557,6 @@ h3.title-group-item {
 ul.support-sticky-wrapper {
     margin-bottom: 0;
     padding: 0;
-    ;
 }
 
 ul.support-sticky-wrapper li {

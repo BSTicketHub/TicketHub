@@ -229,6 +229,7 @@
     <Compile Include="Interfaces\IResult.cs" />
     <Compile Include="Models\GenericRepository.cs" />
     <Compile Include="Models\OperationResult.cs" />
+    <Compile Include="Models\ViewModels\BestSellerCardViewModel.cs" />
     <Compile Include="Models\ViewModels\CustomerInfoViewModel.cs" />
     <Compile Include="Models\ViewModels\LoginViewModel.cs" />
     <Compile Include="Models\ViewModels\AdminViewModel.cs" />
@@ -241,7 +242,10 @@
     <Compile Include="Models\ViewModels\ShopViewModel.cs" />
     <Compile Include="Models\ViewModels\SimpleIssueViewModel.cs" />
     <Compile Include="Models\ViewModels\PlatformShopViewModel.cs" />
+    <Compile Include="Models\ViewModels\SortNewCardListViewModel.cs" />
+    <Compile Include="Models\ViewModels\SortNewCardViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\HomeCard.cs" />
     <Compile Include="Services\PlatformUserService.cs" />
     <Compile Include="Services\ImgurService.cs" />
     <Compile Include="Services\PlatformOrderService.cs" />
