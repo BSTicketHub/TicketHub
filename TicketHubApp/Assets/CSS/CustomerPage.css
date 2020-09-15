@@ -142,6 +142,28 @@ body {
         top: 12px;
         right: 12px;
         color: #125459; }
+        .info .container .row .wish-Ticket .favorite:hover {
+          cursor: pointer; }
+    .info .container .row .order .order-state {
+      font-size: 10px;
+      top: 8px;
+      right: 8px; }
+    .info .container .row .order .order-date, .info .container .row .order .total {
+      font-size: 14px; }
+    .info .container .row .order .productListStatement {
+      font-size: 16px;
+      border-bottom: 2px solid #23a8b2; }
+    .info .container .row .order .ticket {
+      border-bottom: 2px solid #23a8b2; }
+      .info .container .row .order .ticket:last-child {
+        border: none; }
+      .info .container .row .order .ticket p {
+        font-size: 10px;
+        margin-bottom: 4px; }
+      .info .container .row .order .ticket .ticket-title {
+        font-size: 16px; }
+      .info .container .row .order .ticket .ticket-total {
+        font-size: 12px; }
     .info .container .row .valid-ticket, .info .container .row .invalid-ticket {
       border-left: 6px solid #23a8b2;
       height: 150px; }
