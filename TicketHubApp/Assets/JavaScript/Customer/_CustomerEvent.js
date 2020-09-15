@@ -1,4 +1,6 @@
-﻿export function CreatePage(firstPage) {
+﻿
+
+export function CreatePage(firstPage) {
 
     let CustomerSidebarItems = Array.from(document.querySelectorAll('.sidebar-nav > div'));
     let sideBarUserName = document.querySelector('.sidebar .username');
@@ -312,12 +314,12 @@
 
                     let originalPrice = document.createElement('p');
                     originalPrice.classList.add('oPrice', 'position-absolute')
-                    originalPrice.innerText = `${response.WishIssue[i].OriginalPrice}`;
+                    originalPrice.innerText = `TWD ${response.WishIssue[i].OriginalPrice}`;
                     textDiv.append(originalPrice);
 
                     let newPrice = document.createElement('p');
                     newPrice.classList.add('nPrice', 'position-absolute');
-                    newPrice.innerText = `${response.WishIssue[i].DiscountPrice}`;
+                    newPrice.innerText = `TWD ${response.WishIssue[i].DiscountPrice}`;
                     textDiv.append(newPrice);
 
                     let favorite = document.createElement('i');
@@ -357,11 +359,18 @@
                 nav.classList.add('nav', 'nav-tabs');
                 nav.setAttribute('id', 'myTab');
 
+                let navItemOrderHistory = document.createElement('li');
+                navItemOrderHistory.classList.add('nav-item');
                 let navItemValidTicket = document.createElement('li');
                 navItemValidTicket.classList.add('nav-item');
                 let navItemInvalidTicket = document.createElement('li');
                 navItemInvalidTicket.classList.add('nav-item');
 
+                let OrderHistoryTab = document.createElement('a');
+                OrderHistoryTab.classList.add('nav-link')
+                OrderHistoryTab.setAttribute('data-toggle', 'tab');
+                OrderHistoryTab.setAttribute('href', '#OrderHistory')
+                OrderHistoryTab.innerText = "我的訂單";
                 let validTicketTab = document.createElement('a');
                 validTicketTab.classList.add('nav-link', 'active')
                 validTicketTab.setAttribute('data-toggle', 'tab');
@@ -373,7 +382,8 @@
                 invalidTicketTab.setAttribute('href', '#inValid')
                 invalidTicketTab.innerText = "已使用票券";
 
-                nav.append(navItemValidTicket, navItemInvalidTicket)
+                nav.append(navItemOrderHistory, navItemValidTicket, navItemInvalidTicket)
+                navItemOrderHistory.appendChild(OrderHistoryTab)
                 navItemValidTicket.append(validTicketTab);
                 navItemInvalidTicket.append(invalidTicketTab);
 
@@ -382,11 +392,61 @@
                 contentArea.classList.add('tab-content')
                 contentArea.setAttribute('id', 'myTabContent')
 
+                //Order History
+                let OrderHistoryContent = document.createElement('div');
+                OrderHistoryContent.classList.add('tab-pane', 'fade', 'show');
+                OrderHistoryContent.setAttribute('id', 'OrderHistory');
+
+                let OrderHistory = document.createElement('div');
+                OrderHistory.classList.add('w-100', 'container', 'position-relative', 'my-3', 'py-3')
+                OrderHistoryContent.append(OrderHistory);
+                let row = document.createElement('div');
+                row.classList.add('row', 'order-list');
+                OrderHistory.appendChild(row);
+
+                for (let i = 0; i < 5; i++) {
+                    let myOrder = document.createElement('div');
+                    myOrder.classList.add('order', 'pt-4', 'pb-3', 'mx-4', 'my-3', 'col-5', 'rounded','position-relative', 'shadow')
+                    row.appendChild(myOrder);
+                    let orderState = document.createElement('span');
+                    orderState.classList.add('order-state', 'badge', 'badge-pill', 'badge-success','position-absolute')
+                    orderState.innerText = "已付款";
+                    myOrder.appendChild(orderState);
+                    let orderDate = document.createElement('p');
+                    orderDate.classList.add('order-date', 'mb-1');
+                    orderDate.textContent = "下單日期 : 2020/4/28";
+                    myOrder.append(orderDate);
+                    let productListStatement = document.createElement('p');
+                    productListStatement.classList.add('productListStatement','mt-3', 'mb-1', 'pb-1');
+                    productListStatement.textContent = "訂購清單";
+                    myOrder.append(productListStatement);
+                    for (let i = 0; i < 3; i++) {
+                        let ticket = document.createElement('div');
+                        ticket.classList.add('ticket', 'p-1');
+                        let ticketTitle = document.createElement('p');
+                        ticketTitle.classList.add('ticket-title', 'font-weight-bold')
+                        ticketTitle.textContent = "Issue1";
+                        let unitPrice = document.createElement('p');
+                        unitPrice.textContent = "單價 : 1200 TWD";
+                        let quantity = document.createElement('p');
+                        quantity.textContent = "數量 : 3 張";
+                        let ticketTotal = document.createElement('p');
+                        ticketTotal.classList.add('ticket-total', 'text-right', 'font-weight-bold');
+                        ticketTotal.textContent = "計 : 3600 TWD"
+                        ticket.append(ticketTitle, unitPrice, quantity, ticketTotal);
+                        myOrder.append(ticket);
+                    }
+                    let total = document.createElement('p');
+                    total.classList.add('total', 'my-2', 'mx-1', 'text-right');
+                    total.textContent = "總金額 : 10000 TWD";
+                    myOrder.appendChild(total);
+                }
+
+                //Valid Ticket
                 let validTicketContent = document.createElement('div');
                 validTicketContent.classList.add('tab-pane', 'fade', 'show', 'active');
                 validTicketContent.setAttribute('id', 'valid');
 
-                //Valid Ticket
                 let validTicket = document.createElement('div');
                 validTicket.classList.add('valid-ticket', 'w-100', 'd-flex', 'position-relative', 'my-3', 'px-2', 'py-3', 'border-bottom')
                 validTicketContent.append(validTicket);
@@ -442,7 +502,7 @@
                 wrapper.classList.add('my-ticket', 'w-100')
                 myTicket.append(wrapper);
                 wrapper.append(nav, contentArea);
-                contentArea.append(validTicketContent, invalidTicketContent)
+                contentArea.append(validTicketContent, invalidTicketContent, OrderHistoryContent)
             }
 
             function createFavoriteStore() {
