@@ -5,7 +5,7 @@
     Layout = "~/Views/Account/_LoginLayout.cshtml";
 }
 
-@using (Html.BeginForm("UserLogin", "Account", FormMethod.Post))
+@using (Html.BeginForm("UserLogin", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     <div id="cust" class="login-card row flex-column flex-md-row my-3 my-md-5 active">
@@ -43,7 +43,7 @@
         </div>
     </div>
 }
-@using (Html.BeginForm("ShopLogin", "Account", FormMethod.Post))
+@using (Html.BeginForm("ShopLogin", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     <div id="shop" class="login-card row flex-column flex-md-row my-3 my-md-5">

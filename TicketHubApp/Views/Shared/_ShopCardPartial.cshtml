@@ -16,7 +16,14 @@
         <p class="openTime ml-4 mb-2"><span class="iconify mr-2" data-icon="fa-solid:clock" data-inline="false"></span>@Model.Phone</p>
         <p class="show-ticket position-absolute">顯示店家票券<span class="iconify ml-1" data-icon="fe:arrow-down" data-inline="false"></span></p>
 
-        <span class="iconify position-absolute favorite" data-icon="bx:bxs-heart" data-inline="false"></span>
+        @if (ViewBag.FavoriteShop.Contains(Model.Id))
+        {
+            <span class="iconify position-absolute favorite" data-icon="bi:heart-fill" data-inline="false" onclick="deleteFromFavorite('@Model.Id')"></span>
+        } else
+        {
+            <span class="iconify position-absolute favorite" data-icon="bi:heart" data-inline="false" onclick="addToFavorite('@Model.Id')"></span>
+        }
+
     </div>
     <div class="ticket-area bg-white rounded mx-2 position-absolute">
         <div class="ticket-list">
