@@ -1,9 +1,10 @@
-﻿
+﻿@model TicketHubApp.Models.ViewModels.SortNewCardViewModel
+
 <div class="product-item">
     <a href="" target="_blank">
         <div class="product-img lazyload-img">
-            <img class="img-md img-fluid lazyload" src="https://picsum.photos/600/500/?random=6"
-                 data-original="" title="春芳號">
+            <img class="img-md img-fluid lazyload" src="@Model.ImgPath"
+                 data-original="" title="">
             <div class="map-subject">
                 <div class="label-icon i-map">
                     <span class="local-tag">信義區</span>
@@ -21,7 +22,7 @@
         </div>
     </a>
     <div class="product-detail">
-        <h3 class="ellipsis">春芳號</h3>
+        <h3 class="ellipsis">@Model.Title</h3>
         <h4 class="ellipsis">平假日皆可抵用100元消費金額</h4>
         <div class="tagblock">
             <div class="d-flex flex-row tagBox">
@@ -44,10 +45,10 @@
                 <div class="priceBox ml-auto">
                     <div class="price d-flex">
                         <div class="original line-through">
-                            $100
+                            @Model.OriginalPrice
                         </div>
                         <div class="current">
-                            $75
+                            @Model.DiscountPrice
                         </div>
                     </div>
                 </div>
