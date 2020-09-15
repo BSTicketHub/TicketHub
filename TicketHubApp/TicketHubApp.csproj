@@ -625,7 +625,6 @@
     <Content Include="Views\Shop\SalesReport.cshtml" />
     <Content Include="Views\Shared\_Ticket.cshtml" />
     <Content Include="Views\PlatformDashBoard\_ViewStart.cshtml" />
-    <Content Include="Views\PlatformUser\MemberDetail.cshtml" />
     <Content Include="Views\PlatformUser\CreateMember.cshtml" />
     <Content Include="Views\PlatformUser\EditMember.cshtml" />
     <Content Include="Views\PlatformUser\DeleteMember.cshtml" />
@@ -646,6 +645,7 @@
     <Content Include="Views\Customer\WishList.cshtml" />
     <Content Include="Views\Customer\FavoriteShop.cshtml" />
     <Content Include="Views\PlatformUser\UserDetail.cshtml" />
+    <Content Include="Views\PlatformUser\GetTicketsBelongsToThisUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

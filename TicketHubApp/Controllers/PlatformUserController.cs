@@ -36,5 +36,15 @@ namespace TicketHubApp.Controllers
 
             return View(user);
         }
+
+
+        public ActionResult GetTicketsBelongsToThisUser(string id)
+        {
+            PlatformUserService service = new PlatformUserService();
+            var tickets = service.GetTickets(id);
+
+            return View();
+        }
+
     }
 }

@@ -68,5 +68,13 @@ namespace TicketHubApp.Services
             return userVM;
         }
 
+        public List<Ticket> GetTickets(string id)
+        {
+            TicketHubContext context = new TicketHubContext();
+            GenericRepository<Ticket> repository = new GenericRepository<Ticket>(context);
+            var tickets = repository.GetAll().Where(x => x.UserId == id);
+
+            return tickets.ToList();
+        }
     }
 }
