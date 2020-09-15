@@ -274,59 +274,83 @@
             }
 
             function createWishList() {
-                let ticketDiv = document.createElement('div');
-                ticketDiv.classList.add('wish-Ticket', 'w-100', 'rounded', 'd-flex', 'mb-3', 'shadow')
+                for (let i = 0; i < response.WishIssue.length; i++) {
 
-                let imgDiv = document.createElement('div');
-                imgDiv.classList.add('img-area')
-                let textDiv = document.createElement('div')
-                textDiv.classList.add('text-area', 'border', 'border-left-0', 'rounded-right', 'position-relative')
-                ticketDiv.append(imgDiv, textDiv);
+                    let ticketDiv = document.createElement('div');
+                    ticketDiv.classList.add('wish-Ticket', 'w-100', 'rounded', 'd-flex', 'mb-3', 'shadow')
 
-                let img = document.createElement('div')
-                img.style.backgroundImage = "url('https://picsum.photos/400/300/?random=1')";
-                img.style.backgroundSize = "cover";
-                img.classList.add('w-100', 'h-100')
-                imgDiv.append(img);
+                    let imgDiv = document.createElement('div');
+                    imgDiv.classList.add('img-area')
+                    let textDiv = document.createElement('div')
+                    textDiv.classList.add('text-area', 'border', 'border-left-0', 'rounded-right', 'position-relative')
+                    ticketDiv.append(imgDiv, textDiv);
 
-                let ticketTitle = document.createElement('h6');
-                ticketTitle.classList.add('my-3', 'ml-4')
-                ticketTitle.innerText = "【Build School限時超激優惠】 忠孝新生一日遊"
-                textDiv.append(ticketTitle);
+                    let img = document.createElement('div')
+                    img.style.backgroundImage = "url('https://picsum.photos/400/300/?random=1')";
+                    img.style.backgroundSize = "cover";
+                    img.classList.add('w-100', 'h-100')
+                    imgDiv.append(img);
 
-                let ticketContent = document.createElement('p');
-                ticketContent.classList.add('mx-4')
-                ticketContent.innerText = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere ut atque nobis voluptatum asperiores maxime numquam. Quos minus nobis adipisci?"
-                textDiv.append(ticketContent);
+                    let ticketTitle = document.createElement('h6');
+                    ticketTitle.classList.add('my-3', 'ml-4')
+                    ticketTitle.innerText = `${response.WishIssue[i].Title}`;
+                    textDiv.append(ticketTitle);
 
-                let position = document.createElement('p');
-                let positionIcon = document.createElement('i');
-                positionIcon.classList.add('iconify', 'mr-2');
-                positionIcon.setAttribute('data-icon', 'fa-solid:map-marker-alt');
-                position.classList.add('position', 'ml-4');
-                position.innerText = "台北";
-                textDiv.append(position);
-                position.prepend(positionIcon);
+                    let ticketContent = document.createElement('p');
+                    ticketContent.classList.add('mx-4')
+                    ticketContent.innerText = `${response.WishIssue[i].Memo}`;
+                    textDiv.append(ticketContent);
 
-                let originalPrice = document.createElement('p');
-                originalPrice.classList.add('oPrice', 'position-absolute')
-                originalPrice.innerText = "TWD 99999";
-                textDiv.append(originalPrice);
+                    let position = document.createElement('p');
+                    let positionIcon = document.createElement('i');
+                    positionIcon.classList.add('iconify', 'mr-2');
+                    positionIcon.setAttribute('data-icon', 'fa-solid:map-marker-alt');
+                    position.classList.add('position', 'ml-4');
+                    position.innerText = "台北";
+                    textDiv.append(position);
+                    position.prepend(positionIcon);
 
-                let newPrice = document.createElement('p');
-                newPrice.classList.add('nPrice', 'position-absolute');
-                newPrice.innerText = "TWD 1000";
-                textDiv.append(newPrice);
+                    let originalPrice = document.createElement('p');
+                    originalPrice.classList.add('oPrice', 'position-absolute')
+                    originalPrice.innerText = `${response.WishIssue[i].OriginalPrice}`;
+                    textDiv.append(originalPrice);
 
-                let favorite = document.createElement('i');
-                favorite.classList.add('favorite', 'iconify', 'position-absolute');
-                favorite.setAttribute('data-icon', 'bx:bxs-heart');
-                textDiv.append(favorite);
+                    let newPrice = document.createElement('p');
+                    newPrice.classList.add('nPrice', 'position-absolute');
+                    newPrice.innerText = `${response.WishIssue[i].DiscountPrice}`;
+                    textDiv.append(newPrice);
 
-                let wishList = document.querySelector('.info-area .container .row')
-                wishList.append(ticketDiv);
+                    let favorite = document.createElement('i');
+                    favorite.classList.add('favorite', 'fas', 'fa-trash-alt', 'position-absolute');
+                    textDiv.append(favorite);
+
+                    favorite.addEventListener('click', function (e) {
+
+                        $.ajax({
+                            cache: false,
+                            url: "../Customer/ToggleFavoriteList",
+                            method: "post",
+                            data: {
+                                IssueId: response.WishIssue[i].Id,
+                                UserId: response.Id
+                            },
+                            success: function () {
+
+                            },
+                            error: function () {
+                                alert("failed");
+                            },
+                            complete: function () {
+                                let card = e.target.closest('.wish-Ticket');
+                                card.remove();
+                            }
+                        });
+
+                    });
+                    let wishList = document.querySelector('.info-area .container .row')
+                    wishList.append(ticketDiv);
+                }
             }
-
             function createMyTicket() {
                 //Nav
                 let nav = document.createElement('ul');
@@ -486,8 +510,30 @@
 
 
                     let favorite = document.createElement('i');
-                    favorite.classList.add('favorite', 'iconify', 'position-absolute');
-                    favorite.setAttribute('data-icon', 'bx:bxs-heart');
+                    favorite.classList.add('favorite', 'fas', 'fa-trash-alt', 'position-absolute');
+                    favorite.addEventListener('click', function (e) {
+
+                        $.ajax({
+                            cache: false,
+                            url: "../Shop/ToggleFavoriteList",
+                            method: "post",
+                            data: {
+                                ShopId: response.FavoriteShop[i].Id,
+                                UserId: response.Id
+                            },
+                            success: function () {
+
+                            },
+                            error: function () {
+                                alert("failed");
+                            },
+                            complete: function () {
+                                let card = e.target.closest('.favorite-store');
+                                card.remove();
+                            }
+                        });
+                    });
+
                     textDiv.append(favorite);
 
                     let wishList = document.querySelector('.info-area .container .row')
