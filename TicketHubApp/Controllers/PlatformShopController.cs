@@ -15,13 +15,27 @@ namespace TicketHubApp.Controllers
 {
     public class PlatformShopController : Controller
     {
- 
-        // GET: Shops
+
         public ActionResult Index()
         {
             return View();             
         }
 
+
+        public ActionResult ShopDetail(string id)
+        {
+            PlatformShopService service = new PlatformShopService();
+            var shop = service.GetShop(id);
+
+            return View(shop);
+        }
+        public ActionResult GetAllEmployees(string id)
+        {
+            ViewBag.id = id;
+            return View();
+        }
+
+        // Get JSON Data
         public ActionResult GetShopsJson()
         {
             PlatformShopService service = new PlatformShopService();
@@ -29,5 +43,15 @@ namespace TicketHubApp.Controllers
 
             return Json(shopsTableData, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult GetEmployeesByShopJson(string id)
+        {
+            PlatformShopService service = new PlatformShopService();
+            var employeesTableData = service.GetEmployeesTableData(id);
+
+            return Json(employeesTableData, JsonRequestBehavior.AllowGet);
+        }
+       
+
     }
 }

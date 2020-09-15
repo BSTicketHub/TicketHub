@@ -39,4 +39,9 @@
             "stateSave": true,
         });
     });
+
+    $("#shopTable").on("click", "tr", function () {
+        let id = this.firstChild.innerText;
+        window.location.href = "/PlatformShop/ShopDetail/" + id;
+    });
 </script>
