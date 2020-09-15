@@ -8,7 +8,7 @@ namespace TicketHubApp.Models.ViewModels
 {
     public class ShopIssueViewModel
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public int shopId { get; set; }
         [Required]
         [StringLength(128, MinimumLength = 3, ErrorMessage ="最少需要3個字元!")]

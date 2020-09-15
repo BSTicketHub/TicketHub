@@ -52,9 +52,6 @@
 body {
   font-family: 'Noto Sans TC', sans-serif; }
 
-.sidebar, .info {
-  height: 700px; }
-
 .sidebar {
   background-color: #eee; }
   .sidebar .img-area .img {
@@ -141,10 +138,10 @@ body {
         bottom: -5px;
         right: 15px; }
       .info .container .row .wish-Ticket .favorite {
-        font-size: 24px;
-        top: 10px;
-        right: 10px;
-        color: palevioletred; }
+        font-size: 20px;
+        top: 12px;
+        right: 12px;
+        color: #125459; }
     .info .container .row .valid-ticket, .info .container .row .invalid-ticket {
       border-left: 6px solid #23a8b2;
       height: 150px; }
@@ -171,10 +168,12 @@ body {
         font-size: 12px;
         color: #adadad; }
       .info .container .row .favorite-store .favorite {
-        font-size: 24px;
-        top: 10px;
-        right: 10px;
-        color: #d87093; }
+        font-size: 20px;
+        top: 12px;
+        right: 12px;
+        color: #125459; }
+        .info .container .row .favorite-store .favorite:hover {
+          cursor: pointer; }
 
 .modal label {
   position: relative; }

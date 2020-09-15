@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web.Helpers;
 using System.Web.Mvc;
@@ -21,7 +22,7 @@ namespace TicketHubApp.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 var userId = User.Identity.GetUserId();
-                var FavoriteShop = _context.UserFavoriteShop.Select((x) => x.ShopId).ToList();
+                var FavoriteShop = _context.UserFavoriteShop.Where((x) => x.UserId == userId).Select((x) => x.ShopId).ToList();
                 ViewBag.FavoriteShop = FavoriteShop;
                 ViewBag.UserId = userId;
             }
@@ -42,7 +43,7 @@ namespace TicketHubApp.Controllers
                     OriginalPrice = y.OriginalPrice,
                     Title = y.Title
                 })
-            })); ;
+            })); 
         }
 
         // GET: Store
@@ -108,35 +109,60 @@ namespace TicketHubApp.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult AddToFavoriteList(string ShopId, string UserId)
-        {
-            using(var _context = TicketHubContext.Create())
-            {
-                _context.UserFavoriteShop.Add(new UserFavoriteShop
-                {
-                    ShopId = Guid.Parse(ShopId),
-                    UserId = UserId,
-                    AddedDate = DateTime.Now
-                });
-                _context.SaveChanges();
-            }
-            return Json(ShopId, JsonRequestBehavior.AllowGet);
-        }
+        //[HttpPost]
+        //public ActionResult AddToFavoriteList(string ShopId, string UserId)
+        //{
+        //    using(var _context = TicketHubContext.Create())
+        //    {
+        //        _context.SaveChanges();
+        //    }
+        //    return Json(ShopId, JsonRequestBehavior.AllowGet);
+        //}
+
+        //[HttpPost]
+        //public ActionResult DeleteFromFavoriteList(string ShopId, string UserId)
+        //{
+        //    using (var _context = TicketHubContext.Create())
+        //    {
+        //        var ShopGUID = Guid.Parse(ShopId);
+        //        var entity = (from x in _context.UserFavoriteShop
+        //                     where x.ShopId == ShopGUID && x.UserId == UserId
+        //                     select x).FirstOrDefault();
+        //        _context.UserFavoriteShop.Remove(entity);
+        //        _context.SaveChanges();
+        //    }
+        //    return Content("Deleted");
+        //}
 
         [HttpPost]
-        public ActionResult DeleteFromFavoriteList(string ShopId, string UserId)
+        public ActionResult ToggleFavoriteList(string ShopId, string UserId)
         {
+
             using (var _context = TicketHubContext.Create())
             {
                 var ShopGUID = Guid.Parse(ShopId);
                 var entity = (from x in _context.UserFavoriteShop
-                             where x.ShopId == ShopGUID && x.UserId == UserId
-                             select x).FirstOrDefault();
-                _context.UserFavoriteShop.Remove(entity);
+                              where x.ShopId == ShopGUID && x.UserId == UserId
+                              select x).FirstOrDefault();
+
+                if (entity != null)
+                {
+                    _context.UserFavoriteShop.Remove(entity);
+
+                } else
+                {
+                    _context.UserFavoriteShop.Add(new UserFavoriteShop
+                    {
+                        ShopId = Guid.Parse(ShopId),
+                        UserId = UserId,
+                        AddedDate = DateTime.Now
+                    });
+
+                }
+
                 _context.SaveChanges();
             }
-            return Content("Deleted");
+            return Content("Complete");
         }
     }
 }

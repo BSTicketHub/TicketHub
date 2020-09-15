@@ -328,6 +328,7 @@
     <Content Include="Assets\JavaScript\Common\iconify.min.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.min.js" />
+    <Content Include="Assets\JavaScript\Common\ControlFavorite.js" />
     <Content Include="Assets\JavaScript\Customer\FavoriteShop.js" />
     <Content Include="Assets\JavaScript\Customer\MyTicket.js" />
     <Content Include="Assets\JavaScript\Customer\WishList.js" />
