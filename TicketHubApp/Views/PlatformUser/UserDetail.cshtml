@@ -7,12 +7,12 @@
 <nav aria-label="breadcrumb" class="shadow">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">後台管理系統</a></li>
-        <li class="breadcrumb-item"><a href="#">會員管理</a></li>
+        <li class="breadcrumb-item"><a href="~/PlatformUser/Index">會員管理</a></li>
         <li class="breadcrumb-item active" aria-current="page">會員明細</li>
     </ol>
 </nav>
 
-<div class="shadow">
+<div class="shadow p-2">
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
@@ -32,14 +32,6 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.PasswordHash, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.PasswordHash, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.PasswordHash, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
                 @Html.LabelFor(model => model.Mobile, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control" } })
@@ -48,16 +40,17 @@
             </div>
 
             <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="儲存會員資料" class="btn btn-default" />
+                <div class="col-md-offset-2 col-md-2">
+                    <input type="submit" value="儲存會員資料" class="btn btn-success" />
                 </div>
             </div>
         </div>
     }
 </div>
-<div>
-    @Html.ActionLink("查看該會員擁有票券", "GetTicketsBelongsToThisUser")
+
+<div class="shadow p-3">
+    @Html.ActionLink("查看該會員擁有票券", "GetTicketsBelongsToThisUser", new { id = Model.Id }, new { @class = "btn btn-primary" })
+
+    @Html.ActionLink("回到會員列表", "Index", null, new { @class = "btn btn-primary" })
 </div>
-<div>
-    @Html.ActionLink("回到會員列表", "Index")
-</div>
+

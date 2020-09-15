@@ -68,13 +68,52 @@ namespace TicketHubApp.Services
             return userVM;
         }
 
-        public List<Ticket> GetTickets(string id)
+        public DataTableViewModel GetTicketsTableData(string id)
         {
             TicketHubContext context = new TicketHubContext();
-            GenericRepository<Ticket> repository = new GenericRepository<Ticket>(context);
-            var tickets = repository.GetAll().Where(x => x.UserId == id);
+            GenericRepository<Ticket> ticketRepository = new GenericRepository<Ticket>(context);
+            GenericRepository<Shop> shopRepository = new GenericRepository<Shop>(context);
+            GenericRepository<Issue> issueRepository = new GenericRepository<Issue>(context);
 
-            return tickets.ToList();
+            var ticketList = from t in ticketRepository.GetAll().Where(t => t.UserId == id)
+                             join i in issueRepository.GetAll()
+                             on t.IssueId equals i.Id
+                             join s in shopRepository.GetAll()
+                             on i.ShopId equals s.Id
+                             select new PlatformUserTicketsViewModel
+                             {
+                                 Id = t.Id,
+                                 Name = i.Title,
+                                 Price = i.DiscountPrice,
+                                 ShopName = s.ShopName,
+                                 DeliveredDate = t.DeliveredDate,
+                                 Exchanged = t.Exchanged,
+                                 ExchangedDate = t.ExchangedDate,
+                                 Voided = t.Voided,
+                                 VoidedDate = t.VoidedDate
+                             };
+
+            DataTableViewModel table = new DataTableViewModel();
+            table.data = new List<List<string>>();
+
+            foreach (var item in ticketList)
+            {
+                List<string> dataInstance = new List<string>();
+
+                dataInstance.Add(item.Id.ToString());
+                dataInstance.Add(item.Name);
+                dataInstance.Add(item.Price.ToString());
+                dataInstance.Add(item.ShopName);
+                dataInstance.Add(item.DeliveredDate.ToLocalTime().ToString());
+                dataInstance.Add(item.Exchanged.ToString());
+                dataInstance.Add(item.ExchangedDate.ToString() ?? "NA");
+                dataInstance.Add(item.Voided.ToString());
+                dataInstance.Add(item.VoidedDate.ToString() ?? "NA");
+               
+                table.data.Add(dataInstance);
+            }
+
+            return table;
         }
     }
 }
