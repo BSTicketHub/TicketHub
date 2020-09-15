@@ -43,15 +43,11 @@ namespace TicketHubApp
                 url: "ProductCart/{action}",
                 defaults: new { controller = "ProductCart", action = "Cart" }
             );
+          
             routes.MapRoute(
-                name: "PayView",
-                url: "PayView/{action}",
-                defaults: new { controller = "PayView", action = "payview" }
-            );
-            routes.MapRoute(
-                name: "ticketDescription",
-                url: "ticketDescription/{action}",
-                defaults: new { controller = "ticketDescription", action = "Ticketdescription" }
+                name: "ProductDescription",
+                url: "ProductDescription/{action}",
+                defaults: new { controller = "ProductDescription", action = "Index"}
             );
         }
     }

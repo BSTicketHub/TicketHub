@@ -56,6 +56,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Imgur.API, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Imgur.API.5.0.0\lib\netstandard2.0\Imgur.API.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -64,6 +67,9 @@
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.3\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
@@ -90,11 +96,45 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="RestSharp, Version=106.11.4.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.11.4\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SendGrid, Version=9.21.0.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
+      <HintPath>..\packages\SendGrid.9.21.0\lib\net452\SendGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="StarkbankEcdsa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\starkbank-ecdsa.1.2.0\lib\net452\StarkbankEcdsa.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.4.7.1\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.4.7.2\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -177,11 +217,11 @@
     <Compile Include="Controllers\PlatformDashBoardController.cs" />
     <Compile Include="Controllers\PlatformIssueController.cs" />
     <Compile Include="Controllers\PlatformOrderController.cs" />
+    <Compile Include="Controllers\ProductDescriptionController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Controllers\PlatformUserController.cs" />
     <Compile Include="Controllers\PlatformShopController.cs" />
     <Compile Include="Controllers\ProductCartController.cs" />
-    <Compile Include="Controllers\ticketDescriptionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -196,15 +236,19 @@
     <Compile Include="Models\ViewModels\PlatformUserViewModel.cs" />
     <Compile Include="Models\ViewModels\PlatformOrderViewModel.cs" />
     <Compile Include="Models\ViewModels\DataTableViewModel.cs" />
+    <Compile Include="Models\ViewModels\ShopIssueListViewModel.cs" />
     <Compile Include="Models\ViewModels\ShopViewModel.cs" />
     <Compile Include="Models\ViewModels\SimpleIssueViewModel.cs" />
     <Compile Include="Models\ViewModels\PlatformShopViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\PlatformUserService.cs" />
+    <Compile Include="Services\ImgurService.cs" />
     <Compile Include="Services\PlatformOrderService.cs" />
     <Compile Include="Services\PlatformShopService.cs" />
     <Compile Include="Models\ViewModels\StoreTicketListViewModel.cs" />
     <Compile Include="Models\ViewModels\ShopIssueViewModel.cs" />
+    <Compile Include="Services\ShopIssueService.cs" />
+    <Compile Include="Services\TagService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -213,12 +257,6 @@
     </Content>
     <Content Include="Assets\CSS\Common\Ticket.min.css">
       <DependentUpon>Ticket.css</DependentUpon>
-    </Content>
-    <Content Include="Assets\CSS\Cart.css">
-      <DependentUpon>Cart.scss</DependentUpon>
-    </Content>
-    <Content Include="Assets\CSS\Cart.min.css">
-      <DependentUpon>Cart.css</DependentUpon>
     </Content>
     <Content Include="Assets\CSS\CustomerPage.css">
       <DependentUpon>CustomerPage.scss</DependentUpon>
@@ -244,6 +282,10 @@
     <Content Include="Assets\CSS\Platform\Platform_Layout.min.css">
       <DependentUpon>Platform_Layout.css</DependentUpon>
     </Content>
+    <Content Include="Assets\CSS\ProductCart.css" />
+    <Content Include="Assets\CSS\ProductCart.min.css" />
+    <Content Include="Assets\CSS\ProductDescription.css" />
+    <Content Include="Assets\CSS\ProductDescription.min.css" />
     <Content Include="Assets\CSS\Shop\CreateProduct.css">
       <DependentUpon>CreateProduct.scss</DependentUpon>
     </Content>
@@ -341,18 +383,13 @@
     <Content Include="Assets\CSS\ShopList.min.css">
       <DependentUpon>ShopList.css</DependentUpon>
     </Content>
-    <Content Include="Assets\CSS\ticket-description.css">
-      <DependentUpon>ticket-description.scss</DependentUpon>
-    </Content>
-    <Content Include="Assets\CSS\ticket-description.min.css">
-      <DependentUpon>ticket-description.css</DependentUpon>
-    </Content>
     <Content Include="Assets\Images\camera.png" />
     <Content Include="Assets\JavaScript\Customer\CustomerInfo.js" />
     <Content Include="Assets\JavaScript\Home\jquery.sticky.js" />
     <Content Include="Assets\JavaScript\Platform\datatables.min.js" />
     <Content Include="Assets\JavaScript\Platform\PlatformMemberIndex.js" />
-    <Content Include="Assets\JavaScript\Product\ticket-description.js" />
+    <Content Include="Assets\JavaScript\ProductCart\ProductCart.js" />
+    <Content Include="Assets\JavaScript\Product\ProductDescription.js" />
     <Content Include="Assets\JavaScript\Shop\createProduct.js" />
     <Content Include="Assets\JavaScript\Shop\HomePage.js" />
     <Content Include="Assets\JavaScript\Shop\ShopInfo.js" />
@@ -551,6 +588,7 @@
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Views\Shared\MailTemplate\AccountConfirmation.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -567,17 +605,13 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Shop\HomePage.cshtml" />
-    <Content Include="Views\Shared\_Layout_Store.cshtml" />
+    <Content Include="Views\Shared\_Layout_Shop.cshtml" />
     <Content Include="Views\Shop\_ViewStart.cshtml" />
-    <Content Include="Views\Shop\ProductList.cshtml" />
-    <Content Include="Views\Shop\CreateProduct.cshtml" />
-    <Content Include="Views\Shop\StoreInformation.cshtml" />
-    <Content Include="Views\Shop\OrderList.cshtml" />
-    <Content Include="Views\Shop\OrderDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Html\" />
+    <Folder Include="Assets\JavaScript\Product\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\CSS\login.scss" />
@@ -596,10 +630,10 @@
     <Content Include="Assets\CSS\Shop\SalesReport.scss" />
     <Content Include="Assets\CSS\Shop\TicketDeatail.scss" />
     <Content Include="Assets\CSS\Platform\Platform_Layout.scss" />
-    <Content Include="Assets\CSS\Cart.scss" />
-    <Content Include="Assets\CSS\ticket-description.scss" />
     <Content Include="Assets\CSS\tempCSS\home.scss" />
     <Content Include="Assets\CSS\home.scss" />
+    <Content Include="Assets\CSS\ProductCart.scss" />
+    <Content Include="Assets\CSS\ProductDescription.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -619,21 +653,13 @@
     <Content Include="Views\PlatformDashBoard\MemberDashBoard.cshtml" />
     <Content Include="Views\Shared\_Layout_Platform.cshtml" />
     <Content Include="Views\PlatformShop\_ViewStart.cshtml" />
-    <Content Include="Views\Shop\TicketDetails.cshtml" />
     <Content Include="Views\Customer\TicketList.cshtml" />
     <Content Include="Views\Shared\_Layout_TicketList.cshtml" />
     <Content Include="Views\Shop\SalesReport.cshtml" />
     <Content Include="Views\Shared\_Ticket.cshtml" />
     <Content Include="Views\PlatformDashBoard\_ViewStart.cshtml" />
-    <Content Include="Views\PlatformUser\MemberDetail.cshtml" />
-    <Content Include="Views\PlatformUser\CreateMember.cshtml" />
-    <Content Include="Views\PlatformUser\EditMember.cshtml" />
-    <Content Include="Views\PlatformUser\DeleteMember.cshtml" />
-    <Content Include="Views\Platform\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_ShopCardPartial.cshtml" />
     <Content Include="Views\PlatformShop\Index.cshtml" />
-    <Content Include="Views\ProductCart\Cart.cshtml" />
-    <Content Include="Views\ticketDescription\Ticketdescription.cshtml" />
     <Content Include="Views\PlatformOrder\Index.cshtml" />
     <Content Include="Views\PlatformOrder\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
@@ -641,10 +667,19 @@
     <Content Include="Views\Home\_RecommenCard.cshtml" />
     <Content Include="Views\Home\_BestSellerCard.cshtml" />
     <Content Include="Views\Home\_SortNewCard.cshtml" />
-    <Content Include="Views\PlatformIssue\_ViewStart.cshtml" />
     <Content Include="Views\Customer\MyTicket.cshtml" />
     <Content Include="Views\Customer\WishList.cshtml" />
     <Content Include="Views\Customer\FavoriteShop.cshtml" />
+    <Content Include="Views\Shop\_IssueListTablePartial.cshtml" />
+    <Content Include="Views\Shop\CreateIssue.cshtml" />
+    <Content Include="Views\Shop\EditIssue.cshtml" />
+    <Content Include="Views\Shop\IssueDetails.cshtml" />
+    <Content Include="Views\Shop\IssueList.cshtml" />
+    <Content Include="Views\Shop\ShopInfo.cshtml" />
+    <Content Include="Views\Account\EmailConfirmed.cshtml" />
+    <Content Include="Views\Account\RegisterSuccess.cshtml" />
+    <Content Include="Views\ProductCart\ProductCart.cshtml" />
+    <Content Include="Views\ProductDescription\ProductDescription.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace TicketHubApp.Controllers
 {
-    public class ticketDescriptionController : Controller
+    public class ProductDescriptionController : Controller
     {
         // GET: ticketDescription
         public ActionResult Index()
@@ -14,7 +14,7 @@ namespace TicketHubApp.Controllers
             return View();
         }
 
-        public ActionResult Ticketdescription()
+        public ActionResult ProductDescription()
         {
             return View();
         }

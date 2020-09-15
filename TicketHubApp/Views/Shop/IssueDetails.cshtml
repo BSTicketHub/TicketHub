@@ -1,7 +1,7 @@
 ﻿
 <div class="container ticketDetail">
     <div class="row">
-        <div class="col-12 bg-white shadow p-3">
+        <div class="col-12 bg-white shadow p-3 border">
             @Html.Partial("_Ticket")
         </div>
 
@@ -43,7 +43,7 @@
 @section topCSS{
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
 
-
+    <link href="~/Assets/CSS/Common/Ticket.min.css" rel="stylesheet" />
     @*for datatable css*@
     <style>
         #datatable_filter input{

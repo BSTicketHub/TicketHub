@@ -69,29 +69,52 @@ body {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.65); }
 
-#cust {
+#cust,
+#info-success {
   color: #0d3f43; }
-  #cust h2 > span {
+  #cust h2 > span,
+  #info-success h2 > span {
     color: #23a8b2; }
-  #cust input {
+  #cust input,
+  #info-success input {
     border-bottom: 1px solid #0d3f43; }
-  #cust .ticketReceipt {
+  #cust .ticketReceipt,
+  #cust .ticketReceiptVertical,
+  #info-success .ticketReceipt,
+  #info-success .ticketReceiptVertical {
     background-color: #23a8b2; }
-    #cust .ticketReceipt .ticketImprint {
+    #cust .ticketReceipt .ticketImprint,
+    #cust .ticketReceiptVertical .ticketImprint,
+    #info-success .ticketReceipt .ticketImprint,
+    #info-success .ticketReceiptVertical .ticketImprint {
       color: #16696f;
       text-shadow: 1px 1px 1px #76c9cf; }
 
-#shop {
+#shop,
+#info-fail {
   color: #601622; }
-  #shop h2 > span {
+  #shop h2 > span,
+  #info-fail h2 > span {
     color: #ff3a5c; }
-  #shop input {
+  #shop input,
+  #info-fail input {
     border-bottom: 1px solid #601622; }
-  #shop .ticketReceipt {
+  #shop .ticketReceipt,
+  #shop .ticketReceiptVertical,
+  #info-fail .ticketReceipt,
+  #info-fail .ticketReceiptVertical {
     background-color: #ff3a5c; }
-    #shop .ticketReceipt .ticketType {
+    #shop .ticketReceipt .ticketType,
+    #shop .ticketReceiptVertical .ticketType,
+    #info-fail .ticketReceipt .ticketType,
+    #info-fail .ticketReceiptVertical .ticketType {
       color: #9f2439;
       text-shadow: 1px 1px 1px #ff8499; }
+
+#info-success,
+#info-fail {
+  width: 35%;
+  min-width: 350px; }
 
 #platform {
   color: #5e3b08; }
@@ -134,32 +157,48 @@ body {
   box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.5), 6px 6px 20px 0 rgba(0, 0, 0, 0.4);
   transition: 0.8s; }
 
-.ticketStub {
+.ticketStub,
+.ticketStubVertical {
   background-color: #fffefa;
   border-bottom: 2px dashed black;
   transform-origin: right 5%; }
-  .ticketStub .coupon-img {
+  .ticketStub .coupon-img,
+  .ticketStubVertical .coupon-img {
     background-image: url("../Images/asian-food-decorative.jpg");
     background-size: cover;
     background-repeat: no-repeat; }
-  .ticketStub .coupon-login {
+  .ticketStub .coupon-login,
+  .ticketStubVertical .coupon-login {
     border-top: 2px solid #adadad; }
 
-.ticketReceipt {
+.ticketReceipt,
+.ticketReceiptVertical {
   border-top: 2px dashed black;
   transform-origin: left 90%; }
-  .ticketReceipt .login {
+  .ticketReceipt .login,
+  .ticketReceiptVertical .login {
     background-color: transparent;
     border: none;
     color: #fffefa;
     font-weight: 400;
     font-size: 1.1rem; }
-    .ticketReceipt .login:hover {
+    .ticketReceipt .login:hover,
+    .ticketReceiptVertical .login:hover {
       color: #fffefa;
       font-weight: bold;
       text-decoration: none; }
-    .ticketReceipt .login:focus {
+    .ticketReceipt .login:focus,
+    .ticketReceiptVertical .login:focus {
       outline: none; }
+
+.info-icon {
+  display: block;
+  margin: auto;
+  font-size: 10rem; }
+  .info-icon.success {
+    color: green; }
+  .info-icon.fail {
+    color: red; }
 
 .valid-summary {
   z-index: 25;
