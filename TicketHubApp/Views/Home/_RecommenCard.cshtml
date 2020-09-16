@@ -1,14 +1,15 @@
-﻿
+﻿@model TicketHubApp.Models.ViewModels.RecommenCardViewModel
+
 <div class="owl-item active">
     <div class="col-md-12">
         <div class="product-item">
             <a href="">
                 <div class="product-img">
                     <img class="img-sm" data-src="" alt="台北君悅酒店-凱菲屋"
-                         src="https://picsum.photos/400/400/?random=3">
+                         src="@Model.ImgPath">
                 </div>
                 <div class="product-detail">
-                    <h3>台北君悅酒店-凱菲屋</h3>
+                    <h3>@Model.Title</h3>
                     <div class="review-score product-star mb-2 text-center">
                         <div class="review-score product-star">
                             <span class="iconify" data-icon="bi:star-fill"
