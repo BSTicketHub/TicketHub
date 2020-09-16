@@ -255,6 +255,7 @@
     <Compile Include="Models\ViewModels\SortNewCardViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\HomeCardService.cs" />
+    <Compile Include="Services\PlatformAdminService.cs" />
     <Compile Include="Services\PlatformUserService.cs" />
     <Compile Include="Services\ImgurService.cs" />
     <Compile Include="Services\PlatformOrderService.cs" />
@@ -624,7 +625,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Html\" />
-    <Folder Include="Assets\JavaScript\Product\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\CSS\login.scss" />
