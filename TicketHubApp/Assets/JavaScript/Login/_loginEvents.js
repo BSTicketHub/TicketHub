@@ -78,3 +78,14 @@ export function registerSignUpLogInToggle() {
         });
     });
 }
+
+export function registerForgotPasswordToggle() {
+    let forgotPass = document.querySelector("#forgot-password");
+    let loginForm = document.querySelector("#custLoginForm");
+    let forgorForm = document.querySelector("#forgotPassForm");
+    forgotPass.addEventListener("click", function () {
+        loginForm.classList.toggle("d-none");
+        forgorForm.classList.toggle("d-none");
+        forgotPass.textContent = forgotPass.textContent.includes("?") ? "Login TicketHub" : "Forgot password?";
+    });
+}
