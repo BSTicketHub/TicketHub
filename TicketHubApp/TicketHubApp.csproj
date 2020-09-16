@@ -232,6 +232,7 @@
     <Compile Include="Models\ViewModels\BestSellerCardListViewModel.cs" />
     <Compile Include="Models\ViewModels\BestSellerCardViewModel.cs" />
     <Compile Include="Models\ViewModels\CartItemViewModel.cs" />
+    <Compile Include="Models\ViewModels\CartViewModel.cs" />
     <Compile Include="Models\ViewModels\HomeListViewModel.cs" />
     <Compile Include="Models\ViewModels\CustomerInfoViewModel.cs" />
     <Compile Include="Models\ViewModels\LoginViewModel.cs" />
