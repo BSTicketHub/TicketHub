@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TicketHubApp.Models.ViewModels;
+using TicketHubApp.Services;
 
 namespace TicketHubApp.Controllers
 {
@@ -10,7 +12,15 @@ namespace TicketHubApp.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var service = new HomeCardService();
+            var homecard = new HomeListViewModel()
+            {
+                BestSellerItems = service.GetBestSellerCard(),
+                RecommenItems = service.GetRecommenCard(),
+                SortNewItems = service.GetSortNewCard()
+            };
+
+            return View(homecard);
         }
 
         public ActionResult About()

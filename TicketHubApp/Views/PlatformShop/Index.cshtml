@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Index";
 }
+
 <nav aria-label="breadcrumb" class="shadow">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">後台管理系統</a></li>
@@ -37,5 +38,10 @@
             "scrollX": true,
             "stateSave": true,
         });
+    });
+
+    $("#shopTable").on("click", "tr", function () {
+        let id = this.firstChild.innerText;
+        window.location.href = "/PlatformShop/ShopDetail/" + id;
     });
 </script>

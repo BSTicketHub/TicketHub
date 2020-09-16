@@ -18,10 +18,10 @@
 
         @if (ViewBag.FavoriteShop.Contains(Model.Id))
         {
-            <span class="iconify position-absolute favorite" data-icon="bi:heart-fill" data-inline="false" onclick="deleteFromFavorite('@Model.Id')"></span>
+            <span shopid="@Model.Id" class="iconify position-absolute favorite" data-icon="bi:heart-fill" data-inline="false" onclick="controlFromFavorite(this)"></span>
         } else
         {
-            <span class="iconify position-absolute favorite" data-icon="bi:heart" data-inline="false" onclick="addToFavorite('@Model.Id')"></span>
+            <span shopid="@Model.Id" class="iconify position-absolute favorite" data-icon="bi:heart" data-inline="false" onclick="controlFromFavorite(this)"></span>
         }
 
     </div>
