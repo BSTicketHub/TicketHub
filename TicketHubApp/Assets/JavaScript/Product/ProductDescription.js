@@ -1,43 +1,29 @@
-var cacheData = {
-    map: {},
-    markers: [],
-}
-
-// Initialize and add the map
 function initMap() {
+    //這間餐廳在這裡 25.042848, 121.540344
     // The location of Uluru
-    var uluru = {
-        lat: 25.0417443,
-        lng: 121.535194
+    var taipei = {
+        lat: 25.0392496,
+        lng: 121.5397186
     };
-    // The map, centered at Uluru
     var map = new google.maps.Map(
         document.getElementById('mapApi'), {
-            zoom: 15,
-            center: uluru
-        });
-    // The marker, positioned at Uluru
-    var marker = new google.maps.Marker({
-        position: uluru,
-        map: map
+        zoom: 14,
+        center: taipei
     });
-
-    cacheData.map = map;
-    // sendRequest();
-}
+    // var marker = new google.maps.Marker({position: taipei, map: map});
 
 
+    let addressRequest = new XMLHttpRequest()
+    addressRequest.open('get', 'https://maps.googleapis.com/maps/api/geocode/json?latlng=25.0392496,121.5397186&key=AIzaSyDbOibXZPeCKpq5tbdQZD0B5By6Z3MkQHc&callback');
 
-function drawMap(features) {
-    for (let i = 0; features.length > i; i++) {
-        let location = {
-            lat: features[i].geometry.coordinates[1],
-            lng: features[i].geometry.coordinates[0]
-        };
+    addressRequest.send();
+    addressRequest.onload = function () {
+        console.log(this.response)
+        let text = this.response;
+        let coordinate = JSON.parse(text).results[0].geometry.location;
         let marker = new google.maps.Marker({
-            position: location,
-            map: cacheData.map
-        });
-        cacheData.markers.push(marker);
+            position: coordinate,
+            map: map
+        })
     }
 }

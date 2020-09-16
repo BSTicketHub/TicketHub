@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TicketHubApp.Models.ViewModels.SortNewCardViewModel>
+﻿@model TicketHubApp.Models.ViewModels.HomeListViewModel
 @{
     ViewBag.Title = "Index";
 }
@@ -276,12 +276,17 @@
             <div class="carousel2 owl-carousel todaysubspecial-carousel owl-loaded owl-drag">
                 <div class="owl-stage-outer">
                     <div class="owl-stage">
+                        @foreach (var item in Model.RecommenItems.Items)
+                        {
+                            @Html.Partial("_RecommenCard", item)
+                        }
+
+                        @*@Html.Partial("_RecommenCard")
                         @Html.Partial("_RecommenCard")
                         @Html.Partial("_RecommenCard")
                         @Html.Partial("_RecommenCard")
                         @Html.Partial("_RecommenCard")
-                        @Html.Partial("_RecommenCard")
-                        @Html.Partial("_RecommenCard")
+                        @Html.Partial("_RecommenCard")*@
                     </div>
                 </div>
             </div>
@@ -296,12 +301,17 @@
             <div class="carousel2 owl-carousel todaysubspecial-carousel owl-loaded owl-drag">
                 <div class="owl-stage-outer">
                     <div class="owl-stage">
+                        @foreach (var item in Model.BestSellerItems.Items)
+                        {
+                            @Html.Partial("_BestSellerCard",item)
+                        }
+
+                        @*@Html.Partial("_BestSellerCard")
                         @Html.Partial("_BestSellerCard")
                         @Html.Partial("_BestSellerCard")
                         @Html.Partial("_BestSellerCard")
                         @Html.Partial("_BestSellerCard")
-                        @Html.Partial("_BestSellerCard")
-                        @Html.Partial("_BestSellerCard")
+                        @Html.Partial("_BestSellerCard")*@
                     </div>
                 </div>
             </div>
@@ -312,13 +322,12 @@
         <hr>
     </div>
     <div class="row mt-4 mb-5">
-
-        @foreach(var item in Model)
+        @for (var i = 0; i < 6; i++)
         {
+            var item = Model.SortNewItems.Items[i];
             <div class="col-md-4 col-sm-12">
                 @Html.Partial("_SortNewCard", item)
             </div>
-
         }
         @*<div class="col-md-4 col-sm-12">
             @Html.Partial("_SortNewCard")
