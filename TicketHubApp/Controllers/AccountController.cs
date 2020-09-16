@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using System.Reflection;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -50,6 +49,7 @@ namespace TicketHubApp.Controllers
         {
             get { return HttpContext.GetOwinContext().Authentication; }
         }
+
         public AccountController()
         {
         }
@@ -82,7 +82,7 @@ namespace TicketHubApp.Controllers
                 if (user != null)
                 {
                     //登入
-                    return await SignIn(viewModel, returnUrl);
+                    return await SignIn(viewModel, RoleGroup.CUSTOMER, returnUrl);
                 }
 
                 var newUser = new TicketHubUser
@@ -94,7 +94,7 @@ namespace TicketHubApp.Controllers
                 var createResult = await UserManager.CreateAsync(newUser, viewModel.Password);
                 if (createResult.Succeeded)
                 {
-                    await UserManager.AddToRoleAsync(newUser.Id, RoleName.CUSTOMER);
+                    await UserManager.AddToRoleAsync(newUser.Id, RoleGroup.CUSTOMER);
                     await SendEmailConfirmationAsync(newUser);
                     return new InfoViewService().RegisterSuccess();
                 }
@@ -106,7 +106,7 @@ namespace TicketHubApp.Controllers
             }
 
             //登入
-            return await SignIn(viewModel, returnUrl);
+            return await SignIn(viewModel, RoleName.CUSTOMER, returnUrl);
         }
 
         [AllowAnonymous]
@@ -173,14 +173,14 @@ namespace TicketHubApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ShopLoginAsync(LoginViewModel viewModel, string returnUrl)
+        public async Task<ActionResult> ShopLogin(LoginViewModel viewModel, string returnUrl)
         {
             if (!ModelState.IsValid)
             {
                 return RedirectToAction("Login");
             }
 
-            return await SignIn(viewModel, returnUrl);
+            return await SignIn(viewModel, RoleGroup.SHOP, returnUrl);
         }
 
         [HttpGet]
@@ -190,13 +190,14 @@ namespace TicketHubApp.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> LoginPlatformAsync(LoginViewModel viewModel, string returnUrl)
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> LoginPlatform(LoginViewModel viewModel, string returnUrl)
         {
             if (!ModelState.IsValid)
             {
                 return View(viewModel);
             }
-            return await SignIn(viewModel, returnUrl);
+            return await SignIn(viewModel, RoleGroup.PLATFORM, returnUrl);
         }
 
         [HttpPost]
@@ -207,7 +208,7 @@ namespace TicketHubApp.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        private async Task<ActionResult> SignIn(LoginViewModel viewModel, string returnUrl)
+        private async Task<ActionResult> SignIn(LoginViewModel viewModel, string roleGroup, string returnUrl)
         {
             var user = UserManager.FindByEmail(viewModel.Email);
             if (user != null)
@@ -217,25 +218,48 @@ namespace TicketHubApp.Controllers
                     ModelState.AddModelError("", "You must have a confirmed email to log on.");
                     return View("Login", viewModel);
                 }
+
+                bool isUserInRole;
+                switch (roleGroup)
+                {
+                    case RoleGroup.CUSTOMER:
+                        isUserInRole = await UserManager.IsInRoleAsync(user.Id, RoleName.CUSTOMER);
+                        break;
+                    case RoleGroup.SHOP:
+                        isUserInRole = (await UserManager.IsInRoleAsync(user.Id, RoleName.SHOP_EMPLOYEE) || await UserManager.IsInRoleAsync(user.Id, RoleName.SHOP_MANAGER));
+                        break;
+                    case RoleGroup.PLATFORM:
+                        isUserInRole = (await UserManager.IsInRoleAsync(user.Id, RoleName.PLATFORM_ADMIN) || await UserManager.IsInRoleAsync(user.Id, RoleName.ADMINISTRATOR));
+                        break;
+                    default:
+                        isUserInRole = false;
+                        break;
+                }
+                if (!isUserInRole)
+                {
+                    ModelState.AddModelError("", "Check your account or password.");
+                    return View("Login", viewModel);
+                }
+
                 //登入
                 var signInResult = await SignInManager.PasswordSignInAsync(user.UserName, viewModel.Password, viewModel.RememberMe, shouldLockout: false);
                 switch (signInResult)
                 {
                     case SignInStatus.Success:
-                        return RedirectToLocal(returnUrl);
+                        return RedirectToLocal(roleGroup, returnUrl);
                     case SignInStatus.LockedOut:
                         return View("Lockout");
                     case SignInStatus.RequiresVerification:
                         return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = viewModel.RememberMe });
                     case SignInStatus.Failure:
                     default:
-                        ModelState.AddModelError("", "登入嘗試失試。");
+                        ModelState.AddModelError("", "Check your account or password.");
                         return View("Login", viewModel);
                 }
             }
             else
             {
-                ModelState.AddModelError("", "登入嘗試失試。");
+                ModelState.AddModelError("", "Check your account or password.");
                 return View("Login", viewModel);
             }
         }
@@ -287,13 +311,23 @@ namespace TicketHubApp.Controllers
             }
         }
 
-        private ActionResult RedirectToLocal(string returnUrl)
+        private ActionResult RedirectToLocal(string roleGroup, string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            switch (roleGroup)
+            {
+                case RoleGroup.CUSTOMER:
+                    return RedirectToAction("Index", "Home");
+                case RoleGroup.SHOP:
+                    return RedirectToAction("HomePage", "Shop");
+                case RoleGroup.PLATFORM:
+                    return RedirectToAction("Index", "PlatformAdmin");
+                default:
+                    return RedirectToAction("Index", "Home");
+            }
         }
     }
 

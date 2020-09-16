@@ -8,4 +8,11 @@
         public const string SHOP_EMPLOYEE = "ShopEmployee";
         public const string CUSTOMER = "Customer";
     }
+
+    public class RoleGroup
+    {
+        public const string CUSTOMER = "Customer";
+        public const string SHOP = "Shop";
+        public const string PLATFORM = "Platform";
+    }
 }
