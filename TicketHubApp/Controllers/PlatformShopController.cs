@@ -35,6 +35,13 @@ namespace TicketHubApp.Controllers
             return View();
         }
 
+        public ActionResult GetAllIssues(string id)
+        {
+            ViewBag.id = id;
+
+            return View();
+        }
+
         // Get JSON Data
         public ActionResult GetShopsJson()
         {
@@ -51,7 +58,24 @@ namespace TicketHubApp.Controllers
 
             return Json(employeesTableData, JsonRequestBehavior.AllowGet);
         }
-       
+
+        public ActionResult GetIssuessByShopJson(string id)
+        {
+            PlatformShopService service = new PlatformShopService();
+            var issueTableData = service.GetIssuesTableData(id);
+
+            return Json(issueTableData, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public ActionResult GetSalesDataByIssue(string id)
+        {   
+
+            PlatformShopService service = new PlatformShopService();
+            var issueSalesData = service.GetSalesData(id);
+
+            return Json(issueSalesData, JsonRequestBehavior.AllowGet);
+        }
 
     }
 }
