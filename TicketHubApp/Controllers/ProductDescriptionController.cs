@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TicketHubApp.Services;
+using TicketHubApp.Models.ViewModels;
+using System.Net;
 
 namespace TicketHubApp.Controllers
 {
@@ -14,9 +17,19 @@ namespace TicketHubApp.Controllers
             return View();
         }
 
-        public ActionResult ProductDescription()
+        [HttpGet]
+        public ActionResult ProductDescription(string id)
         {
-            return View();
+            var service = new ProductDetailService();
+            if(id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            }
+
+            ProductDetailViewModel productDetailVM = service.GetIssue(Guid.Parse(id));
+            
+            return View(productDetailVM);
         }
     }
     
