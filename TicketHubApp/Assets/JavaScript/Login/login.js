@@ -1,12 +1,14 @@
 import { setLoginBarcode } from "./_barcode.js";
-import { registerTicketLoginTransition, registerLoginContainers, registerSignUpLogInToggle } from "./_loginEvents.js";
+import { registerTicketLoginTransition, registerLoginContainers, registerSignUpLogInToggle, registerForgotPasswordToggle } from "./_loginEvents.js";
 
 window.onload = function () {
-	setLoginBarcode();
+    setLoginBarcode();
 
-	registerTicketLoginTransition();
+    registerTicketLoginTransition();
 
-	registerLoginContainers();
+    registerLoginContainers();
 
-	registerSignUpLogInToggle();
+    registerSignUpLogInToggle();
+
+    registerForgotPasswordToggle();
 };
