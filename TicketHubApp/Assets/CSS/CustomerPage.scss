@@ -1,11 +1,12 @@
 @import "_variables.scss";
 
-body{
+body {
     font-family: 'Noto Sans TC', sans-serif;
 }
-.sidebar, .info{
 
+.sidebar, .info {
 }
+
 .sidebar {
     background-color: #eee;
 
@@ -63,7 +64,8 @@ body{
                     background-color: $cust-color-8;
                 }
             }
-            .iconify{
+
+            .iconify {
                 font-size: 24px;
             }
         }
@@ -75,125 +77,189 @@ body{
     }
 }
 
-.info{
+.info {
+    background-color: #eee;
 
-    background-color:#eee;
-    
-    .info-area{
+    .info-area {
         background-color: white;
     }
-    h3{
+
+    h3 {
         display: inline-block;
         border-bottom: 3px solid $cust-color-8;
     }
 
-    .container{
-        .row{
+    .container {
+        .row {
             transition: .5s;
-            >div{
+
+            > div {
                 // border-top: 1px solid #26BEC9;
                 border-left: 6px solid $cust-color-8;
                 // border-bottom: 3px solid #26BEC9;
-                >p{
+                > p {
                     font-size: 20px;
                     margin: 0;
                 }
-                &.my-ticket{
-                    border:none
+
+                &.my-ticket {
+                    border: none
                 }
-                .edit-icon{
-                    cursor:pointer;
-                    font-size:24px;  
+
+                .edit-icon {
+                    cursor: pointer;
+                    font-size: 24px;
                 }
             }
-            .wish-Ticket{
+
+            .wish-Ticket {
                 height: 250px;
-                .img-area{
+
+                .img-area {
                     width: 30%;
                 }
-                .text-area{
+
+                .text-area {
                     width: 70%;
                 }
-                .position{
+
+                .position {
                     font-size: 12px;
                     color: $line-gray;
                 }
-                .oPrice{
+
+                .oPrice {
                     font-size: 12px;
                     text-decoration-line: line-through;
                     color: $line-gray;
                     bottom: 20px;
                     right: 20px;
                 }
-                .nPrice{
+
+                .nPrice {
                     color: $cust-color-8;
                     bottom: -5px;
                     right: 15px;
                 }
-                .favorite{
+
+                .favorite {
                     font-size: 20px;
                     top: 12px;
                     right: 12px;
                     color: $cust-color-12;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
                 }
             }
-            .valid-ticket, .invalid-ticket{
+
+            .order {
+
+                .order-state {
+                    font-size: 10px;
+                    top: 8px;
+                    right: 8px;
+                }
+
+                .order-date, .total {
+                    font-size: 14px;
+                }
+
+                .productListStatement {
+                    font-size: 16px;
+                    border-bottom: 2px solid $cust-color-8;
+                }
+
+                .ticket {
+                    border-bottom: 2px solid $cust-color-8;
+
+                    &:last-child {
+                        border: none;
+                    }
+
+                    p {
+                        font-size: 10px;
+                        margin-bottom: 4px;
+                    }
+
+                    .ticket-title {
+                        font-size: 16px;
+                    }
+
+                    .ticket-total {
+                        font-size: 12px;
+                    }
+                }
+            }
+
+            .valid-ticket, .invalid-ticket {
                 border-left: 6px solid $cust-color-8;
-                height: 150px;
-                .img-area{
+                height:150px;
+                .img-area {
                     width: 25%;
                 }
-                .text-area{
+
+                .text-area {
                     width: 75%;
                 }
-                .valid-time{
-                    span{
+
+                .valid-time {
+                    span {
                         color: $cust-color-8;
                     }
                 }
-                .use-time{
-                    span{
+
+                .use-time {
+                    span {
                         color: $shop-color-8;
                     }
                 }
-                .go-detail{
+
+                .go-detail {
                     font-size: 24px;
                     color: $line-gray;
                     top: 55px;
                     right: 10px;
                 }
             }
-            .favorite-store{
+
+            .favorite-store {
                 height: 250px;
-                .img-area{
+
+                .img-area {
                     width: 30%;
                 }
-                .text-area{
+
+                .text-area {
                     width: 70%;
                 }
-                .position, .address, .phone, .openTime{
+
+                .position, .address, .phone, .openTime {
                     font-size: 12px;
                     color: $line-gray;
                 }
-                .favorite{
+
+                .favorite {
                     font-size: 20px;
                     top: 12px;
                     right: 12px;
                     color: $cust-color-12;
-                    &:hover{
-                        cursor:pointer;
+
+                    &:hover {
+                        cursor: pointer;
                     }
                 }
             }
         }
     }
-
 }
 
-.modal{
-    label{
+.modal {
+    label {
         position: relative;
-        &::before{
+
+        &::before {
             content: "*";
             color: red;
             position: absolute;

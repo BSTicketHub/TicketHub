@@ -29,8 +29,8 @@ namespace TicketHubApp.Models.ViewModels
         [DataType(DataType.DateTime)]
         public DateTime AppliedDate { get; set; }
         [Display(Name = "修改時間")]
-        public DateTime ModifiedDate { get; set; }       
+        public DateTime ModifiedDate { get; set; }   
+        [Display(Name = "註冊成功時間")]
         public DateTime ValidatedDate { get; set; }
-        public Guid? ReviewerId { get; set; }
     }
 }
