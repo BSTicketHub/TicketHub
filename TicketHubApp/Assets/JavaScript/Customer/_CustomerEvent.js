@@ -1,4 +1,6 @@
-﻿export function CreatePage(firstPage) {
+﻿
+
+export function CreatePage(firstPage) {
 
     let CustomerSidebarItems = Array.from(document.querySelectorAll('.sidebar-nav > div'));
     let sideBarUserName = document.querySelector('.sidebar .username');
@@ -274,70 +276,101 @@
             }
 
             function createWishList() {
-                let ticketDiv = document.createElement('div');
-                ticketDiv.classList.add('wish-Ticket', 'w-100', 'rounded', 'd-flex', 'mb-3', 'shadow')
+                for (let i = 0; i < response.WishIssue.length; i++) {
 
-                let imgDiv = document.createElement('div');
-                imgDiv.classList.add('img-area')
-                let textDiv = document.createElement('div')
-                textDiv.classList.add('text-area', 'border', 'border-left-0', 'rounded-right', 'position-relative')
-                ticketDiv.append(imgDiv, textDiv);
+                    let ticketDiv = document.createElement('div');
+                    ticketDiv.classList.add('wish-Ticket', 'w-100', 'rounded', 'd-flex', 'mb-3', 'shadow')
 
-                let img = document.createElement('div')
-                img.style.backgroundImage = "url('https://picsum.photos/400/300/?random=1')";
-                img.style.backgroundSize = "cover";
-                img.classList.add('w-100', 'h-100')
-                imgDiv.append(img);
+                    let imgDiv = document.createElement('div');
+                    imgDiv.classList.add('img-area')
+                    let textDiv = document.createElement('div')
+                    textDiv.classList.add('text-area', 'border', 'border-left-0', 'rounded-right', 'position-relative')
+                    ticketDiv.append(imgDiv, textDiv);
 
-                let ticketTitle = document.createElement('h6');
-                ticketTitle.classList.add('my-3', 'ml-4')
-                ticketTitle.innerText = "【Build School限時超激優惠】 忠孝新生一日遊"
-                textDiv.append(ticketTitle);
+                    let img = document.createElement('div')
+                    img.style.backgroundImage = "url('https://picsum.photos/400/300/?random=1')";
+                    img.style.backgroundSize = "cover";
+                    img.classList.add('w-100', 'h-100')
+                    imgDiv.append(img);
 
-                let ticketContent = document.createElement('p');
-                ticketContent.classList.add('mx-4')
-                ticketContent.innerText = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere ut atque nobis voluptatum asperiores maxime numquam. Quos minus nobis adipisci?"
-                textDiv.append(ticketContent);
+                    let ticketTitle = document.createElement('h6');
+                    ticketTitle.classList.add('my-3', 'ml-4')
+                    ticketTitle.innerText = `${response.WishIssue[i].Title}`;
+                    textDiv.append(ticketTitle);
 
-                let position = document.createElement('p');
-                let positionIcon = document.createElement('i');
-                positionIcon.classList.add('iconify', 'mr-2');
-                positionIcon.setAttribute('data-icon', 'fa-solid:map-marker-alt');
-                position.classList.add('position', 'ml-4');
-                position.innerText = "台北";
-                textDiv.append(position);
-                position.prepend(positionIcon);
+                    let ticketContent = document.createElement('p');
+                    ticketContent.classList.add('mx-4')
+                    ticketContent.innerText = `${response.WishIssue[i].Memo}`;
+                    textDiv.append(ticketContent);
 
-                let originalPrice = document.createElement('p');
-                originalPrice.classList.add('oPrice', 'position-absolute')
-                originalPrice.innerText = "TWD 99999";
-                textDiv.append(originalPrice);
+                    let position = document.createElement('p');
+                    let positionIcon = document.createElement('i');
+                    positionIcon.classList.add('iconify', 'mr-2');
+                    positionIcon.setAttribute('data-icon', 'fa-solid:map-marker-alt');
+                    position.classList.add('position', 'ml-4');
+                    position.innerText = "台北";
+                    textDiv.append(position);
+                    position.prepend(positionIcon);
 
-                let newPrice = document.createElement('p');
-                newPrice.classList.add('nPrice', 'position-absolute');
-                newPrice.innerText = "TWD 1000";
-                textDiv.append(newPrice);
+                    let originalPrice = document.createElement('p');
+                    originalPrice.classList.add('oPrice', 'position-absolute')
+                    originalPrice.innerText = `TWD ${response.WishIssue[i].OriginalPrice}`;
+                    textDiv.append(originalPrice);
 
-                let favorite = document.createElement('i');
-                favorite.classList.add('favorite', 'iconify', 'position-absolute');
-                favorite.setAttribute('data-icon', 'bx:bxs-heart');
-                textDiv.append(favorite);
+                    let newPrice = document.createElement('p');
+                    newPrice.classList.add('nPrice', 'position-absolute');
+                    newPrice.innerText = `TWD ${response.WishIssue[i].DiscountPrice}`;
+                    textDiv.append(newPrice);
 
-                let wishList = document.querySelector('.info-area .container .row')
-                wishList.append(ticketDiv);
+                    let favorite = document.createElement('i');
+                    favorite.classList.add('favorite', 'fas', 'fa-trash-alt', 'position-absolute');
+                    textDiv.append(favorite);
+
+                    favorite.addEventListener('click', function (e) {
+
+                        $.ajax({
+                            cache: false,
+                            url: "../Customer/ToggleFavoriteList",
+                            method: "post",
+                            data: {
+                                IssueId: response.WishIssue[i].Id,
+                                UserId: response.Id
+                            },
+                            success: function () {
+
+                            },
+                            error: function () {
+                                alert("failed");
+                            },
+                            complete: function () {
+                                let card = e.target.closest('.wish-Ticket');
+                                card.remove();
+                            }
+                        });
+
+                    });
+                    let wishList = document.querySelector('.info-area .container .row')
+                    wishList.append(ticketDiv);
+                }
             }
-
             function createMyTicket() {
                 //Nav
                 let nav = document.createElement('ul');
                 nav.classList.add('nav', 'nav-tabs');
                 nav.setAttribute('id', 'myTab');
 
+                let navItemOrderHistory = document.createElement('li');
+                navItemOrderHistory.classList.add('nav-item');
                 let navItemValidTicket = document.createElement('li');
                 navItemValidTicket.classList.add('nav-item');
                 let navItemInvalidTicket = document.createElement('li');
                 navItemInvalidTicket.classList.add('nav-item');
 
+                let OrderHistoryTab = document.createElement('a');
+                OrderHistoryTab.classList.add('nav-link')
+                OrderHistoryTab.setAttribute('data-toggle', 'tab');
+                OrderHistoryTab.setAttribute('href', '#OrderHistory')
+                OrderHistoryTab.innerText = "我的訂單";
                 let validTicketTab = document.createElement('a');
                 validTicketTab.classList.add('nav-link', 'active')
                 validTicketTab.setAttribute('data-toggle', 'tab');
@@ -349,7 +382,8 @@
                 invalidTicketTab.setAttribute('href', '#inValid')
                 invalidTicketTab.innerText = "已使用票券";
 
-                nav.append(navItemValidTicket, navItemInvalidTicket)
+                nav.append(navItemOrderHistory, navItemValidTicket, navItemInvalidTicket)
+                navItemOrderHistory.appendChild(OrderHistoryTab)
                 navItemValidTicket.append(validTicketTab);
                 navItemInvalidTicket.append(invalidTicketTab);
 
@@ -358,11 +392,61 @@
                 contentArea.classList.add('tab-content')
                 contentArea.setAttribute('id', 'myTabContent')
 
+                //Order History
+                let OrderHistoryContent = document.createElement('div');
+                OrderHistoryContent.classList.add('tab-pane', 'fade', 'show');
+                OrderHistoryContent.setAttribute('id', 'OrderHistory');
+
+                let OrderHistory = document.createElement('div');
+                OrderHistory.classList.add('w-100', 'container', 'position-relative', 'my-3', 'py-3')
+                OrderHistoryContent.append(OrderHistory);
+                let row = document.createElement('div');
+                row.classList.add('row', 'order-list');
+                OrderHistory.appendChild(row);
+
+                for (let i = 0; i < 5; i++) {
+                    let myOrder = document.createElement('div');
+                    myOrder.classList.add('order', 'pt-4', 'pb-3', 'mx-4', 'my-3', 'col-5', 'rounded','position-relative', 'shadow')
+                    row.appendChild(myOrder);
+                    let orderState = document.createElement('span');
+                    orderState.classList.add('order-state', 'badge', 'badge-pill', 'badge-success','position-absolute')
+                    orderState.innerText = "已付款";
+                    myOrder.appendChild(orderState);
+                    let orderDate = document.createElement('p');
+                    orderDate.classList.add('order-date', 'mb-1');
+                    orderDate.textContent = "下單日期 : 2020/4/28";
+                    myOrder.append(orderDate);
+                    let productListStatement = document.createElement('p');
+                    productListStatement.classList.add('productListStatement','mt-3', 'mb-1', 'pb-1');
+                    productListStatement.textContent = "訂購清單";
+                    myOrder.append(productListStatement);
+                    for (let i = 0; i < 3; i++) {
+                        let ticket = document.createElement('div');
+                        ticket.classList.add('ticket', 'p-1');
+                        let ticketTitle = document.createElement('p');
+                        ticketTitle.classList.add('ticket-title', 'font-weight-bold')
+                        ticketTitle.textContent = "Issue1";
+                        let unitPrice = document.createElement('p');
+                        unitPrice.textContent = "單價 : 1200 TWD";
+                        let quantity = document.createElement('p');
+                        quantity.textContent = "數量 : 3 張";
+                        let ticketTotal = document.createElement('p');
+                        ticketTotal.classList.add('ticket-total', 'text-right', 'font-weight-bold');
+                        ticketTotal.textContent = "計 : 3600 TWD"
+                        ticket.append(ticketTitle, unitPrice, quantity, ticketTotal);
+                        myOrder.append(ticket);
+                    }
+                    let total = document.createElement('p');
+                    total.classList.add('total', 'my-2', 'mx-1', 'text-right');
+                    total.textContent = "總金額 : 10000 TWD";
+                    myOrder.appendChild(total);
+                }
+
+                //Valid Ticket
                 let validTicketContent = document.createElement('div');
                 validTicketContent.classList.add('tab-pane', 'fade', 'show', 'active');
                 validTicketContent.setAttribute('id', 'valid');
 
-                //Valid Ticket
                 let validTicket = document.createElement('div');
                 validTicket.classList.add('valid-ticket', 'w-100', 'd-flex', 'position-relative', 'my-3', 'px-2', 'py-3', 'border-bottom')
                 validTicketContent.append(validTicket);
@@ -418,7 +502,7 @@
                 wrapper.classList.add('my-ticket', 'w-100')
                 myTicket.append(wrapper);
                 wrapper.append(nav, contentArea);
-                contentArea.append(validTicketContent, invalidTicketContent)
+                contentArea.append(validTicketContent, invalidTicketContent, OrderHistoryContent)
             }
 
             function createFavoriteStore() {
@@ -486,8 +570,30 @@
 
 
                     let favorite = document.createElement('i');
-                    favorite.classList.add('favorite', 'iconify', 'position-absolute');
-                    favorite.setAttribute('data-icon', 'bx:bxs-heart');
+                    favorite.classList.add('favorite', 'fas', 'fa-trash-alt', 'position-absolute');
+                    favorite.addEventListener('click', function (e) {
+
+                        $.ajax({
+                            cache: false,
+                            url: "../Shop/ToggleFavoriteList",
+                            method: "post",
+                            data: {
+                                ShopId: response.FavoriteShop[i].Id,
+                                UserId: response.Id
+                            },
+                            success: function () {
+
+                            },
+                            error: function () {
+                                alert("failed");
+                            },
+                            complete: function () {
+                                let card = e.target.closest('.favorite-store');
+                                card.remove();
+                            }
+                        });
+                    });
+
                     textDiv.append(favorite);
 
                     let wishList = document.querySelector('.info-area .container .row')

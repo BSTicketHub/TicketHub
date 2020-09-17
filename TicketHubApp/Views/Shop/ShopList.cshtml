@@ -14,7 +14,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-7 restaurant-area border border-right-0 rounded">
+        <div class="col-7 restaurant-area">
             <h3 class="mt-4 ml-3">台北美食</h3>
             <div class="tag-list ml-3 my-4">
                 <div class="badge badge-pill mx-1">台北</div>
@@ -43,7 +43,9 @@
 @section endJS{
     <script>
 
-        function addToFavorite(shopId) {
+        @*function addToFavorite(shopId) {
+            console.dir(event.target)
+            event.target.setAttribute('data-icon', 'bi:heart-fill')
             $.ajax({
                 cache: false,
                 url: "AddToFavoriteList",
@@ -59,22 +61,29 @@
                     alert("failed");
                 }
             });
-        }
+        }*@
 
-        function deleteFromFavorite(shopId) {
+        function controlFromFavorite(Icon) {
+
             $.ajax({
                 cache: false,
-                url: "DeleteFromFavoriteList",
+                url: "../Shop/ToggleFavoriteList",
                 method: "post",
-                data:{
-                    ShopId: shopId,
+                data: {
+                    ShopId: Icon.getAttributeNode('shopid').value,
                     UserId: "@ViewBag.UserId"
                 },
                 success: function () {
-                    alert("success");
                 },
                 error: function () {
                     alert("failed");
+                },
+                complete: function () {
+                    if (Icon.getAttribute('data-icon') == "bi:heart-fill") {
+                        Icon.setAttribute('data-icon', 'bi:heart')
+                    } else {
+                        Icon.setAttribute('data-icon', 'bi:heart-fill')
+                    }
                 }
             });
         }

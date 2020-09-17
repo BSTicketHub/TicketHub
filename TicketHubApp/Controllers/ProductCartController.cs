@@ -9,7 +9,7 @@ namespace TicketHubApp.Controllers
     public class ProductCartController : Controller
     {
         // GET: ProductCart
-        public ActionResult Cart()
+        public ActionResult ProductCart()
         {
             return View();
         }

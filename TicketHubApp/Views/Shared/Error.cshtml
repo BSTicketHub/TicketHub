@@ -1,14 +1,21 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width" />
-    <title>錯誤</title>
-</head>
-<body>
-    <hgroup>
-        <h1>錯誤。</h1>
-        <h2>處理您的要求時發生錯誤。</h2>
-    </hgroup>
-</body>
-</html>
+﻿@{
+    ViewBag.Title = "Email Confirmed";
+    Layout = "~/Views/Account/_LoginLayout.cshtml";
+}
+
+<div id="info-fail" class="info-card my-5">
+    <div class="col-12 ticketStubVertical tickets py-2 text-center">
+        <h2>TicketHub</h2>
+        <span class="iconify info-icon fail" data-icon="clarity:error-standard-solid" data-inline="false"></span>
+        <h3>
+            <span>Error</span>
+        </h3>
+        <p>Something is wrong.</p>
+    </div>
+    <div class="col-12 ticketReceiptVertical tickets text-center">
+        <text class="ticketImprint">Error</text>
+        <div class="barcode-content">
+            <svg class="barcode"></svg>
+        </div>
+    </div>
+</div>

@@ -35,30 +35,20 @@ namespace TicketHubApp.Controllers
 
         public ActionResult TicketList()
         {
-            List<StoreTicketListViewModel> tickets = new List<StoreTicketListViewModel>
+            var currentUserId = User.Identity.GetUserId();
+            var wishIssue = _context.UserWishIssue.Where(x => x.UserId == currentUserId).Select(x => x.IssueId).ToList();
+            ViewBag.UserId = currentUserId;
+            ViewBag.WishIssue = wishIssue;
+            var tickets = _context.Issue.Select(x => new StoreTicketListViewModel
             {
-                new StoreTicketListViewModel(){
-                    Id=Guid.NewGuid(),
-                    DeliveredDate = DateTime.Now,
-                    Exchanged=true,
-                    ExchangedDate= DateTime.Now,
-                    Voided=true,
-                    VoidedDate=DateTime.Now,
-                    IssueId=Guid.NewGuid(),
-                    UserId=Guid.NewGuid(),
-                    OrderId=Guid.NewGuid()
-                },
-                new StoreTicketListViewModel(){
-                    Id=Guid.NewGuid(),
-                    DeliveredDate = DateTime.Now,
-                    Exchanged=true,
-                    ExchangedDate= DateTime.Now,
-                    Voided=true,
-                    VoidedDate=DateTime.Now,
-                    IssueId=Guid.NewGuid(),
-                    UserId=Guid.NewGuid(),
-                    OrderId=Guid.NewGuid()},
-            };
+                Id = x.Id,
+                Memo = x.Memo,
+                Title = x.Title,
+                DiscountPrice = x.DiscountPrice,
+                DiscountRatio = x.DiscountRatio,
+                OriginalPrice = x.OriginalPrice,
+                ImgPath = x.ImgPath
+            });
 
             return View(tickets);
         }
@@ -76,6 +66,7 @@ namespace TicketHubApp.Controllers
                     Sex = user.Sex,
                     FavoriteShop = from s in _context.Shop
                                    join ufs in _context.UserFavoriteShop on s.Id equals ufs.ShopId
+                                   where ufs.UserId == user.Id
                                    select new ShopViewModel
                                    {
                                        Id = s.Id,
@@ -85,7 +76,18 @@ namespace TicketHubApp.Controllers
                                        District = s.District,
                                        Address = s.Address,
                                        Phone = s.Phone
-                                   }
+                                   },
+                    WishIssue = from i in _context.Issue
+                                join uwi in _context.UserWishIssue on i.Id equals uwi.IssueId
+                                where uwi.UserId == user.Id
+                                select new ShopIssueViewModel
+                                {
+                                    DiscountPrice = i.DiscountPrice,
+                                    Id = i.Id,
+                                    Memo = i.Memo,
+                                    Title = i.Title,
+                                    OriginalPrice = i.OriginalPrice,
+                                }
                 };
                 return Json(info, JsonRequestBehavior.AllowGet);
         }
@@ -113,6 +115,38 @@ namespace TicketHubApp.Controllers
                 };
                 return Json(info, JsonRequestBehavior.AllowGet);
             }
+        }
+
+        [HttpPost]
+        public ActionResult ToggleFavoriteList(string IssueId, string UserId)
+        {
+
+            using (var _context = TicketHubContext.Create())
+            {
+                var IssueGUID = Guid.Parse(IssueId);
+                var entity = (from x in _context.UserWishIssue
+                              where x.IssueId == IssueGUID && x.UserId == UserId
+                              select x).FirstOrDefault();
+
+                if (entity != null)
+                {
+                    _context.UserWishIssue.Remove(entity);
+
+                }
+                else
+                {
+                    _context.UserWishIssue.Add(new UserWishIssue
+                    {
+                        IssueId = Guid.Parse(IssueId),
+                        UserId = UserId,
+                        AddedDate = DateTime.Now
+                    });
+
+                }
+
+                _context.SaveChanges();
+            }
+            return Content("Complete");
         }
     }
 }

@@ -51,6 +51,7 @@ namespace TicketHubApp
             //Login page bundles
             bundles.Add(new StyleBundle("~/bundles/css/Login")
                 .Include("~/Content/bootstrap.css")
+                .Include("~/Assets/CSS/Common/Site.min.css")
                 .Include("~/Assets/CSS/login.min.css", new CssRewriteUrlTransform()));
             bundles.Add(new ScriptBundle("~/bundles/js/Login").Include(
                 "~/Scripts/jquery-{version}.js",
@@ -108,18 +109,18 @@ namespace TicketHubApp
                 "~/Assets/JavaScript/Shop/ShopList.js"
                 ));
 
-            //Cart page bundles
+            //ProductCart page bundles
             bundles.Add(new StyleBundle("~/bundles/css/Cart")
-                .Include("~/Assets/CSS/Cart.min.css", new CssRewriteUrlTransform()));
+                .Include("~/Assets/CSS/ProductCart.min.css", new CssRewriteUrlTransform()));
             bundles.Add(new ScriptBundle("~/bundles/js/Cart").Include(
-                "~/Assets/JavaScript/Cart/Cart.js"
+                "~/Assets/JavaScript/ProductCart/ProductCart.js"
                 ));
 
-            //ticket-description bundles
-            bundles.Add(new StyleBundle("~/bundles/css/ticket-description")
-                .Include("~/Assets/CSS/ticket-description.min.css", new CssRewriteUrlTransform()));
-            bundles.Add(new ScriptBundle("~/bundles/js/ticket-description").Include(
-                "~/Assets/JavaScript/Product/ticket-description.js"
+            //ProductDescription bundles
+            bundles.Add(new StyleBundle("~/bundles/css/ProductDescription")
+                .Include("~/Assets/CSS/ProductDescription.min.css", new CssRewriteUrlTransform()));
+            bundles.Add(new ScriptBundle("~/bundles/js/ProductDescription").Include(
+                "~/Assets/JavaScript/Product/ProductDescription.js"
                 ));
 
             //Shop bundles

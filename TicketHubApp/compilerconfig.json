@@ -80,6 +80,14 @@
     "inputFile": "Assets/CSS/CustomerPage.scss"
   },
   {
+    "outputFile": "Assets/CSS/ProductDescription.css",
+    "inputFile": "Assets/CSS/ProductDescription.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/Common/Site.css",
+    "inputFile": "Assets/CSS/Common/Site.scss"
+  },
+  {
     "outputFile": "Assets/CSS/Shop/IssueDetails.css",
     "inputFile": "Assets/CSS/Shop/IssueDetails.scss"
   }

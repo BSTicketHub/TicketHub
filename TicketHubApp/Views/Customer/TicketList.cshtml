@@ -54,11 +54,10 @@
                 <span> | </span>
                 <a>價格 : 低到高</a>
             </div>
-            @Html.Partial("_Ticket")
-            @Html.Partial("_Ticket")
-            @Html.Partial("_Ticket")
-            @Html.Partial("_Ticket")
-            @Html.Partial("_Ticket")
+            @foreach(var ticket in Model)
+            {
+                @Html.Partial("_Ticket", ticket)
+            }
         </div>
 
     </div>
@@ -179,6 +178,33 @@
                 }
             });
         });
+
+        //favorite AJAX
+
+        function controlFromFavorite(Icon) {
+
+            $.ajax({
+                cache: false,
+                url: "../Customer/ToggleFavoriteList",
+                method: "post",
+                data: {
+                    IssueId: Icon.getAttributeNode('issueid').value,
+                    UserId: "@ViewBag.UserId"
+                },
+                success: function () {
+                },
+                error: function () {
+                    alert("failed");
+                },
+                complete: function () {
+                    if (Icon.getAttribute('data-icon') == "bi:heart-fill") {
+                        Icon.setAttribute('data-icon', 'bi:heart')
+                    } else {
+                        Icon.setAttribute('data-icon', 'bi:heart-fill')
+                    }
+                }
+            });
+        }
 
     </script>
 }

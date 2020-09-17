@@ -3,7 +3,16 @@
 <div id="issue" class="bg-white d-flex ticket position-relative rounded w-100" style="height:250px;">
     <div class="position-relative ticketImg col-md-4 border" style="background-image:url(@Model.ImgPath)"></div>
     <div class="col-md-8">
-        <span class="iconify wishHeart" data-icon="teenyicons:heart-solid" data-inline="false"></span>
+
+        @if (ViewBag.WishIssue.Contains(Model.Id))
+        {
+            <span issueid="@Model.Id" class="iconify position-absolute wishHeart" data-icon="bi:heart-fill" data-inline="false" onclick="controlFromFavorite(this)"></span>
+        }
+        else
+        {
+            <span issueid="@Model.Id" class="iconify position-absolute wishHeart" data-icon="bi:heart" data-inline="false" onclick="controlFromFavorite(this)"></span>
+        }
+
         <h3 class="my-4">@Model.Title</h3>
         <p class="description">@Model.Memo</p>
         <div>
