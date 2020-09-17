@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<nav aria-label="breadcrumb" class="shadow">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="~/Platform/Index">後台管理系統</a></li>
+        <li class="breadcrumb-item"><a href="~/Platform/AdminList">後台管理者管理</a></li>
+        <li class="breadcrumb-item active" aria-current="page">後台管理者列表</li>
+    </ol>
+</nav>
+
+<div class="shadow p-3">
+    <table id="adminTable" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>管理者ID</th>
+                <th>管理者名稱</th>
+                <th>管理者Email</th>
+                <th>管理者電話</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#adminTable').DataTable({
+            "ajax": '../Platform/GetAdminsJson',
+            "scrollX": true,
+            "stateSave": true
+        });
+    });
+
+    $("#adminTable").on("click", "tr", function () {
+        let id = this.firstChild.innerText;
+        window.location.href = "/Platform/AdminDetail/" + id;
+    });
+</script>
+

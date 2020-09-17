@@ -54,7 +54,7 @@ namespace TicketHubDataLibrary.Migrations
             var userEmail = $"{userName}@tickethub.com";
             if (!userManager.Users.Any(u => u.UserName == userEmail))
             {
-                var userToInsert = new TicketHubUser { UserName = userEmail, PhoneNumber = "0987654321", Email = userEmail };
+                var userToInsert = new TicketHubUser { UserName = userEmail, PhoneNumber = "0987654321", Email = userEmail, EmailConfirmed = true };
                 userManager.Create(userToInsert, "Pwd12345.");
                 userManager.AddToRole(userToInsert.Id, roleName);
             }
