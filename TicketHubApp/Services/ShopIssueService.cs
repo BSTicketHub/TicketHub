@@ -11,12 +11,13 @@ using Microsoft.AspNet.Identity;
 using Microsoft.Ajax.Utilities;
 using TicketHubApp.Services;
 using System.Data.Entity;
+using System.Security.Cryptography;
 
 namespace TicketHubApp.Services
 {
     public class ShopIssueService
     {
-        public OperationResult Create(ShopIssueViewModel input)
+        public OperationResult CreateIssue(ShopIssueViewModel input)
         {
             var result = new OperationResult();
             try
@@ -45,7 +46,6 @@ namespace TicketHubApp.Services
                     IssuerId = "26c751ea-d1ce-45bf-8a65-78f0d48ce2c4", //IssuerId = user,
                     ShopId = Guid.Parse("FA10840D-3A73-4374-AAFD-D592A3623EC1") //ShopId = employee.ShopId
                 };
-
                 issueRepo.Create(entity);
                 context.SaveChanges();
 
@@ -60,7 +60,7 @@ namespace TicketHubApp.Services
             return result;
         }
 
-        public OperationResult Update(ShopIssueViewModel input)
+        public OperationResult UpdateIssue(ShopIssueViewModel input)
         {
             var result = new OperationResult();
             try
@@ -110,7 +110,7 @@ namespace TicketHubApp.Services
             return result;
         }
     
-        public ShopIssueListViewModel GetAll(int? order)
+        public ShopIssueListViewModel GetIssueListApi(int? order, bool closed)
         {
             var result = new ShopIssueListViewModel();
             result.Items = new List<ShopIssueViewModel>();
@@ -118,25 +118,17 @@ namespace TicketHubApp.Services
             GenericRepository<Issue> issueRepo = new GenericRepository<Issue>(context);
             GenericRepository<OrderDetail> orderDetailRepo = new GenericRepository<OrderDetail>(context);
 
-            var issues = from i in issueRepo.GetAll()
-                         select new ShopIssueViewModel
-                         {
-                             ImgPath = i.ImgPath,
-                             Title = i.Title,
-                             Id = i.Id,
-                             DiscountPrice = i.DiscountPrice,
-                             Status = (DateTime.Compare(i.ReleasedDate, DateTime.Now) > 0) ?
-                                ((DateTime.Compare((DateTime)i.ClosedDate, DateTime.Now) < 0) ? "已下架" : "上架") : "未上架",
-                             IssuedDate = i.IssuedDate,
-                             ReleasedDate = i.ReleasedDate,
-                             //SalesAmount =
-                             //   (from i2 in issueRepo.GetAll()
-                             //   join od in orderDetailRepo.GetAll() on i.Id equals od.IssueId
-                             //   group i2 by i2.IssuerId into iod
-                             //   where i.Id == iod.Key
-                             //   select new { salesamount = (int)iod.Sum((x) => x.Amount) })
-                         };
-                                
+            var issues = issueRepo.GetAll();
+
+            if (closed)
+            {
+                issues = issues.Where((i) => DateTime.Compare((DateTime)i.ClosedDate, DateTime.Now) < 0);
+            }
+            else
+            {
+                issues = issues.Where((i) => DateTime.Compare((DateTime)i.ClosedDate, DateTime.Now) >= 0);
+            }
+
             switch (order)
             {
                 //case 1:
@@ -149,27 +141,48 @@ namespace TicketHubApp.Services
                     issues = issues.OrderByDescending(i => i.Id);
                     break;
                 default:
-                    issues = issues.OrderByDescending(i => i.DiscountPrice);
+                    issues = issues.OrderByDescending(i => (int)i.DiscountPrice);
                     break;
             }
 
-            //foreach (var item in issues)
-            //{
-            //    var p = new ShopIssueViewModel()
-            //    {
-            //        ImgPath = item.ImgPath,
-            //        Title = item.Title,
-            //        Id = item.Id,
-            //        DiscountPrice = item.DiscountPrice,
-            //        Status = (DateTime.Compare(item.ReleasedDate, DateTime.Now) > 0) ?
-            //                ((DateTime.Compare((DateTime)item.ClosedDate, DateTime.Now) < 0) ? "已下架" : "上架") : "未上架",
-            //        IssuedDate = item.IssuedDate
-            //    };
+            foreach (var item in issues)
+            {
+                var p = new ShopIssueViewModel()
+                {
+                    ImgPath = item.ImgPath,
+                    Title = item.Title,
+                    Id = item.Id,
+                    DiscountPrice = item.DiscountPrice,
+                    Status = (DateTime.Compare((DateTime)item.ClosedDate, DateTime.Now) < 0) ? "已下架" :
+                            ((DateTime.Compare(item.ReleasedDate, DateTime.Now) < 0)? "未上架" : "上架"),
+                    ReleasedDate = item.ReleasedDate
+                };
 
-            //    result.Items.Add(p);
-            //}
+                result.Items.Add(p);
+            }
+                
+                //from i in issueRepo.GetAll()
+                //         where (DateTime.Compare((DateTime)i.ClosedDate, DateTime.Now) > 0)
+                //         select new ShopIssueViewModel
+                //         {
+                //             ImgPath = i.ImgPath,
+                //             Title = i.Title,
+                //             Id = i.Id,
+                //             DiscountPrice = i.DiscountPrice,
+                //             Status = (DateTime.Compare(i.ReleasedDate, DateTime.Now) > 0) ?
+                //                ((DateTime.Compare((DateTime)i.ClosedDate, DateTime.Now) < 0) ? "已下架" : "上架") : "未上架",
+                //             IssuedDate = i.IssuedDate,
+                //             ReleasedDate = i.ReleasedDate,
+                //             //SalesAmount =
+                //             //   (from i2 in issueRepo.GetAll()
+                //             //   join od in orderDetailRepo.GetAll() on i.Id equals od.IssueId
+                //             //   group i2 by i2.IssuerId into iod
+                //             //   where i.Id == iod.Key
+                //             //   select new { salesamount = (int)iod.Sum((x) => x.Amount) })
+                //         };
 
-            result.Items = issues.ToList();
+            //result.Items = issues.ToList();
+            
             return result;
         }
 
@@ -198,6 +211,38 @@ namespace TicketHubApp.Services
             };
 
             return entity;
+        }
+
+        public DataTableViewModel GetIssueDetailsApi(Guid id)
+        {
+            TicketHubContext context = new TicketHubContext();
+            var issueDetail = new ShopIssueDetailViewModel();
+
+            var ttt = from tic in context.Ticket
+                      join us in context.Users on tic.UserId equals us.Id
+                      where tic.IssueId == id
+                      select new { tic.User.UserName, tic.User.PhoneNumber, tic.Exchanged, tic.OrderId };
+            var aaa = from t3 in ttt
+                      group t3 by new { t3.UserName, t3.PhoneNumber, t3.OrderId } into g
+                      select new { g.Key.UserName, TicketCount = g.Count(), g.Key.OrderId, g.Key.PhoneNumber,
+                                ExchangeCount = g.Count(x => x.Exchanged == true), ReleaseCount = g.Count(x => x.Exchanged != true)
+                      };
+
+            DataTableViewModel table = new DataTableViewModel();
+            table.data = new List<List<string>>();
+            foreach (var item in aaa)
+            {
+                List<string> dataInstance = new List<string>();
+                dataInstance.Add(item.OrderId.ToString());
+                dataInstance.Add(item.UserName);
+                dataInstance.Add(item.TicketCount.ToString());
+                dataInstance.Add(item.ExchangeCount.ToString());
+                dataInstance.Add(item.ReleaseCount.ToString());
+                dataInstance.Add(item.PhoneNumber);
+
+                table.data.Add(dataInstance);
+            }
+            return table;
         }
     }
 }

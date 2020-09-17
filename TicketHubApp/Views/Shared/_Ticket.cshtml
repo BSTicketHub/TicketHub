@@ -1,13 +1,14 @@
-﻿
-<div class="bg-white d-flex my-4 ticket position-relative rounded w-100" style="height:250px;">
-    <div class="position-relative ticketImg col-md-4"></div>
+﻿@model TicketHubApp.Models.ViewModels.ShopIssueViewModel
+
+<div id="issue" class="bg-white d-flex ticket position-relative rounded w-100" style="height:250px;">
+    <div class="position-relative ticketImg col-md-4 border" style="background-image:url(@Model.ImgPath)"></div>
     <div class="col-md-8">
         <span class="iconify wishHeart" data-icon="teenyicons:heart-solid" data-inline="false"></span>
-        <h3 class="my-4">桃園青埔｜Xpark 都會型水生公園門票</h3>
-        <p class="description">由日本橫濱八景島首度跨海來台桃園開設分館「Xpark」，Xpark主打新都會型水族館，驅使最先端的科技，營造出環境的溫度、濕度、氣味、聲音，帶您到地球上每個不可思議的角落，受到啟發、感受療癒、洗滌心靈。在KKday訂購電子票即可掃QRcode入園，不必排隊購票・輕鬆入場！</p>
+        <h3 class="my-4">@Model.Title</h3>
+        <p class="description">@Model.Memo</p>
         <div>
             <span class="iconify" data-icon="carbon:location" data-inline="false"></span>
-            <span class="description">台灣 桃園</span>
+            <span class="description">台灣</span>
         </div>
         <div class="mt-auto mb-0 position-absolute" style="bottom: 10px;">
             <span class="iconify star star-checked" data-icon="uim:star" data-inline="false"></span>
@@ -18,8 +19,8 @@
             <span class="star">(100)</span>
         </div>
         <div class="position-absolute" style="right: 10px; bottom: 10px;">
-            <p class="ticketListOldPrice m-0">TWD 2000</p>
-            <p class="ticketListSalesPrice m-0">TWD<span> 990</span></p>
+            <p class="ticketListOldPrice m-0">TWD @Model.OriginalPrice</p>
+            <p class="ticketListSalesPrice m-0">TWD<span> @Model.DiscountPrice</span></p>
         </div>
     </div>
 </div>

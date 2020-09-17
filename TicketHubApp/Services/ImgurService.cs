@@ -26,6 +26,8 @@ namespace TicketHubApp.Services
             var imageEndpoint = new ImageEndpoint(apiClient, httpClient);
             var imageUpload = imageEndpoint.UploadImageAsync(file.InputStream);
 
+            //return imageUpload.Link;
+
             var ImgPath = imageUpload.Result.Link;
             return ImgPath;
         }

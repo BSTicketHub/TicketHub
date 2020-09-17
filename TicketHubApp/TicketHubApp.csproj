@@ -230,6 +230,7 @@
     <Compile Include="Models\ViewModels\PlatformUserViewModel.cs" />
     <Compile Include="Models\ViewModels\PlatformOrderViewModel.cs" />
     <Compile Include="Models\ViewModels\DataTableViewModel.cs" />
+    <Compile Include="Models\ViewModels\ShopIssueDetailViewModel.cs" />
     <Compile Include="Models\ViewModels\ShopIssueListViewModel.cs" />
     <Compile Include="Models\ViewModels\ShopViewModel.cs" />
     <Compile Include="Models\ViewModels\SimpleIssueViewModel.cs" />
@@ -241,7 +242,9 @@
     <Compile Include="Services\PlatformShopService.cs" />
     <Compile Include="Models\ViewModels\StoreTicketListViewModel.cs" />
     <Compile Include="Models\ViewModels\ShopIssueViewModel.cs" />
+    <Compile Include="Services\ShopInfoService.cs" />
     <Compile Include="Services\ShopIssueService.cs" />
+    <Compile Include="Services\ShopReportService.cs" />
     <Compile Include="Services\TagService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -293,6 +296,12 @@
     </Content>
     <Content Include="Assets\CSS\Shop\HomePage.min.css">
       <DependentUpon>HomePage.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Shop\IssueDetails.css">
+      <DependentUpon>IssueDetails.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Shop\IssueDetails.min.css">
+      <DependentUpon>IssueDetails.css</DependentUpon>
     </Content>
     <Content Include="Assets\CSS\Shop\productList.css">
       <DependentUpon>productList.scss</DependentUpon>
@@ -610,7 +619,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Html\" />
-    <Folder Include="Views\TicketList\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\CSS\login.scss" />
@@ -633,12 +641,16 @@
     <Content Include="Assets\CSS\ticket-description.scss" />
     <Content Include="Assets\CSS\tempCSS\home.scss" />
     <Content Include="Assets\CSS\home.scss" />
+    <Content Include="Assets\CSS\Shop\IssueDetails.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\ShaoChen - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\tickethub-dev - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\tickethub-dev - ReadOnly - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\tickethub-dev - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\moment.min.js.map" />

@@ -78,5 +78,9 @@
   {
     "outputFile": "Assets/CSS/CustomerPage.css",
     "inputFile": "Assets/CSS/CustomerPage.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/Shop/IssueDetails.css",
+    "inputFile": "Assets/CSS/Shop/IssueDetails.scss"
   }
 ]

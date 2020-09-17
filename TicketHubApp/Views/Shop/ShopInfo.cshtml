@@ -1,68 +1,75 @@
-﻿
+﻿@model TicketHubApp.Models.ViewModels.ShopViewModel
 
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <div class="description bg-white my-3 p-3 shadow">
-                <form class="d-flex flex-wrap">
-                    <div class="form-group col-6">
-                        <label for="formGroupExampleInput">商店名稱</label>
-                        <input type="text" class="form-control form-control-sm" id="" placeholder="請輸入商店名稱">
+@using (Html.BeginForm("ShopInfo", "Shop", FormMethod.Post, new { encType = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="description bg-white my-3 p-3 shadow row">
+                    <div class="col-12">
+                        <input type="file" onchange="readURL(this)" name="ImgFile" targetID="preview_progressbarTW_img" accept="image/gif, image/jpeg, image/png" />
+                        <span class="small text-dark">建議尺寸 : 1048 x 300</span>
+
+                        <div class="border p-2 my-2">
+                            <img id="preview_progressbarTW_img" src="@Model.BannerImg" class="w-100" style="max-width: 1048px; height: 300px;" />
+                        </div>
+                    </div>
+                    <div class="form-group col-10">
+                        @Html.EditorFor(model => model.ShopName, new { htmlAttributes = new { @class = "form-control kkColor", @placeholder = "商店名稱", @id = "" } })
+                    </div>
+                    <div class="form-group col-3">
+                        @Html.DropDownListFor(m => m.City, (IEnumerable<SelectListItem>)ViewBag.countryList, new { @class = "form-control form-control-sm", @id = "country" })
                     </div>
                     <div class="form-group col-12">
-                        <label for="formGroupExampleInput">Email</label>
-                        <input type="text" class="form-control form-control-sm" id="" placeholder="請輸入Email">
+                        <p class="py-3 border-bottom" style="font-size: 24px;">餐廳簡介</p>
+                        @Html.TextAreaFor(model => model.ShopIntro, new { @rows = "8", @class = "form-control form-control-sm", @placeholder = "請輸入票券說明內容", @id = "memo" })
                     </div>
-                    <div class="form-group col-6">
-                        <label for="formGroupExampleInput">連絡電話</label>
-                        <input type="text" class="form-control form-control-sm" id="" placeholder="請輸入連絡電話">
+                    <div class="col-12">
+                        <p class="py-3 border-bottom" style="font-size: 24px;">餐廳資訊</p>
                     </div>
-                    <div class="form-group col-2">
-                        <label for="formGroupExampleInput">地區</label>
-                        <select class="form-control form-control-sm" id="country" required>
-                            @*add option by js*@
-                        </select>
+                    <div class="form-group col-6 d-flex align-items-center">
+                        <p class="col-2 m-0 p-0">電話 : </p>
+                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control form-control-sm", @placeholder = "請輸入連絡電話", @id = "" } })
                     </div>
-                    <div class="form-group col-6">
-                        <label for="formGroupExampleInput">傳真號碼</label>
-                        <input type="text" class="form-control form-control-sm" id="" placeholder="請輸入傳真號碼">
-                    </div>
-                    <div class="form-group col-6">
-                        <label for="formGroupExampleInput">地址</label>
-                        <input type="text" class="form-control form-control-sm" id="" placeholder="請輸入地址">
-                    </div>
-                    <div class="form-group col-12">
-                        <label for="formGroupExampleInput">網址連結</label>
-                        <input type="text" class="form-control form-control-sm" id="" placeholder="請輸入網址連結">
-                    </div>
-                </form>
-            </div>
-            <div class="upLoadImg bg-white my-3 p-3 shadow">
-                <form class="col-12" action="/somewhere/to/upload" enctype="multipart/form-data">
 
-                    <input type="file" onchange="readURL(this)" targetID="preview_progressbarTW_img" accept="image/gif, image/jpeg, image/png" />
-                    <span class="small text-dark">建議尺寸 : 1048 x 300</span>
-
-                    <img id="preview_progressbarTW_img" src="#" class="my-2" style="height: 200px; width: 698px;" />
-                </form>
-            </div>
-            <div class="description bg-white my-3 p-3 shadow">
-                <div class="form-group col-12">
-                    <label for="exampleFormControlTextarea1">商品描述</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="8"></textarea>
-                </div>
-                <div class="col-12">
-                    <button class="ml-auto d-block">儲存</button>
+                    <div class="form-group col-6 d-flex align-items-center">
+                        <p class="col-2 m-0 p-0">傳真 : </p>
+                        @Html.EditorFor(model => model.Fax, new { htmlAttributes = new { @class = "form-control form-control-sm", @placeholder = "請輸入傳真號碼", @id = "" } })
+                    </div>
+                    <div class="form-group col-12 d-flex align-items-center">
+                        <p class="col-2 m-0 p-0">Emaul : </p>
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control form-control-sm", @placeholder = "請輸入Email", @id = "" } })
+                    </div>
+                    <div class="form-group col-12 d-flex align-items-center">
+                        <p class="col-2 m-0 p-0">地址 : </p>
+                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control form-control-sm", @placeholder = "請輸入地址", @id = "" } })
+                    </div>
+                    <div class="form-group col-12 d-flex align-items-center">
+                        <p class="col-2 m-0 p-0">店家官網 : </p>
+                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control form-control-sm", @placeholder = "請輸入網址連結", @id = "" } })
+                    </div>
+                    <div class="col-12 d-flex">
+                        <button id="modifyBtn" type="button" class="ml-auto my-2 d-block">修改</button>
+                        <button id="saveBtn" type="submit" class="m-2 d-none">儲存</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
+}
 
 
 @section endJS{
     <script src="~/Assets/JavaScript/Shop/ShopInfo.js"></script>
+
+    <script>
+        var message = "@ViewBag.Message";
+        if (message) {
+            window.alert(message)
+        }
+    </script>
 }
 
 
