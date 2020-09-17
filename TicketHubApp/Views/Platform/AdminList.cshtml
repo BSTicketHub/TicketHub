@@ -5,8 +5,8 @@
 
 <nav aria-label="breadcrumb" class="shadow">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">後台管理系統</a></li>
-        <li class="breadcrumb-item"><a href="~/PlatformAdmin/Index">後台管理者管理</a></li>
+        <li class="breadcrumb-item"><a href="~/Platform/Index">後台管理系統</a></li>
+        <li class="breadcrumb-item"><a href="~/Platform/AdminList">後台管理者管理</a></li>
         <li class="breadcrumb-item active" aria-current="page">後台管理者列表</li>
     </ol>
 </nav>
@@ -31,7 +31,7 @@
 <script>
     $(document).ready(function () {
         $('#adminTable').DataTable({
-            "ajax": '../PlatformAdmin/GetAdminsJson',
+            "ajax": '../Platform/GetAdminsJson',
             "scrollX": true,
             "stateSave": true
         });
@@ -39,7 +39,7 @@
 
     $("#adminTable").on("click", "tr", function () {
         let id = this.firstChild.innerText;
-        window.location.href = "/PlatformAdmin/AdminDetail/" + id;
+        window.location.href = "/Platform/AdminDetail/" + id;
     });
 </script>
 
