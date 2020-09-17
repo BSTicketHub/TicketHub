@@ -1,0 +1,65 @@
+diff a/TicketHubApp/Assets/JavaScript/Product/ticket-description.js b/TicketHubApp/Assets/JavaScript/Product/ticket-description.js	(rejected hunks)
+@@ -1,43 +0,32 @@
+-var cacheData = {
+-    map: {},
+-    markers: [],
+-}
+ 
+-// Initialize and add the map
+ function initMap() {
++    //�o���\�U�b�o�� 25.042848, 121.540344
+     // The location of Uluru
+-    var uluru = {
+-        lat: 25.0417443,
+-        lng: 121.535194
++    var taipei = {
++        lat: 25.0392496,
++        lng: 121.5397186
+     };
+-    // The map, centered at Uluru
+     var map = new google.maps.Map(
+         document.getElementById('mapApi'), {
+-            zoom: 15,
+-            center: uluru
+-        });
+-    // The marker, positioned at Uluru
+-    var marker = new google.maps.Marker({
+-        position: uluru,
+-        map: map
++        zoom: 14,
++        center: taipei
+     });
+ 
+-    cacheData.map = map;
+-    // sendRequest();
+-}
+-
++    let url = "https://maps.googleapis.com/maps/api/geocode/json?address=�x�W�x�_���U�ذϱd�w��190��&key=AIzaSyDbOibXZPeCKpq5tbdQZD0B5By6Z3MkQHc";
++    //addressRequest.open('get', 'https://maps.googleapis.com/maps/api/geocode/json?address=�_���n��@�q279��4��&key=AIzaSyCyO1vy0QaITVTahKLSJYfw_bgPxI7H7IU');
+ 
++    var xhr = new XMLHttpRequest();
++    xhr.open('get', url, true);
++    xhr.send(null);
+ 
+-function drawMap(features) {
+-    for (let i = 0; features.length > i; i++) {
+-        let location = {
+-            lat: features[i].geometry.coordinates[1],
+-            lng: features[i].geometry.coordinates[0]
+-        };
+-        let marker = new google.maps.Marker({
+-            position: location,
+-            map: cacheData.map
+-        });
+-        cacheData.markers.push(marker);
++    xhr.onload = function () {
++            console.log(xhr.response)
++            let text = this.response;
++            let coordinate = JSON.parse(text).results[0].geometry.location;
++            let marker = new google.maps.Marker({
++                position: coordinate,
++                map: map
++            })
+     }
++    
+ }

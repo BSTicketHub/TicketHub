@@ -12,6 +12,8 @@ using System.Web.Mvc;
 using TicketHubApp.Models.ViewModels;
 using TicketHubDataLibrary.Models;
 using TicketHubApp.Services;
+using Newtonsoft.Json.Linq;
+using System.Runtime.InteropServices;
 
 namespace TicketHubApp.Controllers
 {
@@ -61,10 +63,17 @@ namespace TicketHubApp.Controllers
 
         public ActionResult IssueList(int? orderValue)
         {
+            return View();
+        }
+
+        //for api
+        public ActionResult getIssueApi(int order, bool closed)
+        {
             var service = new ShopIssueService();
-            var viewModel = service.GetAll(orderValue).Items;
-            
-            return View(viewModel);
+            var viewModel = service.GetIssueListApi(order, closed).Items;
+            string result = JsonConvert.SerializeObject(viewModel);
+
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult CreateIssue()
@@ -85,7 +94,7 @@ namespace TicketHubApp.Controllers
             if (ModelState.IsValid)
             {
                 var service = new ShopIssueService();
-                var result = service.Create(shopissueVM);
+                var result = service.CreateIssue(shopissueVM);
                 if (result.Success)
                 {
                     return RedirectToAction("IssueList");
@@ -135,7 +144,7 @@ namespace TicketHubApp.Controllers
             if (ModelState.IsValid)
             {
                 var service = new ShopIssueService();
-                var result = service.Update(shopissueVM);
+                var result = service.UpdateIssue(shopissueVM);
                 if (result.Success)
                 {
                     return RedirectToAction("IssueList");
@@ -152,11 +161,46 @@ namespace TicketHubApp.Controllers
 
         public ActionResult ShopInfo()
         {
-            return View();
+            ShopInfoService service = new ShopInfoService();
+            ShopViewModel shopVM = service.GetShopInfo();
+            if (shopVM == null)
+            {
+                return HttpNotFound();
+            }
+
+            var countryList = new TagService().GenCountry();
+            ViewBag.countryList = countryList;
+
+            TempData["ImgPath"] = shopVM.BannerImg;
+            return View(shopVM);
         }
 
-        public ActionResult IssueDetails()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ShopInfo(ShopViewModel shopVM)
         {
+            var countryList = new TagService().GenCountry();
+            ViewBag.countryList = countryList;
+            ViewBag.Message = "";
+            if (TempData["ImgPath"] != null)
+            {
+                shopVM.BannerImg = (string)TempData["ImgPath"];
+            }
+
+            if (ModelState.IsValid)
+            {
+                var service = new ShopInfoService();
+                var result = service.UpdateShopInfo(shopVM);
+                if (result.Success)
+                {
+                    return RedirectToAction("ShopInfo");
+                }
+                else
+                {
+                    ViewBag.Message = "更新失敗";
+                    return View(shopVM);
+                }
+            }
             return View();
         }
 
@@ -165,30 +209,13 @@ namespace TicketHubApp.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public ActionResult AddToFavoriteList(string ShopId, string UserId)
-        //{
-        //    using(var _context = TicketHubContext.Create())
-        //    {
-        //        _context.SaveChanges();
-        //    }
-        //    return Json(ShopId, JsonRequestBehavior.AllowGet);
-        //}
+        public ActionResult getReportApi(List<string> duration)
+        {
+            var service = new ShopReportService();
+            var result = service.getSalesRepoet(duration);
 
-        //[HttpPost]
-        //public ActionResult DeleteFromFavoriteList(string ShopId, string UserId)
-        //{
-        //    using (var _context = TicketHubContext.Create())
-        //    {
-        //        var ShopGUID = Guid.Parse(ShopId);
-        //        var entity = (from x in _context.UserFavoriteShop
-        //                     where x.ShopId == ShopGUID && x.UserId == UserId
-        //                     select x).FirstOrDefault();
-        //        _context.UserFavoriteShop.Remove(entity);
-        //        _context.SaveChanges();
-        //    }
-        //    return Content("Deleted");
-        //}
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
 
         [HttpPost]
         public ActionResult ToggleFavoriteList(string ShopId, string UserId)
@@ -219,6 +246,30 @@ namespace TicketHubApp.Controllers
                 _context.SaveChanges();
             }
             return Content("Complete");
+        }
+
+        public ActionResult IssueDetails(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var service = new ShopIssueService();
+            var result = service.GetIssue(Guid.Parse(id));
+            if (result == null)
+            {
+                return HttpNotFound();
+            }
+
+            ViewBag.IssueId = result.Id.ToString();
+            return View(result);
+        }
+
+        public ActionResult getIssueDetailApi(string Id)
+        {
+            var service = new ShopIssueService();
+            var jsonData = service.GetIssueDetailsApi(Guid.Parse(Id));
+            return Json(jsonData, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -1,20 +1,18 @@
-﻿.form-control:focus {
-  box-shadow: none; }
-
-button {
+﻿.blueBtn {
   background-color: #2a94db;
   color: #fff;
   border: 1px solid #2a94db;
   border-radius: 2px;
   padding: 3px 10px; }
-  button:hover {
+  .blueBtn:hover {
     background-color: #fff;
     color: #2a94db; }
-  button:focus {
-    outline: none; }
-  button:active {
+  .blueBtn:focus {
+    outline: none;
+    box-shadow: none; }
+  .blueBtn:active {
     background-color: #2a94db;
     color: #fff; }
 
-.kkColor {
-  color: #26bec9; }
+#datatable_filter input {
+  border-radius: 5px; }

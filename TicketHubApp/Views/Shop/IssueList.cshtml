@@ -8,60 +8,13 @@
             </div>
             <div class="btnList p-2 border-top">
                 @Html.ActionLink("票券上架", "CreateIssue", "Shop", null, new { @class = "btn blueBtn" })
-                @*<button class="btn btn-sm blueBtn py-1 px-2 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        編輯排序
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">依銷售數量</a>
-                        <a class="dropdown-item" href="#">依上架時間</a>
-                        <a class="dropdown-item" href="#">依商品編號</a>
-                    </div>*@
                 <select class="custom-select blueBtn custom-select-sm w-auto pr-4" id="order">
                     <option selected>編輯排序</option>
                     <option value="1">依銷售數量</option>
                     <option value="2">依上架時間</option>
-                    <option value="3">依商品編號</option>
+                    <option value="3">依商品價錢</option>
                 </select>
                 <button class="btn btn-sm blueBtn py-1 px-2">刪除商品</button>
-            </div>
-            <div class="tableBlock">
-                <table class="table table-hover">
-                    <thead class="position-sticky">
-                        <tr>
-                            <th>
-                                <input class="align-middle" type="checkbox" value="" id="defaultCheck1">
-                            </th>
-                            <th>商品圖片</th>
-                            <th>商品名稱</th>
-                            <th>商品編號</th>
-                            <th>價格</th>
-                            <th>商品狀態</th>
-                            <th>最後修改時間</th>
-                        </tr>
-                    </thead>
-                    <tbody id="ticketList">
-                        @foreach (var issue in Model)
-                        {
-                            @Html.Partial("_IssueListTablePartial", issue)
-                        }
-                    </tbody>
-
-                </table>
-            </div>
-        </div>
-        <div class="col-12 bg-white shadow p-3 mt-5">
-            <div>
-                <p>歷史票券</p>
-            </div>
-            <div class="btnList p-2 border-top">
-                <button class="btn btn-sm blueBtn py-1 px-2 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    編輯排序
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">依銷售數量</a>
-                    <a class="dropdown-item" href="#">依上架時間</a>
-                    <a class="dropdown-item" href="#">依商品價格</a>
-                </div>
             </div>
             <div class="tableBlock">
                 <table class="table table-hover">
@@ -73,21 +26,48 @@
                             <th>商品編號</th>
                             <th>價格</th>
                             <th>商品狀態</th>
-                            <th>最後修改時間</th>
+                            <th>上架時間</th>
                         </tr>
                     </thead>
-                    <tbody id="historyTicket">
+                    <tbody id="ticketList"></tbody>
+                </table>
+                <template id="issueTemplate">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </template>
+            </div>
+        </div>
+        <div class="col-12 bg-white shadow p-3 mt-5">
+            <div>
+                <p>歷史票券</p>
+            </div>
+            <div class="btnList p-2 border-top">
+                <select class="custom-select blueBtn custom-select-sm w-auto pr-4" id="orderHistory">
+                    <option selected>編輯排序</option>
+                    <option value="1">依銷售數量</option>
+                    <option value="2">依上架時間</option>
+                    <option value="3">依商品價錢</option>
+                </select>
+            </div>
+            <div class="tableBlock">
+                <table class="table table-hover">
+                    <thead class="position-sticky">
                         <tr>
-                            <td></td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
+                            <th></th>
+                            <th>商品圖片</th>
+                            <th>商品名稱</th>
+                            <th>商品編號</th>
+                            <th>價格</th>
+                            <th>商品狀態</th>
+                            <th>上架時間</th>
                         </tr>
-                    </tbody>
-
+                    </thead>
+                    <tbody id="historyTicket"></tbody>
                 </table>
             </div>
         </div>
@@ -101,19 +81,64 @@
 
 @section endJS{
     <script>
+        let close = true;
+        let release = false;
 
-        function ticketClick(tr) {
-            let id = tr.children[3].innerText;
-            window.location.assign("EditIssue" + "?id=" + id);
-        }
-    </script>
-
-    <script>
         let selectOrder = document.getElementById("order");
         selectOrder.addEventListener("change", function ordering() {
-            window.location.assign("IssueList" + "?orderValue=" + this.value);
+            fetchData(this.value, "ticketList", release);
         });
 
-        
+        let orderHistory = document.getElementById("orderHistory");
+        orderHistory.addEventListener("change", function ordering() {
+            fetchData(this.value, "historyTicket", close);
+        });
+
+        fetchData(0, "ticketList", release);
+        fetchData(0, "historyTicket", close);
+
+        async function fetchData(orderValue, parentId, closed) {
+            $.ajax({
+                type: 'POST',
+                url: 'getIssueApi',
+                data: { order: orderValue, closed: closed },
+                success: function (json) {
+                    json = JSON.parse(json);
+                    genTable(json, parentId);
+                }
+            });
+            
+        }
+
+        function genTable(list, parentId) {
+            let tbody = document.getElementById(parentId);
+            tbody.innerHTML = "";
+            var template = document.getElementById("issueTemplate");
+            var td = template.content.querySelectorAll("td");
+            console.log(list)
+            for (let item of list) {
+                let tr = document.createElement("tr");
+                if (item.ImgPath) {
+                    td[1].innerHTML = `<img src= ${item.ImgPath} />`;
+                } else {
+                    td[1].innerHTML = "";
+                }
+                td[1].className += "p-0 align-middle";
+                td[2].innerText = item.Title;
+                td[3].innerText = item.Id;
+                td[4].innerText = item.DiscountPrice;
+                td[5].innerText = item.Status;
+                //td[6].innerHTML = new Date(parseInt(item.ReleasedDate.substr(6)));
+                td[6].innerHTML = item.ReleasedDate;
+                console.log(item.ReleasedDate);
+                var clone = document.importNode(template.content, true);
+                tr.appendChild(clone);
+                tbody.appendChild(tr);
+                tr.addEventListener("click", function () {
+                    let id = this.children[3].innerText;
+                    window.location.assign("IssueDetails" + "?id=" + id);
+                });
+            }
+        }        
     </script>
 }

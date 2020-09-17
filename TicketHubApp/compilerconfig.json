@@ -84,11 +84,11 @@
     "inputFile": "Assets/CSS/ProductDescription.scss"
   },
   {
-    "outputFile": "Assets/CSS/ProductCart.css",
-    "inputFile": "Assets/CSS/ProductCart.scss"
-  },
-  {
     "outputFile": "Assets/CSS/Common/Site.css",
     "inputFile": "Assets/CSS/Common/Site.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/Shop/IssueDetails.css",
+    "inputFile": "Assets/CSS/Shop/IssueDetails.scss"
   }
 ]

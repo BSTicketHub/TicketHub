@@ -21,12 +21,13 @@ function showModal() {
     let salePrice = document.getElementById("salePrice").value;
 
     let ticketImg = document.querySelector(".ticketImg");
-    let title = document.querySelector(".ticketListTicket h3");
-    let description = document.querySelector(".ticketListTicket p.description");
+    let title = document.querySelector("#issue h3");
+    let description = document.querySelector("#issue p.description");
     let ticketListOldPrice = document.querySelector(".ticketListOldPrice");
     let ticketListSalesPrice = document.querySelector(".ticketListSalesPrice");
 
     ticketImg.setAttribute('style', `background-image: url(${upLoadImage})`);
+    console.log(title);
     title.innerText = textTitle;
     description.innerText = memo;
     ticketListOldPrice.innerText = originalPrice;
