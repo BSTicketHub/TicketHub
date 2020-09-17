@@ -246,6 +246,7 @@
     <Compile Include="Models\ViewModels\PlatformUserViewModel.cs" />
     <Compile Include="Models\ViewModels\PlatformOrderViewModel.cs" />
     <Compile Include="Models\ViewModels\DataTableViewModel.cs" />
+    <Compile Include="Models\ViewModels\ProductDetailViewModel.cs" />
     <Compile Include="Models\ViewModels\RecommenCardListViewModel.cs" />
     <Compile Include="Models\ViewModels\RecommenCardViewModel.cs" />
     <Compile Include="Models\ViewModels\ShopIssueDetailViewModel.cs" />
@@ -265,6 +266,7 @@
     <Compile Include="Services\PlatformShopService.cs" />
     <Compile Include="Models\ViewModels\StoreTicketListViewModel.cs" />
     <Compile Include="Models\ViewModels\ShopIssueViewModel.cs" />
+    <Compile Include="Services\ProductDetailService.cs" />
     <Compile Include="Services\ShopInfoService.cs" />
     <Compile Include="Services\ShopIssueService.cs" />
     <Compile Include="Services\ShopReportService.cs" />
@@ -673,6 +675,7 @@
     <Content Include="Assets\CSS\ProductCart.scss" />
     <Content Include="Assets\CSS\Common\Site.scss" />
     <Content Include="Assets\CSS\Shop\IssueDetails.scss" />
+    <Content Include="Assets\CSS\ProductDescription.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
