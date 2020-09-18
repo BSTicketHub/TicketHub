@@ -41,7 +41,7 @@ namespace TicketHubApp.Services
         {
             var _context = TicketHubContext.Create();
             var repo = new GenericRepository<UserFavoriteShop>(_context);
-            var favoriteList = repo.GetAll().Where(x => x.UserId == userId).Select(x => x.ShopId);
+            var favoriteList = repo.GetAll().Where(x => x.UserId == userId).Select(x => x.ShopId).ToList();
             return favoriteList;
         } 
     }

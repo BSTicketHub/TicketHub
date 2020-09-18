@@ -11,7 +11,7 @@ namespace TicketHubApp.Services
 {
     public class TicketListService
     {
-        public IEnumerable<StoreTicketListViewModel> SearchIssue(string input)
+        public IEnumerable<ShopIssueViewModel> SearchIssue(string input)
         {
             var _context = TicketHubContext.Create();
             var repo = new GenericRepository<Issue>(_context);
@@ -19,7 +19,7 @@ namespace TicketHubApp.Services
             var result = from i in issueList
                          join s in _context.Shop on i.ShopId equals s.Id
                          where s.City.Contains(input) || s.District.Contains(input)
-                         select new StoreTicketListViewModel
+                         select new ShopIssueViewModel
                          {
                              Id = i.Id,
                              Memo = i.Memo,
