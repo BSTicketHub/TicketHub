@@ -7,8 +7,9 @@
     <link href="/Assets/Images/Home/ticketHub.png" rel="shortcut icon" type="image/ico">
     <title>@ViewBag.Title - 我的 ASP.NET 應用程式</title>
     @Styles.Render("~/bundles/css/bootstrap")
-    @Styles.Render("~/bundles/css/Home")
+    @Styles.Render("~/bundles/css/Site")
     @Scripts.Render("~/bundles/js/modernizr")
+    @Styles.Render("~/bundles/css/Home")
     @RenderSection("topCSS", required: false)
 </head>
 <body>
@@ -31,155 +32,7 @@
             </a>
         </div>
     </div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top pl-2 pr-2">
-        <a class="navbar-brand ml-2" href="/Home/Index"> <img src="/Assets/Images/Home/logo.png" alt="logo" width="100"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <form class="form-inline my-2 my-lg-0 ml-3">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="輸入地點、餐廳或美食">
-                    <div class="input-group-append">
-                        <button class="btn btn-info pl-3 pr-3" type="button" id="">
-                            <span class="iconify"
-                                  data-icon="bx:bx-search" data-inline="false"></span>
-                        </button>
-                    </div>
-                </div>
-            </form>
-            <ul class="navbar-nav ml-auto mr-3">
-                <li class="nav-item dropdown active d-align-items">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        熱門票劵
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a href="" class="dropdown-item">異國料理</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="" class="dropdown-item">自助百匯</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="" class="dropdown-item">早午餐</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="" class="dropdown-item">下午餐</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="" class="dropdown-item">素食餐廳</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown active d-align-items">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        吃到飽
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a href="" class="dropdown-item">燒肉</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="" class="dropdown-item">火鍋</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="" class="dropdown-item">熱炒</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="" class="dropdown-item">超值餐廳</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown active d-align-items">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        限時特惠
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a href="" class="dropdown-item">異國料理</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="" class="dropdown-item">自助百匯</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="" class="dropdown-item">早午餐</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="" class="dropdown-item">下午餐</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="" class="dropdown-item">素食餐廳</a>
-                    </div>
-                </li>
-                @Html.Partial("_LoginPartial")
-            </ul>
-
-            <ul class="form-inline navbar-nav mr-5 poition-relative" onmousemove="shopCart()" onclick=""
-                onmouseout="shopCartMove()">
-                <li class="dropdown cart-dropdown dropleft">
-                    <a class="cart-link">
-                        <span class="iconify icon-f-30" data-icon="clarity:shopping-cart-solid"
-                              data-inline="false"></span>
-                        <div class="badge span-badge bg-danger">
-                            1
-                        </div>
-                    </a>
-                    <div class="dropdown-menu show-dropdown showCart hidden-sm hidden-xs cart-dropdown-menu">
-                        <div class="cart-group cart_delete_item">
-                            <div class="cart-item">
-                                <a href="">
-                                    <div class="product-img img-bg">
-                                    </div>
-                                </a>
-                                <div class="cart-detail">
-                                    <div class="product-detail">
-                                        <h3>
-                                            <a href="">
-                                                高雄 - 墾丁｜定點共乘接送｜直達高雄高鐵
-                                            </a>
-                                        </h3>
-                                        <div class="product-option">【高雄出發】</div>
-                                    </div>
-                                    <div class="text-tag">2020-09-12 11:00</div>
-                                    <div class="text-tag">人數 x 1</div>
-                                    <div class="product-pricing ">
-                                        <h4>TWD 388</h4>
-                                    </div>
-                                </div>
-                                <div class="product-action">
-                                    <button type="button" class="btn btn-light" data-toggle="modal"
-                                            data-target="#CartModal">
-                                        <span class="iconify" data-icon="bi:trash" data-inline="false"></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="cart-item">
-                                <a href="">
-                                    <div class="product-img img-bg">
-                                    </div>
-                                </a>
-                                <div class="cart-detail">
-                                    <div class="product-detail">
-                                        <h3>
-                                            <a href="">
-                                                高雄 - 墾丁｜定點共乘接送｜直達高雄高鐵
-                                            </a>
-                                        </h3>
-                                        <div class="product-option">【高雄出發】</div>
-                                    </div>
-                                    <div class="text-tag">2020-09-12 11:00</div>
-                                    <div class="text-tag">人數 x 1</div>
-                                    <div class="product-pricing ">
-                                        <h4>TWD 388</h4>
-                                    </div>
-                                </div>
-                                <div class="product-action">
-                                    <button type="button" class="btn btn-light" data-toggle="modal"
-                                            data-target="#CartModal">
-                                        <span class="iconify" data-icon="bi:trash" data-inline="false"></span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="cart-footer">
-                            <div class="text-tag">共<span id="">1</span>件商品</div>
-                            <button href="#" class="btn btn-info">
-                                查看購物車
-                            </button>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    @Html.Action("GenSideMenu", "Menu", new { page = "Home" })
     <div class="modal fade" id="CartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">

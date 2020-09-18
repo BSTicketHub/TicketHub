@@ -214,6 +214,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\PlatformController.cs" />
     <Compile Include="Controllers\ProductDescriptionController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
@@ -668,6 +669,9 @@
     <Content Include="Assets\CSS\Common\Site.scss" />
     <Content Include="Assets\CSS\Shop\IssueDetails.scss" />
     <Content Include="Assets\CSS\ProductDescription.scss" />
+    <Content Include="Assets\CSS\Common\_navbar.scss" />
+    <Content Include="Assets\CSS\Common\_sideMenu.scss" />
+    <Content Include="Assets\CSS\Common\_font.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -721,6 +725,7 @@
     <Content Include="Views\Platform\ShopList.cshtml" />
     <Content Include="Views\Platform\OrderList.cshtml" />
     <Content Include="Views\Platform\Index.cshtml" />
+    <Content Include="Views\Shared\_Navbar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

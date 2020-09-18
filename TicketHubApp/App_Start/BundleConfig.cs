@@ -46,7 +46,8 @@ namespace TicketHubApp
                       "~/Assets/CSS/Common/owl.theme.default.css"
                       ));
             //----------------single bundle----------------single bundle----------------
-
+            bundles.Add(new StyleBundle("~/bundles/css/Site")
+                .Include("~/Assets/CSS/Common/Site.min.css"));
 
             //Login page bundles
             bundles.Add(new StyleBundle("~/bundles/css/Login")

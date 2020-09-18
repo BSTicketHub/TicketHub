@@ -1,7 +1,24 @@
 ﻿@import "../_variables.scss";
 
-.text-sm {
-    font-size: 0.8rem;
+* {
+    font-family: 微軟正黑體, sans-serif;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body.manage-platform {
+    background-color: $background;
+}
+
+a {
+    text-decoration: none;
+    color: $black-333333;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: none;
+    }
 }
 
 .btn-cust {
@@ -21,3 +38,7 @@
     background-color: $platform-color-8;
     border-color: $platform-color-8;
 }
+
+@import "./_font.scss";
+@import "./_navbar.scss";
+@import "./_sideMenu.scss";
