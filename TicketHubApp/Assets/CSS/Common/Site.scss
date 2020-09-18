@@ -1,0 +1,23 @@
+﻿@import "../_variables.scss";
+
+.text-sm {
+    font-size: 0.8rem;
+}
+
+.btn-cust {
+    color: $back-paper;
+    background-color: $cust-color-8;
+    border-color: $cust-color-8;
+}
+
+.btn-shop {
+    color: $back-paper;
+    background-color: $shop-color-8;
+    border-color: $shop-color-8;
+}
+
+.btn-platform {
+    color: $back-paper;
+    background-color: $platform-color-8;
+    border-color: $platform-color-8;
+}

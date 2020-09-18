@@ -1,86 +1,88 @@
-﻿@{ ViewBag.Title = "Ticketdescription"; }
+﻿@model TicketHubApp.Models.ViewModels.ProductDetailViewModel
+
 @Styles.Render("~/bundles/css/ProductDescription")
+
 <div class="container">
     <div class="foodstyle">
-        <div class="row d-flex justify-content-between">
+        <!--<div class="row d-flex justify-content-start">
             <ol class="row d-flex ">
-                <li class="breadcrumb-item"><a href="#">台北</a></li>
-                <a class="breadcrumb-item active" aria-current="page" href="#">台菜</a>
+                <li class="breadcrumb-item"><a href="#">新北市</a></li>
+                <a class="breadcrumb-item active" aria-current="page" href="#">新店區</a>
                 <!-- 文字無法貼齊 -->
-            </ol>
-            <div>
-                <p class="text-muted d-flex justify-content-end">商品編號 #567890</p>
-            </div>
-        </div>
+        <!--</ol>-->
+        @*<div>
+                <p class="text-muted d-flex justify-content-end">@Model.Id</p>
+            </div>*@
+    </div>
 
-        <div class="text-white banner">
-            <div class="img-banner rounded"></div>
-        </div>
-        <!-- 商品標頭、簡介 -->
-        <div class="row main mt-3">
-            <div class="col-8">
-                <h1>若羚珍饌重慶麻辣火鍋 | 雙人珍饌</h1>
-                </br>
-                <div class="location">
-                    <ol class="row">
-                        <span class="iconify place_marker" data-icon="ic:baseline-place" data-inline="false"></span>
-                        <li class="breadcrumb-item"><a href="#">新北市</a></li>
-                        <a class="breadcrumb-item active" aria-current="page" href="#">新店區</a>
-                    </ol>
-                </div>
-                <div class="description-context">
-                    <h3>餐廳簡介</h3>
-                    <hr>
-                    <p>
-                        來自基隆，在地人激推的麻辣火鍋名店──【若羚珍饌重慶麻辣火鍋】，現在想一嚐它的美味，不用再遠赴基隆，因為台北永春也吃得到！
-                        在基隆當地可是有口皆碑的【若羚珍饌重慶麻辣火鍋】，起家於三位遠渡重洋的大陸新娘，從重慶而來的正宗麻辣味，揀選了數種辛香料費心燉製，那紅通通的湯頭，飽含著所有的用心與功夫，完美地將重慶道地的麻辣呈現出來，讓台灣的朋友們，也能品味到麻辣湯頭的精隨，高達五千人按讚的粉絲專頁，更讓人感受到它的高人氣！嗜好吃辣的朋友，怎麼能錯過這人氣爆棚的名店呢？
-                    </p>
-                </div>
-                <div class="mt-3 explaininfo">
-                    <!-- 票券可使用資訊 -->
-                    <!-- <div class="col-8"> -->
-                    <div class="">
-                        <!-- 有制式form 由客戶新增 -->
-                        <h3>餐廳資訊</h3>
-                        <hr>
-                        <p>營業時間:</p>
-                        <div class="row">
-                            <p class="col-6">電話: 02-2222-4455</p>
-                            <p class="col-6">傳真: 02- 2722-4455 </p>
-                        </div>
-                        <p>Email: </p>
-                        <p>地址: </p>
-                        <p>店家官網: https://www.gomaji.com/store/146299?pid=256640#package</p>
-                    </div>
-                    <!-- </div> -->
-                </div>
-                <!-- 須由客戶自行新增 -->
-                <h3 id="exContent" class="mt-3">優惠內容</h3>
-                <hr>
-                <li>雙人珍饌</li>
-                <li>優惠期間: 2020/09/10 ~ 2021/09/09</li>
-                <li>請提前預約，並告知使用ticketHub票券</li><br />
-                <p>
-                    重慶麻辣鍋
-                    品嚐鍋物料理，湯頭絕對是能決定這一餐好不好吃的關鍵！【若羚珍饌重慶麻辣火鍋】維持了重慶道地的口味，紅如烈火的湯頭，只涮肉，不喝湯，將重慶吃鍋的文化特色，完整地搬到了台灣。使用辣椒、大紅袍花椒、青花椒…等嚴選辛香料連續爆香熱炒八小時製成基底，嚐起來香、麻、辣三種麻辣鍋不可或缺的元素都相當到味，絕對正宗！這香中帶辣、辣而不嗆，並酥麻過癮的滋味，涮入嫩肉、時蔬品味，都是讓人難以抵擋的美味！嗜辣的朋友，絕對不能錯過這一鍋！
-                </p>
-                <!-- 固定 -->
-                <h3 id="exHowToUse" class="mt-3">如何使用</h3>
-                <hr>
-                <li>憑證使用方式</li>
-                <p>現場請出示電子憑證</p>
-                <li>憑證兌換期限</li>
-                <P>票券優惠期間須按照票券日期，逾期須補齊差額至原價</P>
-                <br />
+    <div class="mt-3 img-banner rounded d-flex align-items-center">
+        <img class="w-100" src="@Model.ImgPath " />
+
+    </div>
+    <!-- 商品標頭、簡介 -->
+    <div class="row main mt-3">
+        <div class="col-8">
+            <h1>@Model.Title | @Model.ShopName </h1>
+            <br />
+            <div class="location">
+                <ol class="row">
+                    <li><span class="iconify place-marker" data-icon="ic:baseline-place" data-inline="false"></span></li>
+                    <li class="breadcrumb-item"><a href="#">新北市</a></li>
+                    <li><a class="breadcrumb-item active" aria-current="page" href="#">新店區</a></li>
+                </ol>
             </div>
-            <div class="col-4">
-                <div class="rightcar">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 id="price" class="card-title">TWD 500</h4>
-                            <p class="originprice">原價 TWD 800</p>
-                            <a href="#" class="btn btn-info cartbtn w-100 text-center">加入購物車</a>
-                        </div>
+            <div class="description-context">
+                <h3>餐廳簡介</h3>
+                <hr>
+                <p class="text-muted">
+                    @Model.ShopIntro
+                </p>
+            </div>
+            <div class="mt-3 explaininfo">
+                <!-- 票券可使用資訊 -->
+                <!-- <div class="col-8"> -->
+                <div class="">
+                    <!-- 有制式form 由客戶新增 -->
+                    <h3>餐廳資訊</h3>
+                    <hr>
+                    <div class="row">
+                        <p class="col-6">電話: @Model.Phone</p>
+                        <p class="col-6">傳真: @Model.Fax </p>
+                    </div>
+                    <p>Email:@Model.Email </p>
+                    <p id="address">地址:@Model.District @Model.Address </p>
+                    <p>店家官網: @Model.Website</p>
+                </div>
+                <!-- </div> -->
+            </div>
+            <!-- 須由客戶自行新增 -->
+            <h3 id="exContent" class="mt-3">優惠內容</h3>
+            <hr>
+            <h5>@Model.Title</h5>
+            <ol>
+                <li>發行日: @Model.ReleasedDate.ToString("yyyy-MM-dd") ~ @Model.ClosedDate</li>
+                <li>請提前預約，並告知使用ticketHub票券</li>
+            </ol>
+            <br />
+            <p>
+                @Model.Memo
+            </p>
+            <!-- 固定 -->
+            <h3 id="exHowToUse" class="mt-3">如何使用</h3>
+            <hr>
+            <p>憑證使用方式</p>
+            <p>現場請出示電子憑證</p>
+            <p>憑證兌換期限</p>
+            <P>票券優惠期間須按照票券日期，逾期須補齊差額至原價</P>
+            <br />
+        </div>
+        <div class="col-4">
+            <div class="rightcar">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 id="price" class="card-title">TWD @Model.DiscountPrice</h4>
+                        <p class="originprice">原價 @Model.OriginalPrice</p>
+                        <a href="#" class="btn btn-info cartbtn w-100 text-center">加入購物車</a>
                     </div>
                 </div>
             </div>
@@ -286,7 +288,10 @@
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/js/ProductDescription")
+    <script type="text/javascript" src="~/Assets/JavaScript/Product/ProductDescription.js" charset="utf-8"></script>
+    @*@Scripts.Render("~/bundles/js/ProductDescription")*@
     <script defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbOibXZPeCKpq5tbdQZD0B5By6Z3MkQHc&callback=initMap"></script>
+
+    initMap();
 }

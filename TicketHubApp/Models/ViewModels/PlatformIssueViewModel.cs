@@ -20,26 +20,19 @@ namespace TicketHubApp.Models.ViewModels
         [Display(Name = "折扣比率")]
         public decimal DiscountRatio { get; set; }
         [Display(Name = "總發行張數")]
-        public decimal Amount { get; set; }
+        public decimal? Amount { get; set; }
         [Display(Name = "已售出張數")]
         public decimal SelledAmount { get; set; }
         [Display(Name = "庫存張數")]
         public decimal Stock { get; set; }
         [Display(Name = "已兌換張數")]
-        public decimal ExchangeAmount { get; set; }
+        public decimal? ExchangeAmount { get; set; }
         [Display(Name = "發行時間")]
         public DateTime IssuedDate { get; set; }
-        [Display(Name = "釋出時間")]
+        [Display(Name = "上架時間")]
         public DateTime ReleasedDate { get; set; }
         [Display(Name = "下架時間")]
-        public DateTime ClosedDate { get; set; }
-        [Display(Name = "發行人代號")]
-        public string IssuerId { get; set; }
-        [Display(Name = "發行人名稱")]
-        public string UserName { get; set; }
-        [Display(Name = "票券所屬商家代號")]
-        public Guid ShopId { get; set; }
-        [Display(Name = "票券所屬商家名稱")]
-        public string ShopName { get; set; }
+        public DateTime? ClosedDate { get; set; }
+        public decimal? TotalRevenue { get; set; }
     }
 }

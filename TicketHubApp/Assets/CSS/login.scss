@@ -17,6 +17,18 @@ body {
     background-attachment: fixed;
 }
 
+input {
+    background: transparent;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0.3rem 0.3rem 0 0;
+
+    &:focus {
+        outline: none;
+    }
+}
+
 #login-backImg {
     position: absolute;
     width: 100%;
@@ -70,13 +82,8 @@ body {
     }
 }
 
-#info-success,
-#info-fail {
-    width: 35%;
-    min-width: 350px;
-}
-
-#platform {
+#platform,
+#info-warning {
     color: $platform-color-13;
 
     h2 > span {
@@ -87,7 +94,8 @@ body {
         border-bottom: 1px solid $platform-color-13;
     }
 
-    .ticketReceipt {
+    .ticketReceipt,
+    .ticketReceiptVertical {
         background-color: $platform-color-8;
 
         .ticketType {
@@ -95,6 +103,19 @@ body {
             text-shadow: 1px 1px 1px $platform-color-5;
         }
     }
+}
+
+
+#info-success,
+#info-fail,
+#info-warning {
+    width: 35%;
+    min-width: 350px;
+}
+
+
+#reset-password {
+    line-height: 1.3;
 }
 
 .login-container {
@@ -114,18 +135,6 @@ body {
     &:not(.active) {
         left: -85%;
         z-index: 10;
-    }
-
-    input {
-        background: transparent;
-        border-top: 0;
-        border-left: 0;
-        border-right: 0;
-        border-radius: 0.3rem 0.3rem 0 0;
-
-        &:focus {
-            outline: none;
-        }
     }
 }
 
@@ -187,6 +196,10 @@ body {
 
     &.fail {
         color: red;
+    }
+
+    &.warning {
+        color: orange;
     }
 }
 

@@ -1,11 +1,15 @@
-﻿
+﻿@model TicketHubApp.Models.ViewModels.ShopIssueViewModel
+
 <div class="container ticketDetail">
     <div class="row">
         <div class="col-12 bg-white shadow p-3 border">
-            @Html.Partial("_Ticket")
+            @Html.Partial("_Ticket", Model)
+        </div>
+        <div class=" my-2 p-2">
+            <button class="btn blueBtn" id="modify">編輯票券</button>
         </div>
 
-        <div class="col-12 bg-white shadow my-5 p-3">
+        <div class="col-12 bg-white shadow py-3">
             <table id="datatable" class="display">
                 <thead>
                     <tr>
@@ -18,22 +22,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>12321321</td>
-                        <td>Job</td>
-                        <td>5</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>0912345678</td>
-                    </tr>
-                    <tr>
-                        <td>12198721</td>
-                        <td>Marry</td>
-                        <td>2</td>
-                        <td>0</td>
-                        <td>2</td>
-                        <td>0922222222</td>
-                    </tr>
                 </tbody>
             </table>
         </div>
@@ -44,12 +32,8 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
 
     <link href="~/Assets/CSS/Common/Ticket.min.css" rel="stylesheet" />
-    @*for datatable css*@
-    <style>
-        #datatable_filter input{
-            border-radius: 5px;
-        }
-    </style>
+    
+    <link href="~/Assets/CSS/Shop/IssueDetails.min.css" rel="stylesheet" />
 }
 
 @section endJS{
@@ -58,9 +42,18 @@
     <script>
         $(document).ready(function () {
             $('#datatable').DataTable({
-                //paging: false,
+                "ajax": {
+                    "url": 'getIssueDetailApi',
+                    "data": { "Id": "@ViewBag.IssueId" }
+                    },
+                "scrollX": true,
+                "stateSave": true,
                 scrollY: 250
             });
+        });
+
+        document.getElementById("modify").addEventListener("click", function () {
+            window.location.assign("EditIssue" + "?id=" + "@ViewBag.IssueId");
         });
     </script>
 } 

@@ -1,7 +1,7 @@
-﻿@model TicketHubApp.Models.ViewModels.StoreTicketListViewModel
+﻿@model TicketHubApp.Models.ViewModels.ShopIssueViewModel
 
-<div class="bg-white d-flex my-4 ticket position-relative rounded w-100" style="height:250px;">
-    <div class="position-relative ticketImg col-md-4"></div>
+<div id="issue" class="bg-white d-flex ticket position-relative rounded w-100" style="height:250px;">
+    <div class="position-relative ticketImg col-md-4 border" style="background-image:url(@Model.ImgPath)"></div>
     <div class="col-md-8">
 
         @if (ViewBag.WishIssue.Contains(Model.Id))
@@ -17,7 +17,7 @@
         <p class="description">@Model.Memo</p>
         <div>
             <span class="iconify" data-icon="carbon:location" data-inline="false"></span>
-            <span class="description">台灣 桃園</span>
+            <span class="description">台灣</span>
         </div>
         <div class="mt-auto mb-0 position-absolute" style="bottom: 10px;">
             <span class="iconify star star-checked" data-icon="uim:star" data-inline="false"></span>
@@ -28,8 +28,8 @@
             <span class="star">(100)</span>
         </div>
         <div class="position-absolute" style="right: 10px; bottom: 10px;">
-            <p class="ticketListOldPrice m-0">@Model.OriginalPrice</p>
-            <p class="ticketListSalesPrice m-0"><span>TWD @Model.DiscountPrice</span></p>
+            <p class="ticketListOldPrice m-0">TWD @Model.OriginalPrice</p>
+            <p class="ticketListSalesPrice m-0">TWD<span> @Model.DiscountPrice</span></p>
         </div>
     </div>
 </div>
