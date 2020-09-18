@@ -1,0 +1,18 @@
+﻿.blueBtn {
+  background-color: #2a94db;
+  color: #fff;
+  border: 1px solid #2a94db;
+  border-radius: 2px;
+  padding: 3px 10px; }
+  .blueBtn:hover {
+    background-color: #fff;
+    color: #2a94db; }
+  .blueBtn:focus {
+    outline: none;
+    box-shadow: none; }
+  .blueBtn:active {
+    background-color: #2a94db;
+    color: #fff; }
+
+#datatable_filter input {
+  border-radius: 5px; }

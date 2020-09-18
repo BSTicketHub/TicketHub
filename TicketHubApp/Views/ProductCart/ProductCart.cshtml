@@ -48,6 +48,43 @@
 
             <hr>
         </div>
+        <div class="new-table">
+            <div class="table-header row text-center">
+                <div class="col-1"></div>
+                <div class="col-2">圖片</div>
+                <div class="col-3">票券簡介</div>
+                <div class="col-2">訂購日期</div>
+                <div class="col-1">張數</div>
+                <div class="col-2">總價</div>
+                <div class="col-1">刪除</div>
+            </div>
+            <div class="table-body text-center mt-3">
+                <div class="row">
+                    <template>
+                        <div class="col-1 custom-checkbox "></div>
+                        <div class="col-2">
+                            <img class="w-100" src="../Assets/Images/img/bar.jpg" alt="Alternate Text" />
+                        </div>
+                        <div class="col-3 fontsize">
+                            <p class="carttitle">日月潭紅茶五吃</p>
+                            <p class="overflow-hidden txth">
+                                台灣手路菜台灣手路菜台灣手路菜台灣手路菜台灣手路菜台灣手路菜台灣手路菜
+                            </p>
+                            <div class="row justify-content-between">
+                                <div class="ml-3 text-muted">原價: 200</div>
+                                <div>折扣價: 150</div>
+                            </div>
+
+                        </div>
+                        <div class="col-2 fontsize">2020/09/30</div>
+                        <div class="col-1 fontsize">4</div>
+                        <div class="col-2">222</div>
+                        <div class="col-1">垃圾桶</div>
+                    </template>
+                </div>
+            </div>
+        </div>
+
         <div class="d-flex align-item-end justify-content-end">
             <input id="gopay" type="button" value="前往結帳" class="btn btn-primary">
         </div>
@@ -69,4 +106,4 @@
     </div>
 </div>
 @Scripts.Render("~/bundles/js/Cart")
-</div>
+

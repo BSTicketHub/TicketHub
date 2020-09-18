@@ -1,43 +1,35 @@
-var cacheData = {
-    map: {},
-    markers: [],
-}
+﻿//中文主解
 
-// Initialize and add the map
+
 function initMap() {
+    var coordinate;
+    //這間餐廳在這裡 25.042848, 121.540344
     // The location of Uluru
-    var uluru = {
-        lat: 25.0417443,
-        lng: 121.535194
+    var taipei = {
+        lat: 25.0392496,
+        lng: 121.5397186
     };
-    // The map, centered at Uluru
     var map = new google.maps.Map(
         document.getElementById('mapApi'), {
-            zoom: 15,
-            center: uluru
-        });
-    // The marker, positioned at Uluru
-    var marker = new google.maps.Marker({
-        position: uluru,
-        map: map
+            zoom: 17,
+            center: taipei
     });
-
-    cacheData.map = map;
-    // sendRequest();
-}
+    // var marker = new google.maps.Marker({position: taipei, map: map});
 
 
+    let addressRequest = new XMLHttpRequest();
 
-function drawMap(features) {
-    for (let i = 0; features.length > i; i++) {
-        let location = {
-            lat: features[i].geometry.coordinates[1],
-            lng: features[i].geometry.coordinates[0]
-        };
+    addressRequest.open('get', 'https://maps.googleapis.com/maps/api/geocode/json?address=320台灣桃園市中壢區春德路105號&key=AIzaSyDbOibXZPeCKpq5tbdQZD0B5By6Z3MkQHc&callback');
+
+    addressRequest.send();
+    addressRequest.onload = function () {
+        let text = this.response;
+        coordinate = JSON.parse(text).results[0].geometry.location;
+        console.log(coordinate)
+        map.setCenter(coordinate);
         let marker = new google.maps.Marker({
-            position: location,
-            map: cacheData.map
-        });
-        cacheData.markers.push(marker);
+            position: coordinate,
+            map: map
+        })
     }
 }

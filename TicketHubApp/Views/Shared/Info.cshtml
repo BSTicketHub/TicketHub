@@ -1,0 +1,38 @@
+﻿@model TicketHubApp.Models.ViewModels.InfoViewModel
+
+@{
+    ViewBag.Title = Model.InfoType ? "Success" : "Error";
+    Layout = "~/Views/Account/_LoginLayout.cshtml";
+    var type = Model.InfoType ? "success" : "fail";
+}
+
+<div id="info-@type" class="info-card my-5">
+    <div class="col-12 ticketStubVertical tickets py-2 text-center">
+        <h2>TicketHub</h2>
+        <span class="iconify info-icon @type" data-icon="@Model.IconName" data-inline="false"></span>
+        <h3>
+            <span>@Model.Title</span>
+        </h3>
+        @if (Model.IsCheckMail)
+        {
+            <p>Please check your email to activate your user account!</p>
+            <p class="text-muted">
+                If you don't receive an email within a few seconds, please check your spam filters
+            </p>
+        }
+        else
+        {
+            <p>@Html.Raw(Model.Content)</p>
+        }
+        @if (Model.IsShowLogin)
+        {
+            @Html.ActionLink("Click here to login.", "Login", "Account")
+        }
+    </div>
+    <div class="col-12 ticketReceiptVertical tickets text-center">
+        <text class="ticketImprint">@Model.SubTitle</text>
+        <div class="barcode-content">
+            <svg class="barcode"></svg>
+        </div>
+    </div>
+</div>
