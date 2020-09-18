@@ -1,0 +1,30 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section topCSS{
+    <style>
+        .text-center{
+            color:#a0a0a0
+        }
+        .text-center .iconify {
+            font-size: 300px;
+        }
+
+        .text-center :nth-child(2) {
+            font-size: 60px
+        }
+
+        .text-center :nth-child(3) {
+            font-size: 30px
+        }
+    </style>
+}
+
+<div class="text-center py-5">
+    <span class="iconify" data-icon="ic:outline-search-off" data-inline="false"></span>
+    <p>很抱歉，您的搜尋沒有結果</p>
+    <p>試著用其他關鍵字再搜尋一次吧</p>
+</div>
+

@@ -2,6 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var searchList = ViewBag.SearchString.Split(' ');
 }
 
 @Styles.Render("~/bundles/css/ShopList")
@@ -15,12 +16,12 @@
 <div class="container">
     <div class="row">
         <div class="col-7 restaurant-area">
-            <h3 class="mt-4 ml-3">台北美食</h3>
+            <h3 class="mt-4 ml-3">精選美饌</h3>
             <div class="tag-list ml-3 my-4">
-                <div class="badge badge-pill mx-1">台北</div>
-                <div class="badge badge-pill mx-1">中式</div>
-                <div class="badge badge-pill mx-1">標籤</div>
-                <div class="badge badge-pill mx-1">標籤</div>
+                @foreach(var s in searchList)
+                {
+                    <div class="badge badge-pill mx-1">@s</div>
+                }
             </div>
             <div class="restaurant-list">
                 @foreach (var restaurant in Model)
