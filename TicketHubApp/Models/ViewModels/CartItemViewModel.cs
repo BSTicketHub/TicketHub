@@ -13,6 +13,8 @@ namespace TicketHubApp.Models.ViewModels
         public string Name { get; set; }
         //商品購買價格
         public decimal Price { get; set; }
+        //商品圖示
+        public string Img { set; get; }
         //商品購買數量
         public int Quantity { get; set; }
         //商品小計
