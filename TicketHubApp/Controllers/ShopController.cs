@@ -1,19 +1,13 @@
-﻿using Microsoft.Ajax.Utilities;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
-using System.Web.Helpers;
 using System.Net;
 using System.Web.Mvc;
 using TicketHubApp.Models.ViewModels;
 using TicketHubDataLibrary.Models;
 using TicketHubApp.Services;
-using Newtonsoft.Json.Linq;
-using System.Runtime.InteropServices;
 
 namespace TicketHubApp.Controllers
 {
@@ -53,12 +47,7 @@ namespace TicketHubApp.Controllers
         // GET: Store
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult HomePage()
-        {
-            return View();
+            return View("HomePage");
         }
 
         public ActionResult IssueList(int? orderValue)

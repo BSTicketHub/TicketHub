@@ -1,4 +1,4 @@
-﻿namespace TicketHubDataLibrary.Models
+﻿namespace TicketHubDataLibrary
 {
     public class RoleName
     {
@@ -11,6 +11,14 @@
 
     public class RoleGroup
     {
+        public const string CUSTOMER = "Customer";
+        public const string SHOP = "Shop";
+        public const string PLATFORM = "Platform";
+    }
+
+    public class PageType
+    {
+        public const string HOME = "Home";
         public const string CUSTOMER = "Customer";
         public const string SHOP = "Shop";
         public const string PLATFORM = "Platform";

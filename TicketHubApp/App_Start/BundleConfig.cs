@@ -32,6 +32,9 @@ namespace TicketHubApp
 
             bundles.Add(new ScriptBundle("~/bundles/js/momentjs").Include(
                       "~/Scripts/moment.js"));
+            
+            bundles.Add(new ScriptBundle("~/bundles/js/sidemenu").Include(
+                      "~/Assets/JavaScript/Common/SideMenu.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/js/carouseljs").Include(
                       "~/Assets/JavaScript/Common/owl.carousel.min.js"));
@@ -45,9 +48,10 @@ namespace TicketHubApp
                       "~/Assets/CSS/Common/owl.carousel.min.css",
                       "~/Assets/CSS/Common/owl.theme.default.css"
                       ));
-            //----------------single bundle----------------single bundle----------------
             bundles.Add(new StyleBundle("~/bundles/css/Site")
                 .Include("~/Assets/CSS/Common/Site.min.css"));
+
+            //----------------single bundle----------------single bundle----------------
 
             //Login page bundles
             bundles.Add(new StyleBundle("~/bundles/css/Login")

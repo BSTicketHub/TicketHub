@@ -1,9 +1,10 @@
 ﻿@{
-    var pageType = ViewBag.Page;
+    var pageType = Request.RawUrl.Split('/')[1];
+    pageType = string.IsNullOrEmpty(pageType) ? "Home" : pageType;
 }
-<nav class="navbar navbar-expand-lg bg-light sticky-top bottom-strip-@pageType">
-    <div class="container">
-        <a class="navbar-brand ml-2" href="/Home/Index">
+<nav class="navbar navbar-expand-lg bg-light bottom-strip-@pageType @(pageType == PageType.HOME ? "sticky-top" : "")">
+    <div class="@(pageType == "Home" ? "container-fluid" : "container")">
+        <a class="navbar-brand ml-2" href="/@pageType/Index">
             <img src="/Assets/Images/Home/logo.png" alt="logo" width="100">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"

@@ -94,10 +94,16 @@ a {
   border-bottom-color: #76c9cf; }
 
 .bottom-strip-Shop {
-  border-bottom-color: #ff8499; }
+  border-bottom-color: #ff8499;
+  position: sticky;
+  top: -70px;
+  z-index: 2; }
 
 .bottom-strip-Platform {
-  border-bottom-color: #fcc16d; }
+  border-bottom-color: #fcc16d;
+  position: sticky;
+  top: -70px;
+  z-index: 2; }
 
 .profile-logo {
   width: 50px;
@@ -126,24 +132,41 @@ a {
 
 .side-menu {
   background-color: white; }
-  .side-menu li.active a {
+  .side-menu.side-menu-Shop, .side-menu.side-menu-Platform {
+    position: sticky;
+    top: 10px; }
+  .side-menu.side-menu-Shop li.active > a {
+    color: #ff3a5c; }
+    .side-menu.side-menu-Shop li.active > a::before {
+      background-color: #ff3a5c; }
+  .side-menu.side-menu-Platform li.active > a {
+    color: #fb9c16; }
+    .side-menu.side-menu-Platform li.active > a::before {
+      background-color: #fb9c16; }
+  .side-menu li.active > a {
     position: relative;
     color: #23a8b2; }
-    .side-menu li.active a::before {
+    .side-menu li.active > a::before {
       content: "";
       position: absolute;
       left: 0;
       height: 24px;
       width: 4px;
       background-color: #23a8b2; }
-  .side-menu li:hover {
-    background-color: rgba(0, 0, 0, 0.02); }
   .side-menu a {
-    padding: 10px 15px;
+    padding: 0.6rem 1rem;
     display: flex;
     align-items: center;
     text-decoration: none;
     color: #333;
     font-weight: 200; }
+    .side-menu a:hover {
+      background-color: rgba(0, 0, 0, 0.02); }
+    .side-menu a[data-toggle="collapse"]:not(.collapsed) .reverse {
+      transform: rotate(180deg) !important; }
+  .side-menu .sub-item {
+    background-color: rgba(0, 0, 0, 0.04); }
+    .side-menu .sub-item a {
+      padding-left: 2rem; }
   .side-menu .menu-title {
     flex: 1 0 auto; }

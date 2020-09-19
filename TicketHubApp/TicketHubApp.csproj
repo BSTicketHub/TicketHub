@@ -406,6 +406,7 @@
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.min.js" />
     <Content Include="Assets\JavaScript\Common\ControlFavorite.js" />
+    <Content Include="Assets\JavaScript\Common\SideMenu.js" />
     <Content Include="Assets\JavaScript\Customer\FavoriteShop.js" />
     <Content Include="Assets\JavaScript\Customer\MyTicket.js" />
     <Content Include="Assets\JavaScript\Customer\WishList.js" />
@@ -726,6 +727,8 @@
     <Content Include="Views\Platform\OrderList.cshtml" />
     <Content Include="Views\Platform\Index.cshtml" />
     <Content Include="Views\Shared\_Navbar.cshtml" />
+    <Content Include="Views\Shared\_Layout_Manage.cshtml" />
+    <Content Include="Views\Shared\_SideMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
