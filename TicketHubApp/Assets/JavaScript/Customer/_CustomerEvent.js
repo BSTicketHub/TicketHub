@@ -48,7 +48,7 @@ export function CreatePage(firstPage) {
             function createInfoArea(target = document.querySelectorAll(".sidebar-nav > div")[0]) {
                 let infoArea = document.querySelector('.col-9')
                 let content = document.createElement('div');
-                content.classList.add('info-area', 'p-4', 'rounded');
+                content.classList.add('info-area', 'p-4', 'rounded', 'animate__animated', 'animate__fadeIn');
                 infoArea.append(content);
 
                 let title = document.createElement('h3');
