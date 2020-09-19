@@ -12,9 +12,13 @@ namespace TicketHubApp.Controllers
             List<SideMenuItem> menuItems = null;
             switch (page)
             {
-                case PageType.HOME:
-                    break;
                 case PageType.CUSTOMER:
+                    menuItems = new List<SideMenuItem> {
+                        new SideMenuItem{ IconName = "octicon:gear-24", MenuTitle = "會員資訊", Href = "#"},
+                        new SideMenuItem{ IconName = "carbon:ticket", MenuTitle = "我的票券", Href = "#"},
+                        new SideMenuItem{ IconName = "gg:heart", MenuTitle = "收藏票券", Href = "#"},
+                        new SideMenuItem{ IconName = "bi:shop", MenuTitle = "收藏餐廳", Href = "#"},
+                    };
                     break;
                 case PageType.SHOP:
                     menuItems = new List<SideMenuItem> {
@@ -33,6 +37,7 @@ namespace TicketHubApp.Controllers
                     };
                     break;
                 case PageType.PLATFORM:
+
                     break;
                 default:
                     break;
@@ -45,7 +50,6 @@ namespace TicketHubApp.Controllers
             public string IconName { get; set; }
             public string MenuTitle { get; set; }
             public string Href { get; set; }
-            public string LoadUrl { get; set; }
             public ICollection<SideMenuItem> SubMenuItems { get; set; }
         }
     }
