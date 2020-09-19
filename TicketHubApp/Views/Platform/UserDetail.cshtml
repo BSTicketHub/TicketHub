@@ -6,8 +6,8 @@
 
 <nav aria-label="breadcrumb" class="shadow">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">後台管理系統</a></li>
-        <li class="breadcrumb-item"><a href="~/PlatformUser/Index">會員管理</a></li>
+        <li class="breadcrumb-item"><a href="~/Platform/Index">後台管理系統</a></li>
+        <li class="breadcrumb-item"><a href="~/Platform/UserList">會員管理</a></li>
         <li class="breadcrumb-item active" aria-current="page">會員明細</li>
     </ol>
 </nav>
@@ -48,9 +48,9 @@
     }
 </div>
 
-<div class="shadow p-3">
+<div class="shadow p-3 col-md-offset-2">
     @Html.ActionLink("查看該會員擁有票券", "GetTicketsBelongsToThisUser", new { id = Model.Id }, new { @class = "btn btn-primary" })
 
-    @Html.ActionLink("回到會員列表", "Index", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("回到會員列表", "UserList", null, new { @class = "btn btn-primary" })
 </div>
 

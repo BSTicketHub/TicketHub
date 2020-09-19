@@ -188,3 +188,7 @@ $(document).ready(function () {
         target: '#faq'
     })
 });
+
+//搜尋
+let search = document.querySelector('.search-content');
+search.setAttribute('placeholder', '輸入地點開始美食之旅')

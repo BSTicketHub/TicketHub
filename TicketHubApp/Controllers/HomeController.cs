@@ -23,6 +23,12 @@ namespace TicketHubApp.Controllers
             return View(homecard);
         }
 
+        public ActionResult PageUnfound()
+        {
+
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -35,6 +41,20 @@ namespace TicketHubApp.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Search(string SearchType, string SearchContent)
+        {
+            if(SearchType == "餐廳")
+            {
+                return RedirectToRoute("ShopList", new { input = SearchContent });
+            } else if(SearchType == "票券")
+            {
+                return RedirectToRoute("TicketList", new { input = SearchContent });
+            }
+            return Content("");
         }
     }
 }

@@ -1,12 +1,8 @@
 ﻿
-@{
-    ViewBag.Title = "Index";
-}
-
 <nav aria-label="breadcrumb" class="shadow">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">後台管理系統</a></li>
-        <li class="breadcrumb-item"><a href="~/PlatformUser/Index">會員管理</a></li>
+        <li class="breadcrumb-item"><a href="~/Platform/Index">後台管理系統</a></li>
+        <li class="breadcrumb-item"><a href="~/Platform/UserList">會員管理</a></li>
         <li class="breadcrumb-item active" aria-current="page">會員列表</li>
     </ol>
 </nav>
@@ -21,7 +17,7 @@
             </tr>
         </thead>
     </table>
-</div> 
+</div>
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -30,15 +26,14 @@
 <script>
     $(document).ready(function () {
         $('#userTable').DataTable({
-            "ajax": '../PlatformUser/GetUsersJson',
+            "ajax": '../Platform/GetUsersJson',
             "scrollX": true,
             "stateSave": true
         });
-    });    
+    });
 
     $("#userTable").on("click", "tr", function () {
         let id = this.firstChild.innerText;
-        window.location.href = "/PlatformUser/UserDetail/" + id;
+        window.location.href = "/Platform/UserDetail/" + id;
     });
-
 </script>

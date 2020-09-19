@@ -16,10 +16,10 @@
         <p class="openTime ml-4 mb-2"><span class="iconify mr-2" data-icon="fa-solid:clock" data-inline="false"></span>@Model.Phone</p>
         <p class="show-ticket position-absolute">顯示店家票券<span class="iconify ml-1" data-icon="fe:arrow-down" data-inline="false"></span></p>
 
-        @if (ViewBag.FavoriteShop.Contains(Model.Id))
+        @if (ViewBag.FavoriteShop != null && ViewBag.FavoriteShop.Contains(Model.Id))
         {
             <span shopid="@Model.Id" class="iconify position-absolute favorite" data-icon="bi:heart-fill" data-inline="false" onclick="controlFromFavorite(this)"></span>
-        } else
+        } else if(ViewBag.FavoriteShop != null)
         {
             <span shopid="@Model.Id" class="iconify position-absolute favorite" data-icon="bi:heart" data-inline="false" onclick="controlFromFavorite(this)"></span>
         }

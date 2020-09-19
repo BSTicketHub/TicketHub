@@ -2,8 +2,8 @@
 
 <nav aria-label="breadcrumb" class="shadow">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">後台管理系統</a></li>
-        <li class="breadcrumb-item"><a href="~/PlatformShop/Index">商家管理</a></li>
+        <li class="breadcrumb-item"><a href="~/Platform/Index">後台管理系統</a></li>
+        <li class="breadcrumb-item"><a href="~/Platform/ShopList">商家管理</a></li>
         <li class="breadcrumb-item active" aria-current="page">商家明細</li>
     </ol>
 </nav>
@@ -87,5 +87,5 @@
     @Html.ActionLink("查詢員工資料", "GetAllEmployees", new { id = Model.Id }, new { @class = "btn btn-primary" })
     @Html.ActionLink("查詢發行票券", "GetAllIssues", new { id = Model.Id }, new { @class = "btn btn-primary" })
 
-    @Html.ActionLink("回到商家列表", "Index", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("回到商家列表", "ShopList", null, new { @class = "btn btn-primary" })
 </div>

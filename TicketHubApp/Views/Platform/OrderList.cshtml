@@ -1,13 +1,8 @@
-﻿@model IEnumerable<TicketHubApp.Models.ViewModels.PlatformOrderViewModel>
-
-@{
-    ViewBag.Title = "Index";
-}
-
+﻿
 <nav aria-label="breadcrumb" class="shadow">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">後台管理系統</a></li>
-        <li class="breadcrumb-item"><a href="#">訂單管理</a></li>
+        <li class="breadcrumb-item"><a href="~/Platform/Index">後台管理系統</a></li>
+        <li class="breadcrumb-item"><a href="~/Platform/OrderList">訂單管理</a></li>
         <li class="breadcrumb-item active" aria-current="page">訂單列表</li>
     </ol>
 </nav>
@@ -32,7 +27,7 @@
 <script>
     $(document).ready(function () {
         $('#orderTable').DataTable({
-            "ajax": '../PlatformOrder/GetOrdersJsonData',
+            "ajax": '../Platform/GetOrdersJsonData',
             "scrollX": true,
             "stateSave": true,
         });

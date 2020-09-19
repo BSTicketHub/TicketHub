@@ -1,12 +1,10 @@
 ﻿@model TicketHubApp.Models.ViewModels.PlatformAdminViewModel
 
-@{
-    ViewBag.Title = "AdminDetail";
-}
+
 <nav aria-label="breadcrumb" class="shadow">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">後台管理系統</a></li>
-        <li class="breadcrumb-item"><a href="~/PlatformAdmin/Index">後台管理者管理</a></li>
+        <li class="breadcrumb-item"><a href="~/Platform/Index">後台管理系統</a></li>
+        <li class="breadcrumb-item"><a href="~/Platform/AdminList">後台管理者管理</a></li>
         <li class="breadcrumb-item active" aria-current="page">管理者明細</li>
     </ol>
 </nav>
@@ -56,6 +54,6 @@
 
 <div class="shadow p-3">
     <div class="col-md-offset-2 col-md-10">
-        @Html.ActionLink("回到管理者列表", "Index", null, new { @class = "btn btn-primary" })
+        @Html.ActionLink("回到管理者列表", "AdminList", null, new { @class = "btn btn-primary" })
     </div>
 </div>

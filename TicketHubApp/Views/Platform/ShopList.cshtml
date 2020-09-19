@@ -1,13 +1,7 @@
-﻿@model IEnumerable<TicketHubApp.Models.ViewModels.PlatformShopViewModel>
-
-@{
-    ViewBag.Title = "Index";
-}
-
-<nav aria-label="breadcrumb" class="shadow">
+﻿<nav aria-label="breadcrumb" class="shadow">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">後台管理系統</a></li>
-        <li class="breadcrumb-item"><a href="#">商家管理</a></li>
+        <li class="breadcrumb-item"><a href="~/Platform/Index">後台管理系統</a></li>
+        <li class="breadcrumb-item"><a href="~/Platform/ShopList">商家管理</a></li>
         <li class="breadcrumb-item active" aria-current="page">商家列表</li>
     </ol>
 </nav>
@@ -34,7 +28,7 @@
 <script>
     $(document).ready(function () {
         $('#shopTable').DataTable({
-            "ajax": '../PlatformShop/GetShopsJson',
+            "ajax": '../Platform/GetShopsJson',
             "scrollX": true,
             "stateSave": true,
         });
@@ -42,6 +36,6 @@
 
     $("#shopTable").on("click", "tr", function () {
         let id = this.firstChild.innerText;
-        window.location.href = "/PlatformShop/ShopDetail/" + id;
+        window.location.href = "/Platform/ShopDetail/" + id;
     });
 </script>

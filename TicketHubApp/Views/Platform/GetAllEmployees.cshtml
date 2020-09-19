@@ -1,15 +1,11 @@
-﻿
-@{
-    ViewBag.Title = "GetAllEmployees";
-}
-
-<nav aria-label="breadcrumb" class="shadow">
+﻿<nav aria-label="breadcrumb" class="shadow">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">後台管理系統</a></li>
-        <li class="breadcrumb-item"><a href="~/PlatformShop/Index">商家管理</a></li>
+        <li class="breadcrumb-item"><a href="~/Platform/Index">後台管理系統</a></li>
+        <li class="breadcrumb-item"><a href="~/Platform/ShopList">商家管理</a></li>
         <li class="breadcrumb-item active" aria-current="page">商家員工列表</li>
     </ol>
 </nav>
+
 
 <div class="shadow p-3">
     <table id="employeeTable" class="display" style="width:100%">
@@ -36,6 +32,4 @@
             "stateSave": true
         });
     });
-
-
 </script>
