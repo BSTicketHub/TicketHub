@@ -56,11 +56,6 @@ namespace TicketHubApp.Controllers
             return View();
         }
 
-        public ActionResult HomePage()
-        {
-            return View();
-        }
-
         public ActionResult IssueList(int? orderValue)
         {
             return View();
@@ -74,6 +69,13 @@ namespace TicketHubApp.Controllers
             string result = JsonConvert.SerializeObject(viewModel);
 
             return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult closeIssueApi(string Id)
+        {
+            var service = new ShopIssueService();
+            var result = service.closeIssueAPi(Guid.Parse(Id));
+            return Json(result.Success, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult CreateIssue()
@@ -212,7 +214,31 @@ namespace TicketHubApp.Controllers
         public ActionResult getReportApi(List<string> duration)
         {
             var service = new ShopReportService();
-            var result = service.getSalesRepoet(duration);
+            var result = service.getSalesReport(duration);
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult TopIssueApi()
+        {
+            var service = new ShopReportService();
+            var result = service.getTopIssue();
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult TopCustomerApi()
+        {
+            var service = new ShopReportService();
+            var result = service.getTopCutsom();
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult chartApi(List<string> Labels, int Type)
+        {
+            var service = new ShopReportService();
+            var result = service.getChartCustomer(Labels, Type);
 
             return Json(result, JsonRequestBehavior.AllowGet);
         }
@@ -220,7 +246,6 @@ namespace TicketHubApp.Controllers
         [HttpPost]
         public ActionResult ToggleFavoriteList(string ShopId, string UserId)
         {
-
             using (var _context = TicketHubContext.Create())
             {
                 var ShopGUID = Guid.Parse(ShopId);
@@ -242,7 +267,6 @@ namespace TicketHubApp.Controllers
                     });
 
                 }
-
                 _context.SaveChanges();
             }
             return Content("Complete");

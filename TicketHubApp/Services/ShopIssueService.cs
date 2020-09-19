@@ -119,14 +119,14 @@ namespace TicketHubApp.Services
             GenericRepository<OrderDetail> orderDetailRepo = new GenericRepository<OrderDetail>(context);
 
             var issues = issueRepo.GetAll();
-
+            var TimeNow = DateTime.Now;
             if (closed)
             {
-                issues = issues.Where((i) => DateTime.Compare((DateTime)i.ClosedDate, DateTime.Now) < 0);
+                issues = issues.Where((i) => i.ClosedDate <= TimeNow);
             }
             else
             {
-                issues = issues.Where((i) => DateTime.Compare((DateTime)i.ClosedDate, DateTime.Now) >= 0);
+                issues = issues.Where((i) => i.ClosedDate > TimeNow);
             }
 
             switch (order)
@@ -153,36 +153,13 @@ namespace TicketHubApp.Services
                     Title = item.Title,
                     Id = item.Id,
                     DiscountPrice = item.DiscountPrice,
-                    Status = (DateTime.Compare((DateTime)item.ClosedDate, DateTime.Now) < 0) ? "已下架" :
-                            ((DateTime.Compare(item.ReleasedDate, DateTime.Now) < 0)? "未上架" : "上架"),
+                    Status = (item.ClosedDate.Value <= DateTime.Now) ? "已下架" :
+                            (item.ReleasedDate < DateTime.Now) ? "未上架" : "上架",
                     ReleasedDate = item.ReleasedDate
                 };
 
                 result.Items.Add(p);
-            }
-                
-                //from i in issueRepo.GetAll()
-                //         where (DateTime.Compare((DateTime)i.ClosedDate, DateTime.Now) > 0)
-                //         select new ShopIssueViewModel
-                //         {
-                //             ImgPath = i.ImgPath,
-                //             Title = i.Title,
-                //             Id = i.Id,
-                //             DiscountPrice = i.DiscountPrice,
-                //             Status = (DateTime.Compare(i.ReleasedDate, DateTime.Now) > 0) ?
-                //                ((DateTime.Compare((DateTime)i.ClosedDate, DateTime.Now) < 0) ? "已下架" : "上架") : "未上架",
-                //             IssuedDate = i.IssuedDate,
-                //             ReleasedDate = i.ReleasedDate,
-                //             //SalesAmount =
-                //             //   (from i2 in issueRepo.GetAll()
-                //             //   join od in orderDetailRepo.GetAll() on i.Id equals od.IssueId
-                //             //   group i2 by i2.IssuerId into iod
-                //             //   where i.Id == iod.Key
-                //             //   select new { salesamount = (int)iod.Sum((x) => x.Amount) })
-                //         };
-
-            //result.Items = issues.ToList();
-            
+            }     
             return result;
         }
 
@@ -243,6 +220,33 @@ namespace TicketHubApp.Services
                 table.data.Add(dataInstance);
             }
             return table;
+        }
+    
+        public OperationResult closeIssueAPi(Guid id)
+        {
+            var result = new OperationResult();
+            try
+            {
+                TicketHubContext context = new TicketHubContext();
+                var issueRepo = new GenericRepository<Issue>(context);
+                Issue issue = context.Issue.Where(x => x.Id == id).FirstOrDefault();
+                if (issue == null) {
+                    result.Success = false;
+                    return result;
+                }
+
+                issue.ClosedDate = DateTime.Now;
+                issueRepo.Update(issue);
+                context.SaveChanges();
+
+                result.Success = true;
+            }
+            catch (Exception ex)
+            {
+                result.Success = false;
+                result.Message = ex.ToString();
+            }
+            return result;
         }
     }
 }

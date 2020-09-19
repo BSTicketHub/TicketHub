@@ -1,4 +1,5 @@
-﻿
+﻿@import "../_variables.scss";
+
 .productList {
     .tableBlock {
         overflow: auto;
@@ -27,6 +28,29 @@
 
                     img {
                         height: 40px;
+                    }
+
+                    .redBtn {
+                        background-color: $shop-color-5;
+                        color: #fff;
+                        border: 1px solid $shop-color-5;
+                        border-radius: 2px;
+                        padding: 1px 2px;
+
+                        &:hover {
+                            background-color: #fff;
+                            color: $shop-color-5;
+                        }
+
+                        &:focus {
+                            outline: none;
+                            box-shadow: none;
+                        }
+
+                        &:active {
+                            background-color: $shop-color-5;
+                            color: #fff;
+                        }
                     }
                 }
 
@@ -65,5 +89,4 @@
             }
         }
     }
-
 }
