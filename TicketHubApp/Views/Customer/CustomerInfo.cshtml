@@ -80,6 +80,15 @@
     </div>
 </div>
 
+<div class="modal fade" id="showQRCode" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3">
+            <img class="w-50 m-auto" src="https://api.qrserver.com/v1/create-qr-code/?data=TicketHub!&size=150x150&color=23a8b2&margin=10" alt="QRCode"/>
+            <p class="text-center mt-3">請掃描QRcode進行票券核銷</p>
+        </div>
+    </div>
+</div>
+
 @Scripts.Render("~/bundles/js/jquery")
 @Scripts.Render("~/bundles/js/bootstrap")
 @Scripts.Render("~/bundles/js/CustomerPage")

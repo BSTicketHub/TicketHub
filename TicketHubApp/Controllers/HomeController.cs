@@ -25,7 +25,6 @@ namespace TicketHubApp.Controllers
 
         public ActionResult PageUnfound()
         {
-
             return View();
         }
 

@@ -5,20 +5,21 @@
 
 @section topCSS{
     <style>
-        .text-center{
-            color:#a0a0a0
-        }
-        .text-center .iconify {
-            font-size: 300px;
+        .text-center {
+            color: #a0a0a0
         }
 
-        .text-center :nth-child(2) {
-            font-size: 60px
-        }
+            .text-center .iconify {
+                font-size: 300px;
+            }
 
-        .text-center :nth-child(3) {
-            font-size: 30px
-        }
+            .text-center :nth-child(2) {
+                font-size: 60px
+            }
+
+            .text-center :nth-child(3) {
+                font-size: 30px
+            }
     </style>
 }
 
@@ -26,5 +27,23 @@
     <span class="iconify" data-icon="ic:outline-search-off" data-inline="false"></span>
     <p>很抱歉，您的搜尋沒有結果</p>
     <p>試著用其他關鍵字再搜尋一次吧</p>
+    <p>本頁面將在 <span class="time">5</span> 秒鐘後跳轉回首頁</p>
 </div>
 
+
+@section endJS{
+    <script>
+        let timer = setInterval(ChangeTime, 1000);
+
+        function ChangeTime() {
+            let time = parseInt($(".time").text());
+            time--;
+
+            if (time <= 0) {
+                window.location.href = "../Home/Index";
+            } else {
+                $(".time").text(time);
+            }
+        }
+    </script>
+}

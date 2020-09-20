@@ -626,6 +626,8 @@
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\vue.js" />
+    <Content Include="Scripts\vue.min.js" />
     <Content Include="Views\Shared\MailTemplate\Confirmation.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

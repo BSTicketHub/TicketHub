@@ -195,7 +195,8 @@ body {
 
             .valid-ticket, .invalid-ticket {
                 border-left: 6px solid $cust-color-8;
-                height:150px;
+                height: 150px;
+
                 .img-area {
                     width: 25%;
                 }
@@ -221,6 +222,34 @@ body {
                     color: $line-gray;
                     top: 55px;
                     right: 10px;
+                    &:hover{
+                        cursor:pointer
+                    }
+                }
+            }
+
+            .my-ticket {
+                p{
+                    margin:0px
+                }
+                .title{
+                    background-color:$cust-color-8;
+                    color:white;
+                }
+                .ticket-id-area {
+                    p {
+                        margin: 0;
+                    }
+
+                    .QRCode {
+                        font-size: 10px;
+                    }
+                }
+
+                .order-detail {
+                    p {
+                        margin: 0;
+                    }
                 }
             }
 
