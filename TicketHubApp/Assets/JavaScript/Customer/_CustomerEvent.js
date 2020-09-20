@@ -48,7 +48,7 @@ export function CreatePage(firstPage) {
             function createInfoArea(target = document.querySelectorAll(".sidebar-nav > div")[0]) {
                 let infoArea = document.querySelector('.col-9')
                 let content = document.createElement('div');
-                content.classList.add('info-area', 'p-4', 'rounded');
+                content.classList.add('info-area', 'p-4', 'rounded', 'animate__animated', 'animate__fadeIn');
                 infoArea.append(content);
 
                 let title = document.createElement('h3');
@@ -404,7 +404,7 @@ export function CreatePage(firstPage) {
                 row.classList.add('row', 'order-list');
                 OrderHistory.appendChild(row);
 
-                for (let i = 0; i < 5; i++) {
+                for (let i of response.MyOrder) {
                     let myOrder = document.createElement('div');
                     myOrder.classList.add('order', 'pt-4', 'pb-3', 'mx-4', 'my-3', 'col-5', 'rounded','position-relative', 'shadow')
                     row.appendChild(myOrder);
@@ -414,87 +414,96 @@ export function CreatePage(firstPage) {
                     myOrder.appendChild(orderState);
                     let orderDate = document.createElement('p');
                     orderDate.classList.add('order-date', 'mb-1');
-                    orderDate.textContent = "下單日期 : 2020/4/28";
+                    orderDate.textContent = `下單日期 : ${i.OrderDate.slice(0, 11)}`;
                     myOrder.append(orderDate);
                     let productListStatement = document.createElement('p');
                     productListStatement.classList.add('productListStatement','mt-3', 'mb-1', 'pb-1');
                     productListStatement.textContent = "訂購清單";
                     myOrder.append(productListStatement);
-                    for (let i = 0; i < 3; i++) {
+
+                    let totalPrice = 0;
+                    for (let j of i.OrderIssue) {
                         let ticket = document.createElement('div');
                         ticket.classList.add('ticket', 'p-1');
                         let ticketTitle = document.createElement('p');
                         ticketTitle.classList.add('ticket-title', 'font-weight-bold')
-                        ticketTitle.textContent = "Issue1";
+                        ticketTitle.textContent = `${j.Title}`;
                         let unitPrice = document.createElement('p');
-                        unitPrice.textContent = "單價 : 1200 TWD";
+                        unitPrice.textContent = `單價 : ${j.DiscountPrice} TWD`;
                         let quantity = document.createElement('p');
-                        quantity.textContent = "數量 : 3 張";
+                        quantity.textContent = `數量 : ${j.Amount} 張`;
                         let ticketTotal = document.createElement('p');
                         ticketTotal.classList.add('ticket-total', 'text-right', 'font-weight-bold');
-                        ticketTotal.textContent = "計 : 3600 TWD"
+                        ticketTotal.textContent = `計 : ${j.DiscountPrice * j.Amount} TWD`
                         ticket.append(ticketTitle, unitPrice, quantity, ticketTotal);
                         myOrder.append(ticket);
+                        totalPrice += j.DiscountPrice * j.Amount
                     }
+
                     let total = document.createElement('p');
                     total.classList.add('total', 'my-2', 'mx-1', 'text-right');
-                    total.textContent = "總金額 : 10000 TWD";
+                    total.textContent = `總金額 : ${totalPrice} TWD`;
                     myOrder.appendChild(total);
                 }
 
                 //Valid Ticket
+                
                 let validTicketContent = document.createElement('div');
                 validTicketContent.classList.add('tab-pane', 'fade', 'show', 'active');
                 validTicketContent.setAttribute('id', 'valid');
 
-                let validTicket = document.createElement('div');
-                validTicket.classList.add('valid-ticket', 'w-100', 'd-flex', 'position-relative', 'my-3', 'px-2', 'py-3', 'border-bottom')
-                validTicketContent.append(validTicket);
+                for (let i of response.MyTicket) {
+                    let validTicket = document.createElement('div');
+                    validTicket.classList.add('valid-ticket', 'w-100', 'd-flex', 'position-relative', 'my-3', 'px-2', 'py-3', 'border-bottom')
+                    validTicketContent.append(validTicket);
 
-                let imgArea = document.createElement('div');
-                imgArea.classList.add('img-area', 'h-100');
-                imgArea.style.backgroundImage = "url('https://picsum.photos/400/300/?random=1')"
-                imgArea.style.backgroundSize = "cover";
+                    let imgArea = document.createElement('div');
+                    imgArea.classList.add('img-area', 'h-100');
+                    imgArea.style.backgroundImage = `url(${i.ImgPath})`
+                    imgArea.style.backgroundSize = "cover";
 
-                let textArea = document.createElement('div');
-                textArea.classList.add('text-area');
-                validTicket.append(imgArea, textArea);
+                    let textArea = document.createElement('div');
+                    textArea.classList.add('text-area');
+                    validTicket.append(imgArea, textArea);
 
-                let title = document.createElement('h6');
-                title.classList.add('my-3', 'ml-4')
-                title.innerText = "【Build School限時超激優惠】 忠孝新生一日遊";
-                let validTime = document.createElement('p')
-                validTime.classList.add('valid-time', 'ml-4')
-                validTime.innerHTML = "有效期限 : <span>2021/01/01</span> 前"
-                let goDetail = document.createElement('i');
-                goDetail.classList.add('go-detail', 'fas', 'fa-angle-right', 'position-absolute');
-                textArea.append(title, validTime, goDetail);
+                    let title = document.createElement('h6');
+                    title.classList.add('my-3', 'ml-4')
+                    title.innerText = `${i.IssueTitle}`;
+                    let validTime = document.createElement('p')
+                    validTime.classList.add('valid-time', 'ml-4')
+                    validTime.innerHTML = `有效期限 : <span>${i.VoidedDate.slice(0, 11)}</span> 前`
+                    let goDetail = document.createElement('i');
+                    goDetail.classList.add('go-detail', 'fas', 'fa-angle-right', 'position-absolute');
+                    textArea.append(title, validTime, goDetail);
+                }
 
                 //Invalid Ticket
                 let invalidTicketContent = document.createElement('div');
                 invalidTicketContent.classList.add('tab-pane', 'fade');
                 invalidTicketContent.setAttribute('id', 'inValid');
 
-                let invalidTicket = document.createElement('div');
-                invalidTicket.classList.add('invalid-ticket', 'w-100', 'd-flex', 'position-relative', 'my-3', 'px-2', 'py-3', 'border-bottom')
-                invalidTicketContent.append(invalidTicket);
+                for (let i of response.InvalidTicket) {
+                    let invalidTicket = document.createElement('div');
+                    invalidTicket.classList.add('invalid-ticket', 'w-100', 'd-flex', 'position-relative', 'my-3', 'px-2', 'py-3', 'border-bottom')
+                    invalidTicketContent.append(invalidTicket);
 
-                let invalidImgArea = document.createElement('div');
-                invalidImgArea.classList.add('img-area', 'h-100');
-                invalidImgArea.style.backgroundImage = "url('https://picsum.photos/400/300/?random=1')"
-                invalidImgArea.style.backgroundSize = "cover";
+                    let invalidImgArea = document.createElement('div');
+                    invalidImgArea.classList.add('img-area', 'h-100');
+                    invalidImgArea.style.backgroundImage = `url(${i.ImgPath})`
+                    invalidImgArea.style.backgroundSize = "cover";
 
-                let invalidTextArea = document.createElement('div');
-                invalidTextArea.classList.add('text-area');
-                invalidTicket.append(invalidImgArea, invalidTextArea);
+                    let invalidTextArea = document.createElement('div');
+                    invalidTextArea.classList.add('text-area');
+                    invalidTicket.append(invalidImgArea, invalidTextArea);
 
-                let invalidTitle = document.createElement('h6');
-                invalidTitle.classList.add('my-3', 'ml-4')
-                invalidTitle.innerText = "【Build School限時超激優惠】 忠孝新生一日遊";
-                let useTime = document.createElement('p')
-                useTime.classList.add('use-time', 'ml-4')
-                useTime.innerHTML = "使用日期 : <span>2024/12/11</span>"
-                invalidTextArea.append(invalidTitle, useTime);
+                    let invalidTitle = document.createElement('h6');
+                    invalidTitle.classList.add('my-3', 'ml-4')
+                    invalidTitle.innerText = `${i.IssueTitle}`;
+                    let useTime = document.createElement('p')
+                    useTime.classList.add('use-time', 'ml-4')
+                    useTime.innerHTML = `使用日期 : <span>${i.ExchangedDate.slice(0, 11)}</span>`
+                    invalidTextArea.append(invalidTitle, useTime);
+                }
 
 
                 let myTicket = document.querySelector('.info-area .container .row')

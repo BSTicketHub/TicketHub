@@ -50,6 +50,7 @@ namespace TicketHubApp.Controllers
                 ViewBag.WishIssue = wishIssue;
             }
             var tickets = service.SearchIssue(input);
+
             if (tickets.Count() == 0)
             {
                 return RedirectToRoute("Unfound");
