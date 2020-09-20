@@ -414,6 +414,7 @@
     <Content Include="Assets\JavaScript\Customer\MyTicket.js" />
     <Content Include="Assets\JavaScript\Customer\WishList.js" />
     <Content Include="Assets\JavaScript\Customer\_CustomerEvent.js" />
+    <Content Include="Assets\JavaScript\Home\cartLS.js" />
     <Content Include="Assets\JavaScript\Home\home.js" />
     <Content Include="Assets\JavaScript\Common\owl.carousel.min.js" />
     <Content Include="Assets\CSS\ShopList.css">

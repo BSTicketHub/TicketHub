@@ -4,7 +4,7 @@
     <a href="" target="_blank">
         <div class="product-img lazyload-img">
             <img class="img-md img-fluid lazyload" src="@Model.ImgPath"
-                 data-original="" title="">
+                 data-original="" title="春芳號">
             <div class="map-subject">
                 <div class="label-icon i-map">
                     <span class="local-tag">信義區</span>
@@ -22,8 +22,9 @@
         </div>
     </a>
     <div class="product-detail">
-        <h3 class="ellipsis">@Model.Title</h3>
-        <h4 class="ellipsis">平假日皆可抵用100元消費金額</h4>
+        <input type="hidden" value="@Model.Id">
+        <h3 class="ellipsis" id="Title">@Model.Title</h3>
+        <h4 class="ellipsis" id="details">平假日皆可抵用100元消費金額</h4>
         <div class="tagblock">
             <div class="d-flex flex-row tagBox">
                 <div class="tag tag-blue">
@@ -45,10 +46,10 @@
                 <div class="priceBox ml-auto">
                     <div class="price d-flex">
                         <div class="original line-through">
-                            @Model.OriginalPrice
+                            $@Model.OriginalPrice
                         </div>
-                        <div class="current">
-                            @Model.DiscountPrice
+                        <div class="current" id="DiscountPrice">
+                            $@Model.DiscountPrice
                         </div>
                     </div>
                 </div>
@@ -61,28 +62,26 @@
         </div>
         <hr>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-7">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <button class="btn btn-secondary" id="" onclick="sub()">
+                        <button class="btn btn-secondary sub_button" id="">
                             <span class="iconify"
                                   data-icon="ant-design:minus-outlined"
                                   data-inline="false"></span>
                         </button>
                     </div>
-                    <input type="number" id="cartcount" class="form-control"
-                           ng-model="AddToCartDirectiveCtrl.AddedQuantity" ns-input-number-limit="" max=""
-                           min="1" value="1">
+                    <input type="number" id="cartcount" class="form-control cartcount" value="1">
                     <div class="input-group-append">
-                        <button class="btn btn-secondary" id="" onclick="add()">
+                        <button class="btn btn-secondary add_button" id="">
                             <span class="iconify"
                                   data-icon="codicon:add" data-inline="false"></span>
                         </button>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <button class="btn btn-block btn-info">加入購買</button>
+            <div class="col-md-5">
+                <button class="btn btn-block btn-info addCart" id="addCart">加入購買</button>
             </div>
         </div>
     </div>
