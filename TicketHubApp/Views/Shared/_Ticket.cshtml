@@ -4,14 +4,14 @@
     <div class="position-relative ticketImg col-md-4 border" style="background-image:url(@Model.ImgPath)"></div>
     <div class="col-md-8">
 
-        @if (ViewBag.WishIssue.Contains(Model.Id))
-        {
+        @*@if (ViewBag.WishIssue.Contains(Model.Id))
+        {*@
             <span issueid="@Model.Id" class="iconify position-absolute wishHeart" data-icon="bi:heart-fill" data-inline="false" onclick="controlFromFavorite(this)"></span>
-        }
+        @*}
         else if(ViewBag.WishIssue != null)
         {
             <span issueid="@Model.Id" class="iconify position-absolute wishHeart" data-icon="bi:heart" data-inline="false" onclick="controlFromFavorite(this)"></span>
-        }
+        }*@
 
         <h3 class="my-4">@Model.Title</h3>
         <p class="description">@Model.Memo</p>
