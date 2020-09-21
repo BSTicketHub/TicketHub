@@ -130,6 +130,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActionLog.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="ConstValue.cs" />
     <Compile Include="Models\Issue.cs" />
     <Compile Include="Models\ShopCategory.cs" />
     <Compile Include="Models\IssueCategory.cs" />
@@ -139,7 +140,6 @@
     <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\Refund.cs" />
     <Compile Include="Models\RefundDetail.cs" />
-    <Compile Include="Models\RoleName.cs" />
     <Compile Include="Models\Shop.cs" />
     <Compile Include="Models\ShopEmployee.cs" />
     <Compile Include="Models\ShopTag.cs" />

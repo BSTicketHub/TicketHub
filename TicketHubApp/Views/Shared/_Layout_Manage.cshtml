@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/Assets/Images/Home/ticketHub.png" rel="shortcut icon" type="image/ico">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/bundles/css/bootstrap")
+    @Styles.Render("~/bundles/css/Site")
+    @Scripts.Render("~/bundles/js/modernizr")
+    @RenderSection("topCSS", required: false)
+</head>
+@{
+    var pageType = Request.RawUrl.Split('/')[1];
+}
+<body class="manage-platform">
+    @Html.Partial("_Navbar")
+
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                @Html.Action("GenSideMenu", "Menu", new { page = pageType })
+            </div>
+            <div class="col-9">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/js/jquery")
+    @Scripts.Render("~/bundles/js/bootstrap")
+    @Scripts.Render("~/bundles/js/iconify")
+    @Scripts.Render("~/bundles/js/momentjs")
+    @Scripts.Render("~/bundles/js/chartjs")
+    @Scripts.Render("~/bundles/js/sidemenu")
+
+    @RenderSection("endJS", required: false)
+</body>
+</html>

@@ -214,6 +214,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\PlatformController.cs" />
     <Compile Include="Controllers\ProductDescriptionController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
@@ -424,6 +425,7 @@
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.min.js" />
     <Content Include="Assets\JavaScript\Common\ControlFavorite.js" />
+    <Content Include="Assets\JavaScript\Common\SideMenu.js" />
     <Content Include="Assets\JavaScript\Customer\FavoriteShop.js" />
     <Content Include="Assets\JavaScript\Customer\MyTicket.js" />
     <Content Include="Assets\JavaScript\Customer\WishList.js" />
@@ -690,6 +692,9 @@
     <Content Include="Assets\CSS\Common\Site.scss" />
     <Content Include="Assets\CSS\Shop\IssueDetails.scss" />
     <Content Include="Assets\CSS\ProductDescription.scss" />
+    <Content Include="Assets\CSS\Common\_navbar.scss" />
+    <Content Include="Assets\CSS\Common\_sideMenu.scss" />
+    <Content Include="Assets\CSS\Common\_font.scss" />
     <Content Include="Assets\CSS\Shop\EmployeeList.scss" />
     <Content Include="Assets\CSS\Shop\EmployeeCreate.scss" />
     <None Include="compilerconfig.json" />
@@ -747,6 +752,9 @@
     <Content Include="Views\Platform\Index.cshtml" />
     <Content Include="Views\Shop\EmployeeList.cshtml" />
     <Content Include="Views\Shop\EmployeeCreate.cshtml" />
+    <Content Include="Views\Shared\_Navbar.cshtml" />
+    <Content Include="Views\Shared\_Layout_Manage.cshtml" />
+    <Content Include="Views\Shared\_SideMenu.cshtml" />
     <Content Include="Views\Home\PageUnfound.cshtml" />
   </ItemGroup>
   <ItemGroup>
