@@ -15,33 +15,26 @@ namespace TicketHubApp.Controllers
     {
         private TicketHubContext _context = new TicketHubContext();
         // GET: ShopList
-        public ActionResult ShopList()
+        public ActionResult ShopList(string input)
         {
+            var service = new ShopListService();
             if (User.Identity.IsAuthenticated)
             {
                 var userId = User.Identity.GetUserId();
-                var FavoriteShop = _context.UserFavoriteShop.Where((x) => x.UserId == userId).Select((x) => x.ShopId).ToList();
+                var FavoriteShop = service.GetUserFavotiteShop(userId);
                 ViewBag.FavoriteShop = FavoriteShop;
                 ViewBag.UserId = userId;
             }
-            return View(_context.Shop.Select(x => new ShopViewModel
+            var shops = service.SearchShop(input);
+            ViewBag.SearchString = input;
+            if(shops.Count() == 0)
             {
-                Id = x.Id,
-                ShopName = x.ShopName,
-                ShopIntro = x.ShopIntro,
-                City = x.City,
-                District = x.District,
-                Address = x.Address,
-                Phone = x.Phone,
-                Issues = _context.Issue.Where(y => y.ShopId == x.Id).Select(y => new SimpleIssueViewModel
-                {
-                    Id = y.Id,
-                    DiscountPrice = y.DiscountPrice,
-                    Memo = y.Memo,
-                    OriginalPrice = y.OriginalPrice,
-                    Title = y.Title
-                })
-            })); 
+                return RedirectToRoute("Unfound");
+            }
+            else
+            {
+                return View(shops);
+            }
         }
 
         // GET: Store

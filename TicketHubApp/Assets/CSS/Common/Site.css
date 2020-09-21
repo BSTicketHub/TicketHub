@@ -70,16 +70,22 @@ a {
   color: #fffefa;
   background-color: #23a8b2;
   border-color: #23a8b2; }
+  .btn-cust:hover {
+    background-color: #1f939c; }
 
 .btn-shop {
   color: #fffefa;
   background-color: #ff3a5c;
   border-color: #ff3a5c; }
+  .btn-shop:hover {
+    background-color: #df3351; }
 
 .btn-platform {
   color: #fffefa;
   background-color: #fb9c16;
   border-color: #fb9c16; }
+  .btn-platform:hover {
+    background-color: #dc8913; }
 
 .text-sm {
   font-size: 0.8rem; }

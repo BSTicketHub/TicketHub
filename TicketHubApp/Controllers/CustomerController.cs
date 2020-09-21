@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Web.Mvc;
 using TicketHubApp.Models.ViewModels;
+using TicketHubApp.Services;
 using TicketHubDataLibrary.Models;
 
 namespace TicketHubApp.Controllers
@@ -12,84 +13,60 @@ namespace TicketHubApp.Controllers
     public class CustomerController : Controller
     {
         private TicketHubContext _context = TicketHubContext.Create();
+
         // GET: CustomerDetail
+        [Authorize]
         public ActionResult CustomerInfo()
         {
             return View();
         }
 
+        [Authorize]
         public ActionResult MyTicket()
         {
             return View();
         }
 
+        [Authorize]
         public ActionResult WishList()
         {
             return View();
         }
 
+        [Authorize]
         public ActionResult FavoriteShop()
         {
             return View();
         }
 
-        public ActionResult TicketList()
+        public ActionResult TicketList(string input)
         {
-            var currentUserId = User.Identity.GetUserId();
-            var wishIssue = _context.UserWishIssue.Where(x => x.UserId == currentUserId).Select(x => x.IssueId).ToList();
-            ViewBag.UserId = currentUserId;
-            ViewBag.WishIssue = wishIssue;
-            var tickets = _context.Issue.Select(x => new StoreTicketListViewModel
-            {
-                Id = x.Id,
-                Memo = x.Memo,
-                Title = x.Title,
-                DiscountPrice = x.DiscountPrice,
-                DiscountRatio = x.DiscountRatio,
-                OriginalPrice = x.OriginalPrice,
-                ImgPath = x.ImgPath
-            });
+            var service = new TicketListService();
+            if (User.Identity.IsAuthenticated)
+            { 
+                var currentUserId = User.Identity.GetUserId();
+                var wishIssue = _context.UserWishIssue.Where(x => x.UserId == currentUserId).Select(x => x.IssueId).ToList();
+                ViewBag.UserId = currentUserId;
+                ViewBag.WishIssue = wishIssue;
+            }
+            var tickets = service.SearchIssue(input);
 
-            return View(tickets);
+            if (tickets.Count() == 0)
+            {
+                return RedirectToRoute("Unfound");
+            }
+            else
+            {
+                return View(tickets);
+            }
         }
 
         public ActionResult GetCustomerInfo()
         {
-                var currentUserId = User.Identity.GetUserId();
-                var user = _context.Users.Find(currentUserId);
-                var info = new CustomerInfoViewModel()
-                {
-                    Id = user.Id,
-                    Email = user.Email,
-                    PhoneNumber = user.PhoneNumber,
-                    UserName = user.UserName,
-                    Sex = user.Sex,
-                    FavoriteShop = from s in _context.Shop
-                                   join ufs in _context.UserFavoriteShop on s.Id equals ufs.ShopId
-                                   where ufs.UserId == user.Id
-                                   select new ShopViewModel
-                                   {
-                                       Id = s.Id,
-                                       ShopName = s.ShopName,
-                                       ShopIntro = s.ShopIntro,
-                                       City = s.City,
-                                       District = s.District,
-                                       Address = s.Address,
-                                       Phone = s.Phone
-                                   },
-                    WishIssue = from i in _context.Issue
-                                join uwi in _context.UserWishIssue on i.Id equals uwi.IssueId
-                                where uwi.UserId == user.Id
-                                select new ShopIssueViewModel
-                                {
-                                    DiscountPrice = i.DiscountPrice,
-                                    Id = i.Id,
-                                    Memo = i.Memo,
-                                    Title = i.Title,
-                                    OriginalPrice = i.OriginalPrice,
-                                }
-                };
-                return Json(info, JsonRequestBehavior.AllowGet);
+            var service = new CustomerInfoService();
+            var currentUserId = User.Identity.GetUserId();
+            var info = service.GetInfo(currentUserId);
+            return Json(info, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]

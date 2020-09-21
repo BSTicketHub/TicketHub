@@ -25,18 +25,30 @@ a {
     color: $back-paper;
     background-color: $cust-color-8;
     border-color: $cust-color-8;
+
+    &:hover {
+        background-color: $cust-color-9;
+    }
 }
 
 .btn-shop {
     color: $back-paper;
     background-color: $shop-color-8;
     border-color: $shop-color-8;
+
+    &:hover {
+        background-color: $shop-color-9;
+    }
 }
 
 .btn-platform {
     color: $back-paper;
     background-color: $platform-color-8;
     border-color: $platform-color-8;
+
+    &:hover {
+        background-color: $platform-color-9;
+    }
 }
 
 @import "./_font.scss";

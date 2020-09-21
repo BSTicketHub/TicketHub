@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using TicketHubDataLibrary.Models;
 
 namespace TicketHubApp.Models.ViewModels
 {
@@ -14,6 +15,9 @@ namespace TicketHubApp.Models.ViewModels
         public string Sex { get; set; }
         public IEnumerable<ShopViewModel> FavoriteShop { get; set; }
         public IEnumerable<ShopIssueViewModel> WishIssue { get; set; }
+        public IEnumerable<CustomerOrderViewModel> MyOrder { get; set; }
+        public IEnumerable<TicketViewModel> MyTicket { get; set; }
+        public IEnumerable<TicketViewModel> InvalidTicket { get; set; }
 
 
     }

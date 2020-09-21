@@ -1,3 +1,12 @@
+$(document).ready(function () {
+    add();
+    sub();
+    cart_click();
+    cart_click2();
+    accordion();
+});
+
+
 $('.carousel-autoplay').owlCarousel({
     loop: true,
     margin: 10,
@@ -144,41 +153,187 @@ function shopCartMove() {
     showCart.style.display = "none";
 }
 
-// 刪除購物車
-function delete_item() {
-    //var deleteBtn = document.getElementById("delete_btn");
-    //var deleteContext = document.getElementById("cart_delete_item");
-}
-$("#delete_btn").click(function (e) {
-    e.preventDefault();
-    var myobj = document.getElementById("cart_delete_item");
-    myobj.remove();
-    $(".cart_delete_item").hide();
-    $(".alert").hide(this);
-});
-
 
 // 數量增加
 function add() {
-    var txt = document.getElementById("cartcount");
-    var a = txt.value;
-    a++;
-    txt.value = a;
+    $(".add_button").click(function () {
+        var number = Number($(this).parent().parent().find("#cartcount").val())
+        $(this).parent().parent().find("#cartcount").val(number + 1)
+    });
 }
 
 // 數量减少
 function sub() {
-    var txt = document.getElementById("cartcount");
-    var a = txt.value;
-    if (a > 1) {
-        a--;
-        txt.value = a;
-    } else {
-        txt.value = 1;
-    }
+    $(".sub_button").click(function () {
+        var number = Number($(this).parent().parent().find("#cartcount").val())
+        if (number == 1) {
+
+        } else {
+            $(this).parent().parent().find("#cartcount").val(number - 1)
+        }
+
+    });
 }
+
+//購物車事件
+function cart_click() {
+    $(".addCart").click(function () {
+        var data = {}
+        data.id = Number($(this).parent().parent().parent().find("#chart_id").val());
+        data.name = $(this).parent().parent().parent().find("#Title").text();
+        data.details = $(this).parent().parent().parent().find("#details").text();
+        data.price = Number($(this).parent().parent().parent().find("#DiscountPrice").text().replace("$", ""));
+        data.amount = $(this).parent().parent().parent().find("#cartcount").val();
+
+        cartLS.add(data)
+        alert("123")
+    });
+    //Local Storage 渲染
+    function renderCart(items) {
+
+        const cart = document.querySelector(".cart")
+        const deleteInfo = document.querySelector(".deleteInfo")
+
+        cart.innerHTML = items.map((item) => `<div class="cart-item">
+    <a href="">
+        <div class="product-img img-bg">
+        </div>
+    </a>
+    <div class="cart-detail">
+        <div class="product-detail">
+            <h3>
+                <a href="" id="puttitle">${item.name}</a>
+            </h3>
+            <div class="product-option">${item.details}</div>
+        </div>
+        <div class="text-tag">2020-09-12 11:00</div>
+        <div>數量 x <span class="text-tag putamout" id="putamout">${item.amount}</span></div>
+        <div class="product-pricing">
+            <h4>TWD <span id="putprice">${item.price}</span></h4>
+        </div>
+    </div>
+    <div class="product-action">
+        <button type="button" class="btn btn-light" data-toggle="modal"
+            data-target="#CartModal">
+            <span class="iconify" data-icon="bi:trash" data-inline="false"></span>
+        </button>
+    </div>
+</div>`).join("")
+
+        deleteInfo.innerHTML = items.map((item) => ` <div class="cart-item">
+    <a href="">
+        <div class="product-img img-bg">
+        </div>
+    </a>
+    <div class="cart-detail">
+        <div class="product-detail">
+            <h3>
+                <a href="" id="puttitle">${item.name}</a>
+            </h3>
+            <div class="product-option">${item.details}</div>
+        </div>
+        <div class="text-tag">2020-09-12 11:00</div>
+        <div>人數 x <span class="text-tag putamout" id="putamout">${item.amount}</span></div>
+        <div class="product-pricing">
+            <h4>TWD <span id="putprice">${item.price}</span></h4>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <h5 class="alert alert-danger mb-0 mr-auto">您確定要刪除所選商品嗎？</h5>
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+    <button type="button" class="btn btn-danger" id="delete_btn" onClick="cartLS.remove(${item.id})"
+        >刪除</button>
+</div><hr>`).join("")
+
+    }
+    renderCart(cartLS.list())
+    cartLS.onChange(renderCart)
+    
+}
+
+
+
+function cart_click2() {
+    $(".addCart2").click(function () {
+        var data = {}
+        data.id = Number($(this).parent().parent().find("#chart_id").val());
+        data.name = $(this).parent().parent().find("#Title").text();
+        data.details = $(this).parent().parent().parent().find("#details").text();
+        data.price = Number($(this).parent().parent().parent().find("#DiscountPrice").text().replace("$", ""));
+        data.quantity = $(this).find("#addCart2");
+        console.dir(data.amount);
+        cartLS.add(data)
+
+        //Local Storage 渲染
+        function renderCart2(items) {
+
+            const cart = document.querySelector(".cart")
+            const deleteInfo = document.querySelector(".deleteInfo")
+
+            cart.innerHTML = items.map((item) => `<div class="cart-item">
+            <a href="">
+                <div class="product-img img-bg">
+                </div>
+            </a>
+            <div class="cart-detail">
+                <div class="product-detail">
+                    <h3>
+                        <a href="" id="puttitle">${item.name}</a>
+                    </h3>
+                    <div class="product-option">${item.details}</div>
+                </div>
+                <div class="text-tag">2020-09-12 11:00</div>
+                <div>數量 x <span class="text-tag putamout" id="putamout">${item.quantity}</span></div>
+                <div class="product-pricing">
+                    <h4>TWD <span id="putprice">${item.price}</span></h4>
+                </div>
+            </div>
+            <div class="product-action">
+                <button type="button" class="btn btn-light" data-toggle="modal"
+                    data-target="#CartModal">
+                    <span class="iconify" data-icon="bi:trash" data-inline="false"></span>
+                </button>
+            </div>
+        </div>`).join("")
+
+            deleteInfo.innerHTML = items.map((item) => ` <div class="cart-item">
+            <a href="">
+                <div class="product-img img-bg">
+                </div>
+            </a>
+            <div class="cart-detail">
+                <div class="product-detail">
+                    <h3>
+                        <a href="" id="puttitle">${item.name}</a>
+                    </h3>
+                    <div class="product-option">${item.details}</div>
+                </div>
+                <div class="text-tag">2020-09-12 11:00</div>
+                <div>人數 x <span class="text-tag putamout" id="putamout">${item.quantity}</span></div>
+                <div class="product-pricing">
+                    <h4>TWD <span id="putprice">${item.price}</span></h4>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <h5 class="alert alert-danger mb-0 mr-auto">您確定要刪除所選商品嗎？</h5>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-danger" id="delete_btn" onClick="cartLS.remove(${item.id})"
+                >刪除</button>
+        </div><hr>`).join("")
+
+        }
+        renderCart2(cartLS.list())
+        cartLS.onChange(renderCart2)
+
+    });
+}
+
+
+
 //手風琴
-$(document).ready(function () {
+function accordion() {
     $("#faq").sticky({
         topSpacing: 100,
         bottomSpacing: 800,
@@ -187,4 +342,8 @@ $(document).ready(function () {
     $('body').scrollspy({
         target: '#faq'
     })
-});
+}
+
+//搜尋
+let search = document.querySelector('.search-content');
+search.setAttribute('placeholder', '輸入地點開始美食之旅')

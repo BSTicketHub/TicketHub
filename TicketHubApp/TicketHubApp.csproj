@@ -230,6 +230,7 @@
     <Compile Include="Models\ViewModels\BestSellerCardViewModel.cs" />
     <Compile Include="Models\ViewModels\CartItemViewModel.cs" />
     <Compile Include="Models\ViewModels\CartViewModel.cs" />
+    <Compile Include="Models\ViewModels\CustomerOrderViewModel.cs" />
     <Compile Include="Models\ViewModels\HomeListViewModel.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\ViewModels\CustomerInfoViewModel.cs" />
@@ -252,18 +253,22 @@
     <Compile Include="Models\ViewModels\PlatformShopViewModel.cs" />
     <Compile Include="Models\ViewModels\SortNewCardListViewModel.cs" />
     <Compile Include="Models\ViewModels\SortNewCardViewModel.cs" />
+    <Compile Include="Models\ViewModels\TicketViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CustomerInfoService.cs" />
     <Compile Include="Services\HomeCardService.cs" />
-    <Compile Include="Services\InfoViewService.cs" />
-    <Compile Include="Services\PlatformService.cs" />
     <Compile Include="Services\ImgurService.cs" />
     <Compile Include="Models\ViewModels\StoreTicketListViewModel.cs" />
     <Compile Include="Models\ViewModels\ShopIssueViewModel.cs" />
+    <Compile Include="Services\InfoViewService.cs" />
+    <Compile Include="Services\PlatformService.cs" />
     <Compile Include="Services\ProductDetailService.cs" />
     <Compile Include="Services\ShopInfoService.cs" />
     <Compile Include="Services\ShopIssueService.cs" />
+    <Compile Include="Services\ShopListService.cs" />
     <Compile Include="Services\ShopReportService.cs" />
     <Compile Include="Services\TagService.cs" />
+    <Compile Include="Services\TicketListService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -411,6 +416,7 @@
     <Content Include="Assets\JavaScript\Customer\MyTicket.js" />
     <Content Include="Assets\JavaScript\Customer\WishList.js" />
     <Content Include="Assets\JavaScript\Customer\_CustomerEvent.js" />
+    <Content Include="Assets\JavaScript\Home\cartLS.js" />
     <Content Include="Assets\JavaScript\Home\home.js" />
     <Content Include="Assets\JavaScript\Common\owl.carousel.min.js" />
     <Content Include="Assets\CSS\ShopList.css">
@@ -623,6 +629,8 @@
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\vue.js" />
+    <Content Include="Scripts\vue.min.js" />
     <Content Include="Views\Shared\MailTemplate\Confirmation.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -729,6 +737,7 @@
     <Content Include="Views\Shared\_Navbar.cshtml" />
     <Content Include="Views\Shared\_Layout_Manage.cshtml" />
     <Content Include="Views\Shared\_SideMenu.cshtml" />
+    <Content Include="Views\Home\PageUnfound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

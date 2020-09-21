@@ -44,8 +44,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="cart-group" id="cart_delete_item">
-                        <div class="cart-item">
+                    <div class="cart-group deleteInfo" id="cart_delete_item">
+                        <!-- <div class="cart-item">
                             <a href="">
                                 <div class="product-img img-bg">
                                 </div>
@@ -53,36 +53,31 @@
                             <div class="cart-detail">
                                 <div class="product-detail">
                                     <h3>
-                                        <a href="">
-                                            高雄 - 墾丁｜定點共乘接送｜直達高雄高鐵
-                                        </a>
+                                        <a href="" id="puttitle">${item.name}</a>
                                     </h3>
-                                    <div class="product-option">【高雄出發】</div>
+                                    <div class="product-option">${item.details}</div>
                                 </div>
                                 <div class="text-tag">2020-09-12 11:00</div>
-                                <div class="text-tag">人數 x 1</div>
-                                <div class="product-pricing ">
-                                    <h4>TWD 388</h4>
+                                <div>人數 x <span class="text-tag" id="putamout">${item.quantity}</span></div>
+                                <div class="product-pricing">
+                                    <h4>TWD <span id="putprice">${item.price}</span></h4>
                                 </div>
                             </div>
-                            <div class="product-action">
-                                <button type="button" class="btn btn-light" data-toggle="modal"
-                                        data-target="#CartModal">
-                                    <span class="iconify" data-icon="bi:trash" data-inline="false"></span>
-                                </button>
-                            </div>
                         </div>
-
+                        <div class="modal-footer">
+                            <h5 class="alert alert-danger mb-0 mr-auto">您確定要刪除所選商品嗎？</h5>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-danger" id="delete_btn" onClick="cartLS.remove(${item.id})"
+                                >刪除</button>
+                        </div> -->
                     </div>
-                    <h5 class="alert alert-danger mb-0">您確定要刪除所選商品嗎？</h5>
                 </div>
-                <div class="modal-footer">
+                <!-- <div class="modal-footer">
+                    <h5 class="alert alert-danger mb-0 mr-auto">您確定要刪除所選商品嗎？</h5>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-danger" id="delete_btn" onclick="delete_item()"
-                            data-dismiss="modal">
-                        刪除
-                    </button>
-                </div>
+                    <button type="button" class="btn btn-danger" id="delete_btn" onClick="cartLS.remove(${item.id})"
+                        >刪除</button>
+                </div> -->
             </div>
         </div>
     </div>
@@ -184,5 +179,6 @@
     @RenderSection("scripts", required: false)
     @RenderSection("endCSS", required: false)
     @RenderSection("endJS", required: false)
+    
 </body>
 </html>

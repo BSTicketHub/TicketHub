@@ -39,7 +39,6 @@ namespace TicketHubApp.Services
                 Email = shop.Email,
                 Website = shop.Website,
                 ReleasedDate = issue.ReleasedDate,
-                ClosedDate = (DateTime)issue.ClosedDate,
             };
             return result;
         }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TicketHubApp.Models.ViewModels.StoreTicketListViewModel>
+﻿@model IEnumerable<TicketHubApp.Models.ViewModels.ShopIssueViewModel>
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -185,7 +185,7 @@
 
             $.ajax({
                 cache: false,
-                url: "../Customer/ToggleFavoriteList",
+                url: "../ToggleFavoriteList",
                 method: "post",
                 data: {
                     IssueId: Icon.getAttributeNode('issueid').value,
