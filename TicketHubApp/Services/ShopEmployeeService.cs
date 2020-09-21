@@ -8,6 +8,7 @@ using TicketHubApp.Models;
 using TicketHubApp.Models.ViewModels;
 using TicketHubDataLibrary.Models;
 using Microsoft.AspNet.Identity.Owin;
+using TicketHubDataLibrary;
 
 namespace TicketHubApp.Services
 {

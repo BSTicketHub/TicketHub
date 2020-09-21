@@ -29,6 +29,12 @@ namespace TicketHubApp.Controllers
                                 new SideMenuItem { IconName = "clarity:details-line", MenuTitle = "票券列表", Href = "/Shop/IssueList" },
                             }
                         },
+                        new SideMenuItem{ IconName = "clarity:employee-line", MenuTitle = "員工管理", Href = "#employeeManagement",
+                            SubMenuItems = new List<SideMenuItem>{
+                                new SideMenuItem { IconName = "clarity:details-line", MenuTitle = "員工列表", Href = "/Shop/EmployeeList"},
+                                new SideMenuItem { IconName = "clarity:details-line", MenuTitle = "員工新增", Href = "/Shop/EmployeeCreate"},
+                            } 
+                        },
                         new SideMenuItem{ IconName = "carbon:text-link-analysis", MenuTitle = "銷售分析", Href = "#sellingAnalysis",
                             SubMenuItems = new List<SideMenuItem>{
                                 new SideMenuItem { IconName = "clarity:details-line", MenuTitle = "報表分析", Href = "/Shop/SalesReport" },

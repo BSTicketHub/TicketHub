@@ -45,7 +45,7 @@ namespace TicketHubApp.Controllers
         // GET: Store
         public ActionResult Index()
         {
-            return View("HomePage");
+            return View("SalesReport");
         }
 
         public ActionResult IssueList(int? orderValue)
