@@ -245,6 +245,7 @@
     <Compile Include="Models\ViewModels\ProductDetailViewModel.cs" />
     <Compile Include="Models\ViewModels\RecommenCardListViewModel.cs" />
     <Compile Include="Models\ViewModels\RecommenCardViewModel.cs" />
+    <Compile Include="Models\ViewModels\ShopEmployeeViewModel.cs" />
     <Compile Include="Models\ViewModels\ShopIssueDetailViewModel.cs" />
     <Compile Include="Models\ViewModels\ShopIssueListViewModel.cs" />
     <Compile Include="Models\ViewModels\ShopViewModel.cs" />
@@ -262,6 +263,7 @@
     <Compile Include="Services\InfoViewService.cs" />
     <Compile Include="Services\PlatformService.cs" />
     <Compile Include="Services\ProductDetailService.cs" />
+    <Compile Include="Services\ShopEmployeeService.cs" />
     <Compile Include="Services\ShopInfoService.cs" />
     <Compile Include="Services\ShopIssueService.cs" />
     <Compile Include="Services\ShopListService.cs" />
@@ -324,6 +326,18 @@
     </Content>
     <Content Include="Assets\CSS\Shop\CreateProduct.min.css">
       <DependentUpon>CreateProduct.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Shop\EmployeeCreate.css">
+      <DependentUpon>EmployeeCreate.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Shop\EmployeeCreate.min.css">
+      <DependentUpon>EmployeeCreate.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Shop\EmployeeList.css">
+      <DependentUpon>EmployeeList.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Shop\EmployeeList.min.css">
+      <DependentUpon>EmployeeList.css</DependentUpon>
     </Content>
     <Content Include="Assets\CSS\Shop\HomePage.css">
       <DependentUpon>HomePage.scss</DependentUpon>
@@ -673,6 +687,8 @@
     <Content Include="Assets\CSS\Common\Site.scss" />
     <Content Include="Assets\CSS\Shop\IssueDetails.scss" />
     <Content Include="Assets\CSS\ProductDescription.scss" />
+    <Content Include="Assets\CSS\Shop\EmployeeList.scss" />
+    <Content Include="Assets\CSS\Shop\EmployeeCreate.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -726,6 +742,8 @@
     <Content Include="Views\Platform\ShopList.cshtml" />
     <Content Include="Views\Platform\OrderList.cshtml" />
     <Content Include="Views\Platform\Index.cshtml" />
+    <Content Include="Views\Shop\EmployeeList.cshtml" />
+    <Content Include="Views\Shop\EmployeeCreate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

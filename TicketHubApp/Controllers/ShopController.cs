@@ -15,6 +15,8 @@ using TicketHubApp.Services;
 using System.Globalization;
 using Newtonsoft.Json.Linq;
 using System.Runtime.InteropServices;
+using System.Web;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace TicketHubApp.Controllers
 {
@@ -288,6 +290,56 @@ namespace TicketHubApp.Controllers
             var service = new ShopIssueService();
             var jsonData = service.GetIssueDetailsApi(Guid.Parse(Id));
             return Json(jsonData, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult EmployeeList()
+        {
+            var service = new ShopEmployeeService();
+            var result = service.GetEmployeeList();
+            return View(result);
+        }
+
+        public ActionResult deleteEmployeeApi(string id)
+        {
+            AppIdentityUserManager userManeger = HttpContext.GetOwinContext().Get<AppIdentityUserManager>();
+
+            var service = new ShopEmployeeService();
+            var result = service.DeleteEmployee(id, userManeger);
+
+            return RedirectToAction("EmployeeList");
+        }
+
+        [HttpGet]
+        public ActionResult EmployeeCreate()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult EmployeeCreate(string account)
+        {
+            var userManager = HttpContext.GetOwinContext().Get<AppIdentityUserManager>();
+            var service = new ShopEmployeeService();
+            var result = service.createEmployee(account, userManager);
+            if (result.Success)
+            {
+                return RedirectToAction("EmployeeList");
+            }
+
+            return View();
+        }
+
+        public ActionResult searchAccountApi(string account)
+        {
+            var userManager = HttpContext.GetOwinContext().Get<AppIdentityUserManager>();
+            var user = userManager.FindByEmail(account);
+            if (user == null)
+            {
+                return Json("Email 不存在", JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(user, JsonRequestBehavior.AllowGet);
         }
     }
 }
