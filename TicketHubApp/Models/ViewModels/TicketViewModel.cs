@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.UI.WebControls;
 using TicketHubDataLibrary.Models;
 
 namespace TicketHubApp.Models.ViewModels
@@ -19,5 +20,18 @@ namespace TicketHubApp.Models.ViewModels
         public Guid OrderId { get; set; }
         public string IssueTitle { get; set; }
         public string ImgPath { get; set; }
+        public IEnumerable<TicketDetailViewModel> TicketDetail { get; set; }
+    }
+
+    public class TicketDetailViewModel
+    {
+        public Guid IssueId { get; set; }
+        public Guid OrderId { get; set; }
+        public string OrderMaker { get; set; }
+        public string OrderDate { get; set; }
+        public string ImgPath { get; set; }
+        public string CloseDate { get; set; }
+        public string IssueTitle { get; set; }
+        public IEnumerable<Guid> TicketId { get; set; }
     }
 }

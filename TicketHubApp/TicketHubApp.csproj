@@ -428,6 +428,7 @@
     <Content Include="Assets\JavaScript\Customer\MyTicket.js" />
     <Content Include="Assets\JavaScript\Customer\WishList.js" />
     <Content Include="Assets\JavaScript\Customer\_CustomerEvent.js" />
+    <Content Include="Assets\JavaScript\Home\cartLS.js" />
     <Content Include="Assets\JavaScript\Home\home.js" />
     <Content Include="Assets\JavaScript\Common\owl.carousel.min.js" />
     <Content Include="Assets\CSS\ShopList.css">
@@ -640,6 +641,8 @@
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\vue.js" />
+    <Content Include="Scripts\vue.min.js" />
     <Content Include="Views\Shared\MailTemplate\Confirmation.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -744,6 +747,7 @@
     <Content Include="Views\Platform\Index.cshtml" />
     <Content Include="Views\Shop\EmployeeList.cshtml" />
     <Content Include="Views\Shop\EmployeeCreate.cshtml" />
+    <Content Include="Views\Home\PageUnfound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

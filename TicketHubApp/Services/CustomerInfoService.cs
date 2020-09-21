@@ -50,7 +50,7 @@ namespace TicketHubApp.Services
                                 Title = i.Title,
                                 OriginalPrice = i.OriginalPrice,
                             },
-                MyOrder = from od in _context.OrderDetail 
+                MyOrder = from od in _context.OrderDetail
                           join o in order on od.OrderId equals o.Id
                           where o.Id == od.OrderId
                           select new CustomerOrderViewModel
@@ -68,14 +68,29 @@ namespace TicketHubApp.Services
                                                Title = i.Title
                                            }
                           },
-                MyTicket = from t in ticket
-                           join i in issue on t.IssueId equals i.Id
+                MyTicket = from i in issue
+                           join t in ticket on i.Id equals t.IssueId
                            where t.Exchanged == false && t.Voided == false && t.UserId == userId
                            select new TicketViewModel
                            {
                                IssueTitle = i.Title,
-                               VoidedDate = t.VoidedDate.ToString(),
-                               ImgPath = i.ImgPath
+                               VoidedDate = i.ClosedDate.ToString(),
+                               ImgPath = i.ImgPath,
+                               TicketDetail = from o in order
+                                              where o.Id == t.OrderId
+                                              select new TicketDetailViewModel
+                                              {
+                                                  IssueId = i.Id,
+                                                  ImgPath = i.ImgPath,
+                                                  IssueTitle = i.Title,
+                                                  OrderDate = o.OrderedDate.ToString(),
+                                                  OrderId = o.Id,
+                                                  OrderMaker = user.UserName,
+                                                  CloseDate = i.ClosedDate.ToString(),
+                                                  TicketId = from t in ticket
+                                                             where t.UserId == userId && t.IssueId == i.Id
+                                                             select t.Id
+                                              }
                            },
                 InvalidTicket = from t in ticket
                                 join i in issue on t.IssueId equals i.Id

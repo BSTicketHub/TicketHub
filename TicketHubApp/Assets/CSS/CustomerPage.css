@@ -180,6 +180,19 @@ body {
         color: #adadad;
         top: 55px;
         right: 10px; }
+        .info .container .row .valid-ticket .go-detail:hover, .info .container .row .invalid-ticket .go-detail:hover {
+          cursor: pointer; }
+    .info .container .row .my-ticket p {
+      margin: 0px; }
+    .info .container .row .my-ticket .title {
+      background-color: #23a8b2;
+      color: white; }
+    .info .container .row .my-ticket .ticket-id-area p {
+      margin: 0; }
+    .info .container .row .my-ticket .ticket-id-area .QRCode {
+      font-size: 10px; }
+    .info .container .row .my-ticket .order-detail p {
+      margin: 0; }
     .info .container .row .favorite-store {
       height: 250px; }
       .info .container .row .favorite-store .img-area {

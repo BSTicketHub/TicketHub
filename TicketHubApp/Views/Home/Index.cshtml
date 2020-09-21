@@ -282,11 +282,11 @@
                         }
 
                         @*@Html.Partial("_RecommenCard")
-                        @Html.Partial("_RecommenCard")
-                        @Html.Partial("_RecommenCard")
-                        @Html.Partial("_RecommenCard")
-                        @Html.Partial("_RecommenCard")
-                        @Html.Partial("_RecommenCard")*@
+                            @Html.Partial("_RecommenCard")
+                            @Html.Partial("_RecommenCard")
+                            @Html.Partial("_RecommenCard")
+                            @Html.Partial("_RecommenCard")
+                            @Html.Partial("_RecommenCard")*@
                     </div>
                 </div>
             </div>
@@ -303,15 +303,15 @@
                     <div class="owl-stage">
                         @foreach (var item in Model.BestSellerItems.Items)
                         {
-                            @Html.Partial("_BestSellerCard",item)
+                            @Html.Partial("_BestSellerCard", item)
                         }
 
                         @*@Html.Partial("_BestSellerCard")
-                        @Html.Partial("_BestSellerCard")
-                        @Html.Partial("_BestSellerCard")
-                        @Html.Partial("_BestSellerCard")
-                        @Html.Partial("_BestSellerCard")
-                        @Html.Partial("_BestSellerCard")*@
+                            @Html.Partial("_BestSellerCard")
+                            @Html.Partial("_BestSellerCard")
+                            @Html.Partial("_BestSellerCard")
+                            @Html.Partial("_BestSellerCard")
+                            @Html.Partial("_BestSellerCard")*@
                     </div>
                 </div>
             </div>
@@ -330,20 +330,20 @@
             </div>
         }
         @*<div class="col-md-4 col-sm-12">
-            @Html.Partial("_SortNewCard")
-        </div>
-        <div class="col-md-4 col-sm-12">
-            @Html.Partial("_SortNewCard")
-        </div>
-        <div class="col-md-4 col-sm-12">
-            @Html.Partial("_SortNewCard")
-        </div>
-        <div class="col-md-4 col-sm-12">
-            @Html.Partial("_SortNewCard")
-        </div>
-        <div class="col-md-4 col-sm-12">
-            @Html.Partial("_SortNewCard")
-        </div>*@
+                @Html.Partial("_SortNewCard")
+            </div>
+            <div class="col-md-4 col-sm-12">
+                @Html.Partial("_SortNewCard")
+            </div>
+            <div class="col-md-4 col-sm-12">
+                @Html.Partial("_SortNewCard")
+            </div>
+            <div class="col-md-4 col-sm-12">
+                @Html.Partial("_SortNewCard")
+            </div>
+            <div class="col-md-4 col-sm-12">
+                @Html.Partial("_SortNewCard")
+            </div>*@
     </div>
     <div class="row justify-content-center">
         <div class="col-4 text-center">
@@ -356,3 +356,6 @@
 <!-- ------ -->
 <button class="" id="btnScroll">▲<h6>Top</h6></button>
 <!-- ------ -->
+@section endJS{
+    <script type="module" src="~/Assets/JavaScript/Home/cartLS.js"></script>
+}

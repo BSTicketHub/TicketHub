@@ -48,7 +48,7 @@ export function CreatePage(firstPage) {
             function createInfoArea(target = document.querySelectorAll(".sidebar-nav > div")[0]) {
                 let infoArea = document.querySelector('.col-9')
                 let content = document.createElement('div');
-                content.classList.add('info-area', 'p-4', 'rounded');
+                content.classList.add('info-area', 'p-4', 'rounded', 'animate__animated', 'animate__fadeIn');
                 infoArea.append(content);
 
                 let title = document.createElement('h3');
@@ -474,6 +474,9 @@ export function CreatePage(firstPage) {
                     validTime.innerHTML = `有效期限 : <span>${i.VoidedDate.slice(0, 11)}</span> 前`
                     let goDetail = document.createElement('i');
                     goDetail.classList.add('go-detail', 'fas', 'fa-angle-right', 'position-absolute');
+                    goDetail.addEventListener('click', function (e) {
+                        ShowTicketDetail(e, i.TicketDetail);
+                    })
                     textArea.append(title, validTime, goDetail);
                 }
 
@@ -608,6 +611,90 @@ export function CreatePage(firstPage) {
                     let wishList = document.querySelector('.info-area .container .row')
                     wishList.append(storeDiv);
                 }
+            }
+
+            function ShowTicketDetail(event, ticketDetail) {
+                console.log(ticketDetail)
+                let content = event.target.closest('.info-area .container .row .my-ticket');
+                content.innerHTML = "";
+
+                let animation = document.createElement('div');
+                animation.classList.add('animate__animated', 'animate__fadeIn');
+
+                let validTicket = document.createElement('div');
+                validTicket.classList.add('valid-ticket', 'w-100', 'd-flex', 'position-relative', 'mt-3', 'mb-1', 'px-2', 'py-3', 'border-0')
+                animation.append(validTicket);
+
+                let imgArea = document.createElement('div');
+                imgArea.classList.add('img-area', 'h-100');
+                imgArea.style.backgroundImage = "url('https://picsum.photos/400/300/?random=1')"
+                imgArea.style.backgroundSize = "cover";
+
+                let textArea = document.createElement('div');
+                textArea.classList.add('text-area');
+                validTicket.append(imgArea, textArea);
+
+                let title = document.createElement('h6');
+                title.classList.add('my-3', 'ml-4')
+                title.innerText = `${ticketDetail[0].IssueTitle}`;
+                let validTime = document.createElement('p')
+                validTime.classList.add('valid-time', 'ml-4')
+                validTime.innerHTML = `有效期限 : <span>${ticketDetail[0].CloseDate.slice(0, 11)}</span> 前`
+                textArea.append(title, validTime);
+
+                let ticketIdTitle = document.createElement('p');
+                ticketIdTitle.classList.add('title', 'p-2', 'rounded-top')
+                ticketIdTitle.innerText = "兌換券序號";
+                animation.append(ticketIdTitle);
+
+                for (let i of ticketDetail[0].TicketId) {
+                    let ticketIdArea = document.createElement('div');
+                    ticketIdArea.classList.add('ticket-id-area', 'd-flex', 'justify-content-between', 'align-items-center', 'py-1', 'border-bottom', 'px-2');
+
+                    let ticketId = document.createElement('p')
+                    ticketId.innerText = `${i}`;
+                    let QRCode = document.createElement('button');
+                    QRCode.innerText = "QR核銷";
+                    QRCode.classList.add('btn', 'btn-danger', 'mx-2', 'my-1', 'QRCode');
+                    QRCode.setAttribute('data-toggle', 'modal');
+                    QRCode.setAttribute('data-target', '#showQRCode')
+
+                    ticketIdArea.append(ticketId, QRCode);
+                    animation.append(ticketIdArea);
+                }
+
+                //let orderDetailTitle = document.createElement('p');
+                //orderDetailTitle.classList.add('title', 'p-2', 'rounded-top');
+                //orderDetailTitle.innerText = "訂單明細";
+                //animation.append(orderDetailTitle);
+
+                //let orderDetail = document.createElement('div');
+                //orderDetail.classList.add('order-detail');
+                //let owner = document.createElement('p', 'w-100');
+                //owner.classList.add('py-3', 'border-bottom', 'px-2');
+                //owner.innerText = "訂購人 : 小明";
+                //let orderDate = document.createElement('p');
+                //orderDate.innerText = "訂購日期 : 2021/03/08";
+                //orderDate.classList.add('py-3', 'border-bottom', 'px-2');
+                //let count = document.createElement('p');
+                //count.classList.add('py-3', 'border-bottom', 'px-2')
+                //count.innerText = "總金額 : 300";
+                //orderDetail.append(owner, orderDate, count);
+
+                //animation.append(orderDetail);
+
+                let buttonArea = document.createElement('div');
+                buttonArea.classList.add('d-flex', 'justify-content-end')
+                let goShop = document.createElement('button');
+                goShop.classList.add('btn', 'btn-success', 'd-flex', 'justify-content-end', 'm-3');
+                goShop.innerText = "前往票券資訊";
+                goShop.addEventListener('click', function () {
+                    window.location.href = `../ProductDescription/ProductDescription/${ticketDetail[0].IssueId}`
+                })
+                buttonArea.append(goShop);
+                animation.append(buttonArea);
+                content.append(animation);
+
             }
         },
         error: function () {

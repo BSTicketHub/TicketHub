@@ -9,24 +9,26 @@
                     <img class="img-sm" data-src="" alt="台北君悅酒店-凱菲屋"
                          src="@Model.ImgPath">
                 </div>
-                <div class="product-detail">
-                    <h3>@Model.Title</h3>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="priceBox">
-                                <div class="price d-flex">
-                                    <div class="original line-through ml-auto">$3872</div>
-                                    <div class="current">
-                                        $2840<span class="t-09">起</span>
-                                    </div>
+            </a>
+            <div class="product-detail">
+                <input type="hidden" value="@Model.Id">
+                <h3 id="Title">@Model.Title</h3>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="priceBox">
+                            <div class="price d-flex">
+                                <div class="original line-through ml-auto">$@Model.OriginalPrice</div>
+                                <div class="current">
+                                    <span id="DiscountPrice">$@Model.DiscountPrice</span>
+                                    <span class="t-09">起</span>
                                 </div>
-                                <div class="Remaining">剩37份</div>
                             </div>
+                            <div class="Remaining">剩37份</div>
                         </div>
                     </div>
-                    <div class="addcart" type="button">放入購物車</div>
                 </div>
-            </a>
+                <div class="addcart addCart2" id="addCart2" type="button">放入購物車</div>
+            </div>
         </div>
     </div>
 </div>
