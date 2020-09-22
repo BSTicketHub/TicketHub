@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using Microsoft.Ajax.Utilities;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
+using System.Threading;
 using System.Web.Mvc;
 using TicketHubApp.Models.ViewModels;
 using TicketHubApp.Services;
@@ -45,7 +48,7 @@ namespace TicketHubApp.Controllers
             if (User.Identity.IsAuthenticated)
             { 
                 var currentUserId = User.Identity.GetUserId();
-                var wishIssue = _context.UserWishIssue.Where(x => x.UserId == currentUserId).Select(x => x.IssueId).ToList();
+                var wishIssue = service.GetUserFsavotite(currentUserId);
                 ViewBag.UserId = currentUserId;
                 ViewBag.WishIssue = wishIssue;
             }
@@ -123,7 +126,23 @@ namespace TicketHubApp.Controllers
 
                 _context.SaveChanges();
             }
-            return Content("Complete");
+            return Json(IssueId, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public ActionResult IssueTagSearch(IssueListSearchViewModel model)
+        {
+            model.SelectedTag = model.SelectedTag is null ? new List<string>() : model.SelectedTag;
+
+            var service = new TicketListService();
+            var tickets = service.SearchByTag(model.MaxPrice, model.MinPrice);
+            if(model.SelectedTag.Count != 0)
+            {
+                tickets = tickets.Where(x => x.TagList.Intersect(model.SelectedTag).Count() > 0);
+            }
+
+            
+
+            return Json(tickets, JsonRequestBehavior.AllowGet);
         }
     }
 }

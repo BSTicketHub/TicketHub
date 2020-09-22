@@ -1,4 +1,5 @@
 ﻿using Microsoft.Ajax.Utilities;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using TicketHubApp.Models;
 using TicketHubApp.Models.ViewModels;
 using TicketHubDataLibrary.Models;
@@ -14,19 +16,18 @@ namespace TicketHubApp.Services
 {
     public class ShopReportService
     {
+        private TicketHubContext _context = new TicketHubContext();
+
+        private readonly string _userid = HttpContext.Current.User.Identity.GetUserId();
+
         public List<string> getSalesReport(List<string> duration)
         {
-            TicketHubContext context = new TicketHubContext();
+            Guid shopid = _context.ShopEmployee.FirstOrDefault((x) => x.UserId == _userid).ShopId;
 
-            //var user = HttpContext.Current.User.Identity.GetUserId();
-            var user = "26c751ea-d1ce-45bf-8a65-78f0d48ce2c4";
-            var shopId = context.ShopEmployee.Where((x) => x.UserId == user).FirstOrDefault().ShopId;
-
-
-            var temp = from od in context.OrderDetail
-                       join i in context.Issue on od.IssueId equals i.Id
-                       join o in context.Order on od.OrderId equals o.Id
-                       where i.ShopId == shopId
+            var temp = from od in _context.OrderDetail
+                       join i in _context.Issue on od.IssueId equals i.Id
+                       join o in _context.Order on od.OrderId equals o.Id
+                       where i.ShopId == shopid
                        select new { TotalSales = od.Amount * od.Price, TotalAmount = od.Amount, o.UserId, o.OrderedDate };
 
             var st = (String.IsNullOrEmpty(duration[0])) ? DateTime.MinValue : DateTime.Parse(duration[0]);
@@ -54,11 +55,10 @@ namespace TicketHubApp.Services
 
         public IQueryable<Object> getTopIssue()
         {
-            var id = Guid.Parse("FA10840D-3A73-4374-AAFD-D592A3623EC1");
-            TicketHubContext context = new TicketHubContext();
+            Guid shopid = _context.ShopEmployee.FirstOrDefault((x) => x.UserId == _userid).ShopId;
 
-            var temp = from i in context.Issue.Where(i => i.ShopId == id)
-                       join od in context.OrderDetail on i.Id equals od.IssueId
+            var temp = from i in _context.Issue.Where(i => i.ShopId == shopid)
+                       join od in _context.OrderDetail on i.Id equals od.IssueId
                        select new
                        {
                            Id = i.Id,
@@ -80,13 +80,12 @@ namespace TicketHubApp.Services
 
         public IQueryable<Object> getTopCutsom()
         {
-            var id = Guid.Parse("FA10840D-3A73-4374-AAFD-D592A3623EC1");
-            TicketHubContext context = new TicketHubContext();
+            Guid shopid = _context.ShopEmployee.FirstOrDefault((x) => x.UserId == _userid).ShopId;
 
-            var temp = from i in context.Issue.Where(i => i.ShopId == id)
-                       join od in context.OrderDetail on i.Id equals od.IssueId
-                       join o in context.Order on od.OrderId equals o.Id
-                       join u in context.Users on o.UserId equals u.Id
+            var temp = from i in _context.Issue.Where(i => i.ShopId == shopid)
+                       join od in _context.OrderDetail on i.Id equals od.IssueId
+                       join o in _context.Order on od.OrderId equals o.Id
+                       join u in _context.Users on o.UserId equals u.Id
                        select new
                        {
                            UserId = o.UserId,
