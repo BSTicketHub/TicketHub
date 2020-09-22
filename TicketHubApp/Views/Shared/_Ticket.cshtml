@@ -1,6 +1,6 @@
 ﻿@model TicketHubApp.Models.ViewModels.ShopIssueViewModel
 
-<div id="issue" class="bg-white d-flex ticket position-relative rounded w-100" style="height:250px;">
+<div class="issue bg-white d-flex ticket position-relative rounded w-100 my-3" style="height:250px;">
     <div class="position-relative ticketImg col-md-4 border" style="background-image:url(@Model.ImgPath)"></div>
     <div class="col-md-8">
 
@@ -13,19 +13,19 @@
             <span issueid="@Model.Id" class="iconify position-absolute wishHeart" data-icon="bi:heart" data-inline="false" onclick="controlFromFavorite(this)"></span>
         }
 
-        <h3 class="my-4">@Model.Title</h3>
+        <h3 class="mt-4 mb-0">@Model.Title</h3>
+        <div class="tags">
+            @if(Model.TagList != null && Model.TagList.Count() != 0) { 
+                foreach(var i in Model.TagList)
+                {
+                    <span class="badge badge-pill badge-secondary mr-2 my-1">@i</span>
+                }
+            }
+        </div>
         <p class="description">@Model.Memo</p>
         <div>
             <span class="iconify" data-icon="carbon:location" data-inline="false"></span>
             <span class="description">@Model.City @Model.District</span>
-        </div>
-        <div class="mt-auto mb-0 position-absolute" style="bottom: 10px;">
-            <span class="iconify star star-checked" data-icon="uim:star" data-inline="false"></span>
-            <span class="iconify star star-checked" data-icon="uim:star" data-inline="false"></span>
-            <span class="iconify star star-checked" data-icon="uim:star" data-inline="false"></span>
-            <span class="iconify star star-checked" data-icon="uim:star" data-inline="false"></span>
-            <span class="iconify star" data-icon="uim:star" data-inline="false"></span>
-            <span class="star">(100)</span>
         </div>
         <div class="position-absolute" style="right: 10px; bottom: 10px;">
             <p class="ticketListOldPrice m-0">TWD @Model.OriginalPrice</p>
