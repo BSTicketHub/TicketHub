@@ -16,6 +16,7 @@ using Microsoft.AspNet.Identity.Owin;
 
 namespace TicketHubApp.Controllers
 {
+    [Authorize]
     public class ShopController : Controller
     {
         private TicketHubContext _context = new TicketHubContext();
@@ -96,7 +97,6 @@ namespace TicketHubApp.Controllers
                 else
                 {
                     ViewBag.Message = "新增失敗!";
-                    System.Console.WriteLine(result.Message);
                     return View(shopissueVM);
                 }
             }
@@ -159,13 +159,12 @@ namespace TicketHubApp.Controllers
             ShopViewModel shopVM = service.GetShopInfo();
             if (shopVM == null)
             {
-                return HttpNotFound();
+                return View();
             }
 
-            var countryList = new TagService().GenCountry();
-            ViewBag.countryList = countryList;
-
             TempData["ImgPath"] = shopVM.BannerImg;
+            TempData["City"] = shopVM.City;
+            TempData["Dinstrict"] = shopVM.District;
             return View(shopVM);
         }
 
@@ -173,9 +172,6 @@ namespace TicketHubApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ShopInfo(ShopViewModel shopVM)
         {
-            var countryList = new TagService().GenCountry();
-            ViewBag.countryList = countryList;
-            ViewBag.Message = "";
             if (TempData["ImgPath"] != null)
             {
                 shopVM.BannerImg = (string)TempData["ImgPath"];

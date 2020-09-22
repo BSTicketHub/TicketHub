@@ -39,6 +39,6 @@ namespace TicketHubApp.Models.ViewModels
         public string IssuerId { get; set; }
 
         public string Status { get; set; }
-        public int SalesAmount { get; set; }
+        public decimal SalesPrice { get; set; }
     }
 }

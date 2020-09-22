@@ -323,7 +323,7 @@ namespace TicketHubApp.Controllers
                 case RoleGroup.CUSTOMER:
                     return RedirectToAction("Index", "Home");
                 case RoleGroup.SHOP:
-                    return RedirectToAction("HomePage", "Shop");
+                    return RedirectToAction("Index", "Shop");
                 case RoleGroup.PLATFORM:
                     return RedirectToAction("Index", "Platform");
                 default:
