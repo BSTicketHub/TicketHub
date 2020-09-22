@@ -1,8 +1,9 @@
 $(document).ready(function () {
     add();
     sub();
-    cart_click();
-    cart_click2();
+    UpdateCartData();
+    UpdateCartData2();
+    UpcartCounter();
     accordion();
 });
 
@@ -175,159 +176,191 @@ function sub() {
     });
 }
 
-//購物車事件
-function cart_click() {
-    $(".addCart").click(function () {
-        var data = {}
-        data.id = Number($(this).parent().parent().parent().find("#chart_id").val());
-        data.name = $(this).parent().parent().parent().find("#Title").text();
-        data.details = $(this).parent().parent().parent().find("#details").text();
-        data.price = Number($(this).parent().parent().parent().find("#DiscountPrice").text().replace("$", ""));
-        data.amount = $(this).parent().parent().parent().find("#cartcount").val();
+//刪除購買商品
+function deleteCartItem(id) {
+    console.log(id)
+    console.log("delete")
+    let cartData = JSON.parse(localStorage.getItem('Cart'))
 
-        cartLS.add(data)
-        alert("123")
-    });
-    //Local Storage 渲染
-    function renderCart(items) {
+    cartData = cartData.filter(x => x.id != id)
 
-        const cart = document.querySelector(".cart")
-        const deleteInfo = document.querySelector(".deleteInfo")
+    localStorage.setItem('Cart', JSON.stringify(cartData))
 
-        cart.innerHTML = items.map((item) => `<div class="cart-item">
-    <a href="">
-        <div class="product-img img-bg">
-        </div>
-    </a>
-    <div class="cart-detail">
-        <div class="product-detail">
-            <h3>
-                <a href="" id="puttitle">${item.name}</a>
-            </h3>
-            <div class="product-option">${item.details}</div>
-        </div>
-        <div class="text-tag">2020-09-12 11:00</div>
-        <div>數量 x <span class="text-tag putamout" id="putamout">${item.amount}</span></div>
-        <div class="product-pricing">
-            <h4>TWD <span id="putprice">${item.price}</span></h4>
-        </div>
-    </div>
-    <div class="product-action">
-        <button type="button" class="btn btn-light" data-toggle="modal"
-            data-target="#CartModal">
-            <span class="iconify" data-icon="bi:trash" data-inline="false"></span>
-        </button>
-    </div>
-</div>`).join("")
+    UpdateCartData();
+    UpdateCartData2();
+    UpcartCounter();
+}
 
-        deleteInfo.innerHTML = items.map((item) => ` <div class="cart-item">
-    <a href="">
-        <div class="product-img img-bg">
-        </div>
-    </a>
-    <div class="cart-detail">
-        <div class="product-detail">
-            <h3>
-                <a href="" id="puttitle">${item.name}</a>
-            </h3>
-            <div class="product-option">${item.details}</div>
-        </div>
-        <div class="text-tag">2020-09-12 11:00</div>
-        <div>人數 x <span class="text-tag putamout" id="putamout">${item.amount}</span></div>
-        <div class="product-pricing">
-            <h4>TWD <span id="putprice">${item.price}</span></h4>
-        </div>
-    </div>
-</div>
-<div class="modal-footer">
-    <h5 class="alert alert-danger mb-0 mr-auto">您確定要刪除所選商品嗎？</h5>
-    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-    <button type="button" class="btn btn-danger" id="delete_btn" onClick="cartLS.remove(${item.id})"
-        >刪除</button>
-</div><hr>`).join("")
-
+//購物車更新數量
+function UpcartCounter() {
+    let data = JSON.parse(localStorage.getItem('Cart'));
+    let counter = 0;
+    //console.log(data);
+    // 顯示加總數
+    for (let item of data) {
+        let amount = +item.amount;
+        counter = counter + amount;
+        console.log(counter);
     }
-    renderCart(cartLS.list())
-    cartLS.onChange(renderCart)
-    
+
+    //console.log(counter);
+    // document.getElementById("cartCounter").innerText = counter;
+    document.getElementsByClassName("cartCounter")[0].innerText = counter;
+    document.getElementsByClassName("cartCounter")[1].innerText = counter;
+}
+
+//最新推出Card 事件
+$(".addCart").click(function (e) {
+    var id = `${$(this).parent().parent().parent().find("#chart_id").val()}`;
+    var title = $(this).parent().parent().parent().find("#Title").text();
+    var details = $(this).parent().parent().parent().find("#details").text();
+    var discountPrice = Number($(this).parent().parent().parent().find("#DiscountPrice").text().replace("$", ""));
+    var amount = Number($(this).parent().parent().parent().find("#cartcount").val());
+
+    //console.log(id)
+    //console.log(title)
+    //console.log(details)
+    //console.log(discountPrice)
+    //console.log(amount)
+
+    let cartItem = {
+        id: id,
+        title: title,
+        details: details,
+        price: discountPrice,
+        amount: amount
+    }
+
+    if (localStorage.getItem('Cart') == null) {
+        localStorage.setItem('Cart', JSON.stringify([cartItem]))
+    } else {
+        let cart = JSON.parse(localStorage.getItem('Cart'))
+        if (cart.filter(x => x.id == cartItem.id).length > 0) {
+            cart[cart.indexOf(cart.filter(x => x.id == cartItem.id)[0])].amount += cartItem.amount
+        } else {
+            cart.push(cartItem);
+        }
+        localStorage.setItem('Cart', JSON.stringify(cart))
+    }
+
+    UpcartCounter();
+    UpdateCartData()
+})
+
+//購物車顯示事件
+function UpdateCartData() {
+    var cart = document.querySelector(".cart")
+    cart.innerHTML = ''
+
+    if (localStorage.getItem('Cart') != null) {
+        let cartData = JSON.parse(localStorage.getItem('Cart'))
+
+        for (let item of cartData) {
+            console.log(item);
+            let carthtml = `
+            <div class="cart-item">
+                <a href="">
+                    <div class="product-img img-bg">
+                    </div>
+                </a>
+                <div class="cart-detail">
+                    <div class="product-detail">
+                        <h3>
+                            <a href="" id="puttitle">${item.title}</a>
+                        </h3>
+                        <div class="product-option">${item.details}</div>
+                    </div>
+                    <div class="text-tag">2020-09-12 11:00</div>
+                    <div>數量 x <span class="text-tag putamout" id="putamout">${item.amount}</span></div>
+                    <div class="product-pricing">
+                        <h4>TWD <span id="putprice">${item.price}</span></h4>
+                    </div>
+                </div>
+                <div class="product-action">
+                    <button type="button" class="btn btn-light" onClick="deleteCartItem('${item.id}')">
+                        <span class="iconify" data-icon="bi:trash" data-inline="false"></span>
+                    </button>
+                </div>
+            </div>`
+
+            cart.innerHTML += carthtml;
+        }
+    }
+
 }
 
 
+//首選星級餐廳、熱賣票劵Card 事件
+$(".addCart2").click(function () {
+    var id = `${$(this).parent().parent().find("#chart_id").val()}`;
+    var title = $(this).parent().parent().find("#Title").text();
+    var discountPrice = Number($(this).parent().parent().parent().find("#DiscountPrice").text().replace("$", ""));
 
-function cart_click2() {
-    $(".addCart2").click(function () {
-        var data = {}
-        data.id = Number($(this).parent().parent().find("#chart_id").val());
-        data.name = $(this).parent().parent().find("#Title").text();
-        data.details = $(this).parent().parent().parent().find("#details").text();
-        data.price = Number($(this).parent().parent().parent().find("#DiscountPrice").text().replace("$", ""));
-        data.quantity = $(this).find("#addCart2");
-        console.dir(data.amount);
-        cartLS.add(data)
+    //console.log(id);
+    //console.log(title);
+    //console.log(discountPrice);
 
-        //Local Storage 渲染
-        function renderCart2(items) {
+    //key value值
+    let cartItem = {
+        id: id,
+        title: title,
+        price: discountPrice,
+        amount: 1
+    }
 
-            const cart = document.querySelector(".cart")
-            const deleteInfo = document.querySelector(".deleteInfo")
-
-            cart.innerHTML = items.map((item) => `<div class="cart-item">
-            <a href="">
-                <div class="product-img img-bg">
-                </div>
-            </a>
-            <div class="cart-detail">
-                <div class="product-detail">
-                    <h3>
-                        <a href="" id="puttitle">${item.name}</a>
-                    </h3>
-                    <div class="product-option">${item.details}</div>
-                </div>
-                <div class="text-tag">2020-09-12 11:00</div>
-                <div>數量 x <span class="text-tag putamout" id="putamout">${item.quantity}</span></div>
-                <div class="product-pricing">
-                    <h4>TWD <span id="putprice">${item.price}</span></h4>
-                </div>
-            </div>
-            <div class="product-action">
-                <button type="button" class="btn btn-light" data-toggle="modal"
-                    data-target="#CartModal">
-                    <span class="iconify" data-icon="bi:trash" data-inline="false"></span>
-                </button>
-            </div>
-        </div>`).join("")
-
-            deleteInfo.innerHTML = items.map((item) => ` <div class="cart-item">
-            <a href="">
-                <div class="product-img img-bg">
-                </div>
-            </a>
-            <div class="cart-detail">
-                <div class="product-detail">
-                    <h3>
-                        <a href="" id="puttitle">${item.name}</a>
-                    </h3>
-                    <div class="product-option">${item.details}</div>
-                </div>
-                <div class="text-tag">2020-09-12 11:00</div>
-                <div>人數 x <span class="text-tag putamout" id="putamout">${item.quantity}</span></div>
-                <div class="product-pricing">
-                    <h4>TWD <span id="putprice">${item.price}</span></h4>
-                </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <h5 class="alert alert-danger mb-0 mr-auto">您確定要刪除所選商品嗎？</h5>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-            <button type="button" class="btn btn-danger" id="delete_btn" onClick="cartLS.remove(${item.id})"
-                >刪除</button>
-        </div><hr>`).join("")
-
+    if (localStorage.getItem('Cart') == null) {
+        localStorage.setItem('Cart', JSON.stringify([cartItem]))
+    } else {
+        let cart = JSON.parse(localStorage.getItem('Cart'))
+        if (cart.filter(x => x.id == cartItem.id).length > 0) {
+            cart[cart.indexOf(cart.filter(x => x.id == cartItem.id)[0])].amount += 1
+        } else {
+            cart.push(cartItem);
         }
-        renderCart2(cartLS.list())
-        cartLS.onChange(renderCart2)
+        localStorage.setItem('Cart', JSON.stringify(cart))
+    }
 
-    });
+    UpcartCounter();
+    UpdateCartData2()
+});
+
+//購物車顯示事件
+function UpdateCartData2() {
+    var cart = document.querySelector(".cart")
+    cart.innerHTML = ''
+
+    if (localStorage.getItem('Cart') != null) {
+        let cartData = JSON.parse(localStorage.getItem('Cart'))
+
+        for (let item of cartData) {
+            let carthtml = `
+            <div class="cart-item">
+                <a href="">
+                    <div class="product-img img-bg">
+                    </div>
+                </a>
+                <div class="cart-detail">
+                    <div class="product-detail">
+                        <h3>
+                            <a href="" id="puttitle">${item.title}</a>
+                        </h3>
+                    </div>
+                    <div>數量 x <span class="text-tag putamout" id="putamout">${item.amount}</span></div>
+                    <div class="product-pricing">
+                        <h4>TWD <span id="putprice">${item.price}</span></h4>
+                    </div>
+                </div>
+                <div class="product-action">
+                    <button type="button" class="btn btn-light" onClick="deleteCartItem('${item.id}')">
+                        <span class="iconify" data-icon="bi:trash" data-inline="false"></span>
+                    </button>
+                </div>
+            </div>`
+
+            cart.innerHTML += carthtml
+        }
+    }
+
 }
 
 
