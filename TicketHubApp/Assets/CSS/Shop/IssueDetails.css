@@ -3,10 +3,15 @@
   color: #fff;
   border: 1px solid #2a94db;
   border-radius: 2px;
-  padding: 3px 10px; }
+  padding: 5px 10px;
+  opacity: 0;
+  font-size: 20px; }
   .blueBtn:hover {
     background-color: #fff;
-    color: #2a94db; }
+    color: #2a94db;
+    opacity: 1; }
+    .blueBtn:hover ~ #issue:after {
+      /*display: block;*/ }
   .blueBtn:focus {
     outline: none;
     box-shadow: none; }
@@ -16,3 +21,19 @@
 
 #datatable_filter input {
   border-radius: 5px; }
+
+#issue {
+  border: 1px solid darkgray; }
+  #issue:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none; }
+  #issue:hover:after {
+    display: block; }
+  #issue:hover + button {
+    opacity: 1; }

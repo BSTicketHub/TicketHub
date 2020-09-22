@@ -2,69 +2,142 @@
 
 
 <div class="container SalesReport">
-    <div class="row justify-content-center">
-        <div class="col-12 d-flex bg-white p-3 shadow align-items-center my-5">
-            <div class="form-group col-5">
-                <label for="datetimepicker-released" class="d-block">開始日期</label>
-                <input type="date" class="w-100 form-control form-control-sm" id="startDate" name="meeting-time" value="">
+    <div class="row my-3 justify-content-center">
+        <div class="col-3 ticket mx-5">
+            <div class="ticket-content">
+                <p class="ticket-title">今日銷售金額</p>
+                <div class="d-flex justify-content-between align-items-center m-2">
+                    <span class="iconify d-block text-white" data-icon="oi:dollar" data-inline="false"></span>
+                    <div id="todaySales" class="counter" data-target="5000">0</div>
+                </div>
             </div>
-            <div class="form-group col-5">
-                <label for="datetimepicker-released" class="d-block">結束日期</label>
-                <input type="date" class="w-100 form-control form-control-sm" id="endDate" name="meeting-time" value="">
-            </div>
-            <span class="searchBtn d-block mt-3 rounded-pill" id="search">報表搜尋</span>
         </div>
-        <div class="col-8 bg-white shadow p-0">
-            <div class="col-12 border-bottom p-2">商店分析</div>
-            <div class="col-12 bg-white p-3 border-bottom">
-                <div class="d-flex justify-content-between StoreRepoTitle">
-                    <p>總營業額</p>
-                    <p>$ <span id="TotalSales">0</span></p>
+        <div class="col-3 ticket mx-5">
+            <div class="ticket-content">
+                <p class="ticket-title">今日票券數</p>
+                <div class="d-flex justify-content-between align-items-center m-2">
+                    <span class="iconify d-block text-white" data-icon="jam:ticket" data-inline="false"></span>
+                    <div id="todayAmount" class="counter" data-target="5000">0</div>
                 </div>
-                <p class="StoreRepoNote">已完成的票券總金額之加總</p>
             </div>
-            <div class="col-12 bg-white p-3 border-bottom">
-                <div class="d-flex justify-content-between StoreRepoTitle">
-                    <p>總票券量</p>
-                    <p><span id="TotalAmount">0</span> 張</p>
+        </div>
+    </div>
+    <div class="row my-5">
+        <div class="col-6 p-1">
+            <div class="bg-white shadow border p-2">
+                <div class="chartHeader border border-info border-right-0 mb-2 mr-3 d-flex justify-content-between">
+                    <p class="m-2">顧客流量</p>
+                    <div class="d-flex align-items-center">
+                        <button id="weekVisit" class="week m-0">周</button>
+                        <button id="monthVisit" class="month m-0">月</button>
+                    </div>
                 </div>
-                <p class="StoreRepoNote">已完成的票券總量</p>
+                <canvas id="visitCount" height="200" class="my-2"></canvas>
             </div>
-            <div class="col-12 bg-white p-3 border-bottom">
-                <div class="d-flex justify-content-between StoreRepoTitle">
-                    <p>顧客總人數</p>
-                    <p><span id="TotalCutsom">0</span> 人</p>
+        </div>
+        <div class="col-6 p-1">
+            <div class="bg-white shadow border p-2">
+                <div class="chartHeader border border-info border-right-0 mb-2 mr-3 d-flex justify-content-between">
+                    <p class="m-2">銷售金額</p>
+                    <div class="d-flex align-items-center">
+                        <button id="weekMoney" class="week m-0">周</button>
+                        <button id="monthMoney" class="month m-0">月</button>
+                    </div>
                 </div>
-                <p class="StoreRepoNote">已訂購完成的顧客總人數</p>
+                <canvas id="moneyCount" height="200" class="m-2"></canvas>
             </div>
+        </div>
+        <div class="col-6 p-1 mt-5">
+            <div class="bg-white shadow border p-2">
+                <div class="topTable">
+                    <p class="m-0 py-2 px-3">Best Tickets TOP5</p>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>票券名稱</th>
+                                <th>銷售總數量</th>
+                                <th>銷售總金額</th>
+                            </tr>
+                        </thead>
+                        <tbody id="top5Issue">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 p-1 mt-5">
+            <div class="bg-white shadow border p-2">
+                <div class="topTable">
+                    <p class="m-0 py-2 px-3">Best Customers TOP5</p>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>購買顧客</th>
+                                <th>購買總數量</th>
+                                <th>購買總金額</th>
+                            </tr>
+                        </thead>
+                        <tbody id="top5Custom">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="p-0 col-12 my-3 bg-white shadow p-3">
+            <div class="col-12 d-flex bg-white p-3 border align-items-center m-0">
+                <div class="form-group col-5">
+                    <label for="datetimepicker-released" class="d-block">開始日期</label>
+                    <input type="date" class="w-100 form-control form-control-sm" id="startDate" name="meeting-time" value="">
+                </div>
+                <div class="form-group col-5">
+                    <label for="datetimepicker-released" class="d-block">結束日期</label>
+                    <input type="date" class="w-100 form-control form-control-sm" id="endDate" name="meeting-time" value="">
+                </div>
+                <span class="searchBtn d-block mt-3 rounded-pill" id="search">報表搜尋</span>
+            </div>
+            <div class="col-8 p-0 mx-auto my-3 border">
+                <div class="col-12 border-bottom p-2">商店分析</div>
+                <div class="col-12 bg-white p-3 border-bottom">
+                    <div class="d-flex justify-content-between StoreRepoTitle">
+                        <p>總營業額</p>
+                        <p>$ <span id="TotalSales">0</span></p>
+                    </div>
+                    <p class="StoreRepoNote">已完成的票券總金額之加總</p>
+                </div>
+                <div class="col-12 bg-white p-3 border-bottom">
+                    <div class="d-flex justify-content-between StoreRepoTitle">
+                        <p>總票券量</p>
+                        <p><span id="TotalAmount">0</span> 張</p>
+                    </div>
+                    <p class="StoreRepoNote">已完成的票券總量</p>
+                </div>
+                <div class="col-12 bg-white p-3 border-bottom">
+                    <div class="d-flex justify-content-between StoreRepoTitle">
+                        <p>顧客總人數</p>
+                        <p><span id="TotalCutsom">0</span> 人</p>
+                    </div>
+                    <p class="StoreRepoNote">已訂購完成的顧客總人數</p>
+                </div>
 
+            </div>
         </div>
     </div>
 </div>
 
 
 @section topCSS{
+    <link href="~/Assets/CSS/Shop/HomePage.min.css" rel="stylesheet" />
     <link href="~/Assets/CSS/Shop/SalesReport.min.css" rel="stylesheet" />
 }
 
 @section endJS{
     <script>
+        // sales report
         let search = document.getElementById("search");
-        search.addEventListener("click", fetchData)
-
-        async function fetchData() {
-            let startDate = document.getElementById("startDate").value;
-            let endDate = document.getElementById("endDate").value;
-            $.ajax({
-                type: 'POST',
-                url: 'getReportApi',
-                data: { duration: [startDate, endDate] },
-                success: function (json) {
-                    updateReport(json);
-                    console.log(json)
-                }
-            });
-        }
+        let strRepo = document.getElementById("startDate").value;
+        let endRepo = document.getElementById("endDate").value;
 
         function updateReport(json) {
             document.getElementById("TotalSales").innerText = parseFloat(json[0]);
@@ -72,5 +145,91 @@
             document.getElementById("TotalCutsom").innerText = parseInt(json[2], 10);
         }
 
-    </script>    
+        search.addEventListener("click", () => { fetchData(strRepo, endRepo, updateReport) });
+
+        // today's sales and customer
+        // convert JavaScript date format to c# datetime
+        Date.prototype.Format = function (fmt) {
+            var o = {
+                "M+": this.getMonth() + 1, //月份
+                "d+": this.getDate(), //日
+                "H+": this.getHours(), //小時
+                "m+": this.getMinutes(), //分
+                "s+": this.getSeconds(), //秒
+                "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+                "S": this.getMilliseconds() //毫秒
+            };
+            if (/(y+)/.test(fmt)) {
+                fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+            }
+            for (var k in o) {
+                if (new RegExp("(" + k + ")").test(fmt)) {
+                    fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+                }
+            }
+            return fmt;
+        }
+        var timeNow = new Date().Format("yyyy-MM-dd");
+
+        function todaysReport(json) {
+            document.getElementById("todaySales").setAttribute("data-target", parseInt(json[0]));
+            document.getElementById("todayAmount").setAttribute("data-target", parseInt(json[1]));
+        }
+
+        fetchData(timeNow, timeNow, todaysReport);
+
+
+        // ajax get report function, input: start date/ end date/ success function(data)
+        async function fetchData(startDate, endDate, updateData) {
+            $.ajax({
+                type: 'POST',
+                url: 'getReportApi',
+                data: { duration: [startDate, endDate] },
+                success: function (json) {
+                    updateData(json);
+                }
+            });
+        }
+
+
+
+        // top 5
+        fetchTop5Issue();
+        fetchTop5Customer();
+        function top5Table(json, tbody) {
+            for (var item of json) {
+                let tr = document.createElement("tr");
+                let td_t = document.createElement("td");
+                let td_a = document.createElement("td");
+                let td_s = document.createElement("td");
+                td_t.innerText = item.Name;
+                td_a.innerText = item.IssueAmount;
+                td_s.innerText = item.TotalRevenue;
+                tr.append(td_t, td_a, td_s);
+                tbody.append(tr);
+            }
+        }
+        async function fetchTop5Issue() {
+            $.ajax({
+                type: 'POST',
+                url: 'TopIssueApi',
+                success: function (json) {
+                    let tbody = document.getElementById("top5Issue");
+                    top5Table(json, tbody);
+                }
+            });
+        }
+        async function fetchTop5Customer() {
+            $.ajax({
+                type: 'POST',
+                url: 'TopCustomerApi',
+                success: function (json) {
+                    let tbody = document.getElementById("top5Custom");
+                    top5Table(json, tbody);
+                }
+            });
+        }
+
+    </script>
+    <script src="~/Assets/JavaScript/Shop/HomePage.js"></script>
 }

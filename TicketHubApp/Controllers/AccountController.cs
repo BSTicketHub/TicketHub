@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using TicketHubApp.Models.ViewModels;
 using TicketHubApp.Services;
+using TicketHubDataLibrary;
 using TicketHubDataLibrary.Models;
 
 namespace TicketHubApp.Controllers
@@ -322,9 +323,9 @@ namespace TicketHubApp.Controllers
                 case RoleGroup.CUSTOMER:
                     return RedirectToAction("Index", "Home");
                 case RoleGroup.SHOP:
-                    return RedirectToAction("HomePage", "Shop");
+                    return RedirectToAction("Index", "Shop");
                 case RoleGroup.PLATFORM:
-                    return RedirectToAction("Index", "PlatformAdmin");
+                    return RedirectToAction("Index", "Platform");
                 default:
                     return RedirectToAction("Index", "Home");
             }
