@@ -75,121 +75,122 @@ body {
   .sidebar .img-area .username {
     font-size: 20px; }
 
-.col-9 {
-  padding: 20px; }
-  .col-9 h3 {
-    display: inline-block;
-    border-bottom: 3px solid #23a8b2; }
-  .col-9 .info-area {
-    background-color: white; }
-  .col-9 .container .edit-btn {
-    background-color: #23a8b2;
-    color: white;
-    margin-left: auto;
-    margin-right: 40px; }
-  .col-9 .container .row {
-    transition: .5s; }
-    .col-9 .container .row > div {
-      border-left: 6px solid #23a8b2; }
-      .col-9 .container .row > div > p {
-        font-size: 20px;
-        margin: 0; }
-      .col-9 .container .row > div.my-ticket {
-        border: none; }
-      .col-9 .container .row > div .edit-icon {
-        cursor: pointer;
-        font-size: 24px; }
-    .col-9 .container .row .wish-Ticket {
-      height: 250px; }
-      .col-9 .container .row .wish-Ticket .img-area {
-        width: 30%; }
-      .col-9 .container .row .wish-Ticket .text-area {
-        width: 70%; }
-      .col-9 .container .row .wish-Ticket .position {
-        font-size: 12px;
-        color: #adadad; }
-      .col-9 .container .row .wish-Ticket .oPrice {
-        font-size: 12px;
-        text-decoration-line: line-through;
-        color: #adadad;
-        bottom: 20px;
-        right: 20px; }
-      .col-9 .container .row .wish-Ticket .nPrice {
-        color: #23a8b2;
-        bottom: -5px;
-        right: 15px; }
-      .col-9 .container .row .wish-Ticket .favorite {
-        font-size: 20px;
-        top: 12px;
-        right: 12px;
-        color: #125459; }
-        .col-9 .container .row .wish-Ticket .favorite:hover {
-          cursor: pointer; }
-    .col-9 .container .row .order .order-state {
+.col-9 h3 {
+  display: inline-block;
+  border-bottom: 3px solid #23a8b2; }
+
+.col-9 .info-area {
+  background-color: white; }
+
+.col-9 .container .edit-btn {
+  background-color: #23a8b2;
+  color: white;
+  margin-left: auto;
+  margin-right: 40px; }
+
+.col-9 .container .row {
+  transition: .5s; }
+  .col-9 .container .row > div {
+    border-left: 6px solid #23a8b2; }
+    .col-9 .container .row > div > p {
+      font-size: 20px;
+      margin: 0; }
+    .col-9 .container .row > div.my-ticket {
+      border: none; }
+    .col-9 .container .row > div .edit-icon {
+      cursor: pointer;
+      font-size: 24px; }
+  .col-9 .container .row .wish-Ticket {
+    height: 250px; }
+    .col-9 .container .row .wish-Ticket .img-area {
+      width: 30%; }
+    .col-9 .container .row .wish-Ticket .text-area {
+      width: 70%; }
+    .col-9 .container .row .wish-Ticket .position {
+      font-size: 12px;
+      color: #adadad; }
+    .col-9 .container .row .wish-Ticket .oPrice {
+      font-size: 12px;
+      text-decoration-line: line-through;
+      color: #adadad;
+      bottom: 20px;
+      right: 20px; }
+    .col-9 .container .row .wish-Ticket .nPrice {
+      color: #23a8b2;
+      bottom: -5px;
+      right: 15px; }
+    .col-9 .container .row .wish-Ticket .favorite {
+      font-size: 20px;
+      top: 12px;
+      right: 12px;
+      color: #125459; }
+      .col-9 .container .row .wish-Ticket .favorite:hover {
+        cursor: pointer; }
+  .col-9 .container .row .order .order-state {
+    font-size: 10px;
+    top: 8px;
+    right: 8px; }
+  .col-9 .container .row .order .order-date, .col-9 .container .row .order .total {
+    font-size: 14px; }
+  .col-9 .container .row .order .productListStatement {
+    font-size: 16px;
+    border-bottom: 2px solid #23a8b2; }
+  .col-9 .container .row .order .ticket {
+    border-bottom: 2px solid #23a8b2; }
+    .col-9 .container .row .order .ticket:last-child {
+      border: none; }
+    .col-9 .container .row .order .ticket p {
       font-size: 10px;
-      top: 8px;
-      right: 8px; }
-    .col-9 .container .row .order .order-date, .col-9 .container .row .order .total {
-      font-size: 14px; }
-    .col-9 .container .row .order .productListStatement {
-      font-size: 16px;
-      border-bottom: 2px solid #23a8b2; }
-    .col-9 .container .row .order .ticket {
-      border-bottom: 2px solid #23a8b2; }
-      .col-9 .container .row .order .ticket:last-child {
-        border: none; }
-      .col-9 .container .row .order .ticket p {
-        font-size: 10px;
-        margin-bottom: 4px; }
-      .col-9 .container .row .order .ticket .ticket-title {
-        font-size: 16px; }
-      .col-9 .container .row .order .ticket .ticket-total {
-        font-size: 12px; }
-    .col-9 .container .row .valid-ticket, .col-9 .container .row .invalid-ticket {
-      border-left: 6px solid #23a8b2;
-      height: 150px; }
-      .col-9 .container .row .valid-ticket .img-area, .col-9 .container .row .invalid-ticket .img-area {
-        width: 25%; }
-      .col-9 .container .row .valid-ticket .text-area, .col-9 .container .row .invalid-ticket .text-area {
-        width: 75%; }
-      .col-9 .container .row .valid-ticket .valid-time span, .col-9 .container .row .invalid-ticket .valid-time span {
-        color: #23a8b2; }
-      .col-9 .container .row .valid-ticket .use-time span, .col-9 .container .row .invalid-ticket .use-time span {
-        color: #ff3a5c; }
-      .col-9 .container .row .valid-ticket .go-detail, .col-9 .container .row .invalid-ticket .go-detail {
-        font-size: 24px;
-        color: #adadad;
-        top: 55px;
-        right: 10px; }
-        .col-9 .container .row .valid-ticket .go-detail:hover, .col-9 .container .row .invalid-ticket .go-detail:hover {
-          cursor: pointer; }
-    .col-9 .container .row .my-ticket p {
-      margin: 0px; }
-    .col-9 .container .row .my-ticket .title {
-      background-color: #23a8b2;
-      color: white; }
-    .col-9 .container .row .my-ticket .ticket-id-area p {
-      margin: 0; }
-    .col-9 .container .row .my-ticket .ticket-id-area .QRCode {
-      font-size: 10px; }
-    .col-9 .container .row .my-ticket .order-detail p {
-      margin: 0; }
-    .col-9 .container .row .favorite-store {
-      height: 250px; }
-      .col-9 .container .row .favorite-store .img-area {
-        width: 30%; }
-      .col-9 .container .row .favorite-store .text-area {
-        width: 70%; }
-      .col-9 .container .row .favorite-store .position, .col-9 .container .row .favorite-store .address, .col-9 .container .row .favorite-store .phone, .col-9 .container .row .favorite-store .openTime {
-        font-size: 12px;
-        color: #adadad; }
-      .col-9 .container .row .favorite-store .favorite {
-        font-size: 20px;
-        top: 12px;
-        right: 12px;
-        color: #125459; }
-        .col-9 .container .row .favorite-store .favorite:hover {
-          cursor: pointer; }
+      margin-bottom: 4px; }
+    .col-9 .container .row .order .ticket .ticket-title {
+      font-size: 16px; }
+    .col-9 .container .row .order .ticket .ticket-total {
+      font-size: 12px; }
+  .col-9 .container .row .valid-ticket, .col-9 .container .row .invalid-ticket {
+    border-left: 6px solid #23a8b2;
+    height: 150px; }
+    .col-9 .container .row .valid-ticket .img-area, .col-9 .container .row .invalid-ticket .img-area {
+      width: 25%; }
+    .col-9 .container .row .valid-ticket .text-area, .col-9 .container .row .invalid-ticket .text-area {
+      width: 75%; }
+    .col-9 .container .row .valid-ticket .valid-time span, .col-9 .container .row .invalid-ticket .valid-time span {
+      color: #23a8b2; }
+    .col-9 .container .row .valid-ticket .use-time span, .col-9 .container .row .invalid-ticket .use-time span {
+      color: #ff3a5c; }
+    .col-9 .container .row .valid-ticket .go-detail, .col-9 .container .row .invalid-ticket .go-detail {
+      font-size: 24px;
+      color: #adadad;
+      top: 55px;
+      right: 10px; }
+      .col-9 .container .row .valid-ticket .go-detail:hover, .col-9 .container .row .invalid-ticket .go-detail:hover {
+        cursor: pointer; }
+  .col-9 .container .row .my-ticket p {
+    margin: 0px; }
+  .col-9 .container .row .my-ticket .title {
+    background-color: #23a8b2;
+    color: white; }
+  .col-9 .container .row .my-ticket .ticket-id-area p {
+    margin: 0; }
+  .col-9 .container .row .my-ticket .ticket-id-area .QRCode {
+    font-size: 10px; }
+  .col-9 .container .row .my-ticket .order-detail p {
+    margin: 0; }
+  .col-9 .container .row .favorite-store {
+    height: 250px; }
+    .col-9 .container .row .favorite-store .img-area {
+      width: 30%; }
+    .col-9 .container .row .favorite-store .text-area {
+      width: 70%; }
+    .col-9 .container .row .favorite-store .position, .col-9 .container .row .favorite-store .address, .col-9 .container .row .favorite-store .phone, .col-9 .container .row .favorite-store .openTime {
+      font-size: 12px;
+      color: #adadad; }
+    .col-9 .container .row .favorite-store .favorite {
+      font-size: 20px;
+      top: 12px;
+      right: 12px;
+      color: #125459; }
+      .col-9 .container .row .favorite-store .favorite:hover {
+        cursor: pointer; }
 
 .modal label {
   position: relative; }

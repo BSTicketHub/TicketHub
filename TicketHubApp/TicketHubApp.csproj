@@ -716,7 +716,7 @@
     <Content Include="Views\Account\LoginPlatform.cshtml" />
     <Content Include="Views\Account\_LoginLayout.cshtml" />
     <Content Include="Views\Customer\CustomerInfo.cshtml" />
-    <Content Include="Views\Shop\ShopList.cshtml" />
+    <Content Include="Views\Customer\ShopList.cshtml" />
     <Content Include="Views\Platform\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout_Platform.cshtml" />
     <Content Include="Views\Customer\TicketList.cshtml" />

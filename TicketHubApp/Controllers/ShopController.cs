@@ -20,28 +20,6 @@ namespace TicketHubApp.Controllers
     public class ShopController : Controller
     {
         private TicketHubContext _context = new TicketHubContext();
-        // GET: ShopList
-        public ActionResult ShopList(string input)
-        {
-            var service = new ShopListService();
-            if (User.Identity.IsAuthenticated)
-            {
-                var userId = User.Identity.GetUserId();
-                var FavoriteShop = service.GetUserFavotiteShop(userId);
-                ViewBag.FavoriteShop = FavoriteShop;
-                ViewBag.UserId = userId;
-            }
-            var shops = service.SearchShop(input);
-            ViewBag.SearchString = input;
-            if(shops.Count() == 0)
-            {
-                return RedirectToRoute("Unfound");
-            }
-            else
-            {
-                return View(shops);
-            }
-        }
 
         // GET: Store
         public ActionResult Index()
@@ -231,34 +209,6 @@ namespace TicketHubApp.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpPost]
-        public ActionResult ToggleFavoriteList(string ShopId, string UserId)
-        {
-            using (var _context = TicketHubContext.Create())
-            {
-                var ShopGUID = Guid.Parse(ShopId);
-                var entity = (from x in _context.UserFavoriteShop
-                              where x.ShopId == ShopGUID && x.UserId == UserId
-                              select x).FirstOrDefault();
-
-                if (entity != null)
-                {
-                    _context.UserFavoriteShop.Remove(entity);
-
-                } else
-                {
-                    _context.UserFavoriteShop.Add(new UserFavoriteShop
-                    {
-                        ShopId = Guid.Parse(ShopId),
-                        UserId = UserId,
-                        AddedDate = DateTime.Now
-                    });
-
-                }
-                _context.SaveChanges();
-            }
-            return Content("Complete");
-        }
 
         public ActionResult IssueDetails(string id)
         {
