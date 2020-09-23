@@ -2,7 +2,12 @@
 @{
     var pageType = Request.RawUrl.Split('/')[1];
 }
+
 <ul class="side-menu rounded side-menu-@pageType">
+    @if (pageType != "Platform")
+    {
+        <li class="side-menu-Image border" style="background-image: url(@ViewBag.Image)"></li>
+    }
     @foreach (var menu in Model)
     {
         var hasSubItems = menu.SubMenuItems != null && menu.SubMenuItems.Count() > 0;

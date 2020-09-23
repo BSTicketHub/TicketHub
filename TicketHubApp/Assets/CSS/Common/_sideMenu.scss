@@ -4,6 +4,10 @@
     &.side-menu-Shop, &.side-menu-Platform {
         position: sticky;
         top: 10px;
+
+        .side-menu-Image {
+            height: 200px;
+        }
     }
 
     &.side-menu-Shop {
