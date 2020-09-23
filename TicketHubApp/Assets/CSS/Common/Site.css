@@ -136,6 +136,10 @@ a {
       background-color: rgba(0, 0, 0, 0.02);
       color: #23a8b2; }
 
+.avatar {
+  width: 150px;
+  height: 150px; }
+
 .side-menu {
   background-color: white; }
   .side-menu.side-menu-Shop, .side-menu.side-menu-Platform {
