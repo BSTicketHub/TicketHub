@@ -7,7 +7,7 @@
 <div class="home-banner">
     <div class="banner-img">
         <div class="bannerimg-position">
-            <img class="displayimg" alt="TicketHub封面" src="/Assets/Images/Home/128-1200x650.jpg">
+            <img class="displayimg" alt="TicketHub封面" src="~/Assets/Images/Home/studioBanner.jpg">
         </div>
     </div>
     <div class="banner-text">
@@ -30,7 +30,6 @@
                         <ul id="" data-col="2" class="dropdown-menu dropdown-menu-col show-dropdown"
                             style="margin-top: -10px;" dropdown-menu-right>
                             <li id="" class="active">@Html.ActionLink("台北", "ShopList", "Shop", new { input = "台北市" }, null)</li>
-                            <li id="" class="">@Html.ActionLink("台北", "ShopList", "Shop", new { input = "台北市" }, null)</li>
                             <li id="" class="">@Html.ActionLink("新北", "ShopList", "Shop", new { input = "新北市" }, null)</li>
                             <li id="" class="">@Html.ActionLink("宜蘭", "ShopList", "Shop", new { input = "宜蘭縣" }, null)</li>
                             <li id="" class="">@Html.ActionLink("桃園", "ShopList", "Shop", new { input = "桃園市" }, null)</li>
@@ -65,7 +64,7 @@
 <div class="container">
     <br>
     <div class="row mb-3">
-        <div class="col-lg-7 col-md-6">
+        <div class="col-lg-8 col-md-8 col-sm-12 mx-auto mt-2 mb">
             <div class="row">
                 <div class="col-12">
                     <div class="carousel-autoplay owl-carousel owl-theme owl-loaded owl-drag">
@@ -74,40 +73,32 @@
                                 <div class="owl-item">
                                     <div class="item">
                                         <a href="" target="">
-                                            <img class="img-lg owl-lazy" data-src="" alt="銀行刷好康"
-                                                 src="https://picsum.photos/600/400/?random=1" style="opacity: 1;">
+                                            <img class="img-md2" data-src="" alt="臺灣美食行動Go"
+                                                 src="https://imgur.com/KJmbsd2.jpg">
                                         </a>
                                     </div>
                                 </div>
                                 <div class="owl-item">
                                     <div class="item">
                                         <a href="" target="">
-                                            <img class="img-lg owl-lazy" data-src="" alt="臺灣美食行動Go"
-                                                 src="https://picsum.photos/600/400/?random=1" style="opacity: 1;">
+                                            <img class="img-md2" data-src="" alt="消費享回饋"
+                                                 src="https://imgur.com/eky304T.jpg">
                                         </a>
                                     </div>
                                 </div>
                                 <div class="owl-item">
                                     <div class="item">
                                         <a href="" target="">
-                                            <img class="img-lg owl-lazy" data-src="" alt="消費享回饋"
-                                                 src="https://picsum.photos/600/400/?random=1" style="opacity: 1;">
+                                            <img class="img-md2" data-src="" alt="宅配+APP結帳再打75折"
+                                                 src="https://imgur.com/PxbxcoB.jpg">
                                         </a>
                                     </div>
                                 </div>
                                 <div class="owl-item">
                                     <div class="item">
                                         <a href="" target="">
-                                            <img class="img-lg owl-lazy" data-src="" alt="宅配+APP結帳再打75折"
-                                                 src="https://picsum.photos/600/400/?random=1" style="opacity: 1;">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="owl-item">
-                                    <div class="item">
-                                        <a href="" target="">
-                                            <img class="img-lg owl-lazy" data-src="" alt="假日特賣會"
-                                                 src="https://picsum.photos/600/400/?random=1" style="opacity: 1;">
+                                            <img class="img-md2" data-src="" alt="假日特賣會"
+                                                 src="https://imgur.com/VpIaAc9.jpg">
                                         </a>
                                     </div>
                                 </div>
@@ -145,7 +136,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-5 col-md-6">
+        <div class="col-lg-4 col-md-6 col-sm-12 mx-auto mt-2">
             <div class="limited-time">
                 <div class="card-tab">
                     <h5>限時搶購</h5>
@@ -357,5 +348,5 @@
 <button class="" id="btnScroll">▲<h6>Top</h6></button>
 <!-- ------ -->
 @section endJS{
-    <script type="module" src="~/Assets/JavaScript/Home/cartLS.js"></script>
+    <script src="~/Assets/JavaScript/Home/cartLS.js"></script>
 }

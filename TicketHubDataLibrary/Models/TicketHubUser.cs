@@ -15,5 +15,6 @@ namespace TicketHubDataLibrary.Models
 
         //custom fields
         public string Sex { get; set; }
+        public string AvatarPath { get; set; }
     }
 }
