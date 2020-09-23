@@ -1,7 +1,10 @@
-﻿@model IEnumerable<TicketHubApp.Models.ViewModels.StoreTicketListViewModel>
+﻿@model IEnumerable<TicketHubApp.Models.ViewModels.ShopIssueViewModel>
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var wishIssueJson = Json.Encode(ViewBag.WishIssue);
+    var userIdJson = Json.Encode(ViewBag.UserId);
 }
 
 <div class="container ticketList">
@@ -37,8 +40,13 @@
                     </div>
                 </div>
             </div>
+            <div class="bg-white mr-4 my-3 p-3 rounded">
+                <div>
+                    <button class="tag-search btn btn-success my-2 w-100">搜尋</button>
+                </div>
+            </div>
         </div>
-        <div class="col-md-9 p-0 ml-auto">
+        <div class="col-md-9 pb-5 px-2 ml-auto issue-list">
             <div class="bg-white mt-3 p-3 d-flex flex-wrap align-items-center rounded-top">
                 <span class="ticketListCount mx-2 font-weight-bold" id="ticketListCount"></span>
                 <span> 張票券</span>
@@ -54,10 +62,30 @@
                 <span> | </span>
                 <a>價格 : 低到高</a>
             </div>
-            @foreach(var ticket in Model)
+            @foreach (var ticket in Model)
             {
                 @Html.Partial("_Ticket", ticket)
             }
+
+            <template id="ticketCard">
+                <div class="issue bg-white d-flex ticket position-relative rounded w-100 my-3" style="height:250px;">
+                    <div class="position-relative ticketImg col-md-4 border"></div>
+                    <div class="col-md-8">
+                        <h3 class="mt-4 mb-0">TEST</h3>
+                        <div class="tags"></div>
+                        <p class="description">TEST MEMO</p>
+                        <div>
+                            <span class="iconify" data-icon="carbon:location" data-inline="false"></span>
+                            <span class="city">TEST TEST</span>
+                        </div>
+                        <div class="position-absolute" style="right: 10px; bottom: 10px;">
+                            <p class="ticketListOldPrice m-0">TWD TEST</p>
+                            <p class="ticketListSalesPrice m-0">TWD<span> TEST</span></p>
+                        </div>
+                    </div>
+                </div>
+            </template>
+
         </div>
 
     </div>
@@ -68,14 +96,23 @@
 
     <link href="~/Assets/CSS/TicketList.min.css" rel="stylesheet" />
     <link href="~/Assets/CSS/Common/Ticket.min.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/bff1bb511a.js" crossorigin="anonymous"></script>
 
-    <style>body{ background-color: #f4f4f4; }</style>
-   
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+        .fa-heart{
+            font-size:26px
+        }
+    </style>
+
 }
 
 @section endJS{
     <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
     <script src="~/Assets/JavaScript/Common/iconify.min.js"></script>
+    <script src="https://kit.fontawesome.com/bff1bb511a.js" crossorigin="anonymous"></script>
 
     <script>
         // ticket list header -> tickets counting
@@ -85,7 +122,7 @@
 
 
         // ticket category node create
-        var categoryList = ["中式", "西式", "台式", "美式"];
+        var categoryList = ["中式", "台式", "美式", "日式", "義式", "法式"];
         let categoryCollapseNode = document.getElementById("categoryCollapse");
         for (let i = 0; i < categoryList.length; i++) {
             let li = document.createElement("li");
@@ -97,7 +134,16 @@
             input.type = "checkbox";
             input.id = `category${i}`;
 
-            input.addEventListener("click", () => { setSelectedButton(input, "categorySelected", categoryList[i]) });
+            input.addEventListener("click", (e) => {
+                setSelectedButton(input, "categorySelected", categoryList[i]);
+                let tag = e.target.closest('div').textContent;
+                if (selectedCatagory.indexOf(tag) == -1) {
+                    selectedCatagory.push(tag);
+                } else {
+                    selectedCatagory = selectedCatagory.filter(x => x != tag);
+                }
+                console.log(selectedCatagory);
+            });
 
             let label = document.createElement("label");
             label.classList.add("form-check-label");
@@ -126,7 +172,16 @@
             input.setAttribute("value", countryList[i]);
             input.setAttribute("style", "display: none;");
 
-            input.addEventListener("click", () => { setSelectedButton(input, "countrySelected", countryList[i]) });
+            input.addEventListener("click", (e) => {
+                setSelectedButton(input, "countrySelected", countryList[i]);
+                let tag = e.target.closest('input').value;
+                if (selectedTag.indexOf(tag) == -1) {
+                    selectedTag.push(tag);
+                } else {
+                    selectedTag = selectedTag.filter(x => x != tag);
+                }
+                console.log(selectedTag);
+            });
 
             let label = document.createElement("label");
             label.setAttribute("for", `countryCheck${i}`);
@@ -152,12 +207,11 @@
         }
 
         // sider bar (jquery ui)
-        $(function () {
             $("#slider-range").slider({
                 range: true,
-                min: 100,
+                min: 0,
                 max: 10000,
-                values: [75, 300],
+                values: [0, 0],
                 slide: function (event, ui) {
                     $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
                 }
@@ -176,8 +230,11 @@
                     span.innerText = "$" + ui.values[0] + " ~ $" + ui.values[1];
                     document.getElementById("moneySelected").appendChild(span);
                 }
+
+                minPrice = ui.values[0];
+                maxPrice = ui.values[1];
+                console.log(minPrice, maxPrice);
             });
-        });
 
         //favorite AJAX
 
@@ -185,26 +242,144 @@
 
             $.ajax({
                 cache: false,
-                url: "../Customer/ToggleFavoriteList",
+                url: "../ToggleFavoriteList",
                 method: "post",
                 data: {
                     IssueId: Icon.getAttributeNode('issueid').value,
                     UserId: "@ViewBag.UserId"
                 },
-                success: function () {
+                success: function (response) {
+                    if (wishIssue.includes(response)) {
+                        wishIssue = wishIssue.filter((x) => x != response);
+                    } else {
+                        wishIssue.push(response);
+                    }
                 },
                 error: function () {
-                    alert("failed");
                 },
                 complete: function () {
-                    if (Icon.getAttribute('data-icon') == "bi:heart-fill") {
-                        Icon.setAttribute('data-icon', 'bi:heart')
+                    if ($(Icon).hasClass('fas')) {
+                        Icon.classList.remove('fas');
+                        Icon.classList.add('far');
                     } else {
-                        Icon.setAttribute('data-icon', 'bi:heart-fill')
+                        Icon.classList.remove('far');
+                        Icon.classList.add('fas');
                     }
                 }
             });
         }
 
+        //Tag Search
+        let selectedTag = [];
+        let selectedCatagory = [];
+        let maxPrice = 100;
+        let minPrice = 300;
+        let searchJson = JSON.stringify({ SelectedTag: selectedTag, MaxPrice: maxPrice, MinPrice: minPrice });
+
+        let wishIssue = @Html.Raw(wishIssueJson);
+
+        let userId = @Html.Raw(userIdJson);
+
+        $('.tag-search').click(function () {
+            searchJson = JSON.stringify({ SelectedTag: selectedTag, MaxPrice: maxPrice, MinPrice: minPrice });
+            $.ajax({
+                url: "../IssueTagSearch",
+                type: "post",
+                contentType:"application/json",
+                data: searchJson,
+                success: function (response) {
+                    console.log(response)
+                    let issues = document.querySelectorAll('.issue');
+                    ticketCounting = response.length;
+                    countNode.innerText = ticketCounting;
+                    console.log(issues)
+                    for (let i of issues) {
+                        i.remove();
+                    }
+                    for (let i = 0; i < response.length; i++) {
+                        CreateTicket(response, i);
+                    }
+                },
+                error: function (response) {
+                    alert(JSON.stringify(response))
+                }
+            })
+        })
+
+        //Create Ticket Card
+        let issueList = document.querySelector('.issue-list');
+
+        function CreateTicket(jsonObj, index) {
+            if (selectedCatagory.length != 0) {
+                for (let i of jsonObj[index].TagList) {
+                    if (selectedCatagory.includes(i)) {
+                        let card = document.getElementById("ticketCard");
+                        let copied = card.content.cloneNode(true);
+                        copied.querySelector('h3').innerText = jsonObj[index].Title;
+                        copied.querySelector('.description').innerText = jsonObj[index].Memo;
+
+                        for (let j of jsonObj[index].TagList) {
+                            let tag = document.createElement('span');
+                            tag.classList.add('badge', 'badge-pill', 'badge-secondary', 'mr-2', 'my-1')
+                            tag.innerText = j;
+                            copied.querySelector('.tags').append(tag);
+                        }
+
+                        let favorite = document.createElement('i');
+                        favorite.classList.add('fa-heart', 'position-absolute', 'wishHeart');
+                        favorite.setAttribute('issueid', `${jsonObj[index].Id}`);
+
+                        favorite.addEventListener('click', function (e) {
+                            let f = e.currentTarget
+                            controlFromFavorite(f);
+                        })
+                        if (wishIssue.includes(jsonObj[index].Id)) {
+                            favorite.classList.add('fas');
+                        } else {
+                            favorite.classList.add('far');
+                        }
+                        copied.querySelector('.issue').append(favorite);
+
+                        copied.querySelector('.city').innerText = jsonObj[index].City + " / " + jsonObj[index].District;
+                        copied.querySelector('.ticketListOldPrice').innerText = "TWD " + jsonObj[index].OriginalPrice;
+                        copied.querySelector('.ticketListSalesPrice span').innerText = jsonObj[index].DiscountPrice;
+                        issueList.append(copied);
+                    }
+                }
+            } else {
+                let card = document.getElementById("ticketCard");
+                let copied = card.content.cloneNode(true);
+                copied.querySelector('h3').innerText = jsonObj[index].Title;
+                copied.querySelector('.description').innerText = jsonObj[index].Memo;
+                for (let j of jsonObj[index].TagList) {
+                    let tag = document.createElement('span');
+                    tag.classList.add('badge', 'badge-pill', 'badge-secondary', 'mr-2', 'my-1')
+                    tag.innerText = j;
+                    copied.querySelector('.tags').append(tag);
+                }
+
+                let favorite = document.createElement('i');
+                favorite.classList.add('fa-heart', 'position-absolute', 'wishHeart');
+                favorite.setAttribute('issueid', `${jsonObj[index].Id}`);
+
+                favorite.addEventListener('click', function (e) {
+                    let f = e.currentTarget;
+                    controlFromFavorite(f);
+                })
+                if (wishIssue.includes(jsonObj[index].Id)) {
+                    favorite.classList.add('fas');
+                } else {
+                    favorite.classList.add('far');
+                }
+                copied.querySelector('.issue').append(favorite);
+
+                copied.querySelector('.city').innerText = jsonObj[index].City + " / " + jsonObj[index].District;
+                copied.querySelector('.ticketListOldPrice').innerText = "TWD " + jsonObj[index].OriginalPrice;
+                copied.querySelector('.ticketListSalesPrice span').innerText = jsonObj[index].DiscountPrice;
+                issueList.append(copied);
+            }
+
+            countNode.innerText = document.querySelectorAll('.issue').length;
+        }
     </script>
 }

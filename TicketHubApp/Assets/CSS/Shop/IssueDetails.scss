@@ -3,11 +3,16 @@
     color: #fff;
     border: 1px solid #2a94db;
     border-radius: 2px;
-    padding: 3px 10px;
-
+    padding: 5px 10px;
+    opacity: 0;
+    font-size: 20px;
     &:hover {
         background-color: #fff;
         color: #2a94db;
+        &~#issue:after{
+            /*display: block;*/
+        }
+        opacity: 1;
     }
 
     &:focus {
@@ -23,4 +28,27 @@
 
 #datatable_filter input {
     border-radius: 5px;
+}
+
+
+#issue{
+    border: 1px solid darkgray;
+    &:after{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: rgba(0,0,0,0.5);
+        display: none
+    }
+    &:hover{
+        &:after{
+            display: block;
+        }
+        &+button{
+            opacity: 1;
+        }
+    }
 }

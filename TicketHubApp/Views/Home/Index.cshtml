@@ -29,14 +29,14 @@
                         </a>
                         <ul id="" data-col="2" class="dropdown-menu dropdown-menu-col show-dropdown"
                             style="margin-top: -10px;" dropdown-menu-right>
-                            <li id="" class="active"><a href="~/Shop/ShopList">雙北</a></li>
-                            <li id="" class=""><a href="">桃竹苗</a></li>
-                            <li id="" class=""><a href="">中彰投</a></li>
-                            <li id="" class=""><a href="">花東</a></li>
-                            <li id="" class=""><a href="">基宜</a></li>
-                            <li id="" class=""><a href="">高屏</a></li>
-                            <li id="" class=""><a href="">雲嘉南</a></li>
-                            <li id="" class=""><a href="">澎金馬</a></li>
+                            <li id="" class="active">@Html.ActionLink("台北", "ShopList", "Shop", new { input = "台北市" }, null)</li>
+                            <li id="" class="">@Html.ActionLink("台北", "ShopList", "Shop", new { input = "台北市" }, null)</li>
+                            <li id="" class="">@Html.ActionLink("新北", "ShopList", "Shop", new { input = "新北市" }, null)</li>
+                            <li id="" class="">@Html.ActionLink("宜蘭", "ShopList", "Shop", new { input = "宜蘭縣" }, null)</li>
+                            <li id="" class="">@Html.ActionLink("桃園", "ShopList", "Shop", new { input = "桃園市" }, null)</li>
+                            <li id="" class="">@Html.ActionLink("台中", "ShopList", "Shop", new { input = "台中市" }, null)</li>
+                            <li id="" class="">@Html.ActionLink("台南", "ShopList", "Shop", new { input = "台南市" }, null)</li>
+                            <li id="" class="">@Html.ActionLink("高雄", "ShopList", "Shop", new { input = "高雄市" }, null)</li>
                         </ul>
                     </li>
                     <li class="dropdown ml-5">
@@ -282,11 +282,11 @@
                         }
 
                         @*@Html.Partial("_RecommenCard")
-                        @Html.Partial("_RecommenCard")
-                        @Html.Partial("_RecommenCard")
-                        @Html.Partial("_RecommenCard")
-                        @Html.Partial("_RecommenCard")
-                        @Html.Partial("_RecommenCard")*@
+                            @Html.Partial("_RecommenCard")
+                            @Html.Partial("_RecommenCard")
+                            @Html.Partial("_RecommenCard")
+                            @Html.Partial("_RecommenCard")
+                            @Html.Partial("_RecommenCard")*@
                     </div>
                 </div>
             </div>
@@ -303,15 +303,15 @@
                     <div class="owl-stage">
                         @foreach (var item in Model.BestSellerItems.Items)
                         {
-                            @Html.Partial("_BestSellerCard",item)
+                            @Html.Partial("_BestSellerCard", item)
                         }
 
                         @*@Html.Partial("_BestSellerCard")
-                        @Html.Partial("_BestSellerCard")
-                        @Html.Partial("_BestSellerCard")
-                        @Html.Partial("_BestSellerCard")
-                        @Html.Partial("_BestSellerCard")
-                        @Html.Partial("_BestSellerCard")*@
+                            @Html.Partial("_BestSellerCard")
+                            @Html.Partial("_BestSellerCard")
+                            @Html.Partial("_BestSellerCard")
+                            @Html.Partial("_BestSellerCard")
+                            @Html.Partial("_BestSellerCard")*@
                     </div>
                 </div>
             </div>
@@ -330,20 +330,20 @@
             </div>
         }
         @*<div class="col-md-4 col-sm-12">
-            @Html.Partial("_SortNewCard")
-        </div>
-        <div class="col-md-4 col-sm-12">
-            @Html.Partial("_SortNewCard")
-        </div>
-        <div class="col-md-4 col-sm-12">
-            @Html.Partial("_SortNewCard")
-        </div>
-        <div class="col-md-4 col-sm-12">
-            @Html.Partial("_SortNewCard")
-        </div>
-        <div class="col-md-4 col-sm-12">
-            @Html.Partial("_SortNewCard")
-        </div>*@
+                @Html.Partial("_SortNewCard")
+            </div>
+            <div class="col-md-4 col-sm-12">
+                @Html.Partial("_SortNewCard")
+            </div>
+            <div class="col-md-4 col-sm-12">
+                @Html.Partial("_SortNewCard")
+            </div>
+            <div class="col-md-4 col-sm-12">
+                @Html.Partial("_SortNewCard")
+            </div>
+            <div class="col-md-4 col-sm-12">
+                @Html.Partial("_SortNewCard")
+            </div>*@
     </div>
     <div class="row justify-content-center">
         <div class="col-4 text-center">
@@ -356,3 +356,6 @@
 <!-- ------ -->
 <button class="" id="btnScroll">▲<h6>Top</h6></button>
 <!-- ------ -->
+@section endJS{
+    <script src="~/Assets/JavaScript/Home/cartLS.js"></script>
+}

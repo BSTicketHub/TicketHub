@@ -16,10 +16,10 @@
         <p class="openTime ml-4 mb-2"><span class="iconify mr-2" data-icon="fa-solid:clock" data-inline="false"></span>@Model.Phone</p>
         <p class="show-ticket position-absolute">顯示店家票券<span class="iconify ml-1" data-icon="fe:arrow-down" data-inline="false"></span></p>
 
-        @if (ViewBag.FavoriteShop.Contains(Model.Id))
+        @if (ViewBag.FavoriteShop != null && ViewBag.FavoriteShop.Contains(Model.Id))
         {
             <span shopid="@Model.Id" class="iconify position-absolute favorite" data-icon="bi:heart-fill" data-inline="false" onclick="controlFromFavorite(this)"></span>
-        } else
+        } else if(ViewBag.FavoriteShop != null)
         {
             <span shopid="@Model.Id" class="iconify position-absolute favorite" data-icon="bi:heart" data-inline="false" onclick="controlFromFavorite(this)"></span>
         }
@@ -31,19 +31,21 @@
             {
                 var oPrice = "TWD" + ticket.OriginalPrice.ToString();
                 var dPrice = "TWD" + ticket.DiscountPrice.ToString();
-                <div class="ticket border-bottom w-auto d-flex my-3 mx-3 pb-2">
-                    <div class="img-area h-100">
-                        <div class="img"></div>
+                <a href="@Url.Action("ProductDescription", "ProductDescription", new { Id = ticket.Id})" class="d-block text-decoration-none text-dark">
+                    <div class="ticket border-bottom w-auto d-flex py-2 mx-3 p-2">
+                        <div class="img-area h-100">
+                            <div class="img"></div>
+                        </div>
+                        <div class="text-area position-relative">
+                            <h6>@ticket.Title</h6>
+                            <p class="mx-2">@ticket.Memo</p>
+                            <p class="oPrice position-absolute">@oPrice</p>
+                            <p class="nPrice position-absolute">@dPrice</p>
+                        </div>
                     </div>
-                    <div class="text-area position-relative">
-                        <h6>@ticket.Title</h6>
-                        <p class="mx-2">@ticket.Memo</p>
-                        <p class="oPrice position-absolute">@oPrice</p>
-                        <p class="nPrice position-absolute">@dPrice</p>
-                    </div>
-                </div>
+                </a>
             }
-            </div>
+        </div>
     </div>
 </div>
 

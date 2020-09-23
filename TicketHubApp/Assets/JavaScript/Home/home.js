@@ -1,3 +1,13 @@
+$(document).ready(function () {
+    add();
+    sub();
+    UpdateCartData();
+    UpdateCartData2();
+    UpcartCounter();
+    accordion();
+});
+
+
 $('.carousel-autoplay').owlCarousel({
     loop: true,
     margin: 10,
@@ -144,41 +154,219 @@ function shopCartMove() {
     showCart.style.display = "none";
 }
 
-// 刪除購物車
-function delete_item() {
-    //var deleteBtn = document.getElementById("delete_btn");
-    //var deleteContext = document.getElementById("cart_delete_item");
-}
-$("#delete_btn").click(function (e) {
-    e.preventDefault();
-    var myobj = document.getElementById("cart_delete_item");
-    myobj.remove();
-    $(".cart_delete_item").hide();
-    $(".alert").hide(this);
-});
-
 
 // 數量增加
 function add() {
-    var txt = document.getElementById("cartcount");
-    var a = txt.value;
-    a++;
-    txt.value = a;
+    $(".add_button").click(function () {
+        var number = Number($(this).parent().parent().find("#cartcount").val())
+        $(this).parent().parent().find("#cartcount").val(number + 1)
+    });
 }
 
 // 數量减少
 function sub() {
-    var txt = document.getElementById("cartcount");
-    var a = txt.value;
-    if (a > 1) {
-        a--;
-        txt.value = a;
-    } else {
-        txt.value = 1;
-    }
+    $(".sub_button").click(function () {
+        var number = Number($(this).parent().parent().find("#cartcount").val())
+        if (number == 1) {
+
+        } else {
+            $(this).parent().parent().find("#cartcount").val(number - 1)
+        }
+
+    });
 }
+
+//刪除購買商品
+function deleteCartItem(id) {
+    console.log(id)
+    console.log("delete")
+    let cartData = JSON.parse(localStorage.getItem('Cart'))
+
+    cartData = cartData.filter(x => x.id != id)
+
+    localStorage.setItem('Cart', JSON.stringify(cartData))
+
+    UpdateCartData();
+    UpdateCartData2();
+    UpcartCounter();
+}
+
+//購物車更新數量
+function UpcartCounter() {
+    let data = JSON.parse(localStorage.getItem('Cart'));
+    let counter = 0;
+    //console.log(data);
+    // 顯示加總數
+    for (let item of data) {
+        let amount = +item.amount;
+        counter = counter + amount;
+        console.log(counter);
+    }
+
+    //console.log(counter);
+    // document.getElementById("cartCounter").innerText = counter;
+    document.getElementsByClassName("cartCounter")[0].innerText = counter;
+    document.getElementsByClassName("cartCounter")[1].innerText = counter;
+}
+
+//最新推出Card 事件
+$(".addCart").click(function (e) {
+    var id = `${$(this).parent().parent().parent().find("#chart_id").val()}`;
+    var title = $(this).parent().parent().parent().find("#Title").text();
+    var details = $(this).parent().parent().parent().find("#details").text();
+    var discountPrice = Number($(this).parent().parent().parent().find("#DiscountPrice").text().replace("$", ""));
+    var amount = Number($(this).parent().parent().parent().find("#cartcount").val());
+
+    //console.log(id)
+    //console.log(title)
+    //console.log(details)
+    //console.log(discountPrice)
+    //console.log(amount)
+
+    let cartItem = {
+        id: id,
+        title: title,
+        details: details,
+        price: discountPrice,
+        amount: amount
+    }
+
+    if (localStorage.getItem('Cart') == null) {
+        localStorage.setItem('Cart', JSON.stringify([cartItem]))
+    } else {
+        let cart = JSON.parse(localStorage.getItem('Cart'))
+        if (cart.filter(x => x.id == cartItem.id).length > 0) {
+            cart[cart.indexOf(cart.filter(x => x.id == cartItem.id)[0])].amount += cartItem.amount
+        } else {
+            cart.push(cartItem);
+        }
+        localStorage.setItem('Cart', JSON.stringify(cart))
+    }
+
+    UpcartCounter();
+    UpdateCartData()
+})
+
+//購物車顯示事件
+function UpdateCartData() {
+    var cart = document.querySelector(".cart")
+    cart.innerHTML = ''
+
+    if (localStorage.getItem('Cart') != null) {
+        let cartData = JSON.parse(localStorage.getItem('Cart'))
+
+        for (let item of cartData) {
+            console.log(item);
+            let carthtml = `
+            <div class="cart-item">
+                <a href="">
+                    <div class="product-img img-bg">
+                    </div>
+                </a>
+                <div class="cart-detail">
+                    <div class="product-detail">
+                        <h3>
+                            <a href="" id="puttitle">${item.title}</a>
+                        </h3>
+                        <div class="product-option">${item.details}</div>
+                    </div>
+                    <div class="text-tag">2020-09-12 11:00</div>
+                    <div>數量 x <span class="text-tag putamout" id="putamout">${item.amount}</span></div>
+                    <div class="product-pricing">
+                        <h4>TWD <span id="putprice">${item.price}</span></h4>
+                    </div>
+                </div>
+                <div class="product-action">
+                    <button type="button" class="btn btn-light" onClick="deleteCartItem('${item.id}')">
+                        <span class="iconify" data-icon="bi:trash" data-inline="false"></span>
+                    </button>
+                </div>
+            </div>`
+
+            cart.innerHTML += carthtml;
+        }
+    }
+
+}
+
+
+//首選星級餐廳、熱賣票劵Card 事件
+$(".addCart2").click(function () {
+    var id = `${$(this).parent().parent().find("#chart_id").val()}`;
+    var title = $(this).parent().parent().find("#Title").text();
+    var discountPrice = Number($(this).parent().parent().parent().find("#DiscountPrice").text().replace("$", ""));
+
+    //console.log(id);
+    //console.log(title);
+    //console.log(discountPrice);
+
+    //key value值
+    let cartItem = {
+        id: id,
+        title: title,
+        price: discountPrice,
+        amount: 1
+    }
+
+    if (localStorage.getItem('Cart') == null) {
+        localStorage.setItem('Cart', JSON.stringify([cartItem]))
+    } else {
+        let cart = JSON.parse(localStorage.getItem('Cart'))
+        if (cart.filter(x => x.id == cartItem.id).length > 0) {
+            cart[cart.indexOf(cart.filter(x => x.id == cartItem.id)[0])].amount += 1
+        } else {
+            cart.push(cartItem);
+        }
+        localStorage.setItem('Cart', JSON.stringify(cart))
+    }
+
+    UpcartCounter();
+    UpdateCartData2()
+});
+
+//購物車顯示事件
+function UpdateCartData2() {
+    var cart = document.querySelector(".cart")
+    cart.innerHTML = ''
+
+    if (localStorage.getItem('Cart') != null) {
+        let cartData = JSON.parse(localStorage.getItem('Cart'))
+
+        for (let item of cartData) {
+            let carthtml = `
+            <div class="cart-item">
+                <a href="">
+                    <div class="product-img img-bg">
+                    </div>
+                </a>
+                <div class="cart-detail">
+                    <div class="product-detail">
+                        <h3>
+                            <a href="" id="puttitle">${item.title}</a>
+                        </h3>
+                    </div>
+                    <div>數量 x <span class="text-tag putamout" id="putamout">${item.amount}</span></div>
+                    <div class="product-pricing">
+                        <h4>TWD <span id="putprice">${item.price}</span></h4>
+                    </div>
+                </div>
+                <div class="product-action">
+                    <button type="button" class="btn btn-light" onClick="deleteCartItem('${item.id}')">
+                        <span class="iconify" data-icon="bi:trash" data-inline="false"></span>
+                    </button>
+                </div>
+            </div>`
+
+            cart.innerHTML += carthtml
+        }
+    }
+
+}
+
+
+
 //手風琴
-$(document).ready(function () {
+function accordion() {
     $("#faq").sticky({
         topSpacing: 100,
         bottomSpacing: 800,
@@ -187,4 +375,8 @@ $(document).ready(function () {
     $('body').scrollspy({
         target: '#faq'
     })
-});
+}
+
+//搜尋
+let search = document.querySelector('.search-content');
+search.setAttribute('placeholder', '輸入地點開始美食之旅')

@@ -17,7 +17,7 @@
 
     <div class="mt-3 img-banner rounded d-flex align-items-center">
         <img class="w-100" src="@Model.ImgPath " />
-        
+
     </div>
     <!-- 商品標頭、簡介 -->
     <div class="row main mt-3">
@@ -50,7 +50,7 @@
                         <p class="col-6">傳真: @Model.Fax </p>
                     </div>
                     <p>Email:@Model.Email </p>
-                    <p>地址:@Model.District @Model.Address </p>
+                    <p id="address">地址:@Model.District @Model.Address </p>
                     <p>店家官網: @Model.Website</p>
                 </div>
                 <!-- </div> -->
@@ -288,7 +288,10 @@
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/js/ProductDescription")
+    <script type="text/javascript" src="~/Assets/JavaScript/Product/ProductDescription.js" charset="utf-8"></script>
+    @*@Scripts.Render("~/bundles/js/ProductDescription")*@
     <script defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbOibXZPeCKpq5tbdQZD0B5By6Z3MkQHc&callback=initMap"></script>
+
+    initMap();
 }

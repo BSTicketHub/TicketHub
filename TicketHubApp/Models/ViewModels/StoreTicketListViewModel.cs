@@ -15,5 +15,7 @@ namespace TicketHubApp.Models.ViewModels
         public decimal OriginalPrice { get; set; }
         public decimal DiscountPrice { get; set; }
         public decimal DiscountRatio { get; set; }
+        public string City { get; set; }
+        public string District { get; set; }
     }
 }

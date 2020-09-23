@@ -1,35 +1,29 @@
-﻿@using Microsoft.AspNet.Identity
-@if (Request.IsAuthenticated)
+﻿@if (Request.IsAuthenticated)
 {
-    <li class="dropdown member-dropdown member-item mx-3"
-        style="display: flex;align-items: center;padding-bottom: 0;">
-        <a class="mt-2" data-toggle="dropdown">
-            <div class="editor-logo"></div>
+    <li class="dropdown mx-3 d-align-items">
+        <a data-toggle="dropdown">
+            <img class="profile-logo rounded-circle mx-1" src="../Assets/Images/Home/person.jpg" alt="">
         </a>
-        <ul aria-labelledby="dLabel" class="dropdown-menu " dropdown-menu-right>
-            <li class="list-item profile">
-                <div class="editor-logo"></div>
-                <div class="list-item-title">
-                    <div class="title">@User.Identity.GetUserName()</div>
-                </div>
+        <ul class="dropdown-menu">
+            <li class="d-flex align-items-center px-1">
+                <img class="profile-logo rounded-circle mr-2" src="../Assets/Images/Home/person.jpg" alt="">
+                <span class="profile-name font-weight-bolder">@User.Identity.Name</span>
             </li>
             <li class="dropdown-divider"></li>
-            <li class="list-item">
+            <li>
                 @Html.ActionLink("會員資訊", "CustomerInfo", "Customer")
             </li>
-            <li class="list-item">
+            <li>
                 @Html.ActionLink("我的票券", "MyTicket", "Customer")
             </li>
-            <li class="list-item">
+            <li>
                 @Html.ActionLink("收藏票券", "WishList", "Customer")
-
             </li>
-            <li class="list-item">
+            <li>
                 @Html.ActionLink("收藏餐廳", "FavoriteShop", "Customer")
-
             </li>
             <li class="dropdown-divider"></li>
-            <li class="logout">
+            <li>
                 @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
                 {
                     @Html.AntiForgeryToken()
@@ -39,14 +33,13 @@
                     </a>
                 }
             </li>
-        </ul> <span class="dropdown-arrow"></span>
+        </ul>
     </li>
 }
 else
 {
-    <li class="dropdown member-dropdown member-item mx-3"
-        style="display: flex;align-items: center;padding-bottom: 0;">
-        <div class="editor-logo mr-3"></div>
-        @Html.ActionLink("登入 / 註冊", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "btn btn-info" })
+    <li class="dropdown mx-3 d-align-items">
+        <img class="profile-logo rounded-circle mr-2" src="../Assets/Images/Home/person.jpg" alt="">
+        @Html.ActionLink("登入 / 註冊", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "btn btn-cust" })
     </li>
 }
