@@ -18,7 +18,7 @@
         <div class="col-7 restaurant-area">
             <h3 class="mt-4 ml-3">精選美饌</h3>
             <div class="tag-list ml-3 my-4">
-                @foreach(var s in searchList)
+                @foreach (var s in searchList)
                 {
                     <div class="badge badge-pill mx-1">@s</div>
                 }
@@ -36,12 +36,15 @@
         </div>
     </div>
 </div>
+<div id="notify"></div>
+
 
 @Scripts.Render("~/bundles/js/jquery")
 @Scripts.Render("~/bundles/js/bootstrap")
 @Scripts.Render("~/bundles/js/ShopList")
 
 @section endJS{
+    <script src="~/Assets/JavaScript/Common/buzz.js"></script>
     <script>
 
         @*function addToFavorite(shopId) {
@@ -64,6 +67,15 @@
             });
         }*@
 
+        function createBuzz(title, type) {
+            Notify({
+                title: `${title}`,
+                type: `${type}`,
+                duration: 2000,
+                position:"top center"
+            })
+        }
+
         function controlFromFavorite(Icon) {
 
             $.ajax({
@@ -77,13 +89,15 @@
                 success: function () {
                 },
                 error: function () {
-                    alert("failed");
+                    createBuzz("發生錯誤", "danger")
                 },
                 complete: function () {
                     if (Icon.getAttribute('data-icon') == "bi:heart-fill") {
                         Icon.setAttribute('data-icon', 'bi:heart')
+                        createBuzz("已經取消收藏囉", "danger")
                     } else {
                         Icon.setAttribute('data-icon', 'bi:heart-fill')
+                        createBuzz("成功加入收藏囉", "success")
                     }
                 }
             });

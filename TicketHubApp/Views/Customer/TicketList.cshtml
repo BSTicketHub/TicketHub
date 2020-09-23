@@ -102,8 +102,9 @@
         body {
             background-color: #f4f4f4;
         }
-        .fa-heart{
-            font-size:26px
+
+        .fa-heart {
+            font-size: 26px
         }
     </style>
 
@@ -113,8 +114,20 @@
     <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
     <script src="~/Assets/JavaScript/Common/iconify.min.js"></script>
     <script src="https://kit.fontawesome.com/bff1bb511a.js" crossorigin="anonymous"></script>
+    <script src="~/Assets/JavaScript/Common/buzz.js"></script>
+
 
     <script>
+        //Buzz
+        function createBuzz(title, type) {
+            Notify({
+                title: `${title}`,
+                type: `${type}`,
+                duration: 2000,
+                position: "top center"
+            })
+        }
+
         // ticket list header -> tickets counting
         let ticketCounting = @Model.Count();
         let countNode = document.getElementById("ticketListCount");
@@ -261,9 +274,11 @@
                     if ($(Icon).hasClass('fas')) {
                         Icon.classList.remove('fas');
                         Icon.classList.add('far');
+                        createBuzz("成功加入收藏囉", "success")
                     } else {
                         Icon.classList.remove('far');
                         Icon.classList.add('fas');
+                        createBuzz("已經取消收藏囉", "danger")
                     }
                 }
             });

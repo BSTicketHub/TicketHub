@@ -422,6 +422,7 @@
     <Content Include="Assets\Images\shop_logo.jpg" />
     <Content Include="Assets\Images\Platform\bmw01.jpg" />
     <Content Include="Assets\Images\Platform\logo.png" />
+    <Content Include="Assets\JavaScript\Common\buzz.js" />
     <Content Include="Assets\JavaScript\Common\iconify.min.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.min.js" />
@@ -757,6 +758,7 @@
     <Content Include="Views\Shared\_Layout_Manage.cshtml" />
     <Content Include="Views\Shared\_SideMenu.cshtml" />
     <Content Include="Views\Home\PageUnfound.cshtml" />
+    <Content Include="Views\Customer\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

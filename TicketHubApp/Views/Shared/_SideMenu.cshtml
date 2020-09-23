@@ -9,7 +9,7 @@
         var collapsedClass = hasSubItems && menu.SubMenuItems.Any(s => s.Href != Request.RawUrl) ? "collapsed" : "";
 
         <li class="@(menu.Href == Request.RawUrl ? "active" : "")">
-            <a href="@menu.Href" @(hasSubItems ? "data-toggle=collapse" : "") class="@collapsedClass">
+            <a href="@menu.Href" @(hasSubItems ? "data-toggle=collapse" : "") class="@collapsedClass" @(pageType == "Customer" ? $"title={menu.MenuTitle}" : "")>
                 <span class="iconify mr-2" data-icon="@menu.IconName" data-inline="false"></span>
                 <span class="menu-title">@menu.MenuTitle</span>
                 @if (hasSubItems)
