@@ -33,23 +33,29 @@ namespace TicketHubApp.Services
             return ImgPath;
         }
 
-        public string getSideMenuImage(string role)
+        public List<string> getSideMenuImage(string role)
         {
             var context = new TicketHubContext();
             var userid = HttpContext.Current.User.Identity.GetUserId();
-            string src = "";
+            string src="", name="";
+            List<string> result;
             switch (role)
             {
                 case PageType.CUSTOMER:
-                    src = (from e in context.ShopEmployee join s in context.Shop on e.ShopId equals s.Id where (e.UserId == userid) select s.BannerImg).FirstOrDefault(); ;
+                    src = context.Users.Where(x => x.Id == userid).FirstOrDefault().AvatarPath;
+                    name = context.Users.Where(x => x.Id == userid).FirstOrDefault().UserName;
                     break;
                 case PageType.SHOP:
-                    src = (from e in context.ShopEmployee join s in context.Shop on e.ShopId equals s.Id where (e.UserId == userid) select s.BannerImg).FirstOrDefault(); ;
+                    src = (from e in context.ShopEmployee join s in context.Shop on e.ShopId equals s.Id where (e.UserId == userid) select s.BannerImg).FirstOrDefault();
+                    name = (from e in context.ShopEmployee join s in context.Shop on e.ShopId equals s.Id where (e.UserId == userid) select s.ShopName).FirstOrDefault();
                     break;
                 default:
                     break;
             }
-            return src;
+            src = (src == null) ? "https://i.imgur.com/JCPi2ci.png" : src;
+            name = (name == null) ? "No Name" : name;
+            result = new List<string>() { src, name };
+            return result;
         }
 
     }

@@ -50,8 +50,9 @@ namespace TicketHubApp.Controllers
                     break;
             }
 
-            string sideMenuImg = new ImgurService().getSideMenuImage(page);
-            ViewBag.Image = sideMenuImg;
+            var userLogo = new ImgurService().getSideMenuImage(page);
+            ViewBag.Image = userLogo[0];
+            ViewBag.Name = userLogo[1];
             return PartialView("_SideMenu", menuItems);
         }
 

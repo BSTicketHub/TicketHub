@@ -145,8 +145,9 @@ a {
   .side-menu.side-menu-Shop, .side-menu.side-menu-Platform {
     position: sticky;
     top: 10px; }
-    .side-menu.side-menu-Shop .side-menu-Image, .side-menu.side-menu-Platform .side-menu-Image {
-      height: 200px; }
+    .side-menu.side-menu-Shop .side-menu-Image .userImg, .side-menu.side-menu-Platform .side-menu-Image .userImg {
+      width: 150px;
+      height: 150px; }
   .side-menu.side-menu-Shop li.active > a {
     color: #ff3a5c; }
     .side-menu.side-menu-Shop li.active > a::before {
