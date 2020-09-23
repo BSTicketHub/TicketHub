@@ -403,6 +403,7 @@
     <Content Include="Assets\Images\Home\about-4.png" />
     <Content Include="Assets\Images\Home\about-5.png" />
     <Content Include="Assets\Images\Home\about-6.png" />
+    <Content Include="Assets\Images\Home\banner.jpg" />
     <Content Include="Assets\Images\Home\bed.png" />
     <Content Include="Assets\Images\Home\customer_service.jpg" />
     <Content Include="Assets\Images\Home\food.png" />
@@ -414,6 +415,8 @@
     <Content Include="Assets\Images\Home\ic_star4_4.svg" />
     <Content Include="Assets\Images\Home\logo.png" />
     <Content Include="Assets\Images\Home\person.jpg" />
+    <Content Include="Assets\Images\Home\studioBanner.jpg" />
+    <Content Include="Assets\Images\Home\studioBanner2.jpg" />
     <Content Include="Assets\Images\Home\tab-background1.png" />
     <Content Include="Assets\Images\Home\takeout.png" />
     <Content Include="Assets\Images\Home\ticketHub.png" />

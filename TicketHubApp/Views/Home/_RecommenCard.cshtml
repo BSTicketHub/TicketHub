@@ -1,16 +1,16 @@
 ﻿@model TicketHubApp.Models.ViewModels.RecommenCardViewModel
 
-<div class="owl-item active"  id="@Model.Id">
+<div class="owl-item active">
     <div class="col-md-12">
         <div class="product-item">
             <a href="">
                 <div class="product-img">
-                    <img class="img-sm" data-src="" alt="@Model.Title" id="issImg"
+                    <img class="img-sm" data-src="" alt="@Model.Title"
                          src="@Model.ImgPath">
                 </div>
             </a>
             <div class="product-detail">
-                <input type="hidden" value="@Model.Id">
+                <input type="hidden" name="" id="chart_id" value="@Model.Id">
                 <h3 id="Title">@Model.Title</h3>
                 <div class="review-score product-star mb-2 text-center">
                     <div class="review-score product-star">
@@ -40,7 +40,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="addcart addCart2" id="addCart2" type="button" data-target="@Model.Id">放入購物車</div>
+                <div class="addcart addCart2" id="addCart2" type="button">放入購物車</div>
             </div>
         </div>
     </div>
