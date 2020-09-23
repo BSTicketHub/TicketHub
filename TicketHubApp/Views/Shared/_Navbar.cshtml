@@ -97,16 +97,20 @@
             {
                 <ul class="form-inline navbar-nav mr-5 poition-relative" onmousemove="shopCart()" onclick=""
                     onmouseout="shopCartMove()">
-                    <li class="dropdown cart-dropdown dropleft">
+                    <li class="dropdown cart-dropdown open dropleft">
                         <a class="cart-link">
                             <span class="iconify icon-f-30" data-icon="clarity:shopping-cart-solid"
                                   data-inline="false"></span>
+                            <div class="badge span-badge bg-danger cartCounter" id="cartCounter">
+                                0
+                            </div>
                         </a>
                         <div class="dropdown-menu show-dropdown showCart hidden-sm hidden-xs cart-dropdown-menu">
                             <div class="cart-group cart_delete_item cart" id="cart">
-
+                                
                             </div>
                             <div class="cart-footer">
+                                <div class="text-tag">共<span id="" class="cartCounter">0</span>件商品</div>
                                 <button href="#" class="btn btn-info">
                                     查看購物車
                                 </button>
@@ -114,6 +118,7 @@
                         </div>
                     </li>
                 </ul>
+               
             }
         </div>
     </div>

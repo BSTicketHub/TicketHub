@@ -414,6 +414,7 @@
     <Content Include="Assets\Images\Home\ic_star4_4.svg" />
     <Content Include="Assets\Images\Home\logo.png" />
     <Content Include="Assets\Images\Home\person.jpg" />
+    <Content Include="Assets\Images\Home\studioBanner.jpg" />
     <Content Include="Assets\Images\Home\tab-background1.png" />
     <Content Include="Assets\Images\Home\takeout.png" />
     <Content Include="Assets\Images\Home\ticketHub.png" />

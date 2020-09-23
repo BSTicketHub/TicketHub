@@ -28,6 +28,8 @@ namespace TicketHubApp.Services
             {
                 var p = new SortNewCardViewModel()
                 {
+                    Id = item.Id,
+                    Memo = item.Memo,
                     ImgPath = item.ImgPath,
                     Title = item.Title,
                     OriginalPrice =item.OriginalPrice,
@@ -55,6 +57,8 @@ namespace TicketHubApp.Services
             {
                 var p = new BestSellerCardViewModel()
                 {
+                    Id = item.Id,
+                    Memo = item.Memo,
                     ImgPath = item.ImgPath,
                     Title = item.Title,
                     OriginalPrice = item.OriginalPrice,
@@ -82,6 +86,8 @@ namespace TicketHubApp.Services
             {
                 var p = new RecommenCardViewModel()
                 {
+                    Id = item.Id,
+                    Memo = item.Memo,
                     ImgPath = item.ImgPath,
                     Title = item.Title,
                     OriginalPrice = item.OriginalPrice,
