@@ -20,8 +20,18 @@ namespace TicketHubApp
             );
             routes.MapRoute(
                 name: "ShopList",
-                url: "ShopList/{action}",
-                defaults: new { controller = "ShopList", action = "ShopList" }
+                url: "Customer/ShopList/{input}",
+                defaults: new { controller = "Customer", action = "ShopList", input = UrlParameter.Optional}
+            );
+            routes.MapRoute(
+                name: "TicketList",
+                url: "Customer/TicketList/{input}",
+                defaults: new { controller = "Customer", action = "TicketList", input = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Unfound",
+                url: "Home/PageUnfound",
+                defaults: new { controller = "Home", action = "PageUnfound" }
             );
             routes.MapRoute(
                 name: "MemberViewModels",
@@ -31,7 +41,7 @@ namespace TicketHubApp
             routes.MapRoute(
                 name: "Shop",
                 url: "Shop/{action}",
-                defaults: new { controller = "Shop", action = "HomePage" }
+                defaults: new { controller = "Shop", action = "Index" }
             );
             routes.MapRoute(
                 name: "Default",

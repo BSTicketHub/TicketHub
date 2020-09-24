@@ -1,7 +1,13 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
+using System.Xml.Linq;
 using TicketHubApp.Models;
 using TicketHubApp.Models.ViewModels;
 using TicketHubDataLibrary.Models;
@@ -10,15 +16,18 @@ namespace TicketHubApp.Services
 {
     public class ShopInfoService
     {
+        string apiKey = ConfigurationManager.AppSettings["googleMapApiKey"].ToString();
+        private TicketHubContext _context = new TicketHubContext();
+
+        private readonly string _userid = HttpContext.Current.User.Identity.GetUserId();
+
         public ShopViewModel GetShopInfo()
         {
-            TicketHubContext context = new TicketHubContext();
-            var shopRepo = new GenericRepository<Shop>(context);
-            var employeeRepo = new GenericRepository<ShopEmployee>(context);
-            //var user = HttpContext.Current.User.Identity.GetUserId();
-            var user = "26c751ea-d1ce-45bf-8a65-78f0d48ce2c4";
-            var shopId = employeeRepo.GetAll().Where((x) => x.UserId == user).FirstOrDefault().ShopId;
-            var shopData = shopRepo.GetAll().Where((x) => x.Id == shopId).FirstOrDefault();
+            var shopRepo = new GenericRepository<Shop>(_context);
+            var employeeRepo = new GenericRepository<ShopEmployee>(_context);
+
+            Guid shopid = _context.ShopEmployee.FirstOrDefault((x) => x.UserId == _userid).ShopId;
+            var shopData = shopRepo.GetAll().FirstOrDefault((x) => x.Id == shopid);
 
             var shopVM = new ShopViewModel()
             {
@@ -33,26 +42,22 @@ namespace TicketHubApp.Services
                 Email = shopData.Email,
                 Website = shopData.Website,
                 BannerImg = shopData.BannerImg,
-                //Issues = 
             };
             return shopVM;
         }
 
-        public OperationResult UpdateShopInfo(ShopViewModel input)
+        public OperationResult UpdateShopInfo(ShopViewModel input, List<string> coordinates)
         {
             var result = new OperationResult();
             try
             {
-                TicketHubContext context = new TicketHubContext();
-                var shopRepo = new GenericRepository<Shop>(context);
-                var employeeRepo = new GenericRepository<ShopEmployee>(context);
-                //var user = System.Web.HttpContext.Current.User.Identity.GetUserId();
-                var user = "26c751ea-d1ce-45bf-8a65-78f0d48ce2c4";
-                var shopId = employeeRepo.GetAll().Where((x) => x.UserId == user).FirstOrDefault().ShopId;
+                var shopRepo = new GenericRepository<Shop>(_context);
+                var employeeRepo = new GenericRepository<ShopEmployee>(_context);
+                Guid shopid = _context.ShopEmployee.FirstOrDefault((x) => x.UserId == _userid).ShopId;
 
                 var entity = new Shop
                 {
-                    Id = shopId,
+                    Id = shopid,
                     ShopName = input.ShopName,
                     ShopIntro = input.ShopIntro,
                     Phone = input.Phone,
@@ -61,6 +66,8 @@ namespace TicketHubApp.Services
                     District = input.District,
                     Address = input.Address,
                     //Zip
+                    Lat = coordinates[0],
+                    Lng = coordinates[1],
                     Email = input.Email,
                     Website = input.Website,
                     BannerImg = input.BannerImg,
@@ -78,7 +85,7 @@ namespace TicketHubApp.Services
                 }
 
                 shopRepo.Update(entity);
-                context.SaveChanges();
+                _context.SaveChanges();
                 result.Success = true;
             }
             catch (Exception ex)
@@ -87,6 +94,30 @@ namespace TicketHubApp.Services
                 result.Message = ex.ToString();
             }
             return result;
+        }
+
+        public List<string> geocodeLatLng(string address)
+        {
+            List<string> coordinates;
+            string Json;
+
+            string requestUri = $"https://maps.googleapis.com/maps/api/geocode/json?address={address}&key={apiKey}&callback";
+
+            WebRequest request = WebRequest.Create(requestUri);
+            WebResponse response = request.GetResponse();
+
+            using (Stream dataStream = response.GetResponseStream())
+            {
+                StreamReader reader = new StreamReader(dataStream);
+                Json = reader.ReadToEnd();
+            }
+            response.Close();
+
+            var dat = Newtonsoft.Json.JsonConvert.DeserializeObject<JToken>(Json);
+            var result = dat["results"][0]["geometry"]["location"];
+            coordinates = new List<string>() { result["lat"].ToString(), result["lng"].ToString() };
+
+            return coordinates;
         }
     }
 }

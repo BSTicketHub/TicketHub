@@ -214,6 +214,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\PlatformController.cs" />
     <Compile Include="Controllers\ProductDescriptionController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
@@ -229,11 +230,15 @@
     <Compile Include="Models\ViewModels\BestSellerCardViewModel.cs" />
     <Compile Include="Models\ViewModels\CartItemViewModel.cs" />
     <Compile Include="Models\ViewModels\CartViewModel.cs" />
+    <Compile Include="Models\ViewModels\CustomerOrderViewModel.cs" />
     <Compile Include="Models\ViewModels\HomeListViewModel.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\ViewModels\CustomerInfoViewModel.cs" />
     <Compile Include="Models\ViewModels\InfoViewModel.cs" />
     <Compile Include="Models\ViewModels\AdminViewModel.cs" />
+    <Compile Include="Models\ViewModels\IssueListSearchViewModel.cs" />
+    <Compile Include="Models\ViewModels\LimitedtimeListViewModel.cs.cs" />
+    <Compile Include="Models\ViewModels\LimitedtimeViewModel.cs" />
     <Compile Include="Models\ViewModels\PlatformAdminViewModel.cs" />
     <Compile Include="Models\ViewModels\PlatformEmployeeViewModel.cs" />
     <Compile Include="Models\ViewModels\PlatformIssueViewModel.cs" />
@@ -246,6 +251,7 @@
     <Compile Include="Models\ViewModels\ProductDetailViewModel.cs" />
     <Compile Include="Models\ViewModels\RecommenCardListViewModel.cs" />
     <Compile Include="Models\ViewModels\RecommenCardViewModel.cs" />
+    <Compile Include="Models\ViewModels\ShopEmployeeViewModel.cs" />
     <Compile Include="Models\ViewModels\ShopIssueDetailViewModel.cs" />
     <Compile Include="Models\ViewModels\ShopIssueListViewModel.cs" />
     <Compile Include="Models\ViewModels\ShopViewModel.cs" />
@@ -253,18 +259,23 @@
     <Compile Include="Models\ViewModels\PlatformShopViewModel.cs" />
     <Compile Include="Models\ViewModels\SortNewCardListViewModel.cs" />
     <Compile Include="Models\ViewModels\SortNewCardViewModel.cs" />
+    <Compile Include="Models\ViewModels\TicketViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CustomerInfoService.cs" />
     <Compile Include="Services\HomeCardService.cs" />
-    <Compile Include="Services\InfoViewService.cs" />
-    <Compile Include="Services\PlatformService.cs" />
     <Compile Include="Services\ImgurService.cs" />
     <Compile Include="Models\ViewModels\StoreTicketListViewModel.cs" />
     <Compile Include="Models\ViewModels\ShopIssueViewModel.cs" />
+    <Compile Include="Services\InfoViewService.cs" />
+    <Compile Include="Services\PlatformService.cs" />
     <Compile Include="Services\ProductDetailService.cs" />
+    <Compile Include="Services\ShopEmployeeService.cs" />
     <Compile Include="Services\ShopInfoService.cs" />
     <Compile Include="Services\ShopIssueService.cs" />
+    <Compile Include="Services\ShopListService.cs" />
     <Compile Include="Services\ShopReportService.cs" />
     <Compile Include="Services\TagService.cs" />
+    <Compile Include="Services\TicketListService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -321,6 +332,18 @@
     </Content>
     <Content Include="Assets\CSS\Shop\CreateProduct.min.css">
       <DependentUpon>CreateProduct.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Shop\EmployeeCreate.css">
+      <DependentUpon>EmployeeCreate.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Shop\EmployeeCreate.min.css">
+      <DependentUpon>EmployeeCreate.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Shop\EmployeeList.css">
+      <DependentUpon>EmployeeList.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Shop\EmployeeList.min.css">
+      <DependentUpon>EmployeeList.css</DependentUpon>
     </Content>
     <Content Include="Assets\CSS\Shop\HomePage.css">
       <DependentUpon>HomePage.scss</DependentUpon>
@@ -395,6 +418,7 @@
     <Content Include="Assets\Images\Home\ic_star4_4.svg" />
     <Content Include="Assets\Images\Home\logo.png" />
     <Content Include="Assets\Images\Home\person.jpg" />
+    <Content Include="Assets\Images\Home\studioBanner.jpg" />
     <Content Include="Assets\Images\Home\tab-background1.png" />
     <Content Include="Assets\Images\Home\takeout.png" />
     <Content Include="Assets\Images\Home\ticketHub.png" />
@@ -403,14 +427,17 @@
     <Content Include="Assets\Images\shop_logo.jpg" />
     <Content Include="Assets\Images\Platform\bmw01.jpg" />
     <Content Include="Assets\Images\Platform\logo.png" />
+    <Content Include="Assets\JavaScript\Common\buzz.js" />
     <Content Include="Assets\JavaScript\Common\iconify.min.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.min.js" />
     <Content Include="Assets\JavaScript\Common\ControlFavorite.js" />
+    <Content Include="Assets\JavaScript\Common\SideMenu.js" />
     <Content Include="Assets\JavaScript\Customer\FavoriteShop.js" />
     <Content Include="Assets\JavaScript\Customer\MyTicket.js" />
     <Content Include="Assets\JavaScript\Customer\WishList.js" />
     <Content Include="Assets\JavaScript\Customer\_CustomerEvent.js" />
+    <Content Include="Assets\JavaScript\Home\cartLS.js" />
     <Content Include="Assets\JavaScript\Home\home.js" />
     <Content Include="Assets\JavaScript\Common\owl.carousel.min.js" />
     <Content Include="Assets\CSS\ShopList.css">
@@ -623,6 +650,8 @@
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\vue.js" />
+    <Content Include="Scripts\vue.min.js" />
     <Content Include="Views\Shared\MailTemplate\Confirmation.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -670,6 +699,11 @@
     <Content Include="Assets\CSS\Common\Site.scss" />
     <Content Include="Assets\CSS\Shop\IssueDetails.scss" />
     <Content Include="Assets\CSS\ProductDescription.scss" />
+    <Content Include="Assets\CSS\Common\_navbar.scss" />
+    <Content Include="Assets\CSS\Common\_sideMenu.scss" />
+    <Content Include="Assets\CSS\Common\_font.scss" />
+    <Content Include="Assets\CSS\Shop\EmployeeList.scss" />
+    <Content Include="Assets\CSS\Shop\EmployeeCreate.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -686,7 +720,7 @@
     <Content Include="Views\Account\LoginPlatform.cshtml" />
     <Content Include="Views\Account\_LoginLayout.cshtml" />
     <Content Include="Views\Customer\CustomerInfo.cshtml" />
-    <Content Include="Views\Shop\ShopList.cshtml" />
+    <Content Include="Views\Customer\ShopList.cshtml" />
     <Content Include="Views\Platform\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout_Platform.cshtml" />
     <Content Include="Views\Customer\TicketList.cshtml" />
@@ -723,6 +757,14 @@
     <Content Include="Views\Platform\ShopList.cshtml" />
     <Content Include="Views\Platform\OrderList.cshtml" />
     <Content Include="Views\Platform\Index.cshtml" />
+    <Content Include="Views\Shop\EmployeeList.cshtml" />
+    <Content Include="Views\Shop\EmployeeCreate.cshtml" />
+    <Content Include="Views\Shared\_Navbar.cshtml" />
+    <Content Include="Views\Shared\_Layout_Manage.cshtml" />
+    <Content Include="Views\Shared\_SideMenu.cshtml" />
+    <Content Include="Views\Home\PageUnfound.cshtml" />
+    <Content Include="Views\Customer\_ViewStart.cshtml" />
+    <Content Include="Views\Home\_LimitedtimeCard.cshtml" />
     <Content Include="Views\ProductCart\_ProductCartPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>

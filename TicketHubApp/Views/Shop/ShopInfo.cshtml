@@ -3,10 +3,11 @@
 @using (Html.BeginForm("ShopInfo", "Shop", FormMethod.Post, new { encType = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-
+   
     <div class="container">
         <div class="row">
             <div class="col-12">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="description bg-white my-3 p-3 shadow row">
                     <div class="col-12">
                         <input type="file" onchange="readURL(this)" name="ImgFile" targetID="preview_progressbarTW_img" accept="image/gif, image/jpeg, image/png" />
@@ -16,39 +17,48 @@
                             <img id="preview_progressbarTW_img" src="@Model.BannerImg" class="w-100" style="max-width: 1048px; height: 300px;" />
                         </div>
                     </div>
-                    <div class="form-group col-10">
+                    <div class="form-group col-10 mr-3">
                         @Html.EditorFor(model => model.ShopName, new { htmlAttributes = new { @class = "form-control kkColor", @placeholder = "商店名稱", @id = "" } })
+                        @Html.ValidationMessageFor(model => model.ShopName, "", new { @class = "text-danger position-relative pl-2 errorSize" })
                     </div>
-                    <div class="form-group col-3">
-                        @Html.DropDownListFor(m => m.City, (IEnumerable<SelectListItem>)ViewBag.countryList, new { @class = "form-control form-control-sm", @id = "country" })
+                    <div class="form-group col-2">
+                        <select id="selectCity" name="City" class="form-control" value="@TempData["City"]">
+                        </select>
+                    </div>
+                    <div class="form-group col-2">
+                        <select id="selectDistinct" name="District" class="form-control">
+                        </select>
                     </div>
                     <div class="form-group col-12">
                         <p class="py-3 border-bottom" style="font-size: 24px;">餐廳簡介</p>
                         @Html.TextAreaFor(model => model.ShopIntro, new { @rows = "8", @class = "form-control form-control-sm", @placeholder = "請輸入票券說明內容", @id = "memo" })
+                        @Html.ValidationMessageFor(model => model.ShopIntro, "", new { @class = "text-danger position-relative pl-2 errorSize" })
                     </div>
                     <div class="col-12">
                         <p class="py-3 border-bottom" style="font-size: 24px;">餐廳資訊</p>
                     </div>
                     <div class="form-group col-6 d-flex align-items-center">
                         <p class="col-2 m-0 p-0">電話 : </p>
-                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control form-control-sm", @placeholder = "請輸入連絡電話", @id = "" } })
+                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control form-control-sm col-7", @placeholder = "請輸入連絡電話", @id = "" } })
+                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger position-relative pl-2 errorSize" })
                     </div>
 
                     <div class="form-group col-6 d-flex align-items-center">
                         <p class="col-2 m-0 p-0">傳真 : </p>
-                        @Html.EditorFor(model => model.Fax, new { htmlAttributes = new { @class = "form-control form-control-sm", @placeholder = "請輸入傳真號碼", @id = "" } })
+                        @Html.EditorFor(model => model.Fax, new { htmlAttributes = new { @class = "form-control form-control-sm col-7", @placeholder = "請輸入傳真號碼", @id = "" } })
                     </div>
                     <div class="form-group col-12 d-flex align-items-center">
-                        <p class="col-2 m-0 p-0">Emaul : </p>
-                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control form-control-sm", @placeholder = "請輸入Email", @id = "" } })
+                        <p class="col-2 m-0 p-0">Email : </p>
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control form-control-sm col-8", @placeholder = "請輸入Email", @id = "" } })
                     </div>
                     <div class="form-group col-12 d-flex align-items-center">
                         <p class="col-2 m-0 p-0">地址 : </p>
-                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control form-control-sm", @placeholder = "請輸入地址", @id = "" } })
+                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control form-control-sm col-8", @placeholder = "請輸入地址", @id = "" } })
+                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger position-relative pl-2 errorSize" })
                     </div>
                     <div class="form-group col-12 d-flex align-items-center">
                         <p class="col-2 m-0 p-0">店家官網 : </p>
-                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control form-control-sm", @placeholder = "請輸入網址連結", @id = "" } })
+                        @Html.EditorFor(model => model.Website, new { htmlAttributes = new { @class = "form-control form-control-sm col-8", @placeholder = "請輸入網址連結", @id = "" } })
                     </div>
                     <div class="col-12 d-flex">
                         <button id="modifyBtn" type="button" class="ml-auto my-2 d-block">修改</button>
@@ -69,6 +79,9 @@
         if (message) {
             window.alert(message)
         }
+
+        var curCity = "@TempData["City"]";
+        var curDist = "@TempData["Dinstrict"]";
     </script>
 }
 

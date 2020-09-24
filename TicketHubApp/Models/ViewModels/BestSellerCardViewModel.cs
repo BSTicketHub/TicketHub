@@ -7,8 +7,9 @@ namespace TicketHubApp.Models.ViewModels
 {
     public class BestSellerCardViewModel
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Title { get; set; }
+        public string Memo { get; set; }
         public string ImgPath { get; set; }
         public decimal OriginalPrice { get; set; }
         public decimal DiscountPrice { get; set; }

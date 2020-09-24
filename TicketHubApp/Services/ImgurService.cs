@@ -1,7 +1,5 @@
 ﻿using Imgur.API.Authentication;
 using Imgur.API.Endpoints;
-using Imgur.API.Models;
-using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +7,12 @@ using System.Net.Http;
 using System.Web;
 using System.IO;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 using System.Web.Helpers;
 using System.Reflection.Emit;
+using TicketHubDataLibrary.Models;
+using TicketHubDataLibrary;
+using Microsoft.AspNet.Identity;
+using System.Runtime.InteropServices;
 
 namespace TicketHubApp.Services
 {
@@ -30,6 +31,31 @@ namespace TicketHubApp.Services
 
             var ImgPath = imageUpload.Result.Link;
             return ImgPath;
+        }
+
+        public List<string> getSideMenuImage(string role)
+        {
+            var context = new TicketHubContext();
+            var userid = HttpContext.Current.User.Identity.GetUserId();
+            string src="", name="";
+            List<string> result;
+            switch (role)
+            {
+                case PageType.CUSTOMER:
+                    src = context.Users.Where(x => x.Id == userid).FirstOrDefault().AvatarPath;
+                    name = context.Users.Where(x => x.Id == userid).FirstOrDefault().UserName;
+                    break;
+                case PageType.SHOP:
+                    src = (from e in context.ShopEmployee join s in context.Shop on e.ShopId equals s.Id where (e.UserId == userid) select s.BannerImg).FirstOrDefault();
+                    name = (from e in context.ShopEmployee join s in context.Shop on e.ShopId equals s.Id where (e.UserId == userid) select s.ShopName).FirstOrDefault();
+                    break;
+                default:
+                    break;
+            }
+            src = (src == null) ? "https://i.imgur.com/ZM5EvHg.png" : src;
+            name = (name == null) ? "No Name" : name;
+            result = new List<string>() { src, name };
+            return result;
         }
 
     }

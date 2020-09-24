@@ -90,5 +90,13 @@
   {
     "outputFile": "Assets/CSS/Shop/IssueDetails.css",
     "inputFile": "Assets/CSS/Shop/IssueDetails.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/Shop/EmployeeList.css",
+    "inputFile": "Assets/CSS/Shop/EmployeeList.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/Shop/EmployeeCreate.css",
+    "inputFile": "Assets/CSS/Shop/EmployeeCreate.scss"
   }
 ]
