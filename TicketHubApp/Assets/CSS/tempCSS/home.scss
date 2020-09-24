@@ -1105,8 +1105,20 @@ h3.title-group-item {
     text-overflow: ellipsis;
 }
 
+.ellipsis2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /*兩行*/
+}
+
 .ellipsisw-200{
     width:220px
+}
+
+.ellipsish-50 {
+    height: 50px
 }
 
 .tagblock {

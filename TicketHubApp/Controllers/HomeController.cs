@@ -17,7 +17,8 @@ namespace TicketHubApp.Controllers
             {
                 BestSellerItems = service.GetBestSellerCard(),
                 RecommenItems = service.GetRecommenCard(),
-                SortNewItems = service.GetSortNewCard()
+                SortNewItems = service.GetSortNewCard(),
+                LimitedtimeItems = service.GetLimitedtimeCard()
             };
 
             return View(homecard);
