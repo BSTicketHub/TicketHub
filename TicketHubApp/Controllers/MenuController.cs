@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
+using TicketHubApp.Services;
 using TicketHubDataLibrary;
 
 namespace TicketHubApp.Controllers
@@ -72,6 +73,10 @@ namespace TicketHubApp.Controllers
                 default:
                     break;
             }
+
+            var userLogo = new ImgurService().getSideMenuImage(page);
+            ViewBag.Image = userLogo[0];
+            ViewBag.Name = userLogo[1];
             return PartialView("_SideMenu", menuItems);
         }
 

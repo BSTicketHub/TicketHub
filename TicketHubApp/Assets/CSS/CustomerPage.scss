@@ -7,11 +7,9 @@ body {
 .sidebar, .info {
 }
 
-.sidebar {
-    background-color: #eee;
-
-    .img-area {
-        .img {
+.side-menu {
+    .side-menu-Image {
+        .userImg {
             background-image: url("https://picsum.photos/400/400/?random=1");
             background-size: contain;
             background-repeat: no-repeat;
@@ -30,6 +28,10 @@ body {
                 position: absolute;
                 top: 120px;
                 right: 10px;
+                i{
+                    font-size:24px;
+                    color:$Transparent-gray-2
+                }
             }
         }
 
@@ -37,59 +39,28 @@ body {
             font-size: 20px;
         }
     }
-
-    .sidebar-nav {
-        > div {
-            position: relative;
-            transition: .3s;
-
-            &:hover {
-                background-color: $cust-color-3;
-                cursor: pointer;
-            }
-
-            &.focus {
-                color: $cust-color-8;
-                background-color: white;
-
-                &::before {
-                    content: "";
-                    position: absolute;
-                    width: 8px;
-                    height: 40px;
-                    top: 12px;
-                    left: -2px;
-                    right: 0;
-                    bottom: 0;
-                    background-color: $cust-color-8;
-                }
-            }
-
-            .iconify {
-                font-size: 24px;
-            }
-        }
-
-        p {
-            margin: 0;
-            font-size: 20px;
-        }
-    }
 }
 
-.info {
-    background-color: #eee;
-
-    .info-area {
-        background-color: white;
-    }
+.col-9 {
 
     h3 {
         display: inline-block;
         border-bottom: 3px solid $cust-color-8;
     }
 
+    .info-area {
+        background-color: white;
+    }
+
     .container {
+
+        .edit-btn {
+            background-color: $cust-color-8;
+            color:white;
+            margin-left:auto;
+            margin-right:40px;
+        }
+
         .row {
             transition: .5s;
 
@@ -222,20 +193,23 @@ body {
                     color: $line-gray;
                     top: 55px;
                     right: 10px;
-                    &:hover{
-                        cursor:pointer
+
+                    &:hover {
+                        cursor: pointer
                     }
                 }
             }
 
             .my-ticket {
-                p{
-                    margin:0px
+                p {
+                    margin: 0px
                 }
-                .title{
-                    background-color:$cust-color-8;
-                    color:white;
+
+                .title {
+                    background-color: $cust-color-8;
+                    color: white;
                 }
+
                 .ticket-id-area {
                     p {
                         margin: 0;

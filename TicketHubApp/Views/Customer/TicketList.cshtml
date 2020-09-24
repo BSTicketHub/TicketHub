@@ -67,6 +67,8 @@
                 @Html.Partial("_Ticket", ticket)
             }
 
+            <div id="notify"></div>
+
             <template id="ticketCard">
                 <div class="issue bg-white d-flex ticket position-relative rounded w-100 my-3" style="height:250px;">
                     <div class="position-relative ticketImg col-md-4 border"></div>
@@ -102,8 +104,9 @@
         body {
             background-color: #f4f4f4;
         }
-        .fa-heart{
-            font-size:26px
+
+        .fa-heart {
+            font-size: 26px
         }
     </style>
 
@@ -113,8 +116,20 @@
     <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
     <script src="~/Assets/JavaScript/Common/iconify.min.js"></script>
     <script src="https://kit.fontawesome.com/bff1bb511a.js" crossorigin="anonymous"></script>
+    <script src="~/Assets/JavaScript/Common/buzz.js"></script>
+
 
     <script>
+        //Buzz
+        function createBuzz(title, type) {
+            Notify({
+                title: `${title}`,
+                type: `${type}`,
+                duration: 2000,
+                position: "top center"
+            })
+        }
+
         // ticket list header -> tickets counting
         let ticketCounting = @Model.Count();
         let countNode = document.getElementById("ticketListCount");
@@ -258,12 +273,16 @@
                 error: function () {
                 },
                 complete: function () {
-                    if ($(Icon).hasClass('fas')) {
+                    if ($(Icon).hasClass('fas') || Icon.getAttribute('data-icon') == "bi:heart-fill") {
+                        Icon.setAttribute('data-icon', 'bi:heart')
                         Icon.classList.remove('fas');
                         Icon.classList.add('far');
+                        createBuzz("已經取消收藏囉", "danger")
                     } else {
+                        Icon.setAttribute('data-icon', 'bi:heart-fill')
                         Icon.classList.remove('far');
                         Icon.classList.add('fas');
+                        createBuzz("成功加入收藏囉", "success")
                     }
                 }
             });

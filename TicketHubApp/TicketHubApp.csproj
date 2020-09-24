@@ -414,6 +414,7 @@
     <Content Include="Assets\Images\Home\ic_star4_4.svg" />
     <Content Include="Assets\Images\Home\logo.png" />
     <Content Include="Assets\Images\Home\person.jpg" />
+    <Content Include="Assets\Images\Home\studioBanner.jpg" />
     <Content Include="Assets\Images\Home\tab-background1.png" />
     <Content Include="Assets\Images\Home\takeout.png" />
     <Content Include="Assets\Images\Home\ticketHub.png" />
@@ -422,6 +423,7 @@
     <Content Include="Assets\Images\shop_logo.jpg" />
     <Content Include="Assets\Images\Platform\bmw01.jpg" />
     <Content Include="Assets\Images\Platform\logo.png" />
+    <Content Include="Assets\JavaScript\Common\buzz.js" />
     <Content Include="Assets\JavaScript\Common\iconify.min.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.min.js" />
@@ -714,7 +716,7 @@
     <Content Include="Views\Account\LoginPlatform.cshtml" />
     <Content Include="Views\Account\_LoginLayout.cshtml" />
     <Content Include="Views\Customer\CustomerInfo.cshtml" />
-    <Content Include="Views\Shop\ShopList.cshtml" />
+    <Content Include="Views\Customer\ShopList.cshtml" />
     <Content Include="Views\Platform\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout_Platform.cshtml" />
     <Content Include="Views\Customer\TicketList.cshtml" />
@@ -757,6 +759,7 @@
     <Content Include="Views\Shared\_Layout_Manage.cshtml" />
     <Content Include="Views\Shared\_SideMenu.cshtml" />
     <Content Include="Views\Home\PageUnfound.cshtml" />
+    <Content Include="Views\Customer\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
