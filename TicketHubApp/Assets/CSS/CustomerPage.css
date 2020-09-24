@@ -52,28 +52,30 @@
 body {
   font-family: 'Noto Sans TC', sans-serif; }
 
-.sidebar {
-  background-color: #eee; }
-  .sidebar .img-area .img {
-    background-image: url("https://picsum.photos/400/400/?random=1");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    position: relative;
+.side-menu .side-menu-Image .userImg {
+  background-image: url("https://picsum.photos/400/400/?random=1");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px; }
+  .side-menu .side-menu-Image .userImg .camera {
+    display: inline-block;
+    background-color: #fff;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    width: 150px;
-    height: 150px; }
-    .sidebar .img-area .img .camera {
-      display: inline-block;
-      background-color: #fff;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      position: absolute;
-      top: 120px;
-      right: 10px; }
-  .sidebar .img-area .username {
-    font-size: 20px; }
+    position: absolute;
+    top: 120px;
+    right: 10px; }
+    .side-menu .side-menu-Image .userImg .camera i {
+      font-size: 24px;
+      color: rgba(138, 138, 138, 0.603); }
+
+.side-menu .side-menu-Image .username {
+  font-size: 20px; }
 
 .col-9 h3 {
   display: inline-block;

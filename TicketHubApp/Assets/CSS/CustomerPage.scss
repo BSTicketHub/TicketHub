@@ -7,11 +7,9 @@ body {
 .sidebar, .info {
 }
 
-.sidebar {
-    background-color: #eee;
-
-    .img-area {
-        .img {
+.side-menu {
+    .side-menu-Image {
+        .userImg {
             background-image: url("https://picsum.photos/400/400/?random=1");
             background-size: contain;
             background-repeat: no-repeat;
@@ -30,6 +28,10 @@ body {
                 position: absolute;
                 top: 120px;
                 right: 10px;
+                i{
+                    font-size:24px;
+                    color:$Transparent-gray-2
+                }
             }
         }
 

@@ -4,10 +4,20 @@ export function CreatePage(firstPage) {
 
     let CustomerSidebarItems = Array.from(document.querySelectorAll('.side-menu a'));
     console.log(CustomerSidebarItems)
-    let sideBarUserName = document.querySelector('.sidebar .username');
+    let sideBarUserName = document.querySelector('.side-menu-Image p');
     let infoArea = document.createElement('div')
     infoArea.classList.add('info')
     document.querySelector('.col-9').append(infoArea);
+
+    //ImgArea
+    let userImg = document.querySelector('.userImg');
+    let camera = document.createElement('div');
+    camera.classList.add("camera", "d-flex", "justify-content-center", "align-items-center");
+    userImg.append(camera);
+    let i = document.createElement('i');
+    i.classList.add('fas', 'fa-camera');
+    camera.append(i);
+
 
     function clearInfoArea() {
         let infoArea = Array.from(document.querySelectorAll('.info *'))
@@ -24,7 +34,7 @@ export function CreatePage(firstPage) {
         success: function (response) {
             console.log(response)
             var firstResponse = response;
-            //sideBarUserName.innerText = response.UserName;
+            sideBarUserName.innerText = response.UserName;
 
             for (let i of CustomerSidebarItems) {
                 i.addEventListener('click', function (e) {
@@ -242,7 +252,7 @@ export function CreatePage(firstPage) {
                                 firstResponse.Email = response.Email;
                                 firstResponse.PhoneNumber = response.PhoneNumber;
                                 firstResponse.Sex = response.Sex;
-                                //sideBarUserName.innerText = response.UserName;
+                                sideBarUserName.innerText = response.UserName;
                                 clearInfoArea();
                                 createInfoArea();
                             },
