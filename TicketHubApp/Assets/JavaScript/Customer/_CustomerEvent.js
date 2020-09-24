@@ -2,17 +2,22 @@
 
 export function CreatePage(firstPage) {
 
-    let CustomerSidebarItems = Array.from(document.querySelectorAll('.sidebar-nav > div'));
-    let sideBarUserName = document.querySelector('.sidebar .username');
+    let CustomerSidebarItems = Array.from(document.querySelectorAll('.side-menu a'));
+    console.log(CustomerSidebarItems)
+    let sideBarUserName = document.querySelector('.side-menu-Image p');
+    let infoArea = document.createElement('div')
+    infoArea.classList.add('info')
+    document.querySelector('.col-9').append(infoArea);
 
+    //ImgArea
+    let userImg = document.querySelector('.userImg');
+    let camera = document.createElement('div');
+    camera.classList.add("camera", "d-flex", "justify-content-center", "align-items-center");
+    userImg.append(camera);
+    let i = document.createElement('i');
+    i.classList.add('fas', 'fa-camera');
+    camera.append(i);
 
-    function clearFocused() {
-        for (let i of CustomerSidebarItems) {
-            if (i.classList.contains('focus')) {
-                i.classList.remove('focus')
-            }
-        }
-    }
 
     function clearInfoArea() {
         let infoArea = Array.from(document.querySelectorAll('.info *'))
@@ -33,20 +38,16 @@ export function CreatePage(firstPage) {
 
             for (let i of CustomerSidebarItems) {
                 i.addEventListener('click', function (e) {
-                    clearFocused();
-                    i.classList.add('focus')
-                    console.dir(e.target.closest('div'))
+                    console.log(e.target)
                     clearInfoArea();
-                    createInfoArea(e.target.closest('div'));
+                    createInfoArea(e.target.closest('a'));
                 })
             }
 
             createInfoArea(firstPage);
 
-
-
-            function createInfoArea(target = document.querySelectorAll(".sidebar-nav > div")[0]) {
-                let infoArea = document.querySelector('.col-9')
+            function createInfoArea(target = document.querySelectorAll(".side-menu a")[0]) {
+                let infoArea = document.querySelector('.info')
                 let content = document.createElement('div');
                 content.classList.add('info-area', 'p-4', 'rounded', 'animate__animated', 'animate__fadeIn');
                 infoArea.append(content);
@@ -226,7 +227,7 @@ export function CreatePage(firstPage) {
 
             function createEditButton() {
                 let editBtn = document.createElement('button');
-                editBtn.classList.add('btn', 'btn-primary', 'edit-btn')
+                editBtn.classList.add('btn', 'edit-btn', 'my-2','d-block')
                 editBtn.setAttribute('isedit', false);
                 editBtn.innerText = "編輯個人資料";
 

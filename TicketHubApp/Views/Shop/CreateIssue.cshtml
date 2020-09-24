@@ -3,60 +3,59 @@
 
 @using (Html.BeginForm("CreateIssue", "Shop", FormMethod.Post, new { encType = "multipart/form-data" }))
 {
-            @Html.AntiForgeryToken()
+    @Html.AntiForgeryToken()
 
-            <div class="container createProduct">
+    <div class="container createProduct">
         <div class="row">
             <div class="col-12">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="upLoadImg bg-white p-3 shadow position-relative text-center">
-                    @*<form action="/somewhere/to/upload" enctype="multipart/form-data">*@
+                    <input id="upLoadImg" type="file" name="ImgFile" onchange="readURL(this)" targetID="preview_progressbarTW_img" accept="image/gif, image/jpeg, image/png" class="position-absolute" style="left:10px; " />
 
-                        <input id="upLoadImg" type="file" name="ImgFile" onchange="readURL(this)" targetID="preview_progressbarTW_img" accept="image/gif, image/jpeg, image/png" class="position-absolute" style="left:10px; " />
-
-                        <img id="preview_progressbarTW_img" class="showimg" src="#" />
-                    @*</form>*@
+                    <img id="preview_progressbarTW_img" class="showimg" src="#" />
                 </div>
                 <div class="description bg-white my-3 p-3 shadow">
                     <div class="d-flex flex-wrap">
-                        @*商品名稱*@
                         <div class="form-group col-12">
                             <label for="formGroupExampleInput">商品名稱</label>
                             @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control form-control-sm", @placeholder = "請輸入商品名稱", @id = "textTitle" } })
                             @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
                         </div>
-                        @*票券類別*@
                         <div class="form-group col-12">
                             <label for="formGroupExampleInput">票券類別</label>
                             @Html.DropDownListFor(m => m.Category, (IEnumerable<SelectListItem>)ViewBag.CategoryList, new { @class = "form-control form-control-sm" })
                         </div>
-                        @*商品定價*@
                         <div class="form-group col-4">
                             <label for="formGroupExampleInput">商品定價</label>
                             @Html.EditorFor(model => model.OriginalPrice, new { htmlAttributes = new { @class = "form-control form-control-sm", @placeholder = "請輸入商品原價", @id = "originalPrice" } })
                             @Html.ValidationMessageFor(model => model.OriginalPrice, "", new { @class = "text-danger" })
                         </div>
-                        @*商品售價*@
                         <div class="form-group col-4">
                             <label for="formGroupExampleInput">商品售價</label>
                             @Html.EditorFor(model => model.DiscountPrice, new { htmlAttributes = new { @class = "form-control form-control-sm", @placeholder = "請輸入商品原價", @id = "salePrice" } })
                             @Html.ValidationMessageFor(model => model.DiscountPrice, "", new { @class = "text-danger" })
                         </div>
-                        @*販售數量*@
                         <div class="form-group col-4">
                             <label for="formGroupExampleInput">販售數量</label>
                             @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control form-control-sm", @placeholder = "請輸入商品原價" } })
                             @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
                         </div>
-                        @*上架日期*@
                         <div class="form-group col-6">
                             <label for="datetimepicker-released" class="d-block">上架日期</label>
                             @Html.EditorFor(model => model.ReleasedDate, new { htmlAttributes = new { @type = "datetime-local", @class = "form-control form-control-sm", @placeholder = "請選擇上架時間" } })
                         </div>
-                        @*下架日期*@
                         <div class="form-group col-6">
                             <label for="datetimepicker-released" class="d-block">下架日期</label>
                             @Html.EditorFor(model => model.ClosedDate, new { htmlAttributes = new { @type = "datetime-local", @class = "form-control form-control-sm", @placeholder = "請選擇下架時間" } })
+                        </div>
+                        <div class="form-group col-12">
+                            <form>
+                                <label for="">新增票券標籤</label>
+                                <div>
+                                    <input id="tagInput">
+                                    <div id="showTag"></div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -69,7 +68,7 @@
                         <button type="button" onclick="showModal()" class="ml-auto d-block" data-toggle="modal" data-target="#exampleModalCenter">
                             預覽
                         </button>
-                        <button  class="ml-2 d-block">新增</button>
+                        <button class="ml-2 d-block">新增</button>
                     </div>
                     <!-- Button trigger modal -->
                     <!-- Modal -->
@@ -103,6 +102,10 @@
 
 @section endJS{
     <script src="~/Assets/JavaScript/Shop/createProduct.js"></script>
+
+    <script>
+
+    </script>
 }
 
 

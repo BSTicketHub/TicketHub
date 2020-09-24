@@ -2,14 +2,22 @@
 @{
     var pageType = Request.RawUrl.Split('/')[1];
 }
+
 <ul class="side-menu rounded side-menu-@pageType">
+    @if (pageType != "Platform")
+    {
+        <li class="side-menu-Image border">
+            <div class="userImg rounded-circle mx-auto mt-3" style="background-image: url('@ViewBag.Image')"></div>
+            <p class="text-center px-3 my-3">@ViewBag.Name</p>
+        </li>
+    }
     @foreach (var menu in Model)
     {
         var hasSubItems = menu.SubMenuItems != null && menu.SubMenuItems.Count() > 0;
         var collapsedClass = hasSubItems && menu.SubMenuItems.Any(s => s.Href != Request.RawUrl) ? "collapsed" : "";
 
         <li class="@(menu.Href == Request.RawUrl ? "active" : "")">
-            <a href="@menu.Href" @(hasSubItems ? "data-toggle=collapse" : "") class="@collapsedClass">
+            <a href="@menu.Href" @(hasSubItems ? "data-toggle=collapse" : "") class="@collapsedClass" @(pageType == "Customer" ? $"title={menu.MenuTitle}" : "")>
                 <span class="iconify mr-2" data-icon="@menu.IconName" data-inline="false"></span>
                 <span class="menu-title">@menu.MenuTitle</span>
                 @if (hasSubItems)

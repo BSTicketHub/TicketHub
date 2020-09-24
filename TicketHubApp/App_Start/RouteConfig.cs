@@ -20,8 +20,8 @@ namespace TicketHubApp
             );
             routes.MapRoute(
                 name: "ShopList",
-                url: "Shop/ShopList/{input}",
-                defaults: new { controller = "Shop", action = "ShopList", input = UrlParameter.Optional}
+                url: "Customer/ShopList/{input}",
+                defaults: new { controller = "Customer", action = "ShopList", input = UrlParameter.Optional}
             );
             routes.MapRoute(
                 name: "TicketList",

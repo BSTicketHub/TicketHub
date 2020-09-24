@@ -64,6 +64,28 @@ namespace TicketHubApp.Controllers
             }
         }
 
+        public ActionResult ShopList(string input)
+        {
+            var service = new ShopListService();
+            if (User.Identity.IsAuthenticated)
+            {
+                var userId = User.Identity.GetUserId();
+                var FavoriteShop = service.GetUserFavotiteShop(userId);
+                ViewBag.FavoriteShop = FavoriteShop;
+                ViewBag.UserId = userId;
+            }
+            var shops = service.SearchShop(input);
+            ViewBag.SearchString = input;
+            if (shops.Count() == 0)
+            {
+                return RedirectToRoute("Unfound");
+            }
+            else
+            {
+                return View(shops);
+            }
+        }
+
         public ActionResult GetCustomerInfo()
         {
             var service = new CustomerInfoService();
@@ -128,6 +150,7 @@ namespace TicketHubApp.Controllers
             }
             return Json(IssueId, JsonRequestBehavior.AllowGet);
         }
+
         [HttpPost]
         public ActionResult IssueTagSearch(IssueListSearchViewModel model)
         {
@@ -143,6 +166,36 @@ namespace TicketHubApp.Controllers
             
 
             return Json(tickets, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult ToggleFavoriteShopList(string ShopId, string UserId)
+        {
+            using (var _context = TicketHubContext.Create())
+            {
+                var ShopGUID = Guid.Parse(ShopId);
+                var entity = (from x in _context.UserFavoriteShop
+                              where x.ShopId == ShopGUID && x.UserId == UserId
+                              select x).FirstOrDefault();
+
+                if (entity != null)
+                {
+                    _context.UserFavoriteShop.Remove(entity);
+
+                }
+                else
+                {
+                    _context.UserFavoriteShop.Add(new UserFavoriteShop
+                    {
+                        ShopId = Guid.Parse(ShopId),
+                        UserId = UserId,
+                        AddedDate = DateTime.Now
+                    });
+
+                }
+                _context.SaveChanges();
+            }
+            return Content("Complete");
         }
     }
 }
