@@ -1075,6 +1075,10 @@ h3.title-group-item {
     text-overflow: ellipsis;
 }
 
+.ellipsisw-200 {
+    width: 220px
+}
+
 .tagblock {
     margin: 10px 0;
 }
@@ -1451,6 +1455,8 @@ h3.title-group-item {
 }
 
 .cart-item .product-detail > .product-option {
+    height: 30px;
+    width: 240px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
