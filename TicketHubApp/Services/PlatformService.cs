@@ -27,6 +27,7 @@ namespace TicketHubApp.Services
                                  Id = u.Id,
                                  UserAccount = u.UserName,
                                  Mobile = u.PhoneNumber,
+                                 Canceled = u.LockoutEnabled == true && u.LockoutEndDateUtc >= DateTime.Now
                              };
 
             DataTableViewModel table = new DataTableViewModel();
@@ -39,6 +40,8 @@ namespace TicketHubApp.Services
                 dataInstance.Add(item.Id);
                 dataInstance.Add(item.UserAccount);
                 dataInstance.Add(item.Mobile ?? "NA");
+                dataInstance.Add(item.Canceled ? "已註銷" : "合法");
+                
 
                 table.data.Add(dataInstance);
             }

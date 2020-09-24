@@ -61,6 +61,12 @@ namespace TicketHubApp.Controllers
                             }
                        },
                        new SideMenuItem{ IconName = "mdi:clipboard-list-outline", MenuTitle = "訂單管理", Href = "/Platform/OrderList"},
+                       new SideMenuItem{ IconName = "clarity:administrator-solid", MenuTitle = "管理員管理", Href = "#AdminManagement",
+                            SubMenuItems = new List<SideMenuItem>{
+                                new SideMenuItem { IconName = "gg:user-list", MenuTitle = "管理員列表", Href = "/Platform/AdminList" },
+                                new SideMenuItem { IconName = "subway:admin-1", MenuTitle = "新增管理員", Href = "#" },
+                            }
+                       },
                     };
                     break;
                 default:

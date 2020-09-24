@@ -10,5 +10,7 @@ namespace TicketHubApp.Models.ViewModels
         public string UserAccount { get; set; }
         [Display(Name = "手機號碼")]
         public string Mobile { get; set; }
+        [Display(Name = "狀態")]
+        public bool Canceled { get; set; }
     }
 }
