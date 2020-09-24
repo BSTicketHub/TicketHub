@@ -131,6 +131,10 @@
     <Compile Include="Migrations\202009231441185_AddAvatarPathColumn.designer.cs">
       <DependentUpon>202009231441185_AddAvatarPathColumn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009240240195_addLatLngColumnsOnShop.cs" />
+    <Compile Include="Migrations\202009240240195_addLatLngColumnsOnShop.designer.cs">
+      <DependentUpon>202009240240195_addLatLngColumnsOnShop.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActionLog.cs" />
     <Compile Include="Models\Category.cs" />
@@ -195,6 +199,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009231441185_AddAvatarPathColumn.resx">
       <DependentUpon>202009231441185_AddAvatarPathColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009240240195_addLatLngColumnsOnShop.resx">
+      <DependentUpon>202009240240195_addLatLngColumnsOnShop.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
