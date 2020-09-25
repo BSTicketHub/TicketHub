@@ -1,5 +1,4 @@
 ﻿
-
 export function CreatePage(firstPage) {
 
     let CustomerSidebarItems = Array.from(document.querySelectorAll('.side-menu a'));
@@ -11,13 +10,80 @@ export function CreatePage(firstPage) {
 
     //ImgArea
     let userImg = document.querySelector('.userImg');
-    let camera = document.createElement('div');
+    userImg.Id = "img-output";
+    let camera = document.createElement('label');
     camera.classList.add("camera", "d-flex", "justify-content-center", "align-items-center");
     userImg.append(camera);
     let i = document.createElement('i');
     i.classList.add('fas', 'fa-camera');
     camera.append(i);
+    let input = document.createElement('input');
+    input.classList.add('item-img');
+    input.type = "file";
+    input.setAttribute('for', 'img-output')
+    input.accept = "image/gif, image/jpeg, image/png";
+    camera.append(input);
 
+
+
+    let $uploadCrop,
+        tempFilename,
+        rawImg,
+        imageId;
+
+    function readFile(input) {
+        console.log(input.files)
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('.upload-demo').addClass('ready');
+                $('#imgChoppingArea').modal('show');
+                console.log(e.target.result
+                )
+                rawImg = e.target.result;
+            }
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            //alert("wrong")
+            createBuzz("已取消更換作業", "danger")
+        }
+    }
+
+    $uploadCrop = $('#chopping-img').croppie({
+        viewport: {
+            width: 200,
+            height: 200,
+            type:"circle"
+        },
+        boundary: {
+            width: 300,
+            height: 300
+        },
+        enforceBoundary: false,
+        enableExif: true
+    });
+
+    $('#imgChoppingArea').on('shown.bs.modal', function () {
+        $uploadCrop.croppie('bind', {
+            url: rawImg
+        })
+    });
+
+    $('.item-img').on('change', function () {
+        imageId = $(this).data('id');
+        tempFilename = $(this).val();
+        $('#cancelCropBtn').data('id', imageId);
+        readFile(this);
+    });
+
+    function createBuzz(title, type) {
+        Notify({
+            title: `${title}`,
+            type: `${type}`,
+            duration: 2000,
+            position: "top center"
+        })
+    }
 
     function clearInfoArea() {
         let infoArea = Array.from(document.querySelectorAll('.info *'))
@@ -32,7 +98,6 @@ export function CreatePage(firstPage) {
         type: "GET",
         dataType: "json",
         success: function (response) {
-            console.log(response)
             var firstResponse = response;
             sideBarUserName.innerText = response.UserName;
 
@@ -697,6 +762,57 @@ export function CreatePage(firstPage) {
                 content.append(animation);
 
             }
+
+            $('#cropImageBtn').on('click', function (ev) {
+                $uploadCrop.croppie('result', {
+                    type: 'base64',
+                    format: 'jpeg',
+                    size: {
+                        width: 200,
+                        height: 200
+                    }
+                }).then(function (resp) {
+
+                    var form = new FormData();
+                    form.append("image", resp.slice(23));
+
+                    var settings = {
+                        "url": "https://api.imgur.com/3/image",
+                        "method": "POST",
+                        "timeout": 0,
+                        "headers": {
+                            "Authorization": "Client-ID 541a79f12e7772b"
+                        },
+                        "processData": false,
+                        "mimeType": "multipart/form-data",
+                        "contentType": false,
+                        "data": form,
+                    };
+
+                    $.ajax(settings).done(function (resp) {
+                        console.log(JSON.parse(resp).data.link);
+                        let url = JSON.parse(resp).data.link
+                        $.ajax({
+                            url: "SetAvatar2Server",
+                            type: "post",
+                            data: { Id: response.Id, input: url },
+                            success: function () {
+                            },
+                            error: function(){
+                                createBuzz("發生錯誤，請聯繫客服人員", "danger")
+                            },
+                            complete: function () {
+                                createBuzz("大頭貼更換成功", "success")
+                                document.querySelector('.profile-logo.mx-1').src = url;
+                                document.querySelector('.profile-logo.mr-2').src = url;
+                                userImg.style.backgroundImage = `url('${url}')`
+                                $('#imgChoppingArea').modal('hide');
+                            }
+                        })
+
+                    });
+                });
+            });
         },
         error: function () {
             alert("WRONG")
