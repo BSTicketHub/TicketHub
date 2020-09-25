@@ -1,7 +1,7 @@
 
 export function setLoginBarcode() {
     let docStyle = getComputedStyle(document.documentElement);
-    let backPaper = docStyle.getPropertyValue("--back-paper");
+    let backPaper = docStyle.getPropertyValue("--paper-white");
     //not response only set once
     let screenWidth = screen.width;
     let bcWidth = 1.5;

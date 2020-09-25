@@ -44,19 +44,18 @@ $platform-color-13: #5e3b08;
 $platform-color-14: #3f2705;
 $platform-color-15: #1f1403;
 $line-gray: #adadad;
-$back-paper: #fffefa;
+$text-black: #333333;
+$paper-white: #fffefa;
+$background-white: #f5f5f5;
+
 $favorite: #d87093;
-$background: #f5f5f5;
 $Transparent-gray-1: rgba(255, 255, 255, 0.767);
 $Transparent-gray-2: rgba(138, 138, 138, 0.603);
 $Transparent-gray-3: rgba(0, 0, 0, 0.125);
 $Transparent-gray-4: rgba(0, 0, 0, 0.04);
 $Transparent-gray-5: rgba(255, 255, 255, 0.38);
-$black-000: #000;
-$black-333333: #333333;
 $withe-eeeeee: #eeeeee;
 $withe-eaeaea: #eaeaea;
-$withe-ffffff: #ffffff;
 $withe-dee2e6: #dee2e6;
 $gray-cccccc: #cccccc;
 $gray-c0c0c0: #c0c0c0;
@@ -82,10 +81,10 @@ $blue-305ba5: #305ba5;
 $purple-4951DE: #4951DE;
 
 :root {
-	--background: #{$background};
+	--background-white: #{$background-white};
 	--favorite: #{$favorite};
 	--line-gray: #{$line-gray};
-	--back-paper: #{$back-paper};
+	--paper-white: #{$paper-white};
 	--cust-color-1: #{$cust-color-1};
 	--cust-color-2: #{$cust-color-2};
 	--cust-color-3: #{$cust-color-3};

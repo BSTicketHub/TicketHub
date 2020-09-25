@@ -700,6 +700,8 @@
     <Content Include="Assets\CSS\Common\_font.scss" />
     <Content Include="Assets\CSS\Shop\EmployeeList.scss" />
     <Content Include="Assets\CSS\Shop\EmployeeCreate.scss" />
+    <Content Include="Assets\CSS\Common\_topbar.scss" />
+    <Content Include="Assets\CSS\Common\_footer.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -760,6 +762,7 @@
     <Content Include="Views\Shared\_SideMenu.cshtml" />
     <Content Include="Views\Home\PageUnfound.cshtml" />
     <Content Include="Views\Customer\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
