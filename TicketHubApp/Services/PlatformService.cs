@@ -68,6 +68,23 @@ namespace TicketHubApp.Services
 
             return userVM;
         }
+        public void EditUserById(PlatformUserViewModel userVM)
+        {
+            TicketHubContext context = new TicketHubContext();
+            GenericRepository<TicketHubUser> repository = new GenericRepository<TicketHubUser>(context);
+
+            //var user = repository.GetAll().FirstOrDefault(x => x.Id == id);
+            //user.UserName = name;
+            //user.PhoneNumber = mobile;
+            //user.Sex = sex;
+
+            var user = repository.GetAll().FirstOrDefault(u => u.Id == userVM.Id);
+            user.UserName = userVM.UserName;
+            user.PhoneNumber = userVM.Mobile;
+            user.Sex = userVM.Sex;
+
+            context.SaveChanges();
+        }
         public void DeleteUserById(string id)
         {   
             TicketHubContext context = new TicketHubContext();

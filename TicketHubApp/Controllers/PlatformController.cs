@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TicketHubApp.Models.ViewModels;
 using TicketHubApp.Services;
+using TicketHubDataLibrary.Models;
 
 namespace TicketHubApp.Controllers
 {
@@ -27,6 +29,16 @@ namespace TicketHubApp.Controllers
             var user = service.GetUser(id);
 
             return View(user);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditUser([Bind(Include = "Id, UserName, Mobile, Sex")] PlatformUserViewModel userVM)
+        {
+            PlatformService service = new PlatformService();
+            service.EditUserById(userVM);
+
+            return RedirectToAction($"UserDetail/{userVM.Id}");
         }
 
         public ActionResult DeleteUser(string id)
