@@ -1,0 +1,25 @@
+﻿@model TicketHubApp.Models.ViewModels.ProductCartViewModel
+
+@*<template>*@
+<div class="col-1 custom-checkbox "></div>
+<div class="col-2">
+    <img class="w-100" src="../Assets/Images/img/bar.jpg" alt="Alternate Text" />
+</div>
+<div class="col-3 fontsize">
+    <p class="carttitle">@Model.Title</p>
+    <p class="overflow-hidden txth">
+        @Model.Intro
+    </p>
+    <div class="row justify-content-between">
+        <div class="ml-3 text-muted">@Model.OriginalPrice</div>
+        <div>@Model.DiscountPrice</div>
+    </div>
+
+</div>
+<div class="col-2 fontsize">@Model.DiscountPrice</div>
+<div class="col-1">
+    <input type="number" class="number w-100">
+</div>
+<div class="col-2">@Model.Amount</div>
+<div class="col-1">垃圾桶</div>
+@*</template>*@

@@ -22,8 +22,7 @@ var array = [{
     Title: "日月潭紅茶五吃",
     Intro: "台灣手路菜台灣手路菜台灣手路菜台灣手路菜台灣手路菜台灣手路菜台灣手路菜",
     originPrice: "原價: 200",
-    discountPrice: "折扣價: 150",
-    day: "2020.09/30",
+    discountPrice: "150",
     unit: "3",
     totalPrice: "450",
     deleteCan: "垃圾桶"
@@ -33,8 +32,7 @@ var array = [{
     Title: "台中屋馬燒肉",
     Intro: "熟成紙木桶手作味噌",
     originPrice: "原價:200",
-    discountPrice: "折扣價: 150",
-    day: "2020.09/30",
+    discountPrice: "150",
     unit: "7",
     totalPrice: "490",
     deleteCan: "垃圾桶"
@@ -73,7 +71,7 @@ function InitProduct() {
         //checkbox
         let checkArea = document.createElement('div');
         let addCheck = document.createElement('input');
-        checkArea.classList.add('w-100', 'd-flex', 'align-items-center', 'justify-content-center')
+        checkArea.classList.add('w-100', 'd-flex', 'align-items-center', 'justify-content-center');
         addCheck.setAttribute('type', 'checkbox');
         addCheck.classList.add('form-check-input', 'position-static');
         checkbox.appendChild(checkArea);
@@ -92,32 +90,32 @@ function InitProduct() {
         let addNewTitleDiv = document.createElement('div');
         let addNewTitle = document.createElement('p');
         let addNewIntro = document.createElement('p');
-        let priceArea = document.createElement('div');
+        //let priceArea = document.createElement('div');
         let originPrice = document.createElement('p');
-        let discountPrice = document.createElement('p');
+        //let discountPrice = document.createElement('p');
         addNewTitleDiv.classList.add('w-100', 'my-3', 'text-left');
         addNewIntro.classList.add('w-100', 'fontsize', 'text-left', 'overflow-hidden');
         addNewIntro.style.height = "1.4rem";
         addNewTitle.classList.add('carttitle');
-        priceArea.classList.add('text-left', 'row', 'w-100');
+        //priceArea.classList.add('text-left', 'row', 'w-100');
         originPrice.classList.add('fontsize', 'text-muted', 'w-50', 'ml-3');
-        discountPrice.classList.add('carttitle', 'text-muted', 'w-30');
+        //discountPrice.classList.add('carttitle', 'text-muted', 'w-30');
         addNewTitle.innerHTML = item.Title;
         addNewIntro.innerHTML = item.Intro;
         originPrice.innerHTML = item.originPrice;
-        discountPrice.innerHTML = item.discountPrice;
+        //discountPrice.innerHTML = item.discountPrice;
         addNewTitleDiv.appendChild(addNewTitle);
         addNewTitleDiv.appendChild(addNewIntro);
-        addNewTitleDiv.appendChild(priceArea);
-        priceArea.appendChild(originPrice);
-        priceArea.appendChild(discountPrice);
+        //addNewTitleDiv.appendChild(priceArea);
+        //priceArea.appendChild(originPrice);
+        //priceArea.appendChild(discountPrice);
         Title.appendChild(addNewTitleDiv);
 
-        //訂購日期
-        let DayDiv = document.createElement('div');
-        DayDiv.classList.add('w-100', 'my-3', 'fontsize');
-        DayDiv.innerHTML = item.day;
-        orderDay.appendChild(DayDiv);
+        //訂購日期改(單價)
+        let discountDiv = document.createElement('div');
+        discountDiv.classList.add('w-100', 'my-3', 'fontsize');
+        discountDiv.innerHTML = item.discountPrice;
+        orderDay.appendChild(discountDiv);
 
         //張數
         let addNewUnitDiv = document.createElement('div');
