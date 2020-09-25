@@ -135,6 +135,10 @@
     <Compile Include="Migrations\202009240240195_addLatLngColumnsOnShop.designer.cs">
       <DependentUpon>202009240240195_addLatLngColumnsOnShop.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009241619151_AddDeleteColumnsOnUsers.cs" />
+    <Compile Include="Migrations\202009241619151_AddDeleteColumnsOnUsers.designer.cs">
+      <DependentUpon>202009241619151_AddDeleteColumnsOnUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActionLog.cs" />
     <Compile Include="Models\Category.cs" />
@@ -202,6 +206,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009240240195_addLatLngColumnsOnShop.resx">
       <DependentUpon>202009240240195_addLatLngColumnsOnShop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009241619151_AddDeleteColumnsOnUsers.resx">
+      <DependentUpon>202009241619151_AddDeleteColumnsOnUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

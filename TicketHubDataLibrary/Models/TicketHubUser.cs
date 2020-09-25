@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -16,5 +17,7 @@ namespace TicketHubDataLibrary.Models
         //custom fields
         public string Sex { get; set; }
         public string AvatarPath { get; set; }
+        public bool Deleted { get; set; }
+        public DateTime DeletedDate { get; set; }
     }
 }
