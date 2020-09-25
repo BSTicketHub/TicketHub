@@ -264,13 +264,13 @@ function UpdateCartData() {
                     </div>
                 </a>
                 <div class="cart-detail">
-                    <div class="product-detail">
-                        <h3>
-                            <a href="" id="puttitle">${item.title}</a>
+                    <div class="product-detail ellipsis">
+                        <h3 class="ellipsisw-200">
+                            <a href="" id="puttitle" class="ellipsis">${item.title}</a>
                         </h3>
-                        <div class="product-option">${item.details}</div>
+                        <div class="product-option ellipsis">${item.details}</div>
                     </div>
-                    <div class="text-tag">2020-09-12 11:00</div>
+                    <div class="text-tag"></div>
                     <div>數量 x <span class="text-tag putamout" id="putamout">${item.amount}</span></div>
                     <div class="product-pricing">
                         <h4>TWD <span id="putprice">${item.price}</span></h4>
@@ -340,9 +340,9 @@ function UpdateCartData2() {
                     </div>
                 </a>
                 <div class="cart-detail">
-                    <div class="product-detail">
-                        <h3>
-                            <a href="" id="puttitle">${item.title}</a>
+                    <div class="product-detail ellipsis">
+                        <h3 class="ellipsisw-200">
+                            <a href="" id="puttitle" class="ellipsis">${item.title}</a>
                         </h3>
                     </div>
                     <div>數量 x <span class="text-tag putamout" id="putamout">${item.amount}</span></div>

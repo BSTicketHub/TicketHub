@@ -131,6 +131,7 @@ namespace TicketHubApp.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult ShopInfo()
         {
             ShopInfoService service = new ShopInfoService();
@@ -158,7 +159,8 @@ namespace TicketHubApp.Controllers
             if (ModelState.IsValid)
             {
                 var service = new ShopInfoService();
-                var result = service.UpdateShopInfo(shopVM);
+                var coordinates = service.geocodeLatLng(shopVM.Address);
+                var result = service.UpdateShopInfo(shopVM, coordinates);
                 if (result.Success)
                 {
                     return RedirectToAction("ShopInfo");
@@ -169,7 +171,7 @@ namespace TicketHubApp.Controllers
                     return View(shopVM);
                 }
             }
-            return View();
+            return View(shopVM);
         }
 
         public ActionResult SalesReport()

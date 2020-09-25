@@ -87,5 +87,14 @@ namespace TicketHubApp.Controllers
             public string Href { get; set; }
             public ICollection<SideMenuItem> SubMenuItems { get; set; }
         }
+
+        public ActionResult genLoginPartial()
+        {
+            var userLogo = new ImgurService().getSideMenuImage(PageType.CUSTOMER);
+            string userImgPath = userLogo[0];
+
+            ViewBag.userImg = userImgPath;
+            return PartialView("_LoginPartial");
+        }
     }
 }

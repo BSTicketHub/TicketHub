@@ -151,107 +151,127 @@
                 <div class="carousel1 owl-carousel owl-theme owl-loaded owl-drag mt-1">
                     <div class="owl-stage-outer">
                         <div class="owl-stage">
-                            <div class="owl-item">
-                                <div class="">
-                                    <a href="" target="">
-                                        <img class="d-block w-100  img-md2" data-src="" alt="銀行刷好康"
-                                             src="https://picsum.photos/500/400/?random=4">
-                                    </a>
-                                </div>
-                                <div class="mt-3 card-text">
-                                    <h5>優惠資訊 »</h5>
-                                    <div class="d-flex tagBox tag-right">
-                                        <div class="tag tag-blue">
-                                            最新
-                                        </div>
-                                        <div class="tag tag-green">
-                                            國旅卡
-                                        </div>
+                            @for (var i = 0; i < 3; i++)
+                            {
+                                var item = Model.LimitedtimeItems.Items[i];
+                                    @Html.Partial("_LimitedtimeCard", item)
+                            }
+                            @*<div class="owl-stage">
+                                <div class="owl-item">
+                                    <div class="">
+                                        <a href="" target="">
+                                            <img class="d-block w-100  img-md2" data-src="" alt="銀行刷好康"
+                                                 src="https://picsum.photos/500/400/?random=4">
+                                        </a>
                                     </div>
-                                    <hr>
-                                    <p>【限時優惠】南投九族文化村門票＆加贈日月潭纜車票</p>
-                                    <div class="review-score product-star">
-                                        <span class="iconify" data-icon="bi:star-fill" data-inline="false"></span>
-                                        <span class="iconify" data-icon="bi:star-fill" data-inline="false"></span>
-                                        <span class="iconify" data-icon="bi:star-fill" data-inline="false"></span>
-                                        <span class="iconify" data-icon="bi:star-fill" data-inline="false"></span>
-                                        <span class="iconify" data-icon="bi:star-fill" data-inline="false"></span>
-                                        <span class="">(1553)</span>
-                                    </div>
-                                    <div class="priceBox">
-                                        <div class="price d-flex">
-                                            <div class="original line-through ml-auto">$3872</div>
-                                            <div class="current">
-                                                $2840<span class="t-09">起</span>
+                                    <div class="mt-3 card-text">
+                                        <h5>優惠資訊 »</h5>
+                                        <div class="d-flex tagBox tag-right">
+                                            <div class="tag tag-blue">
+                                                最新
+                                            </div>
+                                            <div class="tag tag-green">
+                                                國旅卡
                                             </div>
                                         </div>
-                                    </div>
-                                    <button class="btn btn-block btn-info mt-2">查看更多</button>
-                                </div>
-                            </div>
-                            <div class="owl-item">
-                                <div class="">
-                                    <a href="" target="">
-                                        <img class="d-block w-100  img-md2" data-src="" alt="臺灣美食行動Go"
-                                             src="https://picsum.photos/500/400/?random=8">
-                                    </a>
-                                </div>
-                                <div class="mt-3 card-text">
-                                    <h5>優惠資訊 »</h5>
-                                    <div class="d-flex tagBox tag-right">
-                                        <div class="tag tag-blue">
-                                            最新
+                                        <hr>
+                                        <p>【限時優惠】南投九族文化村門票＆加贈日月潭纜車票</p>
+                                        <div class="review-score product-star">
+                                            <span class="iconify" data-icon="bi:star-fill" data-inline="false"></span>
+                                            <span class="iconify" data-icon="bi:star-fill" data-inline="false"></span>
+                                            <span class="iconify" data-icon="bi:star-fill" data-inline="false"></span>
+                                            <span class="iconify" data-icon="bi:star-fill" data-inline="false"></span>
+                                            <span class="iconify" data-icon="bi:star-fill" data-inline="false"></span>
                                         </div>
-                                        <div class="tag tag-green">
-                                            國旅卡
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <p>【限時優惠】南投九族文化村門票＆加贈日月潭纜車票</p>
-                                    <div class="priceBox">
-                                        <div class="price d-flex">
-                                            <div class="original line-through ml-auto">$3872</div>
-                                            <div class="current">
-                                                $2840<span class="t-09">起</span>
+                                        <div class="priceBox">
+                                            <div class="price d-flex">
+                                                <div class="original line-through ml-auto">$3872</div>
+                                                <div class="current">
+                                                    $2840<span class="t-09">起</span>
+                                                </div>
                                             </div>
                                         </div>
+                                        <button class="btn btn-block btn-info mt-2">查看更多</button>
                                     </div>
-                                    <button class="btn btn-block btn-info mt-2">查看更多</button>
                                 </div>
-                            </div>
-                            <div class="owl-item">
-                                <div class="">
-                                    <a href="" target="">
-                                        <img class="d-block w-100 img-md2" data-src="" alt="消費享回饋"
-                                             src="https://picsum.photos/500/400/?random=12">
-                                    </a>
-                                </div>
-                                <div class="mt-3 card-text">
-                                    <h5>優惠資訊 »</h5>
-                                    <div class="d-flex tagBox tag-right">
-                                        <div class="tag tag-blue">
-                                            最新
-                                        </div>
-                                        <div class="tag tag-green">
-                                            國旅卡
-                                        </div>
-                                        <div class="tag tag-orange">
-                                            首賣
-                                        </div>
+                                <div class="owl-item">
+                                    <div class="">
+                                        <a href="" target="">
+                                            <img class="d-block w-100  img-md2" data-src="" alt="臺灣美食行動Go"
+                                                 src="https://picsum.photos/500/400/?random=8">
+                                        </a>
                                     </div>
-                                    <hr>
-                                    <p>【線上優惠】台北士林｜陶板屋3人同行，一人免費</p>
-                                    <div class="priceBox">
-                                        <div class="price d-flex">
-                                            <div class="original line-through ml-auto">$3872</div>
-                                            <div class="current">
-                                                $2840<span class="t-09">起</span>
+                                    <div class="mt-3 card-text">
+                                        <h5>優惠資訊 »</h5>
+                                        <div class="d-flex tagBox tag-right">
+                                            <div class="tag tag-blue">
+                                                最新
+                                            </div>
+                                            <div class="tag tag-green">
+                                                國旅卡
                                             </div>
                                         </div>
+                                        <hr>
+                                        <p>【限時優惠】南投九族文化村門票＆加贈日月潭纜車票</p>
+                                        <div class="review-score product-star">
+                                            <span class="iconify" data-icon="bi:star-fill" data-inline="false"></span>
+                                            <span class="iconify" data-icon="bi:star-fill" data-inline="false"></span>
+                                            <span class="iconify" data-icon="bi:star-fill" data-inline="false"></span>
+                                            <span class="iconify" data-icon="bi:star-fill" data-inline="false"></span>
+                                            <span class="iconify" data-icon="bi:star-fill" data-inline="false"></span>
+                                        </div>
+                                        <div class="priceBox">
+                                            <div class="price d-flex">
+                                                <div class="original line-through ml-auto">$3872</div>
+                                                <div class="current">
+                                                    $2840<span class="t-09">起</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-block btn-info mt-2">查看更多</button>
                                     </div>
-                                    <button class="btn btn-block btn-info mt-2">查看更多</button>
                                 </div>
-                            </div>
+                                <div class="owl-item">
+                                    <div class="">
+                                        <a href="" target="">
+                                            <img class="d-block w-100 img-md2" data-src="" alt="消費享回饋"
+                                                 src="https://picsum.photos/500/400/?random=12">
+                                        </a>
+                                    </div>
+                                    <div class="mt-3 card-text">
+                                        <h5>優惠資訊 »</h5>
+                                        <div class="d-flex tagBox tag-right">
+                                            <div class="tag tag-blue">
+                                                最新
+                                            </div>
+                                            <div class="tag tag-green">
+                                                國旅卡
+                                            </div>
+                                            <div class="tag tag-orange">
+                                                首賣
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <p>【線上優惠】台北士林｜陶板屋3人同行，一人免費</p>
+                                        <div class="review-score product-star">
+                                            <span class="iconify" data-icon="bi:star-fill" data-inline="false"></span>
+                                            <span class="iconify" data-icon="bi:star-fill" data-inline="false"></span>
+                                            <span class="iconify" data-icon="bi:star-fill" data-inline="false"></span>
+                                            <span class="iconify" data-icon="bi:star-fill" data-inline="false"></span>
+                                            <span class="iconify" data-icon="bi:star-fill" data-inline="false"></span>
+                                        </div>
+                                        <div class="priceBox">
+                                            <div class="price d-flex">
+                                                <div class="original line-through ml-auto">$3872</div>
+                                                <div class="current">
+                                                    $2840<span class="t-09">起</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-block btn-info mt-2">查看更多</button>
+                                    </div>
+                                </div>
+                            </div>*@
                         </div>
                     </div>
                 </div>
@@ -313,7 +333,7 @@
         <hr>
     </div>
     <div class="row mt-4 mb-5">
-        @for (var i = 0; i < 6; i++)
+        @for (var i = 0; i < 40; i++)
         {
             var item = Model.SortNewItems.Items[i];
             <div class="col-md-4 col-sm-12">

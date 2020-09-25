@@ -2,28 +2,28 @@
 {
     <li class="dropdown mx-3 d-align-items">
         <a data-toggle="dropdown">
-            <img class="profile-logo rounded-circle mx-1" src="../Assets/Images/Home/person.jpg" alt="">
+            <img class="profile-logo rounded-circle mx-1 border" src="@ViewBag.userImg" alt="">
         </a>
-        <ul class="dropdown-menu">
-            <li class="d-flex align-items-center px-1">
-                <img class="profile-logo rounded-circle mr-2" src="../Assets/Images/Home/person.jpg" alt="">
+        <ul class="dropdown-menu dropdown-menu-right" style="right: -80px;">
+            <li class="d-flex align-items-center p-2">
+                <img class="profile-logo rounded-circle mr-2" src="@ViewBag.userImg" alt="">
                 <span class="profile-name font-weight-bolder">@User.Identity.Name</span>
             </li>
             <li class="dropdown-divider"></li>
-            <li>
+            <li class="pl-2">
                 @Html.ActionLink("會員資訊", "CustomerInfo", "Customer")
             </li>
-            <li>
+            <li class="pl-2">
                 @Html.ActionLink("我的票券", "MyTicket", "Customer")
             </li>
-            <li>
+            <li class="pl-2">
                 @Html.ActionLink("收藏票券", "WishList", "Customer")
             </li>
-            <li>
+            <li class="pl-2">
                 @Html.ActionLink("收藏餐廳", "FavoriteShop", "Customer")
             </li>
             <li class="dropdown-divider"></li>
-            <li>
+            <li class="pl-2">
                 @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
                 {
                     @Html.AntiForgeryToken()

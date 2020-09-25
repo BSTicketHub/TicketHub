@@ -1,6 +1,5 @@
 ﻿@model TicketHubApp.Models.ViewModels.ShopIssueViewModel
 
-
 @using (Html.BeginForm("CreateIssue", "Shop", FormMethod.Post, new { encType = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()

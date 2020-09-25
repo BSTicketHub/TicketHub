@@ -11,5 +11,6 @@ namespace TicketHubApp.Models.ViewModels
         public BestSellerCardListViewModel BestSellerItems { get; set; }
         public RecommenCardListViewModel RecommenItems { get; set; }
         public SortNewCardListViewModel SortNewItems { get; set; }
+        public LimitedtimeListViewModel LimitedtimeItems { get; set; }
     }
 }
