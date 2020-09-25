@@ -107,7 +107,7 @@
         var GetCart = localStorage.getItem("Cart");
 
         @*createList();*@
-        addTicket();
+        @*addTicket();*@
         addIssue();
 
         function AjaxFunction() {
@@ -153,7 +153,7 @@
                         alert("failed")
                     }
                 });*@
-            }
+            
         }
 
         function addIssue(productCartArray) {
@@ -174,7 +174,7 @@
             }
         };
 
-        function addTicket(productTicketArray) {
+        @*function addTicket(productTicketArray) {
             let tickets = document.querySelector('#AccountInfo');
             for (var tt of productTicketArray) {
                 let ttContent = tickets.content.cloneNode(true);    //複製小卡結點
@@ -191,7 +191,7 @@
 
                 payDetail.append(ttContent);
             }
-        };
+        };*@
 
         @* l = window.localStorage;*@
         @*function createList(Cart) {
