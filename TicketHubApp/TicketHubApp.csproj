@@ -311,6 +311,18 @@
     <Content Include="Assets\CSS\Platform\Platform_Layout.min.css">
       <DependentUpon>Platform_Layout.css</DependentUpon>
     </Content>
+    <Content Include="Assets\CSS\Platform\Platform_UserDetail.css">
+      <DependentUpon>Platform_UserDetail.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Platform\Platform_UserDetail.min.css">
+      <DependentUpon>Platform_UserDetail.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Platform\Platform_UserList.css">
+      <DependentUpon>Platform_UserList.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Platform\Platform_UserList.min.css">
+      <DependentUpon>Platform_UserList.css</DependentUpon>
+    </Content>
     <Content Include="Assets\CSS\ProductCart.css">
       <DependentUpon>ProductCart.scss</DependentUpon>
     </Content>
@@ -700,6 +712,8 @@
     <Content Include="Assets\CSS\Common\_font.scss" />
     <Content Include="Assets\CSS\Shop\EmployeeList.scss" />
     <Content Include="Assets\CSS\Shop\EmployeeCreate.scss" />
+    <Content Include="Assets\CSS\Platform\Platform_UserList.scss" />
+    <Content Include="Assets\CSS\Platform\Platform_UserDetail.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

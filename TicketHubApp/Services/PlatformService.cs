@@ -25,7 +25,7 @@ namespace TicketHubApp.Services
                              select new PlatformUserViewModel
                              {
                                  Id = u.Id,
-                                 UserAccount = u.UserName,
+                                 UserName = u.UserName,
                                  Mobile = u.PhoneNumber,
                                  Canceled = u.LockoutEnabled == true && u.LockoutEndDateUtc >= DateTime.Now
                              };
@@ -38,11 +38,10 @@ namespace TicketHubApp.Services
                 List<string> dataInstance = new List<string>();
 
                 dataInstance.Add(item.Id);
-                dataInstance.Add(item.UserAccount);
+                dataInstance.Add(item.UserName);
                 dataInstance.Add(item.Mobile ?? "NA");
                 dataInstance.Add(item.Canceled ? "已註銷" : "合法");
                 
-
                 table.data.Add(dataInstance);
             }
 
@@ -58,11 +57,38 @@ namespace TicketHubApp.Services
             var userVM = new PlatformUserViewModel
             {
                 Id = user.Id,
-                UserAccount = user.UserName,
-                Mobile = user.PhoneNumber
+                Sex = user.Sex,
+                AvatarPath = user.AvatarPath,
+                UserAccount = user.Email,
+                //Canceled = null;
+                UserName = user.UserName,
+                Mobile = user.PhoneNumber,
+                Locked = user.LockoutEnabled == true && user.LockoutEndDateUtc >= DateTime.Now
             };
 
             return userVM;
+        }
+        public void CancelUserById(string id)
+        {   
+            TicketHubContext context = new TicketHubContext();
+            GenericRepository<TicketHubUser> repository = new GenericRepository<TicketHubUser>(context);
+            var user = repository.GetAll().FirstOrDefault(x => x.Id == id);
+
+            //user.LockoutEnabled = true;
+            //user.LockoutEndDateUtc = new DateTime(9999, 12, 31);
+
+            context.SaveChanges();
+        }
+        public void RestoreUserById(string id)
+        {
+            TicketHubContext context = new TicketHubContext();
+            GenericRepository<TicketHubUser> repository = new GenericRepository<TicketHubUser>(context);
+            var user = repository.GetAll().FirstOrDefault(x => x.Id == id);
+
+            //user.LockoutEnabled = false;
+            //user.LockoutEndDateUtc = null;
+
+            context.SaveChanges();
         }
         public DataTableViewModel GetTicketsTableData(string id)
         {

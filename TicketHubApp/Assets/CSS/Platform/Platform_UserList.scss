@@ -1,0 +1,61 @@
+﻿.navbar {
+    position: sticky !important;
+}
+.dataTables_info{
+    display:none;
+}
+table {
+    text-align: center;
+    vertical-align: central;
+}
+.page-item {
+    margin-top: 20px;
+
+    .page-link {
+        color: orange !important;
+
+        &:active:hover {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+    }
+
+    &.active .page-link {
+        color: white !important;
+        background: orange !important;
+        border-color: orange !important;
+        outline: 2px solid orange !important;
+        box-shadow: orange 2px 2px inset !important;
+    }
+}
+
+div.dataTables_wrapper div.dataTables_filter input {
+    background: none;
+    border: none;
+    border-bottom: 2px solid orange;
+    outline: none !important;
+    box-shadow: none !important;
+    border-radius: 0px !important;
+    transition: ease-out 0.3s;
+}
+
+.breadcrumb {
+    background: orange !important;
+    opacity: 0.8;
+
+    .active, .breadcrumb-item:focus {
+        color: white !important;
+        text-decoration: none;
+    }
+
+    .breadcrumb-item a {
+        color: #808080;
+        text-decoration: none;
+        &:hover{
+            color: white;
+        }
+    }
+}
+
+
+

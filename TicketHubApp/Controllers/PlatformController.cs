@@ -28,6 +28,19 @@ namespace TicketHubApp.Controllers
             return View(user);
         }
 
+        public ActionResult CancelUser(string id)
+        {
+            PlatformService service = new PlatformService();
+            service.CancelUserById(id);
+            return RedirectToAction("UserList");
+        }
+        public ActionResult RestoreUser(string id)
+        {
+            PlatformService service = new PlatformService();
+            service.RestoreUserById(id);
+            return RedirectToAction("UserList");
+        }
+
         public ActionResult GetTicketsBelongsToThisUser(string id)
         {
             ViewBag.id = id;
