@@ -90,7 +90,7 @@
                         </div>
                     </li>
                 }
-                @Html.Partial("_LoginPartial")
+                @Html.Action("genLoginPartial", "Menu")
             </ul>
 
             @if (pageType == "Home")

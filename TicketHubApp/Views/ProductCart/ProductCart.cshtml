@@ -18,92 +18,203 @@
             <h2>購物車</h2>
         </div>
         <hr />
-        <div class="table-box">
-
-            <div class="text-center statistics d-flex">
-
-                <div id="checkbox" class="col-1 d-flex flex-wrap align-items-center">
-                    <p class="w-100"></p>
-                </div>
-                <div id="productImg" class="col-2 d-flex flex-wrap">
-                    <P class="w-100">圖片</P>
-                </div>
-                <div id="productTitle" class=" w-100 col-3 d-flex flex-wrap">
-                    <p class="w-100">票券簡介</p>
-                    <p id="intro"></p>
-                </div>
-                <div id="orderDay" class=" w-100 col-2 d-flex flex-wrap" ">
-                    <p class="w-100">訂購日期</p>
-                </div>
-                <div id="unit" class="col-1 d-flex flex-wrap">
-                    <p class="w-100">張數</p>
-                </div>
-                <div id="totalPrice" class="col-2 d-flex flex-wrap">
-                    <p class="w-100">總價</p>
-                </div>
-                <div id="deleteCan" class="col-1 d-flex flex-wrap">
-                    <p class="w-100">刪除</p>
-                </div>
-            </div>
-
-            <hr>
-        </div>
         <div class="new-table">
             <div class="table-header row text-center">
                 <div class="col-1"></div>
                 <div class="col-2">圖片</div>
                 <div class="col-3">票券簡介</div>
-                <div class="col-2">訂購日期</div>
+                <div class="col-2">單價</div>
                 <div class="col-1">張數</div>
                 <div class="col-2">總價</div>
                 <div class="col-1">刪除</div>
             </div>
             <div class="table-body text-center mt-3">
-                <div class="row">
-                    <template>
-                        <div class="col-1 custom-checkbox "></div>
-                        <div class="col-2">
-                            <img class="w-100" src="../Assets/Images/img/bar.jpg" alt="Alternate Text" />
-                        </div>
-                        <div class="col-3 fontsize">
-                            <p class="carttitle">日月潭紅茶五吃</p>
-                            <p class="overflow-hidden txth">
-                                台灣手路菜台灣手路菜台灣手路菜台灣手路菜台灣手路菜台灣手路菜台灣手路菜
-                            </p>
-                            <div class="row justify-content-between">
-                                <div class="ml-3 text-muted">原價: 200</div>
-                                <div>折扣價: 150</div>
-                            </div>
+                <div class="row" id="shoppingCart">
 
-                        </div>
-                        <div class="col-2 fontsize">2020/09/30</div>
-                        <div class="col-1 fontsize">4</div>
-                        <div class="col-2">222</div>
-                        <div class="col-1">垃圾桶</div>
-                    </template>
                 </div>
             </div>
+            <div class="d-flex justify-content-end">
+                <input type="button" value="移至結帳" class="btn btn-info d-flex justify-self-end" />
+            </div>
+
         </div>
 
-        <div class="d-flex align-item-end justify-content-end">
-            <input id="gopay" type="button" value="前往結帳" class="btn btn-primary">
+        <template id="template">
+            <div class="col-1 custom-checkbox "><input type="checkbox" /></div>
+            <div class="col-2">
+                <img class="w-100" src="../Assets/Images/img/bar.jpg" alt="Alternate Text" />
+            </div>
+            <div class="col-3 fontsize">
+                <p class="carttitle"></p>
+                <p class="overflow-hidden txth"></p>
+            </div>
+            <div class="col-2 fontsize disPrice"></div>
+            <div class="col-1">
+                <input type="number" class="number w-100">
+            </div>
+            <div class="col-2"><p class="tPrice"></p></div>
+            <div class="col-1">
+                <span class="iconify" data-icon="bi:trash" data-inline="false"></span>
+            </div>
+            @*<button onclick="deleteCartItem('703d8129-e1b1-4b03-b453-17347be7cfaf')">按我</button>*@
+        </template>
+
+        @*合併結帳頁*@
+        <div class="cartContent p-3">
+            <div class="mt-5">
+                <h2>付款明細</h2>
+            </div>
+            <hr>
+            <div class="container">
+                @*帳單細項*@
+                <div class="text-center row" id="payDetail">
+                </div>
+            </div>
+            <hr>
+            <template id="AccountInfo">
+                <div class="row col-12 border border-danger">
+                    <div class="col-2 ">
+                        <img class="w-100 rounded" src="../Assets/Images/img/bar.jpg" alt="Alternate Text" />
+                    </div>
+                    <div class="w-100 col-10 d-flex flex-wrap">
+                        <p class="w-100 text-left ticketName">日月潭紅茶五吃</p>
+                        <p class="w-100 text-left text-muted ordate">2020/09/30</p>
+                        <p class="w-100 text-left text-muted unit">張數: 3</p>
+                        <div class="row d-flex flex-wrap w-100 justify-content-end">
+                            <div class="text-left mr-3"><p>總金額</p></div>
+                            <div class="w-40 text-left totlPrice"><p>450</p></div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            @*<div id="accountCheck" class="d-flex justify-content-end account">
+
+                </div>*@
         </div>
     </div>
+    <script>
 
-    @*合併結帳頁*@
-    <div class="cartContent p-3">
-        <div class="mt-5">
-            <h2>付款明細</h2>
-        </div>
-        <hr>
-        <div class="moneyBox container">
-            @*帳單細項*@
-        </div>
-        <hr>
-        <div id="accountCheck" class="d-flex justify-content-end account">
+        var payDetail = document.getElementById("payDetail"); //最一開始的<div .row>空間
+        var shoppingCart = document.getElementById("shoppingCart");
 
-        </div>
-    </div>
-</div>
-@Scripts.Render("~/bundles/js/Cart")
+        var Cart = [
+            { id: "dd35a880-1a56-4b5d-ad34-121dcc6c2cc0", amount: 1, title: "ExampleShop Issue5", details: "平假日皆可抵用100元消費金額", price: 556.75 },
+            { id: "703d8129-e1b1-4b03-b453-17347be7cfaf", amount: 1, title: "ExampleShop Issue6", details: "平假日皆可抵用100元消費金額", price: 300.75 }];
+
+        var CartString = JSON.stringify(Cart);
+        localStorage.setItem("Cart", CartString);
+
+        var GetCart = localStorage.getItem("Cart");
+
+        @*createList();*@
+        addTicket();
+        addIssue();
+
+        function AjaxFunction() {
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                url: "../ProductCart/GetIssueData",
+                data: GetCart,
+                success: function (response) {
+                    json = JSON.parse(response);
+                    console.log(json)
+                    addIssue(json);
+                    @*addTicket(json);*@
+                },
+                error: function () {
+                    alert("failed")
+                }
+            });
+        }
+
+
+        window.onload = function () {
+
+            AjaxFunction();
+
+            @*function deleteCartItem(id) {
+                let cartData = JSON.parse(GetCart)
+
+                cartData = cartData.filter(x => x.id != id)
+
+                localStorage.setItem('Cart', JSON.stringify(cartData))
+
+                UpdateCartData();
+                $.ajax({
+                    type: "POST",
+                    contentType: "application/json",
+                    url: "../ProductCart/GetIssueData",
+                    data: jsonObj,
+                    success: function (response) {
+                        addIssue(response);
+                    },
+                    error: function () {
+                        alert("failed")
+                    }
+                });*@
+            }
+        }
+
+        function addIssue(productCartArray) {
+            document.getElementById('shoppingCart').innerHTML = "";
+            let card = document.querySelector('#template');
+            for (var item in productCartArray) {
+
+                let CartContent = card.content.cloneNode(true);    //複製小卡結點
+                let tPrice = item.Amount * item.DiscountPrice;
+                CartContent.querySelector("img").src = item.ImgPath;
+                CartContent.querySelector(".carttitle").innerText = item.Title;
+                CartContent.querySelector(".txth").innerText = item.Memo;
+                CartContent.querySelector(".disPrice").innerText = item.DiscountPrice;
+                CartContent.querySelector(".number").value = item.Amount;
+                CartContent.querySelector(".tPrice").innerHTML = tPrice;
+
+                shoppingCart.append(CartContent);
+            }
+        };
+
+        function addTicket(productTicketArray) {
+            let tickets = document.querySelector('#AccountInfo');
+            for (var tt of productTicketArray) {
+                let ttContent = tickets.content.cloneNode(true);    //複製小卡結點
+                let ttPrice = tt.Amount * tt.DiscountPrice;
+                let time = new Date();
+                let timeNow = time.getFullYear() + "-" + time.getMonth() + 1 + "-" + time.getDate();
+                console.log(timeNow)
+
+                ttContent.querySelector("img").src = tt.ImgPath;
+                ttContent.querySelector(".ticketName").innerText = tt.Title;
+                ttContent.querySelector(".ordate").innerHTML = timeNow;
+                ttContent.querySelector(".unit").value = tt.Amount;
+                ttContent.querySelector(".totlPrice").innerHTML = ttPrice;
+
+                payDetail.append(ttContent);
+            }
+        };
+
+        @* l = window.localStorage;*@
+        @*function createList(Cart) {
+
+            let iss = JSON.parse(storage);
+            console.log(iss);
+            shoppingCart.innerHTML = ""
+            for (let i = 0; i < storage.length; i++) {
+
+                let CartContent = card.content.cloneNode(true);    //複製小卡結點
+                let tPrice = item.Amount * item.DiscountPrice;
+                CartContent.querySelector("img").src = item.ImgPath;
+                CartContent.querySelector(".carttitle").innerText = item.Title;
+                CartContent.querySelector(".txth").innerText = item.Memo;
+                CartContent.querySelector(".disPrice").innerText = item.DiscountPrice;
+                CartContent.querySelector(".number").value = item.Amount;
+                CartContent.querySelector(".tPrice").innerHTML = tPrice;
+
+                shoppingCart.append(CartContent);
+            }
+        }*@
+
+
+
+    </script>
 
