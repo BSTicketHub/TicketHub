@@ -16,7 +16,7 @@ namespace TicketHubApp.Models.ViewModels
         public string Mobile { get; set; }
         [Display(Name = "註銷狀態")]
         [Required]
-        public bool Canceled { get; set; }
+        public bool Deleted { get; set; }
         [Display(Name = "鎖定狀態")]
         [Required]
         public bool Locked { get; set; }

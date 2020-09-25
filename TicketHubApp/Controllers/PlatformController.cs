@@ -7,6 +7,7 @@ using TicketHubApp.Services;
 
 namespace TicketHubApp.Controllers
 {
+    [Authorize]
     public class PlatformController : Controller
     {
         public ActionResult Index()
@@ -28,16 +29,18 @@ namespace TicketHubApp.Controllers
             return View(user);
         }
 
-        public ActionResult CancelUser(string id)
+        public ActionResult DeleteUser(string id)
         {
             PlatformService service = new PlatformService();
-            service.CancelUserById(id);
+            service.DeleteUserById(id);
+
             return RedirectToAction("UserList");
         }
         public ActionResult RestoreUser(string id)
         {
             PlatformService service = new PlatformService();
             service.RestoreUserById(id);
+
             return RedirectToAction("UserList");
         }
 

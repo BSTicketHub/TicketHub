@@ -59,10 +59,10 @@
         td.setAttribute('style', 'position:relative;');
         div.setAttribute('style', 'display:flex; position:absolute;bottom:0px;left:5px');
 
-        if (td.innerText == "合法") {
+        if (td.innerText == "正常") {
             cancelOrRestore.innerText = "註銷";
             cancelOrRestore.setAttribute('class', 'btn-sm btn-danger');
-            cancelOrRestore.setAttribute('href', `/Platform/CancelUser/${id}`);
+            cancelOrRestore.setAttribute('href', `/Platform/DeleteUser/${id}`);
             cancelOrRestore.setAttribute('style', 'margin:3px');
         }
         else {
