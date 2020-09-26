@@ -1,4 +1,6 @@
-﻿.text-black {
+﻿@import "../_variables.scss";
+
+.text-black {
     color: $text-black;
 }
 
@@ -11,6 +13,7 @@ $list: sm, md, lg, xl;
         }
     }
 }
+
 @for $i from 2 through 4 {
     .text--#{$i}x {
         font-size: 1rem*$i;

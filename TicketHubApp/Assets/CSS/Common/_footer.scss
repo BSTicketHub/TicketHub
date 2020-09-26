@@ -1,4 +1,6 @@
-﻿.footbg {
+﻿@import "../_variables.scss";
+
+.footbg {
     background-color: $text-black;
     color: white;
     font-size: 16px;

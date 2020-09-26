@@ -1,4 +1,6 @@
-﻿.top-bar {
+﻿@import "../_variables.scss";
+
+.top-bar {
     background-color: $gray-4b4b4b;
     padding: 10px 10px;
 
