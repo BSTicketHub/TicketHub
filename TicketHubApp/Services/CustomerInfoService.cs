@@ -26,6 +26,7 @@ namespace TicketHubApp.Services
                 PhoneNumber = user.PhoneNumber,
                 UserName = user.UserName,
                 Sex = user.Sex,
+                Avatar = user.AvatarPath,
                 FavoriteShop = from s in shop
                                join ufs in _context.UserFavoriteShop on s.Id equals ufs.ShopId
                                where ufs.UserId == user.Id

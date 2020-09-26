@@ -53,13 +53,21 @@
 @*picture*@
 <div class="modal fade" id="imgChoppingArea" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog position-relative">
+        <div class="loading-page position-absolute w-100 h-100 d-flex justify-content-center align-items-center rounded">
+            <div class="text-center">
+                <div class="spinner-border m-4" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <p class="w-100">資料儲存中，請稍候...</p>
+            </div>
+        </div>
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">編輯個人頭像</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">
             </div>
             <div class="modal-body">
                 <div id="chopping-img" class="center-block"></div>

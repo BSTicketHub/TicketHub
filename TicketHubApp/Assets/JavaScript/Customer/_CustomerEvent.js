@@ -27,7 +27,6 @@ export function CreatePage(firstPage) {
 
 
     let $uploadCrop,
-        tempFilename,
         rawImg,
         imageId;
 
@@ -71,7 +70,6 @@ export function CreatePage(firstPage) {
 
     $('.item-img').on('change', function () {
         imageId = $(this).data('id');
-        tempFilename = $(this).val();
         $('#cancelCropBtn').data('id', imageId);
         readFile(this);
     });
@@ -100,6 +98,7 @@ export function CreatePage(firstPage) {
         success: function (response) {
             var firstResponse = response;
             sideBarUserName.innerText = response.UserName;
+            userImg.style.backgroundImage = `url('${response.Avatar}')`
 
             for (let i of CustomerSidebarItems) {
                 i.addEventListener('click', function (e) {
@@ -764,6 +763,7 @@ export function CreatePage(firstPage) {
             }
 
             $('#cropImageBtn').on('click', function (ev) {
+                document.querySelector('.loading-page').style.visibility = "visible";
                 $uploadCrop.croppie('result', {
                     type: 'base64',
                     format: 'jpeg',
@@ -790,7 +790,7 @@ export function CreatePage(firstPage) {
                     };
 
                     $.ajax(settings).done(function (resp) {
-                        console.log(JSON.parse(resp).data.link);
+
                         let url = JSON.parse(resp).data.link
                         $.ajax({
                             url: "SetAvatar2Server",
@@ -798,7 +798,7 @@ export function CreatePage(firstPage) {
                             data: { Id: response.Id, input: url },
                             success: function () {
                             },
-                            error: function(){
+                            error: function () {
                                 createBuzz("發生錯誤，請聯繫客服人員", "danger")
                             },
                             complete: function () {
@@ -807,6 +807,7 @@ export function CreatePage(firstPage) {
                                 document.querySelector('.profile-logo.mr-2').src = url;
                                 userImg.style.backgroundImage = `url('${url}')`
                                 $('#imgChoppingArea').modal('hide');
+                                document.querySelector('.loading-page').style.visibility = "hidden";
                             }
                         })
 

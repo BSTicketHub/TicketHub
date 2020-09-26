@@ -3,10 +3,30 @@
 body {
     font-family: 'Noto Sans TC', sans-serif;
 }
+#imgChoppingArea {
+    .loading-page {
+        visibility:hidden;
+        z-index: 999;
+        background-color:$gray-525252;
+        .spinner-border{
+            width:60px;
+            height:60px;
+            color:white;
+        }
+        p{
+            font-size:40px;
+            color:white;
+        }
+        &.show{
+            /*visibility:visible;*/
+        }
+    }
 
-#cropImageBtn {
-    background-color: $cust-color-8;
+    #cropImageBtn {
+        background-color: $cust-color-8;
+    }
 }
+
 
 .side-menu {
     .side-menu-Image {

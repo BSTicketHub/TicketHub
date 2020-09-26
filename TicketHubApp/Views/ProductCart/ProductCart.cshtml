@@ -5,6 +5,8 @@
 
 @Styles.Render("~/bundles/css/Cart")
 
+
+
 <div class="container">
     <ol class="row cartProcess">
         <li class="breadcrumb-item"><a href="#">購物車與結帳</a></li>
@@ -55,7 +57,7 @@
                 </div>
                 <div class="col-2"><p class="tPrice"></p></div>
                 <div class="col-1">
-                    <span class="iconify" data-icon="bi:trash" data-inline="false"></span>
+                    <i class="fas fa-trash-alt trash"></i>
                 </div>
                 @*<button onclick="deleteCartItem('703d8129-e1b1-4b03-b453-17347be7cfaf')">按我</button>*@
             </div>
@@ -94,7 +96,13 @@
                 </div>*@
         </div>
     </div>
-    <script>
+</div>
+
+<script src="https://kit.fontawesome.com/bff1bb511a.js" crossorigin="anonymous"></script>
+
+<script>
+
+
 
         var payDetail = document.getElementById("payDetail"); //最一開始的<div .row>空間
         var shoppingCart = document.getElementById("shoppingCart");
@@ -106,11 +114,10 @@
         var CartString = JSON.stringify(Cart);
         localStorage.setItem("Cart", CartString);
 
-        var GetCart = localStorage.getItem("Cart");
+    var GetCart = localStorage.getItem("Cart");
 
         @*createList();*@
         @*addTicket();*@
-        //addIssue();
 
         function AjaxFunction() {
             $.ajax({
@@ -122,7 +129,35 @@
                     json = JSON.parse(response);
                     console.log(json)
                     addIssue(json);
-                    @*addTicket(json);*@
+
+                    var numlist = document.querySelectorAll(".number");
+
+                    for (let i of numlist) {
+                        console.log("123")
+                        i.addEventListener('change', function (e) {
+                            let num = e.target.value
+                            console.dir(e.target)
+                            console.dir(e.target.closest('.row'))
+                            let unitPrice = e.target.closest('.row').childNodes[7].innerText;
+                            e.target.closest('.row').childNodes[11].innerText = unitPrice * num;
+                            console.dir(unitPrice)
+                            if (num < 1) {
+                                e.target.value = 1
+                            }
+                        })
+                    }
+
+                    var trashlist = document.querySelectorAll(".trash");
+                    console.log(trashlist)
+                    for (let i of trashlist) {
+                        console.dir(i)
+                        i.addEventListener('click', function (e) {
+                            console.log('123')
+                            let tickets = e.target.closest('.case');
+                            tickets.remove();
+                        });
+
+                    }
                 },
                 error: function () {
                     alert("failed")
@@ -135,27 +170,6 @@
 
             AjaxFunction();
 
-            @*function deleteCartItem(id) {
-                let cartData = JSON.parse(GetCart)
-
-                cartData = cartData.filter(x => x.id != id)
-
-                localStorage.setItem('Cart', JSON.stringify(cartData))
-
-                UpdateCartData();
-                $.ajax({
-                    type: "POST",
-                    contentType: "application/json",
-                    url: "../ProductCart/GetIssueData",
-                    data: jsonObj,
-                    success: function (response) {
-                        addIssue(response);
-                    },
-                    error: function () {
-                        alert("failed")
-                    }
-                });*@
-
         }
 
         function addIssue(productCartArray) {
@@ -165,7 +179,6 @@
             console.log(card);
 
             for (let i in productCartArray) {
-                console.log(i);
                 let CartContent = card.content.cloneNode(true);    //複製小卡結點
                 let tPrice = productCartArray[i].Amount * productCartArray[i].DiscountPrice;
                 CartContent.querySelector("img").src = productCartArray[i].ImgPath;
@@ -177,7 +190,13 @@
 
                 shoppingCart.append(CartContent);
             }
-        };
+        }
+
+
+
+
+
+
 
         @*function addTicket(productTicketArray) {
             let tickets = document.querySelector('#AccountInfo');
@@ -221,5 +240,5 @@
 
 
 
-    </script>
+</script>
 

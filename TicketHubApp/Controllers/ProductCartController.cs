@@ -53,13 +53,6 @@ namespace TicketHubApp.Controllers
 
         }
 
-
-
-        //將取得的id 與資料庫做比對 取值
-
-
-
-
         //var local = local;
         //var temp = JsonConvert.DeserializeObject<List<object>>(cartList);
         //var context = new TicketHubContext();
