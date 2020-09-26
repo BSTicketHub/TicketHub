@@ -139,13 +139,16 @@
     <Compile Include="Migrations\202009241619151_AddDeleteColumnsOnUsers.designer.cs">
       <DependentUpon>202009241619151_AddDeleteColumnsOnUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009261133516_IssueAlterCategoryColumn.cs" />
+    <Compile Include="Migrations\202009261133516_IssueAlterCategoryColumn.designer.cs">
+      <DependentUpon>202009261133516_IssueAlterCategoryColumn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActionLog.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="ConstValue.cs" />
     <Compile Include="Models\Issue.cs" />
     <Compile Include="Models\ShopCategory.cs" />
-    <Compile Include="Models\IssueCategory.cs" />
     <Compile Include="Models\IssueTag.cs" />
     <Compile Include="Models\LoginLog.cs" />
     <Compile Include="Models\Order.cs" />
@@ -209,6 +212,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009241619151_AddDeleteColumnsOnUsers.resx">
       <DependentUpon>202009241619151_AddDeleteColumnsOnUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009261133516_IssueAlterCategoryColumn.resx">
+      <DependentUpon>202009261133516_IssueAlterCategoryColumn.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
