@@ -35,3 +35,119 @@
     color: #a1a7ab;
 }
 
+
+.ticket {
+    position: relative;
+    box-sizing: border-box;
+    width: 300px;
+    height: 150px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(127, 156, 172);
+    box-shadow: 1px 1px 5px 0px;
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 2px;
+        height: 146px;
+        width: 6px;
+        right: -5px;
+        background: radial-gradient(circle, transparent, transparent 50%, rgb(127, 156, 172) 50%, rgb(127, 156, 172) 100%) -3px -8px/16px 16px repeat-y;
+    }
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 2px;
+        height: 146px;
+        width: 6px;
+        left: -5px;
+        background: radial-gradient(circle, transparent, transparent 50%, rgb(127, 156, 172) 50%, rgb(127, 156, 172) 100%) -7px -8px/16px 16px repeat-y;
+    }
+
+    .ticket-content {
+        box-sizing: border-box;
+        height: 100%;
+        width: 100%;
+        border: 1px dashed rgb(243, 249, 249);
+        color: rgb(243, 249, 249);
+        background-color: rgb(127, 156, 172);
+
+        .ticket-title {
+            color: rgb(127, 156, 172);
+            font-size: 24px;
+            font-weight: 900;
+            background-color: rgb(243, 249, 249);
+        }
+
+        .iconify {
+            width: 50px;
+            height: 50px;
+        }
+
+        .counter {
+            font-size: 50px;
+        }
+    }
+}
+
+
+.chartHeader {
+    border-color: #26bcc7 !important;
+    border-width: 2px !important;
+
+    button {
+        border: 1px solid #4da9db;
+        background-image: linear-gradient(90deg, #4da9db 100%, transparent 100%);
+        background-repeat: no-repeat;
+        transition: .5s;
+        line-height: 18px;
+        width: 30px;
+        height: 24px;
+        font-size: 14px;
+
+        &:hover {
+            color: #fff;
+        }
+
+        &:focus {
+            outline-style: none;
+        }
+    }
+}
+
+#week {
+    background-color: #4da9db;
+    color: #fff;
+    background-position: 30px;
+}
+
+#month {
+    background-color: #fff;
+    color: #4da9db;
+    background-position: -30px;
+}
+
+
+.topTable {
+    p {
+        background-color: #4caf50;
+        position: relative;
+        color: #fff;
+        top: -30px;
+        font-size: 24px;
+    }
+
+    .table {
+        margin-top: -28px;
+        font-size: 12px;
+
+        th {
+            color: #4caf50;
+            border: none;
+        }
+    }
+}
+
+

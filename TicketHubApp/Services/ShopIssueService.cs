@@ -66,7 +66,8 @@ namespace TicketHubApp.Services
                         ClosedDate = input.ClosedDate,
                         IssuerId = _userid,
                         ShopId = Shopid,
-                        IssueTags = issueTagCol
+                        IssueTags = issueTagCol,
+                        Category = input.Category
                     };
                     _context2.Issue.Add(entity);
                     _context2.SaveChanges();
@@ -145,7 +146,8 @@ namespace TicketHubApp.Services
                         ClosedDate = input.ClosedDate,
                         IssuerId = _userid,
                         ShopId = Shopid,
-                        ImgPath = oldIssue.ImgPath
+                        ImgPath = oldIssue.ImgPath,
+                        Category = input.Category
                     };
                     if (input.ImgFile != null)
                     {
@@ -173,8 +175,6 @@ namespace TicketHubApp.Services
             Guid Shopid = _context.ShopEmployee.FirstOrDefault((x) => x.UserId == _userid).ShopId;
             var result = new ShopIssueListViewModel();
             result.Items = new List<ShopIssueViewModel>();
-            var a = _context.OrderDetail.ToList();
-            var b = _context.Issue.ToList();
 
             var temp = from i in _context.Issue
                        where (i.ShopId == Shopid)
@@ -202,8 +202,6 @@ namespace TicketHubApp.Services
                              g.Key.ClosedDate,
                              SalesAmount = g.Sum(x => x.price)
                          };
-            //var tempxxx = temp.ToList();
-            //var temp2222 = issues.ToList();
 
             var TimeNow = DateTime.Now;
             if (closed)
@@ -275,7 +273,8 @@ namespace TicketHubApp.Services
                 Status = (item.ClosedDate <= DateTime.Now) ? "已下架" :
                             (item.ReleasedDate < DateTime.Now) ? "未上架" : "上架",
                 TagList = tempString.ToList(),
-                TagString = string.Join(" ", tempString)
+                TagString = string.Join(" ", tempString),
+                Category = item.Category
             };
             return entity;
         }

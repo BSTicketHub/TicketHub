@@ -22,7 +22,6 @@ namespace TicketHubApp.Services
             {
                 result.Add(new SelectListItem() { Text = $"{item}", Value = $"{item}" });
             }
-            result.First().Selected = true;
             return result;
         }
     }

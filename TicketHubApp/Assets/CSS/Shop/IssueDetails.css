@@ -5,14 +5,10 @@
   border-radius: 2px;
   padding: 5px 10px;
   opacity: 0;
-  font-size: 20px;
-  z-index: 1; }
+  font-size: 20px; }
   .blueBtn:hover {
     background-color: #fff;
-    color: #2a94db;
-    opacity: 1; }
-    .blueBtn:hover ~ .issue:after {
-      display: block; }
+    color: #2a94db; }
   .blueBtn:focus {
     outline: none;
     box-shadow: none; }
@@ -23,18 +19,20 @@
 #datatable_filter input {
   border-radius: 5px; }
 
-.issue {
+.ticket {
   border: 1px solid lightgray; }
-  .issue:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: none; }
-  .issue:hover:after {
-    display: block; }
-  .issue:hover + button {
+
+#mask {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  margin: 32px 16px; }
+  #mask:hover {
     opacity: 1; }
+    #mask:hover button {
+      opacity: 1; }

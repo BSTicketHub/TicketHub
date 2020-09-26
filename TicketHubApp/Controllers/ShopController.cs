@@ -112,7 +112,7 @@ namespace TicketHubApp.Controllers
                 var result = service.UpdateIssue(shopissueVM);
                 if (result.Success)
                 {
-                    return RedirectToAction("IssueList");
+                    return RedirectToAction("IssueDetails", new { id = shopissueVM.Id.ToString() });
                 }
                 else
                 {
