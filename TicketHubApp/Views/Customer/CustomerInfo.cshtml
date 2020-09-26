@@ -3,8 +3,8 @@
     Layout = "~/Views/Shared/_Layout_Manage.cshtml";
 }
 @section topCSS{
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    @Styles.Render("~/bundles/css/CustomerPage")
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css" integrity="sha512-zxBiDORGDEAYDdKLuYU9X/JaJo/DPzE42UubfBw9yg8Qvb2YRRIQ8v4KsGHOx2H1/+sdSXyXxLXv5r7tHc9ygg==" crossorigin="anonymous" />
 }
 
@@ -71,11 +71,6 @@
         </div>
     </div>
 </div>
-
-@Scripts.Render("~/bundles/js/jquery")
-@Scripts.Render("~/bundles/js/bootstrap")
-@Scripts.Render("~/bundles/js/CustomerPage")
-@Styles.Render("~/bundles/css/CustomerPage")
 
 @section endJS{
     <script src="https://kit.fontawesome.com/bff1bb511a.js" crossorigin="anonymous"></script>

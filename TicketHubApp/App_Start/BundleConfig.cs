@@ -96,13 +96,12 @@ namespace TicketHubApp
 
             //CustomerPage bundles
             bundles.Add(new StyleBundle("~/bundles/css/CustomerPage")
-                .Include("~/Content/bootstrap.css")
                 .Include("~/Assets/CSS/CustomerPage.min.css"));
-            bundles.Add(new ScriptBundle("~/bundles/js/CustomerPage").Include(
-                "~/Scripts/bootstrap.js",
-                "~/Assets/JavaScript/Common/iconify.min.js",
-                "~/Scripts/moment.js"
-                ));
+            //bundles.Add(new ScriptBundle("~/bundles/js/CustomerPage").Include(
+            //    "~/Scripts/bootstrap.js",
+            //    "~/Assets/JavaScript/Common/iconify.min.js",
+            //    "~/Scripts/moment.js"
+            //    ));
 
             //ShopList bundles
             bundles.Add(new StyleBundle("~/bundles/css/ShopList")

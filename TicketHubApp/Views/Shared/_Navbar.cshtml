@@ -3,8 +3,8 @@
     pageType = string.IsNullOrEmpty(pageType) ? "Home" : pageType;
 }
 <nav class="navbar navbar-expand-lg bg-light bottom-strip-@pageType @(pageType == PageType.HOME ? "sticky-top" : "")">
-    <div class="@(pageType == "Home" ? "container-fluid" : "container")">
-        <a class="navbar-brand ml-2" href="/@pageType/Index">
+    <div class="container-fluid">
+        <a class="navbar-brand ml-2" href="/@(pageType==PageType.CUSTOMER ? PageType.HOME : pageType)/Index">
             <img src="/Assets/Images/Home/logo.png" alt="logo" width="100">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -12,7 +12,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            @if (pageType == "Home")
+            @if (pageType == "Home" || pageType == "Customer")
             {
                 using (Html.BeginForm("Search", "Home", FormMethod.Post))
                 {
@@ -29,7 +29,7 @@
                         </div>
                         @Html.TextBox("SearchContent", null, new { @class = "form-control search-content" })
                         <div class="input-group-append">
-                            <button class="search btn btn-info pl-3 pr-3" type="submit" id="">
+                            <button class="search btn btn-cust pl-3 pr-3" type="submit">
                                 <span class="iconify"
                                       data-icon="bx:bx-search" data-inline="false"></span>
                             </button>
@@ -38,7 +38,7 @@
                 }
             }
             <ul class="navbar-nav ml-auto mr-3">
-                @if (pageType == "Home")
+                @if (pageType == "Home" || pageType == "Customer")
                 {
                     <li class="nav-item dropdown active d-flex align-items-center pb-0">
                         <a class="nav-link dropdown-toggle hov-color-cust" href="#" id="navbarDropdown" role="button"
@@ -90,10 +90,10 @@
                         </div>
                     </li>
                 }
-                @Html.Action("genLoginPartial", "Menu")
+                @Html.Action("GenLoginPartial", "Menu")
             </ul>
 
-            @if (pageType == "Home")
+            @if (pageType == "Home" || pageType == "Customer")
             {
                 <ul class="form-inline navbar-nav mr-5 poition-relative" onmousemove="shopCart()" onclick=""
                     onmouseout="shopCartMove()">
@@ -115,7 +115,6 @@
                         </div>
                     </li>
                 </ul>
-
             }
         </div>
     </div>

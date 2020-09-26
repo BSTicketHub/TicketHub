@@ -89,7 +89,7 @@ namespace TicketHubApp.Controllers
             public ICollection<SideMenuItem> SubMenuItems { get; set; }
         }
 
-        public ActionResult genLoginPartial()
+        public ActionResult GenLoginPartial()
         {
             var userLogo = new ImgurService().getSideMenuImage(PageType.CUSTOMER);
             string userImgPath = userLogo[0];
