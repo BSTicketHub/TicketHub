@@ -13,7 +13,7 @@ namespace TicketHubApp.Controllers
         public ActionResult Index()
         {
             var service = new HomeCardService();
-            var homecard = new HomeListViewModel()
+            var homecard = new HomeListViewModel() //新增ViewModel集合
             {
                 BestSellerItems = service.GetBestSellerCard(),
                 RecommenItems = service.GetRecommenCard(),
@@ -22,6 +22,16 @@ namespace TicketHubApp.Controllers
             };
 
             return View(homecard);
+        }
+
+        
+        [HttpGet]
+        // 最新推出 api
+        public ActionResult CardApi() 
+        {
+            var service = new HomeCardService();
+            var SortNewItems = service.GetSortNewCard();
+            return Json(SortNewItems, JsonRequestBehavior.AllowGet); //把HomeCardService 物件轉JSON，給前端抓資料
         }
 
         public ActionResult PageUnfound()
