@@ -47,26 +47,6 @@
     <script src="~/Assets/JavaScript/Common/buzz.js"></script>
     <script>
 
-        @*function addToFavorite(shopId) {
-            console.dir(event.target)
-            event.target.setAttribute('data-icon', 'bi:heart-fill')
-            $.ajax({
-                cache: false,
-                url: "AddToFavoriteList",
-                method: "post",
-                data:{
-                    ShopId: shopId,
-                    UserId: "@ViewBag.UserId"
-                },
-                success: function () {
-                    alert("success");
-                },
-                error: function () {
-                    alert("failed");
-                }
-            });
-        }*@
-
         function createBuzz(title, type) {
             Notify({
                 title: `${title}`,

@@ -57,7 +57,7 @@ namespace TicketHubApp.Services
                     break;
             }
 
-            src = (src == null) ? "https://i.imgur.com/ZM5EvHg.png" : src;
+            src = (src == null) ? "https://i.imgur.com/ZM5EvHg.png" : context.Users.Find(userid).AvatarPath;
             name = (name == null) ? "No Name" : name;
             result = new List<string>() { src, name };
             return result;

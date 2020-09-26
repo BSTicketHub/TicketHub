@@ -13,6 +13,7 @@ namespace TicketHubApp.Models.ViewModels
         public string PhoneNumber { get; set; }
         public string UserName { get; set; }
         public string Sex { get; set; }
+        public string Avatar { get; set; }
         public IEnumerable<ShopViewModel> FavoriteShop { get; set; }
         public IEnumerable<ShopIssueViewModel> WishIssue { get; set; }
         public IEnumerable<CustomerOrderViewModel> MyOrder { get; set; }
