@@ -718,6 +718,7 @@
     <Content Include="Assets\CSS\Common\_footer.scss" />
     <Content Include="Assets\CSS\Platform\Platform_UserList.scss" />
     <Content Include="Assets\CSS\Platform\Platform_UserDetail.scss" />
+    <Content Include="Assets\CSS\_root.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
