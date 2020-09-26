@@ -97,8 +97,13 @@ export function CreatePage(firstPage) {
         dataType: "json",
         success: function (response) {
             var firstResponse = response;
-            sideBarUserName.innerText = response.UserName;
-            userImg.style.backgroundImage = `url('${response.Avatar}')`
+            if (response.UserName.indexOf('@') == -1) {
+                sideBarUserName.innerText = response.UserName;
+            }
+
+            if (response.Avatar != null) {
+                userImg.style.backgroundImage = `url('${response.Avatar}')`
+            }
 
             for (let i of CustomerSidebarItems) {
                 i.addEventListener('click', function (e) {
@@ -291,7 +296,7 @@ export function CreatePage(firstPage) {
 
             function createEditButton() {
                 let editBtn = document.createElement('button');
-                editBtn.classList.add('btn', 'edit-btn', 'my-2','d-block')
+                editBtn.classList.add('btn', 'btn-cust', 'edit-btn', 'my-2','d-block')
                 editBtn.setAttribute('isedit', false);
                 editBtn.innerText = "編輯個人資料";
 

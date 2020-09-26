@@ -110,8 +110,7 @@ namespace TicketHubApp
             bundles.Add(new ScriptBundle("~/bundles/js/ShopList").Include(
                 "~/Scripts/bootstrap.js",
                 "~/Assets/JavaScript/Common/iconify.min.js",
-                "~/Scripts/moment.js",
-                "~/Assets/JavaScript/Shop/ShopList.js"
+                "~/Scripts/moment.js"
                 ));
 
             //ProductCart page bundles

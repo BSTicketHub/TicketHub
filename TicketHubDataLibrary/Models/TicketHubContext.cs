@@ -63,7 +63,6 @@ namespace TicketHubDataLibrary.Models
         public DbSet<IssueTag> IssueTag { get; set; }
         public DbSet<ShopTag> ShopTag { get; set; }
         public DbSet<Category> Category { get; set; }
-        public DbSet<IssueCategory> IssueCategory { get; set; }
         public DbSet<ShopCategory> ShopCategory { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace TicketHubApp.Services
         private TicketHubContext _context = TicketHubContext.Create();
         public IEnumerable<ShopIssueViewModel> SearchIssue(string input)
         {
-            var SearchString = string.Join("^", input.Split(' '));
+            var SearchString = (input == null) ? "" : string.Join("^", input.Split(' '));
             var repo = new GenericRepository<Issue>(_context);
             var issueList = repo.GetAll();
             var result = from i in issueList
