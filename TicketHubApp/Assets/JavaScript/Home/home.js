@@ -289,14 +289,12 @@ function UpdateCartData() {
 
 
 //首選星級餐廳、熱賣票劵Card 事件
-$(".addCart2").click(function () {
-    var id = `${$(this).parent().parent().find("#chart_id").val()}`;
-    var title = $(this).parent().parent().find("#Title").text();
-    var discountPrice = Number($(this).parent().parent().parent().find("#DiscountPrice").text().replace("$", ""));
+$(".card_addToCart").click(function () {
+    let card = $(this).parents(".product-detail");
 
-    //console.log(id);
-    //console.log(title);
-    //console.log(discountPrice);
+    let id = card.find(".card_id").val();
+    let title = card.find(".card_title").text();
+    let discountPrice = Number(card.find(".card_discountPrice").text().replace("$", ""));
 
     //key value值
     let cartItem = {
