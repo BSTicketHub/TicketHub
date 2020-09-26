@@ -131,6 +131,9 @@
   transform: translateX(-50%);
   bottom: 10px; }
 
+.carousel1 .owl-nav button {
+  top: 40%; }
+
 .card-tab {
   position: absolute;
   top: 25px;
