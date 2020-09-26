@@ -62,15 +62,3 @@
     top: 50px !important;
     right: -35px !important;
 }
-
-@media (min-width: 768px) and (max-width: 991px) {
-    .hidden-sm {
-        display: none !important;
-    }
-}
-
-@media (max-width: 767px) {
-    .hidden-xs {
-        display: none !important;
-    }
-}

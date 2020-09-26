@@ -295,11 +295,17 @@
     <Content Include="Assets\CSS\CustomerPage.min.css">
       <DependentUpon>CustomerPage.css</DependentUpon>
     </Content>
-    <Content Include="Assets\CSS\home.css">
-      <DependentUpon>home.scss</DependentUpon>
+    <Content Include="Assets\CSS\Home\Contact.css">
+      <DependentUpon>Contact.scss</DependentUpon>
     </Content>
-    <Content Include="Assets\CSS\home.min.css">
-      <DependentUpon>home.css</DependentUpon>
+    <Content Include="Assets\CSS\Home\Contact.min.css">
+      <DependentUpon>Contact.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Home\Home.css">
+      <DependentUpon>Home.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Home\Home.min.css">
+      <DependentUpon>Home.css</DependentUpon>
     </Content>
     <Content Include="Assets\CSS\login.css">
       <DependentUpon>login.scss</DependentUpon>
@@ -704,7 +710,7 @@
     <Content Include="Assets\CSS\Shop\TicketDeatail.scss" />
     <Content Include="Assets\CSS\Platform\Platform_Layout.scss" />
     <Content Include="Assets\CSS\tempCSS\home.scss" />
-    <Content Include="Assets\CSS\home.scss" />
+    <Content Include="Assets\CSS\Home\Home.scss" />
     <Content Include="Assets\CSS\ProductCart.scss" />
     <Content Include="Assets\CSS\Common\Site.scss" />
     <Content Include="Assets\CSS\Shop\IssueDetails.scss" />
@@ -719,6 +725,7 @@
     <Content Include="Assets\CSS\Platform\Platform_UserList.scss" />
     <Content Include="Assets\CSS\Platform\Platform_UserDetail.scss" />
     <Content Include="Assets\CSS\_root.scss" />
+    <Content Include="Assets\CSS\Home\Contact.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
