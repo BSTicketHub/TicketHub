@@ -1,12 +1,11 @@
 ﻿@model TicketHubApp.Models.ViewModels.HomeListViewModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "TicketHub";
 }
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 
 <div class="position-relative">
-    <div class="ban-img">
-        <img class="w-100" src="/Assets/Images/Home/128-1200x650.jpg" alt="">
+    <div class="banner-img">
+        <img class="w-100" src="/Assets/Images/Home/studioBanner.jpg" alt="">
     </div>
     <div class="content-box">
         <div class="title-block">
@@ -122,7 +121,7 @@
                     @for (var i = 0; i < 3; i++)
                     {
                         var item = Model.LimitedtimeItems.Items[i];
-                            @Html.Partial("_LimitedtimeCard", item)
+                        @Html.Partial("_LimitedtimeCard", item)
                     }
                 </div>
             </div>
@@ -130,13 +129,13 @@
     </div>
     <div class="my-5">
         <div class="text-center">
-            <h3 class="class-title">特選星級餐廳</h3>
+            <h3 class="class-title">超值特選餐廳</h3>
             <div class="class-divider"></div>
         </div>
         <div class="carousel2 owl-carousel mt-4">
-            @foreach (var item in Model.RecommenItems.Items)
+            @foreach (var item in Model.BestSellerItems.Items)
             {
-                @Html.Partial("_RecommenCard", item)
+                @Html.Partial("_CarouselCard", item)
             }
         </div>
     </div>
@@ -148,7 +147,7 @@
         <div class="carousel2 owl-carousel mt-4">
             @foreach (var item in Model.RecommenItems.Items)
             {
-                @Html.Partial("_RecommenCard", item)
+                @Html.Partial("_CarouselCard", item)
             }
         </div>
     </div>
@@ -171,7 +170,7 @@
 
     <div class="row justify-content-center">
         <div class="col-4 text-center">
-            <button class="btn btn-success btn-block"  id="showMore">顯示更多票劵</button>
+            <button class="btn btn-success btn-block" id="showMore">顯示更多票劵</button>
         </div>
     </div>
 </div>

@@ -23,10 +23,12 @@
     }
 }
 
-.ban-img {
+.banner-img {
     position: relative;
     max-height: 570px;
     overflow: hidden;
+    display: flex;
+    align-items: center;
 }
 
 .content-box {

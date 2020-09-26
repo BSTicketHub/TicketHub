@@ -67,10 +67,12 @@
     background-color: #1f939c;
     transition: ease 0.3s; }
 
-.ban-img {
+.banner-img {
   position: relative;
   max-height: 570px;
-  overflow: hidden; }
+  overflow: hidden;
+  display: flex;
+  align-items: center; }
 
 .content-box {
   position: absolute;

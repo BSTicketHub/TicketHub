@@ -61,8 +61,8 @@ namespace TicketHubApp.Services
                     Memo = item.Memo,
                     ImgPath = item.ImgPath,
                     Title = item.Title,
-                    OriginalPrice =item.OriginalPrice,
-                    DiscountPrice =item.DiscountPrice
+                    OriginalPrice = item.OriginalPrice,
+                    DiscountPrice = item.DiscountPrice
                 };
 
                 result.Items.Add(p);
@@ -72,20 +72,22 @@ namespace TicketHubApp.Services
         }
 
         //熱賣票劵
-        public BestSellerCardListViewModel GetBestSellerCard()
+        public CarouselCardListViewModel GetBestSellerCard()
         {
-            var result = new BestSellerCardListViewModel();
-            result.Items = new List<BestSellerCardViewModel>();
+            var result = new CarouselCardListViewModel();
+            result.Items = new List<CarouselCardViewModel>();
             TicketHubContext context = new TicketHubContext();
             GenericRepository<Issue> issueRepo = new GenericRepository<Issue>(context);
 
 
             var cardList = issueRepo.GetAll();
+            var cardType = "bestseller";
 
             foreach (var item in cardList)
             {
-                var p = new BestSellerCardViewModel()
+                var p = new CarouselCardViewModel()
                 {
+                    CardType = cardType,
                     Id = item.Id,
                     Memo = item.Memo,
                     ImgPath = item.ImgPath,
@@ -101,20 +103,22 @@ namespace TicketHubApp.Services
         }
 
         //推薦餐廳
-        public RecommenCardListViewModel GetRecommenCard()
+        public CarouselCardListViewModel GetRecommenCard()
         {
-            var result = new RecommenCardListViewModel();
-            result.Items = new List<RecommenCardViewModel>();
+            var result = new CarouselCardListViewModel();
+            result.Items = new List<CarouselCardViewModel>();
             TicketHubContext context = new TicketHubContext();
             GenericRepository<Issue> issueRepo = new GenericRepository<Issue>(context);
 
 
             var cardList = issueRepo.GetAll();
+            var cardType = "recommend";
 
             foreach (var item in cardList)
             {
-                var p = new RecommenCardViewModel()
+                var p = new CarouselCardViewModel()
                 {
+                    CardType = cardType,
                     Id = item.Id,
                     Memo = item.Memo,
                     ImgPath = item.ImgPath,
@@ -132,7 +136,7 @@ namespace TicketHubApp.Services
 
         //public HomeListViewModel GetHomeList()
         //{
-            
+
         //    var result = new List<HomeListViewModel>();
         //    TicketHubContext context = new TicketHubContext();
         //    GenericRepository<Issue> issueRepo = new GenericRepository<Issue>(context);
