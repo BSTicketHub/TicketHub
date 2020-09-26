@@ -4,8 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/Assets/Images/Home/ticketHub.png" rel="shortcut icon" type="image/ico">
-    <title>@ViewBag.Title - 我的 ASP.NET 應用程式</title>
+    <link href="/Assets/Images/Home/logo.png" rel="shortcut icon" type="image/ico">
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/bundles/css/bootstrap")
     @Styles.Render("~/bundles/css/Site")
     @Scripts.Render("~/bundles/js/modernizr")
@@ -13,21 +13,20 @@
     @RenderSection("topCSS", required: false)
 </head>
 <body>
-    <div class="top-bar">
-        <div class="text-left">
-            <span class="iconify mt-1" data-icon="fa-solid:phone-alt" data-inline="false"></span>
-            <a href="tel:02-23457778" title="phone">
+    <div class="top-bar d-flex justify-content-between">
+        <div class="text-left d-flex">
+            <a class="text-white d-flex align-items-center" href="tel:02-23457778" title="phone">
+                <span class="iconify mr-1" data-icon="fa-solid:phone-alt" data-inline="false"></span>
                 (123) 456-7890
             </a>
-            <span class="iconify mt-1 ml-1" data-icon="clarity:user-solid" data-inline="false"></span>
-            <a href="/Home/Contact" title="">
+            <a class="text-white d-flex align-items-center" href="/Home/Contact" title="">
+                <span class="iconify mr-1" data-icon="clarity:user-solid" data-inline="false"></span>
                 客服資訊
             </a>
         </div>
         <div class="text-right">
-
-            <span class="iconify mt-1 ml-1" data-icon="carbon:user-speaker" data-inline="false"></span>
-            <a href="/Home/About" title="">
+            <a class="text-white d-flex align-items-center" href="/Home/About" title="">
+                <span class="iconify mr-1" data-icon="carbon:user-speaker" data-inline="false"></span>
                 關於我們
             </a>
         </div>
@@ -45,129 +44,17 @@
                 </div>
                 <div class="modal-body">
                     <div class="cart-group deleteInfo" id="cart_delete_item">
-                        <!-- <div class="cart-item">
-                            <a href="">
-                                <div class="product-img img-bg">
-                                </div>
-                            </a>
-                            <div class="cart-detail">
-                                <div class="product-detail">
-                                    <h3>
-                                        <a href="" id="puttitle">${item.name}</a>
-                                    </h3>
-                                    <div class="product-option">${item.details}</div>
-                                </div>
-                                <div class="text-tag">2020-09-12 11:00</div>
-                                <div>人數 x <span class="text-tag" id="putamout">${item.quantity}</span></div>
-                                <div class="product-pricing">
-                                    <h4>TWD <span id="putprice">${item.price}</span></h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <h5 class="alert alert-danger mb-0 mr-auto">您確定要刪除所選商品嗎？</h5>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-                            <button type="button" class="btn btn-danger" id="delete_btn" onClick="cartLS.remove(${item.id})"
-                                >刪除</button>
-                        </div> -->
                     </div>
                 </div>
-                <!-- <div class="modal-footer">
-                    <h5 class="alert alert-danger mb-0 mr-auto">您確定要刪除所選商品嗎？</h5>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-danger" id="delete_btn" onClick="cartLS.remove(${item.id})"
-                        >刪除</button>
-                </div> -->
             </div>
         </div>
     </div>
 
     @RenderBody()
-    <div class="footbg">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="f-item">
-                        <div class="icon">
-                            <span class="iconify icon-footer" data-icon="fa-solid:utensils" data-inline="false"></span>
-                        </div>
-                        <div class="text">
-                            <h5>熱門類別</h5>
-                            <hr>
-                            <a href="">異國料理</a>
-                            <a href="">自助百匯</a>
-                            <a href="">早午餐</a>
-                            <a href="">下午茶</a>
-                            <a href="">素食餐廳</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="f-item">
-                        <div class="icon">
-                            <span class="iconify icon-footer" data-icon="fa-solid:home" data-inline="false"></span>
-                        </div>
-                        <div class="text">
-                            <h5>合作夥伴</h5>
-                            <hr>
-                            <a href="">成為供應商</a>
-                            <a href="">供應商登入</a>
-                            <a href="">行銷規劃</a>
-                            <a href="">人才招募</a>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="f-item">
-                        <div class="icon">
-                            <span class="iconify icon-footer" data-icon="fa-solid:ticket-alt"
-                                  data-inline="false"></span>
-                        </div>
-                        <div class="text">
-                            <h5>票劵資訊</h5>
-                            <hr>
-                            <a href="">瀏覽紀錄</a>
-                            <a href="">訂單查詢</a>
-                            <a href="">消費者登入</a>
-                            <a href="">票劵使用紀錄</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="f-item">
-                        <div class="icon">
-                            <img src="~/Assets/Images/Home/logo.png" alt="" class="w-50">
-                        </div>
-                        <div class="text-mb">
-                            <h4>TicketHub</h4>
-                            <div class="btns">
-                                <button>
-                                    <span class="iconify icon-mb-8" data-icon="ant-design:twitter-outlined"
-                                          data-inline="false"></span>
-                                </button>
-                                <button>
-                                    <span class="iconify icon-mb-8" data-icon="bx:bxl-facebook"
-                                          data-inline="false"></span>
-                                </button>
-                                <button>
-                                    <span class="iconify icon-mb-8" data-icon="bx:bxl-pinterest-alt"
-                                          data-inline="false"></span>
-                                </button>
-                                <button>
-                                    <span class="iconify icon-mb-8" data-icon="bx:bxl-linkedin"
-                                          data-inline="false"></span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="footbar">
-        <p>Copyright © 2020 TicketHub</p>
-    </div>
+    <footer>
+        @Html.Partial("_Footer")
+    </footer>
 
     @Scripts.Render("~/bundles/js/jquery")
     @Scripts.Render("~/bundles/js/bootstrap")
@@ -175,10 +62,9 @@
     @Scripts.Render("~/bundles/js/momentjs")
     @Scripts.Render("~/bundles/js/Home")
 
-
     @RenderSection("scripts", required: false)
     @RenderSection("endCSS", required: false)
     @RenderSection("endJS", required: false)
-    
+
 </body>
 </html>

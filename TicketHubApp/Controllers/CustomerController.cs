@@ -15,7 +15,7 @@ namespace TicketHubApp.Controllers
 {
     public class CustomerController : Controller
     {
-        private TicketHubContext _context = TicketHubContext.Create();
+        //private TicketHubContext _context = TicketHubContext.Create();
 
         // GET: CustomerDetail
         [Authorize]
@@ -196,6 +196,18 @@ namespace TicketHubApp.Controllers
                 _context.SaveChanges();
             }
             return Content("Complete");
+        }
+
+        [HttpPost]
+        public ActionResult SetAvatar2Server(string input, string Id)
+        {
+            using(var _context = TicketHubContext.Create())
+            {
+                var user = _context.Users.Find(Id);
+                user.AvatarPath = input;
+                _context.SaveChanges();
+            }
+            return Content("");
         }
     }
 }

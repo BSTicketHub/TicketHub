@@ -15,11 +15,15 @@ namespace TicketHubApp.Services
         private TicketHubContext _context = TicketHubContext.Create();
         public IEnumerable<ShopIssueViewModel> SearchIssue(string input)
         {
+            var SearchString = (input == null) ? "" : string.Join("^", input.Split(' '));
             var repo = new GenericRepository<Issue>(_context);
             var issueList = repo.GetAll();
             var result = from i in issueList
                          join s in _context.Shop on i.ShopId equals s.Id
-                         where s.City.Contains(input) || s.District.Contains(input)
+                         join tg in _context.IssueTag on i.Id equals tg.IssueId
+                         join t in _context.Tag on tg.TagId equals t.Id
+                         where SearchString.Contains(s.City.Remove(2)) || SearchString.Contains(s.District.Remove(2))
+                                || (SearchString.Contains(t.Name))
                          select new ShopIssueViewModel
                          {
                              Id = i.Id,

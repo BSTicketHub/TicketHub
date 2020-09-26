@@ -87,21 +87,21 @@ namespace TicketHubApp
             bundles.Add(new StyleBundle("~/bundles/css/Home").Include(
                 "~/Assets/CSS/Common/owl.carousel.min.css",
                 "~/Assets/CSS/Common/owl.theme.default.css",
-                "~/Assets/CSS/tempCSS/temphome.css"
+                "~/Assets/CSS/home.min.css"
                 ));
             bundles.Add(new ScriptBundle("~/bundles/js/Home").Include(
                 "~/Assets/JavaScript/Common/owl.carousel.min.js",
+                "~/Scripts/esm/popper.min.js",
                 "~/Assets/JavaScript/Home/home.js"));
 
             //CustomerPage bundles
             bundles.Add(new StyleBundle("~/bundles/css/CustomerPage")
-                .Include("~/Content/bootstrap.css")
                 .Include("~/Assets/CSS/CustomerPage.min.css"));
-            bundles.Add(new ScriptBundle("~/bundles/js/CustomerPage").Include(
-                "~/Scripts/bootstrap.js",
-                "~/Assets/JavaScript/Common/iconify.min.js",
-                "~/Scripts/moment.js"
-                ));
+            //bundles.Add(new ScriptBundle("~/bundles/js/CustomerPage").Include(
+            //    "~/Scripts/bootstrap.js",
+            //    "~/Assets/JavaScript/Common/iconify.min.js",
+            //    "~/Scripts/moment.js"
+            //    ));
 
             //ShopList bundles
             bundles.Add(new StyleBundle("~/bundles/css/ShopList")
@@ -110,8 +110,7 @@ namespace TicketHubApp
             bundles.Add(new ScriptBundle("~/bundles/js/ShopList").Include(
                 "~/Scripts/bootstrap.js",
                 "~/Assets/JavaScript/Common/iconify.min.js",
-                "~/Scripts/moment.js",
-                "~/Assets/JavaScript/Shop/ShopList.js"
+                "~/Scripts/moment.js"
                 ));
 
             //ProductCart page bundles

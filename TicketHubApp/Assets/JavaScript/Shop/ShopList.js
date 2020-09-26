@@ -8,8 +8,6 @@ for (let i = 0; i < ticketArea.length; i++) {
 }
 
 function initMap() {
-    //這間餐廳在這裡 25.042848, 121.540344
-    // The location of Uluru
     var taipei = {
         lat: 25.044367,
         lng: 121.535168
