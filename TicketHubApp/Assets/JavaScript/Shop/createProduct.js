@@ -6,10 +6,8 @@ function readURL(input) {
         reader.onload = function (e) {
             var img = document.getElementById(imageTagID);
             img.setAttribute("src", e.target.result)
-            console.log(e);
         }
         reader.readAsDataURL(input.files[0]);
-        console.log(input)
     }
 }
 // 預覽功能
@@ -21,15 +19,17 @@ function showModal() {
     let salePrice = document.getElementById("salePrice").value;
 
     let ticketImg = document.querySelector(".ticketImg");
-    let title = document.querySelector("#issue h3");
-    let description = document.querySelector("#issue p.description");
+    let title = document.querySelector(".issue h3");
+    let description = document.querySelector(".issue p.description");
     let ticketListOldPrice = document.querySelector(".ticketListOldPrice");
     let ticketListSalesPrice = document.querySelector(".ticketListSalesPrice");
 
     ticketImg.setAttribute('style', `background-image: url(${upLoadImage})`);
-    console.log(title);
     title.innerText = textTitle;
     description.innerText = memo;
     ticketListOldPrice.innerText = originalPrice;
     ticketListSalesPrice.innerText = salePrice;
+
+    let ticketTag = document.querySelector(".showTag");
+    showTag(tagList, ticketTag);
 }

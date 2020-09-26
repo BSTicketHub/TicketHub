@@ -80,8 +80,10 @@ $red-a52b2b: #a52b2b;
 $red-FF3100: #FF3100;
 $blue-305ba5: #305ba5;
 $purple-4951DE: #4951DE;
+$kkday: #26bec9;
 
 :root {
+	--kkday: #{$kkday};
 	--background: #{$background};
 	--favorite: #{$favorite};
 	--line-gray: #{$line-gray};

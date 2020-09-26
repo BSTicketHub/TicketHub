@@ -3,10 +3,9 @@
 <div class="container ticketDetail">
     <div class="row">
         <div class="col-12 bg-white shadow p-3 border position-relative d-flex justify-content-center">
-            @Html.Partial("_Ticket", Model)
             <button class="btn blueBtn position-absolute align-self-center" id="modify">編輯票券</button>
+            @Html.Partial("_Ticket", Model)
         </div>
-
         <div class="col-12 bg-white shadow py-3 my-3">
             <table id="datatable" class="display">
                 <thead>
@@ -32,6 +31,7 @@
     <link href="~/Assets/CSS/Common/Ticket.min.css" rel="stylesheet" />
     
     <link href="~/Assets/CSS/Shop/IssueDetails.min.css" rel="stylesheet" />
+
 }
 
 @section endJS{
@@ -54,4 +54,6 @@
             window.location.assign("EditIssue" + "?id=" + "@ViewBag.IssueId");
         });
     </script>
+    
+    <script src="~/Assets/JavaScript/Common/ticket.js"></script>
 } 

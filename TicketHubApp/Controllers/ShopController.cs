@@ -96,8 +96,6 @@ namespace TicketHubApp.Controllers
             {
                 return HttpNotFound();
             }
-
-            TempData["ImgPath"] = shopissueVM.ImgPath;
             return View(shopissueVM);
         }
 
@@ -107,11 +105,6 @@ namespace TicketHubApp.Controllers
         {
             var categoryList = new TagService().GenCategory();
             ViewBag.CategoryList = categoryList;
-
-            if (TempData["ImgPath"] != null)
-            {
-                shopissueVM.ImgPath = (string)TempData["ImgPath"];
-            }
 
             if (ModelState.IsValid)
             {
@@ -124,11 +117,10 @@ namespace TicketHubApp.Controllers
                 else
                 {
                     ViewBag.Message = "更新失敗!";
-                    System.Console.WriteLine(result.Message);
                     return View(shopissueVM);
                 }
             }
-            return View();
+            return View(shopissueVM);
         }
 
         [HttpGet]

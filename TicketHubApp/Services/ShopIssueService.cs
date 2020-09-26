@@ -12,6 +12,7 @@ using Microsoft.Ajax.Utilities;
 using TicketHubApp.Services;
 using System.Data.Entity;
 using System.Security.Cryptography;
+using System.Runtime.CompilerServices;
 
 namespace TicketHubApp.Services
 {
@@ -27,27 +28,50 @@ namespace TicketHubApp.Services
             try
             {
                 Guid Shopid = _context.ShopEmployee.FirstOrDefault((x) => x.UserId == _userid).ShopId;
-                var issueRepo = new GenericRepository<Issue>(_context);
+                var tagRepo = new GenericRepository<Tag>(_context);
                 var imgurService = new ImgurService();
                 var imgPath = imgurService.UploadImgur(input.ImgFile);
 
-                var entity = new Issue
+                string[] tagList = input.TagString.Split(' ');
+                var issueTagCol = new List<IssueTag>();
+                foreach (var item in tagList)
                 {
-                    Title = input.Title,
-                    Memo = input.Memo,
-                    ImgPath = imgPath,
-                    OriginalPrice = input.OriginalPrice,
-                    DiscountPrice = input.DiscountPrice,
-                    DiscountRatio = input.OriginalPrice / input.DiscountPrice,
-                    Amount = input.Amount,
-                    IssuedDate = DateTime.UtcNow.AddHours(8),
-                    ReleasedDate = input.ReleasedDate,
-                    ClosedDate = input.ClosedDate,
-                    IssuerId = _userid,
-                    ShopId = Shopid
-                };
-                issueRepo.Create(entity);
+                    if(!tagRepo.GetAll().Select(x => x.Name).Contains(item))
+                    {
+                        var tag = new Tag { Name = item };
+                        tagRepo.Create(tag);
+                    }
+                }
                 _context.SaveChanges();
+
+                using (var _context2 = new TicketHubContext())
+                {
+                    var tagIds = _context2.Tag.Where(x => tagList.Contains(x.Name)).Select(y => y.Id).ToList();
+                    foreach(var id in tagIds)
+                    {
+                        issueTagCol.Add(new IssueTag() { TagId = id});
+                    }
+                    
+                    var entity = new Issue
+                    {
+                        Title = input.Title,
+                        Memo = input.Memo,
+                        ImgPath = imgPath,
+                        OriginalPrice = input.OriginalPrice,
+                        DiscountPrice = input.DiscountPrice,
+                        DiscountRatio = input.OriginalPrice / input.DiscountPrice,
+                        Amount = input.Amount,
+                        IssuedDate = DateTime.UtcNow.AddHours(8),
+                        ReleasedDate = input.ReleasedDate,
+                        ClosedDate = input.ClosedDate,
+                        IssuerId = _userid,
+                        ShopId = Shopid,
+                        IssueTags = issueTagCol
+                    };
+                    _context2.Issue.Add(entity);
+                    _context2.SaveChanges();
+                }
+
                 result.Success = true;
             }
             catch (Exception ex)
@@ -64,34 +88,76 @@ namespace TicketHubApp.Services
             try
             {
                 Guid Shopid = _context.ShopEmployee.FirstOrDefault((x) => x.UserId == _userid).ShopId;
-                var issueRepo = new GenericRepository<Issue>(_context);
-                var entity = new Issue
-                {
-                    Id = input.Id,
-                    Title = input.Title,
-                    Memo = input.Memo,
-                    OriginalPrice = input.OriginalPrice,
-                    DiscountPrice = input.DiscountPrice,
-                    DiscountRatio = input.OriginalPrice / input.DiscountPrice,
-                    Amount = input.Amount,
-                    IssuedDate = DateTime.Now,
-                    ReleasedDate = input.ReleasedDate,
-                    ClosedDate = input.ClosedDate,
-                    IssuerId = _userid,
-                    ShopId = Shopid
-                };
+                var tagRepo = new GenericRepository<Tag>(_context);
 
-                if (input.ImgFile != null)
+                List<string> tagList = input.TagString.Split(' ').ToList();
+                // 新增 Tag table
+                foreach (var item in tagList)
                 {
-                    var imgurService = new ImgurService();
-                    entity.ImgPath = imgurService.UploadImgur(input.ImgFile);
+                    if (!tagRepo.GetAll().Select(x => x.Name).Contains(item))
+                    {
+                        var tag = new Tag { Name = item };
+                        tagRepo.Create(tag);
+                    }
                 }
-                else
-                {
-                    entity.ImgPath = input.ImgPath;
-                }
-                issueRepo.Update(entity);
                 _context.SaveChanges();
+
+                using (var _context2 = new TicketHubContext())
+                {
+                    // 新增 / 刪除 issueTag table
+                    var issTagRepo = new GenericRepository<IssueTag>(_context2);
+                    var beforeTag = (from t in _context2.Tag
+                                     join it in _context2.IssueTag on t.Id equals it.TagId
+                                     where it.IssueId == input.Id
+                                     select t).ToList();
+                    var beforeTagName = beforeTag.Select(g => g.Name).ToList();
+                    var discardTagId = beforeTag.Where(x => !tagList.Contains(x.Name)).Select(y => y.Id).ToList();
+                    var newAddTag = tagList.Where(x => !beforeTagName.Contains(x));
+                    var newTagId = _context2.Tag.Where(x => newAddTag.Contains(x.Name)).Select(y => y.Id).ToList();
+
+                    foreach (var tagid in discardTagId)
+                    {
+                        issTagRepo.Delete(new IssueTag { IssueId = input.Id, TagId = tagid });
+                    }
+
+                    foreach (var tagid in newTagId)
+                    {
+                        issTagRepo.Create(new IssueTag { IssueId = input.Id, TagId = tagid });
+                    }
+                    _context2.SaveChanges();
+                }
+
+                var oldIssue = _context.Issue.FirstOrDefault(x => x.Id == input.Id);
+                using (var _context3 = new TicketHubContext())
+                {
+                    // 修改 issue table
+                    var entity = new Issue
+                    {
+                        Id = input.Id,
+                        Title = input.Title,
+                        Memo = input.Memo,
+                        OriginalPrice = input.OriginalPrice,
+                        DiscountPrice = input.DiscountPrice,
+                        DiscountRatio = input.OriginalPrice / input.DiscountPrice,
+                        Amount = input.Amount,
+                        IssuedDate = DateTime.Now,
+                        ReleasedDate = input.ReleasedDate,
+                        ClosedDate = input.ClosedDate,
+                        IssuerId = _userid,
+                        ShopId = Shopid,
+                        ImgPath = oldIssue.ImgPath
+                    };
+                    if (input.ImgFile != null)
+                    {
+                        var imgurService = new ImgurService();
+                        entity.ImgPath = imgurService.UploadImgur(input.ImgFile);
+                    }
+
+                    var issueRepo = new GenericRepository<Issue>(_context3);
+                    issueRepo.Update(entity);
+                    _context3.SaveChanges();
+                }
+
                 result.Success = true;
             }
             catch (Exception ex)
@@ -188,6 +254,10 @@ namespace TicketHubApp.Services
             var issueRepo = new GenericRepository<Issue>(_context);
             var item = issueRepo.GetAll().First((x) => x.Id == Id);
 
+            var tempString = from it in _context.IssueTag
+                             join t in _context.Tag on it.TagId equals t.Id
+                             where it.IssueId == item.Id
+                             select t.Name;
             var entity = new ShopIssueViewModel
             {
                 Id = item.Id,
@@ -203,7 +273,9 @@ namespace TicketHubApp.Services
                 ClosedDate = (DateTime)item.ClosedDate,
                 IssuerId = item.IssuerId,
                 Status = (item.ClosedDate <= DateTime.Now) ? "已下架" :
-                            (item.ReleasedDate < DateTime.Now) ? "未上架" : "上架"
+                            (item.ReleasedDate < DateTime.Now) ? "未上架" : "上架",
+                TagList = tempString.ToList(),
+                TagString = string.Join(" ", tempString)
             };
             return entity;
         }

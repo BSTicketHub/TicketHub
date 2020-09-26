@@ -1,5 +1,6 @@
 ﻿/*partial ticket*/
 :root {
+  --kkday: #26bec9;
   --background: #f5f5f5;
   --favorite: #d87093;
   --line-gray: #adadad;
@@ -50,46 +51,45 @@
   --platform-color-14: #3f2705;
   --platform-color-15: #1f1403; }
 
-.ticket h3 {
+.issue h3 {
   font-weight: 700; }
 
-.ticket .wishHeart {
+.issue .wishHeart {
   width: 24px;
   height: 24px;
   color: #d87093;
   position: absolute;
   right: 10px;
   top: 10px; }
-  .ticket .wishHeart:hover {
+  .issue .wishHeart:hover {
     cursor: pointer; }
 
-.ticket .ticketImg {
-  /*background-image: url(/Assets/Images/ticket_test_Img.jpg);*/
+.issue .ticketImg {
   width: 270px;
   background-repeat: no-repeat;
   background-size: cover; }
 
-.ticket .description {
+.issue .description {
   font-size: 14px;
   color: #666666;
   height: 2.5rem;
   overflow: hidden; }
 
-.ticket .star {
+.issue .star {
   color: #aaa; }
 
-.ticket .star-checked {
+.issue .star-checked {
   color: #26bec9; }
 
-.ticket .ticketListOldPrice {
+.issue .ticketListOldPrice {
   font-size: 12px;
   color: #999999;
   text-decoration: line-through; }
 
-.ticket .ticketListSalesPrice {
-  font-size: 14px;
-  color: #999999;
+.issue .ticketListSalesPrice {
+  font-size: 18px;
+  color: #26bec9;
   font-weight: 700; }
-  .ticket .ticketListSalesPrice span {
+  .issue .ticketListSalesPrice span {
     font-size: 20px;
     color: #26bec9; }

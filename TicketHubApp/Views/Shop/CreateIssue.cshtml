@@ -48,13 +48,11 @@
                             @Html.EditorFor(model => model.ClosedDate, new { htmlAttributes = new { @type = "datetime-local", @class = "form-control form-control-sm", @placeholder = "請選擇下架時間" } })
                         </div>
                         <div class="form-group col-12">
-                            <form>
-                                <label for="">新增票券標籤</label>
-                                <div>
-                                    <input id="tagInput">
-                                    <div id="showTag"></div>
-                                </div>
-                            </form>
+                            <label for="">新增票券標籤</label>
+                            <div>
+                                @Html.EditorFor(model => model.TagString, new { htmlAttributes = new { @class = "form-control form-control-sm", @placeholder = "請輸入欲新增標籤", @id = "tagInput" } })
+                                <div id="showTag" class="d-flex flex-wrap"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -100,11 +98,46 @@
 
 
 @section endJS{
-    <script src="~/Assets/JavaScript/Shop/createProduct.js"></script>
-
     <script>
+        var tagList;
+        $(document).ready(function () {
+            $("#tagInput").keydown(function (event) {
+                if (event.keyCode == 13) {
+                    event.preventDefault();
+                    tagList = $("#tagInput").val().split(' ');
+                    var showtag = document.getElementById("showTag");
+                    showTag(tagList, showtag);
+                    return false;
+                }
+            });
+        });
 
+        function showTag(tagList, parent) {
+            parent.innerHTML = null;
+            tagList.forEach(function (value) {
+                var tag = value.charAt(0);
+                let span = document.createElement("span");
+                span.classList.add("badge", "badge-pill", "mr-2", "mt-2", "p-2");
+                if (tag == '#') {
+                    span.classList.add("bg-danger", "text-white");
+                } else if (tag == '$') {
+                    span.classList.add("bg-success", "text-white");
+                } else if (tag == '%') {
+                    span.classList.add("bg-primary", "text-white");
+                } else if (tag == '^') {
+                    span.classList.add("bg-info", "text-white");
+                } else {
+                    span.classList.add("border");
+                    span.innerText = value;
+                    parent.append(span);
+                    return true;
+                }
+                span.innerText = value.slice(1);
+                parent.append(span);
+            })
+        }
     </script>
+    <script src="~/Assets/JavaScript/Shop/createProduct.js"></script>
 }
 
 
