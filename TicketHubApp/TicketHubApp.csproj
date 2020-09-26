@@ -226,8 +226,6 @@
     <Compile Include="Interfaces\IResult.cs" />
     <Compile Include="Models\GenericRepository.cs" />
     <Compile Include="Models\OperationResult.cs" />
-    <Compile Include="Models\ViewModels\BestSellerCardListViewModel.cs" />
-    <Compile Include="Models\ViewModels\BestSellerCardViewModel.cs" />
     <Compile Include="Models\ViewModels\CartItemViewModel.cs" />
     <Compile Include="Models\ViewModels\CartViewModel.cs" />
     <Compile Include="Models\ViewModels\CustomerOrderViewModel.cs" />
@@ -249,8 +247,8 @@
     <Compile Include="Models\ViewModels\ProductCartAjaxViewModel.cs" />
     <Compile Include="Models\ViewModels\ProductCartViewModel.cs" />
     <Compile Include="Models\ViewModels\ProductDetailViewModel.cs" />
-    <Compile Include="Models\ViewModels\RecommenCardListViewModel.cs" />
-    <Compile Include="Models\ViewModels\RecommenCardViewModel.cs" />
+    <Compile Include="Models\ViewModels\CarouselCardListViewModel.cs" />
+    <Compile Include="Models\ViewModels\CarouselCardViewModel.cs" />
     <Compile Include="Models\ViewModels\ShopEmployeeViewModel.cs" />
     <Compile Include="Models\ViewModels\ShopIssueDetailViewModel.cs" />
     <Compile Include="Models\ViewModels\ShopIssueListViewModel.cs" />
@@ -716,8 +714,11 @@
     <Content Include="Assets\CSS\Common\_font.scss" />
     <Content Include="Assets\CSS\Shop\EmployeeList.scss" />
     <Content Include="Assets\CSS\Shop\EmployeeCreate.scss" />
+    <Content Include="Assets\CSS\Common\_topbar.scss" />
+    <Content Include="Assets\CSS\Common\_footer.scss" />
     <Content Include="Assets\CSS\Platform\Platform_UserList.scss" />
     <Content Include="Assets\CSS\Platform\Platform_UserDetail.scss" />
+    <Content Include="Assets\CSS\_root.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -744,8 +745,7 @@
     <Content Include="Views\Shared\_ShopCardPartial.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_ValidationSummary.cshtml" />
-    <Content Include="Views\Home\_RecommenCard.cshtml" />
-    <Content Include="Views\Home\_BestSellerCard.cshtml" />
+    <Content Include="Views\Home\_CarouselCard.cshtml" />
     <Content Include="Views\Home\_SortNewCard.cshtml" />
     <Content Include="Views\Customer\MyTicket.cshtml" />
     <Content Include="Views\Customer\WishList.cshtml" />
@@ -778,6 +778,7 @@
     <Content Include="Views\Shared\_SideMenu.cshtml" />
     <Content Include="Views\Home\PageUnfound.cshtml" />
     <Content Include="Views\Customer\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Home\_LimitedtimeCard.cshtml" />
     <Content Include="Views\ProductCart\_ProductCartPartial.cshtml" />
   </ItemGroup>

@@ -1,77 +1,50 @@
-﻿
+﻿@import "../_variables.scss";
+
 .avatar {
     width: 150px;
     height: 150px;
 }
 
+$types: Customer, Shop, Platform;
+$colors8: $cust-color-8, $shop-color-8, $platform-color-8;
+
 .side-menu {
     background-color: white;
 
-    &.side-menu-Shop, &.side-menu-Platform {
-        position: sticky;
-        top: 10px;
+    @for $i from 1 through length($types) {
+        &.side-menu-#{nth($types,$i)} {
+            position: sticky;
+            top: 10px;
 
-        .side-menu-Image {
-            .userImg {
-                width: 150px;
-                height: 150px;
-                background-size: cover;
-                background-repeat: no-repeat;
-                background-position: center;
-            }
-        }
-    }
-
-    &.side-menu-Shop {
-        .bb {
-            color: $shop-color-8;
-        }
-
-        li {
-            &.active {
-                > a {
-                    color: $shop-color-8;
-
-                    &::before {
-                        background-color: $shop-color-8;
-                    }
+            .side-menu-Image {
+                .userImg {
+                    width: 150px;
+                    height: 150px;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: center;
                 }
             }
-        }
-    }
 
-    &.side-menu-Platform {
-
-        li {
-            &.active {
-                > a {
-                    color: $platform-color-8;
-
-                    &::before {
-                        background-color: $platform-color-8;
-                    }
-                }
+            .animate-circle {
+                color: nth($colors8,$i);
             }
-        }
-    }
 
-    li {
-        .bb {
-            color: $cust-color-8;
-        }
+            li {
+                &.active {
+                    > a {
+                        position: relative;
+                        color: nth($colors8,$i);
 
-        &.active {
-            > a {
-                position: relative;
-                color: $cust-color-8;
-
-                &::before {
-                    content: "";
-                    position: absolute;
-                    left: 0;
-                    height: 24px;
-                    width: 4px;
-                    background-color: $cust-color-8;
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            left: 0;
+                            height: 24px;
+                            width: 4px;
+                            background-color: nth($colors8,$i);
+                        }
+                    }
                 }
             }
         }
@@ -124,7 +97,7 @@ $path-width: 2px;
     right: 0;
 }
 
-.bb {
+.animate-circle {
     margin: auto;
 
     &::before,
