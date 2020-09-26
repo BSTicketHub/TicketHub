@@ -37,7 +37,7 @@ namespace TicketHubApp.Services
         {
             var context = new TicketHubContext();
             var userid = HttpContext.Current.User.Identity.GetUserId();
-            string src="", name="";
+            string src = null, name = null;
             List<string> result;
             switch (role)
             {

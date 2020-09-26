@@ -1,8 +1,5 @@
 @import "_variables.scss";
 
-body {
-    font-family: 'Noto Sans TC', sans-serif;
-}
 #imgChoppingArea {
     .loading-page {
         visibility:hidden;
@@ -17,13 +14,6 @@ body {
             font-size:40px;
             color:white;
         }
-        &.show{
-            /*visibility:visible;*/
-        }
-    }
-
-    #cropImageBtn {
-        background-color: $cust-color-8;
     }
 }
 
@@ -82,8 +72,6 @@ body {
     .container {
 
         .edit-btn {
-            background-color: $cust-color-8;
-            color: white;
             margin-left: auto;
             margin-right: 40px;
         }
