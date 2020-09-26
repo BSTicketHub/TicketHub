@@ -1,0 +1,267 @@
+@import "_variables.scss";
+
+#btnScroll {
+    position: fixed;
+    right: 10px;
+    bottom: 15px;
+    width: 50px;
+    height: 50px;
+    background-color: $cust-color-8;
+    color: white;
+    border-radius: 50%;
+    outline: none;
+    border: none;
+    z-index: 2;
+
+    &:active {
+        background-color: $cust-color-9;
+    }
+
+    &:hover {
+        background-color: $cust-color-9;
+        transition: ease 0.3s;
+    }
+}
+
+.ban-img {
+    position: relative;
+    max-height: 570px;
+    overflow: hidden;
+}
+
+.content-box {
+    position: absolute;
+    top: 25%;
+    left: 28%;
+    right: 28%;
+
+    .title-block {
+        text-align: center;
+        background-color: $Transparent-gray-2;
+        padding: 20px 50px;
+    }
+
+    .search-bar {
+        background-color: $Transparent-gray-1;
+    }
+}
+
+@for $i from 2 through 4 {
+    .dropdown-menu-col-#{$i} {
+        column-count: $i;
+    }
+}
+
+.card-shop {
+    display: inline-block;
+    width: 90px;
+    height: 90px;
+    background-color: $cust-color-1;
+    border-radius: 50px;
+    margin: 10px 10px;
+    outline: none;
+    border: 1px solid $blue-74c0d3;
+    box-shadow: inset 0px 15px 15px -15px $blue-7cb8c7, inset 0px -15px 15px -15px $blue-7cb8c7, 12px 0 10px -12px $blue-7cb8c7, -12px 0 10px -12px $blue-7cb8c7;
+
+    &:hover {
+        box-shadow: inset 0px 15px 15px -15px $blue-59a1b3, inset 0px -15px 15px -15px $blue-59a1b3, 12px 0 10px -12px $blue-59a1b3, -12px 0 10px -12px $blue-59a1b3;
+    }
+
+    img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+.carousel-autoplay, .carousel1 {
+    //below class gen from owl carousel js
+    .owl-nav button {
+        background: $Transparent-gray-5 !important;
+        top: 50%;
+        transform: translateY(-50%);
+        outline: none;
+
+        span {
+            position: relative;
+            top: -5px;
+            padding: 0 3px;
+            color: white;
+            font-size: 2rem;
+        }
+
+        &.owl-prev {
+            left: 10px;
+        }
+
+        &.owl-next {
+            right: 10px;
+        }
+    }
+
+    .owl-dots {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 10px;
+    }
+}
+
+.card-tab {
+    position: absolute;
+    top: 25px;
+    left: -2px;
+    background-color: $red-a52b2b;
+    color: white;
+    padding: 3px 5px;
+    z-index: 2;
+
+    h5 {
+        text-align: center;
+        font-weight: 600;
+    }
+
+    .timer {
+        padding: 4px;
+        margin: 0px 8px 5px 8px;
+        background-color: $platform-color-15;
+        border-radius: 2px;
+    }
+}
+//----todo----
+.class-title {
+    background-color: $yellow-e9db90;
+    display: inline;
+    padding: 10px 20px;
+}
+
+.class-divider {
+    height: 0;
+    overflow: hidden;
+    border-top: 2px solid $yellow-e9db90;
+}
+
+.owl-nav button {
+    position: absolute;
+    top: 50%;
+}
+
+.carousel2 {
+    //below class gen from owl carousel js
+    .owl-nav button {
+        height: 40px;
+        width: 40px;
+        background: $blue-15cbe7 !important;
+        border-radius: 50%;
+        outline: none;
+
+        span {
+            position: relative;
+            top: -10px;
+            color: white;
+            font-size: 2.2rem;
+        }
+
+        &.owl-prev {
+            left: -30px;
+        }
+
+        &.owl-next {
+            right: -30px;
+        }
+    }
+}
+
+.lazyload-img {
+    background: linear-gradient(to bottom, transparent, transparent 10%, $Transparent-gray-2 100%);
+}
+
+.product-img {
+    height: 130px;
+    overflow: hidden;
+
+    &.img-h-md {
+        height: 200px;
+    }
+
+    &.img-h-lg {
+        height: 280px;
+    }
+
+    &:hover {
+        opacity: 0.85;
+    }
+
+    img {
+        width: 100%;
+    }
+}
+
+.product-star {
+    color: $cust-color-7;
+    transition: 0.3s;
+
+    & > *:hover {
+        color: $cust-color-9;
+    }
+}
+
+.currentPrice {
+    color: $red-FF3100;
+}
+
+.discount-label {
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%0A%3Csvg%20width%3D%2240px%22%20height%3D%2230px%22%20viewBox%3D%220%200%2040%2030%22%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%3E%0A%20%20%20%20%3C%21--%20Generator%3A%20Sketch%2050.2%20%2855047%29%20-%20http%3A//www.bohemiancoding.com/sketch%20--%3E%0A%20%20%20%20%3Ctitle%3Ediscount_label%3C/title%3E%0A%20%20%20%20%3Cdesc%3ECreated%20with%20Sketch.%3C/desc%3E%0A%20%20%20%20%3Cdefs%3E%3C/defs%3E%0A%20%20%20%20%3Cg%20id%3D%22Symbols%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cg%20id%3D%22icon/%u6298%u6578%22%20fill%3D%22%23FF5E5E%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cpolygon%20id%3D%22discount_label%22%20points%3D%2220%2024.1717194%200%2030%200%200%2040%200%2040%2030%22%3E%3C/polygon%3E%0A%20%20%20%20%20%20%20%20%3C/g%3E%0A%20%20%20%20%3C/g%3E%0A%3C/svg%3E');
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 30px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: white;
+    font-size: 0.8rem;
+    text-align: center;
+    z-index: 2;
+}
+
+.whish-btn {
+    color: $shop-color-6;
+    line-height: 1;
+}
+
+.tag {
+    border-radius: 10px;
+    font-size: 0.9rem;
+    margin: 0 0.1rem 0;
+    padding: 0 5.5px;
+}
+
+.tag-purple {
+    color: $purple-4951DE;
+    border: 1px solid $purple-4951DE;
+}
+
+.tag-green {
+    border: 1px solid $green-35821e;
+    color: $green-35821e;
+}
+
+.tag-red {
+    border: 1px solid $shop-color-11;
+    color: $shop-color-11;
+}
+
+.tag-orange {
+    border: 1px solid $orange-ff961f;
+    color: $orange-ff961f;
+}
+
+.tag-blue {
+    border: 1px solid $blue-305ba5;
+    color: $blue-305ba5;
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1200px) {
+}

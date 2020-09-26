@@ -716,6 +716,8 @@
     <Content Include="Assets\CSS\Common\_font.scss" />
     <Content Include="Assets\CSS\Shop\EmployeeList.scss" />
     <Content Include="Assets\CSS\Shop\EmployeeCreate.scss" />
+    <Content Include="Assets\CSS\Common\_topbar.scss" />
+    <Content Include="Assets\CSS\Common\_footer.scss" />
     <Content Include="Assets\CSS\Platform\Platform_UserList.scss" />
     <Content Include="Assets\CSS\Platform\Platform_UserDetail.scss" />
     <None Include="compilerconfig.json" />
@@ -778,6 +780,7 @@
     <Content Include="Views\Shared\_SideMenu.cshtml" />
     <Content Include="Views\Home\PageUnfound.cshtml" />
     <Content Include="Views\Customer\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Home\_LimitedtimeCard.cshtml" />
     <Content Include="Views\ProductCart\_ProductCartPartial.cshtml" />
   </ItemGroup>

@@ -1,87 +1,64 @@
 ﻿@model TicketHubApp.Models.ViewModels.SortNewCardViewModel
 
-<div class="product-item">
+<div class="product-item rounded border overflow-hidden mx-2 mt-4">
     <a href="/ProductDescription/ProductDescription/@Model.Id" target="">
-        <div class="product-img lazyload-img">
-            <img class="img-md img-fluid lazyload" src="@Model.ImgPath"
-                 data-original="" title="@Model.Title">
-            <div class="map-subject">
-                <div class="label-icon i-map">
-                    <span class="local-tag">信義區</span>
-                </div>
-                <div class="label-status">
-                    <span class="status-tag">免預約</span>
-                </div>
-            </div>
+        <div class="product-img img-h-md lazyload-img">
+            <img src="@Model.ImgPath" alt="@Model.Title">
         </div>
     </a>
-    <a href="">
-        <div class="wish-btn">
-            <span class="iconify icon-c-white" data-icon="clarity:heart-solid"
-                  data-inline="false"></span>
-        </div>
-    </a>
-    <div class="product-detail">
+    <div class="product-detail p-2">
         <input type="hidden" id="chart_id" value="@Model.Id">
-        <h3 class="ellipsis" id="Title">@Model.Title</h3>
-        <h4 class="ellipsis" id="details">@Model.Memo</h4>
-        <div class="tagblock">
-            <div class="d-flex flex-row tagBox">
-                <div class="tag tag-blue">
-                    最新
-                </div>
-                <div class="tag tag-green">
-                    國旅卡
-                </div>
-                <div class="tag tag-red">
-                    可外帶
-                </div>
-                <div class="tag tag-orange">
-                    首賣
-                </div>
+        <div class="d-flex justify-content-between align-items-center mb-1">
+            <h3 class="text-md-1 mb-0" id="Title">@Model.Title</h3>
+            <h4 class="text-md-1 mb-0 text-overflow-2" id="details">@Model.Memo</h4>
+            <a href="" class="whish-btn hov-color-shop text-md-6">
+                <span class="iconify" data-icon="eva:heart-outline" data-inline="false"></span>
+                @*<span class="iconify" data-icon="eva:heart-fill" data-inline="false"></span>*@
+            </a>
+        </div>
+        <h4 class="text-md-1 text-muted mb-1 text-overflow-2" id="details">@Model.Memo</h4>
+        <div class="d-flex">
+            <div class="tag tag-blue">
+                最新
+            </div>
+            <div class="tag tag-green">
+                國旅卡
+            </div>
+            <div class="tag tag-red">
+                可外帶
+            </div>
+            <div class="tag tag-orange">
+                首賣
             </div>
         </div>
-        <div class="pricewrap">
-            <div class="d-flex flex-row flex-column">
-                <div class="priceBox ml-auto">
-                    <div class="price d-flex">
-                        <div class="original line-through">
-                            $@Model.OriginalPrice
-                        </div>
-                        <div class="current" id="DiscountPrice">
-                            $@Model.DiscountPrice
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="d-flex">
-                <div class="ml-auto sales-volume">
-                    售44份
-                </div>
-            </div>
+        <div class="d-flex justify-content-end">
+            <span class="text-line-through text-sm-9 text-muted align-self-end">
+                $@Model.OriginalPrice
+            </span>
+            <span class="currentPrice text-md-3" id="DiscountPrice">
+                $@Model.DiscountPrice
+            </span>
         </div>
+        <div class="text-muted text-right text-sm-9">售44份</div>
         <hr>
         <div class="row">
-            <div class="col-md-7">
-                <div class="input-group mb-3">
+            <div class="col-7">
+                <div class="input-group">
                     <div class="input-group-prepend">
                         <button class="btn btn-secondary sub_button" id="">
-                            <span class="iconify"
-                                  data-icon="ant-design:minus-outlined"
-                                  data-inline="false"></span>
+                            <span class="iconify" data-icon="ant-design:minus-outlined" data-inline="false"></span>
                         </button>
                     </div>
                     <input type="number" id="cartcount" class="form-control cartcount" value="1">
                     <div class="input-group-append">
                         <button class="btn btn-secondary add_button" id="">
-                            <span class="iconify"
-                                  data-icon="codicon:add" data-inline="false"></span>
+                            <span class="iconify" data-icon="codicon:add" data-inline="false"></span>
                         </button>
                     </div>
                 </div>
             </div>
-            <div class="col-md-5">
-                <button class="btn btn-block btn-info addCart" id="addCart">加入購買</button>
+            <div class="col-5">
+                <button class="btn btn-cust w-100" id="addCart">加入購買</button>
             </div>
         </div>
     </div>

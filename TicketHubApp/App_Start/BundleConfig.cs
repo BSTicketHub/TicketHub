@@ -87,7 +87,7 @@ namespace TicketHubApp
             bundles.Add(new StyleBundle("~/bundles/css/Home").Include(
                 "~/Assets/CSS/Common/owl.carousel.min.css",
                 "~/Assets/CSS/Common/owl.theme.default.css",
-                "~/Assets/CSS/tempCSS/temphome.css"
+                "~/Assets/CSS/home.min.css"
                 ));
             bundles.Add(new ScriptBundle("~/bundles/js/Home").Include(
                 "~/Assets/JavaScript/Common/owl.carousel.min.js",

@@ -33,25 +33,42 @@
     cursor: default;
 }
 
-.dropdown-menu {
-    padding: 5px 0;
-    font-size: 14px;
-    border: none;
-    margin-top: 5px;
+.cart-link {
+    position: relative;
+    cursor: pointer;
+    color: $cust-color-8;
     transition: .25s;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    padding: 25px 0;
+}
 
-    a {
-        padding: 8px 10px;
-        margin: 0;
-        display: block;
-        line-height: 1.5;
-        white-space: nowrap;
-        transition: .25s;
+.span-badge {
+    position: absolute;
+    border-radius: 50%;
+    padding: 3px 5px;
+    top: 10px;
+    right: -4px;
+    font-size: 12px;
+    color: white;
+    background-color: $shop-color-8;
+    letter-spacing: 0;
+}
 
-        &:hover, &:focus {
-            background-color: rgba(0, 0, 0, 0.02);
-            color: $cust-color-8;
-        }
+.cart-dropdown-menu {
+    width: 450px;
+    max-height: 500px;
+    overflow: auto;
+    top: 50px !important;
+    right: -35px !important;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .hidden-sm {
+        display: none !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .hidden-xs {
+        display: none !important;
     }
 }
