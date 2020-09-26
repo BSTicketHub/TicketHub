@@ -25,8 +25,9 @@ namespace TicketHubApp.Services
                              select new PlatformUserViewModel
                              {
                                  Id = u.Id,
-                                 UserAccount = u.UserName,
+                                 UserName = u.UserName,                               
                                  Mobile = u.PhoneNumber,
+                                 Deleted = u.Deleted,
                              };
 
             DataTableViewModel table = new DataTableViewModel();
@@ -37,9 +38,10 @@ namespace TicketHubApp.Services
                 List<string> dataInstance = new List<string>();
 
                 dataInstance.Add(item.Id);
-                dataInstance.Add(item.UserAccount);
+                dataInstance.Add(item.UserName);
                 dataInstance.Add(item.Mobile ?? "NA");
-
+                dataInstance.Add(item.Deleted ? "已註銷" : "正常");
+                
                 table.data.Add(dataInstance);
             }
 
@@ -55,11 +57,36 @@ namespace TicketHubApp.Services
             var userVM = new PlatformUserViewModel
             {
                 Id = user.Id,
-                UserAccount = user.UserName,
-                Mobile = user.PhoneNumber
+                Sex = user.Sex,
+                AvatarPath = user.AvatarPath,
+                UserAccount = user.Email,
+                Deleted = user.Deleted,
+                UserName = user.UserName,
+                Mobile = user.PhoneNumber,
+                Locked = user.LockoutEnabled == true && user.LockoutEndDateUtc >= DateTime.Now
             };
 
             return userVM;
+        }
+        public void DeleteUserById(string id)
+        {   
+            TicketHubContext context = new TicketHubContext();
+            GenericRepository<TicketHubUser> repository = new GenericRepository<TicketHubUser>(context);
+            var user = repository.GetAll().FirstOrDefault(x => x.Id == id);
+
+            user.DeletedDate = DateTime.Now;
+            user.Deleted = true;
+            context.SaveChanges();
+        }
+        public void RestoreUserById(string id)
+        {
+            TicketHubContext context = new TicketHubContext();
+            GenericRepository<TicketHubUser> repository = new GenericRepository<TicketHubUser>(context);
+            var user = repository.GetAll().FirstOrDefault(x => x.Id == id);
+
+            user.Deleted = false;
+
+            context.SaveChanges();
         }
         public DataTableViewModel GetTicketsTableData(string id)
         {

@@ -1,0 +1,31 @@
+﻿@model TicketHubApp.Models.ViewModels.CarouselCardViewModel
+
+<div class="product-item rounded border overflow-hidden mx-2">
+    <a href="/ProductDescription/ProductDescription/@Model.Id">
+        <div class="discount-label">7.3折</div>
+        <div class="product-img">
+            <img alt="@Model.Title" src="@Model.ImgPath">
+        </div>
+    </a>
+    <div class="product-detail p-2">
+        <input type="hidden" name="" class="card_id" value="@Model.Id">
+        <h3 class="card_title text-md-1 mb-1">@Model.Title</h3>
+        @if (Model.CardType == "bestseller")
+        {
+            <div class="product-star mb-2 text-center">
+                <span class="iconify" data-icon="bi:star-fill" data-inline="false"></span>
+                <span class="iconify" data-icon="bi:star-fill" data-inline="false"></span>
+                <span class="iconify" data-icon="bi:star-fill" data-inline="false"></span>
+                <span class="iconify" data-icon="bi:star-fill" data-inline="false"></span>
+                <span class="iconify" data-icon="bi:star-fill" data-inline="false"></span>
+            </div>
+        }
+        <div class="card_orgPrice text-line-through text-sm-9 text-muted text-right">$@Model.OriginalPrice</div>
+        <div class="currentPrice">
+            <span class="card_currPrice text-md-3 pl-2">$@Model.DiscountPrice</span>
+            <span class="text-sm-9">起</span>
+        </div>
+        <div class="text-muted text-right text-sm-9">剩37份</div>
+        <div class="card_addToCart btn btn-cust w-100 mt-2" type="button">放入購物車</div>
+    </div>
+</div>

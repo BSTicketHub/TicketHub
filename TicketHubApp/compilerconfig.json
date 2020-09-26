@@ -98,5 +98,13 @@
   {
     "outputFile": "Assets/CSS/Shop/EmployeeCreate.css",
     "inputFile": "Assets/CSS/Shop/EmployeeCreate.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/Platform/Platform_UserList.css",
+    "inputFile": "Assets/CSS/Platform/Platform_UserList.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/Platform/Platform_UserDetail.css",
+    "inputFile": "Assets/CSS/Platform/Platform_UserDetail.scss"
   }
 ]

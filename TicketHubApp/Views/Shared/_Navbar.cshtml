@@ -3,8 +3,8 @@
     pageType = string.IsNullOrEmpty(pageType) ? "Home" : pageType;
 }
 <nav class="navbar navbar-expand-lg bg-light bottom-strip-@pageType @(pageType == PageType.HOME ? "sticky-top" : "")">
-    <div class="@(pageType == "Home" ? "container-fluid" : "container")">
-        <a class="navbar-brand ml-2" href="/@pageType/Index">
+    <div class="container-fluid">
+        <a class="navbar-brand ml-2" href="/@(pageType==PageType.CUSTOMER ? PageType.HOME : pageType)/Index">
             <img src="/Assets/Images/Home/logo.png" alt="logo" width="100">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -12,7 +12,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            @if (pageType == "Home")
+            @if (pageType == "Home" || pageType == "Customer")
             {
                 using (Html.BeginForm("Search", "Home", FormMethod.Post))
                 {
@@ -29,7 +29,7 @@
                         </div>
                         @Html.TextBox("SearchContent", null, new { @class = "form-control search-content" })
                         <div class="input-group-append">
-                            <button class="search btn btn-info pl-3 pr-3" type="submit" id="">
+                            <button class="search btn btn-cust pl-3 pr-3" type="submit">
                                 <span class="iconify"
                                       data-icon="bx:bx-search" data-inline="false"></span>
                             </button>
@@ -38,87 +38,83 @@
                 }
             }
             <ul class="navbar-nav ml-auto mr-3">
-                @if (pageType == "Home")
+                @if (pageType == "Home" || pageType == "Customer")
                 {
-                    <li class="nav-item dropdown active d-align-items">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    <li class="nav-item dropdown active d-flex align-items-center pb-0">
+                        <a class="nav-link dropdown-toggle hov-color-cust" href="#" id="navbarDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             熱門票劵
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a href="" class="dropdown-item">異國料理</a>
+                        <div class="dropdown-menu text-sm-9 border-0 shadow" aria-labelledby="navbarDropdown">
+                            <a href="" class="dropdown-item hov-color-cust">異國料理</a>
                             <div class="dropdown-divider"></div>
-                            <a href="" class="dropdown-item">自助百匯</a>
+                            <a href="" class="dropdown-item hov-color-cust">自助百匯</a>
                             <div class="dropdown-divider"></div>
-                            <a href="" class="dropdown-item">早午餐</a>
+                            <a href="" class="dropdown-item hov-color-cust">早午餐</a>
                             <div class="dropdown-divider"></div>
-                            <a href="" class="dropdown-item">下午餐</a>
+                            <a href="" class="dropdown-item hov-color-cust">下午餐</a>
                             <div class="dropdown-divider"></div>
-                            <a href="" class="dropdown-item">素食餐廳</a>
+                            <a href="" class="dropdown-item hov-color-cust">素食餐廳</a>
                         </div>
                     </li>
-                    <li class="nav-item dropdown active d-align-items">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    <li class="nav-item dropdown active d-flex align-items-center pb-0">
+                        <a class="nav-link dropdown-toggle hov-color-cust" href="#" id="navbarDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             吃到飽
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a href="" class="dropdown-item">燒肉</a>
+                        <div class="dropdown-menu text-sm-9 border-0 shadow" aria-labelledby="navbarDropdown">
+                            <a href="" class="dropdown-item hov-color-cust">燒肉</a>
                             <div class="dropdown-divider"></div>
-                            <a href="" class="dropdown-item">火鍋</a>
+                            <a href="" class="dropdown-item hov-color-cust">火鍋</a>
                             <div class="dropdown-divider"></div>
-                            <a href="" class="dropdown-item">熱炒</a>
+                            <a href="" class="dropdown-item hov-color-cust">熱炒</a>
                             <div class="dropdown-divider"></div>
-                            <a href="" class="dropdown-item">超值餐廳</a>
+                            <a href="" class="dropdown-item hov-color-cust">超值餐廳</a>
                         </div>
                     </li>
-                    <li class="nav-item dropdown active d-align-items">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    <li class="nav-item dropdown active d-flex align-items-center pb-0">
+                        <a class="nav-link dropdown-toggle hov-color-cust" href="#" id="navbarDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             限時特惠
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a href="" class="dropdown-item">異國料理</a>
+                        <div class="dropdown-menu text-sm-9 border-0 shadow" aria-labelledby="navbarDropdown">
+                            <a href="" class="dropdown-item hov-color-cust">異國料理</a>
                             <div class="dropdown-divider"></div>
-                            <a href="" class="dropdown-item">自助百匯</a>
+                            <a href="" class="dropdown-item hov-color-cust">自助百匯</a>
                             <div class="dropdown-divider"></div>
-                            <a href="" class="dropdown-item">早午餐</a>
+                            <a href="" class="dropdown-item hov-color-cust">早午餐</a>
                             <div class="dropdown-divider"></div>
-                            <a href="" class="dropdown-item">下午餐</a>
+                            <a href="" class="dropdown-item hov-color-cust">下午餐</a>
                             <div class="dropdown-divider"></div>
-                            <a href="" class="dropdown-item">素食餐廳</a>
+                            <a href="" class="dropdown-item hov-color-cust">素食餐廳</a>
                         </div>
                     </li>
                 }
-                @Html.Action("genLoginPartial", "Menu")
+                @Html.Action("GenLoginPartial", "Menu")
             </ul>
 
-            @if (pageType == "Home")
+            @if (pageType == "Home" || pageType == "Customer")
             {
                 <ul class="form-inline navbar-nav mr-5 poition-relative" onmousemove="shopCart()" onclick=""
                     onmouseout="shopCartMove()">
                     <li class="dropdown cart-dropdown open dropleft">
-                        <a class="cart-link">
-                            <span class="iconify icon-f-30" data-icon="clarity:shopping-cart-solid"
-                                  data-inline="false"></span>
+                        <a class="cart-link hov-color-cust">
+                            <span class="iconify text-lg-1" data-icon="clarity:shopping-cart-solid" data-inline="false"></span>
                             <div class="badge span-badge bg-danger cartCounter" id="cartCounter">
                                 0
                             </div>
                         </a>
                         <div class="dropdown-menu show-dropdown showCart hidden-sm hidden-xs cart-dropdown-menu">
                             <div class="cart-group cart_delete_item cart" id="cart">
-                                
+
                             </div>
-                            <div class="cart-footer">
+                            <div class="cart-footer d-flex justify-content-between align-items-center p-2 border-top">
                                 <div class="text-tag">共<span id="" class="cartCounter">0</span>件商品</div>
-                                <button href="#" class="btn btn-info">
-                                    查看購物車
-                                </button>
+                                <button href="#" class="btn btn-cust">查看購物車</button>
                             </div>
                         </div>
                     </li>
                 </ul>
-               
             }
         </div>
     </div>

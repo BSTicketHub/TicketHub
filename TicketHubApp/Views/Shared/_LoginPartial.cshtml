@@ -1,34 +1,34 @@
 ﻿@if (Request.IsAuthenticated)
 {
-    <li class="dropdown mx-3 d-align-items">
+    <li class="dropdown mx-3 d-flex align-items-center pb-0">
         <a data-toggle="dropdown">
             <img class="profile-logo rounded-circle mx-1 border" src="@ViewBag.userImg" alt="">
         </a>
-        <ul class="dropdown-menu dropdown-menu-right" style="right: -80px;">
-            <li class="d-flex align-items-center p-2">
-                <img class="profile-logo rounded-circle mr-2" src="@ViewBag.userImg" alt="">
+        <ul class="dropdown-menu text-sm-9 border-0">
+            <li class="d-flex align-items-center px-2">
+                <img class="profile-logo rounded-circle mr-2" src="../Assets/Images/Home/person.jpg" alt="">
                 <span class="profile-name font-weight-bolder">@User.Identity.Name</span>
             </li>
             <li class="dropdown-divider"></li>
-            <li class="pl-2">
-                @Html.ActionLink("會員資訊", "CustomerInfo", "Customer")
+            <li class="dropdown-item">
+                @Html.ActionLink("會員資訊", "CustomerInfo", "Customer", null, new { @class = "hov-color-cust" })
             </li>
-            <li class="pl-2">
-                @Html.ActionLink("我的票券", "MyTicket", "Customer")
+            <li class="dropdown-item">
+                @Html.ActionLink("我的票券", "MyTicket", "Customer", null, new { @class = "hov-color-cust" })
             </li>
-            <li class="pl-2">
-                @Html.ActionLink("收藏票券", "WishList", "Customer")
+            <li class="dropdown-item">
+                @Html.ActionLink("收藏票券", "WishList", "Customer", null, new { @class = "hov-color-cust" })
             </li>
-            <li class="pl-2">
-                @Html.ActionLink("收藏餐廳", "FavoriteShop", "Customer")
+            <li class="dropdown-item">
+                @Html.ActionLink("收藏餐廳", "FavoriteShop", "Customer", null, new { @class = "hov-color-cust" })
             </li>
             <li class="dropdown-divider"></li>
-            <li class="pl-2">
+            <li class="dropdown-item">
                 @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
                 {
                     @Html.AntiForgeryToken()
 
-                    <a href="javascript:document.getElementById('logoutForm').submit()">
+                    <a href="javascript:document.getElementById('logoutForm').submit()" class="hov-color-cust">
                         登出
                     </a>
                 }
@@ -38,7 +38,7 @@
 }
 else
 {
-    <li class="dropdown mx-3 d-align-items">
+    <li class="dropdown mx-3 d-flex align-items-center pb-0">
         <img class="profile-logo rounded-circle mr-2" src="../Assets/Images/Home/person.jpg" alt="">
         @Html.ActionLink("登入 / 註冊", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "btn btn-cust" })
     </li>

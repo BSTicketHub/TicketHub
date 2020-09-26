@@ -8,12 +8,12 @@
 }
 
 body.manage-platform {
-    background-color: $background;
+    background-color: $background-white;
 }
 
 a {
     text-decoration: none;
-    color: $black-333333;
+    color: $text-black;
     cursor: pointer;
 
     &:hover {
@@ -21,36 +21,45 @@ a {
     }
 }
 
-.btn-cust {
-    color: $back-paper;
-    background-color: $cust-color-8;
-    border-color: $cust-color-8;
+$types: cust, shop, platform;
+$colors8: $cust-color-8, $shop-color-8, $platform-color-8;
+$colors9: $cust-color-9, $shop-color-9, $platform-color-9;
 
-    &:hover {
-        background-color: $cust-color-9;
+@for $i from 1 through length($types) {
+    .btn-#{nth($types,$i)} {
+        color: $paper-white;
+        background-color: nth($colors8,$i);
+        border-color: nth($colors8,$i);
+
+        &:hover {
+            color: white;
+            background-color: nth($colors9,$i);
+        }
     }
-}
 
-.btn-shop {
-    color: $back-paper;
-    background-color: $shop-color-8;
-    border-color: $shop-color-8;
+    .hov-color-#{nth($types,$i)} {
+        transition: .25s;
 
-    &:hover {
-        background-color: $shop-color-9;
+        &:hover {
+            color: nth($colors8,$i);
+        }
     }
-}
 
-.btn-platform {
-    color: $back-paper;
-    background-color: $platform-color-8;
-    border-color: $platform-color-8;
+    .active-color-#{nth($types,$i)} {
+        &.active {
+            background-color: transparent;
 
-    &:hover {
-        background-color: $platform-color-9;
+            & > * {
+                color: nth($colors8,$i);
+                font-weight: bolder;
+            }
+        }
     }
 }
 
 @import "./_font.scss";
+@import "./_topbar.scss";
 @import "./_navbar.scss";
+@import "./_footer.scss";
 @import "./_sideMenu.scss";
+@import "../_root.scss";

@@ -42,16 +42,21 @@ namespace TicketHubApp.Services
             switch (role)
             {
                 case PageType.CUSTOMER:
-                    src = context.Users.Where(x => x.Id == userid).FirstOrDefault().AvatarPath;
-                    name = context.Users.Where(x => x.Id == userid).FirstOrDefault().UserName;
+                    //src = context.Users.Where(x => x.Id == userid).FirstOrDefault().AvatarPath;
+                    //name = context.Users.Where(x => x.Id == userid).FirstOrDefault().UserName;
                     break;
                 case PageType.SHOP:
                     src = (from e in context.ShopEmployee join s in context.Shop on e.ShopId equals s.Id where (e.UserId == userid) select s.BannerImg).FirstOrDefault();
                     name = (from e in context.ShopEmployee join s in context.Shop on e.ShopId equals s.Id where (e.UserId == userid) select s.ShopName).FirstOrDefault();
                     break;
+                case PageType.PLATFORM:
+                    src = context.Users.Where(x => x.Id == userid).FirstOrDefault().AvatarPath;
+                    name = context.Users.Where(x => x.Id == userid).FirstOrDefault().UserName;
+                    break;
                 default:
                     break;
             }
+
             src = (src == null) ? "https://i.imgur.com/ZM5EvHg.png" : src;
             name = (name == null) ? "No Name" : name;
             result = new List<string>() { src, name };

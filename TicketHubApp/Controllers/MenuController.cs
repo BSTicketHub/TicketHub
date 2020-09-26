@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
+using System.Web.UI;
 using TicketHubApp.Services;
 using TicketHubDataLibrary;
 
@@ -34,7 +35,7 @@ namespace TicketHubApp.Controllers
                             SubMenuItems = new List<SideMenuItem>{
                                 new SideMenuItem { IconName = "clarity:details-line", MenuTitle = "員工列表", Href = "/Shop/EmployeeList"},
                                 new SideMenuItem { IconName = "clarity:details-line", MenuTitle = "員工新增", Href = "/Shop/EmployeeCreate"},
-                            } 
+                            }
                         },
                         new SideMenuItem{ IconName = "carbon:text-link-analysis", MenuTitle = "銷售分析", Href = "#sellingAnalysis",
                             SubMenuItems = new List<SideMenuItem>{
@@ -44,7 +45,31 @@ namespace TicketHubApp.Controllers
                     };
                     break;
                 case PageType.PLATFORM:
+                    menuItems = new List<SideMenuItem>
+                    {
+                       new SideMenuItem{ IconName = "carbon:dashboard-reference", MenuTitle = "報表分析", Href = "/Platform/Index"},
 
+                       new SideMenuItem{ IconName = "teenyicons:users-solid", MenuTitle = "會員管理", Href = "#UserManagement",
+                            SubMenuItems = new List<SideMenuItem>{
+                                new SideMenuItem { IconName = "carbon:user-profile", MenuTitle = "會員列表", Href = "/Platform/UserList" },
+                                new SideMenuItem { IconName = "bx:bxs-user-plus", MenuTitle = "新增會員", Href = "#" },
+                            }
+                       },
+
+                       new SideMenuItem{ IconName = "si-glyph:store", MenuTitle = "商家管理", Href = "#ShopManagement",
+                            SubMenuItems = new List<SideMenuItem>{
+                                new SideMenuItem { IconName = "la:store-solid", MenuTitle = "商家列表", Href = "/Platform/ShopList" },
+                                new SideMenuItem { IconName = "ic:baseline-add-business", MenuTitle = "新增商家", Href = "#" },
+                            }
+                       },
+                       new SideMenuItem{ IconName = "mdi:clipboard-list-outline", MenuTitle = "訂單管理", Href = "/Platform/OrderList"},
+                       new SideMenuItem{ IconName = "clarity:administrator-solid", MenuTitle = "管理員管理", Href = "#AdminManagement",
+                            SubMenuItems = new List<SideMenuItem>{
+                                new SideMenuItem { IconName = "gg:user-list", MenuTitle = "管理員列表", Href = "/Platform/AdminList" },
+                                new SideMenuItem { IconName = "subway:admin-1", MenuTitle = "新增管理員", Href = "#" },
+                            }
+                       },
+                    };
                     break;
                 default:
                     break;
@@ -64,7 +89,7 @@ namespace TicketHubApp.Controllers
             public ICollection<SideMenuItem> SubMenuItems { get; set; }
         }
 
-        public ActionResult genLoginPartial()
+        public ActionResult GenLoginPartial()
         {
             var userLogo = new ImgurService().getSideMenuImage(PageType.CUSTOMER);
             string userImgPath = userLogo[0];

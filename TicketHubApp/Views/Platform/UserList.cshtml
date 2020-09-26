@@ -1,4 +1,5 @@
-﻿
+﻿<link rel="stylesheet" type="text/css" href="~/Assets/CSS/Platform/Platform_UserList.min.css"/>
+
 <nav aria-label="breadcrumb" class="shadow">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="~/Platform/Index">後台管理系統</a></li>
@@ -8,32 +9,78 @@
 </nav>
 
 <div class="shadow p-3">
-    <table id="userTable" class="display" style="width:100%">
+    <table id="userTable" class="table table-bordered table-hover" style="width:100%">
         <thead>
             <tr>
                 <th>會員代號</th>
-                <th>會員帳號</th>
+                <th>會員名稱</th>
                 <th>會員手機</th>
+                <th>會員狀態</th>
             </tr>
         </thead>
     </table>
 </div>
 
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" />
 
 <script>
     $(document).ready(function () {
+        console.log($('#userTable'));
         $('#userTable').DataTable({
             "ajax": '../Platform/GetUsersJson',
             "scrollX": true,
-            "stateSave": true
+            "stateSave": true,
+            "columns": [
+                { "width": "20%" },
+                { "width": "20%" },
+                { "width": "10%" },
+                { "width": "10%" },
+            ]
         });
     });
 
-    $("#userTable").on("click", "tr", function () {
+
+    $("#userTable").on("mouseenter", "tr", function () {
+
         let id = this.firstChild.innerText;
-        window.location.href = "/Platform/UserDetail/" + id;
+        let div = document.createElement('div');
+        let detail = document.createElement('a');
+        let cancelOrRestore = document.createElement('a');
+
+        detail.innerText = "細節";
+        detail.setAttribute('class', 'btn-sm btn-success');
+        detail.setAttribute('href', `/Platform/UserDetail/${id}`);
+        detail.setAttribute('style', 'margin:3px');
+    
+        let td = this.querySelector('td:last-child');
+        td.setAttribute('style', 'position:relative;');
+        div.setAttribute('style', 'display:flex; position:absolute;bottom:0px;left:5px');
+
+        if (td.innerText == "正常") {
+            cancelOrRestore.innerText = "註銷";
+            cancelOrRestore.setAttribute('class', 'btn-sm btn-danger');
+            cancelOrRestore.setAttribute('href', `/Platform/DeleteUser/${id}`);
+            cancelOrRestore.setAttribute('style', 'margin:3px');
+        }
+        else {
+            cancelOrRestore.innerText = "回復";
+            cancelOrRestore.setAttribute('class', 'btn-sm btn-primary');
+            cancelOrRestore.setAttribute('href', `/Platform/RestoreUser/${id}`);
+            cancelOrRestore.setAttribute('style', 'margin:3px');
+        }
+
+        div.appendChild(detail);
+        div.appendChild(cancelOrRestore);
+
+        td.append(div);   
+    });
+
+    $("#userTable").on("mouseleave", "tr", function () {
+
+        let lastdiv = this.querySelector('td:last-child div:last-child');
+        lastdiv.remove();
     });
 </script>
