@@ -17,7 +17,7 @@ namespace TicketHubApp.Controllers
             {
                 BestSellerItems = service.GetBestSellerCard(),
                 RecommenItems = service.GetRecommenCard(),
-                SortNewItems = service.GetSortNewCard(),
+                SortNewItems = service.GetSortNewCard(0),
                 LimitedtimeItems = service.GetLimitedtimeCard()
             };
 
@@ -27,10 +27,10 @@ namespace TicketHubApp.Controllers
         
         [HttpGet]
         // 最新推出 api
-        public ActionResult CardApi() 
+        public ActionResult CardApi(int currCount) 
         {
             var service = new HomeCardService();
-            var SortNewItems = service.GetSortNewCard();
+            var SortNewItems = service.GetSortNewCard(currCount);
             return Json(SortNewItems, JsonRequestBehavior.AllowGet); //把HomeCardService 物件轉JSON，給前端抓資料
         }
 

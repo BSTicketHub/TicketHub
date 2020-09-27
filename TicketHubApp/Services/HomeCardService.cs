@@ -42,24 +42,42 @@ namespace TicketHubApp.Services
         }
 
         //最新推出
-        public SortNewCardListViewModel GetSortNewCard()
+        public SortNewCardListViewModel GetSortNewCard(int count)
         {
+            var numOfEachTimes = 6;
             var result = new SortNewCardListViewModel();
             result.Items = new List<SortNewCardViewModel>();
             TicketHubContext context = new TicketHubContext();
             GenericRepository<Issue> issueRepo = new GenericRepository<Issue>(context);
 
-
-
-            var cardList = issueRepo.GetAll();
-
-            ////排序
-            //string[] words = { "台式", "中式", "日式", "韓式", "美式", "泰式", "西式", "法式", "印度料理", "越南料理" };
-
-            //IEnumerable<string> query = from word in words
-            //                            orderby word.Length
-            //                            select word;
-
+            var temp = from i in context.Issue
+                       join od in context.OrderDetail on i.Id equals od.IssueId into j
+                       from od in j.DefaultIfEmpty()
+                       select new
+                       {
+                           i.Id,
+                           i.ImgPath,
+                           i.Title,
+                           i.Memo,
+                           i.OriginalPrice,
+                           i.DiscountPrice,
+                           i.IssuedDate,
+                           amount = od == null ? 0 : od.Amount
+                       };
+            var issues = from t in temp
+                         group t by new { t.Id, t.ImgPath, t.Title, t.Memo,t.OriginalPrice, t.DiscountPrice, t.IssuedDate } into g
+                         select new
+                         {
+                             g.Key.Id,
+                             g.Key.ImgPath,
+                             g.Key.Title,
+                             g.Key.Memo,
+                             g.Key.OriginalPrice,
+                             g.Key.DiscountPrice,
+                             g.Key.IssuedDate,
+                             SalesAmount = g.Sum(x => x.amount),
+                         };
+            var cardList = issues.OrderByDescending(x => x.IssuedDate).Skip(count).Take(numOfEachTimes);
 
             foreach (var item in cardList)
             {
@@ -70,7 +88,8 @@ namespace TicketHubApp.Services
                     ImgPath = item.ImgPath,
                     Title = item.Title,
                     OriginalPrice = item.OriginalPrice,
-                    DiscountPrice = item.DiscountPrice
+                    DiscountPrice = item.DiscountPrice,
+                    Amount = (int)item.SalesAmount
                 };
 
                 result.Items.Add(p);

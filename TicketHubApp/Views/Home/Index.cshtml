@@ -181,32 +181,30 @@
 <!-- ------ -->
 @section endJS{
     <script>
-
+        var count = 6;
         //var show = document.getElementById("cardShow"); //template id
         //body.onload = fetchData(); //在頁面载入完成后 觸發
 
         function fetchData() {
+            var scrollPosition = window.pageYOffset;
             var ticketcard;
-
             $.ajax({
                 type: 'GET',
                 url: 'CardApi',
+                data: { currCount: count },
                 async: false,
                 success: function (json) {
                     //json = JSON.parse(json);
                     //genTable(json, parentId, template);
-                    console.log(json)
-                    alert("123");
                     ticketcard = json.Items
+                    count += 6;
                 }
             });
 
             let card = document.getElementById("moreCard")
-            card.innerHTML = "";
 
             for (var item of ticketcard)
             {
-                console.log(item)
                 //console.log(item);
                 //let CardContent = card.content.cloneNode(true);
                 //let a = getElementById("card_a");
@@ -273,7 +271,7 @@
                                 </div>
                                 <div class="d-flex">
                                     <div class="ml-auto sales-volume">
-                                        售44份
+                                        售${item.Amount}份
                                     </div>
                                 </div>
                             </div>
@@ -304,7 +302,8 @@
                         </div>
                     </div>
                     `
-                card.innerHTML += html
+                card.innerHTML += html;
+                window.scrollTo(100, scrollPosition);
             }
         }
 
