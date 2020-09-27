@@ -1,7 +1,9 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+@section topCSS{
+    @Styles.Render("~/bundles/css/About")
+}
 
 <div class="parallax"></div>
 <div class="container mt-5 mb-5">
@@ -49,9 +51,9 @@
 </div>
 <div class="about-info">
     <div class="container">
-        <div class="row mt-5 mb-5" d-flex justify-content-center>
+        <div class="row mt-5 mb-5">
             <div class="col-lg-6 col-sm-12">
-                <div class="about-infoimg">
+                <div class="d-flex justify-content-center">
                     <img src="https://picsum.photos/400/400/?random=1">
                 </div>
             </div>
@@ -71,7 +73,7 @@
 <div class="container mt-5 mb-5">
     <div class="row">
         <div class="col-xs-12 col-md-4">
-            <div class="img-box">
+            <div class="text-center px-4 py-2">
                 <img class="w-40" src="/Assets/Images/Home/about-4.png" alt="" width="130">
                 <h4 class="pt-3">隱私保護</h4>
                 <p class="pt-2">
@@ -80,7 +82,7 @@
             </div>
         </div>
         <div class="col-xs-12 col-md-4">
-            <div class="img-box">
+            <div class="text-center px-4 py-2">
                 <img class="w-40" src="/Assets/Images/Home/about-5.png" alt="" width="130">
                 <h4 class="pt-3">平台整合</h4>
                 <p class="pt-2">
@@ -89,7 +91,7 @@
             </div>
         </div>
         <div class="col-xs-12 col-md-4">
-            <div class="img-box">
+            <div class="text-center px-4 py-2">
                 <img class="w-40" src="/Assets/Images/Home/about-6.png" alt="" width="130">
                 <h4 class="pt-3">輕鬆預訂</h4>
                 <p class="pt-2">

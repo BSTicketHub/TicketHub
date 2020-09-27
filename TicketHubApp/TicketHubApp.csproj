@@ -295,6 +295,12 @@
     <Content Include="Assets\CSS\CustomerPage.min.css">
       <DependentUpon>CustomerPage.css</DependentUpon>
     </Content>
+    <Content Include="Assets\CSS\Home\About.css">
+      <DependentUpon>About.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Home\About.min.css">
+      <DependentUpon>About.css</DependentUpon>
+    </Content>
     <Content Include="Assets\CSS\Home\Contact.css">
       <DependentUpon>Contact.scss</DependentUpon>
     </Content>
@@ -726,6 +732,7 @@
     <Content Include="Assets\CSS\Platform\Platform_UserDetail.scss" />
     <Content Include="Assets\CSS\_root.scss" />
     <Content Include="Assets\CSS\Home\Contact.scss" />
+    <Content Include="Assets\CSS\Home\About.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
