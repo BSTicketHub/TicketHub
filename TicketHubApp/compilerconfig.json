@@ -72,10 +72,6 @@
     "inputFile": "Assets/CSS/tempCSS/home.scss"
   },
   {
-    "outputFile": "Assets/CSS/home.css",
-    "inputFile": "Assets/CSS/home.scss"
-  },
-  {
     "outputFile": "Assets/CSS/CustomerPage.css",
     "inputFile": "Assets/CSS/CustomerPage.scss"
   },
@@ -106,5 +102,13 @@
   {
     "outputFile": "Assets/CSS/Platform/Platform_UserDetail.css",
     "inputFile": "Assets/CSS/Platform/Platform_UserDetail.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/Home/Home.css",
+    "inputFile": "Assets/CSS/Home/Home.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/Home/Contact.css",
+    "inputFile": "Assets/CSS/Home/Contact.scss"
   }
 ]

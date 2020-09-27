@@ -55,6 +55,29 @@ $colors9: $cust-color-9, $shop-color-9, $platform-color-9;
             }
         }
     }
+    .active-bg-color-#{nth($types,$i)} {
+        &.active {
+            background-color: nth($colors8,$i);
+            border-color: nth($colors8,$i);
+
+            & > * {
+                color: white;
+                font-weight: bolder;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .hidden-sm {
+        display: none !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .hidden-xs {
+        display: none !important;
+    }
 }
 
 @import "./_font.scss";

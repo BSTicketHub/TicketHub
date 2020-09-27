@@ -32,7 +32,7 @@ namespace TicketHubApp
 
             bundles.Add(new ScriptBundle("~/bundles/js/momentjs").Include(
                       "~/Scripts/moment.js"));
-            
+
             bundles.Add(new ScriptBundle("~/bundles/js/sidemenu").Include(
                       "~/Assets/JavaScript/Common/SideMenu.js"));
 
@@ -87,12 +87,17 @@ namespace TicketHubApp
             bundles.Add(new StyleBundle("~/bundles/css/Home").Include(
                 "~/Assets/CSS/Common/owl.carousel.min.css",
                 "~/Assets/CSS/Common/owl.theme.default.css",
-                "~/Assets/CSS/home.min.css"
+                "~/Assets/CSS/Home/Home.min.css"
                 ));
             bundles.Add(new ScriptBundle("~/bundles/js/Home").Include(
                 "~/Assets/JavaScript/Common/owl.carousel.min.js",
                 "~/Scripts/esm/popper.min.js",
                 "~/Assets/JavaScript/Home/home.js"));
+            //Home Contact
+            bundles.Add(new StyleBundle("~/bundles/css/Contact").Include(
+                "~/Assets/CSS/Home/Contact.min.css"
+                //"~/Assets/CSS/tempCSS/temphome.css"
+                ));
 
             //CustomerPage bundles
             bundles.Add(new StyleBundle("~/bundles/css/CustomerPage")
