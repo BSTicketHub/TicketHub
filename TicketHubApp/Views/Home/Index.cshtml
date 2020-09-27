@@ -181,60 +181,30 @@
 <!-- ------ -->
 @section endJS{
     <script>
-
-        // 熱賣票劵
-        $.ajax({
-            type: 'GET',
-            url: 'BestSellerCardApi',
-            success: function (json) {
-                //alert("123");
-                //json = JSON.parse(json);
-                //genTable(json, parentId, template);
-                json = JSON.parse(json);
-                console.log(json)
-
-            }
-        });
-
-
+        var count = 6;
         //var show = document.getElementById("cardShow"); //template id
         //body.onload = fetchData(); //在頁面载入完成后 觸發
 
-        //$.ajax({
-        //    type: 'GET',
-        //    url: 'CardApi',
-        //    async: false,
-        //    success: function (json) {
-        //        //json = JSON.parse(json);
-        //        //genTable(json, parentId, template);
-        //        console.log(json)
-        //        ticketcard = json.Items
-        //        //alert("123");
-        //    }
-        //});
-
         function fetchData() {
+            var scrollPosition = window.pageYOffset;
             var ticketcard;
-
             $.ajax({
                 type: 'GET',
                 url: 'CardApi',
+                data: { currCount: count },
                 async: false,
                 success: function (json) {
                     //json = JSON.parse(json);
                     //genTable(json, parentId, template);
-                    console.log(json)
                     ticketcard = json.Items
-                    //alert("123");
+                    count += 6;
                 }
             });
 
             let card = document.getElementById("moreCard")
-            card.innerHTML = "";
 
             for (var item of ticketcard)
             {
-                console.log(item)
                 //console.log(item);
                 //let CardContent = card.content.cloneNode(true);
                 //let a = getElementById("card_a");
@@ -245,7 +215,8 @@
                 //CardContent.querySelector("img").src = productCartArray[i].ImgPath;
 
                 let html = `
-    <div class="product-item rounded border overflow-hidden mx-2 mt-4 col-md-4 col-sm-12">
+    <div class="col-md-4 col-sm-12">
+    <div class="product-item rounded border overflow-hidden mx-2 mt-4">
     <a href="/ProductDescription/ProductDescription/${item.Id}" target="">
         <div class="product-img img-h-md lazyload-img">
             <img src="${item.ImgPath}" alt="${item.Title}">
@@ -283,7 +254,7 @@
                 $${item.DiscountPrice}
             </span>
         </div>
-        <div class="text-muted text-right text-sm-9">售44份</div>
+        <div class="text-muted text-right text-sm-9">售${item.Amount}份</div>
         <hr>
         <div class="row">
             <div class="col-7">
@@ -307,10 +278,12 @@
         </div>
     </div>
 </div>
+</div>
 
 
                     `
-                card.innerHTML += html
+                card.innerHTML += html;
+                window.scrollTo(100, scrollPosition);
             }
         }
 

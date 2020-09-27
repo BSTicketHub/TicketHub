@@ -110,15 +110,14 @@
     var payDetail = document.getElementById("payDetail"); //最一開始的<div .row>空間
     var shoppingCart = document.getElementById("shoppingCart");
 
-    var Cart = [
+    @*var Cart = [
         { id: "dd35a880-1a56-4b5d-ad34-121dcc6c2cc0", amount: 2, title: "ExampleShop Issue5", details: "平假日皆可抵用100元消費金額", price: 556.75 },
         { id: "703d8129-e1b1-4b03-b453-17347be7cfaf", amount: 1, title: "ExampleShop Issue6", details: "平假日皆可抵用100元消費金額", price: 300.75 }];
 
     var CartString = JSON.stringify(Cart);
-    localStorage.setItem("Cart", CartString);
+    localStorage.setItem("Cart", CartString);*@
 
     var GetCart = localStorage.getItem("Cart");
-
 
     function AjaxFunction() {
         $.ajax({
@@ -145,6 +144,7 @@
                             e.target.value = 1
                         }
                     })
+
                 }
 
                 var trashlist = document.querySelectorAll(".trash");
@@ -152,9 +152,9 @@
                 for (let i of trashlist) {
                     console.dir(i)
                     i.addEventListener('click', function (e) {
-                        console.log('123')
                         let tickets = e.target.closest('.case');
                         tickets.remove();
+                        deleteLocalTrash(`${this.getAttribute("issueid")}`);
                     });
                 }
             },
@@ -175,7 +175,7 @@
                 console.log(infoJson);
                 addTicket(infoJson);
 
-                
+
             }
 
         })
@@ -203,6 +203,8 @@
             CartContent.querySelector(".disPrice").innerText = productCartArray[i].DiscountPrice;
             CartContent.querySelector(".number").value = productCartArray[i].Amount;
             CartContent.querySelector(".tPrice").innerHTML = tPrice;
+            CartContent.querySelector(".trash").setAttribute("issueId", productCartArray[i].Id);
+
 
             shoppingCart.append(CartContent);
         }
@@ -235,6 +237,22 @@
         console.log(countTK);
         console.log(countPrice);
     };
+
+    function deleteLocalTrash(id) {
+        console.log(id);
+        console.log("cc");
+        let getCartData = JSON.parse(localStorage.getItem('Cart'));
+        console.log(getCartData);
+        getCartData = getCartData.filter(x => x.id != id);
+        localStorage.setItem("Cart", JSON.stringify(getCartData));
+        upDateNewLocal();
+    }
+
+
+    function upDateNewLocal() {
+            window.location.reload();
+    }
+     @*setTimeout('upDateNewLocal()', 5000);*@
 
 
 
