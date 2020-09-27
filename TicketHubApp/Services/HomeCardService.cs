@@ -11,6 +11,9 @@ namespace TicketHubApp.Services
 {
     public class HomeCardService
     {
+
+        private TicketHubContext _context = new TicketHubContext();
+        //private readonly string _userid = HttpContext.Current.User.Identity.GetUserId();
         //Action
 
         //限時優惠
@@ -60,6 +63,10 @@ namespace TicketHubApp.Services
             //                            orderby word.Length
             //                            select word;
 
+           //Guid Shopid = _context.ShopEmployee.FirstOrDefault((x) => x.UserId == _userid).ShopId;
+
+            
+
 
             foreach (var item in cardList)
             {
@@ -87,6 +94,33 @@ namespace TicketHubApp.Services
             TicketHubContext context = new TicketHubContext();
             GenericRepository<Issue> issueRepo = new GenericRepository<Issue>(context);
 
+            //第一步驟
+            //排序值
+            var temp = from i in _context.Issue
+                       join od in _context.OrderDetail on i.Id equals od.IssueId into j
+                       from od in j.DefaultIfEmpty()
+                       select new
+                       {
+                           i.Id,
+                           i.ImgPath,
+                           i.Title,
+                           i.DiscountPrice,
+                           i.ReleasedDate,
+                           count = od == null ? 0 : od.Amount,
+                       };
+            // 排序需求
+            var issues = from t in temp
+                         group t by new { t.Id, t.ImgPath, t.Title, t.DiscountPrice, t.ReleasedDate } into g
+                         select new
+                         {
+                             g.Key.Id,
+                             g.Key.ImgPath,
+                             g.Key.Title,
+                             g.Key.DiscountPrice,
+                             g.Key.ReleasedDate,
+                             SalesCount = g.Sum(x => x.count),
+                         };
+            issues = issues.OrderByDescending(i => i.SalesCount); //降序
 
             var cardList = issueRepo.GetAll();
             var cardType = "bestseller";
