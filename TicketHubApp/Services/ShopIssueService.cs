@@ -188,6 +188,7 @@ namespace TicketHubApp.Services
                            i.DiscountPrice,
                            i.ReleasedDate,
                            i.ClosedDate,
+                           count = od == null ? 0 : od.Amount,
                            price = od == null ? 0 : od.Price
                        };
             var issues = from t in temp
@@ -200,7 +201,8 @@ namespace TicketHubApp.Services
                              g.Key.DiscountPrice,
                              g.Key.ReleasedDate,
                              g.Key.ClosedDate,
-                             SalesAmount = g.Sum(x => x.price)
+                             SalesCount = g.Sum(x => x.count),
+                             SalesPrice = g.Sum(x => x.price)
                          };
 
             var TimeNow = DateTime.Now;
@@ -216,7 +218,7 @@ namespace TicketHubApp.Services
             switch (order)
             {
                 case 1:
-                    issues = issues.OrderByDescending(i => i.SalesAmount);
+                    issues = issues.OrderByDescending(i => i.SalesCount);
                     break;
                 case 2:
                     issues = issues.OrderBy(i => i.ReleasedDate);
@@ -240,7 +242,8 @@ namespace TicketHubApp.Services
                     Status = (item.ClosedDate <= DateTime.Now) ? "已下架" :
                             (item.ReleasedDate < DateTime.Now) ? "未上架" : "上架",
                     ReleasedDate = item.ReleasedDate,
-                    SalesPrice = item.SalesAmount
+                    SalesAmount = (int)item.SalesCount,
+                    SalesPrice = item.SalesPrice
                 };
                 result.Items.Add(p);
             }
