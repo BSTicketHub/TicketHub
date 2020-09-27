@@ -244,7 +244,8 @@
                 //CardContent.querySelector("img").src = productCartArray[i].ImgPath;
 
                 let html = `
-    <div class="product-item rounded border overflow-hidden mx-2 mt-4 col-md-4 col-sm-12">
+    <div class="col-md-4 col-sm-12">
+    <div class="product-item rounded border overflow-hidden mx-2 mt-4">
     <a href="/ProductDescription/ProductDescription/${item.Id}" target="">
         <div class="product-img img-h-md lazyload-img">
             <img src="${item.ImgPath}" alt="${item.Title}">
@@ -305,6 +306,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 
 
