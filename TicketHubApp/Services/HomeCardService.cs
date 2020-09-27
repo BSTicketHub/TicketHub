@@ -87,7 +87,7 @@ namespace TicketHubApp.Services
         }
 
         //熱賣票劵
-        public CarouselCardListViewModel GetBestSellerCard()
+        public CarouselCardListViewModel GetBestSellerCard(bool closed)
         {
             var result = new CarouselCardListViewModel();
             result.Items = new List<CarouselCardViewModel>();
@@ -105,37 +105,52 @@ namespace TicketHubApp.Services
                            i.ImgPath,
                            i.Title,
                            i.DiscountPrice,
+                           i.OriginalPrice,
                            i.ReleasedDate,
+                           i.ClosedDate,
                            count = od == null ? 0 : od.Amount,
                        };
             // 排序需求
             var issues = from t in temp
-                         group t by new { t.Id, t.ImgPath, t.Title, t.DiscountPrice, t.ReleasedDate } into g
+                         group t by new { t.Id, t.ImgPath, t.Title, t.DiscountPrice, t.OriginalPrice, t.ReleasedDate, t.ClosedDate } into g
                          select new
                          {
                              g.Key.Id,
                              g.Key.ImgPath,
                              g.Key.Title,
                              g.Key.DiscountPrice,
+                             g.Key.OriginalPrice,
                              g.Key.ReleasedDate,
+                             g.Key.ClosedDate,
                              SalesCount = g.Sum(x => x.count),
                          };
             issues = issues.OrderByDescending(i => i.SalesCount); //降序
 
-            var cardList = issueRepo.GetAll();
+            var TimeNow = DateTime.Now;
+            // 判斷
+            if (closed)
+            {
+                issues = issues.Where((i) => i.ClosedDate <= TimeNow);
+            }
+            else
+            {
+                issues = issues.Where((i) => (i.ClosedDate > TimeNow || i.ClosedDate == null));
+            }
+
+            //var cardList = issueRepo.GetAll();
             var cardType = "bestseller";
 
-            foreach (var item in cardList)
+            foreach (var item in issues)
             {
+                //頁面顯示資料
                 var p = new CarouselCardViewModel()
                 {
                     CardType = cardType,
                     Id = item.Id,
-                    Memo = item.Memo,
                     ImgPath = item.ImgPath,
                     Title = item.Title,
                     OriginalPrice = item.OriginalPrice,
-                    DiscountPrice = item.DiscountPrice
+                    DiscountPrice = item.DiscountPrice,
                 };
 
                 result.Items.Add(p);

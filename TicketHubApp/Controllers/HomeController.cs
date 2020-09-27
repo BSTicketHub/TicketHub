@@ -15,7 +15,7 @@ namespace TicketHubApp.Controllers
             var service = new HomeCardService();
             var homecard = new HomeListViewModel() //新增ViewModel集合
             {
-                BestSellerItems = service.GetBestSellerCard(),
+                BestSellerItems = service.GetBestSellerCard(true),
                 RecommenItems = service.GetRecommenCard(),
                 SortNewItems = service.GetSortNewCard(),
                 LimitedtimeItems = service.GetLimitedtimeCard()
@@ -39,7 +39,7 @@ namespace TicketHubApp.Controllers
         public ActionResult BestSellerCardApi()
         {
             var service = new HomeCardService();
-            var BestSellerItems = service.GetBestSellerCard();
+            var BestSellerItems = service.GetBestSellerCard(true);
             return Json(BestSellerItems, JsonRequestBehavior.AllowGet); //把HomeCardService 物件轉JSON，給前端抓資料
         }
 
