@@ -14,14 +14,16 @@ namespace TicketHubApp.Services
 {
     public class ShopEmployeeService
     {
+        private TicketHubContext _context = new TicketHubContext();
+
+        private readonly string _userid = HttpContext.Current.User.Identity.GetUserId();
+
         public List<ShopEmployeeViewModel> GetEmployeeList()
         {
             var result = new List<ShopEmployeeViewModel>();
             TicketHubContext context = new TicketHubContext();
 
-            //var user = HttpContext.Current.User.Identity.GetUserId();
-            var user = "26c751ea-d1ce-45bf-8a65-78f0d48ce2c4";
-            var shopid = context.ShopEmployee.Where((x) => x.UserId == user).FirstOrDefault().ShopId;
+            var shopid = context.ShopEmployee.Where((x) => x.UserId == _userid).FirstOrDefault().ShopId;
 
             var temp = (from u in context.Users
                        from ur in u.Roles
@@ -93,9 +95,7 @@ namespace TicketHubApp.Services
                 var context = new TicketHubContext();
                 var employeeRepo = new GenericRepository<ShopEmployee>(context);
 
-                //var user = HttpContext.Current.User.Identity.GetUserId();
-                var user = "26c751ea-d1ce-45bf-8a65-78f0d48ce2c4";
-                var shopid = context.ShopEmployee.Where((x) => x.UserId == user).FirstOrDefault().ShopId;
+                var shopid = context.ShopEmployee.Where((x) => x.UserId == _userid).FirstOrDefault().ShopId;
                 var userid = userManager.FindByEmail(account).Id;
                 var entity = new ShopEmployee() { ShopId = shopid, UserId = userid };
                 employeeRepo.Create(entity);

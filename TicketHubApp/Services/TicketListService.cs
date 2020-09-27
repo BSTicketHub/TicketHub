@@ -35,10 +35,10 @@ namespace TicketHubApp.Services
                              DiscountRatio = i.DiscountRatio,
                              City = s.City,
                              District = s.District,
-                             TagList = from tg in _context.IssueTag
+                             TagList = (from tg in _context.IssueTag
                                        join t in _context.Tag on tg.TagId equals t.Id
                                        where tg.IssueId == i.Id
-                                       select t.Name
+                                       select t.Name).ToList()
                          };
 
             return result;
@@ -62,10 +62,10 @@ namespace TicketHubApp.Services
                              DiscountRatio = i.DiscountRatio,
                              City = s.City,
                              District = s.District,
-                             TagList = from tg in _context.IssueTag
+                             TagList = (from tg in _context.IssueTag
                                          join t in _context.Tag on tg.TagId equals t.Id
                                          where tg.IssueId == i.Id
-                                         select t.Name
+                                         select t.Name).ToList()
                          };
             return result;
         }

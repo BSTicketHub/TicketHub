@@ -4,9 +4,11 @@
     <div class="row">
         <div class="col-12 bg-white shadow p-3 border position-relative d-flex justify-content-center">
             @Html.Partial("_Ticket", Model)
-            <button class="btn blueBtn position-absolute align-self-center" id="modify">編輯票券</button>
+            <div id="mask" class="d-flex justify-content-center align-items-center rounded">
+                <button class="btn blueBtn rounded" id="modify">編輯票券</button>
+            </div>
+            
         </div>
-
         <div class="col-12 bg-white shadow py-3 my-3">
             <table id="datatable" class="display">
                 <thead>
@@ -32,12 +34,14 @@
     <link href="~/Assets/CSS/Common/Ticket.min.css" rel="stylesheet" />
     
     <link href="~/Assets/CSS/Shop/IssueDetails.min.css" rel="stylesheet" />
+
 }
 
 @section endJS{
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 
     <script>
+        // data table ajax json api
         $(document).ready(function () {
             $('#datatable').DataTable({
                 "ajax": {
@@ -50,8 +54,12 @@
             });
         });
 
+        // modify button click event
         document.getElementById("modify").addEventListener("click", function () {
             window.location.assign("EditIssue" + "?id=" + "@ViewBag.IssueId");
         });
+
     </script>
+    
+    <script src="~/Assets/JavaScript/Common/ticket.js"></script>
 } 
