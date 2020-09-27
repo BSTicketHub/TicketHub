@@ -53,6 +53,14 @@ namespace TicketHubApp.Services
 
             var cardList = issueRepo.GetAll();
 
+            ////排序
+            //string[] words = { "台式", "中式", "日式", "韓式", "美式", "泰式", "西式", "法式", "印度料理", "越南料理" };
+
+            //IEnumerable<string> query = from word in words
+            //                            orderby word.Length
+            //                            select word;
+
+
             foreach (var item in cardList)
             {
                 var p = new SortNewCardViewModel()

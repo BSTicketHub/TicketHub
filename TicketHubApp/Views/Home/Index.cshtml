@@ -157,7 +157,7 @@
             <h3 class="class-title">最新推出</h3>
             <div class="class-divider"></div>
         </div>
-        <div class="row">
+        <div class="row" id="moreCard">
             @for (var i = 0; i < 6; i++)
             {
                 var item = Model.SortNewItems.Items[i];
@@ -170,7 +170,7 @@
 
     <div class="row justify-content-center">
         <div class="col-4 text-center">
-            <button class="btn btn-success btn-block" id="showMore">顯示更多票劵</button>
+            <button class="btn btn-success btn-block" id="showMore" onclick="fetchData()">顯示更多票劵</button>
         </div>
     </div>
 </div>
@@ -179,3 +179,157 @@
 <!-- ------ -->
 <button class="" id="btnScroll">▲<h6>Top</h6></button>
 <!-- ------ -->
+@section endJS{
+    <script>
+
+        //var show = document.getElementById("cardShow"); //template id
+        //body.onload = fetchData(); //在頁面载入完成后 觸發
+
+        function fetchData() {
+            var ticketcard;
+
+            $.ajax({
+                type: 'GET',
+                url: 'CardApi',
+                async: false,
+                success: function (json) {
+                    //json = JSON.parse(json);
+                    //genTable(json, parentId, template);
+                    console.log(json)
+                    alert("123");
+                    ticketcard = json.Items
+                }
+            });
+
+            let card = document.getElementById("moreCard")
+            card.innerHTML = "";
+
+            for (var item of ticketcard)
+            {
+                console.log(item)
+                //console.log(item);
+                //let CardContent = card.content.cloneNode(true);
+                //let a = getElementById("card_a");
+                //let img = getElementById("card_img");
+                //let title = getElementById("Title");
+                //let details = getElementById("detials");
+
+                //CardContent.querySelector("img").src = productCartArray[i].ImgPath;
+
+                let html = `
+                    <div class="product-item col-lg-4 col-md-6 col-sm-8">
+                        <a href="/ProductDescription/ProductDescription/${item.Id}" target="" id="card_a">
+                            <div class="product-img lazyload-img">
+                                <img class="img-md img-fluid lazyload" src="${item.ImgPath}"
+                                     data-original="" title="${item.Title}" id="card_img">
+                                <div class="map-subject">
+                                    <div class="label-icon i-map">
+                                        <span class="local-tag">信義區</span>
+                                    </div>
+                                    <div class="label-status">
+                                        <span class="status-tag">免預約</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="">
+                            <div class="wish-btn">
+                                <span class="iconify icon-c-white" data-icon="clarity:heart-solid"
+                                      data-inline="false"></span>
+                            </div>
+                        </a>
+                        <div class="product-detail">
+                            <input type="hidden" id="chart_id" value="${item.Id}">
+                            <h3 class="ellipsis" id="Title">${item.Title}</h3>
+                            <h4 class="ellipsis" id="details">${item.Memo}</h4>
+                            <div class="tagblock">
+                                <div class="d-flex flex-row tagBox">
+                                    <div class="tag tag-blue">
+                                        最新
+                                    </div>
+                                    <div class="tag tag-green">
+                                        國旅卡
+                                    </div>
+                                    <div class="tag tag-red">
+                                        可外帶
+                                    </div>
+                                    <div class="tag tag-orange">
+                                        首賣
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pricewrap">
+                                <div class="d-flex flex-row flex-column">
+                                    <div class="priceBox ml-auto">
+                                        <div class="price d-flex">
+                                            <div class="original line-through">
+                                                $${item.OriginalPrice}
+                                            </div>
+                                            <div class="current" id="DiscountPrice">
+                                                $${item.DiscountPrice}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex">
+                                    <div class="ml-auto sales-volume">
+                                        售44份
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <button class="btn btn-secondary sub_button" id="">
+                                                <span class="iconify"
+                                                      data-icon="ant-design:minus-outlined"
+                                                      data-inline="false"></span>
+                                            </button>
+                                        </div>
+                                        <input type="number" id="cartcount" class="form-control cartcount" value="1">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-secondary add_button" id="">
+                                                <span class="iconify"
+                                                      data-icon="codicon:add" data-inline="false"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <button onclick="AddCartEvent()" class="btn btn-block btn-info addCart" id="addCart">加入購買</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    `
+                card.innerHTML += html
+            }
+        }
+
+
+
+
+
+
+
+
+
+        //選取元素
+        function $g(selector) {
+            //判斷是否為id selector
+            if (selector.includes('#') && !selector.includes(' ')) {
+                //回傳Element
+                return document.querySelector(selector);
+            }
+
+            //回傳NodeList集合
+            let nodelist = document.querySelectorAll(selector);
+
+            return nodelist.length == 1 ? nodelist[0] : nodelist;
+        }
+
+
+    </script>
+}
