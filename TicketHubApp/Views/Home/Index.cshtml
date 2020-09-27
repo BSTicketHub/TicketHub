@@ -181,38 +181,9 @@
 <!-- ------ -->
 @section endJS{
     <script>
-
-        // 熱賣票劵
-        $.ajax({
-            type: 'GET',
-            url: 'BestSellerCardApi',
-            success: function (json) {
-                //alert("123");
-                //json = JSON.parse(json);
-                //genTable(json, parentId, template);
-                json = JSON.parse(json);
-                console.log(json)
-
-            }
-        });
-
-
         var count = 6;
         //var show = document.getElementById("cardShow"); //template id
         //body.onload = fetchData(); //在頁面载入完成后 觸發
-
-        //$.ajax({
-        //    type: 'GET',
-        //    url: 'CardApi',
-        //    async: false,
-        //    success: function (json) {
-        //        //json = JSON.parse(json);
-        //        //genTable(json, parentId, template);
-        //        console.log(json)
-        //        ticketcard = json.Items
-        //        //alert("123");
-        //    }
-        //});
 
         function fetchData() {
             var scrollPosition = window.pageYOffset;

@@ -110,7 +110,7 @@
                             </div>
                             <div class="cart-footer d-flex justify-content-between align-items-center p-2 border-top">
                                 <div class="text-tag">共<span id="" class="cartCounter">0</span>件商品</div>
-                                <button href="#" class="btn btn-cust">查看購物車</button>
+                                @Html.ActionLink("查看購物車", "ProductCart", "ProductCart", null, new { @class = "btn btn-cust" })
                             </div>
                         </div>
                     </li>
