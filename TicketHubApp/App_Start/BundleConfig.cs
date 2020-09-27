@@ -96,7 +96,10 @@ namespace TicketHubApp
             //Home Contact
             bundles.Add(new StyleBundle("~/bundles/css/Contact").Include(
                 "~/Assets/CSS/Home/Contact.min.css"
-                //"~/Assets/CSS/tempCSS/temphome.css"
+                ));
+            //Home About
+            bundles.Add(new StyleBundle("~/bundles/css/About").Include(
+                "~/Assets/CSS/Home/About.min.css"
                 ));
 
             //CustomerPage bundles
