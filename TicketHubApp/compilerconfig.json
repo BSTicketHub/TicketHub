@@ -110,5 +110,9 @@
   {
     "outputFile": "Assets/CSS/Home/Contact.css",
     "inputFile": "Assets/CSS/Home/Contact.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/Home/About.css",
+    "inputFile": "Assets/CSS/Home/About.scss"
   }
 ]
