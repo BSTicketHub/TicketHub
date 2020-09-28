@@ -104,6 +104,9 @@ a {
 .text-black {
   color: #333333; }
 
+.text-gray {
+  color: #a0a0a0; }
+
 .text-cust-1 {
   color: #e4f4f5; }
 
@@ -615,7 +618,6 @@ a {
     clip: rect(0px, 220px, 220px, 218px); } }
 
 :root {
-  --kkday: #26bec9;
   --background-white: #f5f5f5;
   --favorite: #d87093;
   --line-gray: #adadad;

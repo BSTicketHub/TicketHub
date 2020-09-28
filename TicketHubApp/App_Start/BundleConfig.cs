@@ -39,6 +39,9 @@ namespace TicketHubApp
             bundles.Add(new ScriptBundle("~/bundles/js/carouseljs").Include(
                       "~/Assets/JavaScript/Common/owl.carousel.min.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/js/JsBarcode").Include(
+                "~/Assets/JavaScript/Common/JsBarcode.all.min.js"));
+
             //----------------CSS----------------
 
             bundles.Add(new StyleBundle("~/bundles/css/bootstrap").Include(

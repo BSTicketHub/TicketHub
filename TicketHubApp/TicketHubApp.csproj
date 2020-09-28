@@ -778,7 +778,7 @@
     <Content Include="Views\Platform\AdminDetail.cshtml" />
     <Content Include="Views\Platform\ShopDetail.cshtml" />
     <Content Include="Views\Platform\GetAllEmployees.cshtml" />
-    <Content Include="Views\Shared\Info.cshtml" />
+    <Content Include="Views\Shared\InfoSingle.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Platform\GetAllIssues.cshtml" />
     <Content Include="Views\Platform\UserList.cshtml" />
@@ -790,11 +790,12 @@
     <Content Include="Views\Shared\_Navbar.cshtml" />
     <Content Include="Views\Shared\_Layout_Manage.cshtml" />
     <Content Include="Views\Shared\_SideMenu.cshtml" />
-    <Content Include="Views\Home\PageUnfound.cshtml" />
     <Content Include="Views\Customer\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Home\_LimitedtimeCard.cshtml" />
     <Content Include="Views\ProductCart\_ProductCartPartial.cshtml" />
+    <Content Include="Views\Account\ShopApply.cshtml" />
+    <Content Include="Views\Shared\InfoHome.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
