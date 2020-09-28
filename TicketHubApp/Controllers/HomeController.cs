@@ -15,8 +15,8 @@ namespace TicketHubApp.Controllers
             var service = new HomeCardService();
             var homecard = new HomeListViewModel() //新增ViewModel集合
             {
-                BestSellerItems = service.GetBestSellerCard(true), //有排序
-                RecommenItems = service.GetRecommenCard(true),
+                BestSellerItems = service.GetBestSellerCard(), //有排序
+                RecommenItems = service.GetRecommenCard(),
                 SortNewItems = service.GetSortNewCard(0),
                 LimitedtimeItems = service.GetLimitedtimeCard()
             };
@@ -39,7 +39,7 @@ namespace TicketHubApp.Controllers
         public ActionResult BestSellerCardApi()
         {
             var service = new HomeCardService();
-            var BestSellerItems = service.GetBestSellerCard(true); //有排序
+            var BestSellerItems = service.GetBestSellerCard(); //有排序
             return Json(BestSellerItems, JsonRequestBehavior.AllowGet); //把HomeCardService 物件轉JSON，給前端抓資料
         }
 
@@ -48,7 +48,7 @@ namespace TicketHubApp.Controllers
         public ActionResult RecommenCardApi()
         {
             var service = new HomeCardService();
-            var RecommenItems = service.GetRecommenCard(true);
+            var RecommenItems = service.GetRecommenCard();
             return Json(RecommenItems, JsonRequestBehavior.AllowGet); //把HomeCardService 物件轉JSON，給前端抓資料
         }
 

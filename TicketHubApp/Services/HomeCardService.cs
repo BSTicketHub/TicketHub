@@ -105,7 +105,7 @@ namespace TicketHubApp.Services
         }
 
         //熱賣票劵
-        public CarouselCardListViewModel GetBestSellerCard(bool closed)
+        public CarouselCardListViewModel GetBestSellerCard()
         {
             var result = new CarouselCardListViewModel();
             result.Items = new List<CarouselCardViewModel>();
@@ -127,11 +127,12 @@ namespace TicketHubApp.Services
                            i.DiscountRatio,
                            i.ReleasedDate,
                            i.ClosedDate,
+                           i.Amount,
                            count = od == null ? 0 : od.Amount,
                        };
             // 排序需求
             var issues = from t in temp
-                         group t by new { t.Id, t.ImgPath, t.Title, t.DiscountPrice, t.OriginalPrice, t.ReleasedDate, t.ClosedDate, t.DiscountRatio } into g
+                         group t by new { t.Id, t.ImgPath, t.Title, t.DiscountPrice, t.OriginalPrice, t.ReleasedDate, t.ClosedDate, t.DiscountRatio, t.Amount } into g
                          select new
                          {
                              g.Key.Id,
@@ -142,20 +143,23 @@ namespace TicketHubApp.Services
                              g.Key.DiscountRatio,
                              g.Key.ReleasedDate,
                              g.Key.ClosedDate,
+                             g.Key.Amount,
                              SalesCount = g.Sum(x => x.count),
                          };
-            issues = issues.OrderByDescending(i => i.SalesCount); //降序
 
+            issues = issues.OrderByDescending(i => i.SalesCount); //降序
+            var test = issues.ToList();
             var TimeNow = DateTime.Now;
-            // 判斷
-            if (closed)
-            {
-                issues = issues.Where((i) => i.ClosedDate <= TimeNow);
-            }
-            else
-            {
-                issues = issues.Where((i) => (i.ClosedDate > TimeNow || i.ClosedDate == null));
-            }
+
+            // 判斷上架 上架早於現在 且 判斷下架 下架大於現在
+            issues = issues.Where((i) => (i.ReleasedDate <= TimeNow)&& (i.ClosedDate >= TimeNow));
+            test = issues.ToList();
+            
+            // 總庫存 - 銷售數量 = 現有庫存
+            issues = issues.Where((i) => (i.Amount - i.SalesCount) > 0);
+            test = issues.ToList();
+            var Amount = issues.OrderByDescending(i => i.Amount);
+
 
             //var cardList = issueRepo.GetAll();
             var cardType = "bestseller";
@@ -171,7 +175,8 @@ namespace TicketHubApp.Services
                     Title = item.Title,
                     OriginalPrice = item.OriginalPrice,
                     DiscountPrice = item.DiscountPrice,
-                    DiscountRatio = item.DiscountRatio
+                    DiscountRatio = item.DiscountRatio,
+                    Amount = item.Amount
                 };
 
                 result.Items.Add(p);
@@ -181,7 +186,7 @@ namespace TicketHubApp.Services
         }
 
         //推薦餐廳
-        public CarouselCardListViewModel GetRecommenCard(bool sort)
+        public CarouselCardListViewModel GetRecommenCard()
         {
             var result = new CarouselCardListViewModel();
             result.Items = new List<CarouselCardViewModel>();
@@ -200,13 +205,15 @@ namespace TicketHubApp.Services
                            i.Title,
                            i.DiscountPrice,
                            i.OriginalPrice,
+                           i.DiscountRatio,
                            i.ReleasedDate,
                            i.ClosedDate,
+                           i.Amount,
                            count = od == null ? 0 : od.Amount,
                        };
             // 排序需求
             var issues = from t in temp
-                         group t by new { t.Id, t.ImgPath, t.Title, t.DiscountPrice, t.OriginalPrice, t.ReleasedDate, t.ClosedDate } into g
+                         group t by new { t.Id, t.ImgPath, t.Title, t.DiscountPrice, t.OriginalPrice, t.DiscountRatio, t.ReleasedDate, t.ClosedDate, t.Amount } into g
                          select new
                          {
                              g.Key.Id,
@@ -215,26 +222,21 @@ namespace TicketHubApp.Services
                              g.Key.DiscountPrice,
                              g.Key.OriginalPrice,
                              g.Key.ReleasedDate,
+                             g.Key.DiscountRatio,
                              g.Key.ClosedDate,
+                             g.Key.Amount,
                              SalesCount = g.Sum(x => x.count),
                          };
 
-            issues = issues.OrderByDescending(i => i.SalesCount); //降序
+            issues = issues.OrderByDescending(i => i.DiscountRatio == Math.Round(i.DiscountPrice * i.OriginalPrice)); //降序
 
-            var Price = DateTime.Now;
-            //Array.Sort(nums);
+            var test = DateTime.Now;
+            // 判斷上架、下架
+            issues = issues.Where((i) => (i.ReleasedDate <= test) && (i.ClosedDate >= test));
+            // 折扣率 Math.Round(discount * price)
+            var discount = issues.OrderBy(i => i.DiscountRatio);
 
-            // 判斷
-            if (sort)
-            {
-                issues = issues.Where((i) => i.ReleasedDate <= Price);
-            }
-            else
-            {
-                issues = issues.Where((i) => (i.ReleasedDate > Price || i.ReleasedDate == null));
-            }
-
-
+            
             //var cardList = issueRepo.GetAll();
             var cardType = "recommend";
 
