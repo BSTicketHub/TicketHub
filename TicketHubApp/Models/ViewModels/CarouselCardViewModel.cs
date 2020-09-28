@@ -11,7 +11,7 @@ namespace TicketHubApp.Models.ViewModels
         public string ImgPath { get; set; }
         public decimal OriginalPrice { get; set; }
         public decimal DiscountPrice { get; set; }
-        public decimal Remnant { get; set; }
+        public decimal DiscountRatio { get; set; }
         public decimal Amount { get; set; }
     }
 }

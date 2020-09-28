@@ -203,16 +203,10 @@
 
             let card = document.getElementById("moreCard")
 
+            // 動態載入
             for (var item of ticketcard)
             {
                 //console.log(item);
-                //let CardContent = card.content.cloneNode(true);
-                //let a = getElementById("card_a");
-                //let img = getElementById("card_img");
-                //let title = getElementById("Title");
-                //let details = getElementById("detials");
-
-                //CardContent.querySelector("img").src = productCartArray[i].ImgPath;
 
                 let html = `
     <div class="col-md-4 col-sm-12">
@@ -226,10 +220,7 @@
         <input type="hidden" id="chart_id" value="${item.Id}">
         <div class="d-flex justify-content-between align-items-center mb-1">
             <h3 class="text-md-1 mb-0" id="Title">${item.Title}</h3>
-            <a href="" class="whish-btn hov-color-shop text-md-6">
-                <span class="iconify" data-icon="eva:heart-outline" data-inline="false"></span>
-                @*<span class="iconify" data-icon="eva:heart-fill" data-inline="false"></span>*@
-            </a>
+            
         </div>
         <h4 class="text-md-1 text-muted mb-1 text-overflow-2" id="details">${item.Memo}</h4>
         <div class="d-flex">
@@ -273,7 +264,7 @@
                 </div>
             </div>
             <div class="col-5">
-                <button class="btn btn-cust w-100" id="addCart">加入購買</button>
+                <button class="btn btn-cust w-100 addCart" id="addCart">加入購買</button>
             </div>
         </div>
     </div>
@@ -287,27 +278,6 @@
             }
         }
 
-
-
-
-
-
-
-
-
-        //選取元素
-        function $g(selector) {
-            //判斷是否為id selector
-            if (selector.includes('#') && !selector.includes(' ')) {
-                //回傳Element
-                return document.querySelector(selector);
-            }
-
-            //回傳NodeList集合
-            let nodelist = document.querySelectorAll(selector);
-
-            return nodelist.length == 1 ? nodelist[0] : nodelist;
-        }
 
 
     </script>

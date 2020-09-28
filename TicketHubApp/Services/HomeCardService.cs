@@ -124,13 +124,14 @@ namespace TicketHubApp.Services
                            i.Title,
                            i.DiscountPrice,
                            i.OriginalPrice,
+                           i.DiscountRatio,
                            i.ReleasedDate,
                            i.ClosedDate,
                            count = od == null ? 0 : od.Amount,
                        };
             // 排序需求
             var issues = from t in temp
-                         group t by new { t.Id, t.ImgPath, t.Title, t.DiscountPrice, t.OriginalPrice, t.ReleasedDate, t.ClosedDate } into g
+                         group t by new { t.Id, t.ImgPath, t.Title, t.DiscountPrice, t.OriginalPrice, t.ReleasedDate, t.ClosedDate, t.DiscountRatio } into g
                          select new
                          {
                              g.Key.Id,
@@ -138,6 +139,7 @@ namespace TicketHubApp.Services
                              g.Key.Title,
                              g.Key.DiscountPrice,
                              g.Key.OriginalPrice,
+                             g.Key.DiscountRatio,
                              g.Key.ReleasedDate,
                              g.Key.ClosedDate,
                              SalesCount = g.Sum(x => x.count),
@@ -169,6 +171,7 @@ namespace TicketHubApp.Services
                     Title = item.Title,
                     OriginalPrice = item.OriginalPrice,
                     DiscountPrice = item.DiscountPrice,
+                    DiscountRatio = item.DiscountRatio
                 };
 
                 result.Items.Add(p);
@@ -178,24 +181,71 @@ namespace TicketHubApp.Services
         }
 
         //推薦餐廳
-        public CarouselCardListViewModel GetRecommenCard()
+        public CarouselCardListViewModel GetRecommenCard(bool sort)
         {
             var result = new CarouselCardListViewModel();
             result.Items = new List<CarouselCardViewModel>();
             TicketHubContext context = new TicketHubContext();
             GenericRepository<Issue> issueRepo = new GenericRepository<Issue>(context);
 
+            //第一步驟
+            //排序值
+            var temp = from i in _context.Issue
+                       join od in _context.OrderDetail on i.Id equals od.IssueId into j
+                       from od in j.DefaultIfEmpty()
+                       select new
+                       {
+                           i.Id,
+                           i.ImgPath,
+                           i.Title,
+                           i.DiscountPrice,
+                           i.OriginalPrice,
+                           i.ReleasedDate,
+                           i.ClosedDate,
+                           count = od == null ? 0 : od.Amount,
+                       };
+            // 排序需求
+            var issues = from t in temp
+                         group t by new { t.Id, t.ImgPath, t.Title, t.DiscountPrice, t.OriginalPrice, t.ReleasedDate, t.ClosedDate } into g
+                         select new
+                         {
+                             g.Key.Id,
+                             g.Key.ImgPath,
+                             g.Key.Title,
+                             g.Key.DiscountPrice,
+                             g.Key.OriginalPrice,
+                             g.Key.ReleasedDate,
+                             g.Key.ClosedDate,
+                             SalesCount = g.Sum(x => x.count),
+                         };
 
-            var cardList = issueRepo.GetAll();
+            issues = issues.OrderByDescending(i => i.SalesCount); //降序
+
+            var Price = DateTime.Now;
+            //Array.Sort(nums);
+
+            // 判斷
+            if (sort)
+            {
+                issues = issues.Where((i) => i.ReleasedDate <= Price);
+            }
+            else
+            {
+                issues = issues.Where((i) => (i.ReleasedDate > Price || i.ReleasedDate == null));
+            }
+
+
+            //var cardList = issueRepo.GetAll();
             var cardType = "recommend";
 
-            foreach (var item in cardList)
+            //找對對應值
+            foreach (var item in issues)
             {
                 var p = new CarouselCardViewModel()
                 {
                     CardType = cardType,
                     Id = item.Id,
-                    Memo = item.Memo,
+                    //Memo = item.Memo,
                     ImgPath = item.ImgPath,
                     Title = item.Title,
                     OriginalPrice = item.OriginalPrice,
