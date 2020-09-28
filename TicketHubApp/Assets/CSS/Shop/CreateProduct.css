@@ -34,3 +34,14 @@
 
 .createProduct .modal-xl {
   max-width: 900px; }
+
+.hint {
+  background-color: #ff8499;
+  color: #fff;
+  font-weight: bolder;
+  border-radius: 2px;
+  padding: 1px 3px;
+  margin: 0 10px; }
+
+.hintTag {
+  font-size: 10px; }

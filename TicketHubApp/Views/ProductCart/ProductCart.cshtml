@@ -59,7 +59,6 @@
                 <div class="col-1">
                     <i class="fas fa-trash-alt trash"></i>
                 </div>
-                @*<button onclick="deleteCartItem('703d8129-e1b1-4b03-b453-17347be7cfaf')">按我</button>*@
             </div>
         </template>
 
@@ -71,172 +70,189 @@
             <hr>
             <div class="container">
                 @*帳單細項*@
-                <div class="text-center row" id="payDetail">
-                </div>
-            </div>
-            <hr>
-            <template id="AccountInfo">
-                <div class="row col-12 border border-danger">
-                    <div class="col-2 ">
-                        <img class="w-100 rounded" src="../Assets/Images/img/bar.jpg" alt="Alternate Text" />
+                <div class="text-center row">
+                    <div class="row col-9" id="payDetail">
                     </div>
-                    <div class="w-100 col-10 d-flex flex-wrap">
-                        <p class="w-100 text-left ticketName">日月潭紅茶五吃</p>
-                        <p class="w-100 text-left text-muted ordate">2020/09/30</p>
-                        <p class="w-100 text-left text-muted unit">張數: 3</p>
-                        <div class="row d-flex flex-wrap w-100 justify-content-end">
-                            <div class="text-left mr-3"><p>總金額</p></div>
-                            <div class="w-40 text-left totlPrice"><p>450</p></div>
+                    <div class="col-3 flex-column justify-content-end  text-left d-flex">
+                        <p id="totalTickets">商品件數:</p>
+                        <p id="totalPrice">銷售總金額:</p>
+                        <div class="mt-5 text-right">
+                            <input class="btn w-50 btn-cust " value="確認結帳" />
                         </div>
                     </div>
                 </div>
-            </template>
-            @*<div id="accountCheck" class="d-flex justify-content-end account">
-
-                </div>*@
+            </div>
+            <hr>
         </div>
     </div>
 </div>
 
+<template id="AccountInfo">
+    <div class="col-2 ">
+        <img class="w-100 rounded" src="../Assets/Images/img/bar.jpg" alt="Alternate Text" />
+    </div>
+    <div class="w-100 col-10 d-flex flex-wrap">
+        <p class="w-100 text-left ticketName">日月潭紅茶五吃</p>
+        <p class="w-100 text-left text-muted ordate">2020/09/30</p>
+        <p class="w-100 text-left text-muted unit border-bottom pb-2"></p>
+        <div class="row d-flex flex-wrap w-100 justify-content-end">
+            <div class="text-left mr-3"><p>總金額</p></div>
+            <div class="w-40 text-left totlPrice"><p>450</p></div>
+        </div>
+    </div>
+</template>
 <script src="https://kit.fontawesome.com/bff1bb511a.js" crossorigin="anonymous"></script>
 
 <script>
 
 
 
-        var payDetail = document.getElementById("payDetail"); //最一開始的<div .row>空間
-        var shoppingCart = document.getElementById("shoppingCart");
+    var payDetail = document.getElementById("payDetail"); //最一開始的<div .row>空間
+    var shoppingCart = document.getElementById("shoppingCart");
 
-        var Cart = [
-            { id: "dd35a880-1a56-4b5d-ad34-121dcc6c2cc0", amount: 2, title: "ExampleShop Issue5", details: "平假日皆可抵用100元消費金額", price: 556.75 },
-            { id: "703d8129-e1b1-4b03-b453-17347be7cfaf", amount: 1, title: "ExampleShop Issue6", details: "平假日皆可抵用100元消費金額", price: 300.75 }];
+    @*var Cart = [
+        { id: "dd35a880-1a56-4b5d-ad34-121dcc6c2cc0", amount: 2, title: "ExampleShop Issue5", details: "平假日皆可抵用100元消費金額", price: 556.75 },
+        { id: "703d8129-e1b1-4b03-b453-17347be7cfaf", amount: 1, title: "ExampleShop Issue6", details: "平假日皆可抵用100元消費金額", price: 300.75 }];
 
-        var CartString = JSON.stringify(Cart);
-        localStorage.setItem("Cart", CartString);
+    var CartString = JSON.stringify(Cart);
+    localStorage.setItem("Cart", CartString);*@
 
     var GetCart = localStorage.getItem("Cart");
 
-        @*createList();*@
-        @*addTicket();*@
+    function AjaxFunction() {
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "../ProductCart/GetIssueData",
+            data: GetCart,
+            success: function (response) {
+                json = JSON.parse(response);
+                console.log(json)
+                addIssue(json);
 
-        function AjaxFunction() {
-            $.ajax({
-                type: "POST",
-                contentType: "application/json",
-                url: "../ProductCart/GetIssueData",
-                data: GetCart,
-                success: function (response) {
-                    json = JSON.parse(response);
-                    console.log(json)
-                    addIssue(json);
+                var numlist = document.querySelectorAll(".number");
+                for (let i of numlist) {
+                    console.log("123")
+                    i.addEventListener('change', function (e) {
+                        let num = e.target.value
+                        console.dir(e.target)
+                        console.dir(e.target.closest('.row'))
+                        let unitPrice = e.target.closest('.row').childNodes[7].innerText;
+                        e.target.closest('.row').childNodes[11].innerText = unitPrice * num;
+                        console.dir(unitPrice)
+                        if (num < 1) {
+                            e.target.value = 1
+                        }
+                    })
 
-                    var numlist = document.querySelectorAll(".number");
-
-                    for (let i of numlist) {
-                        console.log("123")
-                        i.addEventListener('change', function (e) {
-                            let num = e.target.value
-                            console.dir(e.target)
-                            console.dir(e.target.closest('.row'))
-                            let unitPrice = e.target.closest('.row').childNodes[7].innerText;
-                            e.target.closest('.row').childNodes[11].innerText = unitPrice * num;
-                            console.dir(unitPrice)
-                            if (num < 1) {
-                                e.target.value = 1
-                            }
-                        })
-                    }
-
-                    var trashlist = document.querySelectorAll(".trash");
-                    console.log(trashlist)
-                    for (let i of trashlist) {
-                        console.dir(i)
-                        i.addEventListener('click', function (e) {
-                            console.log('123')
-                            let tickets = e.target.closest('.case');
-                            tickets.remove();
-                        });
-
-                    }
-                },
-                error: function () {
-                    alert("failed")
                 }
-            });
-        }
 
-
-        window.onload = function () {
-
-            AjaxFunction();
-
-        }
-
-        function addIssue(productCartArray) {
-            @*console.log(productCartArray)*@
-            document.getElementById('shoppingCart').innerHTML = "";
-            let card = document.querySelector('#template');
-            console.log(card);
-
-            for (let i in productCartArray) {
-                let CartContent = card.content.cloneNode(true);    //複製小卡結點
-                let tPrice = productCartArray[i].Amount * productCartArray[i].DiscountPrice;
-                CartContent.querySelector("img").src = productCartArray[i].ImgPath;
-                CartContent.querySelector(".carttitle").innerText = productCartArray[i].Title;
-                CartContent.querySelector(".txth").innerText = productCartArray[i].Memo;
-                CartContent.querySelector(".disPrice").innerText = productCartArray[i].DiscountPrice;
-                CartContent.querySelector(".number").value = productCartArray[i].Amount;
-                CartContent.querySelector(".tPrice").innerHTML = tPrice;
-
-                shoppingCart.append(CartContent);
+                var trashlist = document.querySelectorAll(".trash");
+                console.log(trashlist)
+                for (let i of trashlist) {
+                    console.dir(i)
+                    i.addEventListener('click', function (e) {
+                        let tickets = e.target.closest('.case');
+                        tickets.remove();
+                        deleteLocalTrash(`${this.getAttribute("issueid")}`);
+                    });
+                }
+            },
+            error: function () {
+                alert("failed")
             }
+        })
+    }
+
+    function payCount() {
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "../ProductCart/GetIssueData",
+            data: GetCart,
+            success: function (info) {
+                infoJson = JSON.parse(info);
+                console.log(infoJson);
+                addTicket(infoJson);
+
+
+            }
+
+        })
+    }
+
+
+    window.onload = function () {
+
+        AjaxFunction();
+        payCount();
+    }
+
+    function addIssue(productCartArray) {
+        document.getElementById('shoppingCart').innerHTML = "";
+        let card = document.querySelector('#template');
+        console.log(card);
+
+        for (let i in productCartArray) {
+            let CartContent = card.content.cloneNode(true);    //複製小卡結點
+
+            let tPrice = productCartArray[i].Amount * productCartArray[i].DiscountPrice;
+            CartContent.querySelector("img").src = productCartArray[i].ImgPath;
+            CartContent.querySelector(".carttitle").innerText = productCartArray[i].Title;
+            CartContent.querySelector(".txth").innerText = productCartArray[i].Memo;
+            CartContent.querySelector(".disPrice").innerText = productCartArray[i].DiscountPrice;
+            CartContent.querySelector(".number").value = productCartArray[i].Amount;
+            CartContent.querySelector(".tPrice").innerHTML = tPrice;
+            CartContent.querySelector(".trash").setAttribute("issueId", productCartArray[i].Id);
+
+
+            shoppingCart.append(CartContent);
         }
+    };
+
+    function addTicket(productTicketArray) {
+        document.getElementById('payDetail').innerHTML = "";
+        let countTK = 0;
+        let countPrice = 0;
+        let tickets = document.querySelector('#AccountInfo');
+        for (let tt in productTicketArray) {
+            let ttContent = tickets.content.cloneNode(true);    //複製小卡結點
+
+            let ttPrice = productTicketArray[tt].Amount * productTicketArray[tt].DiscountPrice;
+            let time = new Date();
+            let timeNow = time.getFullYear() + "-" + [time.getMonth() + 1] + "-" + time.getDate();
+            console.log(timeNow)
+            ttContent.querySelector("img").src = productTicketArray[tt].ImgPath;
+            ttContent.querySelector(".ticketName").innerText = productTicketArray[tt].Title;
+            ttContent.querySelector(".ordate").innerHTML = timeNow;
+            ttContent.querySelector(".unit").innerText = "張數: " + productTicketArray[tt].Amount;
+            ttContent.querySelector(".totlPrice").innerHTML = ttPrice;
+            payDetail.append(ttContent);
+            countTK += Number(productTicketArray[tt].Amount);
+            countPrice += Number(ttPrice);
+        }
+        document.getElementById("totalTickets").innerText = "總購買張數: " + countTK + " 張";
+        document.getElementById("totalPrice").innerText = "總購買金額: " + countPrice + " 元";
+
+        console.log(countTK);
+        console.log(countPrice);
+    };
+
+    function deleteLocalTrash(id) {
+        console.log(id);
+        console.log("cc");
+        let getCartData = JSON.parse(localStorage.getItem('Cart'));
+        console.log(getCartData);
+        getCartData = getCartData.filter(x => x.id != id);
+        localStorage.setItem("Cart", JSON.stringify(getCartData));
+        upDateNewLocal();
+    }
 
 
-
-
-
-
-
-        @*function addTicket(productTicketArray) {
-            let tickets = document.querySelector('#AccountInfo');
-            for (var tt of productTicketArray) {
-                let ttContent = tickets.content.cloneNode(true);    //複製小卡結點
-                let ttPrice = tt.Amount * tt.DiscountPrice;
-                let time = new Date();
-                let timeNow = time.getFullYear() + "-" + time.getMonth() + 1 + "-" + time.getDate();
-                console.log(timeNow)
-
-                ttContent.querySelector("img").src = tt.ImgPath;
-                ttContent.querySelector(".ticketName").innerText = tt.Title;
-                ttContent.querySelector(".ordate").innerHTML = timeNow;
-                ttContent.querySelector(".unit").value = tt.Amount;
-                ttContent.querySelector(".totlPrice").innerHTML = ttPrice;
-
-                payDetail.append(ttContent);
-            }
-        };*@
-
-        @* l = window.localStorage;*@
-        @*function createList(Cart) {
-
-            let iss = JSON.parse(storage);
-            console.log(iss);
-            shoppingCart.innerHTML = ""
-            for (let i = 0; i < storage.length; i++) {
-
-                let CartContent = card.content.cloneNode(true);    //複製小卡結點
-                let tPrice = item.Amount * item.DiscountPrice;
-                CartContent.querySelector("img").src = item.ImgPath;
-                CartContent.querySelector(".carttitle").innerText = item.Title;
-                CartContent.querySelector(".txth").innerText = item.Memo;
-                CartContent.querySelector(".disPrice").innerText = item.DiscountPrice;
-                CartContent.querySelector(".number").value = item.Amount;
-                CartContent.querySelector(".tPrice").innerHTML = tPrice;
-
-                shoppingCart.append(CartContent);
-            }
-        }*@
+    function upDateNewLocal() {
+            window.location.reload();
+    }
+     @*setTimeout('upDateNewLocal()', 5000);*@
 
 
 

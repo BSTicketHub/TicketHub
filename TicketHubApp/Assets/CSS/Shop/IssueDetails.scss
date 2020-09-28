@@ -9,17 +9,11 @@
     &:hover {
         background-color: #fff;
         color: #2a94db;
-        &~#issue:after{
-            /*display: block;*/
-        }
-        opacity: 1;
     }
-
     &:focus {
         outline: none;
         box-shadow: none;
     }
-
     &:active {
         background-color: #2a94db;
         color: #fff;
@@ -30,24 +24,23 @@
     border-radius: 5px;
 }
 
+.ticket{
+    border: 1px solid lightgray;
+}
 
-#issue{
-    border: 1px solid darkgray;
-    &:after{
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        background: rgba(0,0,0,0.5);
-        display: none
-    }
+#mask {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0,0,0,0.4);
+    opacity: 0;
+    margin: 32px 16px;
     &:hover{
-        &:after{
-            display: block;
-        }
-        &+button{
+        opacity: 1;
+        button{
             opacity: 1;
         }
     }
