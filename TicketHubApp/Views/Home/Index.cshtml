@@ -181,154 +181,103 @@
 <!-- ------ -->
 @section endJS{
     <script>
-
+        var count = 6;
         //var show = document.getElementById("cardShow"); //template id
         //body.onload = fetchData(); //在頁面载入完成后 觸發
 
         function fetchData() {
+            var scrollPosition = window.pageYOffset;
             var ticketcard;
-
             $.ajax({
                 type: 'GET',
                 url: 'CardApi',
+                data: { currCount: count },
                 async: false,
                 success: function (json) {
                     //json = JSON.parse(json);
                     //genTable(json, parentId, template);
-                    console.log(json)
-                    alert("123");
                     ticketcard = json.Items
+                    count += 6;
                 }
             });
 
             let card = document.getElementById("moreCard")
-            card.innerHTML = "";
 
+            // 動態載入
             for (var item of ticketcard)
             {
-                console.log(item)
                 //console.log(item);
-                //let CardContent = card.content.cloneNode(true);
-                //let a = getElementById("card_a");
-                //let img = getElementById("card_img");
-                //let title = getElementById("Title");
-                //let details = getElementById("detials");
-
-                //CardContent.querySelector("img").src = productCartArray[i].ImgPath;
 
                 let html = `
-                    <div class="product-item col-lg-4 col-md-6 col-sm-8">
-                        <a href="/ProductDescription/ProductDescription/${item.Id}" target="" id="card_a">
-                            <div class="product-img lazyload-img">
-                                <img class="img-md img-fluid lazyload" src="${item.ImgPath}"
-                                     data-original="" title="${item.Title}" id="card_img">
-                                <div class="map-subject">
-                                    <div class="label-icon i-map">
-                                        <span class="local-tag">信義區</span>
-                                    </div>
-                                    <div class="label-status">
-                                        <span class="status-tag">免預約</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="wish-btn">
-                                <span class="iconify icon-c-white" data-icon="clarity:heart-solid"
-                                      data-inline="false"></span>
-                            </div>
-                        </a>
-                        <div class="product-detail">
-                            <input type="hidden" id="chart_id" value="${item.Id}">
-                            <h3 class="ellipsis" id="Title">${item.Title}</h3>
-                            <h4 class="ellipsis" id="details">${item.Memo}</h4>
-                            <div class="tagblock">
-                                <div class="d-flex flex-row tagBox">
-                                    <div class="tag tag-blue">
-                                        最新
-                                    </div>
-                                    <div class="tag tag-green">
-                                        國旅卡
-                                    </div>
-                                    <div class="tag tag-red">
-                                        可外帶
-                                    </div>
-                                    <div class="tag tag-orange">
-                                        首賣
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pricewrap">
-                                <div class="d-flex flex-row flex-column">
-                                    <div class="priceBox ml-auto">
-                                        <div class="price d-flex">
-                                            <div class="original line-through">
-                                                $${item.OriginalPrice}
-                                            </div>
-                                            <div class="current" id="DiscountPrice">
-                                                $${item.DiscountPrice}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex">
-                                    <div class="ml-auto sales-volume">
-                                        售44份
-                                    </div>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-md-7">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <button class="btn btn-secondary sub_button" id="">
-                                                <span class="iconify"
-                                                      data-icon="ant-design:minus-outlined"
-                                                      data-inline="false"></span>
-                                            </button>
-                                        </div>
-                                        <input type="number" id="cartcount" class="form-control cartcount" value="1">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-secondary add_button" id="">
-                                                <span class="iconify"
-                                                      data-icon="codicon:add" data-inline="false"></span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-5">
-                                    <button onclick="AddCartEvent()" class="btn btn-block btn-info addCart" id="addCart">加入購買</button>
-                                </div>
-                            </div>
-                        </div>
+    <div class="col-md-4 col-sm-12">
+    <div class="product-item rounded border overflow-hidden mx-2 mt-4">
+    <a href="/ProductDescription/ProductDescription/${item.Id}" target="">
+        <div class="product-img img-h-md lazyload-img">
+            <img src="${item.ImgPath}" alt="${item.Title}">
+        </div>
+    </a>
+    <div class="product-detail p-2">
+        <input type="hidden" id="chart_id" value="${item.Id}">
+        <div class="d-flex justify-content-between align-items-center mb-1">
+            <h3 class="text-md-1 mb-0" id="Title">${item.Title}</h3>
+            
+        </div>
+        <h4 class="text-md-1 text-muted mb-1 text-overflow-2" id="details">${item.Memo}</h4>
+        <div class="d-flex">
+            <div class="tag tag-blue">
+                最新
+            </div>
+            <div class="tag tag-green">
+                國旅卡
+            </div>
+            <div class="tag tag-red">
+                可外帶
+            </div>
+            <div class="tag tag-orange">
+                首賣
+            </div>
+        </div>
+        <div class="d-flex justify-content-end">
+            <span class="text-line-through text-sm-9 text-muted align-self-end">
+                $${item.OriginalPrice}
+            </span>
+            <span class="currentPrice text-md-3" id="DiscountPrice">
+                $${item.DiscountPrice}
+            </span>
+        </div>
+        <div class="text-muted text-right text-sm-9">售${item.Amount}份</div>
+        <hr>
+        <div class="row">
+            <div class="col-7">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <button class="btn btn-secondary sub_button" id="">
+                            <span class="iconify" data-icon="ant-design:minus-outlined" data-inline="false"></span>
+                        </button>
                     </div>
+                    <input type="number" id="cartcount" class="form-control cartcount" value="1">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary add_button" id="">
+                            <span class="iconify" data-icon="codicon:add" data-inline="false"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <button class="btn btn-cust w-100 addCart" id="addCart">加入購買</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
                     `
-                card.innerHTML += html
+                card.innerHTML += html;
+                window.scrollTo(100, scrollPosition);
             }
         }
 
-
-
-
-
-
-
-
-
-        //選取元素
-        function $g(selector) {
-            //判斷是否為id selector
-            if (selector.includes('#') && !selector.includes(' ')) {
-                //回傳Element
-                return document.querySelector(selector);
-            }
-
-            //回傳NodeList集合
-            let nodelist = document.querySelectorAll(selector);
-
-            return nodelist.length == 1 ? nodelist[0] : nodelist;
-        }
 
 
     </script>

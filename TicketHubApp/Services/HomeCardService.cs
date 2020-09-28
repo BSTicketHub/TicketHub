@@ -11,6 +11,9 @@ namespace TicketHubApp.Services
 {
     public class HomeCardService
     {
+
+        private TicketHubContext _context = new TicketHubContext();
+        //private readonly string _userid = HttpContext.Current.User.Identity.GetUserId();
         //Action
 
         //限時優惠
@@ -42,23 +45,44 @@ namespace TicketHubApp.Services
         }
 
         //最新推出
-        public SortNewCardListViewModel GetSortNewCard()
+        public SortNewCardListViewModel GetSortNewCard(int count)
         {
+            var numOfEachTimes = 6;
             var result = new SortNewCardListViewModel();
             result.Items = new List<SortNewCardViewModel>();
             TicketHubContext context = new TicketHubContext();
             GenericRepository<Issue> issueRepo = new GenericRepository<Issue>(context);
 
+            var temp = from i in context.Issue
+                       join od in context.OrderDetail on i.Id equals od.IssueId into j
+                       from od in j.DefaultIfEmpty()
+                       select new
+                       {
+                           i.Id,
+                           i.ImgPath,
+                           i.Title,
+                           i.Memo,
+                           i.OriginalPrice,
+                           i.DiscountPrice,
+                           i.IssuedDate,
+                           amount = od == null ? 0 : od.Amount
+                       };
+            var issues = from t in temp
+                         group t by new { t.Id, t.ImgPath, t.Title, t.Memo,t.OriginalPrice, t.DiscountPrice, t.IssuedDate } into g
+                         select new
+                         {
+                             g.Key.Id,
+                             g.Key.ImgPath,
+                             g.Key.Title,
+                             g.Key.Memo,
+                             g.Key.OriginalPrice,
+                             g.Key.DiscountPrice,
+                             g.Key.IssuedDate,
+                             SalesAmount = g.Sum(x => x.amount),
+                         };
+            var cardList = issues.OrderByDescending(x => x.IssuedDate).Skip(count).Take(numOfEachTimes);
 
-
-            var cardList = issueRepo.GetAll();
-
-            ////排序
-            //string[] words = { "台式", "中式", "日式", "韓式", "美式", "泰式", "西式", "法式", "印度料理", "越南料理" };
-
-            //IEnumerable<string> query = from word in words
-            //                            orderby word.Length
-            //                            select word;
+            
 
 
             foreach (var item in cardList)
@@ -70,7 +94,8 @@ namespace TicketHubApp.Services
                     ImgPath = item.ImgPath,
                     Title = item.Title,
                     OriginalPrice = item.OriginalPrice,
-                    DiscountPrice = item.DiscountPrice
+                    DiscountPrice = item.DiscountPrice,
+                    Amount = (int)item.SalesAmount
                 };
 
                 result.Items.Add(p);
@@ -87,21 +112,71 @@ namespace TicketHubApp.Services
             TicketHubContext context = new TicketHubContext();
             GenericRepository<Issue> issueRepo = new GenericRepository<Issue>(context);
 
+            //第一步驟
+            //排序值
+            var temp = from i in _context.Issue
+                       join od in _context.OrderDetail on i.Id equals od.IssueId into j
+                       from od in j.DefaultIfEmpty()
+                       select new
+                       {
+                           i.Id,
+                           i.ImgPath,
+                           i.Title,
+                           i.DiscountPrice,
+                           i.OriginalPrice,
+                           i.DiscountRatio,
+                           i.ReleasedDate,
+                           i.ClosedDate,
+                           i.Amount,
+                           count = od == null ? 0 : od.Amount,
+                       };
+            // 排序需求
+            var issues = from t in temp
+                         group t by new { t.Id, t.ImgPath, t.Title, t.DiscountPrice, t.OriginalPrice, t.ReleasedDate, t.ClosedDate, t.DiscountRatio, t.Amount } into g
+                         select new
+                         {
+                             g.Key.Id,
+                             g.Key.ImgPath,
+                             g.Key.Title,
+                             g.Key.DiscountPrice,
+                             g.Key.OriginalPrice,
+                             g.Key.DiscountRatio,
+                             g.Key.ReleasedDate,
+                             g.Key.ClosedDate,
+                             g.Key.Amount,
+                             SalesCount = g.Sum(x => x.count),
+                         };
 
-            var cardList = issueRepo.GetAll();
+            issues = issues.OrderByDescending(i => i.SalesCount); //降序
+            var test = issues.ToList();
+            var TimeNow = DateTime.Now;
+
+            // 判斷上架 上架早於現在 且 判斷下架 下架大於現在
+            issues = issues.Where((i) => (i.ReleasedDate <= TimeNow)&& (i.ClosedDate >= TimeNow));
+            test = issues.ToList();
+            
+            // 總庫存 - 銷售數量 = 現有庫存
+            issues = issues.Where((i) => (i.Amount - i.SalesCount) > 0);
+            test = issues.ToList();
+            var Amount = issues.OrderByDescending(i => i.Amount);
+
+
+            //var cardList = issueRepo.GetAll();
             var cardType = "bestseller";
 
-            foreach (var item in cardList)
+            foreach (var item in issues)
             {
+                //頁面顯示資料
                 var p = new CarouselCardViewModel()
                 {
                     CardType = cardType,
                     Id = item.Id,
-                    Memo = item.Memo,
                     ImgPath = item.ImgPath,
                     Title = item.Title,
                     OriginalPrice = item.OriginalPrice,
-                    DiscountPrice = item.DiscountPrice
+                    DiscountPrice = item.DiscountPrice,
+                    DiscountRatio = item.DiscountRatio,
+                    Amount = item.Amount
                 };
 
                 result.Items.Add(p);
@@ -118,17 +193,61 @@ namespace TicketHubApp.Services
             TicketHubContext context = new TicketHubContext();
             GenericRepository<Issue> issueRepo = new GenericRepository<Issue>(context);
 
+            //第一步驟
+            //排序值
+            var temp = from i in _context.Issue
+                       join od in _context.OrderDetail on i.Id equals od.IssueId into j
+                       from od in j.DefaultIfEmpty()
+                       select new
+                       {
+                           i.Id,
+                           i.ImgPath,
+                           i.Title,
+                           i.DiscountPrice,
+                           i.OriginalPrice,
+                           i.DiscountRatio,
+                           i.ReleasedDate,
+                           i.ClosedDate,
+                           i.Amount,
+                           count = od == null ? 0 : od.Amount,
+                       };
+            // 排序需求
+            var issues = from t in temp
+                         group t by new { t.Id, t.ImgPath, t.Title, t.DiscountPrice, t.OriginalPrice, t.DiscountRatio, t.ReleasedDate, t.ClosedDate, t.Amount } into g
+                         select new
+                         {
+                             g.Key.Id,
+                             g.Key.ImgPath,
+                             g.Key.Title,
+                             g.Key.DiscountPrice,
+                             g.Key.OriginalPrice,
+                             g.Key.ReleasedDate,
+                             g.Key.DiscountRatio,
+                             g.Key.ClosedDate,
+                             g.Key.Amount,
+                             SalesCount = g.Sum(x => x.count),
+                         };
 
-            var cardList = issueRepo.GetAll();
+            issues = issues.OrderByDescending(i => i.DiscountRatio == Math.Round(i.DiscountPrice * i.OriginalPrice)); //降序
+
+            var test = DateTime.Now;
+            // 判斷上架、下架
+            issues = issues.Where((i) => (i.ReleasedDate <= test) && (i.ClosedDate >= test));
+            // 折扣率 Math.Round(discount * price)
+            var discount = issues.OrderBy(i => i.DiscountRatio);
+
+            
+            //var cardList = issueRepo.GetAll();
             var cardType = "recommend";
 
-            foreach (var item in cardList)
+            //找對對應值
+            foreach (var item in issues)
             {
                 var p = new CarouselCardViewModel()
                 {
                     CardType = cardType,
                     Id = item.Id,
-                    Memo = item.Memo,
+                    //Memo = item.Memo,
                     ImgPath = item.ImgPath,
                     Title = item.Title,
                     OriginalPrice = item.OriginalPrice,
