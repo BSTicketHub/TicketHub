@@ -2,7 +2,7 @@
 
 <div class="product-item rounded border overflow-hidden mx-2">
     <a href="/ProductDescription/ProductDescription/@Model.Id">
-        <div class="discount-label">7.3折</div>
+        <div class="discount-label">@Model.DiscountRatio</div>
         <div class="product-img">
             <img alt="@Model.Title" src="@Model.ImgPath">
         </div>
@@ -26,6 +26,6 @@
             <span class="text-sm-9">起</span>
         </div>
         <div class="text-muted text-right text-sm-9">剩37份</div>
-        <div class="card_addToCart btn btn-cust w-100 mt-2" type="button">放入購物車</div>
+        <div class="btn btn-cust w-100 mt-2 card_addToCart" type="button">放入購物車</div>
     </div>
 </div>

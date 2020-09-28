@@ -181,71 +181,36 @@
 <!-- ------ -->
 @section endJS{
     <script>
-
-        // 熱賣票劵
-        $.ajax({
-            type: 'GET',
-            url: 'BestSellerCardApi',
-            success: function (json) {
-                //alert("123");
-                //json = JSON.parse(json);
-                //genTable(json, parentId, template);
-                json = JSON.parse(json);
-                console.log(json)
-
-            }
-        });
-
-
+        var count = 6;
         //var show = document.getElementById("cardShow"); //template id
         //body.onload = fetchData(); //在頁面载入完成后 觸發
 
-        //$.ajax({
-        //    type: 'GET',
-        //    url: 'CardApi',
-        //    async: false,
-        //    success: function (json) {
-        //        //json = JSON.parse(json);
-        //        //genTable(json, parentId, template);
-        //        console.log(json)
-        //        ticketcard = json.Items
-        //        //alert("123");
-        //    }
-        //});
-
         function fetchData() {
+            var scrollPosition = window.pageYOffset;
             var ticketcard;
-
             $.ajax({
                 type: 'GET',
                 url: 'CardApi',
+                data: { currCount: count },
                 async: false,
                 success: function (json) {
                     //json = JSON.parse(json);
                     //genTable(json, parentId, template);
-                    console.log(json)
                     ticketcard = json.Items
-                    //alert("123");
+                    count += 6;
                 }
             });
 
             let card = document.getElementById("moreCard")
-            card.innerHTML = "";
 
+            // 動態載入
             for (var item of ticketcard)
             {
-                console.log(item)
                 //console.log(item);
-                //let CardContent = card.content.cloneNode(true);
-                //let a = getElementById("card_a");
-                //let img = getElementById("card_img");
-                //let title = getElementById("Title");
-                //let details = getElementById("detials");
-
-                //CardContent.querySelector("img").src = productCartArray[i].ImgPath;
 
                 let html = `
-    <div class="product-item rounded border overflow-hidden mx-2 mt-4 col-md-4 col-sm-12">
+    <div class="col-md-4 col-sm-12">
+    <div class="product-item rounded border overflow-hidden mx-2 mt-4">
     <a href="/ProductDescription/ProductDescription/${item.Id}" target="">
         <div class="product-img img-h-md lazyload-img">
             <img src="${item.ImgPath}" alt="${item.Title}">
@@ -255,10 +220,7 @@
         <input type="hidden" id="chart_id" value="${item.Id}">
         <div class="d-flex justify-content-between align-items-center mb-1">
             <h3 class="text-md-1 mb-0" id="Title">${item.Title}</h3>
-            <a href="" class="whish-btn hov-color-shop text-md-6">
-                <span class="iconify" data-icon="eva:heart-outline" data-inline="false"></span>
-                @*<span class="iconify" data-icon="eva:heart-fill" data-inline="false"></span>*@
-            </a>
+            
         </div>
         <h4 class="text-md-1 text-muted mb-1 text-overflow-2" id="details">${item.Memo}</h4>
         <div class="d-flex">
@@ -283,7 +245,7 @@
                 $${item.DiscountPrice}
             </span>
         </div>
-        <div class="text-muted text-right text-sm-9">售44份</div>
+        <div class="text-muted text-right text-sm-9">售${item.Amount}份</div>
         <hr>
         <div class="row">
             <div class="col-7">
@@ -302,39 +264,20 @@
                 </div>
             </div>
             <div class="col-5">
-                <button class="btn btn-cust w-100" id="addCart">加入購買</button>
+                <button class="btn btn-cust w-100 addCart" id="addCart">加入購買</button>
             </div>
         </div>
     </div>
 </div>
+</div>
 
 
                     `
-                card.innerHTML += html
+                card.innerHTML += html;
+                window.scrollTo(100, scrollPosition);
             }
         }
 
-
-
-
-
-
-
-
-
-        //選取元素
-        function $g(selector) {
-            //判斷是否為id selector
-            if (selector.includes('#') && !selector.includes(' ')) {
-                //回傳Element
-                return document.querySelector(selector);
-            }
-
-            //回傳NodeList集合
-            let nodelist = document.querySelectorAll(selector);
-
-            return nodelist.length == 1 ? nodelist[0] : nodelist;
-        }
 
 
     </script>
