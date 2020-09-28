@@ -4,13 +4,13 @@ body {
 
 .container {
     .row {
-        >div {
+        > div {
             height: auto;
         }
 
         .restaurant-area {
             .tag-list {
-                >div {
+                > div {
                     font-size: 20px;
                     background-color: #26BEC9;
                     color: white
@@ -55,8 +55,9 @@ body {
                             font-size: 20px;
                             right: 10px;
                             top: 10px;
-                            &:hover{
-                                cursor:pointer;
+
+                            &:hover {
+                                cursor: pointer;
                             }
                         }
 
@@ -81,11 +82,11 @@ body {
                         left: 30%;
                         overflow: auto;
                         transition: .5s;
-                        
+
                         &.show {
                             height: 250px;
                         }
-                        
+
                         .ticket-list {
                             .ticket {
                                 &:hover {
@@ -95,7 +96,6 @@ body {
 
                                 height: 100px;
                                 // border-left:3px solid #26BEC9;
-
                                 .img-area {
                                     width: 30%;
 
@@ -134,15 +134,18 @@ body {
         }
 
         .map-area {
-            padding: 0!important;
+            padding: 0 !important;
             height: 100vh;
             position: sticky;
             top: 0px;
 
             .map {
                 height: inherit;
+                #shopImage{
+                    width:80%;
+                    height:100px;
+                }
             }
         }
-
     }
 }
