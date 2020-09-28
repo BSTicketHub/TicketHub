@@ -21,9 +21,8 @@ namespace TicketHubApp.Services
             var result = from i in issueList
                          join s in _context.Shop on i.ShopId equals s.Id
                          join tg in _context.IssueTag on i.Id equals tg.IssueId
-                         join t in _context.Tag on tg.TagId equals t.Id
-                         where SearchString.Contains(s.City.Remove(2)) || SearchString.Contains(s.District.Remove(2))
-                                || (SearchString.Contains(t.Name))
+                         join t in _context.Tag on tg.TagId equals t.Id 
+                         where SearchString.Contains(i.Category)
                          select new ShopIssueViewModel
                          {
                              Id = i.Id,
