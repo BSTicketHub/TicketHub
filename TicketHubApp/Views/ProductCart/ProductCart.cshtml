@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="d-flex justify-content-end">
-                <input type="button" value="移至結帳" class="btn btn-info d-flex justify-self-end" />
+                <input type="button" value="移至結帳" class="btn btn-info d-flex justify-self-end goCount" />
             </div>
 
         </div>
@@ -91,7 +91,7 @@
     <div class="col-2 ">
         <img class="w-100 rounded" src="../Assets/Images/img/bar.jpg" alt="Alternate Text" />
     </div>
-    <div class="w-100 col-10 d-flex flex-wrap">
+    <div class="w-100 col-10 d-flex flex-wrap bill">
         <p class="w-100 text-left ticketName">日月潭紅茶五吃</p>
         <p class="w-100 text-left text-muted ordate">2020/09/30</p>
         <p class="w-100 text-left text-muted unit border-bottom pb-2"></p>
@@ -119,52 +119,51 @@
 
     var GetCart = localStorage.getItem("Cart");
 
-    function AjaxFunction() {
-        $.ajax({
-            type: "POST",
-            contentType: "application/json",
-            url: "../ProductCart/GetIssueData",
-            data: GetCart,
-            success: function (response) {
-                json = JSON.parse(response);
-                console.log(json)
-                addIssue(json);
+    window.onload = function () {
 
-                var numlist = document.querySelectorAll(".number");
-                for (let i of numlist) {
-                    console.log("123")
-                    i.addEventListener('change', function (e) {
-                        let num = e.target.value
-                        console.dir(e.target)
-                        console.dir(e.target.closest('.row'))
-                        let unitPrice = e.target.closest('.row').childNodes[7].innerText;
-                        e.target.closest('.row').childNodes[11].innerText = unitPrice * num;
-                        console.dir(unitPrice)
-                        if (num < 1) {
-                            e.target.value = 1
-                        }
-                    })
+        function AjaxFunction() {
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                url: "../ProductCart/GetIssueData",
+                data: GetCart,
+                success: function (response) {
+                    json = JSON.parse(response);
+                    @*console.log(json)*@
+                    addIssue(json);
 
+                    var numlist = document.querySelectorAll(".number");
+                    for (let i of numlist) {
+
+                        i.addEventListener('change', function (e) {
+                            let num = e.target.value
+                            let unitPrice = e.target.closest('.row').childNodes[7].innerText;
+                            e.target.closest('.row').childNodes[11].innerText = unitPrice * num;
+                            if (num < 1) {
+                                e.target.value = 1
+                            }
+                        })
+
+                    }
+
+                    var trashlist = document.querySelectorAll(".trash");
+                    console.log(trashlist)
+                    for (let i of trashlist) {
+                        @*console.dir(i)*@
+                        i.addEventListener('click', function (e) {
+                            let tickets = e.target.closest('.case');
+                            tickets.remove();
+                            deleteLocalTrash(`${this.getAttribute("issueid")}`);
+                        });
+                    }
+                },
+                error: function () {
+                    alert("failed")
                 }
+            })
+        }
 
-                var trashlist = document.querySelectorAll(".trash");
-                console.log(trashlist)
-                for (let i of trashlist) {
-                    console.dir(i)
-                    i.addEventListener('click', function (e) {
-                        let tickets = e.target.closest('.case');
-                        tickets.remove();
-                        deleteLocalTrash(`${this.getAttribute("issueid")}`);
-                    });
-                }
-            },
-            error: function () {
-                alert("failed")
-            }
-        })
-    }
-
-    function payCount() {
+    @*function payCount() {
         $.ajax({
             type: "POST",
             contentType: "application/json",
@@ -173,88 +172,119 @@
             success: function (info) {
                 infoJson = JSON.parse(info);
                 console.log(infoJson);
-                addTicket(infoJson);
-
 
             }
 
         })
-    }
+    }*@
 
 
-    window.onload = function () {
+
 
         AjaxFunction();
-        payCount();
-    }
-
-    function addIssue(productCartArray) {
-        document.getElementById('shoppingCart').innerHTML = "";
-        let card = document.querySelector('#template');
-        console.log(card);
-
-        for (let i in productCartArray) {
-            let CartContent = card.content.cloneNode(true);    //複製小卡結點
-
-            let tPrice = productCartArray[i].Amount * productCartArray[i].DiscountPrice;
-            CartContent.querySelector("img").src = productCartArray[i].ImgPath;
-            CartContent.querySelector(".carttitle").innerText = productCartArray[i].Title;
-            CartContent.querySelector(".txth").innerText = productCartArray[i].Memo;
-            CartContent.querySelector(".disPrice").innerText = productCartArray[i].DiscountPrice;
-            CartContent.querySelector(".number").value = productCartArray[i].Amount;
-            CartContent.querySelector(".tPrice").innerHTML = tPrice;
-            CartContent.querySelector(".trash").setAttribute("issueId", productCartArray[i].Id);
+        @*payCount();*@
 
 
-            shoppingCart.append(CartContent);
-        }
-    };
+        function addIssue(productCartArray) {
+            document.getElementById('shoppingCart').innerHTML = "";
+            let card = document.querySelector('#template');
+        @*console.log(card);*@
 
-    function addTicket(productTicketArray) {
-        document.getElementById('payDetail').innerHTML = "";
-        let countTK = 0;
-        let countPrice = 0;
-        let tickets = document.querySelector('#AccountInfo');
-        for (let tt in productTicketArray) {
-            let ttContent = tickets.content.cloneNode(true);    //複製小卡結點
+            for (let i in productCartArray) {
+                let CartContent = card.content.cloneNode(true);    //複製小卡結點
 
-            let ttPrice = productTicketArray[tt].Amount * productTicketArray[tt].DiscountPrice;
-            let time = new Date();
-            let timeNow = time.getFullYear() + "-" + [time.getMonth() + 1] + "-" + time.getDate();
-            console.log(timeNow)
-            ttContent.querySelector("img").src = productTicketArray[tt].ImgPath;
-            ttContent.querySelector(".ticketName").innerText = productTicketArray[tt].Title;
-            ttContent.querySelector(".ordate").innerHTML = timeNow;
-            ttContent.querySelector(".unit").innerText = "張數: " + productTicketArray[tt].Amount;
-            ttContent.querySelector(".totlPrice").innerHTML = ttPrice;
-            payDetail.append(ttContent);
-            countTK += Number(productTicketArray[tt].Amount);
-            countPrice += Number(ttPrice);
-        }
-        document.getElementById("totalTickets").innerText = "總購買張數: " + countTK + " 張";
-        document.getElementById("totalPrice").innerText = "總購買金額: " + countPrice + " 元";
-
-        console.log(countTK);
-        console.log(countPrice);
-    };
-
-    function deleteLocalTrash(id) {
-        console.log(id);
-        console.log("cc");
-        let getCartData = JSON.parse(localStorage.getItem('Cart'));
-        console.log(getCartData);
-        getCartData = getCartData.filter(x => x.id != id);
-        localStorage.setItem("Cart", JSON.stringify(getCartData));
-        upDateNewLocal();
-    }
+                let tPrice = productCartArray[i].Amount * productCartArray[i].DiscountPrice;
+                CartContent.querySelector("img").src = productCartArray[i].ImgPath;
+                CartContent.querySelector(".carttitle").innerText = productCartArray[i].Title;
+                CartContent.querySelector(".txth").innerText = productCartArray[i].Memo;
+                CartContent.querySelector(".disPrice").innerText = productCartArray[i].DiscountPrice;
+                CartContent.querySelector(".number").value = productCartArray[i].Amount;
+                CartContent.querySelector(".tPrice").innerHTML = tPrice;
+                CartContent.querySelector(".trash").setAttribute("issueId", productCartArray[i].Id);
 
 
-    function upDateNewLocal() {
-            window.location.reload();
-    }
+                shoppingCart.append(CartContent);
+            }
+        };
+
+        function addTicket(productTicketArray) {
+            document.getElementById('payDetail').innerHTML = "";
+            let countTK = 0;
+            let countPrice = 0;
+            let tickets = document.querySelector('#AccountInfo');
+            for (let tt in productTicketArray) {
+                let ttContent = tickets.content.cloneNode(true);    //複製小卡結點
+
+                let time = new Date();
+                let timeNow = time.getFullYear() + "-" + [time.getMonth() + 1] + "-" + time.getDate();
+                console.log(timeNow)
+                ttContent.querySelector("img").src = productTicketArray[tt].img;
+                ttContent.querySelector(".ticketName").innerText = productTicketArray[tt].title;
+                ttContent.querySelector(".ordate").innerHTML = timeNow;
+                ttContent.querySelector(".unit").innerText = "張數: " + productTicketArray[tt].amount;
+                ttContent.querySelector(".totlPrice").innerHTML = productTicketArray[tt].total;
+                payDetail.append(ttContent);
+                countTK += Number(productTicketArray[tt].amount);
+                countPrice += Number(productTicketArray[tt].total);
+            }
+            document.getElementById("totalTickets").innerText = "總購買張數: " + countTK + " 張";
+            document.getElementById("totalPrice").innerText = "總購買金額: " + countPrice + " 元";
+
+            console.log(countTK);
+            console.log(countPrice);
+        };
+
+        function deleteLocalTrash(id) {
+            console.log(id);
+            console.log("cc");
+            let getCartData = JSON.parse(localStorage.getItem('Cart'));
+        @*console.log(getCartData);*@
+            getCartData = getCartData.filter(x => x.id != id);
+            localStorage.setItem("Cart", JSON.stringify(getCartData));
+            @*upDateNewLocal();*@
+        };
+
+        //function upDateNewLocal() {
+        //    window.location.reload();
+        //};
      @*setTimeout('upDateNewLocal()', 5000);*@
 
+        function storageNumChange() {
+            let caseValue = document.querySelectorAll(".case");
+            console.log(caseValue);
+            let array = [];
+            for (let i of caseValue) {
+                let obj = {
+                    img: i.children[1].children[0].currentSrc,
+                    title: i.children[2].children[0].innerText,
+                    amount: i.children[4].children[0].value,
+                    total: i.children[5].children[0].innerText
+                }
+                array.push(obj);
+                console.log(array)
+            }
+            return array
+        }
 
+        document.querySelector('.goCount').addEventListener('click', function () {
+            let caseValue = document.querySelectorAll(".case");
+            console.log(caseValue);
+            let array = [];
+            for (let i of caseValue) {
+                let obj = {
+                    img: i.children[1].children[0].currentSrc,
+                    title: i.children[2].children[0].innerText,
+                    amount: i.children[4].children[0].value,
+                    total: i.children[5].innerText
+                }
+                array.push(obj);
+                console.log(array)
+            }
+
+            addTicket(array)
+
+        })
+    }
 
 </script>
 
