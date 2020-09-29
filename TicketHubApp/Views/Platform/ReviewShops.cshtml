@@ -12,11 +12,11 @@
     <table id="reviewShopsTable" class="table table-bordered table-hover" style="width:100%">
         <thead>
             <tr class="text-nowrap">
+                <th>商家代號</th>
                 <th>商家名稱</th>
                 <th>商家電話</th>
                 <th>商家傳真</th>
                 <th>商家地址</th>
-                <th>網站連結</th>
                 <th>申請日期</th>
             </tr>
         </thead>
@@ -30,17 +30,46 @@
 
 <script>
     $(document).ready(function () {
-        console.log($('#reviewShopsTable'));
         $('#reviewShopsTable').DataTable({
-            "ajax": '../Platform/GetShopsToBeReviewdJson',
+            "ajax": {
+                "type": "GET",
+                "url": "../Platform/GetShopsToBeReviewdJson",
+            },
             "scrollX": true,
             "stateSave": true,
-            "columns": [
-                { "width": "20%" },
-                { "width": "20%" },
-                { "width": "10%" },
-                { "width": "10%" },
-            ]
         });
+    });
+
+    $("#reviewShopsTable").on("mouseenter", "tr", function () {
+        let id = this.firstChild.innerText;
+        let div = document.createElement('div');
+        let accept = document.createElement('a');
+        let reject = document.createElement('a');
+
+        accept.innerHTML = '<span class="iconify" data-icon="mdi:check-bold" data-inline="false"></span>';
+      
+        accept.setAttribute('class', 'btn-sm btn-success');
+        accept.setAttribute('href', `/Platform/AcceptShopRegister/${id}`); 
+        accept.setAttribute('style', 'margin:3px');
+
+        let td = this.querySelector('td:last-child');
+        td.setAttribute('style', 'position:relative;');
+        
+        reject.innerHTML = '<span class="iconify" data-icon="maki:cross-11" data-inline="false"></span>';
+        reject.setAttribute('class', 'btn-sm btn-danger');
+        reject.setAttribute('href', `#`);
+
+
+        div.appendChild(accept);
+        div.appendChild(reject);
+
+        td.append(div);
+
+    });
+
+    $("#reviewShopsTable").on("mouseleave", "tr", function () {
+
+        let lastdiv = this.querySelector('td:last-child div:last-child');
+        lastdiv.remove();
     });
 </script>

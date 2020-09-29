@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using TicketHubApp.Models.ViewModels;
@@ -125,6 +126,14 @@ namespace TicketHubApp.Controllers
             ViewBag.id = id;
 
             return View();
+        }
+
+        public ActionResult AcceptShopRegister(string id)
+        {
+            PlatformService service = new PlatformService();
+            service.AcceptShop(id);
+
+            return RedirectToAction("ReviewShops");
         }
 
         // Get Shop JSON Data //

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using SendGrid.Helpers.Mail;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -86,8 +87,8 @@ namespace TicketHubApp.Services
          
             var userExistInDb = userManager.FindByEmail(userVM.UserAccount);
             if(userExistInDb != null)
-            {   
-                return new InfoViewService().ErrorInfoView(new InfoViewModel() { InfoType = false, Title = "此帳號已存在 !", Content = "請重新輸入要建立的帳號", IconName = _errorIcon});
+            {
+                return null;
             }
             var newUser = new TicketHubUser
             {
@@ -109,8 +110,8 @@ namespace TicketHubApp.Services
                 return new InfoViewService().RegisterSuccess();
             }
             else
-            {   
-                return new InfoViewService().ErrorInfoView(new InfoViewModel() { InfoType = false, Title = "新增帳號發生錯誤!", Content = "請重新輸入要建立的帳號", IconName = _errorIcon });
+            {
+                return null;
             }
         }
 
@@ -369,7 +370,6 @@ namespace TicketHubApp.Services
 
         public DataTableViewModel GetShopsToBeReviewedTableData()
         {
-            // VadlidDate 是 null 的 所有 Shops
             var context = new TicketHubContext();
 
             var shopsToBeReviewed = context.Shop.Where(s => s.ValidatedDate == null).OrderBy(s => s.AppliedDate);
@@ -380,17 +380,28 @@ namespace TicketHubApp.Services
             foreach (var item in shopsToBeReviewed)
             {
                 List<string> dataInstance = new List<string>();
+                dataInstance.Add(item.Id.ToString());
                 dataInstance.Add(item.ShopName);
                 dataInstance.Add(item.Phone);
                 dataInstance.Add(item.Fax);
                 dataInstance.Add(item.Address);
-                dataInstance.Add(item.Website);
                 dataInstance.Add(item.AppliedDate.ToString());
 
                 table.data.Add(dataInstance);
             }
 
             return table;
+        }
+
+        public void AcceptShop(string id)
+        {
+            var context = new TicketHubContext();
+            var shop = context.Shop.FirstOrDefault(s => s.Id.ToString() == id);
+
+            shop.ModifiedDate = DateTime.Now;
+            shop.ReviewerId = HttpContext.Current.User.Identity.GetUserId();
+            shop.ValidatedDate = DateTime.Now;
+            context.SaveChanges();
         }
 
         // Order Service //
