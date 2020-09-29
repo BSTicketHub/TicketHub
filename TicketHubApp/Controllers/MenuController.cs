@@ -52,7 +52,7 @@ namespace TicketHubApp.Controllers
                        new SideMenuItem{ IconName = "teenyicons:users-solid", MenuTitle = "會員管理", Href = "#UserManagement",
                             SubMenuItems = new List<SideMenuItem>{
                                 new SideMenuItem { IconName = "carbon:user-profile", MenuTitle = "會員列表", Href = "/Platform/UserList" },
-                                new SideMenuItem { IconName = "bx:bxs-user-plus", MenuTitle = "新增會員", Href = "#" },
+                                new SideMenuItem { IconName = "bx:bxs-user-plus", MenuTitle = "新增會員", Href = "/Platform/CreateUser" },
                             }
                        },
 
@@ -60,6 +60,7 @@ namespace TicketHubApp.Controllers
                             SubMenuItems = new List<SideMenuItem>{
                                 new SideMenuItem { IconName = "la:store-solid", MenuTitle = "商家列表", Href = "/Platform/ShopList" },
                                 new SideMenuItem { IconName = "ic:baseline-add-business", MenuTitle = "新增商家", Href = "#" },
+                                 new SideMenuItem { IconName = "mdi:briefcase-check", MenuTitle = "審核商家", Href = "/Platform/ReviewShops" },
                             }
                        },
                        new SideMenuItem{ IconName = "mdi:clipboard-list-outline", MenuTitle = "訂單管理", Href = "/Platform/OrderList"},
@@ -89,9 +90,9 @@ namespace TicketHubApp.Controllers
             public ICollection<SideMenuItem> SubMenuItems { get; set; }
         }
 
-        public ActionResult genLoginPartial()
+        public ActionResult genLoginPartial(string pageType)
         {
-            var userLogo = new ImgurService().getSideMenuImage(PageType.CUSTOMER);
+            var userLogo = new ImgurService().getSideMenuImage(pageType);
             string userImgPath = userLogo[0];
 
             ViewBag.userImg = userImgPath;

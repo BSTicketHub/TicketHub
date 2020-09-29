@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.Owin;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -29,6 +30,23 @@ namespace TicketHubApp.Controllers
             var user = service.GetUser(id);
 
             return View(user);
+        }
+
+        public ActionResult CreateUser()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateUser([Bind(Include = "UserAccount, UserPwd, UserName, Mobile, Sex")] PlatformUserViewModel userVM)
+        {
+            var userManager = HttpContext.GetOwinContext().Get<AppIdentityUserManager>();
+
+            PlatformService service = new PlatformService();
+            var createResult = service.CreateUser(userVM, userManager);
+
+            return RedirectToAction("CreateUser", "Platform");
         }
 
         [HttpPost]
@@ -91,6 +109,12 @@ namespace TicketHubApp.Controllers
 
             return View(shop);
         }
+
+        public ActionResult ReviewShops()
+        {
+            return View();
+        }
+
         public ActionResult GetAllEmployees(string id)
         {
             ViewBag.id = id;
@@ -126,6 +150,14 @@ namespace TicketHubApp.Controllers
             var issueTableData = service.GetIssuesTableData(id);
 
             return Json(issueTableData, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetShopsToBeReviewdJson()
+        {
+            PlatformService service = new PlatformService();
+            var shopsToBeReviewedTableData = service.GetShopsToBeReviewedTableData();
+
+            return Json(shopsToBeReviewedTableData, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetSalesDataByIssue(string id)

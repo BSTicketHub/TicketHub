@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Configuration;
 
 namespace TicketHubApp.Models.ViewModels
 {
@@ -9,8 +10,14 @@ namespace TicketHubApp.Models.ViewModels
         public string Id { get; set; }
         [Display(Name = "使用者帳號")]
         [EmailAddress]
-        [Required]
+        //[Required]
         public string UserAccount { get; set; }
+
+        [Display(Name = "密碼")]
+        [DataType(DataType.Password)]
+        //[Required(ErrorMessage = "請填入密碼 !")]    
+        //[RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{8,}$", ErrorMessage = "密碼格式錯誤 !")]
+        public string UserPwd { get; set; }
         [Display(Name = "手機號碼")]
         [Required(ErrorMessage = "請填入手機號碼 !")]
         [RegularExpression(@"^\d{4}[-\s]?\d{3}[-\s]?\d{3}$", ErrorMessage = "手機號碼格式須為 09xx-xxx-xxx")]
@@ -28,6 +35,5 @@ namespace TicketHubApp.Models.ViewModels
         [Required]
         [Display(Name = "使用者名稱")]
         public string UserName { get; set; }
-
     }
 }

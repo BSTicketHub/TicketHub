@@ -11,7 +11,7 @@
 <div class="shadow p-3">
     <table id="userTable" class="table table-bordered table-hover" style="width:100%">
         <thead>
-            <tr>
+            <tr class="text-nowrap">
                 <th>會員代號</th>
                 <th>會員名稱</th>
                 <th>會員手機</th>
@@ -57,7 +57,7 @@
     
         let td = this.querySelector('td:last-child');
         td.setAttribute('style', 'position:relative;');
-        div.setAttribute('style', 'display:flex; position:absolute;bottom:0px;left:5px');
+        div.setAttribute('style', 'display:flex; position:absolute;bottom:0px;left:15px');
 
         if (td.innerText == "正常") {
             cancelOrRestore.innerText = "註銷";

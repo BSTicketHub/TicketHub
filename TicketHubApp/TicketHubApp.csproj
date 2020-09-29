@@ -309,6 +309,18 @@
     <Content Include="Assets\CSS\login.min.css">
       <DependentUpon>login.css</DependentUpon>
     </Content>
+    <Content Include="Assets\CSS\Platform\GetTicketsBelongToThisUser.css">
+      <DependentUpon>Platform_GetTicketsBelongToThisUser.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Platform\GetTicketsBelongToThisUser.min.css">
+      <DependentUpon>GetTicketsBelongToThisUser.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Platform\Platform_CreateUser.css">
+      <DependentUpon>Platform_CreateUser.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Platform\Platform_CreateUser.min.css">
+      <DependentUpon>Platform_CreateUser.css</DependentUpon>
+    </Content>
     <Content Include="Assets\CSS\Platform\Platform_Layout.css">
       <DependentUpon>Platform_Layout.scss</DependentUpon>
     </Content>
@@ -718,6 +730,8 @@
     <Content Include="Assets\CSS\Shop\EmployeeCreate.scss" />
     <Content Include="Assets\CSS\Platform\Platform_UserList.scss" />
     <Content Include="Assets\CSS\Platform\Platform_UserDetail.scss" />
+    <Content Include="Assets\CSS\Platform\Platform_CreateUser.scss" />
+    <Content Include="Assets\CSS\Platform\Platform_GetTicketsBelongToThisUser.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -780,6 +794,8 @@
     <Content Include="Views\Customer\_ViewStart.cshtml" />
     <Content Include="Views\Home\_LimitedtimeCard.cshtml" />
     <Content Include="Views\ProductCart\_ProductCartPartial.cshtml" />
+    <Content Include="Views\Platform\CreateUser.cshtml" />
+    <Content Include="Views\Platform\ReviewShops.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

@@ -1,0 +1,46 @@
+﻿<link rel="stylesheet" type="text/css" href="~/Assets/CSS/Platform/Platform_UserList.min.css" />
+
+<nav aria-label="breadcrumb" class="shadow">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="~/Platform/Index">後台管理系統</a></li>
+        <li class="breadcrumb-item"><a href="~/Platform/ShopList">商家管理</a></li>
+        <li class="breadcrumb-item active" aria-current="page">待審核商家</li>
+    </ol>
+</nav>
+
+<div class="shadow p-3">
+    <table id="reviewShopsTable" class="table table-bordered table-hover" style="width:100%">
+        <thead>
+            <tr class="text-nowrap">
+                <th>商家名稱</th>
+                <th>商家電話</th>
+                <th>商家傳真</th>
+                <th>商家地址</th>
+                <th>網站連結</th>
+                <th>申請日期</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" />
+
+<script>
+    $(document).ready(function () {
+        console.log($('#reviewShopsTable'));
+        $('#reviewShopsTable').DataTable({
+            "ajax": '../Platform/GetShopsToBeReviewdJson',
+            "scrollX": true,
+            "stateSave": true,
+            "columns": [
+                { "width": "20%" },
+                { "width": "20%" },
+                { "width": "10%" },
+                { "width": "10%" },
+            ]
+        });
+    });
+</script>

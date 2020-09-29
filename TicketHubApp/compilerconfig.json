@@ -106,5 +106,13 @@
   {
     "outputFile": "Assets/CSS/Platform/Platform_UserDetail.css",
     "inputFile": "Assets/CSS/Platform/Platform_UserDetail.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/Platform/Platform_CreateUser.css",
+    "inputFile": "Assets/CSS/Platform/Platform_CreateUser.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/Platform/GetTicketsBelongToThisUser.css",
+    "inputFile": "Assets/CSS/Platform/GetTicketsBelongToThisUser.scss"
   }
 ]
