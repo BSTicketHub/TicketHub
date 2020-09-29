@@ -209,7 +209,7 @@ function UpcartCounter() {
 
 //最新推出Card 事件
 $(".addCart").click(function (e) {
-    var id = `${$(this).parent().parent().parent().find("#chart_id").val()}`;
+    var id = $(this).parent().parent().parent().find("#chart_id").val();
     var title = $(this).parent().parent().parent().find("#Title").text();
     var details = $(this).parent().parent().parent().find("#details").text();
     var discountPrice = Number($(this).parent().parent().parent().find("#DiscountPrice").text().replace("$", ""));

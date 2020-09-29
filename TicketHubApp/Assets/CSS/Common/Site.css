@@ -362,6 +362,11 @@ a {
 .text-line-through {
   text-decoration: line-through; }
 
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
+
 .text-overflow-2 {
   overflow: hidden;
   text-overflow: ellipsis;
