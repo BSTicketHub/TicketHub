@@ -736,6 +736,7 @@
     <Content Include="Assets\CSS\_root.scss" />
     <Content Include="Assets\CSS\Home\Contact.scss" />
     <Content Include="Assets\CSS\Home\About.scss" />
+    <Content Include="Assets\CSS\Common\_cart.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

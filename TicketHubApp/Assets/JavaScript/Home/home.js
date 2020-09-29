@@ -292,7 +292,7 @@ function UpdateCartData() {
 $(".card_addToCart").click(function () {
     let card = $(this).parents(".product-detail");
 
-    let id = `${card.find(".card_id").val()}`;
+    let id = card.find(".card_id").val();
     let title = card.find(".card_title").text();
     let discountPrice = Number(card.find(".card_discountPrice").text().replace("$", ""));
 
