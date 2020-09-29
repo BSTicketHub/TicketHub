@@ -53,51 +53,6 @@ namespace TicketHubApp.Controllers
 
         }
 
-
-
-        //將取得的id 與資料庫做比對 取值
-
-
-
-
-        //var local = local;
-        //var temp = JsonConvert.DeserializeObject<List<object>>(cartList);
-        //var context = new TicketHubContext();
-
-        //var issues = from i in context.Issue
-        //             where IssueId.Contains(i.Id.ToString())
-        //             select i;
-
-
-        //using (var _context = TicketHubContext.Create())
-        //{
-        //    foreach (var i in IssueId)
-        //    {
-        //        var temp = i;
-        //        var issueGUID = Guid.Parse(i);
-        //        //var StringTemp = string.Join(",", temp);
-        //        Amount = (Amount == null) ? "1" : Amount;
-
-        //        var temp_amount = decimal.Parse(Amount);
-        //        var orderDetail = _context.Issue.Where(x => x.Id == issueGUID).Select(x => new OrderDetail
-        //        {
-        //            IssueId = x.Id,
-        //            Amount = temp_amount,
-        //            Price = x.DiscountPrice
-        //        }).ToList();
-        //        var order = new Order
-        //        {
-        //            OrderedDate = new DateTime(),
-        //            OrderDetails = orderDetail
-        //            //UserId = UserId
-        //        };
-        //        _context.Order.Add(order);
-        //        _context.SaveChanges();
-
-        //    }
-        //}
-
-        //return Content("");
     }
 
 }

@@ -40,7 +40,8 @@ namespace TicketHubApp.Models.ViewModels
 
         public string Status { get; set; }
         public int SalesAmount { get; set; }
-        public IEnumerable<string> TagList { get; set; }
+        public List<string> TagList { get; set; }
+        public string TagString { get; set; }
         public decimal SalesPrice { get; set; }
     }
 

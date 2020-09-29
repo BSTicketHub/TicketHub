@@ -12,13 +12,18 @@
         {
             <span issueid="@Model.Id" class="iconify position-absolute wishHeart" data-icon="bi:heart" data-inline="false" onclick="controlFromFavorite(this)"></span>
         }
+        else
+        {
+            <span class="iconify position-absolute wishHeart" data-icon="bi:heart-fill" data-inline="false"></span>
+        }
 
         <h3 class="mt-4 mb-0">@Model.Title</h3>
-        <div class="tags">
-            @if(Model.TagList != null && Model.TagList.Count() != 0) { 
-                foreach(var i in Model.TagList)
+        <div class="showTag">
+            @if (Model.TagList != null && Model.TagList.Count() != 0)
+            {
+                foreach (var tag in Model.TagList)
                 {
-                    <span class="badge badge-pill badge-secondary mr-2 my-1">@i</span>
+                    <span class="badge badge-pill mr-2 my-1">@tag</span>
                 }
             }
         </div>

@@ -12,10 +12,11 @@ namespace TicketHubApp.Services
     {
         public IEnumerable<ShopViewModel> SearchShop(string input)
         {
+            var SearchString = (input == null) ? "" : string.Join("^", input.Split(' '));
             var _context = new TicketHubContext();
             GenericRepository<Shop> repo = new GenericRepository<Shop>(_context);
             var shopList = repo.GetAll();
-            var result = shopList.Where(x => x.City.Contains(input)).Select(x => new ShopViewModel
+            var result = shopList.Where(x => SearchString.Contains(x.City.Remove(2))).Select(x => new ShopViewModel
                 {
                     Id = x.Id,
                     ShopName = x.ShopName,
@@ -24,6 +25,7 @@ namespace TicketHubApp.Services
                     District = x.District,
                     Address = x.Address,
                     Phone = x.Phone,
+                    Geometry = x.Lat + " " + x.Lng,
                     Issues = _context.Issue.Where(y => y.ShopId == x.Id).Select(y => new SimpleIssueViewModel
                     {
                         Id = y.Id,

@@ -37,13 +37,13 @@ namespace TicketHubApp.Services
         {
             var context = new TicketHubContext();
             var userid = HttpContext.Current.User.Identity.GetUserId();
-            string src="", name="";
+            string src = null, name = null;
             List<string> result;
             switch (role)
             {
                 case PageType.CUSTOMER:
-                    src = context.Users.Where(x => x.Id == userid).FirstOrDefault().AvatarPath;
-                    name = context.Users.Where(x => x.Id == userid).FirstOrDefault().UserName;
+                    src = (from u in context.Users where u.Id == userid select u.AvatarPath).FirstOrDefault();
+                    name = (from u in context.Users where u.Id == userid select u.UserName).FirstOrDefault();
                     break;
                 case PageType.SHOP:
                     src = (from e in context.ShopEmployee join s in context.Shop on e.ShopId equals s.Id where (e.UserId == userid) select s.BannerImg).FirstOrDefault();

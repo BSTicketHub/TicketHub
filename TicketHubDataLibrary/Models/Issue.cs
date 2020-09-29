@@ -18,6 +18,7 @@ namespace TicketHubDataLibrary.Models
         public DateTime IssuedDate { get; set; }
         public DateTime ReleasedDate { get; set; }
         public DateTime? ClosedDate { get; set; }
+        public string Category { get; set; }
         [ForeignKey("User")]
         public string IssuerId { get; set; }
         public TicketHubUser User { get; set; }
@@ -26,6 +27,5 @@ namespace TicketHubDataLibrary.Models
         public Shop Shop { get; set; }
 
         public ICollection<IssueTag> IssueTags { get; set; }
-        public ICollection<IssueCategory> IssueCategories { get; set; }
     }
 }

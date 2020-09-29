@@ -15,11 +15,14 @@ namespace TicketHubApp.Services
         private TicketHubContext _context = TicketHubContext.Create();
         public IEnumerable<ShopIssueViewModel> SearchIssue(string input)
         {
+            var SearchString = (input == null) ? "" : string.Join("^", input.Split(' '));
             var repo = new GenericRepository<Issue>(_context);
             var issueList = repo.GetAll();
             var result = from i in issueList
                          join s in _context.Shop on i.ShopId equals s.Id
-                         where s.City.Contains(input) || s.District.Contains(input)
+                         join tg in _context.IssueTag on i.Id equals tg.IssueId
+                         join t in _context.Tag on tg.TagId equals t.Id 
+                         where SearchString.Contains(i.Category)
                          select new ShopIssueViewModel
                          {
                              Id = i.Id,
@@ -31,10 +34,10 @@ namespace TicketHubApp.Services
                              DiscountRatio = i.DiscountRatio,
                              City = s.City,
                              District = s.District,
-                             TagList = from tg in _context.IssueTag
+                             TagList = (from tg in _context.IssueTag
                                        join t in _context.Tag on tg.TagId equals t.Id
                                        where tg.IssueId == i.Id
-                                       select t.Name
+                                       select t.Name).ToList()
                          };
 
             return result;
@@ -58,10 +61,10 @@ namespace TicketHubApp.Services
                              DiscountRatio = i.DiscountRatio,
                              City = s.City,
                              District = s.District,
-                             TagList = from tg in _context.IssueTag
+                             TagList = (from tg in _context.IssueTag
                                          join t in _context.Tag on tg.TagId equals t.Id
                                          where tg.IssueId == i.Id
-                                         select t.Name
+                                         select t.Name).ToList()
                          };
             return result;
         }

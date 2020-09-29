@@ -51,41 +51,39 @@ namespace TicketHubApp.Services
             var result = new OperationResult();
             try
             {
-                var shopRepo = new GenericRepository<Shop>(_context);
-                var employeeRepo = new GenericRepository<ShopEmployee>(_context);
                 Guid shopid = _context.ShopEmployee.FirstOrDefault((x) => x.UserId == _userid).ShopId;
+                var oldShop = _context.Shop.FirstOrDefault(x => x.Id == shopid);
 
-                var entity = new Shop
+                using(var _context2 = new TicketHubContext())
                 {
-                    Id = shopid,
-                    ShopName = input.ShopName,
-                    ShopIntro = input.ShopIntro,
-                    Phone = input.Phone,
-                    Fax = input.Fax,
-                    City = input.City,
-                    District = input.District,
-                    Address = input.Address,
-                    //Zip
-                    Lat = coordinates[0],
-                    Lng = coordinates[1],
-                    Email = input.Email,
-                    Website = input.Website,
-                    BannerImg = input.BannerImg,
-                    ModifiedDate = DateTime.Now
-                };
+                    var entity = new Shop
+                    {
+                        Id = shopid,
+                        ShopName = input.ShopName,
+                        ShopIntro = input.ShopIntro,
+                        Phone = input.Phone,
+                        Fax = input.Fax,
+                        City = input.City,
+                        District = input.District,
+                        Address = input.Address,
+                        //Zip
+                        Lat = coordinates[0],
+                        Lng = coordinates[1],
+                        Email = input.Email,
+                        Website = input.Website,
+                        BannerImg = oldShop.BannerImg,
+                        ModifiedDate = DateTime.Now
+                    };
 
-                if (input.ImgFile != null)
-                {
-                    var imgurService = new ImgurService();
-                    entity.BannerImg = imgurService.UploadImgur(input.ImgFile);
+                    if (input.ImgFile != null)
+                    {
+                        var imgurService = new ImgurService();
+                        entity.BannerImg = imgurService.UploadImgur(input.ImgFile);
+                    }
+                    var shopRepo = new GenericRepository<Shop>(_context2);
+                    shopRepo.Update(entity);
+                    _context2.SaveChanges();
                 }
-                else
-                {
-                    entity.BannerImg = input.BannerImg;
-                }
-
-                shopRepo.Update(entity);
-                _context.SaveChanges();
                 result.Success = true;
             }
             catch (Exception ex)

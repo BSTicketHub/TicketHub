@@ -3,6 +3,7 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     var searchList = ViewBag.SearchString.Split(' ');
+    var model = Json.Encode(Model);
 }
 
 @Styles.Render("~/bundles/css/ShopList")
@@ -47,25 +48,14 @@
     <script src="~/Assets/JavaScript/Common/buzz.js"></script>
     <script>
 
-        @*function addToFavorite(shopId) {
-            console.dir(event.target)
-            event.target.setAttribute('data-icon', 'bi:heart-fill')
-            $.ajax({
-                cache: false,
-                url: "AddToFavoriteList",
-                method: "post",
-                data:{
-                    ShopId: shopId,
-                    UserId: "@ViewBag.UserId"
-                },
-                success: function () {
-                    alert("success");
-                },
-                error: function () {
-                    alert("failed");
-                }
-            });
-        }*@
+        let showTicket = document.querySelectorAll('.show-ticket')
+        let ticketArea = document.querySelectorAll('.ticket-area');
+        for (let i = 0; i < ticketArea.length; i++) {
+            showTicket[i].addEventListener('click', function () {
+                ticketArea[i].classList.toggle('show');
+                ticketArea[i].classList.toggle('border');
+            })
+        }
 
         function createBuzz(title, type) {
             Notify({
@@ -102,6 +92,54 @@
                 }
             });
         }
+
+        let model = @Html.Raw(model)
+        @*let geometry = [];
+        for (let i of @Html.Raw(geometryJson)) {
+            i = i.split(' ')
+            let obj = { lat: Number(i[0]), lng: Number(i[1])};
+            geometry.push(obj);
+        }*@
+
+        function initMap() {
+            var taipei = {
+                lat: 25.044367,
+                lng: 121.535168
+            };
+            var map = new google.maps.Map(
+                document.getElementById('map'), {
+                    zoom: 14,
+                    center: { lat: Number(model[0].Geometry.split(' ')[0]), lng: Number(model[0].Geometry.split(' ')[1]) }
+                }
+            );
+            // var marker = new google.maps.Marker({position: taipei, map: map});
+            for (let i of model) {
+                let geometry = i.Geometry.split(' ');
+                let obj = { lat: Number(geometry[0]), lng: Number(geometry[1]) }
+                let marker = new google.maps.Marker({
+                    position: obj,
+                    map: map,
+                })
+
+                let infoWindow = new google.maps.InfoWindow({
+                    content: '<div id="content">' +
+                        '<div id="shopImage" class="bg-danger rounded p-2 mx-auto my-3">' +
+                        '</div>' +
+                        `<h4 id="firstHeading" class="firstHeading">${i.ShopName}</h4>` +
+                        '<div id="bodyContent">' +
+                        `<p class="my-2">${i.ShopIntro}</p>` +
+                        `<p class="my-2">地址 : ${i.City + i.District + i.Address}</p>` +
+                        `<p class="my-2">訂位專線 : ${i.Phone}</p>` +
+                        '</div>' +
+                        '</div>'
+                });
+
+                marker.addListener('click', function () {
+                    infoWindow.open(map, marker);
+                });
+            }
+        }
+
     </script>
 }
 

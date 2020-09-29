@@ -13,16 +13,46 @@ namespace TicketHubApp.Controllers
         public ActionResult Index()
         {
             var service = new HomeCardService();
-            var homecard = new HomeListViewModel()
+            var homecard = new HomeListViewModel() //新增ViewModel集合
             {
-                BestSellerItems = service.GetBestSellerCard(),
+                BestSellerItems = service.GetBestSellerCard(), //有排序
                 RecommenItems = service.GetRecommenCard(),
-                SortNewItems = service.GetSortNewCard(),
+                SortNewItems = service.GetSortNewCard(0),
                 LimitedtimeItems = service.GetLimitedtimeCard()
             };
 
             return View(homecard);
         }
+
+        
+        [HttpGet]
+        // 最新推出 api
+        public ActionResult CardApi(int currCount) 
+        {
+            var service = new HomeCardService();
+            var SortNewItems = service.GetSortNewCard(currCount);
+            return Json(SortNewItems, JsonRequestBehavior.AllowGet); //把HomeCardService 物件轉JSON，給前端抓資料
+        }
+
+        [HttpGet]
+        // 熱賣票劵 api
+        public ActionResult BestSellerCardApi()
+        {
+            var service = new HomeCardService();
+            var BestSellerItems = service.GetBestSellerCard(); //有排序
+            return Json(BestSellerItems, JsonRequestBehavior.AllowGet); //把HomeCardService 物件轉JSON，給前端抓資料
+        }
+
+        [HttpGet]
+        // 超值特選 api
+        public ActionResult RecommenCardApi()
+        {
+            var service = new HomeCardService();
+            var RecommenItems = service.GetRecommenCard();
+            return Json(RecommenItems, JsonRequestBehavior.AllowGet); //把HomeCardService 物件轉JSON，給前端抓資料
+        }
+
+
 
         public ActionResult PageUnfound()
         {

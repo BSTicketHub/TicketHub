@@ -1,6 +1,10 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
+
+@section topCSS{
+    @Styles.Render("~/bundles/css/Contact")
+}
 <div class="tab-bg">
     <div class="container">
         <div class="row">
@@ -23,10 +27,10 @@
             <div id="" class="hidden-sm hidden-xs sticky-wrapper">
                 <div class="height-100"></div>
                 <div id="faq" class="list-group">
-                    <a class="list-group-item list-group-item-action" id="" href="#faq-3">新手上路</a>
-                    <a class="list-group-item list-group-item-action" id="" href="#faq-4">如何訂購</a>
-                    <a class="list-group-item list-group-item-action" id="" href="#faq-5">兌換券使用說明</a>
-                    <a class="list-group-item list-group-item-action" id="" href="#faq-8">如何退費</a>
+                    <a class="list-group-item list-group-item-action active-bg-color-cust" id="" href="#faq-3">新手上路</a>
+                    <a class="list-group-item list-group-item-action active-bg-color-cust" id="" href="#faq-4">如何訂購</a>
+                    <a class="list-group-item list-group-item-action active-bg-color-cust" id="" href="#faq-5">兌換券使用說明</a>
+                    <a class="list-group-item list-group-item-action active-bg-color-cust" id="" href="#faq-8">如何退費</a>
                 </div>
             </div>
         </div>
@@ -42,7 +46,7 @@
                                 <button class="btn btn-link question" id="question-3-1" type="button"
                                         data-toggle="collapse" data-target="#collapse-3-1" aria-expanded="true"
                                         aria-controls="collapse-3-1">
-                                    TickerHub 優惠活動之使用須知？
+                                    TicketHub 優惠活動之使用須知？
                                     <i class="i-questiondropdown"></i>
                                 </button>
                             </h5>
@@ -51,8 +55,8 @@
                              data-parent="#faq-3">
                             <div class="card-body bg-text">
                                 <p>
-                                    TickerHub 提供的優惠活動<font color="red">不得與其他優惠合併使用</font>
-                                    ，恕無法兌換現金，為保障您的權益，請務必持TickerHub
+                                    TicketHub 提供的優惠活動<font color="red">不得與其他優惠合併使用</font>
+                                    ，恕無法兌換現金，為保障您的權益，請務必持TicketHub
                                     APP內的兌換券序號、手機簡訊或列印email兌換券到店使用，以示消費此兌換券。<br>
                                     如購買的兌換券逾期未使用，依兌換券規範可辦理退費，惟旅行、展覽、演出、實體票券或其他特殊商品，請依該檔次之退費規範辦理。
                                 </p>
@@ -65,7 +69,7 @@
                                 <button class="btn btn-link question" id="question-3-2" type="button"
                                         data-toggle="collapse" data-target="#collapse-3-2" aria-expanded="true"
                                         aria-controls="collapse-3-2">
-                                    如何在 TickerHub 購買優惠活動？
+                                    如何在 TicketHub 購買優惠活動？
                                     <i class="i-questiondropdown"></i>
                                 </button>
                             </h5>
@@ -76,9 +80,9 @@
                                 <p>
                                     Step1. 請至任一頻道(餐券、美容舒壓、生活娛樂、購物、旅行)中選擇您要購買的優惠活動。<br>
                                     Step2. 點選「馬上購買」並依頁面指示依續輸入訂購資訊(請選擇分店、方案、數量、個人資料、發票形式以及付費方式)。<br>
-                                    Step3. 付費完成並經銀行入帳予 TickerHub，您的訂購手機及 email 將收到兌換券序號。(註一)<br>
+                                    Step3. 付費完成並經銀行入帳予 TicketHub，您的訂購手機及 email 將收到兌換券序號。(註一)<br>
                                     <font color="red">
-                                        (提醒您：如您使用TickerHub
+                                        (提醒您：如您使用TicketHub
                                         APP購買商品後，請先確認是否已完成手機驗證綁定，若已完成則於一分鐘內就會收到購買成功的推播通知，點選『前往』即可查看兌換券序號，手機簡訊將不另外發送。)
                                     </font><br>
                                     Step4. 到店消費時務必出示此兌換券已茲證明已購買此優惠活動。(註二)<br>
@@ -96,7 +100,7 @@
                                 <button class="btn btn-link question" id="question-3-3" type="button"
                                         data-toggle="collapse" data-target="#collapse-3-3" aria-expanded="true"
                                         aria-controls="collapse-3-3">
-                                    在 TickerHub 購物，是否需要註冊成為會員？
+                                    在 TicketHub 購物，是否需要註冊成為會員？
                                     <i class="i-questiondropdown"></i>
                                 </button>
                             </h5>
@@ -106,7 +110,7 @@
                             <div class="card-body bg-text">
                                 <p>
                                     不需註冊會員。<br>
-                                    您於 TickerHub 購買時所留下的 e-mail 、姓名及電話為重要付費憑據，請務必於購買時留下正確的資訊，以便發送兌換券。
+                                    您於 TicketHub 購買時所留下的 e-mail 、姓名及電話為重要付費憑據，請務必於購買時留下正確的資訊，以便發送兌換券。
                                 </p>
                             </div>
                         </div>
@@ -117,7 +121,7 @@
                                 <button class="btn btn-link question" id="question-3-4" type="button"
                                         data-toggle="collapse" data-target="#collapse-3-4" aria-expanded="true"
                                         aria-controls="collapse-3-4">
-                                    TickerHub 是否有提供店家履約保證？
+                                    TicketHub 是否有提供店家履約保證？
                                     <i class="i-questiondropdown"></i>
                                 </button>
                             </h5>
@@ -151,7 +155,7 @@
                                     Step2. 購買紀錄依照「優惠票券→未使用 / 已核銷 / 已失效」、「宅配購物→未出貨 / 已出貨 /
                                     已退貨」排序。<br>
                                     <br>
-                                    TickerHub APP / mweb：<br>
+                                    TicketHub APP / mweb：<br>
                                     Step1. 請點選畫面下方的 我的 / 登入，依頁面指示完成手機認證。<br>
                                     Step2. 點選畫面下方的 我的 / 訂單查詢，購買紀錄依照「優惠票券→未使用 / 已核銷 / 已失效」、「宅配購物→未出貨
                                     / 已出貨 / 已退貨」排序。
@@ -218,9 +222,9 @@
                              data-parent="#faq-3">
                             <div class="card-body bg-text">
                                 <p>
-                                    因為 TickerHub
+                                    因為 TicketHub
                                     的優惠活動皆是限時限量，因此若此檔優惠活動已完售，則無法再訂購，建議您下次若有喜歡的優惠活動，可先下單購買！<br>
-                                    貼心提醒：歡迎您訂閱「TickerHub 電子報」，讓您天天掌握吃喝玩樂最新優惠訊息！
+                                    貼心提醒：歡迎您訂閱「TicketHub 電子報」，讓您天天掌握吃喝玩樂最新優惠訊息！
                                 </p>
                             </div>
                         </div>
@@ -251,7 +255,7 @@
                                 <button class="btn btn-link question" id="question-3-10" type="button"
                                         data-toggle="collapse" data-target="#collapse-3-10" aria-expanded="true"
                                         aria-controls="collapse-3-10">
-                                    如何訂閱 TickerHub 電子報?
+                                    如何訂閱 TicketHub 電子報?
                                     <i class="i-questiondropdown"></i>
                                 </button>
                             </h5>
@@ -260,9 +264,9 @@
                              data-parent="#faq-3">
                             <div class="card-body bg-text">
                                 <p>
-                                    方法一：請至 TickerHub 首頁左上角點選「訂閱 TickerHub
+                                    方法一：請至 TicketHub 首頁左上角點選「訂閱 TicketHub
                                     電子報」，選擇您要訂閱的城市，再輸入接收電子報的email即可。<br>
-                                    方法二：請您致電 TickerHub 客服 02-27111758，我們將協助您訂閱電子報。<br>
+                                    方法二：請您致電 TicketHub 客服 02-27111758，我們將協助您訂閱電子報。<br>
                                     <br>
                                     提醒您：若在訂閱完成24小時後仍未在收件夾收到電子報，請您至垃圾郵件夾開啟並點選這不是垃圾信。
                                 </p>
@@ -288,7 +292,7 @@
                                     請至 <a href="" target="_blank">線上預約系統</a>
                                     輸入兌換券序號及手機號碼，點選「立即預約」送出即完成預約；如需取消預約，請改選擇「取消預約」即可。<br>
                                     <br>
-                                    如您使用TickerHub APP版：<br>
+                                    如您使用TicketHub APP版：<br>
                                     Step1. 請您點選APP畫面下方的我的 / 訂單查詢 / 需預約的優惠活動 / 預約<br>
                                     Step2. 確認兌換券序號及手機門號都已帶入資訊後即可點選立即預約<br>
                                     Step3. 請選擇預約日期及時段後點選確定送出，再次確認預約資訊後點選確定<br>
@@ -303,7 +307,7 @@
                                 <button class="btn btn-link question" id="question-3-12" type="button"
                                         data-toggle="collapse" data-target="#collapse-3-12" aria-expanded="true"
                                         aria-controls="collapse-3-12">
-                                    TickerHub APP如何綁定？
+                                    TicketHub APP如何綁定？
                                     <i class="i-questiondropdown"></i>
                                 </button>
                             </h5>
@@ -342,7 +346,7 @@
                              data-parent="#faq-4">
                             <div class="card-body bg-text">
                                 <p>
-                                    TickerHub提供以下幾種付款方式：(宅配購物+請另以結帳頁面為準)<br>
+                                    TicketHub提供以下幾種付款方式：(宅配購物+請另以結帳頁面為準)<br>
                                     <br>
                                     <font color="blue">【信用卡】</font>
                                     台灣地區發行之Visa、MasterCard、JCB、Visa金融卡。<br>
@@ -360,7 +364,7 @@
                                     <br>
                                     <font color="red">
                                         提醒您! 超商繳費收據不可做為兌換使用!<br>
-                                        繳費後待TickerHub入帳，兌換券序號將即時傳送至您的訂購手機及email，到店消費時務必出示兌換券序號。
+                                        繳費後待TicketHub入帳，兌換券序號將即時傳送至您的訂購手機及email，到店消費時務必出示兌換券序號。
                                     </font>
                                     <br>
                                     <br>
@@ -392,7 +396,7 @@
                             <div class="card-body bg-text">
                                 <p>
                                     1.
-                                    TickerHub由國泰世華及中國信託代收信用卡費用，付費全程採用SSL加密，除發卡銀行外，無人可取得或記錄您的信用卡資訊。<br>
+                                    TicketHub由國泰世華及中國信託代收信用卡費用，付費全程採用SSL加密，除發卡銀行外，無人可取得或記錄您的信用卡資訊。<br>
                                     <br>
                                     2.
                                     當您依步驟刷卡成功，頁面將立即顯示付費成功的畫面，同時您將收到兌換券或交易完成通知信，並且在登入後於訂單查詢中查看到該筆訂單。<br>
@@ -403,7 +407,7 @@
                                     <br>
                                     <b>
                                         <font color="red">
-                                            TickerHub 已於2020/06/15
+                                            TicketHub 已於2020/06/15
                                             終止提供分期服務，感謝您一路以來的支持，謝謝。
                                         </font>
                                     </b>
@@ -433,7 +437,7 @@
                                     1. 超過轉帳時間。<br>
                                     2. 虛擬 ATM 帳號或金額不正確。<br>
                                     3. 卡片無轉帳功能。<br>
-                                    若有任何操作上的疑問，請與 TickerHub 客服中心聯繫，客服人員將為您查詢確認。
+                                    若有任何操作上的疑問，請與 TicketHub 客服中心聯繫，客服人員將為您查詢確認。
                                 </p>
                             </div>
                         </div>
@@ -495,7 +499,7 @@
                              data-parent="#faq-4">
                             <div class="card-body bg-text">
                                 <p>
-                                    TickerHub 的 ATM 付費方案所產生的帳戶皆為虛擬帳戶，請務必於繳費期限內將指定金額轉帳至指定帳戶中，若超過 ATM
+                                    TicketHub 的 ATM 付費方案所產生的帳戶皆為虛擬帳戶，請務必於繳費期限內將指定金額轉帳至指定帳戶中，若超過 ATM
                                     繳費期限而未完成繳費，則此筆訂單無效。
                                 </p>
                             </div>
@@ -517,13 +521,13 @@
                             <div class="card-body bg-text">
                                 <p>
                                     Step1.
-                                    轉帳完成後系統最遲於次一工作日入帳，入帳後將即時傳送訂購成功通知信、兌換券至您的訂購信箱中；另外手機簡訊或TickerHub
+                                    轉帳完成後系統最遲於次一工作日入帳，入帳後將即時傳送訂購成功通知信、兌換券至您的訂購信箱中；另外手機簡訊或TicketHub
                                     APP也將收到通知。 ※如欲加快訂購速度，建議可改以信用卡方式付款，以利快速入帳。<br>
                                     <br>
                                     Step2.
                                     若轉帳完成後之次一工作日仍未收到兌換券，請您先查看ATM交易明細收據中是否有轉帳失敗的訊息，並且補登存簿確認是否有扣款紀錄。<br>
                                     <br>
-                                    Step3. 如仍有帳務上其他疑問，請與 TickerHub 客服中心聯繫，客服人員將為您查詢確認。
+                                    Step3. 如仍有帳務上其他疑問，請與 TicketHub 客服中心聯繫，客服人員將為您查詢確認。
                                 </p>
                             </div>
                         </div>
@@ -554,7 +558,7 @@
                                 <button class="btn btn-link question" id="question-4-9" type="button"
                                         data-toggle="collapse" data-target="#collapse-4-9" aria-expanded="true"
                                         aria-controls="collapse-4-9">
-                                    轉帳完成後，TickerHub 如何知道這是我付費的？
+                                    轉帳完成後，TicketHub 如何知道這是我付費的？
                                     <i class="i-questiondropdown"></i>
                                 </button>
                             </h5>
@@ -563,7 +567,7 @@
                              data-parent="#faq-4">
                             <div class="card-body bg-text">
                                 <p>
-                                    請您放心，若在 TickerHub 使用 ATM
+                                    請您放心，若在 TicketHub 使用 ATM
                                     付費方式，則每一筆訂單皆產生一組專屬虛擬轉帳帳號，只要您在繳費期限內，將此筆訂單正確的金額轉入(轉帳人不需為訂購人)，直至此筆金額經銀行入帳予本公司，您的訂購信箱及手機中將收到兌換券。
                                 </p>
                             </div>
@@ -633,7 +637,7 @@
                                     以及手機中；此券為到店家消費享有優惠的依據，請務必妥善保存。<br>
                                     <br>
                                     <font color="red">
-                                        如您使用TickerHub
+                                        如您使用TicketHub
                                         APP購買商品後，一分鐘內就會收到購買成功的推播通知，點選『前往』即可查看兌換券序號，手機簡訊將不另外發送。
                                     </font>
                                     兌換券序號全都在APP的「訂單查詢」裡，再也不用擔心誤刪/找不到簡訊/換手機，登入APP就能輕鬆查看所有兌換券。<br>
@@ -659,11 +663,11 @@
                             <div class="card-body bg-text">
                                 <p>
                                     方法1：建議<a href="">
-                                        下載TickerHub
+                                        下載TicketHub
                                         APP
                                     </a>，所有的兌換券序號全都在APP的「訂單查詢」裡，再也不用擔心誤刪/找不到簡訊/換手機，只要登入APP就能輕鬆查看所有兌換券。<br>
                                     <br>
-                                    方法2：撥打TickerHub 客服專線：(123) 456-7890
+                                    方法2：撥打TicketHub 客服專線：(123) 456-7890
                                     ，依照語音導引輸入您的訂單編號，系統將即時為您補發兌換券簡訊或兌換券email。
                                 </p>
                             </div>
@@ -675,7 +679,7 @@
                                 <button class="btn btn-link question" id="question-5-3" type="button"
                                         data-toggle="collapse" data-target="#collapse-5-3" aria-expanded="true"
                                         aria-controls="collapse-5-3">
-                                    如何使用 TickerHub 兌換券到店消費？
+                                    如何使用 TicketHub 兌換券到店消費？
                                     <i class="i-questiondropdown"></i>
                                 </button>
                             </h5>
@@ -685,9 +689,9 @@
                             <div class="card-body bg-text">
                                 <p>
                                     Step1.
-                                    請於優惠兌換期內使用，並遵循兌換券使用規定，如為需預約檔次請先完成預約訂位並主動告知使用TickerHub兌換券。<br>
-                                    Step2. 確認預約訂位完成後，請務必於預約時段持兌換券(出示TickerHub APP內的兌換券序號/qr
-                                    code或是採用自主核銷功能，如無使用TickerHub
+                                    請於優惠兌換期內使用，並遵循兌換券使用規定，如為需預約檔次請先完成預約訂位並主動告知使用TicketHub兌換券。<br>
+                                    Step2. 確認預約訂位完成後，請務必於預約時段持兌換券(出示TicketHub APP內的兌換券序號/qr
+                                    code或是採用自主核銷功能，如無使用TicketHub
                                     APP則請持兌換券簡訊或email兌換券列印)到店供店家工作人員核對。<br>
                                     Step3. 待店家工作人員確認資料無誤，即可使用兌換券享有優惠方案。<br>
                                     <br>
@@ -704,7 +708,7 @@
                                 <button class="btn btn-link question" id="question-5-4" type="button"
                                         data-toggle="collapse" data-target="#collapse-5-4" aria-expanded="true"
                                         aria-controls="collapse-5-4">
-                                    TickerHub 兌換券可以分享給他人使用嗎？
+                                    TicketHub 兌換券可以分享給他人使用嗎？
                                     <i class="i-questiondropdown"></i>
                                 </button>
                             </h5>
@@ -715,7 +719,7 @@
                                 <p>
                                     可以，您可透過以下方式分享兌換券序號給您的親友。<br>
                                     <br>
-                                    1. 每筆交易TickerHub均會寄送兌換券e-mail，請將e-mail列印、截圖或轉發。<br>
+                                    1. 每筆交易TicketHub均會寄送兌換券e-mail，請將e-mail列印、截圖或轉發。<br>
                                     2. 請以 mweb/PC 登入訂單查詢，將兌換券序號截圖後分享。 <br>
                                     3. 請以 App 登入訂單查詢<br>
                                     ios：將兌換券序號截圖後分享。<br>
@@ -805,7 +809,7 @@
                                     </b><br>
                                     <br>
                                     <b>
-                                        <font color="blue">TickerHub APP / mweb：</font>
+                                        <font color="blue">TicketHub APP / mweb：</font>
                                     </b><br>
                                     step1. 請點選畫面下方的 我的 / 登入，依頁面指示完成手機認證。<br>
                                     step2. 點選畫面下方的我的 / 訂單查詢 / 優惠票券(宅配購物) / 未使用(未出貨/已出貨) / 我的訂單 下拉至底端
@@ -856,15 +860,15 @@
                                         提醒您：折讓單的買受人為個人戶時(二聯式發票)，建議您選擇"電子折讓單"將不需再簽回紙本折讓單，由本公司直接代為處理銷貨退回及折讓證明單，以加速退貨退款作業。
                                     </font><br>
                                     <br>
-                                    step3. 簽名/蓋章後，請利用以下管道回傳至 TickerHub 客服中心<br>
+                                    step3. 簽名/蓋章後，請利用以下管道回傳至 TicketHub 客服中心<br>
                                     <span style="margin-left: 60px;">a. 傳真至 (02)2711-1757</span><br>
                                     <span style="margin-left: 60px;">
                                         b.
-                                        拍照傳送至客服信箱：support@TickerHub.com
+                                        拍照傳送至客服信箱：support@TicketHub.com
                                     </span><br>
                                     <span style="margin-left: 60px;">
                                         c. 紙本郵寄至：106 台北市大安區市民大道四段 100 號
-                                        4 樓 - TickerHub 客服中心收
+                                        4 樓 - TicketHub 客服中心收
                                     </span><br>
                                 </p>
                             </div>
@@ -888,7 +892,7 @@
                                     1. <b>
                                         <font color="red">票券經簽收後提供7天鑑賞期</font>
                                     </b>，鑑賞期內如欲辦理退貨，請至「<a href="">
-                                        TickerHub
+                                        TicketHub
                                         客服中心-申請退費
                                     </a>」辦理。<br>
                                     2. 請保持票券之完整性並妥善包裝，不得部份退費。<br>
@@ -913,7 +917,7 @@
                              data-parent="#faq-8">
                             <div class="card-body bg-text">
                                 <p>
-                                    購買TickerHub優惠票券只要未使用(含已過期)，保證隨時可退費(註1)，唯「開票手續費」(註2)不在退費範圍。<br>
+                                    購買TicketHub優惠票券只要未使用(含已過期)，保證隨時可退費(註1)，唯「開票手續費」(註2)不在退費範圍。<br>
                                     <br>
                                     (註1)<br>
                                     ※ 旅行檔次退費依據觀光局定型化契約以及兌換券規範辦理。<br>
@@ -925,7 +929,7 @@
                                     (註2)<br>
                                     <b>
                                         <font color="red">
-                                            請注意，購買TickerHub優惠票券之同時，將另收取「開票手續費」，以協助您完成電子開票程序。此部分費用依照『通訊交易解除權合理例外情事適用準則第2條第5項』之規定，票券一經開立送達至您帳號後，即視為一經提供即完成之線上服務，不在票券退費的範圍內
+                                            請注意，購買TicketHub優惠票券之同時，將另收取「開票手續費」，以協助您完成電子開票程序。此部分費用依照『通訊交易解除權合理例外情事適用準則第2條第5項』之規定，票券一經開立送達至您帳號後，即視為一經提供即完成之線上服務，不在票券退費的範圍內
                                         </font>
                                     </b>，但如為不可歸責消費者因素被迫退費(如店家歇業等)則不在此限。
                                 </p>

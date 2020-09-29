@@ -74,7 +74,7 @@
                     <div class="position-relative ticketImg col-md-4 border"></div>
                     <div class="col-md-8">
                         <h3 class="mt-4 mb-0">TEST</h3>
-                        <div class="tags"></div>
+                        <div class="showTag"></div>
                         <p class="description">TEST MEMO</p>
                         <div>
                             <span class="iconify" data-icon="carbon:location" data-inline="false"></span>
@@ -317,6 +317,7 @@
                     }
                     for (let i = 0; i < response.length; i++) {
                         CreateTicket(response, i);
+                        compileTag();
                     }
                 },
                 error: function (response) {
@@ -341,7 +342,7 @@
                             let tag = document.createElement('span');
                             tag.classList.add('badge', 'badge-pill', 'badge-secondary', 'mr-2', 'my-1')
                             tag.innerText = j;
-                            copied.querySelector('.tags').append(tag);
+                            copied.querySelector('.showTag').append(tag);
                         }
 
                         let favorite = document.createElement('i');
@@ -372,9 +373,9 @@
                 copied.querySelector('.description').innerText = jsonObj[index].Memo;
                 for (let j of jsonObj[index].TagList) {
                     let tag = document.createElement('span');
-                    tag.classList.add('badge', 'badge-pill', 'badge-secondary', 'mr-2', 'my-1')
+                    //tag.classList.add('badge', 'badge-pill', 'badge-secondary', 'mr-2', 'my-1')
                     tag.innerText = j;
-                    copied.querySelector('.tags').append(tag);
+                    copied.querySelector('.showTag').append(tag);
                 }
 
                 let favorite = document.createElement('i');
@@ -401,4 +402,5 @@
             countNode.innerText = document.querySelectorAll('.issue').length;
         }
     </script>
+    <script src="~/Assets/JavaScript/Common/ticket.js"></script>
 }

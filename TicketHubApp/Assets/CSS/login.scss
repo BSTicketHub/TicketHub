@@ -6,7 +6,7 @@ text {
 
 h1 {
     font-size: 3rem;
-    color: $back-paper;
+    color: $paper-white;
     text-shadow: 0.2rem 0.2rem 0.8rem #000000;
 }
 
@@ -146,7 +146,7 @@ input {
 
 .ticketStub,
 .ticketStubVertical {
-    background-color: $back-paper;
+    background-color: $paper-white;
     border-bottom: 2px dashed black;
     transform-origin: right 5%;
 
@@ -169,12 +169,12 @@ input {
     .login {
         background-color: transparent;
         border: none;
-        color: $back-paper;
+        color: $paper-white;
         font-weight: 400;
         font-size: 1.1rem;
 
         &:hover {
-            color: $back-paper;
+            color: $paper-white;
             font-weight: bold;
             text-decoration: none;
         }

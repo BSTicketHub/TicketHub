@@ -1,11 +1,22 @@
 @import "_variables.scss";
 
-body {
-    font-family: 'Noto Sans TC', sans-serif;
+#imgChoppingArea {
+    .loading-page {
+        visibility:hidden;
+        z-index: 999;
+        background-color:$gray-525252;
+        .spinner-border{
+            width:60px;
+            height:60px;
+            color:white;
+        }
+        p{
+            font-size:40px;
+            color:white;
+        }
+    }
 }
 
-.sidebar, .info {
-}
 
 .side-menu {
     .side-menu-Image {
@@ -28,9 +39,15 @@ body {
                 position: absolute;
                 top: 120px;
                 right: 10px;
-                i{
-                    font-size:24px;
-                    color:$Transparent-gray-2
+                cursor: pointer;
+
+                i {
+                    font-size: 24px;
+                    color: $Transparent-gray-2;
+                }
+
+                input {
+                    display: none;
                 }
             }
         }
@@ -55,10 +72,8 @@ body {
     .container {
 
         .edit-btn {
-            background-color: $cust-color-8;
-            color:white;
-            margin-left:auto;
-            margin-right:40px;
+            margin-left: auto;
+            margin-right: 40px;
         }
 
         .row {

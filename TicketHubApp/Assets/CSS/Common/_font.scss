@@ -1,3 +1,50 @@
-﻿.text-sm {
-    font-size: 0.8rem;
+﻿@import "../_variables.scss";
+
+.text-black {
+    color: $text-black;
+}
+.text-gray {
+    color: $text-gray;
+}
+
+$types: cust, shop, platform;
+$cust-colors: $cust-color-1, $cust-color-2, $cust-color-3, $cust-color-4, $cust-color-5,$cust-color-6, $cust-color-7, $cust-color-8, $cust-color-9, $cust-color-10,$cust-color-11, $cust-color-12, $cust-color-13, $cust-color-14, $cust-color-15;
+$shop-colors: $shop-color-1, $shop-color-2, $shop-color-3, $shop-color-4, $shop-color-5,$shop-color-6, $shop-color-7, $shop-color-8, $shop-color-9, $shop-color-10,$shop-color-11, $shop-color-12, $shop-color-13, $shop-color-14, $shop-color-15;
+$platform-colors: $platform-color-1, $platform-color-2, $platform-color-3, $platform-color-4, $platform-color-5,$platform-color-6, $platform-color-7, $platform-color-8, $platform-color-9, $platform-color-10,$platform-color-11, $platform-color-12, $platform-color-13, $platform-color-14, $platform-color-15;
+$colors: $cust-colors, $shop-colors, $platform-colors;
+
+@for $i from 1 through length($types) {
+    @for $j from 1 through 15 {
+        .text-#{nth($types, $i)}-#{$j} {
+            color: nth(nth($colors,$i),$j);
+        }
+    }
+}
+
+$list: sm, md, lg, xl;
+
+@for $i from 1 through length($list) {
+    @for $j from 1 through 9 {
+        .text-#{nth($list, $i)}-#{$j} {
+            font-size: ($i - 1rem + 0.1rem*$j);
+        }
+    }
+}
+
+@for $i from 2 through 4 {
+    .text-#{$i}x {
+        font-size: 1rem*$i;
+    }
+}
+
+.text-line-through {
+    text-decoration: line-through;
+}
+
+.text-overflow-2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
