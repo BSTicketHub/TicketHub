@@ -737,6 +737,7 @@
     <Content Include="Assets\CSS\Home\Contact.scss" />
     <Content Include="Assets\CSS\Home\About.scss" />
     <Content Include="Assets\CSS\Common\_cart.scss" />
+    <Content Include="Assets\CSS\Common\_tag.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -746,6 +747,7 @@
     <None Include="Properties\PublishProfiles\tickethub-dev - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\tickethub-dev - ReadOnly - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\tickethub-dev - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\tickethub-dev - Web Deploy1.pubxml" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\moment.min.js.map" />
