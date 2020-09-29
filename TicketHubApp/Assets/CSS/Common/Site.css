@@ -362,6 +362,14 @@ a {
 .text-line-through {
   text-decoration: line-through; }
 
+.hidden {
+  display: none; }
+
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
+
 .text-overflow-2 {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -376,22 +384,22 @@ a {
     content: '｜';
     color: white; }
 
-.bottom-strip-Home {
+.bottom-strip-home {
   border-bottom: none; }
 
-.bottom-strip-Member, .bottom-strip-Shop, .bottom-strip-Platform {
+.bottom-strip-member, .bottom-strip-shop, .bottom-strip-platform {
   border-bottom: 10px solid; }
 
-.bottom-strip-Member {
+.bottom-strip-member {
   border-bottom-color: #76c9cf; }
 
-.bottom-strip-Shop {
+.bottom-strip-shop {
   border-bottom-color: #ff8499;
   position: sticky;
   top: -70px;
   z-index: 2; }
 
-.bottom-strip-Platform {
+.bottom-strip-platform {
   border-bottom-color: #fcc16d;
   position: sticky;
   top: -70px;
@@ -602,63 +610,63 @@ a {
 
 .side-menu {
   background-color: white; }
-  .side-menu.side-menu-Customer {
+  .side-menu.side-menu-customer {
     position: sticky;
     top: 10px; }
-    .side-menu.side-menu-Customer .side-menu-Image .userImg {
+    .side-menu.side-menu-customer .side-menu-Image .userImg {
       width: 150px;
       height: 150px;
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center; }
-    .side-menu.side-menu-Customer .animate-circle {
+    .side-menu.side-menu-customer .animate-circle {
       color: #23a8b2; }
-    .side-menu.side-menu-Customer li.active > a {
+    .side-menu.side-menu-customer li.active > a {
       position: relative;
       color: #23a8b2; }
-      .side-menu.side-menu-Customer li.active > a::before {
+      .side-menu.side-menu-customer li.active > a::before {
         content: "";
         position: absolute;
         left: 0;
         height: 24px;
         width: 4px;
         background-color: #23a8b2; }
-  .side-menu.side-menu-Shop {
+  .side-menu.side-menu-shop {
     position: sticky;
     top: 10px; }
-    .side-menu.side-menu-Shop .side-menu-Image .userImg {
+    .side-menu.side-menu-shop .side-menu-Image .userImg {
       width: 150px;
       height: 150px;
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center; }
-    .side-menu.side-menu-Shop .animate-circle {
+    .side-menu.side-menu-shop .animate-circle {
       color: #ff3a5c; }
-    .side-menu.side-menu-Shop li.active > a {
+    .side-menu.side-menu-shop li.active > a {
       position: relative;
       color: #ff3a5c; }
-      .side-menu.side-menu-Shop li.active > a::before {
+      .side-menu.side-menu-shop li.active > a::before {
         content: "";
         position: absolute;
         left: 0;
         height: 24px;
         width: 4px;
         background-color: #ff3a5c; }
-  .side-menu.side-menu-Platform {
+  .side-menu.side-menu-platform {
     position: sticky;
     top: 10px; }
-    .side-menu.side-menu-Platform .side-menu-Image .userImg {
+    .side-menu.side-menu-platform .side-menu-Image .userImg {
       width: 150px;
       height: 150px;
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center; }
-    .side-menu.side-menu-Platform .animate-circle {
+    .side-menu.side-menu-platform .animate-circle {
       color: #fb9c16; }
-    .side-menu.side-menu-Platform li.active > a {
+    .side-menu.side-menu-platform li.active > a {
       position: relative;
       color: #fb9c16; }
-      .side-menu.side-menu-Platform li.active > a::before {
+      .side-menu.side-menu-platform li.active > a::before {
         content: "";
         position: absolute;
         left: 0;
@@ -763,3 +771,24 @@ a {
   --platform-color-13: #5e3b08;
   --platform-color-14: #3f2705;
   --platform-color-15: #1f1403; }
+
+.tag {
+  border-radius: 10px;
+  font-size: 0.9rem;
+  margin: 0.1rem 0.1rem;
+  padding: 3px 5.5px; }
+  .tag.tag-purple {
+    color: #4951DE;
+    border: 1px solid #4951DE; }
+  .tag.tag-green {
+    border: 1px solid #35821e;
+    color: #35821e; }
+  .tag.tag-red {
+    border: 1px solid #9f2439;
+    color: #9f2439; }
+  .tag.tag-orange {
+    border: 1px solid #ff961f;
+    color: #ff961f; }
+  .tag.tag-blue {
+    border: 1px solid #305ba5;
+    color: #305ba5; }

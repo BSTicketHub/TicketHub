@@ -94,8 +94,7 @@ namespace TicketHubApp
                 ));
             bundles.Add(new ScriptBundle("~/bundles/js/Home").Include(
                 "~/Assets/JavaScript/Common/owl.carousel.min.js",
-                "~/Scripts/esm/popper.min.js",
-                "~/Assets/JavaScript/Home/home.js"));
+                "~/Scripts/esm/popper.min.js"));
             //Home Contact
             bundles.Add(new StyleBundle("~/bundles/css/Contact").Include(
                 "~/Assets/CSS/Home/Contact.min.css"

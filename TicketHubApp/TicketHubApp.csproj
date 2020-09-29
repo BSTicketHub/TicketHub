@@ -35,7 +35,7 @@
     <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>2</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -211,6 +211,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Attributes\PlatformAuthorize.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -475,7 +476,6 @@
     <Content Include="Assets\JavaScript\Customer\MyTicket.js" />
     <Content Include="Assets\JavaScript\Customer\WishList.js" />
     <Content Include="Assets\JavaScript\Customer\_CustomerEvent.js" />
-    <Content Include="Assets\JavaScript\Home\cartLS.js" />
     <Content Include="Assets\JavaScript\Home\home.js" />
     <Content Include="Assets\JavaScript\Common\owl.carousel.min.js" />
     <Content Include="Assets\CSS\ShopList.css">
@@ -751,15 +751,13 @@
     <Content Include="Assets\CSS\Common\_cart.scss" />
     <Content Include="Assets\CSS\Platform\Platform_CreateUser.scss" />
     <Content Include="Assets\CSS\Platform\Platform_GetTicketsBelongToThisUser.scss" />
+    <Content Include="Assets\CSS\Common\_tag.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\ShaoChen - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\tickethub-dev - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\tickethub-dev - ReadOnly - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\tickethub-dev - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\moment.min.js.map" />

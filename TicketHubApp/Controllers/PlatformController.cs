@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using TicketHubApp.Models.ViewModels;
+using TicketHubApp.Attributes;
 using TicketHubApp.Services;
 using TicketHubDataLibrary.Models;
 
 namespace TicketHubApp.Controllers
 {
-    [Authorize]
+    [PlatformAuthorize]
     public class PlatformController : Controller
     {
         public ActionResult Index()

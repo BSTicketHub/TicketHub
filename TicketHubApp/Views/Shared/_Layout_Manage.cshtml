@@ -13,7 +13,7 @@
     @Scripts.Render("~/bundles/js/jquery")
 </head>
 @{
-    var pageType = Request.RawUrl.Split('/')[1];
+    var pageType = Request.RawUrl.Split('/')[1].ToLower();
 }
 <body class="manage-platform">
     @Html.Partial("_Navbar")

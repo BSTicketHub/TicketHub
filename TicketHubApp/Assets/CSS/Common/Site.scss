@@ -55,6 +55,7 @@ $colors9: $cust-color-9, $shop-color-9, $platform-color-9;
             }
         }
     }
+
     .active-bg-color-#{nth($types,$i)} {
         &.active {
             background-color: nth($colors8,$i);
@@ -67,6 +68,7 @@ $colors9: $cust-color-9, $shop-color-9, $platform-color-9;
         }
     }
 }
+
 
 @media (min-width: 768px) and (max-width: 991px) {
     .hidden-sm {
@@ -86,3 +88,6 @@ $colors9: $cust-color-9, $shop-color-9, $platform-color-9;
 @import "./_footer.scss";
 @import "./_sideMenu.scss";
 @import "../_root.scss";
+@import "./_tag.scss";
+
+

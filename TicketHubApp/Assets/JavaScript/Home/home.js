@@ -208,42 +208,46 @@ function UpcartCounter() {
 }
 
 //最新推出Card 事件
-$(".addCart").click(function (e) {
-    var id = `${$(this).parent().parent().parent().find("#chart_id").val()}`;
-    var title = $(this).parent().parent().parent().find("#Title").text();
-    var details = $(this).parent().parent().parent().find("#details").text();
-    var discountPrice = Number($(this).parent().parent().parent().find("#DiscountPrice").text().replace("$", ""));
-    var amount = Number($(this).parent().parent().parent().find("#cartcount").val());
+addNewCart();
+function addNewCart() {
+    $(".addCart").click(function (e) {
+        console.log('123')
+        var id = `${$(this).parent().parent().parent().find("#chart_id").val()}`;
+        var title = $(this).parent().parent().parent().find("#Title").text();
+        var details = $(this).parent().parent().parent().find("#details").text();
+        var discountPrice = Number($(this).parent().parent().parent().find("#DiscountPrice").text().replace("$", ""));
+        var amount = Number($(this).parent().parent().parent().find("#cartcount").val());
 
-    //console.log(id)
-    //console.log(title)
-    //console.log(details)
-    //console.log(discountPrice)
-    //console.log(amount)
+        //console.log(id)
+        //console.log(title)
+        //console.log(details)
+        //console.log(discountPrice)
+        //console.log(amount)
 
-    let cartItem = {
-        id: id,
-        title: title,
-        details: details,
-        price: discountPrice,
-        amount: amount
-    }
-
-    if (localStorage.getItem('Cart') == null) {
-        localStorage.setItem('Cart', JSON.stringify([cartItem]))
-    } else {
-        let cart = JSON.parse(localStorage.getItem('Cart'))
-        if (cart.filter(x => x.id == cartItem.id).length > 0) {
-            cart[cart.indexOf(cart.filter(x => x.id == cartItem.id)[0])].amount += cartItem.amount
-        } else {
-            cart.push(cartItem);
+        let cartItem = {
+            id: id,
+            title: title,
+            details: details,
+            price: discountPrice,
+            amount: amount
         }
-        localStorage.setItem('Cart', JSON.stringify(cart))
-    }
 
-    UpcartCounter();
-    UpdateCartData()
-})
+        if (localStorage.getItem('Cart') == null) {
+            localStorage.setItem('Cart', JSON.stringify([cartItem]))
+        } else {
+            let cart = JSON.parse(localStorage.getItem('Cart'))
+            if (cart.filter(x => x.id == cartItem.id).length > 0) {
+                cart[cart.indexOf(cart.filter(x => x.id == cartItem.id)[0])].amount += cartItem.amount
+            } else {
+                cart.push(cartItem);
+            }
+            localStorage.setItem('Cart', JSON.stringify(cart))
+        }
+
+        UpcartCounter();
+        UpdateCartData()
+    })
+}
 
 //購物車顯示事件
 function UpdateCartData() {
@@ -266,7 +270,7 @@ function UpdateCartData() {
                         <h3 class="ellipsisw-200">
                             <a href="" id="puttitle" class="ellipsis">${item.title}</a>
                         </h3>
-                        <div class="product-option ellipsis">${item.details}</div>
+                        <!--div class="product-option ellipsis">${item.details}</div-->
                     </div>
                     <div class="text-tag"></div>
                     <div>數量 x <span class="text-tag putamout" id="putamout">${item.amount}</span></div>

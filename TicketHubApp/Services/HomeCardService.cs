@@ -24,9 +24,48 @@ namespace TicketHubApp.Services
             TicketHubContext context = new TicketHubContext();
             GenericRepository<Issue> issueRepo = new GenericRepository<Issue>(context);
 
+            //第一步驟
+            //排序值
+            var temp = from i in _context.Issue
+                       join od in _context.OrderDetail on i.Id equals od.IssueId into j
+                       from od in j.DefaultIfEmpty()
+                       select new
+                       {
+                           i.Id,
+                           i.ImgPath,
+                           i.Title,
+                           i.Memo,
+                           i.DiscountPrice,
+                           i.OriginalPrice,
+                           i.DiscountRatio,
+                           i.ReleasedDate,
+                           i.ClosedDate,
+                           count = od == null ? 0 : od.Amount,
+                       };
+            // 排序需求
+            var issues = from t in temp
+                         group t by new { t.Id, t.ImgPath, t.Title, t.Memo, t.DiscountPrice, t.OriginalPrice, t.ReleasedDate, t.ClosedDate, t.DiscountRatio } into g
+                         select new
+                         {
+                             g.Key.Id,
+                             g.Key.ImgPath,
+                             g.Key.Title,
+                             g.Key.Memo,
+                             g.Key.DiscountPrice,
+                             g.Key.OriginalPrice,
+                             g.Key.DiscountRatio,
+                             g.Key.ReleasedDate,
+                             g.Key.ClosedDate,
+                             SalesCount = g.Sum(x => x.count),
+                         };
+
+            // join Tag
+            //限時搶購 依據 抓取上架票劵
+            issues = issues.OrderByDescending(i => i.ReleasedDate); //降序
+                                                                  
             var cardList = issueRepo.GetAll();
 
-            foreach (var item in cardList)
+            foreach (var item in issues)
             {
                 var p = new LimitedtimeViewModel()
                 {
@@ -36,6 +75,7 @@ namespace TicketHubApp.Services
                     Title = item.Title,
                     OriginalPrice = item.OriginalPrice,
                     DiscountPrice = item.DiscountPrice
+                    
                 };
 
                 result.Items.Add(p);
@@ -62,29 +102,42 @@ namespace TicketHubApp.Services
                            i.ImgPath,
                            i.Title,
                            i.Memo,
+                           i.Amount,
                            i.OriginalPrice,
                            i.DiscountPrice,
-                           i.IssuedDate,
-                           amount = od == null ? 0 : od.Amount
+                           i.ReleasedDate,
+                           i.ClosedDate,
+                           amount = od == null ? 0 : od.Amount,
+                           TagList = (from tg in context.IssueTag
+                                      join t in context.Tag on tg.TagId equals t.Id
+                                      where tg.IssueId == i.Id
+                                      select t.Name).ToList()
                        };
             var issues = from t in temp
-                         group t by new { t.Id, t.ImgPath, t.Title, t.Memo,t.OriginalPrice, t.DiscountPrice, t.IssuedDate } into g
+                         group t by new { t.Id, t.ImgPath, t.Title, t.Amount, t.Memo,t.OriginalPrice, t.DiscountPrice, t.ReleasedDate, t.ClosedDate } into g
                          select new
                          {
                              g.Key.Id,
                              g.Key.ImgPath,
                              g.Key.Title,
                              g.Key.Memo,
+                             g.Key.Amount,
                              g.Key.OriginalPrice,
                              g.Key.DiscountPrice,
-                             g.Key.IssuedDate,
+                             g.Key.ReleasedDate,
+                             g.Key.ClosedDate,
                              SalesAmount = g.Sum(x => x.amount),
+                             TagList = (from tg in context.IssueTag
+                                        join t in context.Tag on tg.TagId equals t.Id
+                                        where tg.IssueId == g.Key.Id
+                                        select t.Name).ToList()
                          };
-            var cardList = issues.OrderByDescending(x => x.IssuedDate).Skip(count).Take(numOfEachTimes);
+            var now = DateTime.Now;
+            //issues = issues.Where(x => (x.ReleasedDate <= now) && (x.ClosedDate >= now));
+            issues = issues.Where(x => (x.Amount - x.SalesAmount) > 0);
+            var cardList = issues.OrderByDescending(x => x.ReleasedDate).Skip(count).Take(numOfEachTimes);
 
-            
-
-
+           
             foreach (var item in cardList)
             {
                 var p = new SortNewCardViewModel()
@@ -95,7 +148,8 @@ namespace TicketHubApp.Services
                     Title = item.Title,
                     OriginalPrice = item.OriginalPrice,
                     DiscountPrice = item.DiscountPrice,
-                    Amount = (int)item.SalesAmount
+                    Amount = (int)item.SalesAmount,
+                    TagList = item.TagList
                 };
 
                 result.Items.Add(p);
@@ -122,6 +176,7 @@ namespace TicketHubApp.Services
                            i.Id,
                            i.ImgPath,
                            i.Title,
+                           i.Memo,
                            i.DiscountPrice,
                            i.OriginalPrice,
                            i.DiscountRatio,
@@ -132,12 +187,13 @@ namespace TicketHubApp.Services
                        };
             // 排序需求
             var issues = from t in temp
-                         group t by new { t.Id, t.ImgPath, t.Title, t.DiscountPrice, t.OriginalPrice, t.ReleasedDate, t.ClosedDate, t.DiscountRatio, t.Amount } into g
+                         group t by new { t.Id, t.ImgPath, t.Title, t.Memo, t.DiscountPrice, t.OriginalPrice, t.ReleasedDate, t.ClosedDate, t.DiscountRatio, t.Amount } into g
                          select new
                          {
                              g.Key.Id,
                              g.Key.ImgPath,
                              g.Key.Title,
+                             g.Key.Memo,
                              g.Key.DiscountPrice,
                              g.Key.OriginalPrice,
                              g.Key.DiscountRatio,
@@ -203,6 +259,7 @@ namespace TicketHubApp.Services
                            i.Id,
                            i.ImgPath,
                            i.Title,
+                           i.Memo,
                            i.DiscountPrice,
                            i.OriginalPrice,
                            i.DiscountRatio,
@@ -213,12 +270,13 @@ namespace TicketHubApp.Services
                        };
             // 排序需求
             var issues = from t in temp
-                         group t by new { t.Id, t.ImgPath, t.Title, t.DiscountPrice, t.OriginalPrice, t.DiscountRatio, t.ReleasedDate, t.ClosedDate, t.Amount } into g
+                         group t by new { t.Id, t.ImgPath, t.Title, t.Memo, t.DiscountPrice, t.OriginalPrice, t.DiscountRatio, t.ReleasedDate, t.ClosedDate, t.Amount } into g
                          select new
                          {
                              g.Key.Id,
                              g.Key.ImgPath,
                              g.Key.Title,
+                             g.Key.Memo,
                              g.Key.DiscountPrice,
                              g.Key.OriginalPrice,
                              g.Key.ReleasedDate,
@@ -247,7 +305,7 @@ namespace TicketHubApp.Services
                 {
                     CardType = cardType,
                     Id = item.Id,
-                    //Memo = item.Memo,
+                    Memo = item.Memo,
                     ImgPath = item.ImgPath,
                     Title = item.Title,
                     OriginalPrice = item.OriginalPrice,
