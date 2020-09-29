@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<TicketHubApp.Controllers.MenuController.SideMenuItem>
 @{
-    var pageType = Request.RawUrl.Split('/')[1];
+    var pageType = Request.RawUrl.Split('/')[1].ToLower();
 }
 
 <ul class="side-menu rounded side-menu-@pageType">
-    @if (pageType != "Platform")
+    @if (pageType != "platform")
     {
         <li class="side-menu-Image border @*position-relative*@">
             <div class="userImg rounded-circle mx-auto mt-3 animate-circle" style="background-image: url('@ViewBag.Image')"></div>

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using System.Web.UI;
 using TicketHubApp.Services;
 using TicketHubDataLibrary;
 
@@ -10,6 +9,7 @@ namespace TicketHubApp.Controllers
     {
         public ActionResult GenSideMenu(string page)
         {
+            page = page.ToLower();
             ViewBag.Page = page;
             List<SideMenuItem> menuItems = null;
             switch (page)
