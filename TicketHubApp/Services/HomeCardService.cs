@@ -101,29 +101,42 @@ namespace TicketHubApp.Services
                            i.ImgPath,
                            i.Title,
                            i.Memo,
+                           i.Amount,
                            i.OriginalPrice,
                            i.DiscountPrice,
-                           i.IssuedDate,
-                           amount = od == null ? 0 : od.Amount
+                           i.ReleasedDate,
+                           i.ClosedDate,
+                           amount = od == null ? 0 : od.Amount,
+                           TagList = (from tg in context.IssueTag
+                                      join t in context.Tag on tg.TagId equals t.Id
+                                      where tg.IssueId == i.Id
+                                      select t.Name).ToList()
                        };
             var issues = from t in temp
-                         group t by new { t.Id, t.ImgPath, t.Title, t.Memo,t.OriginalPrice, t.DiscountPrice, t.IssuedDate } into g
+                         group t by new { t.Id, t.ImgPath, t.Title, t.Amount, t.Memo,t.OriginalPrice, t.DiscountPrice, t.ReleasedDate, t.ClosedDate } into g
                          select new
                          {
                              g.Key.Id,
                              g.Key.ImgPath,
                              g.Key.Title,
                              g.Key.Memo,
+                             g.Key.Amount,
                              g.Key.OriginalPrice,
                              g.Key.DiscountPrice,
-                             g.Key.IssuedDate,
+                             g.Key.ReleasedDate,
+                             g.Key.ClosedDate,
                              SalesAmount = g.Sum(x => x.amount),
+                             TagList = (from tg in context.IssueTag
+                                        join t in context.Tag on tg.TagId equals t.Id
+                                        where tg.IssueId == g.Key.Id
+                                        select t.Name).ToList()
                          };
-            var cardList = issues.OrderByDescending(x => x.IssuedDate).Skip(count).Take(numOfEachTimes);
+            var now = DateTime.Now;
+            //issues = issues.Where(x => (x.ReleasedDate <= now) && (x.ClosedDate >= now));
+            issues = issues.Where(x => (x.Amount - x.SalesAmount) > 0);
+            var cardList = issues.OrderByDescending(x => x.ReleasedDate).Skip(count).Take(numOfEachTimes);
 
-            
-
-
+           
             foreach (var item in cardList)
             {
                 var p = new SortNewCardViewModel()
@@ -134,7 +147,8 @@ namespace TicketHubApp.Services
                     Title = item.Title,
                     OriginalPrice = item.OriginalPrice,
                     DiscountPrice = item.DiscountPrice,
-                    Amount = (int)item.SalesAmount
+                    Amount = (int)item.SalesAmount,
+                    TagList = item.TagList
                 };
 
                 result.Items.Add(p);

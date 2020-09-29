@@ -172,29 +172,3 @@
 .whish-btn {
   color: #ff6b85;
   line-height: 1; }
-
-.tag {
-  border-radius: 10px;
-  font-size: 0.9rem;
-  margin: 0 0.1rem 0;
-  padding: 0 5.5px; }
-
-.tag-purple {
-  color: #4951DE;
-  border: 1px solid #4951DE; }
-
-.tag-green {
-  border: 1px solid #35821e;
-  color: #35821e; }
-
-.tag-red {
-  border: 1px solid #9f2439;
-  color: #9f2439; }
-
-.tag-orange {
-  border: 1px solid #ff961f;
-  color: #ff961f; }
-
-.tag-blue {
-  border: 1px solid #305ba5;
-  color: #305ba5; }
