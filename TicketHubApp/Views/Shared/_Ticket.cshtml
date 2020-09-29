@@ -18,12 +18,12 @@
         }
 
         <h3 class="mt-4 mb-0">@Model.Title</h3>
-        <div class="showTag">
+        <div class="showTag my-1">
             @if (Model.TagList != null && Model.TagList.Count() != 0)
             {
                 foreach (var tag in Model.TagList)
                 {
-                    <span class="badge badge-pill mr-2 my-1">@tag</span>
+                    <span>@tag</span>
                 }
             }
         </div>

@@ -46,7 +46,7 @@ namespace TicketHubApp.Controllers
         {
             var service = new TicketListService();
             if (User.Identity.IsAuthenticated)
-            { 
+            {
                 var currentUserId = User.Identity.GetUserId();
                 var wishIssue = service.GetUserFsavotite(currentUserId);
                 ViewBag.UserId = currentUserId;
@@ -54,14 +54,7 @@ namespace TicketHubApp.Controllers
             }
             var tickets = service.SearchIssue(input);
 
-            if (tickets.Count() == 0)
-            {
-                return RedirectToRoute("Unfound");
-            }
-            else
-            {
-                return View(tickets);
-            }
+            return tickets.Count() == 0 ? new InfoViewService().SearchNotFound() : View(tickets);
         }
 
         public ActionResult ShopList(string input)
@@ -76,14 +69,8 @@ namespace TicketHubApp.Controllers
             }
             var shops = service.SearchShop(input);
             ViewBag.SearchString = input;
-            if (shops.Count() == 0)
-            {
-                return RedirectToRoute("Unfound");
-            }
-            else
-            {
-                return View(shops);
-            }
+
+            return shops.Count() == 0 ? new InfoViewService().SearchNotFound() : View(shops);
         }
 
         public ActionResult GetCustomerInfo()
@@ -158,12 +145,12 @@ namespace TicketHubApp.Controllers
 
             var service = new TicketListService();
             var tickets = service.SearchByTag(model.MaxPrice, model.MinPrice);
-            if(model.SelectedTag.Count != 0)
+            if (model.SelectedTag.Count != 0)
             {
                 tickets = tickets.Where(x => x.TagList.Intersect(model.SelectedTag).Count() > 0);
             }
 
-            
+
 
             return Json(tickets, JsonRequestBehavior.AllowGet);
         }
@@ -201,7 +188,7 @@ namespace TicketHubApp.Controllers
         [HttpPost]
         public ActionResult SetAvatar2Server(string input, string Id)
         {
-            using(var _context = TicketHubContext.Create())
+            using (var _context = TicketHubContext.Create())
             {
                 var user = _context.Users.Find(Id);
                 user.AvatarPath = input;

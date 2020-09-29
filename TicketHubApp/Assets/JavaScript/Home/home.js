@@ -209,7 +209,7 @@ function UpcartCounter() {
 
 //最新推出Card 事件
 $(".addCart").click(function (e) {
-    var id = `${$(this).parent().parent().parent().find("#chart_id").val()}`;
+    var id = $(this).parent().parent().parent().find("#chart_id").val();
     var title = $(this).parent().parent().parent().find("#Title").text();
     var details = $(this).parent().parent().parent().find("#details").text();
     var discountPrice = Number($(this).parent().parent().parent().find("#DiscountPrice").text().replace("$", ""));
@@ -292,7 +292,7 @@ function UpdateCartData() {
 $(".card_addToCart").click(function () {
     let card = $(this).parents(".product-detail");
 
-    let id = `${card.find(".card_id").val()}`;
+    let id = card.find(".card_id").val();
     let title = card.find(".card_title").text();
     let discountPrice = Number(card.find(".card_discountPrice").text().replace("$", ""));
 
