@@ -35,7 +35,7 @@
     <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>2</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -744,10 +744,6 @@
     </None>
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\ShaoChen - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\tickethub-dev - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\tickethub-dev - ReadOnly - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\tickethub-dev - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\tickethub-dev - Web Deploy1.pubxml" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\moment.min.js.map" />
