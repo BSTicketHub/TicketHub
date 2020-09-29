@@ -18,9 +18,9 @@
 
     public class PageType
     {
-        public const string HOME = "Home";
-        public const string CUSTOMER = "Customer";
-        public const string SHOP = "Shop";
-        public const string PLATFORM = "Platform";
+        public const string HOME = "home";
+        public const string CUSTOMER = "customer";
+        public const string SHOP = "shop";
+        public const string PLATFORM = "platform";
     }
 }

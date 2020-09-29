@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using TicketHubApp.Interfaces;
 using TicketHubApp.Models;
 using TicketHubApp.Models.ViewModels;
@@ -104,7 +103,7 @@ namespace TicketHubApp.Services
                 var userManager = new UserManager<TicketHubUser>(userStore);
                 userManager.RemoveFromRole(userId, role);
                 var shop = GetShop(shopName);
-                var shopEmployee = shop.ShopEmployees.First(x=>x.UserId == userId);
+                var shopEmployee = shop.ShopEmployees.First(x => x.UserId == userId);
                 shop.ShopEmployees.Remove(shopEmployee);
                 _repository.Update(shop);
 
