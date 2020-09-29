@@ -1,6 +1,6 @@
 ﻿@{
-    var pageType = Request.RawUrl.Split('/')[1];
-    pageType = string.IsNullOrEmpty(pageType) ? "Home" : pageType;
+    var pageType = Request.RawUrl.Split('/')[1].ToLower();
+    pageType = string.IsNullOrEmpty(pageType) ? "home" : pageType;
 }
 <nav class="navbar navbar-expand-lg bg-light bottom-strip-@pageType @(pageType == PageType.HOME ? "sticky-top" : "")">
     <div class="container-fluid">
@@ -12,7 +12,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            @if (pageType == "Home" || pageType == "Customer")
+            @if (pageType == "home" || pageType == "customer")
             {
                 using (Html.BeginForm("Search", "Home", FormMethod.Post))
                 {
@@ -38,7 +38,7 @@
                 }
             }
             <ul class="navbar-nav ml-auto mr-3">
-                @if (pageType == "Home" || pageType == "Customer")
+                @if (pageType == "home" || pageType == "customer")
                 {
                     <li class="nav-item dropdown active d-flex align-items-center pb-0">
                         <a class="nav-link dropdown-toggle hov-color-cust" href="#" id="navbarDropdown" role="button"
@@ -93,7 +93,7 @@
                 @Html.Action("GenLoginPartial", "Menu")
             </ul>
 
-            @if (pageType == "Home" || pageType == "Customer")
+            @if (pageType == "home" || pageType == "customer")
             {
                 <ul class="form-inline navbar-nav mr-5 poition-relative" onmousemove="shopCart()" onclick=""
                     onmouseout="shopCartMove()">

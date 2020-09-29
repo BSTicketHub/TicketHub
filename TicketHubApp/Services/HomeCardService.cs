@@ -60,9 +60,8 @@ namespace TicketHubApp.Services
                          };
 
             // join Tag
-            //限時搶購 依據 抓取現在上架票劵
-            issues = issues.OrderByDescending(i => i.SalesCount); //降序
-
+            //限時搶購 依據 抓取上架票劵
+            issues = issues.OrderByDescending(i => i.ReleasedDate); //降序
                                                                   
             var cardList = issueRepo.GetAll();
 
@@ -177,6 +176,7 @@ namespace TicketHubApp.Services
                            i.Id,
                            i.ImgPath,
                            i.Title,
+                           i.Memo,
                            i.DiscountPrice,
                            i.OriginalPrice,
                            i.DiscountRatio,
@@ -187,12 +187,13 @@ namespace TicketHubApp.Services
                        };
             // 排序需求
             var issues = from t in temp
-                         group t by new { t.Id, t.ImgPath, t.Title, t.DiscountPrice, t.OriginalPrice, t.ReleasedDate, t.ClosedDate, t.DiscountRatio, t.Amount } into g
+                         group t by new { t.Id, t.ImgPath, t.Title, t.Memo, t.DiscountPrice, t.OriginalPrice, t.ReleasedDate, t.ClosedDate, t.DiscountRatio, t.Amount } into g
                          select new
                          {
                              g.Key.Id,
                              g.Key.ImgPath,
                              g.Key.Title,
+                             g.Key.Memo,
                              g.Key.DiscountPrice,
                              g.Key.OriginalPrice,
                              g.Key.DiscountRatio,
@@ -258,6 +259,7 @@ namespace TicketHubApp.Services
                            i.Id,
                            i.ImgPath,
                            i.Title,
+                           i.Memo,
                            i.DiscountPrice,
                            i.OriginalPrice,
                            i.DiscountRatio,
@@ -268,12 +270,13 @@ namespace TicketHubApp.Services
                        };
             // 排序需求
             var issues = from t in temp
-                         group t by new { t.Id, t.ImgPath, t.Title, t.DiscountPrice, t.OriginalPrice, t.DiscountRatio, t.ReleasedDate, t.ClosedDate, t.Amount } into g
+                         group t by new { t.Id, t.ImgPath, t.Title, t.Memo, t.DiscountPrice, t.OriginalPrice, t.DiscountRatio, t.ReleasedDate, t.ClosedDate, t.Amount } into g
                          select new
                          {
                              g.Key.Id,
                              g.Key.ImgPath,
                              g.Key.Title,
+                             g.Key.Memo,
                              g.Key.DiscountPrice,
                              g.Key.OriginalPrice,
                              g.Key.ReleasedDate,
@@ -302,7 +305,7 @@ namespace TicketHubApp.Services
                 {
                     CardType = cardType,
                     Id = item.Id,
-                    //Memo = item.Memo,
+                    Memo = item.Memo,
                     ImgPath = item.ImgPath,
                     Title = item.Title,
                     OriginalPrice = item.OriginalPrice,

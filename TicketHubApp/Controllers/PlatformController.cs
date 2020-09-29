@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using TicketHubApp.Attributes;
 using TicketHubApp.Services;
 
 namespace TicketHubApp.Controllers
 {
-    [Authorize]
+    [PlatformAuthorize]
     public class PlatformController : Controller
     {
         public ActionResult Index()
