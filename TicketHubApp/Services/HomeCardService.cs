@@ -24,9 +24,47 @@ namespace TicketHubApp.Services
             TicketHubContext context = new TicketHubContext();
             GenericRepository<Issue> issueRepo = new GenericRepository<Issue>(context);
 
+            //第一步驟
+            //排序值
+            var temp = from i in _context.Issue
+                       join od in _context.OrderDetail on i.Id equals od.IssueId into j
+                       from od in j.DefaultIfEmpty()
+                       select new
+                       {
+                           i.Id,
+                           i.ImgPath,
+                           i.Title,
+                           i.DiscountPrice,
+                           i.OriginalPrice,
+                           i.DiscountRatio,
+                           i.ReleasedDate,
+                           i.ClosedDate,
+                           count = od == null ? 0 : od.Amount,
+                       };
+            // 排序需求
+            var issues = from t in temp
+                         group t by new { t.Id, t.ImgPath, t.Title, t.DiscountPrice, t.OriginalPrice, t.ReleasedDate, t.ClosedDate, t.DiscountRatio } into g
+                         select new
+                         {
+                             g.Key.Id,
+                             g.Key.ImgPath,
+                             g.Key.Title,
+                             g.Key.DiscountPrice,
+                             g.Key.OriginalPrice,
+                             g.Key.DiscountRatio,
+                             g.Key.ReleasedDate,
+                             g.Key.ClosedDate,
+                             SalesCount = g.Sum(x => x.count),
+                         };
+
+            // join Tag
+            //限時搶購 依據 抓取現在上架票劵
+            issues = issues.OrderByDescending(i => i.SalesCount); //降序
+
+                                                                  
             var cardList = issueRepo.GetAll();
 
-            foreach (var item in cardList)
+            foreach (var item in issues)
             {
                 var p = new LimitedtimeViewModel()
                 {
@@ -36,6 +74,7 @@ namespace TicketHubApp.Services
                     Title = item.Title,
                     OriginalPrice = item.OriginalPrice,
                     DiscountPrice = item.DiscountPrice
+                    
                 };
 
                 result.Items.Add(p);
