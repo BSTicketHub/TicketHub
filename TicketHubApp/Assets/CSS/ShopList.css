@@ -85,3 +85,6 @@
   top: 0px; }
   .container .row .map-area .map {
     height: inherit; }
+    .container .row .map-area .map #shopImage {
+      width: 80%;
+      height: 100px; }

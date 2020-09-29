@@ -252,6 +252,7 @@
     <Compile Include="Models\ViewModels\ShopEmployeeViewModel.cs" />
     <Compile Include="Models\ViewModels\ShopIssueDetailViewModel.cs" />
     <Compile Include="Models\ViewModels\ShopIssueListViewModel.cs" />
+    <Compile Include="Models\ViewModels\ShopApplyViewModel.cs" />
     <Compile Include="Models\ViewModels\ShopViewModel.cs" />
     <Compile Include="Models\ViewModels\SimpleIssueViewModel.cs" />
     <Compile Include="Models\ViewModels\PlatformShopViewModel.cs" />
@@ -272,6 +273,7 @@
     <Compile Include="Services\ShopIssueService.cs" />
     <Compile Include="Services\ShopListService.cs" />
     <Compile Include="Services\ShopReportService.cs" />
+    <Compile Include="Services\ShopService.cs" />
     <Compile Include="Services\TagService.cs" />
     <Compile Include="Services\TicketListService.cs" />
     <Compile Include="Startup.cs" />
@@ -445,6 +447,7 @@
     <Content Include="Assets\Images\Home\takeout.png" />
     <Content Include="Assets\Images\Home\ticketHub.png" />
     <Content Include="Assets\Images\Home\travel.png" />
+    <Content Include="Assets\Images\img\restaurant.png" />
     <Content Include="Assets\Images\Shop\logo.png" />
     <Content Include="Assets\Images\shop_logo.jpg" />
     <Content Include="Assets\Images\Platform\bmw01.jpg" />
@@ -733,6 +736,7 @@
     <Content Include="Assets\CSS\_root.scss" />
     <Content Include="Assets\CSS\Home\Contact.scss" />
     <Content Include="Assets\CSS\Home\About.scss" />
+    <Content Include="Assets\CSS\Common\_cart.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -778,7 +782,7 @@
     <Content Include="Views\Platform\AdminDetail.cshtml" />
     <Content Include="Views\Platform\ShopDetail.cshtml" />
     <Content Include="Views\Platform\GetAllEmployees.cshtml" />
-    <Content Include="Views\Shared\Info.cshtml" />
+    <Content Include="Views\Shared\InfoSingle.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Platform\GetAllIssues.cshtml" />
     <Content Include="Views\Platform\UserList.cshtml" />
@@ -790,11 +794,12 @@
     <Content Include="Views\Shared\_Navbar.cshtml" />
     <Content Include="Views\Shared\_Layout_Manage.cshtml" />
     <Content Include="Views\Shared\_SideMenu.cshtml" />
-    <Content Include="Views\Home\PageUnfound.cshtml" />
     <Content Include="Views\Customer\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Home\_LimitedtimeCard.cshtml" />
     <Content Include="Views\ProductCart\_ProductCartPartial.cshtml" />
+    <Content Include="Views\Account\ShopApply.cshtml" />
+    <Content Include="Views\Shared\InfoHome.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

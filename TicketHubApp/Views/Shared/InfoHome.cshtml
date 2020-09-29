@@ -1,0 +1,51 @@
+﻿@model TicketHubApp.Models.ViewModels.InfoViewModel
+
+@{
+    ViewBag.Title = "Info";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section topCSS{
+    <style>
+        .info-icon {
+            font-size: 15rem;
+        }
+    </style>
+}
+
+<div class="text-center text-gray py-5">
+    <span class="iconify info-icon" data-icon="@Model.IconName" data-inline="false"></span>
+    <p class="text-xl-7">@Model.Title</p>
+    @if (Model.IsCheckMail)
+    {
+        <p class="text-md-9">Please check your email to activate your user account!</p>
+        <p class="text-md-9">
+            If you don't receive an email within a few seconds, please check your spam filters
+        </p>
+    }
+    else
+    {
+        <p class="text-md-9">@Html.Raw(Model.Content)</p>
+    }
+    @if (Model.IsShowLogin)
+    {
+        @Html.ActionLink("Click here to login.", "Login", "Account")
+    }
+    <p>本頁面將在 <span class="time">10</span> 秒鐘後跳轉回首頁</p>
+</div>
+
+@section endJS{
+    <script>
+        let timer = setInterval(ChangeTime, 1000);
+
+        function ChangeTime() {
+            let time = parseInt($(".time").text());
+            time--;
+
+            if (time <= 0) {
+                window.location.href = "../Home/Index";
+            } else {
+                $(".time").text(time);
+            }
+        }
+    </script>
+}
