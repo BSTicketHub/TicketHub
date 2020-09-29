@@ -17,6 +17,6 @@ namespace TicketHubApp.Models.ViewModels
         public decimal DiscountPrice { get; set; }
         public int Amount { get; set; }
         public int Sold { get; set; }
-        public string[] Tag { get; set; } 
+        public List<string> TagList { get; set; } 
     }
 }

@@ -615,7 +615,6 @@ a {
     clip: rect(0px, 220px, 220px, 218px); } }
 
 :root {
-  --kkday: #26bec9;
   --background-white: #f5f5f5;
   --favorite: #d87093;
   --line-gray: #adadad;
@@ -665,3 +664,24 @@ a {
   --platform-color-13: #5e3b08;
   --platform-color-14: #3f2705;
   --platform-color-15: #1f1403; }
+
+.tag {
+  border-radius: 10px;
+  font-size: 0.9rem;
+  margin: 0.1rem 0.1rem;
+  padding: 3px 5.5px; }
+  .tag.tag-purple {
+    color: #4951DE;
+    border: 1px solid #4951DE; }
+  .tag.tag-green {
+    border: 1px solid #35821e;
+    color: #35821e; }
+  .tag.tag-red {
+    border: 1px solid #9f2439;
+    color: #9f2439; }
+  .tag.tag-orange {
+    border: 1px solid #ff961f;
+    color: #ff961f; }
+  .tag.tag-blue {
+    border: 1px solid #305ba5;
+    color: #305ba5; }

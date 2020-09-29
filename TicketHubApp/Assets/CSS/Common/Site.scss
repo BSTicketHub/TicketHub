@@ -55,6 +55,7 @@ $colors9: $cust-color-9, $shop-color-9, $platform-color-9;
             }
         }
     }
+
     .active-bg-color-#{nth($types,$i)} {
         &.active {
             background-color: nth($colors8,$i);
@@ -86,3 +87,36 @@ $colors9: $cust-color-9, $shop-color-9, $platform-color-9;
 @import "./_footer.scss";
 @import "./_sideMenu.scss";
 @import "../_root.scss";
+
+.tag {
+    border-radius: 10px;
+    font-size: 0.9rem;
+    margin: 0.1rem 0.1rem;
+    padding: 3px 5.5px;
+
+    &.tag-purple {
+        color: $purple-4951DE;
+        border: 1px solid $purple-4951DE;
+    }
+
+    &.tag-green {
+        border: 1px solid $green-35821e;
+        color: $green-35821e;
+    }
+
+    &.tag-red {
+        border: 1px solid $shop-color-11;
+        color: $shop-color-11;
+    }
+
+    &.tag-orange {
+        border: 1px solid $orange-ff961f;
+        color: $orange-ff961f;
+    }
+
+    &.tag-blue {
+        border: 1px solid $blue-305ba5;
+        color: $blue-305ba5;
+    }
+}
+
