@@ -33,7 +33,7 @@ namespace TicketHubApp.Services
             var memberList = from u in repository.GetAll()
                              join r in roleRepository.GetAll()
                              on u.Id equals r.UserId
-                             //where r.RoleId == "5"
+                             where r.RoleId == "5"
                              select new PlatformUserViewModel
                              {
                                  Id = u.Id,
