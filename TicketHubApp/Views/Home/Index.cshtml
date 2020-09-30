@@ -80,25 +80,25 @@
             </div>
             <div class="d-flex justify-content-around text-center text-muted mt-4">
                 <div class="class-icon">
-                    <button class="card-shop btn">
+                    <button class="card-shop btn" onclick="location.href='/Customer/ShopList/台北市'">
                         <img src="/Assets/Images/Home/travel.png" alt="">
                     </button>
                     <h5>地區美食</h5>
                 </div>
                 <div class="class-icon">
-                    <button class="card-shop btn">
+                    <button class="card-shop btn" onclick="location.href='/Customer/ShopList/台北市'">
                         <img src="/Assets/Images/Home/takeout.png" alt="">
                     </button>
                     <h5>美食外帶</h5>
                 </div>
-                <div class="class-icon">
+                <div class="class-icon" onclick="location.href='/Customer/ShopList/台北市'">
                     <button class="card-shop btn">
                         <img src="/Assets/Images/Home/food.png" alt="">
                     </button>
                     <h5>餐廳美食</h5>
                 </div>
                 <div class="class-icon">
-                    <button class="card-shop btn">
+                    <button class="card-shop btn" onclick="location.href='/Customer/ShopList/台北市'">
                         <img src="/Assets/Images/Home/bed.png" alt="">
                     </button>
                     <h5>熱門美食</h5>
@@ -158,13 +158,13 @@
             <div class="class-divider"></div>
         </div>
         <div class="row" id="moreCard">
-            @for (var i = 0; i < 6; i++)
-            {
-                var item = Model.SortNewItems.Items[i];
-                <div class="col-md-4 col-sm-12">
-                    @Html.Partial("_SortNewCard", item)
-                </div>
-            }
+            @*@for (var i = 0; i < 6; i++)
+                {
+                    var item = Model.SortNewItems.Items[i];
+                    <div class="col-md-4 col-sm-12">
+                        @Html.Partial("_SortNewCard", item)
+                    </div>
+                }*@
         </div>
     </div>
 
@@ -180,10 +180,12 @@
 <button class="" id="btnScroll">▲<h6>Top</h6></button>
 <!-- ------ -->
 @section endJS{
+    <script src="~/Assets/JavaScript/Home/home.js"></script>
     <script>
-        var count = 6;
+        var count = 0;
         //var show = document.getElementById("cardShow"); //template id
         //body.onload = fetchData(); //在頁面载入完成后 觸發
+        fetchData();
 
         function fetchData() {
             var scrollPosition = window.pageYOffset;
@@ -204,81 +206,102 @@
             let card = document.getElementById("moreCard")
 
             // 動態載入
-            for (var item of ticketcard)
-            {
-                //console.log(item);
+            if (ticketcard != null) {
+                console.log(ticketcard);
+                for (var item of ticketcard) {
+                    let imageSrc = (item.ImgPath == null) ? "" : item.ImgPath;
 
-                let html = `
-    <div class="col-md-4 col-sm-12">
-    <div class="product-item rounded border overflow-hidden mx-2 mt-4">
-    <a href="/ProductDescription/ProductDescription/${item.Id}" target="">
-        <div class="product-img img-h-md lazyload-img">
-            <img src="${item.ImgPath}" alt="${item.Title}">
-        </div>
-    </a>
-    <div class="product-detail p-2">
-        <input type="hidden" id="chart_id" value="${item.Id}">
-        <div class="d-flex justify-content-between align-items-center mb-1">
-            <h3 class="text-md-1 mb-0" id="Title">${item.Title}</h3>
-            
-        </div>
-        <h4 class="text-md-1 text-muted mb-1 text-overflow-2" id="details">${item.Memo}</h4>
-        <div class="d-flex">
-            <div class="tag tag-blue">
-                最新
-            </div>
-            <div class="tag tag-green">
-                國旅卡
-            </div>
-            <div class="tag tag-red">
-                可外帶
-            </div>
-            <div class="tag tag-orange">
-                首賣
-            </div>
-        </div>
-        <div class="d-flex justify-content-end">
-            <span class="text-line-through text-sm-9 text-muted align-self-end">
-                $${item.OriginalPrice}
-            </span>
-            <span class="currentPrice text-md-3" id="DiscountPrice">
-                $${item.DiscountPrice}
-            </span>
-        </div>
-        <div class="text-muted text-right text-sm-9">售${item.Amount}份</div>
-        <hr>
-        <div class="row">
-            <div class="col-7">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <button class="btn btn-secondary sub_button" id="">
-                            <span class="iconify" data-icon="ant-design:minus-outlined" data-inline="false"></span>
-                        </button>
+                    let html = `
+                <div class="col-md-4 col-sm-12">
+                <div class="product-item rounded border overflow-hidden mx-2 mt-4">
+                <a href="/ProductDescription/ProductDescription/${item.Id}" target="">
+                    <div class="product-img img-h-md lazyload-img">
+                        <img src="${imageSrc}" alt="${item.Title}">
                     </div>
-                    <input type="number" id="cartcount" class="form-control cartcount" value="1">
-                    <div class="input-group-append">
-                        <button class="btn btn-secondary add_button" id="">
-                            <span class="iconify" data-icon="codicon:add" data-inline="false"></span>
-                        </button>
+                </a>
+                <div class="product-detail p-2">
+                    <input type="hidden" id="chart_id" value="${item.Id}">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                        <h3 class="text-md-1 mb-0" id="Title">${item.Title}</h3>
+
+                    </div>
+                    <div class="text-muted mb-1 text-overflow-2" id="details" style="font-size:14px; height: 2.4rem;">${item.Memo}</div>
+                    <div class="showTag " style="height: 28px;">
+                        ${ genTag(item.TagList)}
+                    </div>
+
+                    <div class="d-flex justify-content-end">
+                        <span class="text-line-through text-sm-9 text-muted align-self-end">
+                            $${item.OriginalPrice}
+                        </span>
+                        <span class="currentPrice text-md-3" id="DiscountPrice">
+                            $${item.DiscountPrice}
+                        </span>
+                    </div>
+                    <div class="text-muted text-right text-sm-9">售${item.Amount}份</div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-7">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-secondary sub_button" id="">
+                                        <span class="iconify" data-icon="ant-design:minus-outlined" data-inline="false"></span>
+                                    </button>
+                                </div>
+                                <input type="number" id="cartcount" class="form-control cartcount" value="1">
+                                <div class="input-group-append">
+                                    <button class="btn btn-secondary add_button" id="">
+                                        <span class="iconify" data-icon="codicon:add" data-inline="false"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <button class="btn btn-cust w-100 addCart">加入購買</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-5">
-                <button class="btn btn-cust w-100 addCart" id="addCart">加入購買</button>
-            </div>
         </div>
-    </div>
-</div>
-</div>
-
-
-                    `
-                card.innerHTML += html;
-                window.scrollTo(100, scrollPosition);
+        </div> `
+                    card.innerHTML += html;
+                    window.scrollTo(100, scrollPosition);
+                }
             }
+            
+            
         }
 
-
-
+        function genTag(taglist) {
+            var html = ``;
+            for (let value of taglist) {
+                var style = '';
+                var tag = value.charAt(0);
+                switch (tag) {
+                    case '#':
+                        style = "tag tag-red";
+                        value = value.slice(1);
+                        break;
+                    case '$':
+                        style = "tag tag-green";
+                        value = value.slice(1);
+                        break;
+                    case '%':
+                        style = "tag tag-blue";
+                        value = value.slice(1);
+                        break;
+                    case '^':
+                        style = "tag tag-orange";
+                        value = value.slice(1);
+                        break;
+                    default:
+                        style = "tag border border-secondary";
+                        value = value.slice(0);
+                        break;
+                }
+                console.log(style);
+                html += `<span class="${style}">${value}</span>`;
+            }
+            return html;
+        }
     </script>
 }

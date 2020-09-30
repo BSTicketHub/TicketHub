@@ -3,6 +3,9 @@
 .text-black {
     color: $text-black;
 }
+.text-gray {
+    color: $text-gray;
+}
 
 $types: cust, shop, platform;
 $cust-colors: $cust-color-1, $cust-color-2, $cust-color-3, $cust-color-4, $cust-color-5,$cust-color-6, $cust-color-7, $cust-color-8, $cust-color-9, $cust-color-10,$cust-color-11, $cust-color-12, $cust-color-13, $cust-color-14, $cust-color-15;
@@ -36,6 +39,16 @@ $list: sm, md, lg, xl;
 
 .text-line-through {
     text-decoration: line-through;
+}
+
+.hidden {
+    display:none;
+}
+
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .text-overflow-2 {

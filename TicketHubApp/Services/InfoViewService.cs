@@ -7,11 +7,13 @@ namespace TicketHubApp.Services
 {
     public class InfoViewService
     {
-        private readonly static string InfoViewName = "Info";
+        private readonly static string _infoSingle = "InfoSingle";
+        private readonly static string _infoHome = "InfoHome";
         private readonly string _checkIcon = ConfigurationManager.AppSettings["CheckIcon"].ToString();
         private readonly string _errorIcon = ConfigurationManager.AppSettings["ErrorIcon"].ToString();
         private readonly string _mailConfirmIcon = ConfigurationManager.AppSettings["MailConfirmIcon"].ToString();
         private readonly string _passResetIcon = ConfigurationManager.AppSettings["PassResetIcon"].ToString();
+        private readonly string _notFoundIcon = ConfigurationManager.AppSettings["NotFoundIcon"].ToString();
         public enum InfoType
         {
             Error = 0,
@@ -25,7 +27,7 @@ namespace TicketHubApp.Services
                 IsCheckMail = true,
                 SubTitle = "Registration"
             };
-            return SuccessInfoView(infoViewModel);
+            return SuccessInfoSingleView(infoViewModel);
         }
         public ViewResult EmailConfirmed()
         {
@@ -37,7 +39,7 @@ namespace TicketHubApp.Services
                 Content = "",
                 SubTitle = "Confirmed"
             };
-            return SuccessInfoView(infoViewModel);
+            return SuccessInfoSingleView(infoViewModel);
         }
         public ViewResult ResetPasswordConfirmation()
         {
@@ -49,7 +51,7 @@ namespace TicketHubApp.Services
                 Content = "Password has reset.",
                 SubTitle = "Confirmed"
             };
-            return SuccessInfoView(infoViewModel);
+            return SuccessInfoSingleView(infoViewModel);
         }
 
         public ViewResult Error()
@@ -60,7 +62,7 @@ namespace TicketHubApp.Services
                 Content = "Something is wrong.",
                 SubTitle = "Error"
             };
-            return ErrorInfoView(infoViewModel);
+            return ErrorInfoSingleView(infoViewModel);
         }
         public ViewResult CheckMail(string title)
         {
@@ -71,7 +73,7 @@ namespace TicketHubApp.Services
                 IsCheckMail = true,
                 SubTitle = "Check Mail"
             };
-            return SuccessInfoView(infoViewModel);
+            return SuccessInfoSingleView(infoViewModel);
         }
         public ViewResult CommonSuccess(string title, string content)
         {
@@ -82,31 +84,61 @@ namespace TicketHubApp.Services
                 Content = content,
                 SubTitle = "Success"
             };
-            return SuccessInfoView(infoViewModel);
+            return SuccessInfoSingleView(infoViewModel);
         }
-        public ViewResult SuccessInfoView(InfoViewModel viewModel)
+        public ViewResult SearchNotFound()
+        {
+            InfoViewModel infoViewModel = new InfoViewModel
+            {
+                Title = "很抱歉，您的搜尋沒有結果",
+                Content = "試著用其他關鍵字再搜尋一次吧",
+                SubTitle = "NotFound"
+            };
+            return CommonInfoHomeView(infoViewModel);
+        }
+        public ViewResult PageNotFound()
+        {
+            InfoViewModel infoViewModel = new InfoViewModel
+            {
+                Title = "很抱歉，無此頁面",
+                Content = "請左轉離開另尋他路",
+                SubTitle = "NotFound"
+            };
+            return CommonInfoHomeView(infoViewModel);
+        }
+        public ViewResult SuccessInfoSingleView(InfoViewModel viewModel)
         {
             //default icon
             if (string.IsNullOrEmpty(viewModel.IconName))
             {
                 viewModel.IconName = _checkIcon;
             }
-            return InfoView(InfoType.Success, viewModel);
+            return InfoView(InfoType.Success, _infoSingle, viewModel);
         }
-        public ViewResult ErrorInfoView(InfoViewModel viewModel)
+        public ViewResult ErrorInfoSingleView(InfoViewModel viewModel)
         {
             if (string.IsNullOrEmpty(viewModel.IconName))
             {
                 viewModel.IconName = _errorIcon;
             }
-            return InfoView(InfoType.Error, viewModel);
+            return InfoView(InfoType.Error, _infoSingle, viewModel);
         }
-        public ViewResult InfoView(InfoType infoType, InfoViewModel viewModel)
+
+        public ViewResult CommonInfoHomeView(InfoViewModel viewModel)
+        {
+            if (string.IsNullOrEmpty(viewModel.IconName))
+            {
+                viewModel.IconName = _notFoundIcon;
+            }
+            return InfoView(InfoType.Error, _infoHome, viewModel);
+        }
+
+        public ViewResult InfoView(InfoType infoType, string viewName, InfoViewModel viewModel)
         {
             viewModel.InfoType = Convert.ToBoolean(infoType);
 
             ViewResult viewResult = new ViewResult();
-            viewResult.ViewName = InfoViewName;
+            viewResult.ViewName = viewName;
             viewResult.ViewData.Model = viewModel;
             return viewResult;
         }

@@ -1,15 +1,16 @@
 ﻿@model TicketHubApp.Models.ViewModels.CarouselCardViewModel
 
 <div class="product-item rounded border overflow-hidden mx-2">
-    <a href="/ProductDescription/ProductDescription/@Model.Id">
-        <div class="discount-label">@Model.DiscountRatio</div>
+    <a href="Product/@Model.Id">
+        <div class="discount-label">@Math.Round(Model.DiscountRatio,1).ToString() 折</div>
         <div class="product-img">
             <img alt="@Model.Title" src="@Model.ImgPath">
         </div>
     </a>
     <div class="product-detail p-2">
         <input type="hidden" name="" class="card_id" value="@Model.Id">
-        <h3 class="card_title text-md-1 mb-1">@Model.Title</h3>
+        <h3 class="card_title ellipsis text-md-1 mb-1">@Model.Title</h3>
+        <p class="hidden details">@Model.Memo<p>
         @if (Model.CardType == "bestseller")
         {
             <div class="product-star mb-2 text-center">
@@ -25,7 +26,7 @@
             <span class="card_discountPrice text-md-3 pl-2">$@Model.DiscountPrice</span>
             <span class="text-sm-9">起</span>
         </div>
-        <div class="text-muted text-right text-sm-9">剩37份</div>
+        <div class="text-muted text-right text-sm-9">售 @Model.Amount 份</div>
         <div class="btn btn-cust w-100 mt-2 card_addToCart" type="button">放入購物車</div>
     </div>
 </div>

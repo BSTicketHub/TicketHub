@@ -121,7 +121,7 @@
     <script src="~/Assets/JavaScript/Common/iconify.min.js"></script>
     <script src="https://kit.fontawesome.com/bff1bb511a.js" crossorigin="anonymous"></script>
     <script src="~/Assets/JavaScript/Common/buzz.js"></script>
-
+    <script src="~/Assets/JavaScript/Common/ticket.js"></script>
 
     <script>
         //Buzz
@@ -161,7 +161,6 @@
                 } else {
                     selectedCatagory = selectedCatagory.filter(x => x != tag);
                 }
-                console.log(selectedCatagory);
             });
 
             let label = document.createElement("label");
@@ -252,7 +251,6 @@
 
                 minPrice = ui.values[0];
                 maxPrice = ui.values[1];
-                console.log(minPrice, maxPrice);
             });
 
         //favorite AJAX
@@ -302,14 +300,30 @@
         let issueModel = @Html.Raw(modelJson);
 
         $('.tag-search').click(function () {
-
-            let issues = document.querySelectorAll('.issue');
-            console.log(issues)
-            for (let i of issues) {
-                i.remove();
-            }
-            CreateTicket()
-            compileTag();
+            searchJson = JSON.stringify({ SelectedTag: selectedTag, MaxPrice: maxPrice, MinPrice: minPrice });
+            $.ajax({
+                url: "../IssueTagSearch",
+                type: "post",
+                contentType:"application/json",
+                data: searchJson,
+                success: function (response) {
+                    console.log(response)
+                    let issues = document.querySelectorAll('.issue');
+                    ticketCounting = response.length;
+                    countNode.innerText = ticketCounting;
+                    console.log(issues)
+                    for (let i of issues) {
+                        i.remove();
+                    }
+                    for (let i = 0; i < response.length; i++) {
+                        CreateTicket(response, i);
+                        compileTag();
+                    }
+                },
+                error: function (response) {
+                    alert(JSON.stringify(response))
+                }
+            })
         })
 
         //Create Ticket Card
@@ -321,12 +335,12 @@
 
             for (let i = 0; i < issueModel.length; i++) {
 
-                if (issueModel[i].DiscountPrice < minPrice || issueModel[i].DiscountPrice > maxPrice) {
-                    continue
-                }
-                if (selectedCatagory.length != 0 &&  tags.includes(issueModel[i].Category) == false) {
-                    continue
-                }
+                        for (let j of jsonObj[index].TagList) {
+                            let tag = document.createElement('span');
+                            tag.classList.add('badge', 'badge-pill', 'badge-secondary', 'mr-2', 'my-1')
+                            tag.innerText = j;
+                            copied.querySelector('.showTag').append(tag);
+                        }
 
                 selectedIssue.push(issueModel[i]);
             }
@@ -377,5 +391,4 @@
             countNode.innerText = document.querySelectorAll('.issue').length;
         }
     </script>
-    <script src="~/Assets/JavaScript/Common/ticket.js"></script>
 }

@@ -1,5 +1,5 @@
 import { setLoginBarcode } from "./_barcode.js";
-import { registerTicketLoginTransition, registerLoginContainers, registerSignUpLogInToggle, registerForgotPasswordToggle } from "./_loginEvents.js";
+import { registerTicketLoginTransition, registerLoginContainers, registerSignUpLogInToggle, registerForgotPasswordToggle, getParameterByName } from "./_loginEvents.js";
 
 window.onload = function () {
     setLoginBarcode();
@@ -11,4 +11,9 @@ window.onload = function () {
     registerSignUpLogInToggle();
 
     registerForgotPasswordToggle();
+
+    let param = getParameterByName("type");
+    if (param == "shop") {
+        $("#shop").click();
+    }
 };

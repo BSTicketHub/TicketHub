@@ -9,6 +9,7 @@ using TicketHubApp.Models.ViewModels;
 using TicketHubDataLibrary.Models;
 using Microsoft.AspNet.Identity.Owin;
 using TicketHubDataLibrary;
+using TicketHubApp.Interfaces;
 
 namespace TicketHubApp.Services
 {
@@ -26,19 +27,19 @@ namespace TicketHubApp.Services
             var shopid = context.ShopEmployee.Where((x) => x.UserId == _userid).FirstOrDefault().ShopId;
 
             var temp = (from u in context.Users
-                       from ur in u.Roles
-                       join r in context.Roles on ur.RoleId equals r.Id
-                       join e in context.ShopEmployee on u.Id equals e.UserId
-                       where e.ShopId == shopid
-                       select new
-                       {
-                           UserId = e.UserId,
-                           UserName = u.UserName,
-                           Email = u.Email,
-                           Gender = u.Sex,
-                           Phone = u.PhoneNumber,
-                           RoleId = r.Id
-                       }).ToList();
+                        from ur in u.Roles
+                        join r in context.Roles on ur.RoleId equals r.Id
+                        join e in context.ShopEmployee on u.Id equals e.UserId
+                        where e.ShopId == shopid
+                        select new
+                        {
+                            UserId = e.UserId,
+                            UserName = u.UserName,
+                            Email = u.Email,
+                            Gender = u.Sex,
+                            Phone = u.PhoneNumber,
+                            RoleId = r.Id
+                        }).ToList();
 
             var group = from t in temp
                         group t by new { t.UserId, t.UserName, t.Email, t.Gender, t.Phone } into g
@@ -70,7 +71,7 @@ namespace TicketHubApp.Services
                 var user = userManager.FindById(id);
                 var roleId = user.Roles.Select(x => x.RoleId).ToList();
 
-                foreach(var item in roleId)
+                foreach (var item in roleId)
                 {
                     if (item == "3" || item == "4")
                     {
@@ -79,14 +80,14 @@ namespace TicketHubApp.Services
                 }
                 result.Success = true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 result.Message = ex.ToString();
                 result.Success = false;
             }
             return result;
         }
-        
+
         public OperationResult createEmployee(string account, AppIdentityUserManager userManager)
         {
             var result = new OperationResult();
@@ -105,7 +106,34 @@ namespace TicketHubApp.Services
 
                 result.Success = true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
+            {
+                result.Success = false;
+                result.Message = ex.ToString();
+            }
+            return result;
+        }
+
+        public IResult CreateEmployeeWithRole(string account, AppIdentityUserManager userManager, string role = RoleName.SHOP_EMPLOYEE)
+        {
+            var result = new OperationResult();
+            try
+            {
+                var repository = new GenericRepository<ShopEmployee>(_context);
+                var shopId = repository.GetAll().Where(x => x.UserId == _userid).FirstOrDefault().ShopId;
+                var userId = userManager.FindByEmail(account).Id;
+                ShopEmployee shopEmployee = new ShopEmployee
+                {
+                    UserId = userId,
+                    ShopId = shopId
+                };
+                repository.Create(shopEmployee);
+                repository.SaveChanges();
+                userManager.AddToRole(userId, role);
+
+                result.Success = true;
+            }
+            catch (Exception ex)
             {
                 result.Success = false;
                 result.Message = ex.ToString();

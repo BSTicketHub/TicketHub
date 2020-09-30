@@ -12,7 +12,7 @@
     @RenderSection("topCSS", required: false)
 </head>
 @{
-    var pageType = Request.RawUrl.Split('/')[1];
+    var pageType = Request.RawUrl.Split('/')[1].ToLower();
 }
 <body class="manage-platform">
     @Html.Partial("_Navbar")
@@ -27,7 +27,6 @@
             </div>
         </div>
     </div>
-
     @Scripts.Render("~/bundles/js/jquery")
     @Scripts.Render("~/bundles/js/bootstrap")
     @Scripts.Render("~/bundles/js/iconify")

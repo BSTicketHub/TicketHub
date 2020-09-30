@@ -30,6 +30,6 @@ function showModal() {
     ticketListOldPrice.innerText = originalPrice;
     ticketListSalesPrice.innerText = salePrice;
 
-    let ticketTag = document.querySelector(".showTag");
+    let ticketTag = document.querySelector(".ticket .showTag");
     showTag(tagList, ticketTag);
 }

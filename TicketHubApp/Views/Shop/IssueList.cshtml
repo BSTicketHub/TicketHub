@@ -64,9 +64,9 @@
                     <thead class="position-sticky">
                         <tr>
                             <th></th>
-                            <th>商品圖片</th>
-                            <th>商品名稱</th>
-                            <th>商品編號</th>
+                            <th width="10%">商品圖片</th>
+                            <th width="10%">商品名稱</th>
+                            <th width="20%">商品編號</th>
                             <th>價格</th>
                             <th>商品狀態</th>
                             <th>上架時間</th>
@@ -128,6 +128,7 @@
         }
 
         function genTable(list, parentId, template) {
+            console.log(template)
             let tbody = document.getElementById(parentId);
             tbody.innerHTML = "";
             var templateEle = document.getElementById(template);
@@ -155,7 +156,7 @@
                     window.location.assign("IssueDetails" + "?id=" + id);
                 });
                 if (template == "issueTemplate") {
-                    let btn = tr.children[8].children[0];
+                    let btn = tr.children[9].children[0];
                     btn.value = item.Id;
                     
                     btn.addEventListener("click", function(e) {

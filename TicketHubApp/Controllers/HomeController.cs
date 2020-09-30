@@ -15,8 +15,8 @@ namespace TicketHubApp.Controllers
             var service = new HomeCardService();
             var homecard = new HomeListViewModel() //新增ViewModel集合
             {
-                BestSellerItems = service.GetBestSellerCard(true), //有排序
-                RecommenItems = service.GetRecommenCard(true),
+                BestSellerItems = service.GetBestSellerCard(), //有排序
+                RecommenItems = service.GetRecommenCard(),
                 SortNewItems = service.GetSortNewCard(0),
                 LimitedtimeItems = service.GetLimitedtimeCard()
             };
@@ -24,10 +24,10 @@ namespace TicketHubApp.Controllers
             return View(homecard);
         }
 
-        
+
         [HttpGet]
         // 最新推出 api
-        public ActionResult CardApi(int currCount) 
+        public ActionResult CardApi(int currCount)
         {
             var service = new HomeCardService();
             var SortNewItems = service.GetSortNewCard(currCount);
@@ -39,7 +39,7 @@ namespace TicketHubApp.Controllers
         public ActionResult BestSellerCardApi()
         {
             var service = new HomeCardService();
-            var BestSellerItems = service.GetBestSellerCard(true); //有排序
+            var BestSellerItems = service.GetBestSellerCard(); //有排序
             return Json(BestSellerItems, JsonRequestBehavior.AllowGet); //把HomeCardService 物件轉JSON，給前端抓資料
         }
 
@@ -48,7 +48,7 @@ namespace TicketHubApp.Controllers
         public ActionResult RecommenCardApi()
         {
             var service = new HomeCardService();
-            var RecommenItems = service.GetRecommenCard(true);
+            var RecommenItems = service.GetRecommenCard();
             return Json(RecommenItems, JsonRequestBehavior.AllowGet); //把HomeCardService 物件轉JSON，給前端抓資料
         }
 
@@ -77,12 +77,13 @@ namespace TicketHubApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Search(string SearchType, string SearchContent)
         {
-            if(SearchType == "餐廳")
+            if (SearchType == "餐廳")
             {
-                return RedirectToRoute("ShopList", new { input = SearchContent });
-            } else if(SearchType == "票券")
+                return RedirectToRoute("SearchShop", new { input = SearchContent });
+            }
+            else if (SearchType == "票券")
             {
-                return RedirectToRoute("TicketList", new { input = SearchContent });
+                return RedirectToRoute("SearchTicket", new { input = SearchContent });
             }
             return Content("");
         }

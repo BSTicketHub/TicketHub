@@ -1,25 +1,25 @@
 ﻿@import "../_variables.scss";
 
-.bottom-strip-Home {
+.bottom-strip-home {
     border-bottom: none;
 }
 
-.bottom-strip-Member, .bottom-strip-Shop, .bottom-strip-Platform {
+.bottom-strip-member, .bottom-strip-shop, .bottom-strip-platform {
     border-bottom: 10px solid;
 }
 
-.bottom-strip-Member {
+.bottom-strip-member {
     border-bottom-color: $cust-color-5;
 }
 
-.bottom-strip-Shop {
+.bottom-strip-shop {
     border-bottom-color: $shop-color-5;
     position: sticky;
     top: -70px;
     z-index: 2;
 }
 
-.bottom-strip-Platform {
+.bottom-strip-platform {
     border-bottom-color: $platform-color-5;
     position: sticky;
     top: -70px;
@@ -62,3 +62,5 @@
     top: 50px !important;
     right: -35px !important;
 }
+
+@import "./_cart.scss";
