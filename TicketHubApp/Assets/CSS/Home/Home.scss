@@ -1,28 +1,5 @@
 @import "../_variables.scss";
 
-#btnScroll {
-    position: fixed;
-    right: 10px;
-    bottom: 15px;
-    width: 50px;
-    height: 50px;
-    background-color: $cust-color-8;
-    color: white;
-    border-radius: 50%;
-    outline: none;
-    border: none;
-    z-index: 2;
-
-    &:active {
-        background-color: $cust-color-9;
-    }
-
-    &:hover {
-        background-color: $cust-color-9;
-        transition: ease 0.3s;
-    }
-}
-
 .banner-img {
     position: relative;
     max-height: 570px;
