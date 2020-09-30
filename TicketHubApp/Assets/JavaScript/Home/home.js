@@ -1,7 +1,9 @@
 $(document).ready(function () {
     add();
     sub();
-   
+    UpdateCartData();
+    UpdateCartData2();
+    UpcartCounter();
     addNewCart();
 });
 

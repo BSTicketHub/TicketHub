@@ -50,10 +50,11 @@ namespace TicketHubApp.Services
                                 Memo = i.Memo,
                                 Title = i.Title,
                                 OriginalPrice = i.OriginalPrice,
+                                ImgPath = i.ImgPath
                             },
                 MyOrder = from od in _context.OrderDetail
                           join o in order on od.OrderId equals o.Id
-                          where o.Id == od.OrderId
+                          where o.Id == od.OrderId && userId == o.UserId
                           select new CustomerOrderViewModel
                           {
                               Id = o.Id,
