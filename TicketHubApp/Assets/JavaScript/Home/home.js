@@ -4,7 +4,6 @@ $(document).ready(function () {
     UpdateCartData();
     UpdateCartData2();
     UpcartCounter();
-    accordion();
 });
 
 
@@ -363,19 +362,6 @@ function UpdateCartData2() {
 
 }
 
-
-
-//手風琴
-function accordion() {
-    $("#faq").sticky({
-        topSpacing: 100,
-        bottomSpacing: 800,
-        // zIndex: 1
-    });
-    $('body').scrollspy({
-        target: '#faq'
-    })
-}
 
 //搜尋
 let search = document.querySelector('.search-content');
