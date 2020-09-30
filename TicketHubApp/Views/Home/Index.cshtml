@@ -157,15 +157,7 @@
             <h3 class="class-title">最新推出</h3>
             <div class="class-divider"></div>
         </div>
-        <div class="row" id="moreCard">
-            @*@for (var i = 0; i < 6; i++)
-                {
-                    var item = Model.SortNewItems.Items[i];
-                    <div class="col-md-4 col-sm-12">
-                        @Html.Partial("_SortNewCard", item)
-                    </div>
-                }*@
-        </div>
+        <div class="row" id="moreCard"></div>
     </div>
 
     <div class="row justify-content-center">
@@ -181,10 +173,9 @@
 <!-- ------ -->
 @section endJS{
     <script src="~/Assets/JavaScript/Home/home.js"></script>
+
     <script>
         var count = 0;
-        //var show = document.getElementById("cardShow"); //template id
-        //body.onload = fetchData(); //在頁面载入完成后 觸發
         fetchData();
 
         function fetchData() {
@@ -196,16 +187,13 @@
                 data: { currCount: count },
                 async: false,
                 success: function (json) {
-                    //json = JSON.parse(json);
-                    //genTable(json, parentId, template);
                     ticketcard = json.Items
                     count += 6;
                 }
             });
 
-            let card = document.getElementById("moreCard")
-
             // 動態載入
+            let card = document.getElementById("moreCard")
             if (ticketcard != null) {
                 for (var item of ticketcard) {
                     let imageSrc = (item.ImgPath == null) ? "" : item.ImgPath;
@@ -265,6 +253,7 @@
                     card.innerHTML += html;
                     window.scrollTo(100, scrollPosition);
                 }
+            addNewCart();
             }            
         }
 
