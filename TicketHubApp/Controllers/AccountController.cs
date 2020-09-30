@@ -214,8 +214,6 @@ namespace TicketHubApp.Controllers
         [Authorize]
         public ActionResult ShopApply()
         {
-            var service = new ShopService();
-            var employees = service.GetEmployees("ComeToEat");
             return View();
         }
         [HttpPost]
