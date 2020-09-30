@@ -19,43 +19,26 @@ namespace TicketHubApp
                 defaults: new { controller = "Account", action = "Login" }
             );
             routes.MapRoute(
-                name: "ShopList",
-                url: "Customer/ShopList/{input}",
-                defaults: new { controller = "Customer", action = "ShopList", input = UrlParameter.Optional}
+                name: "SearchShop",
+                url: "Home/Search/Shop/{input}",
+                defaults: new { controller = "Customer", action = "ShopList", input = UrlParameter.Optional }
             );
             routes.MapRoute(
-                name: "TicketList",
-                url: "Customer/TicketList/{input}",
+                name: "SearchTicket",
+                url: "Home/Search/Ticket/{input}",
                 defaults: new { controller = "Customer", action = "TicketList", input = UrlParameter.Optional }
             );
             routes.MapRoute(
-                name: "Unfound",
-                url: "Home/PageUnfound",
-                defaults: new { controller = "Home", action = "PageUnfound" }
-            );
-            routes.MapRoute(
-                name: "MemberViewModels",
-                url: "MemberViewModels/{action}",
-                defaults: new { controller = "MemberViewModels", action = "Index"});
-
-            routes.MapRoute(
-                name: "Shop",
-                url: "Shop/{action}",
-                defaults: new { controller = "Shop", action = "Index" }
-            );
-            
-            routes.MapRoute(
                 name: "ProductCart",
-                url: "ProductCart/{action}",
-                defaults: new { controller = "ProductCart", action = "Cart" }
+                url: "Home/Cart",
+                defaults: new { controller = "ProductCart", action = "ProductCart" }
             );
-          
             routes.MapRoute(
                 name: "ProductDescription",
-                url: "ProductDescription/{action}",
+                url: "Home/Product/{id}",
                 defaults: new { controller = "ProductDescription", action = "Index"}
             );
-
+            
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

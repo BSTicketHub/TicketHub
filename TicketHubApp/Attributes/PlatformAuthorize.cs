@@ -4,17 +4,12 @@ namespace TicketHubApp.Attributes
 {
     public class PlatformAuthorize : AuthorizeAttribute
     {
-        public override void OnAuthorization(AuthorizationContext filterContext)
-        {
-            base.OnAuthorization(filterContext);
-            //判斷!! 當是未登入使用者時
-            if (filterContext.Result is HttpUnauthorizedResult)
-            {
-                filterContext.Result = new RedirectResult("~/Account/LoginPlatform" + "?returnUrl=" +
-                filterContext.HttpContext.Server.UrlEncode(filterContext.HttpContext.Request.RawUrl));
-                return;
-            }
+        private readonly string loginPath = "~/Account/LoginPlatform";
 
+        protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
+        {
+            string requestUrl = filterContext.HttpContext.Server.UrlEncode(filterContext.HttpContext.Request.RawUrl);
+            filterContext.Result = new RedirectResult(loginPath + "?returnUrl=" + requestUrl);
         }
     }
 }
