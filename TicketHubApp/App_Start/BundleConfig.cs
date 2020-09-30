@@ -41,6 +41,9 @@ namespace TicketHubApp
 
             bundles.Add(new ScriptBundle("~/bundles/js/JsBarcode").Include(
                 "~/Assets/JavaScript/Common/JsBarcode.all.min.js"));
+            
+            bundles.Add(new ScriptBundle("~/bundles/js/Site").Include(
+                "~/Assets/JavaScript/Common/Navbar.js"));
 
             //----------------CSS----------------
 
@@ -71,18 +74,12 @@ namespace TicketHubApp
 
             //Platform bundles
             bundles.Add(new StyleBundle("~/bundles/css/Platform").Include(
-                    "~/Content/bootstrap.css",
                     "~/Assets/CSS/Platform/Platform_Layout.min.css",
                     "~/Assets/CSS/Platform/DashBoard/Member.min.css",
                     "~/Assets/CSS/Platform/datatables.min.css",
                     "~/Assets/CSS/Platform/jquery.dataTables.css"
                     ));
             bundles.Add(new ScriptBundle("~/bundles/js/Platform").Include(
-                      "~/Scripts/Chart.js",
-                      "~/Scripts/modernizr-*",
-                      "~/Scripts/jquery-{version}.js",
-                      "~/Scripts/bootstrap.js",
-                      "~/Assets/JavaScript/Common/iconify.min.js",
                       "~/Assets/JavaScript/Platform/datatables.min.js"
                 ));
 
@@ -93,8 +90,8 @@ namespace TicketHubApp
                 "~/Assets/CSS/Home/Home.min.css"
                 ));
             bundles.Add(new ScriptBundle("~/bundles/js/Home").Include(
-                //"~/Scripts/umd/popper.min.js",
                 "~/Assets/JavaScript/Common/owl.carousel.min.js"));
+
             //Home Contact
             bundles.Add(new StyleBundle("~/bundles/css/Contact").Include(
                 "~/Assets/CSS/Home/Contact.min.css"
@@ -107,20 +104,10 @@ namespace TicketHubApp
             //CustomerPage bundles
             bundles.Add(new StyleBundle("~/bundles/css/CustomerPage")
                 .Include("~/Assets/CSS/CustomerPage.min.css"));
-            //bundles.Add(new ScriptBundle("~/bundles/js/CustomerPage").Include(
-            //    "~/Scripts/bootstrap.js",
-            //    "~/Assets/JavaScript/Common/iconify.min.js",
-            //    "~/Scripts/moment.js"
-            //    ));
 
             //ShopList bundles
             bundles.Add(new StyleBundle("~/bundles/css/ShopList")
                 .Include("~/Assets/CSS/ShopList.min.css"));
-            bundles.Add(new ScriptBundle("~/bundles/js/ShopList").Include(
-                "~/Scripts/bootstrap.js",
-                "~/Assets/JavaScript/Common/iconify.min.js",
-                "~/Scripts/moment.js"
-                ));
 
             //ProductCart page bundles
             bundles.Add(new StyleBundle("~/bundles/css/Cart")
@@ -135,19 +122,6 @@ namespace TicketHubApp
             bundles.Add(new ScriptBundle("~/bundles/js/ProductDescription").Include(
                 "~/Assets/JavaScript/Product/ProductDescription.js"
                 ));
-
-            //Shop bundles
-            bundles.Add(new StyleBundle("~/bundles/css/Shop")
-                .Include("~/Content/bootstrap.css")
-                .Include("~/Assets/CSS/Shop/StoreBasic.css")
-                .Include("~/Assets/CSS/Shop/ShopLayout.min.css"));
-            bundles.Add(new ScriptBundle("~/bundles/js/Shop").Include(
-                "~/Scripts/umd/popper.js",
-                "~/Scripts/jquery-{version}.js",
-                "~/Scripts/Chart.js",
-                "~/Scripts/bootstrap.js",
-                "~/Assets/JavaScript/Common/iconify.min.js",
-                "~/Scripts/moment.js"));
         }
     }
 }

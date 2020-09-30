@@ -1,22 +1,4 @@
-﻿#btnScroll {
-  position: fixed;
-  right: 10px;
-  bottom: 15px;
-  width: 50px;
-  height: 50px;
-  background-color: #23a8b2;
-  color: white;
-  border-radius: 50%;
-  outline: none;
-  border: none;
-  z-index: 2; }
-  #btnScroll:active {
-    background-color: #1f939c; }
-  #btnScroll:hover {
-    background-color: #1f939c;
-    transition: ease 0.3s; }
-
-.banner-img {
+﻿.banner-img {
   position: relative;
   max-height: 570px;
   overflow: hidden;
