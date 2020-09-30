@@ -205,10 +205,12 @@
             let card = document.getElementById("moreCard")
 
             // 動態載入
-            for (var item of ticketcard) {
-                //console.log(item);
+            if (ticketcard != null) {
+                console.log(ticketcard);
+                for (var item of ticketcard) {
+                    //console.log(item);
 
-                let html = `
+                    let html = `
             <div class="col-md-4 col-sm-12">
             <div class="product-item rounded border overflow-hidden mx-2 mt-4">
             <a href="/ProductDescription/ProductDescription/${item.Id}" target="">
@@ -258,12 +260,13 @@
                     </div>
                 </div>
             </div>
-</div>
-</div> `
-                card.innerHTML += html;
-                window.scrollTo(100, scrollPosition);
+    </div>
+    </div> `
+                    card.innerHTML += html;
+                    window.scrollTo(100, scrollPosition);
+                }
             }
-
+            
             addNewCart();
         }
 
