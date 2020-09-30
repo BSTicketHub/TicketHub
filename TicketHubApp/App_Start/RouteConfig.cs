@@ -44,6 +44,11 @@ namespace TicketHubApp
                 defaults: new { controller = "Shop", action = "Index" }
             );
             routes.MapRoute(
+              name: "ProductDescription",
+              url: "Home/{action}/{id}",
+              defaults: new { controller = "ProductDescription", action = "ProductDescription" }
+          );
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
@@ -54,11 +59,7 @@ namespace TicketHubApp
                 defaults: new { controller = "ProductCart", action = "Cart" }
             );
           
-            routes.MapRoute(
-                name: "ProductDescription",
-                url: "ProductDescription/{action}",
-                defaults: new { controller = "ProductDescription", action = "Index"}
-            );
+          
         }
     }
 }
