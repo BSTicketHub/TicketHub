@@ -24,10 +24,10 @@ namespace TicketHubApp.Controllers
             return View(homecard);
         }
 
-        
+
         [HttpGet]
         // 最新推出 api
-        public ActionResult CardApi(int currCount) 
+        public ActionResult CardApi(int currCount)
         {
             var service = new HomeCardService();
             var SortNewItems = service.GetSortNewCard(currCount);
@@ -77,12 +77,13 @@ namespace TicketHubApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Search(string SearchType, string SearchContent)
         {
-            if(SearchType == "餐廳")
+            if (SearchType == "餐廳")
             {
-                return RedirectToRoute("ShopList", new { input = SearchContent });
-            } else if(SearchType == "票券")
+                return RedirectToRoute("SearchShop", new { input = SearchContent });
+            }
+            else if (SearchType == "票券")
             {
-                return RedirectToRoute("TicketList", new { input = SearchContent });
+                return RedirectToRoute("SearchTicket", new { input = SearchContent });
             }
             return Content("");
         }
