@@ -10,7 +10,6 @@
     @Styles.Render("~/bundles/css/Site")
     @Scripts.Render("~/bundles/js/modernizr")
     @RenderSection("topCSS", required: false)
-    @Scripts.Render("~/bundles/js/jquery")
 </head>
 @{
     var pageType = Request.RawUrl.Split('/')[1].ToLower();
@@ -28,8 +27,7 @@
             </div>
         </div>
     </div>
-
-  
+    @Scripts.Render("~/bundles/js/jquery")
     @Scripts.Render("~/bundles/js/bootstrap")
     @Scripts.Render("~/bundles/js/iconify")
     @Scripts.Render("~/bundles/js/momentjs")
