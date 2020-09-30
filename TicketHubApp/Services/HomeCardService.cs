@@ -204,23 +204,21 @@ namespace TicketHubApp.Services
                          };
 
             issues = issues.OrderByDescending(i => i.SalesCount); //降序
-            var test = issues.ToList();
             var TimeNow = DateTime.Now;
 
             // 判斷上架 上架早於現在 且 判斷下架 下架大於現在
             issues = issues.Where((i) => (i.ReleasedDate <= TimeNow)&& (i.ClosedDate >= TimeNow));
-            test = issues.ToList();
             
             // 總庫存 - 銷售數量 = 現有庫存
             issues = issues.Where((i) => (i.Amount - i.SalesCount) > 0);
-            test = issues.ToList();
-            var Amount = issues.OrderByDescending(i => i.Amount);
+            // 抓價格排序
+            var Amount = issues.OrderBy(i => i.Amount); 
 
 
             //var cardList = issueRepo.GetAll();
             var cardType = "bestseller";
 
-            foreach (var item in issues)
+            foreach (var item in Amount)
             {
                 //頁面顯示資料
                 var p = new CarouselCardViewModel()
@@ -286,20 +284,20 @@ namespace TicketHubApp.Services
                              SalesCount = g.Sum(x => x.count),
                          };
 
-            issues = issues.OrderByDescending(i => i.DiscountRatio == Math.Round(i.DiscountPrice * i.OriginalPrice)); //降序
+            issues = issues.OrderByDescending(i => i.DiscountPrice); //降序
 
             var test = DateTime.Now;
             // 判斷上架、下架
             issues = issues.Where((i) => (i.ReleasedDate <= test) && (i.ClosedDate >= test));
             // 折扣率 Math.Round(discount * price)
-            var discount = issues.OrderBy(i => i.DiscountRatio);
+            var discount = issues.OrderBy(i => i.DiscountPrice);
 
             
             //var cardList = issueRepo.GetAll();
             var cardType = "recommend";
 
             //找對對應值
-            foreach (var item in issues)
+            foreach (var item in discount)
             {
                 var p = new CarouselCardViewModel()
                 {
@@ -309,7 +307,8 @@ namespace TicketHubApp.Services
                     ImgPath = item.ImgPath,
                     Title = item.Title,
                     OriginalPrice = item.OriginalPrice,
-                    DiscountPrice = item.DiscountPrice
+                    DiscountPrice = item.DiscountPrice,
+                    DiscountRatio = item.DiscountRatio
                 };
 
                 result.Items.Add(p);
