@@ -1,6 +1,14 @@
-﻿using System.Web.Mvc;
+﻿using Microsoft.AspNet.Identity.Owin;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
+using TicketHubApp.Models.ViewModels;
 using TicketHubApp.Attributes;
 using TicketHubApp.Services;
+using TicketHubDataLibrary.Models;
 
 namespace TicketHubApp.Controllers
 {
@@ -24,6 +32,33 @@ namespace TicketHubApp.Controllers
             var user = service.GetUser(id);
 
             return View(user);
+        }
+
+        public ActionResult CreateUser()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateUser([Bind(Include = "UserAccount, UserPwd, UserName, Mobile, Sex")] PlatformUserViewModel userVM)
+        {
+            var userManager = HttpContext.GetOwinContext().Get<AppIdentityUserManager>();
+
+            PlatformService service = new PlatformService();
+            var createResult = service.CreateUser(userVM, userManager);
+
+            return RedirectToAction("CreateUser", "Platform");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditUser([Bind(Include = "Id, UserName, Mobile, Sex")] PlatformUserViewModel userVM)
+        {
+            PlatformService service = new PlatformService();
+            service.EditUserById(userVM);
+
+            return RedirectToAction($"UserDetail/{userVM.Id}");
         }
 
         public ActionResult DeleteUser(string id)
@@ -76,6 +111,12 @@ namespace TicketHubApp.Controllers
 
             return View(shop);
         }
+
+        public ActionResult ReviewShops()
+        {
+            return View();
+        }
+
         public ActionResult GetAllEmployees(string id)
         {
             ViewBag.id = id;
@@ -86,6 +127,14 @@ namespace TicketHubApp.Controllers
             ViewBag.id = id;
 
             return View();
+        }
+
+        public ActionResult AcceptShopRegister(string id)
+        {
+            PlatformService service = new PlatformService();
+            service.AcceptShop(id);
+
+            return RedirectToAction("ReviewShops");
         }
 
         // Get Shop JSON Data //
@@ -111,6 +160,14 @@ namespace TicketHubApp.Controllers
             var issueTableData = service.GetIssuesTableData(id);
 
             return Json(issueTableData, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetShopsToBeReviewdJson()
+        {
+            PlatformService service = new PlatformService();
+            var shopsToBeReviewedTableData = service.GetShopsToBeReviewedTableData();
+
+            return Json(shopsToBeReviewedTableData, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetSalesDataByIssue(string id)
