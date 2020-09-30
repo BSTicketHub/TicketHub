@@ -38,6 +38,7 @@ namespace TicketHubApp
                 url: "Home/Product/{id}",
                 defaults: new { controller = "ProductDescription", action = "Index"}
             );
+            
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

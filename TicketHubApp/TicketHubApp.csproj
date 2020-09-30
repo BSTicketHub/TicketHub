@@ -35,7 +35,7 @@
     <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>2</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -322,6 +322,18 @@
     <Content Include="Assets\CSS\login.min.css">
       <DependentUpon>login.css</DependentUpon>
     </Content>
+    <Content Include="Assets\CSS\Platform\GetTicketsBelongToThisUser.css">
+      <DependentUpon>Platform_GetTicketsBelongToThisUser.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Platform\GetTicketsBelongToThisUser.min.css">
+      <DependentUpon>GetTicketsBelongToThisUser.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Platform\Platform_CreateUser.css">
+      <DependentUpon>Platform_CreateUser.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Platform\Platform_CreateUser.min.css">
+      <DependentUpon>Platform_CreateUser.css</DependentUpon>
+    </Content>
     <Content Include="Assets\CSS\Platform\Platform_Layout.css">
       <DependentUpon>Platform_Layout.scss</DependentUpon>
     </Content>
@@ -448,6 +460,7 @@
     <Content Include="Assets\Images\Home\takeout.png" />
     <Content Include="Assets\Images\Home\ticketHub.png" />
     <Content Include="Assets\Images\Home\travel.png" />
+    <Content Include="Assets\Images\Home\user.png" />
     <Content Include="Assets\Images\img\restaurant.png" />
     <Content Include="Assets\Images\Shop\logo.png" />
     <Content Include="Assets\Images\shop_logo.jpg" />
@@ -737,15 +750,15 @@
     <Content Include="Assets\CSS\Home\Contact.scss" />
     <Content Include="Assets\CSS\Home\About.scss" />
     <Content Include="Assets\CSS\Common\_cart.scss" />
+    <Content Include="Assets\CSS\Platform\Platform_CreateUser.scss" />
+    <Content Include="Assets\CSS\Platform\Platform_GetTicketsBelongToThisUser.scss" />
+    <Content Include="Assets\CSS\Common\_tag.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\ShaoChen - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\tickethub-dev - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\tickethub-dev - ReadOnly - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\tickethub-dev - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\moment.min.js.map" />
@@ -798,8 +811,8 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Home\_LimitedtimeCard.cshtml" />
     <Content Include="Views\ProductCart\_ProductCartPartial.cshtml" />
-    <Content Include="Views\Account\ShopApply.cshtml" />
-    <Content Include="Views\Shared\InfoHome.cshtml" />
+    <Content Include="Views\Platform\CreateUser.cshtml" />
+    <Content Include="Views\Platform\ReviewShops.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

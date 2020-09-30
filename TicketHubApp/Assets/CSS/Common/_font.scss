@@ -41,6 +41,10 @@ $list: sm, md, lg, xl;
     text-decoration: line-through;
 }
 
+.hidden {
+    display:none;
+}
+
 .ellipsis {
     overflow: hidden;
     white-space: nowrap;
