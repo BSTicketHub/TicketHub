@@ -941,24 +941,21 @@
         </div>
     </div>
 </div>
-<br>
-<br>
-<button class="" id="btnScroll">▲<h6>Top</h6></button>
 <!-- ------ -->
 @section endJS
 {
-    <script>
-        //accordion();
-        ////手風琴
-        //function accordion() {
-        //    $("#faq").sticky({
-        //        topSpacing: 100,
-        //        bottomSpacing: 800,
-        //    });
-        //    $('body').scrollspy({
-        //        target: '#faq'
-        //    })
-        //}
-    </script>
     <script src="~/Assets/JavaScript/Home/jquery.sticky.js"></script>
+    <script>
+        accordion();
+        //手風琴
+        function accordion() {
+            $("#faq").sticky({
+                topSpacing: 100,
+                bottomSpacing: 800,
+            });
+            $('body').scrollspy({
+                target: '#faq'
+            })
+        }
+    </script>
 }

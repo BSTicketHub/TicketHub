@@ -1,14 +1,17 @@
 ﻿@import "../_variables.scss";
+$types: customer, shop, platform;
+$colors8: $cust-color-8, $shop-color-8, $platform-color-8;
+$colors9: $cust-color-9, $shop-color-9, $platform-color-9;
 
 .bottom-strip-home {
     border-bottom: none;
 }
 
-.bottom-strip-member, .bottom-strip-shop, .bottom-strip-platform {
+.bottom-strip-customer, .bottom-strip-shop, .bottom-strip-platform {
     border-bottom: 10px solid;
 }
 
-.bottom-strip-member {
+.bottom-strip-customer {
     border-bottom-color: $cust-color-5;
 }
 
@@ -61,6 +64,50 @@
     overflow: auto;
     top: 50px !important;
     right: -35px !important;
+}
+
+#btnScroll {
+    display: none;
+    position: fixed;
+    right: 10px;
+    bottom: 15px;
+    width: 50px;
+    height: 50px;
+    background-color: $cust-color-8;
+    color: white;
+    border-radius: 50%;
+    outline: none;
+    border: none;
+    z-index: 2;
+
+    span {
+        display: block;
+        margin-top: -5px;
+    }
+
+    &:active {
+        background-color: $cust-color-9;
+    }
+
+    &:hover {
+        background-color: $cust-color-9;
+        transition: ease 0.3s;
+    }
+
+    @for $i from 1 through length($types) {
+        &.#{nth($types, $i)} {
+            background-color: nth($colors8,$i);
+
+            &:active {
+                background-color: nth($colors9,$i);
+            }
+
+            &:hover {
+                background-color: nth($colors9,$i);
+                transition: ease 0.3s;
+            }
+        }
+    }
 }
 
 @import "./_cart.scss";

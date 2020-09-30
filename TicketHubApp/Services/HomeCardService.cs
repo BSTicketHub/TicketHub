@@ -211,7 +211,7 @@ namespace TicketHubApp.Services
             
             // 總庫存 - 銷售數量 = 現有庫存
             issues = issues.Where((i) => (i.Amount - i.SalesCount) > 0);
-            // 抓價格排序
+            // 抓銷售排序
             var Amount = issues.OrderBy(i => i.Amount); 
 
 
@@ -239,7 +239,7 @@ namespace TicketHubApp.Services
             return result;
         }
 
-        //推薦餐廳
+        //推薦餐廳 超值特選
         public CarouselCardListViewModel GetRecommenCard()
         {
             var result = new CarouselCardListViewModel();
@@ -290,7 +290,7 @@ namespace TicketHubApp.Services
             // 判斷上架、下架
             issues = issues.Where((i) => (i.ReleasedDate <= test) && (i.ClosedDate >= test));
             // 折扣率 Math.Round(discount * price)
-            var discount = issues.OrderBy(i => i.DiscountPrice);
+            var discount = issues.OrderBy(i => i.DiscountPrice); //判斷折價
 
             
             //var cardList = issueRepo.GetAll();

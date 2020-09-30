@@ -4,9 +4,8 @@
         <a data-toggle="dropdown">
             <img class="profile-logo rounded-circle mx-1 border" src="@ViewBag.userImg" alt="">
         </a>
-        <ul class="dropdown-menu text-sm-9 border-0">
-            <li class="d-flex align-items-center px-2">
-                <img class="profile-logo rounded-circle mr-2" src="@ViewBag.userImg" alt="">
+        <ul class="dropdown-menu dropdown-menu-right text-sm-9 border-0">
+            <li class="d-flex align-items-center px-3">
                 <span class="profile-name font-weight-bolder">@User.Identity.Name</span>
             </li>
             <li class="dropdown-divider"></li>
@@ -39,7 +38,7 @@
 else
 {
     <li class="dropdown mx-3 d-flex align-items-center pb-0">
-        <img class="profile-logo rounded-circle mr-2" src="../Assets/Images/Home/user.png" alt="">
+        <img class="profile-logo rounded-circle mr-2" src="https://i.imgur.com/ZM5EvHg.png" alt="">
         @Html.ActionLink("登入 / 註冊", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "btn btn-cust" })
     </li>
 }

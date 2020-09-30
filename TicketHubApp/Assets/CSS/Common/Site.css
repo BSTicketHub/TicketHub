@@ -387,10 +387,10 @@ a {
 .bottom-strip-home {
   border-bottom: none; }
 
-.bottom-strip-member, .bottom-strip-shop, .bottom-strip-platform {
+.bottom-strip-customer, .bottom-strip-shop, .bottom-strip-platform {
   border-bottom: 10px solid; }
 
-.bottom-strip-member {
+.bottom-strip-customer {
   border-bottom-color: #76c9cf; }
 
 .bottom-strip-shop {
@@ -436,6 +436,49 @@ a {
   overflow: auto;
   top: 50px !important;
   right: -35px !important; }
+
+#btnScroll {
+  display: none;
+  position: fixed;
+  right: 10px;
+  bottom: 15px;
+  width: 50px;
+  height: 50px;
+  background-color: #23a8b2;
+  color: white;
+  border-radius: 50%;
+  outline: none;
+  border: none;
+  z-index: 2; }
+  #btnScroll span {
+    display: block;
+    margin-top: -5px; }
+  #btnScroll:active {
+    background-color: #1f939c; }
+  #btnScroll:hover {
+    background-color: #1f939c;
+    transition: ease 0.3s; }
+  #btnScroll.customer {
+    background-color: #23a8b2; }
+    #btnScroll.customer:active {
+      background-color: #1f939c; }
+    #btnScroll.customer:hover {
+      background-color: #1f939c;
+      transition: ease 0.3s; }
+  #btnScroll.shop {
+    background-color: #ff3a5c; }
+    #btnScroll.shop:active {
+      background-color: #df3351; }
+    #btnScroll.shop:hover {
+      background-color: #df3351;
+      transition: ease 0.3s; }
+  #btnScroll.platform {
+    background-color: #fb9c16; }
+    #btnScroll.platform:active {
+      background-color: #dc8913; }
+    #btnScroll.platform:hover {
+      background-color: #dc8913;
+      transition: ease 0.3s; }
 
 .cart-item {
   display: flex;

@@ -1,13 +1,7 @@
 $(document).ready(function () {
-    add();
-    sub();
     UpdateCartData();
-    UpdateCartData2();
     UpcartCounter();
-    addNewCart();
 });
-
-
 
 //導航欄購物車
 let showCart = document.getElementsByClassName("showCart")[0];
@@ -31,7 +25,6 @@ function add() {
         $(this).parent().parent().find("#cartcount").val(number + 1)
     });
 }
-
 // 數量减少
 function sub() {
     $(".sub_button").click(function () {
@@ -47,8 +40,6 @@ function sub() {
 
 //刪除購買商品
 function deleteCartItem(id) {
-    console.log(id)
-    console.log("delete")
     let cartData = JSON.parse(localStorage.getItem('Cart'))
 
     cartData = cartData.filter(x => x.id != id)
@@ -56,7 +47,6 @@ function deleteCartItem(id) {
     localStorage.setItem('Cart', JSON.stringify(cartData))
 
     UpdateCartData();
-    UpdateCartData2();
     UpcartCounter();
 }
 
@@ -64,16 +54,11 @@ function deleteCartItem(id) {
 function UpcartCounter() {
     let data = JSON.parse(localStorage.getItem('Cart'));
     let counter = 0;
-    //console.log(data);
     // 顯示加總數
     for (let item of data) {
         let amount = +item.amount;
         counter = counter + amount;
-        console.log(counter);
     }
-
-    //console.log(counter);
-    // document.getElementById("cartCounter").innerText = counter;
     document.getElementsByClassName("cartCounter")[0].innerText = counter;
     document.getElementsByClassName("cartCounter")[1].innerText = counter;
 }
@@ -81,25 +66,19 @@ function UpcartCounter() {
 //最新推出Card 事件
 function addNewCart() {
     $(".addCart").click(function (e) {
-        console.log('123')
         var id = `${$(this).parent().parent().parent().find("#chart_id").val()}`;
         var title = $(this).parent().parent().parent().find("#Title").text();
         var details = $(this).parent().parent().parent().find("#details").text();
         var discountPrice = Number($(this).parent().parent().parent().find("#DiscountPrice").text().replace("$", ""));
         var amount = Number($(this).parent().parent().parent().find("#cartcount").val());
-
-        //console.log(id)
-        //console.log(title)
-        //console.log(details)
-        //console.log(discountPrice)
-        //console.log(amount)
-
+        let imgSrc = $(this).parent().parent().parent().parent().find("img").attr("src");
         let cartItem = {
             id: id,
             title: title,
             details: details,
             price: discountPrice,
-            amount: amount
+            amount: amount,
+            img: `${imgSrc}`
         }
 
         if (localStorage.getItem('Cart') == null) {
@@ -113,10 +92,11 @@ function addNewCart() {
             }
             localStorage.setItem('Cart', JSON.stringify(cart))
         }
-
         UpcartCounter();
         UpdateCartData()
     })
+    add();
+    sub();
 }
 
 //購物車顯示事件
@@ -128,11 +108,10 @@ function UpdateCartData() {
         let cartData = JSON.parse(localStorage.getItem('Cart'))
 
         for (let item of cartData) {
-            console.log(item);
             let carthtml = `
             <div class="cart-item">
                 <a href="">
-                    <div class="product-img img-bg">
+                    <div class="product-img img-bg" style="background-image: url(${item.img}); background-size: contain">
                     </div>
                 </a>
                 <div class="cart-detail">
@@ -154,7 +133,6 @@ function UpdateCartData() {
                     </button>
                 </div>
             </div>`
-
             cart.innerHTML += carthtml;
         }
     }
@@ -169,13 +147,15 @@ $(".card_addToCart").click(function () {
     let id = card.find(".card_id").val();
     let title = card.find(".card_title").text();
     let discountPrice = Number(card.find(".card_discountPrice").text().replace("$", ""));
-
+    let imgSrc = card.parent().find("img").attr("src");
+    
     //key value值
     let cartItem = {
         id: id,
         title: title,
         price: discountPrice,
-        amount: 1
+        amount: 1,
+        img: `${imgSrc}`
     }
 
     if (localStorage.getItem('Cart') == null) {
@@ -191,47 +171,8 @@ $(".card_addToCart").click(function () {
     }
 
     UpcartCounter();
-    UpdateCartData2()
+    UpdateCartData()
 });
-
-//購物車顯示事件
-function UpdateCartData2() {
-    var cart = document.querySelector(".cart")
-    cart.innerHTML = ''
-
-    if (localStorage.getItem('Cart') != null) {
-        let cartData = JSON.parse(localStorage.getItem('Cart'))
-
-        for (let item of cartData) {
-            let carthtml = `
-            <div class="cart-item">
-                <a href="">
-                    <div class="product-img img-bg">
-                    </div>
-                </a>
-                <div class="cart-detail">
-                    <div class="product-detail ellipsis">
-                        <h3 class="ellipsisw-200">
-                            <a href="" id="puttitle" class="ellipsis">${item.title}</a>
-                        </h3>
-                    </div>
-                    <div>數量 x <span class="text-tag putamout" id="putamout">${item.amount}</span></div>
-                    <div class="product-pricing">
-                        <h4>TWD <span id="putprice">${item.price}</span></h4>
-                    </div>
-                </div>
-                <div class="product-action">
-                    <button type="button" class="btn btn-light" onClick="deleteCartItem('${item.id}')">
-                        <span class="iconify" data-icon="bi:trash" data-inline="false"></span>
-                    </button>
-                </div>
-            </div>`
-
-            cart.innerHTML += carthtml
-        }
-    }
-
-}
 
 $('.carousel-autoplay').owlCarousel({
     loop: true,
@@ -290,29 +231,6 @@ $('.carousel3').owlCarousel({
         }
     }
 })
-
-//滾輪到上方
-const btnScrollTop = document.querySelector("#btnScroll");
-btnScrollTop.addEventListener("click", function () {
-    window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: "smooth"
-    });
-});
-
-//滾到上方隱藏
-window.onscroll = function () {
-    scrollFunction()
-};
-
-function scrollFunction() {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        btnScrollTop.style.display = "block";
-    } else {
-        btnScrollTop.style.display = "none";
-    }
-}
 
 //倒數
 untilTsCaculateDD()
