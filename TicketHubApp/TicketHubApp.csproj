@@ -460,6 +460,7 @@
     <Content Include="Assets\Images\Home\takeout.png" />
     <Content Include="Assets\Images\Home\ticketHub.png" />
     <Content Include="Assets\Images\Home\travel.png" />
+    <Content Include="Assets\Images\Home\user.png" />
     <Content Include="Assets\Images\img\restaurant.png" />
     <Content Include="Assets\Images\Shop\logo.png" />
     <Content Include="Assets\Images\shop_logo.jpg" />
