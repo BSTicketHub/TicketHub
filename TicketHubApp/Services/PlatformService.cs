@@ -244,10 +244,14 @@ namespace TicketHubApp.Services
             TicketHubContext context = new TicketHubContext();
             GenericRepository<ShopEmployee> employeeRepository = new GenericRepository<ShopEmployee>(context);
             GenericRepository<TicketHubUser> userRepository = new GenericRepository<TicketHubUser>(context);
+            GenericRepository<IdentityUserRole> roleRepository = new GenericRepository<IdentityUserRole>(context);
 
             var employeesList = from e in employeeRepository.GetAll().Where(e => e.ShopId.ToString() == id)
                                 join u in userRepository.GetAll()
                                 on e.UserId equals u.Id
+                                join r in roleRepository.GetAll()
+                                on u.Id equals r.UserId
+                                where r.RoleId == "3" || r.RoleId == "4"
                                 select new PlatformEmployeeViewModel
                                 {
                                     Id = u.Id,
