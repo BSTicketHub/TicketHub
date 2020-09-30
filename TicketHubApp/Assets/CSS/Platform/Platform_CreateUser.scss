@@ -1,0 +1,18 @@
+﻿.breadcrumb {
+    background: orange !important;
+    opacity: 0.8;
+
+    .active, .breadcrumb-item:focus {
+        color: white !important;
+        text-decoration: none;
+    }
+
+    .breadcrumb-item a {
+        color: #808080;
+        text-decoration: none;
+
+        &:hover {
+            color: white;
+        }
+    }
+}

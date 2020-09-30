@@ -1,16 +1,28 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using SendGrid.Helpers.Mail;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
 using System.Web;
+using System.Web.Mvc;
+using System.Web.Security;
+using TicketHubApp.Controllers;
 using TicketHubApp.Models;
 using TicketHubApp.Models.ViewModels;
+using TicketHubDataLibrary;
 using TicketHubDataLibrary.Models;
 
 namespace TicketHubApp.Services
 {
     public class PlatformService
-    {   
+    {
+        private readonly string _errorIcon = ConfigurationManager.AppSettings["ErrorIcon"].ToString();
+
         // User Service //
         public DataTableViewModel GetUsersTableData()
         {
@@ -25,7 +37,7 @@ namespace TicketHubApp.Services
                              select new PlatformUserViewModel
                              {
                                  Id = u.Id,
-                                 UserName = u.UserName,                               
+                                 UserName = u.UserName,
                                  Mobile = u.PhoneNumber,
                                  Deleted = u.Deleted,
                              };
@@ -41,7 +53,7 @@ namespace TicketHubApp.Services
                 dataInstance.Add(item.UserName);
                 dataInstance.Add(item.Mobile ?? "NA");
                 dataInstance.Add(item.Deleted ? "已註銷" : "正常");
-                
+
                 table.data.Add(dataInstance);
             }
 
@@ -49,7 +61,6 @@ namespace TicketHubApp.Services
         }
         public PlatformUserViewModel GetUser(string id)
         {
-
             TicketHubContext context = new TicketHubContext();
             GenericRepository<TicketHubUser> repository = new GenericRepository<TicketHubUser>(context);
             var user = repository.GetAll().FirstOrDefault(x => x.Id == id);
@@ -68,8 +79,56 @@ namespace TicketHubApp.Services
 
             return userVM;
         }
+
+        public ActionResult CreateUser(PlatformUserViewModel userVM, AppIdentityUserManager userManager)
+        {
+            TicketHubContext context = new TicketHubContext();
+            GenericRepository<TicketHubUser> repository = new GenericRepository<TicketHubUser>(context);
+         
+            var userExistInDb = userManager.FindByEmail(userVM.UserAccount);
+            if(userExistInDb != null)
+            {
+                return null;
+            }
+            var newUser = new TicketHubUser
+            {
+                UserName = userVM.UserName,
+                Email = userVM.UserAccount
+            };
+
+            var createResult = userManager.Create(newUser, userVM.UserPwd);
+            if (createResult.Succeeded)
+            {
+                userManager.AddToRole(newUser.Id, RoleGroup.CUSTOMER);
+
+                newUser.UserName = userVM.UserName;
+                newUser.PhoneNumber = userVM.Mobile;
+                newUser.Sex = userVM.Sex;
+                newUser.EmailConfirmed = true;
+                repository.Update(newUser);
+
+                return new InfoViewService().RegisterSuccess();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public void EditUserById(PlatformUserViewModel userVM)
+        {
+            TicketHubContext context = new TicketHubContext();
+            GenericRepository<TicketHubUser> repository = new GenericRepository<TicketHubUser>(context);
+
+            var user = repository.GetAll().FirstOrDefault(u => u.Id == userVM.Id);
+            user.UserName = userVM.UserName;
+            user.PhoneNumber = userVM.Mobile;
+            user.Sex = userVM.Sex;
+
+            context.SaveChanges();
+        }
         public void DeleteUserById(string id)
-        {   
+        {
             TicketHubContext context = new TicketHubContext();
             GenericRepository<TicketHubUser> repository = new GenericRepository<TicketHubUser>(context);
             var user = repository.GetAll().FirstOrDefault(x => x.Id == id);
@@ -185,10 +244,14 @@ namespace TicketHubApp.Services
             TicketHubContext context = new TicketHubContext();
             GenericRepository<ShopEmployee> employeeRepository = new GenericRepository<ShopEmployee>(context);
             GenericRepository<TicketHubUser> userRepository = new GenericRepository<TicketHubUser>(context);
+            GenericRepository<IdentityUserRole> roleRepository = new GenericRepository<IdentityUserRole>(context);
 
             var employeesList = from e in employeeRepository.GetAll().Where(e => e.ShopId.ToString() == id)
                                 join u in userRepository.GetAll()
                                 on e.UserId equals u.Id
+                                join r in roleRepository.GetAll()
+                                on u.Id equals r.UserId
+                                where r.RoleId == "3" || r.RoleId == "4"
                                 select new PlatformEmployeeViewModel
                                 {
                                     Id = u.Id,
@@ -308,6 +371,43 @@ namespace TicketHubApp.Services
 
             return group;
         }
+
+        public DataTableViewModel GetShopsToBeReviewedTableData()
+        {
+            var context = new TicketHubContext();
+
+            var shopsToBeReviewed = context.Shop.Where(s => s.ValidatedDate == null).OrderBy(s => s.AppliedDate);
+
+            DataTableViewModel table = new DataTableViewModel();
+            table.data = new List<List<string>>();
+
+            foreach (var item in shopsToBeReviewed)
+            {
+                List<string> dataInstance = new List<string>();
+                dataInstance.Add(item.Id.ToString());
+                dataInstance.Add(item.ShopName);
+                dataInstance.Add(item.Phone);
+                dataInstance.Add(item.Fax);
+                dataInstance.Add(item.Address);
+                dataInstance.Add(item.AppliedDate.ToString());
+
+                table.data.Add(dataInstance);
+            }
+
+            return table;
+        }
+
+        public void AcceptShop(string id)
+        {
+            var context = new TicketHubContext();
+            var shop = context.Shop.FirstOrDefault(s => s.Id.ToString() == id);
+
+            shop.ModifiedDate = DateTime.Now;
+            shop.ReviewerId = HttpContext.Current.User.Identity.GetUserId();
+            shop.ValidatedDate = DateTime.Now;
+            context.SaveChanges();
+        }
+
         // Order Service //
         public DataTableViewModel GetAllOrders()
         {
@@ -409,5 +509,24 @@ namespace TicketHubApp.Services
 
             return adminVM;
         }
+
+        //public static string HashPassword(string password)
+        //{
+        //    byte[] salt;
+        //    byte[] buffer2;
+        //    if (password == null)
+        //    {
+        //        throw new ArgumentNullException("password");
+        //    }
+        //    using (Rfc2898DeriveBytes bytes = new Rfc2898DeriveBytes(password, 0x10, 0x3e8))
+        //    {
+        //        salt = bytes.Salt;
+        //        buffer2 = bytes.GetBytes(0x20);
+        //    }
+        //    byte[] dst = new byte[0x31];
+        //    Buffer.BlockCopy(salt, 0, dst, 1, 0x10);
+        //    Buffer.BlockCopy(buffer2, 0, dst, 0x11, 0x20);
+        //    return Convert.ToBase64String(dst);
+        //}
     }
 }

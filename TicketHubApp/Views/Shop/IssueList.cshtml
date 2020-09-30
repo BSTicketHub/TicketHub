@@ -128,6 +128,7 @@
         }
 
         function genTable(list, parentId, template) {
+            console.log(template)
             let tbody = document.getElementById(parentId);
             tbody.innerHTML = "";
             var templateEle = document.getElementById(template);
@@ -155,7 +156,7 @@
                     window.location.assign("IssueDetails" + "?id=" + id);
                 });
                 if (template == "issueTemplate") {
-                    let btn = tr.children[8].children[0];
+                    let btn = tr.children[9].children[0];
                     btn.value = item.Id;
                     
                     btn.addEventListener("click", function(e) {

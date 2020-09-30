@@ -2,9 +2,9 @@
 function compileTag() {
     var showtag = document.querySelectorAll(".showTag span");
     showtag.forEach(function (span) {
+        console.log(span)
         var value = span.innerText;
         var tag = value.charAt(0);
-
         switch (tag) {
             case '#':
                 span.classList.add("tag", "tag-red");

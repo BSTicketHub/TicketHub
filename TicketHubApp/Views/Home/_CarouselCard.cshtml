@@ -2,7 +2,7 @@
 
 <div class="product-item rounded border overflow-hidden mx-2">
     <a href="/ProductDescription/ProductDescription/@Model.Id">
-        <div class="discount-label">@Model.DiscountRatio</div>
+        <div class="discount-label">@Math.Round(Model.DiscountRatio,1).ToString() 折</div>
         <div class="product-img">
             <img alt="@Model.Title" src="@Model.ImgPath">
         </div>
@@ -10,7 +10,7 @@
     <div class="product-detail p-2">
         <input type="hidden" name="" class="card_id" value="@Model.Id">
         <h3 class="card_title ellipsis text-md-1 mb-1">@Model.Title</h3>
-        <p>@Model.Memo<p>
+        <p class="hidden details">@Model.Memo<p>
         @if (Model.CardType == "bestseller")
         {
             <div class="product-star mb-2 text-center">
