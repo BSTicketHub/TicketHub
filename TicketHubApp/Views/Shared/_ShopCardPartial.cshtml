@@ -34,7 +34,7 @@
                 <a href="@Url.Action("ProductDescription", "ProductDescription", new { Id = ticket.Id})" class="d-block text-decoration-none text-dark">
                     <div class="ticket border-bottom w-auto d-flex py-2 mx-3 p-2">
                         <div class="img-area h-100">
-                            <div class="img"></div>
+                            <div class="img" style="background-image:url(@ticket.ImgPath)"></div>
                         </div>
                         <div class="text-area position-relative">
                             <h6>@ticket.Title</h6>

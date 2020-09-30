@@ -5,21 +5,22 @@
 
     var wishIssueJson = Json.Encode(ViewBag.WishIssue);
     var userIdJson = Json.Encode(ViewBag.UserId);
+    var modelJson = Json.Encode(Model);
 }
 
 <div class="container ticketList">
     <div class="row">
         @*side bar*@
         <div class="col-md-3 p-0">
-            <div class="bg-white mr-4 my-3 p-3 rounded">
-                <div class="blockTitle d-flex align-items-center justify-content-between mb-2" data-toggle="collapse" aria-controls="countryCollapse" data-target="#countryCollapse">
-                    <p class="m-0">地區</p>
-                    <span class="iconify" data-icon="ic:outline-keyboard-arrow-down" data-inline="false"></span>
-                </div>
-                <div id="countryCollapse" class="collapse">
-                    @*add button*@
-                </div>
-            </div>
+            @*<div class="bg-white mr-4 my-3 p-3 rounded">
+                    <div class="blockTitle d-flex align-items-center justify-content-between mb-2" data-toggle="collapse" aria-controls="countryCollapse" data-target="#countryCollapse">
+                        <p class="m-0">地區</p>
+                        <span class="iconify" data-icon="ic:outline-keyboard-arrow-down" data-inline="false"></span>
+                    </div>
+                    <div id="countryCollapse" class="collapse">
+                        add button
+                    </div>
+                </div>*@
             <div class="bg-white mr-4 my-3 p-3 rounded">
                 <div class="blockTitle d-flex align-items-center justify-content-between" data-toggle="collapse" aria-controls="categoryCollapse" data-target="#categoryCollapse">
                     <p class="m-0">餐廳類別</p>
@@ -82,7 +83,10 @@
                         </div>
                         <div class="position-absolute" style="right: 10px; bottom: 10px;">
                             <p class="ticketListOldPrice m-0">TWD TEST</p>
-                            <p class="ticketListSalesPrice m-0">TWD<span> TEST</span></p>
+                            <p class="ticketListSalesPrice m-0">
+                                TWD
+                                <span> TEST</span>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -137,7 +141,7 @@
 
 
         // ticket category node create
-        var categoryList = ["中式", "台式", "美式", "日式", "義式", "法式"];
+        var categoryList = ["中式", "台式", "美式", "日式", "義式", "法式", "泰式", "韓式", "印度料理", "下午茶", "早午餐"];
         let categoryCollapseNode = document.getElementById("categoryCollapse");
         for (let i = 0; i < categoryList.length; i++) {
             let li = document.createElement("li");
@@ -171,39 +175,40 @@
         }
 
         // country node create
-        var countryList = ["臺北", "新北", "基隆", "桃園", "新竹", "苗栗",
-            "臺中", "彰化", "南投", "雲林", "嘉義", "臺南", "高雄", "屏東",
-            "宜蘭", "花蓮", "臺東", "澎湖", "金門", "連江"];
+        //var countryList = ["台北", "新北", "基隆", "桃園", "新竹", "苗栗",
+        //    "台中", "彰化", "南投", "雲林", "嘉義", "台南", "高雄", "屏東",
+        //    "宜蘭", "花蓮", "台東", "澎湖", "金門", "連江"];
 
-        var countryListClass = ["ticketList-button", "ticketList-button-green", "my-1", "mr-1", "rounded-pill"];
+        //var countryListClass = ["ticketList-button", "ticketList-button-green", "my-1", "mr-1", "rounded-pill"];
 
-        let countryNode = document.getElementById("countryCollapse");
-        for (let i = 0; i < countryList.length; i++) {
-            let input = document.createElement("input");
-            input.classList.add("ticketListBtnCheck");
-            input.setAttribute("type", "checkbox");
-            input.setAttribute("id", `countryCheck${i}`);
-            input.setAttribute("value", countryList[i]);
-            input.setAttribute("style", "display: none;");
+        //let countryNode = document.getElementById("countryCollapse");
+        //for (let i = 0; i < countryList.length; i++) {
+        //    let input = document.createElement("input");
+        //    input.classList.add("ticketListBtnCheck");
+        //    input.setAttribute("type", "checkbox");
+        //    input.setAttribute("id", `countryCheck${i}`);
+        //    input.setAttribute("value", countryList[i]);
+        //    input.setAttribute("style", "display: none;");
 
-            input.addEventListener("click", (e) => {
-                setSelectedButton(input, "countrySelected", countryList[i]);
-                let tag = e.target.closest('input').value;
-                if (selectedTag.indexOf(tag) == -1) {
-                    selectedTag.push(tag);
-                } else {
-                    selectedTag = selectedTag.filter(x => x != tag);
-                }
-            });
+        //    input.addEventListener("click", (e) => {
+        //        setSelectedButton(input, "countrySelected", countryList[i]);
+        //        let tag = e.target.closest('input').value;
+        //        if (selectedCatagory.indexOf(tag) == -1) {
+        //            selectedCatagory.push(tag);
+        //        } else {
+        //            selectedCatagory = selectedCatagory.filter(x => x != tag);
+        //        }
+        //        console.log(selectedCatagory);
+        //    });
 
-            let label = document.createElement("label");
-            label.setAttribute("for", `countryCheck${i}`);
-            countryListClass.forEach((item) => { label.classList.add(item); });
-            label.innerText = countryList[i];
+        //    let label = document.createElement("label");
+        //    label.setAttribute("for", `countryCheck${i}`);
+        //    countryListClass.forEach((item) => { label.classList.add(item); });
+        //    label.innerText = countryList[i];
 
-            countryNode.appendChild(input);
-            countryNode.appendChild(label);
-        }
+        //    countryNode.appendChild(input);
+        //    countryNode.appendChild(label);
+        //}
 
         // function country / category / money selected button create
         function setSelectedButton(selectedNode, parentNodeId, innertext) {
@@ -286,15 +291,13 @@
         }
 
         //Tag Search
-        let selectedTag = [];
         let selectedCatagory = [];
         let maxPrice = 100;
         let minPrice = 300;
-        let searchJson = JSON.stringify({ SelectedTag: selectedTag, MaxPrice: maxPrice, MinPrice: minPrice });
 
         let wishIssue = @Html.Raw(wishIssueJson);
-
         let userId = @Html.Raw(userIdJson);
+        let issueModel = @Html.Raw(modelJson);
 
         $('.tag-search').click(function () {
             searchJson = JSON.stringify({ SelectedTag: selectedTag, MaxPrice: maxPrice, MinPrice: minPrice });
@@ -304,16 +307,18 @@
                 contentType:"application/json",
                 data: searchJson,
                 success: function (response) {
+                    console.log(response)
                     let issues = document.querySelectorAll('.issue');
                     ticketCounting = response.length;
                     countNode.innerText = ticketCounting;
+                    console.log(issues)
                     for (let i of issues) {
                         i.remove();
                     }
                     for (let i = 0; i < response.length; i++) {
                         CreateTicket(response, i);
+                        compileTag();
                     }
-                    compileTag();
                 },
                 error: function (response) {
                     alert(JSON.stringify(response))
@@ -323,75 +328,64 @@
 
         //Create Ticket Card
         let issueList = document.querySelector('.issue-list');
+        console.log(issueModel)
+        function CreateTicket() {
+            let selectedIssue = [];
+            let tags = selectedCatagory.join('#');
 
-        function CreateTicket(jsonObj, index) {
-            if (selectedCatagory.length != 0) {
-                for (let i of jsonObj[index].TagList) {
-                    if (selectedCatagory.includes(i)) {
-                        let card = document.getElementById("ticketCard");
-                        let copied = card.content.cloneNode(true);
-                        copied.querySelector('h3').innerText = jsonObj[index].Title;
-                        copied.querySelector('.description').innerText = jsonObj[index].Memo;
+            for (let i = 0; i < issueModel.length; i++) {
 
                         for (let j of jsonObj[index].TagList) {
                             let tag = document.createElement('span');
-                            tag.classList.add('my-1')
+                            tag.classList.add('badge', 'badge-pill', 'badge-secondary', 'mr-2', 'my-1')
                             tag.innerText = j;
                             copied.querySelector('.showTag').append(tag);
                         }
 
-                        let favorite = document.createElement('i');
-                        favorite.classList.add('fa-heart', 'position-absolute', 'wishHeart');
-                        favorite.setAttribute('issueid', `${jsonObj[index].Id}`);
+                selectedIssue.push(issueModel[i]);
+            }
+            console.log(selectedIssue);
 
-                        favorite.addEventListener('click', function (e) {
-                            let f = e.currentTarget
-                            controlFromFavorite(f);
-                        })
-                        if (wishIssue.includes(jsonObj[index].Id)) {
-                            favorite.classList.add('fas');
-                        } else {
-                            favorite.classList.add('far');
-                        }
-                        copied.querySelector('.issue').append(favorite);
+            for (let i = 0; i < selectedIssue.length; i++) {
 
-                        copied.querySelector('.city').innerText = jsonObj[index].City + " / " + jsonObj[index].District;
-                        copied.querySelector('.ticketListOldPrice').innerText = "TWD " + jsonObj[index].OriginalPrice;
-                        copied.querySelector('.ticketListSalesPrice span').innerText = jsonObj[index].DiscountPrice;
-                        issueList.append(copied);
-                    }
-                }
-            } else {
                 let card = document.getElementById("ticketCard");
                 let copied = card.content.cloneNode(true);
-                copied.querySelector('h3').innerText = jsonObj[index].Title;
-                copied.querySelector('.description').innerText = jsonObj[index].Memo;
-                for (let j of jsonObj[index].TagList) {
-                    let tag = document.createElement('span');
-                    //tag.classList.add('badge', 'badge-pill', 'badge-secondary', 'mr-2', 'my-1')
-                    tag.innerText = j;
-                    copied.querySelector('.showTag').append(tag);
+                console.log()
+                copied.querySelector('.ticketImg').style.backgroundImage = `url("${selectedIssue[i].ImgPath}")`
+                copied.querySelector('h3').innerText = selectedIssue[i].Title;
+                copied.querySelector('.description').innerText = selectedIssue[i].Memo;
+
+                //for (let j of jsonObj[index].TagList) {
+                //    let tag = document.createElement('span');
+                //    tag.classList.add('badge', 'badge-pill', 'badge-secondary', 'mr-2', 'my-1')
+                //    tag.innerText = j;
+                //    copied.querySelector('.showTag').append(tag);
+                //}
+
+                if (wishIssue != null) {
+                    let favorite = document.createElement('i');
+                    favorite.classList.add('fa-heart', 'position-absolute', 'wishHeart');
+                    favorite.setAttribute('issueid', `${selectedIssue[i].Id}`);
+
+                    favorite.addEventListener('click', function (e) {
+                        let f = e.currentTarget
+                        controlFromFavorite(f);
+                    })
+
+                    if (wishIssue.includes(selectedIssue[i].Id)) {
+                        favorite.classList.add('fas');
+                    } else {
+                        favorite.classList.add('far');
+                    }
+
+                    copied.querySelector('.issue').append(favorite);
                 }
 
-                let favorite = document.createElement('i');
-                favorite.classList.add('fa-heart', 'position-absolute', 'wishHeart');
-                favorite.setAttribute('issueid', `${jsonObj[index].Id}`);
-
-                favorite.addEventListener('click', function (e) {
-                    let f = e.currentTarget;
-                    controlFromFavorite(f);
-                })
-                if (wishIssue.includes(jsonObj[index].Id)) {
-                    favorite.classList.add('fas');
-                } else {
-                    favorite.classList.add('far');
-                }
-                copied.querySelector('.issue').append(favorite);
-
-                copied.querySelector('.city').innerText = jsonObj[index].City + " / " + jsonObj[index].District;
-                copied.querySelector('.ticketListOldPrice').innerText = "TWD " + jsonObj[index].OriginalPrice;
-                copied.querySelector('.ticketListSalesPrice span').innerText = jsonObj[index].DiscountPrice;
+                copied.querySelector('.city').innerText = selectedIssue[i].City + " / " + selectedIssue[i].District;
+                copied.querySelector('.ticketListOldPrice').innerText = "TWD " + selectedIssue[i].OriginalPrice;
+                copied.querySelector('.ticketListSalesPrice span').innerText = selectedIssue[i].DiscountPrice;
                 issueList.append(copied);
+
             }
 
             countNode.innerText = document.querySelectorAll('.issue').length;

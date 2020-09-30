@@ -15,14 +15,11 @@ namespace TicketHubApp.Services
         private TicketHubContext _context = TicketHubContext.Create();
         public IEnumerable<ShopIssueViewModel> SearchIssue(string input)
         {
-            var SearchString = (input == null) ? "" : string.Join("^", input.Split(' '));
+            string[] search = input?.Split(' ');
             var repo = new GenericRepository<Issue>(_context);
             var issueList = repo.GetAll();
             var result = from i in issueList
                          join s in _context.Shop on i.ShopId equals s.Id
-                         join tg in _context.IssueTag on i.Id equals tg.IssueId
-                         join t in _context.Tag on tg.TagId equals t.Id 
-                         where SearchString.Contains(i.Category)
                          select new ShopIssueViewModel
                          {
                              Id = i.Id,
@@ -32,15 +29,28 @@ namespace TicketHubApp.Services
                              ImgPath = i.ImgPath,
                              OriginalPrice = i.OriginalPrice,
                              DiscountRatio = i.DiscountRatio,
+                             Category = i.Category,
                              City = s.City,
                              District = s.District,
                              TagList = (from tg in _context.IssueTag
-                                       join t in _context.Tag on tg.TagId equals t.Id
-                                       where tg.IssueId == i.Id
-                                       select t.Name).ToList()
+                                        join t in _context.Tag on tg.TagId equals t.Id
+                                        where tg.IssueId == i.Id
+                                        select t.Name).ToList()
                          };
+            if(search != null)
+            {
+                foreach (var i in search)
+                {
+                    result = result.Where(x => x.City.Contains(i) || x.District.Contains(i) || x.Title.Contains(i) || x.Memo.Contains(i) || x.Category.Contains(i));
+                }
+                return result;
+            }
+            else
+            {
+                return null;
+            }
+            
 
-            return result;
         }
 
         public IEnumerable<ShopIssueViewModel> SearchByTag(decimal maxPrice, decimal minPrice)

@@ -35,15 +35,15 @@
                     <span class="iconify" data-icon="dashicons:arrow-down-alt2" data-inline="false"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-col-3 text-sm-9 border-0">
-                    <li class="dropdown-item active-color-cust active"><a href="">中式料理</a></li>
-                    <li class="dropdown-item active-color-cust"><a href="" class="rounded hov-color-cust">韓式料理</a></li>
-                    <li class="dropdown-item active-color-cust"><a href="" class="rounded hov-color-cust">日式料理</a></li>
-                    <li class="dropdown-item active-color-cust"><a href="" class="rounded hov-color-cust">泰式料理</a></li>
-                    <li class="dropdown-item active-color-cust"><a href="" class="rounded hov-color-cust">港式料理</a></li>
-                    <li class="dropdown-item active-color-cust"><a href="" class="rounded hov-color-cust">義式料理</a></li>
-                    <li class="dropdown-item active-color-cust"><a href="" class="rounded hov-color-cust">蔬食料理</a></li>
-                    <li class="dropdown-item active-color-cust"><a href="" class="rounded hov-color-cust">烘培點心</a></li>
-                    <li class="dropdown-item active-color-cust"><a href="" class="rounded hov-color-cust">特選餐廳</a></li>
+                    <li class="dropdown-item active-color-cust active">@Html.ActionLink("中式料理", "TicketList", "Customer", new { input = "中式" }, new { @class = "rounded hov-color-cust" })</li>
+                    <li class="dropdown-item active-color-cust">@Html.ActionLink("韓式料理", "TicketList", "Customer", new { input = "韓式" }, new { @class = "rounded hov-color-cust" })</li>
+                    <li class="dropdown-item active-color-cust">@Html.ActionLink("日式料理", "TicketList", "Customer", new { input = "日式" }, new { @class = "rounded hov-color-cust" })</li>
+                    <li class="dropdown-item active-color-cust">@Html.ActionLink("泰式料理", "TicketList", "Customer", new { input = "泰式" }, new { @class = "rounded hov-color-cust" })</li>
+                    <li class="dropdown-item active-color-cust">@Html.ActionLink("義式料理", "TicketList", "Customer", new { input = "義式" }, new { @class = "rounded hov-color-cust" })</li>
+                    <li class="dropdown-item active-color-cust">@Html.ActionLink("美式料理", "TicketList", "Customer", new { input = "美式" }, new { @class = "rounded hov-color-cust" })</li>
+                    <li class="dropdown-item active-color-cust">@Html.ActionLink("法式料理", "TicketList", "Customer", new { input = "法式" }, new { @class = "rounded hov-color-cust" })</li>
+                    <li class="dropdown-item active-color-cust">@Html.ActionLink("下午茶", "TicketList", "Customer", new { input = "下午茶" }, new { @class = "rounded hov-color-cust" })</li>
+                    <li class="dropdown-item active-color-cust">@Html.ActionLink("早午餐", "TicketList", "Customer", new { input = "早午餐" }, new { @class = "rounded hov-color-cust" })</li>
                 </ul>
             </div>
         </div>
@@ -192,7 +192,7 @@
             var ticketcard;
             $.ajax({
                 type: 'GET',
-                url: 'CardApi',
+                url: '../Home/CardApi',
                 data: { currCount: count },
                 async: false,
                 success: function (json) {
@@ -207,7 +207,6 @@
 
             // 動態載入
             if (ticketcard != null) {
-                console.log(ticketcard);
                 for (var item of ticketcard) {
                     let imageSrc = (item.ImgPath == null) ? "" : item.ImgPath;
 
@@ -266,9 +265,7 @@
                     card.innerHTML += html;
                     window.scrollTo(100, scrollPosition);
                 }
-            }
-            
-            
+            }            
         }
 
         function genTag(taglist) {

@@ -96,6 +96,7 @@ export function CreatePage(firstPage) {
         type: "GET",
         dataType: "json",
         success: function (response) {
+            console.log(response)
             var firstResponse = response;
             if (response.UserName.indexOf('@') == -1) {
                 sideBarUserName.innerText = response.UserName;
@@ -157,14 +158,14 @@ export function CreatePage(firstPage) {
                 let accountDiv = document.createElement('div');
                 accountDiv.classList.add('my-3', 'd-flex', 'align-items-center', 'col-12');
                 let accountPhrase = document.createElement('p');
-                accountPhrase.innerText = "帳號 : 123456";
+                accountPhrase.innerText = `帳號 : ${firstResponse.Email}`;
                 accountDiv.append(accountPhrase);
 
                 //Password
                 let passwordDiv = document.createElement('div');
                 passwordDiv.classList.add('my-3', 'd-flex', 'align-items-center', 'col-12');
                 let passwordPhrase = document.createElement('p');
-                passwordPhrase.innerText = "密碼 : 654321";
+                passwordPhrase.innerText = "密碼 : ";
                 passwordDiv.append(passwordPhrase);
                 let editIcon = document.createElement('span');
                 editIcon.classList.add('edit-icon', 'iconify', 'ml-2');
@@ -185,22 +186,22 @@ export function CreatePage(firstPage) {
                 let genderDiv = document.createElement('div');
                 genderDiv.classList.add('my-3', 'd-flex', 'align-items-center', 'col-6');
                 let genderPhrase = document.createElement('p');
-                genderPhrase.innerText = `性別 : ${firstResponse.Sex}`;
+                genderPhrase.innerText = firstResponse.Sex == null ? "性別 : 未設定" : `性別 : ${firstResponse.Sex}`;
                 genderDiv.append(genderPhrase);
 
                 //Phone
                 let phoneDiv = document.createElement('div');
                 phoneDiv.classList.add('my-3', 'd-flex', 'align-items-center', 'col-6');
                 let phonePhrase = document.createElement('p');
-                phonePhrase.innerText = `電話 : ${firstResponse.PhoneNumber}`;
+                phonePhrase.innerText = firstResponse.PhoneNumber == null ? "電話 : 未設定" : `電話 : ${firstResponse.PhoneNumber}`;
                 phoneDiv.append(phonePhrase);
 
-                //Email
-                let emailDiv = document.createElement('div');
-                emailDiv.classList.add('my-3', 'd-flex', 'align-items-center', 'col-6');
-                let emailPhrase = document.createElement('p');
-                emailPhrase.innerText = `電子郵件 : ${firstResponse.Email}`;
-                emailDiv.append(emailPhrase);
+                ////Email
+                //let emailDiv = document.createElement('div');
+                //emailDiv.classList.add('my-3', 'd-flex', 'align-items-center', 'col-6');
+                //let emailPhrase = document.createElement('p');
+                //emailPhrase.innerText = `電子郵件 : ${firstResponse.Email}`;
+                //emailDiv.append(emailPhrase);
 
                 ////Birthday
                 //let birthdayDiv = document.createElement('div');
@@ -211,7 +212,7 @@ export function CreatePage(firstPage) {
 
                 let memberDetail = document.querySelector('.info-area .container .row')
 
-                memberDetail.append(accountDiv, passwordDiv, nameDiv, genderDiv, phoneDiv, emailDiv);
+                memberDetail.append(accountDiv, passwordDiv, nameDiv, genderDiv, phoneDiv);
                 memberDetail.after(createEditButton());
             }
 
@@ -264,18 +265,18 @@ export function CreatePage(firstPage) {
                 phoneDiv.append(phoneInput);
 
                 //Email
-                let emailDiv = document.createElement("div");
-                emailDiv.classList.add("my-3", "align-items-center", "col-6")
-                let emailLabel = document.createElement("label");
-                emailLabel.setAttribute("for", "email");
-                emailLabel.innerText = "電子郵件 : ";
-                let emailInput = document.createElement("input");
-                emailInput.setAttribute("type", "email");
-                emailInput.setAttribute("id", "email");
-                emailInput.value = firstResponse.Email;
-                emailInput.classList.add("form-control", "emailInput");
-                emailDiv.append(emailLabel);
-                emailDiv.append(emailInput);
+                //let emailDiv = document.createElement("div");
+                //emailDiv.classList.add("my-3", "align-items-center", "col-6")
+                //let emailLabel = document.createElement("label");
+                //emailLabel.setAttribute("for", "email");
+                //emailLabel.innerText = "電子郵件 : ";
+                //let emailInput = document.createElement("input");
+                //emailInput.setAttribute("type", "email");
+                //emailInput.setAttribute("id", "email");
+                //emailInput.value = firstResponse.Email;
+                //emailInput.classList.add("form-control", "emailInput");
+                //emailDiv.append(emailLabel);
+                //emailDiv.append(emailInput);
 
                 ////Birthday
                 //let birthdayDiv = document.createElement("div");
@@ -291,7 +292,7 @@ export function CreatePage(firstPage) {
                 //birthdayDiv.append(birthdayInput);
 
                 let infoArea = document.querySelector('.info-area .container .row');
-                infoArea.append(nameDiv, genderDiv, phoneDiv, emailDiv);
+                infoArea.append(nameDiv, genderDiv, phoneDiv);
             }
 
             function createEditButton() {
@@ -312,13 +313,11 @@ export function CreatePage(firstPage) {
                             data: JSON.stringify({
                                 Id: response.Id,
                                 UserName: $(".userNameInput").val(),
-                                Gender: $(".genderInput").val(),
-                                PhoneNumber: $(".phoneInput").val(),
-                                Email: $(".emailInput").val()
+                                Sex: $(".genderInput").val(),
+                                PhoneNumber: $(".phoneInput").val()
                             }),
                             success: function (response) {
                                 firstResponse.UserName = response.UserName;
-                                firstResponse.Email = response.Email;
                                 firstResponse.PhoneNumber = response.PhoneNumber;
                                 firstResponse.Sex = response.Sex;
                                 sideBarUserName.innerText = response.UserName;
@@ -358,7 +357,7 @@ export function CreatePage(firstPage) {
                     ticketDiv.append(imgDiv, textDiv);
 
                     let img = document.createElement('div')
-                    img.style.backgroundImage = "url('https://picsum.photos/400/300/?random=1')";
+                    img.style.backgroundImage = `url("${response.WishIssue[i].ImgPath}")`;
                     img.style.backgroundSize = "cover";
                     img.classList.add('w-100', 'h-100')
                     imgDiv.append(img);
@@ -407,14 +406,11 @@ export function CreatePage(firstPage) {
                                 UserId: response.Id
                             },
                             success: function () {
-
-                            },
-                            error: function () {
-                                alert("failed");
-                            },
-                            complete: function () {
                                 let card = e.target.closest('.wish-Ticket');
                                 card.remove();
+                            },
+                            error: function () {
+                                createBuzz("操作失敗，請與客服聯繫", "danger")
                             }
                         });
 
@@ -468,7 +464,7 @@ export function CreatePage(firstPage) {
                 OrderHistoryContent.setAttribute('id', 'OrderHistory');
 
                 let OrderHistory = document.createElement('div');
-                OrderHistory.classList.add('w-100', 'container', 'position-relative', 'my-3', 'py-3')
+                OrderHistory.classList.add('w-100', 'container', 'position-relative')
                 OrderHistoryContent.append(OrderHistory);
                 let row = document.createElement('div');
                 row.classList.add('row', 'order-list');
@@ -657,22 +653,19 @@ export function CreatePage(firstPage) {
 
                         $.ajax({
                             cache: false,
-                            url: "../Shop/ToggleFavoriteList",
+                            url: "../Customer/ToggleFavoriteShopList",
                             method: "post",
                             data: {
                                 ShopId: response.FavoriteShop[i].Id,
                                 UserId: response.Id
                             },
                             success: function () {
-
-                            },
-                            error: function () {
-                                alert("failed");
-                            },
-                            complete: function () {
                                 let card = e.target.closest('.favorite-store');
                                 card.remove();
-                            }
+                            },
+                            error: function () {
+                                createBuzz("操作失敗，請與客服聯繫", "danger")
+                            },
                         });
                     });
 
