@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     var searchList = (ViewBag.SearchString == null) ? new string[0] : ViewBag.SearchString.Split(' ');
     var model = Json.Encode(Model);
+    var ajaxUrl = Json.Encode(Url.Action("ToggleFavoriteShopList", "Customer"));
 }
 
 @Styles.Render("~/bundles/css/ShopList")
@@ -61,11 +62,12 @@
             })
         }
 
+        let url = @Html.Raw(ajaxUrl)
         function controlFromFavorite(Icon) {
 
             $.ajax({
                 cache: false,
-                url: "../ToggleFavoriteShopList",
+                url: url,
                 method: "post",
                 data: {
                     ShopId: Icon.getAttributeNode('shopid').value,

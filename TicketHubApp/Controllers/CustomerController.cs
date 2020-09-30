@@ -70,7 +70,7 @@ namespace TicketHubApp.Controllers
             var shops = service.SearchShop(input);
             ViewBag.SearchString = input;
 
-            return (shops == null || shops.Count() == 0) ? new InfoViewService().SearchNotFound() : View(shops);
+            return shops.Count() == 0 ? new InfoViewService().SearchNotFound() : View(shops);
         }
 
         public ActionResult GetCustomerInfo()

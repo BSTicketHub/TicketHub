@@ -6,6 +6,7 @@
     var wishIssueJson = Json.Encode(ViewBag.WishIssue);
     var userIdJson = Json.Encode(ViewBag.UserId);
     var modelJson = Json.Encode(Model);
+    var ajaxUrl = Json.Encode(Url.Action("ToggleFavoriteList", "Customer"));
 }
 
 <div class="container ticketList">
@@ -124,6 +125,7 @@
     <script src="~/Assets/JavaScript/Common/ticket.js"></script>
 
     <script>
+
         //Buzz
         function createBuzz(title, type) {
             Notify({
@@ -256,12 +258,13 @@
             });
 
         //favorite AJAX
+        let url = @Html.Raw(ajaxUrl)
 
         function controlFromFavorite(Icon) {
 
             $.ajax({
                 cache: false,
-                url: "Customer/ToggleFavoriteList",
+                url: url,
                 method: "post",
                 data: {
                     IssueId: Icon.getAttributeNode('issueid').value,
@@ -310,7 +313,7 @@
             //    data: searchJson,
             //    success: function (response) {
             //        console.log(response)
-                  
+
             //    },
             //    error: function (response) {
             //        alert(JSON.stringify(response))

@@ -2,17 +2,19 @@
 
 #imgChoppingArea {
     .loading-page {
-        visibility:hidden;
+        visibility: hidden;
         z-index: 999;
-        background-color:$gray-525252;
-        .spinner-border{
-            width:60px;
-            height:60px;
-            color:white;
+        background-color: $gray-525252;
+
+        .spinner-border {
+            width: 60px;
+            height: 60px;
+            color: white;
         }
-        p{
-            font-size:40px;
-            color:white;
+
+        p {
+            font-size: 40px;
+            color: white;
         }
     }
 }
@@ -20,40 +22,41 @@
 
 .side-menu {
     .side-menu-Image {
+        position: relative;
+
         .userImg {
             background-image: url("https://picsum.photos/400/400/?random=1");
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-            position: relative;
             border-radius: 50%;
             width: 150px;
             height: 150px;
-
-            .camera {
-                display: inline-block;
-                background-color: #fff;
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
-                position: absolute;
-                top: 120px;
-                right: 10px;
-                cursor: pointer;
-
-                i {
-                    font-size: 24px;
-                    color: $Transparent-gray-2;
-                }
-
-                input {
-                    display: none;
-                }
-            }
         }
 
         .username {
             font-size: 20px;
+        }
+
+        .camera {
+            display: inline-block;
+            background-color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            position: absolute;
+            top: 135px;
+            right: 60px;
+            cursor: pointer;
+
+            i {
+                font-size: 24px;
+                color: $Transparent-gray-2;
+            }
+
+            input {
+                display: none;
+            }
         }
     }
 }
