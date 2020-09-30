@@ -1,7 +1,7 @@
 ﻿@model TicketHubApp.Models.ViewModels.CarouselCardViewModel
 
 <div class="product-item rounded border overflow-hidden mx-2">
-    <a href="/ProductDescription/ProductDescription/@Model.Id">
+    <a href="/Home/@Model.Id">
         <div class="discount-label">@Math.Round(Model.DiscountRatio,1).ToString() 折</div>
         <div class="product-img">
             <img alt="@Model.Title" src="@Model.ImgPath">
