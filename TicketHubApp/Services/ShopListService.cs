@@ -12,11 +12,11 @@ namespace TicketHubApp.Services
     {
         public IEnumerable<ShopViewModel> SearchShop(string input)
         {
-            var SearchString = (input == null) ? "" : string.Join("^", input.Split(' '));
+            string[] search = input?.Split(' ');
             var _context = new TicketHubContext();
             GenericRepository<Shop> repo = new GenericRepository<Shop>(_context);
             var shopList = repo.GetAll();
-            var result = shopList.Where(x => SearchString.Contains(x.City.Remove(2))).Select(x => new ShopViewModel
+            var result = shopList.Select(x => new ShopViewModel
                 {
                     Id = x.Id,
                     ShopName = x.ShopName,
@@ -32,11 +32,25 @@ namespace TicketHubApp.Services
                         DiscountPrice = y.DiscountPrice,
                         Memo = y.Memo,
                         OriginalPrice = y.OriginalPrice,
-                        Title = y.Title
+                        Title = y.Title,
+                        ImgPath = y.ImgPath
                     })
             });
 
-            return result;
+            if(search != null)
+            {
+                foreach (var i in search)
+                {
+                    result = result.Where(x => x.City.Contains(i) || x.District.Contains(i) || x.ShopName.Contains(i) || x.ShopIntro.Contains(i));
+                }
+                return result;
+            }
+            else
+            {
+                return null;
+            }
+           
+            
         }
 
         public IEnumerable<Guid> GetUserFavotiteShop(string userId)

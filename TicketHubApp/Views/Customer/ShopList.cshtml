@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var searchList = ViewBag.SearchString.Split(' ');
+    var searchList = (ViewBag.SearchString == null) ? new string[0] : ViewBag.SearchString.Split(' ');
     var model = Json.Encode(Model);
 }
 
@@ -40,9 +40,9 @@
 <div id="notify"></div>
 
 
-@Scripts.Render("~/bundles/js/jquery")
+@*@Scripts.Render("~/bundles/js/jquery")
 @Scripts.Render("~/bundles/js/bootstrap")
-@Scripts.Render("~/bundles/js/ShopList")
+@Scripts.Render("~/bundles/js/ShopList")*@
 
 @section endJS{
     <script src="~/Assets/JavaScript/Common/buzz.js"></script>
@@ -94,6 +94,7 @@
         }
 
         let model = @Html.Raw(model)
+            console.log(model)
         @*let geometry = [];
         for (let i of @Html.Raw(geometryJson)) {
             i = i.split(' ')

@@ -54,7 +54,7 @@ namespace TicketHubApp.Controllers
             }
             var tickets = service.SearchIssue(input);
 
-            if (tickets.Count() == 0)
+            if (tickets == null)
             {
                 return RedirectToRoute("Unfound");
             }
@@ -76,7 +76,7 @@ namespace TicketHubApp.Controllers
             }
             var shops = service.SearchShop(input);
             ViewBag.SearchString = input;
-            if (shops.Count() == 0)
+            if (shops == null)
             {
                 return RedirectToRoute("Unfound");
             }
@@ -95,14 +95,13 @@ namespace TicketHubApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult ChangeInfoData(string Id, string UserName, string Sex, string Email, string PhoneNumber)
+        public ActionResult ChangeInfoData(string Id, string UserName, string Sex, string PhoneNumber)
         {
             using (var _context = TicketHubContext.Create())
             {
                 var user = _context.Users.Find(Id);
                 user.UserName = UserName;
                 user.Sex = Sex;
-                user.Email = Email;
                 user.PhoneNumber = PhoneNumber;
 
                 _context.SaveChanges();
@@ -110,7 +109,6 @@ namespace TicketHubApp.Controllers
                 var info = new CustomerInfoViewModel()
                 {
                     Id = user.Id,
-                    Email = user.Email,
                     PhoneNumber = user.PhoneNumber,
                     UserName = user.UserName,
                     Sex = user.Sex

@@ -113,7 +113,6 @@ namespace TicketHubApp
 
             //ShopList bundles
             bundles.Add(new StyleBundle("~/bundles/css/ShopList")
-                .Include("~/Content/bootstrap.css")
                 .Include("~/Assets/CSS/ShopList.min.css"));
             bundles.Add(new ScriptBundle("~/bundles/js/ShopList").Include(
                 "~/Scripts/bootstrap.js",

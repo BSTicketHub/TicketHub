@@ -12,5 +12,6 @@ namespace TicketHubApp.Models.ViewModels
         public string Memo { get; set; }
         public decimal OriginalPrice { get; set; }
         public decimal DiscountPrice { get; set; }
+        public string ImgPath { get; set; }
     }
 }
