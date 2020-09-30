@@ -192,7 +192,7 @@
             var ticketcard;
             $.ajax({
                 type: 'GET',
-                url: 'CardApi',
+                url: '../Home/CardApi',
                 data: { currCount: count },
                 async: false,
                 success: function (json) {
@@ -207,7 +207,6 @@
 
             // 動態載入
             if (ticketcard != null) {
-                console.log(ticketcard);
                 for (var item of ticketcard) {
                     let imageSrc = (item.ImgPath == null) ? "" : item.ImgPath;
 
@@ -266,9 +265,7 @@
                     card.innerHTML += html;
                     window.scrollTo(100, scrollPosition);
                 }
-            }
-            
-            
+            }            
         }
 
         function genTag(taglist) {
