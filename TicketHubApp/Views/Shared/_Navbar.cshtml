@@ -46,13 +46,13 @@
                             熱門票劵
                         </a>
                         <div class="dropdown-menu text-sm-9 border-0 shadow" aria-labelledby="navbarDropdown">
-                            <a href="" class="dropdown-item hov-color-cust">異國料理</a>
+                            <a href="" class="dropdown-item hov-color-cust">@Html.ActionLink("異國料理", "TicketList", "Customer", new { input = "式" }, new { @class = "dropdown-item hov-color-cust" })</a>
                             <div class="dropdown-divider"></div>
-                            <a href="" class="dropdown-item hov-color-cust">自助百匯</a>
+                            <a href="" class="dropdown-item hov-color-cust">@Html.ActionLink("自助百匯", "TicketList", "Customer", new { input = "吃到飽" }, new { @class = "dropdown-item hov-color-cust" })</a>
                             <div class="dropdown-divider"></div>
-                            <a href="" class="dropdown-item hov-color-cust">早午餐</a>
+                            <a href="" class="dropdown-item hov-color-cust">@Html.ActionLink("早午餐", "TicketList", "Customer", new { input = "早午餐" }, new { @class = "dropdown-item hov-color-cust" })</a>
                             <div class="dropdown-divider"></div>
-                            <a href="" class="dropdown-item hov-color-cust">下午餐</a>
+                            <a href="" class="dropdown-item hov-color-cust">@Html.ActionLink("下午茶", "TicketList", "Customer", new { input = "下午茶" }, new { @class = "dropdown-item hov-color-cust" })</a>
                             <div class="dropdown-divider"></div>
                             <a href="" class="dropdown-item hov-color-cust">素食餐廳</a>
                         </div>
@@ -70,23 +70,6 @@
                             <a href="" class="dropdown-item hov-color-cust">熱炒</a>
                             <div class="dropdown-divider"></div>
                             <a href="" class="dropdown-item hov-color-cust">超值餐廳</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown active d-flex align-items-center pb-0">
-                        <a class="nav-link dropdown-toggle hov-color-cust" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            限時特惠
-                        </a>
-                        <div class="dropdown-menu text-sm-9 border-0 shadow" aria-labelledby="navbarDropdown">
-                            <a href="" class="dropdown-item hov-color-cust">異國料理</a>
-                            <div class="dropdown-divider"></div>
-                            <a href="" class="dropdown-item hov-color-cust">自助百匯</a>
-                            <div class="dropdown-divider"></div>
-                            <a href="" class="dropdown-item hov-color-cust">早午餐</a>
-                            <div class="dropdown-divider"></div>
-                            <a href="" class="dropdown-item hov-color-cust">下午餐</a>
-                            <div class="dropdown-divider"></div>
-                            <a href="" class="dropdown-item hov-color-cust">素食餐廳</a>
                         </div>
                     </li>
                 }
