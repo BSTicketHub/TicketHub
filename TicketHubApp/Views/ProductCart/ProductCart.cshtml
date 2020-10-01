@@ -105,6 +105,7 @@
 </template>
 <script src="https://kit.fontawesome.com/bff1bb511a.js" crossorigin="anonymous"></script>
 <script>
+
     //導航欄購物車
     let showCart = document.getElementsByClassName("showCart")[0];
     showCart.style.display = "none";
@@ -252,6 +253,26 @@
         }
         AjaxFunction();
 
+        fetch('../ProductCart/GetIssueData', {
+            method: 'POST',
+            body: GetCart,
+            headers: {
+                'Content-Type': 'application/json',
+
+            }
+        }).then(function (response) {
+            //處理RESPONSE
+            console.log(response);
+            return response.json();
+        }).then(function (data) {
+            console.log(data);
+            return data;
+        }).catch(function (err) {
+            //錯誤處理
+            console.log('錯誤', err);
+        });
+
+
         function addIssue(productCartArray) {
             document.getElementById('shoppingCart').innerHTML = "";
             let card = document.querySelector('#template');
@@ -267,7 +288,6 @@
                 CartContent.querySelector(".number").value = productCartArray[i].Amount;
                 CartContent.querySelector(".tPrice").innerHTML = tPrice;
                 CartContent.querySelector(".trash").setAttribute("issueId", productCartArray[i].Id);
-
 
                 shoppingCart.append(CartContent);
             }

@@ -23,5 +23,9 @@ namespace TicketHubApp.Models.ViewModels
         public decimal OriginalPrice { get; set; }
         public decimal DiscountPrice { get; set; }
 
+        public decimal? OrderDetailAmount { get; set; }
+        public decimal IssuesAmount { get; set; }
+
+
     }
 }
