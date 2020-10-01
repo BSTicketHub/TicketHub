@@ -6,6 +6,7 @@
     var wishIssueJson = Json.Encode(ViewBag.WishIssue);
     var userIdJson = Json.Encode(ViewBag.UserId);
     var modelJson = Json.Encode(Model);
+    var ajaxUrl = Json.Encode(Url.Action("ToggleFavoriteList", "Customer"));
 }
 
 <div class="container ticketList">
@@ -124,6 +125,7 @@
     <script src="~/Assets/JavaScript/Common/ticket.js"></script>
 
     <script>
+
         //Buzz
         function createBuzz(title, type) {
             Notify({
@@ -161,6 +163,7 @@
                 } else {
                     selectedCatagory = selectedCatagory.filter(x => x != tag);
                 }
+                console.log(selectedCatagory)
             });
 
             let label = document.createElement("label");
@@ -251,15 +254,17 @@
 
                 minPrice = ui.values[0];
                 maxPrice = ui.values[1];
+                console.log(minPrice, maxPrice)
             });
 
         //favorite AJAX
+        let url = @Html.Raw(ajaxUrl)
 
         function controlFromFavorite(Icon) {
 
             $.ajax({
                 cache: false,
-                url: "../ToggleFavoriteList",
+                url: url,
                 method: "post",
                 data: {
                     IssueId: Icon.getAttributeNode('issueid').value,
@@ -300,30 +305,28 @@
         let issueModel = @Html.Raw(modelJson);
 
         $('.tag-search').click(function () {
-            searchJson = JSON.stringify({ SelectedTag: selectedTag, MaxPrice: maxPrice, MinPrice: minPrice });
-            $.ajax({
-                url: "../IssueTagSearch",
-                type: "post",
-                contentType:"application/json",
-                data: searchJson,
-                success: function (response) {
-                    console.log(response)
-                    let issues = document.querySelectorAll('.issue');
-                    ticketCounting = response.length;
-                    countNode.innerText = ticketCounting;
-                    console.log(issues)
-                    for (let i of issues) {
-                        i.remove();
-                    }
-                    for (let i = 0; i < response.length; i++) {
-                        CreateTicket(response, i);
-                        compileTag();
-                    }
-                },
-                error: function (response) {
-                    alert(JSON.stringify(response))
-                }
-            })
+            //searchJson = JSON.stringify({ SelectedTag: selectedTag, MaxPrice: maxPrice, MinPrice: minPrice });
+            //$.ajax({
+            //    url: "../IssueTagSearch",
+            //    type: "post",
+            //    contentType:"application/json",
+            //    data: searchJson,
+            //    success: function (response) {
+            //        console.log(response)
+
+            //    },
+            //    error: function (response) {
+            //        alert(JSON.stringify(response))
+            //    }
+            //})
+
+            let issues = document.querySelectorAll('.issue');
+            console.log(issues)
+            for (let i of issues) {
+                i.remove();
+            }
+            CreateTicket();
+            compileTag();
         })
 
         //Create Ticket Card
@@ -335,12 +338,12 @@
 
             for (let i = 0; i < issueModel.length; i++) {
 
-                        for (let j of jsonObj[index].TagList) {
-                            let tag = document.createElement('span');
-                            tag.classList.add('badge', 'badge-pill', 'badge-secondary', 'mr-2', 'my-1')
-                            tag.innerText = j;
-                            copied.querySelector('.showTag').append(tag);
-                        }
+                if (issueModel[i].DiscountPrice > maxPrice || issueModel[i].DiscountPrice < minPrice) {
+                    continue
+                }
+                if (selectedCatagory.length != 0 && selectedCatagory.indexOf(issueModel[i].Category) == -1) {
+                    continue
+                }
 
                 selectedIssue.push(issueModel[i]);
             }

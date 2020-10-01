@@ -41,6 +41,10 @@ namespace TicketHubApp.Services
             List<string> result;
             switch (role)
             {
+                case PageType.HOME:
+                    src = (from u in context.Users where u.Id == userid select u.AvatarPath).FirstOrDefault();
+                    name = (from u in context.Users where u.Id == userid select u.UserName).FirstOrDefault();
+                    break;
                 case PageType.CUSTOMER:
                     src = (from u in context.Users where u.Id == userid select u.AvatarPath).FirstOrDefault();
                     name = (from u in context.Users where u.Id == userid select u.UserName).FirstOrDefault();
@@ -57,8 +61,8 @@ namespace TicketHubApp.Services
                     break;
             }
 
-            src = (src == null) ? "https://i.imgur.com/ZM5EvHg.png" : src;
-            name = (name == null) ? "No Name" : name;
+            src = (src == null) ? "https://i.imgur.com/ZM5EvHg.png" : context.Users.Find(userid).AvatarPath;
+            name = (name == null) ? "No Name" : context.Users.Find(userid).UserName;
             result = new List<string>() { src, name };
             return result;
         }

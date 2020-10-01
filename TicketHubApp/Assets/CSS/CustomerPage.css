@@ -10,33 +10,33 @@
     font-size: 40px;
     color: white; }
 
-.side-menu .side-menu-Image .userImg {
-  background-image: url("https://picsum.photos/400/400/?random=1");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  position: relative;
-  border-radius: 50%;
-  width: 150px;
-  height: 150px; }
-  .side-menu .side-menu-Image .userImg .camera {
+.side-menu .side-menu-Image {
+  position: relative; }
+  .side-menu .side-menu-Image .userImg {
+    background-image: url("https://picsum.photos/400/400/?random=1");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px; }
+  .side-menu .side-menu-Image .username {
+    font-size: 20px; }
+  .side-menu .side-menu-Image .camera {
     display: inline-block;
     background-color: #fff;
     width: 40px;
     height: 40px;
     border-radius: 50%;
     position: absolute;
-    top: 120px;
-    right: 10px;
+    top: 135px;
+    right: 60px;
     cursor: pointer; }
-    .side-menu .side-menu-Image .userImg .camera i {
+    .side-menu .side-menu-Image .camera i {
       font-size: 24px;
       color: rgba(138, 138, 138, 0.603); }
-    .side-menu .side-menu-Image .userImg .camera input {
+    .side-menu .side-menu-Image .camera input {
       display: none; }
-
-.side-menu .side-menu-Image .username {
-  font-size: 20px; }
 
 .col-9 h3 {
   display: inline-block;

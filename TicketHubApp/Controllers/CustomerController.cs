@@ -54,7 +54,7 @@ namespace TicketHubApp.Controllers
             }
             var tickets = service.SearchIssue(input);
 
-            return tickets.Count() == 0 ? new InfoViewService().SearchNotFound() : View(tickets);
+            return (tickets == null || tickets.Count() == 0) ? new InfoViewService().SearchNotFound() : View(tickets);
         }
 
         public ActionResult ShopList(string input)

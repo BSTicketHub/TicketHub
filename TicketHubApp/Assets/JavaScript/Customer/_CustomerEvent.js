@@ -13,7 +13,6 @@ export function CreatePage(firstPage) {
     userImg.Id = "img-output";
     let camera = document.createElement('label');
     camera.classList.add("camera", "d-flex", "justify-content-center", "align-items-center");
-    userImg.append(camera);
     let i = document.createElement('i');
     i.classList.add('fas', 'fa-camera');
     camera.append(i);
@@ -24,6 +23,8 @@ export function CreatePage(firstPage) {
     input.accept = "image/gif, image/jpeg, image/png";
     camera.append(input);
 
+    //add camera
+    document.querySelector('.side-menu-Image').append(camera);
 
 
     let $uploadCrop,
@@ -419,6 +420,7 @@ export function CreatePage(firstPage) {
                     wishList.append(ticketDiv);
                 }
             }
+
             function createMyTicket() {
                 //Nav
                 let nav = document.createElement('ul');
