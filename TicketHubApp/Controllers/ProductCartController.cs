@@ -39,7 +39,11 @@ namespace TicketHubApp.Controllers
                         Memo = item.Memo,
                         OriginalPrice = item.OriginalPrice,
                         DiscountPrice = item.DiscountPrice,
-                        Amount = count
+                        Amount = count,
+                        OrderDetailAmount = (from od in _context.OrderDetail
+                                             where item.Id == od.IssueId
+                                             select od.Amount).DefaultIfEmpty().Sum(),
+                        IssuesAmount = item.Amount
                     };
                     list.Add(t);
                 }
@@ -49,7 +53,6 @@ namespace TicketHubApp.Controllers
                 string result = JsonConvert.SerializeObject(list);
                 return Json(result, JsonRequestBehavior.AllowGet);
             }
-
 
         }
 
