@@ -7,6 +7,7 @@
     var userIdJson = Json.Encode(ViewBag.UserId);
     var modelJson = Json.Encode(Model);
     var ajaxUrl = Json.Encode(Url.Action("ToggleFavoriteList", "Customer"));
+    var searchStringJson = Json.Encode(ViewBag.SearchString);
 }
 
 <div class="container ticketList">
@@ -58,11 +59,9 @@
             </div>
             <div class="bg-white border-top p-3 ticketList-Sort rounded-bottom">
                 <span>排序: | </span>
-                <a>熱門程度</a>
+                <a class="hottest">熱門程度</a>
                 <span> | </span>
-                <a>用戶評價</a>
-                <span> | </span>
-                <a>價格 : 低到高</a>
+                <a class="price-order">價格 : 低到高</a>
             </div>
             @foreach (var ticket in Model)
             {
@@ -82,6 +81,10 @@
                             <span class="iconify" data-icon="carbon:location" data-inline="false"></span>
                             <span class="city">TEST TEST</span>
                         </div>
+                        <a href="#">
+                            <span class="iconify position-absolute go-detail" data-icon="dashicons:arrow-right-alt2" data-inline="false" style="font-size:24px; top:110px; right:10px"></span>
+                        </a>
+                        <p class="soldNumber m-0 position-absolute" style="left:15px; bottom:10px">TEST</p>
                         <div class="position-absolute" style="right: 10px; bottom: 10px;">
                             <p class="ticketListOldPrice m-0">TWD TEST</p>
                             <p class="ticketListSalesPrice m-0">
@@ -135,6 +138,8 @@
                 position: "top center"
             })
         }
+
+        let searchContent = document.querySelector('.search-content').value = @Html.Raw(searchStringJson);
 
         // ticket list header -> tickets counting
         let ticketCounting = @Model.Count();
@@ -297,31 +302,16 @@
 
         //Tag Search
         let selectedCatagory = [];
-        let maxPrice = 100;
-        let minPrice = 300;
+        let maxPrice = 0;
+        let minPrice = 0;
 
         let wishIssue = @Html.Raw(wishIssueJson);
         let userId = @Html.Raw(userIdJson);
         let issueModel = @Html.Raw(modelJson);
 
         $('.tag-search').click(function () {
-            //searchJson = JSON.stringify({ SelectedTag: selectedTag, MaxPrice: maxPrice, MinPrice: minPrice });
-            //$.ajax({
-            //    url: "../IssueTagSearch",
-            //    type: "post",
-            //    contentType:"application/json",
-            //    data: searchJson,
-            //    success: function (response) {
-            //        console.log(response)
-
-            //    },
-            //    error: function (response) {
-            //        alert(JSON.stringify(response))
-            //    }
-            //})
-
             let issues = document.querySelectorAll('.issue');
-            console.log(issues)
+
             for (let i of issues) {
                 i.remove();
             }
@@ -329,17 +319,19 @@
             compileTag();
         })
 
-        //Create Ticket Card
+        //Search by catogary or price
         let issueList = document.querySelector('.issue-list');
         console.log(issueModel)
-        function CreateTicket() {
+
+        function CreateTicket(compareFunction) {
             let selectedIssue = [];
-            let tags = selectedCatagory.join('#');
 
             for (let i = 0; i < issueModel.length; i++) {
 
-                if (issueModel[i].DiscountPrice > maxPrice || issueModel[i].DiscountPrice < minPrice) {
-                    continue
+                if (!(maxPrice == 0 && minPrice == 0)) {
+                    if (issueModel[i].DiscountPrice > maxPrice || issueModel[i].DiscountPrice < minPrice) {
+                        continue
+                    }
                 }
                 if (selectedCatagory.length != 0 && selectedCatagory.indexOf(issueModel[i].Category) == -1) {
                     continue
@@ -348,22 +340,15 @@
                 selectedIssue.push(issueModel[i]);
             }
             console.log(selectedIssue);
+            selectedIssue.sort(compareFunction)
 
             for (let i = 0; i < selectedIssue.length; i++) {
 
                 let card = document.getElementById("ticketCard");
                 let copied = card.content.cloneNode(true);
-                console.log()
                 copied.querySelector('.ticketImg').style.backgroundImage = `url("${selectedIssue[i].ImgPath}")`
                 copied.querySelector('h3').innerText = selectedIssue[i].Title;
                 copied.querySelector('.description').innerText = selectedIssue[i].Memo;
-
-                //for (let j of jsonObj[index].TagList) {
-                //    let tag = document.createElement('span');
-                //    tag.classList.add('badge', 'badge-pill', 'badge-secondary', 'mr-2', 'my-1')
-                //    tag.innerText = j;
-                //    copied.querySelector('.showTag').append(tag);
-                //}
 
                 if (wishIssue != null) {
                     let favorite = document.createElement('i');
@@ -384,6 +369,8 @@
                     copied.querySelector('.issue').append(favorite);
                 }
 
+                copied.querySelector('a').href = `/ProductDescription/ProductDescription/${selectedIssue[i].Id}`
+                copied.querySelector('.soldNumber').innerText = `已售數量 : ${selectedIssue[i].SalesAmount}`
                 copied.querySelector('.city').innerText = selectedIssue[i].City + " / " + selectedIssue[i].District;
                 copied.querySelector('.ticketListOldPrice').innerText = "TWD " + selectedIssue[i].OriginalPrice;
                 copied.querySelector('.ticketListSalesPrice span').innerText = selectedIssue[i].DiscountPrice;
@@ -392,6 +379,35 @@
             }
 
             countNode.innerText = document.querySelectorAll('.issue').length;
+        }
+
+        //Order by price
+        document.querySelector('.price-order').addEventListener('click', function () {
+            let issues = document.querySelectorAll('.issue');
+
+            for (let i of issues) {
+                i.remove();
+            }
+            CreateTicket(compareByPrice)
+            compileTag();
+        });
+
+        //Order by hot
+        document.querySelector('.hottest').addEventListener('click', function () {
+            let issues = document.querySelectorAll('.issue');
+
+            for (let i of issues) {
+                i.remove();
+            }
+            CreateTicket(compareByHot)
+            compileTag();
+        });
+
+        function compareByPrice(a, b) {
+            return a.DiscountPrice - b.DiscountPrice
+        }
+        function compareByHot(a, b) {
+            return b.SalesAmount - a.SalesAmount
         }
     </script>
 }
