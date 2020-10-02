@@ -55,9 +55,9 @@
                 <div class="col-1">
                     <input type="number" class="number w-100">
                 </div>
-                <div class="col-2"><p class="tPrice"></p></div>
+                <div class="col-2"><p class="tPrice mr-3"></p></div>
                 <div class="col-1">
-                    <i class="fas fa-trash-alt trash"></i>
+                    <i class="fas fa-trash-alt trash mr-4"></i>
                 </div>
             </div>
         </template>
@@ -77,7 +77,7 @@
                         <p id="totalTickets">商品件數:</p>
                         <p id="totalPrice">銷售總金額:</p>
                         <div class="mt-5 text-right">
-                            <input class="btn w-50 btn-cust" value="確認結帳" />
+                            <input id="payBill" type="button" class="btn w-50 btn-cust" value="確認結帳" />
                         </div>
                     </div>
                 </div>
@@ -88,20 +88,98 @@
 </div>
 
 <template id="AccountInfo">
-    <div class="col-2 ">
-        <img class="w-100 rounded" src="../Assets/Images/img/bar.jpg" alt="Alternate Text" />
-    </div>
-    <div class="w-100 col-10 d-flex flex-wrap bill">
-        <p class="w-100 text-left ticketName">日月潭紅茶五吃</p>
-        <p class="w-100 text-left text-muted ordate">2020/09/30</p>
-        <p class="w-100 text-left text-muted unit border-bottom pb-2"></p>
-        <div class="row d-flex flex-wrap w-100 justify-content-end">
-            <div class="text-left mr-3"><p>總金額</p></div>
-            <div class="w-40 text-left totlPrice"><p>450</p></div>
+    <div class="countDetail d-flex">
+        <div class="col-2 ">
+            <img class="w-100 rounded" src="../Assets/Images/img/bar.jpg" alt="Alternate Text" />
+        </div>
+        <div class="w-100 col-10 d-flex flex-wrap bill">
+            <p class="w-100 text-left ticketName">日月潭紅茶五吃</p>
+            <p class="w-100 text-left text-muted ordate">2020/09/30</p>
+            <p class="w-100 text-left text-muted unit border-bottom pb-2"></p>
+            <div class="row d-flex flex-wrap w-100 justify-content-end">
+                <div class="text-left mr-3"><p>總金額</p></div>
+                <div class="w-40 text-left totlPrice"><p>450</p></div>
+            </div>
         </div>
     </div>
 </template>
 <script src="https://kit.fontawesome.com/bff1bb511a.js" crossorigin="anonymous"></script>
+<script>
+
+    //導航欄購物車
+    let showCart = document.getElementsByClassName("showCart")[0];
+    showCart.style.display = "none";
+    let open_display = document.getElementsByClassName("open")[0];
+
+
+    function shopCart() {
+        showCart.style.display = "block";
+    }
+
+    function shopCartMove() {
+        showCart.style.display = "none";
+    }
+
+    //購物車顯示事件
+    function UpdateCartData() {
+        var cart = document.querySelector(".cart")
+        cart.innerHTML = '';
+
+        if (localStorage.getItem('Cart') != null) {
+            let cartData = JSON.parse(localStorage.getItem('Cart'))
+
+            for (let item of cartData) {
+                @*console.log(item);*@
+                let carthtml = `
+            <div class="cart-item">
+                <a href="">
+                    <div class="product-img img-bg">
+                    </div>
+                </a>
+                <div class="cart-detail">
+                    <div class="product-detail ellipsis">
+                        <h3 class="ellipsisw-200">
+                            <a href="" id="puttitle" class="ellipsis">${item.title}</a>
+                        </h3>
+                        <!--div class="product-option ellipsis">${item.details}</div-->
+                    </div>
+                    <div class="text-tag"></div>
+                    <div>數量 x <span class="text-tag putamout" id="putamout">${item.amount}</span></div>
+                    <div class="product-pricing">
+                        <h4>TWD <span id="putprice">${item.price}</span></h4>
+                    </div>
+                </div>
+                <div class="product-action">
+                    <button type="button" class="btn btn-light" onClick="deleteCartItem('${item.id}')">
+                        <span class="iconify" data-icon="bi:trash" data-inline="false"></span>
+                    </button>
+                </div>
+            </div>`
+
+                cart.innerHTML += carthtml;
+            }
+        }
+
+    }
+
+
+
+    //購物車更新數量
+    function UpcartCounter() {
+        let data = JSON.parse(localStorage.getItem('Cart'));
+        let counter = 0;
+        //console.log(data);
+        // 顯示加總數
+        for (let item of data) {
+            let amount = +item.amount;
+            counter = counter + amount;
+        }
+
+        document.getElementsByClassName("cartCounter")[0].innerText = counter;
+        document.getElementsByClassName("cartCounter")[1].innerText = counter;
+    }
+</script>
+
 
 <script>
 
@@ -110,16 +188,16 @@
     var payDetail = document.getElementById("payDetail"); //最一開始的<div .row>空間
     var shoppingCart = document.getElementById("shoppingCart");
 
-    @*var Cart = [
-        { id: "dd35a880-1a56-4b5d-ad34-121dcc6c2cc0", amount: 2, title: "ExampleShop Issue5", details: "平假日皆可抵用100元消費金額", price: 556.75 },
-        { id: "703d8129-e1b1-4b03-b453-17347be7cfaf", amount: 1, title: "ExampleShop Issue6", details: "平假日皆可抵用100元消費金額", price: 300.75 }];
-
-    var CartString = JSON.stringify(Cart);
-    localStorage.setItem("Cart", CartString);*@
-
     var GetCart = localStorage.getItem("Cart");
+    console.log(GetCart);
+
 
     window.onload = function () {
+        // update navbar cart issue
+        UpdateCartData();
+        // update navbar cart number
+        UpcartCounter();
+
 
         function AjaxFunction() {
             $.ajax({
@@ -136,59 +214,90 @@
                     for (let i of numlist) {
 
                         i.addEventListener('change', function (e) {
-                            let num = e.target.value
+                            let num = e.target.value;
                             let unitPrice = e.target.closest('.row').childNodes[7].innerText;
                             e.target.closest('.row').childNodes[11].innerText = unitPrice * num;
                             if (num < 1) {
                                 e.target.value = 1
+                                e.target.closest('.row').childNodes[11].innerText = unitPrice * e.target.value;
+
+                            } else {
+                                //check stock enough or not
+                                StockCheck(this);
+                                // update local storage cart data
+                                //catchInLocal(this);
+
                             }
                         })
 
                     }
 
                     var trashlist = document.querySelectorAll(".trash");
-                    console.log(trashlist)
                     for (let i of trashlist) {
                         @*console.dir(i)*@
                         i.addEventListener('click', function (e) {
                             let tickets = e.target.closest('.case');
                             tickets.remove();
                             deleteLocalTrash(`${this.getAttribute("issueid")}`);
+                            // update navbar cart issue
+                            UpdateCartData();
+                            // update navbar cart number
+                            UpcartCounter();
                         });
                     }
                 },
+
                 error: function () {
                     alert("failed")
                 }
             })
         }
-
-    @*function payCount() {
-        $.ajax({
-            type: "POST",
-            contentType: "application/json",
-            url: "../ProductCart/GetIssueData",
-            data: GetCart,
-            success: function (info) {
-                infoJson = JSON.parse(info);
-                console.log(infoJson);
-
-            }
-
-        })
-    }*@
-
-
-
-
         AjaxFunction();
-        @*payCount();*@
+
+        function StockCheck(input) {
+            var id = String(input.parentElement.parentElement.querySelector("i").getAttribute("issueid"));
+            var amount = parseInt(input.value);
+            var data = `[{ "id": "${id}", "amount": ${amount} }]`;
+            fetch('../ProductCart/GetIssueData', {
+                method: 'POST',
+                body: data,
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            }).then(function (response) {
+                //處理RESPONSE
+                console.log(response);
+                return response.json();
+            }).then(function (data) {
+                let dataJ = JSON.parse(data);
+                var stock = 0;
+                stock = parseInt(dataJ[0].IssuesAmount) - parseInt(dataJ[0].OrderDetailAmount);
+                if (input.value > stock) {
+                    alert("庫存不足");
+                    input.value = stock;
+                };
+                catchInLocal(id, input.value);
+                // update navbar cart issue
+                UpdateCartData();
+                // update navbar cart number
+                UpcartCounter();
+
+                let num = input.value;
+                let unitPrice = input.closest('.row').childNodes[7].innerText;
+                input.closest('.row').childNodes[11].innerText = unitPrice * num;
+
+            @*return data;*@
+            }).catch(function (err) {
+                //錯誤處理
+                console.log('錯誤', err);
+            });
+
+        }
 
 
         function addIssue(productCartArray) {
             document.getElementById('shoppingCart').innerHTML = "";
             let card = document.querySelector('#template');
-        @*console.log(card);*@
 
             for (let i in productCartArray) {
                 let CartContent = card.content.cloneNode(true);    //複製小卡結點
@@ -201,7 +310,6 @@
                 CartContent.querySelector(".number").value = productCartArray[i].Amount;
                 CartContent.querySelector(".tPrice").innerHTML = tPrice;
                 CartContent.querySelector(".trash").setAttribute("issueId", productCartArray[i].Id);
-
 
                 shoppingCart.append(CartContent);
             }
@@ -223,47 +331,41 @@
                 ttContent.querySelector(".ordate").innerHTML = timeNow;
                 ttContent.querySelector(".unit").innerText = "張數: " + productTicketArray[tt].amount;
                 ttContent.querySelector(".totlPrice").innerHTML = productTicketArray[tt].total;
+                //ttContent.querySelector(".ticketName").setAttribute("issueId", productTicketArray[tt].Id);
                 payDetail.append(ttContent);
+
                 countTK += Number(productTicketArray[tt].amount);
                 countPrice += Number(productTicketArray[tt].total);
             }
             document.getElementById("totalTickets").innerText = "總購買張數: " + countTK + " 張";
             document.getElementById("totalPrice").innerText = "總購買金額: " + countPrice + " 元";
 
-            console.log(countTK);
-            console.log(countPrice);
+            @*console.log(countTK);
+            console.log(countPrice);*@
         };
 
         function deleteLocalTrash(id) {
             console.log(id);
             console.log("cc");
             let getCartData = JSON.parse(localStorage.getItem('Cart'));
-        @*console.log(getCartData);*@
             getCartData = getCartData.filter(x => x.id != id);
             localStorage.setItem("Cart", JSON.stringify(getCartData));
             @*upDateNewLocal();*@
         };
 
-        //function upDateNewLocal() {
-        //    window.location.reload();
-        //};
-     @*setTimeout('upDateNewLocal()', 5000);*@
-
-        function storageNumChange() {
-            let caseValue = document.querySelectorAll(".case");
-            console.log(caseValue);
-            let array = [];
-            for (let i of caseValue) {
-                let obj = {
-                    img: i.children[1].children[0].currentSrc,
-                    title: i.children[2].children[0].innerText,
-                    amount: i.children[4].children[0].value,
-                    total: i.children[5].children[0].innerText
+        function catchInLocal(id, amount) {
+            // call service return bool
+            // if true
+            let getCartData = JSON.parse(localStorage.getItem('Cart'));
+            getCartData = getCartData.map(function (x) {
+                if (x.id == id) {
+                    x.amount = amount;
                 }
-                array.push(obj);
-                console.log(array)
-            }
-            return array
+                return x;
+            });
+            localStorage.setItem("Cart", JSON.stringify(getCartData));
+            // if false
+            // ....
         }
 
         document.querySelector('.goCount').addEventListener('click', function () {
@@ -278,13 +380,39 @@
                     total: i.children[5].innerText
                 }
                 array.push(obj);
-                console.log(array)
+                @*console.log(array);*@
             }
-
-            addTicket(array)
-
+            addTicket(array);
         })
+
+        document.querySelector('#payBill').addEventListener('click', function () {
+
+            let GetCar = localStorage.getItem("Cart");
+            let GetCarObj = JSON.parse(GetCar);
+            let IdArray = [];
+            let AmountArray = [];
+            for (let i of GetCarObj) {
+                IdArray.push(i.id)
+                AmountArray.push(i.amount)
+            }
+            var data = JSON.stringify({ UserId: "@ViewBag.UserId", id: IdArray, amount: AmountArray });
+
+            fetch('../ProductCart/CreateOrder', {
+                method: 'POST',
+                body: data,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            }).then(function (response) {
+                console.log(response);
+                return response.json();
+            }).catch(function (err) {
+                console.log("錯誤", err);
+            });
+        })
+
+
     }
+    
 
 </script>
-

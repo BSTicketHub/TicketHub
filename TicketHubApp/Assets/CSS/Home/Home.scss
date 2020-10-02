@@ -92,7 +92,7 @@
 .card-tab {
     position: absolute;
     top: 25px;
-    left: -2px;
+    left: 12px;
     background-color: $red-a52b2b;
     color: white;
     padding: 3px 5px;
@@ -209,4 +209,113 @@
 .whish-btn {
     color: $shop-color-6;
     line-height: 1;
+}
+
+.foodCard {
+    border-radius: 10px;
+    box-shadow: rgb(232, 232, 232) -1px -21px 40px -29px inset, rgb(230, 230, 230) 2px 5px 25px 1px;
+}
+
+.pricing-wrap {
+    position: relative;
+    padding-top: 160px;
+    width: 100%;
+    display: block;
+    z-index: 100;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.pricing-wrap h4 {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    letter-spacing: 3px;
+    font-size: 22px;
+    line-height: 1.7;
+    color: #ffffff;
+    transform: translate3d(0, 0, 35px) perspective(100px);
+}
+
+.pricing-wrap span {
+    background-color: #50433e;
+    padding: 10px 20px;
+}
+
+.pricing-wrap hr {
+    flex-direction: column;
+    align-content: center;
+    align-content: center;
+    margin: auto;
+    background-color: #50433e;
+    margin-top: 10px;
+    height: 1px;
+    width: 250px;
+}
+
+.img-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.img-topbg {
+    position: absolute;
+    display: block;
+    /* background: -webkit-linear-gradient(-180deg, rgb(23, 162, 184), rgb(255, 255, 255)); */
+    background: linear-gradient(-180deg, rgb(23, 162, 184), rgb(255, 255, 255));
+    height: 180px;
+    left: 0;
+    top: 0px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    overflow: hidden;
+    width: 100%;
+    transform: translate3d(0, 0, 15px) perspective(100px);
+}
+
+.img-left {
+    position: absolute;
+    display: block;
+    left: -60px;
+    top: -40px;
+    width: calc(65% + 60px);
+    transform: translate3d(0, 0, 45px) perspective(100px) scale(0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 400ms ease, opacity 200ms 150ms ease;
+}
+
+.foodCard .img-left {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate3d(0, 0, 45px) perspective(100px) scale(1);
+    transition: transform 400ms 1200ms ease, opacity 300ms 1200ms ease;
+}
+
+.img-right {
+    position: absolute;
+    display: block;
+    right: -10px;
+    /* top: 50px; */
+    bottom: -10px;
+    z-index: 6;
+    width: calc(25% + 30px);
+    transform: translate3d(0, 0, 35px) perspective(100px) scale(0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 400ms 100ms ease, opacity 200ms 250ms ease;
+}
+
+.foodCard .img-right {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate3d(0, 0, 35px) perspective(100px) scale(1);
+    transition: transform 400ms 1300ms ease, opacity 300ms 1300ms ease;
 }

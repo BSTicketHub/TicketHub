@@ -53,6 +53,7 @@ namespace TicketHubApp.Controllers
                 ViewBag.WishIssue = wishIssue;
             }
             var tickets = service.SearchIssue(input);
+            ViewBag.SearchString = input;
 
             return (tickets == null || tickets.Count() == 0) ? new InfoViewService().SearchNotFound() : View(tickets);
         }
@@ -70,7 +71,7 @@ namespace TicketHubApp.Controllers
             var shops = service.SearchShop(input);
             ViewBag.SearchString = input;
 
-            return shops.Count() == 0 ? new InfoViewService().SearchNotFound() : View(shops);
+            return (shops == null || shops.Count() == 0) ? new InfoViewService().SearchNotFound() : View(shops);
         }
 
         public ActionResult GetCustomerInfo()

@@ -1,4 +1,5 @@
 ﻿using EllipticCurve;
+using Microsoft.AspNet.Identity;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -15,8 +16,18 @@ namespace TicketHubApp.Controllers
         // GET: ProductCart
         public ActionResult ProductCart()
         {
+            //進畫面的第一個action, 再此抓UserId
+
+            if (User.Identity.IsAuthenticated)
+            {
+                var currentUserId = User.Identity.GetUserId();
+                ViewBag.UserID = currentUserId;
+                
+            }
             return View();
+            
         }
+
         [HttpPost]
         //[ValidateAntiForgeryToken]
         public ActionResult GetIssueData(List<ProductCartAjaxViewModel> model)
@@ -39,7 +50,11 @@ namespace TicketHubApp.Controllers
                         Memo = item.Memo,
                         OriginalPrice = item.OriginalPrice,
                         DiscountPrice = item.DiscountPrice,
-                        Amount = count
+                        Amount = count,
+                        OrderDetailAmount = (from od in _context.OrderDetail
+                                             where item.Id == od.IssueId
+                                             select od.Amount).DefaultIfEmpty().Sum(),
+                        IssuesAmount = item.Amount
                     };
                     list.Add(t);
                 }
@@ -50,9 +65,41 @@ namespace TicketHubApp.Controllers
                 return Json(result, JsonRequestBehavior.AllowGet);
             }
 
-
         }
 
+        [HttpPost]
+        public ActionResult CreateOrder(ProductCartCrOrViewModel model)
+        {
+            //對應JS 接資料
+            using (var _context = new TicketHubContext())
+            {
+                Order order = new Order()
+                {
+                    OrderedDate = DateTime.Now,
+                    UserId = model.UserId,
+                    OrderDetails = new List<OrderDetail>()
+                };
+                
+                for(var i = 0; i < model.id.Count; i++)
+                {
+                    var price = _context.Issue.Find(model.id[i]).DiscountPrice;
+                    OrderDetail od = new OrderDetail()
+                    {
+                        Amount = model.amount[i],
+                        IssueId = model.id[i],
+                        Price = price
+                    };
+
+                    order.OrderDetails.Add(od);
+                }
+
+                _context.Order.Add(order);
+
+                _context.SaveChanges();
+            }
+
+            return Content("123");
+        }
     }
 
 }
