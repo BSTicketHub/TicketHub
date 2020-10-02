@@ -1,8 +1,8 @@
 ﻿@model TicketHubApp.Models.ViewModels.ShopIssueViewModel
 
-<div class="issue bg-white d-flex ticket position-relative rounded w-100 my-3" style="height:250px;">
+<div class="issue bg-white d-flex ticket rounded w-100 my-3" style="height:250px;">
     <div class="position-relative ticketImg col-md-4 border" style="background-image:url(@Model.ImgPath)"></div>
-    <div class="col-md-8">
+    <div class="col-md-8 position-relative">
 
         @if (ViewBag.WishIssue != null && ViewBag.WishIssue.Contains(Model.Id))
         {
@@ -11,10 +11,6 @@
         else if (ViewBag.WishIssue != null)
         {
             <span issueid="@Model.Id" class="iconify position-absolute wishHeart" data-icon="bi:heart" data-inline="false" onclick="controlFromFavorite(this)"></span>
-        }
-        else
-        {
-            <span class="iconify position-absolute wishHeart" data-icon="bi:heart-fill" data-inline="false"></span>
         }
 
         <h3 class="mt-4 mb-0">@Model.Title</h3>
@@ -32,7 +28,12 @@
             <span class="iconify" data-icon="carbon:location" data-inline="false"></span>
             <span class="description">@Model.City @Model.District</span>
         </div>
-        <div class="position-absolute" style="right: 10px; bottom: 10px;">
+        <a href="~/ProductDescription/ProductDescription/@Model.Id">
+            <span class="iconify position-absolute go-detail" data-icon="dashicons:arrow-right-alt2" data-inline="false" style="font-size:24px; top:110px; right:10px"></span>
+        </a>
+        <p class="soldNumber m-0 position-absolute" style="left:15px; bottom:10px">已售數量 : @Model.SalesAmount</p>
+
+        <div class="position-absolute text-right" style="right: 10px; bottom: 10px;">
             <p class="ticketListOldPrice m-0">TWD @Model.OriginalPrice</p>
             <p class="ticketListSalesPrice m-0">TWD<span> @Model.DiscountPrice</span></p>
         </div>

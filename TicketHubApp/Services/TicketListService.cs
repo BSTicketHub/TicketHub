@@ -32,6 +32,9 @@ namespace TicketHubApp.Services
                              Category = i.Category,
                              City = s.City,
                              District = s.District,
+                             SalesAmount = (from t in _context.Ticket
+                                            where t.IssueId == i.Id
+                                           select t).ToList().Count,
                              TagList = (from tg in _context.IssueTag
                                         join t in _context.Tag on tg.TagId equals t.Id
                                         where tg.IssueId == i.Id
@@ -41,7 +44,7 @@ namespace TicketHubApp.Services
             {
                 foreach (var i in search)
                 {
-                    result = result.Where(x => x.City.Contains(i) || x.District.Contains(i) || x.Title.Contains(i) || x.Memo.Contains(i) || x.Category.Contains(i));
+                    result = result.Where(x => x.City.Contains(i) || x.District.Contains(i) || x.Title.Contains(i) || i.Contains(x.Category));
                 }
                 return result;
             }
