@@ -246,6 +246,7 @@
     <Compile Include="Models\ViewModels\PlatformOrderViewModel.cs" />
     <Compile Include="Models\ViewModels\DataTableViewModel.cs" />
     <Compile Include="Models\ViewModels\ProductCartAjaxViewModel.cs" />
+    <Compile Include="Models\ViewModels\ProductCartCrOrViewModel.cs" />
     <Compile Include="Models\ViewModels\ProductCartViewModel.cs" />
     <Compile Include="Models\ViewModels\ProductDetailViewModel.cs" />
     <Compile Include="Models\ViewModels\CarouselCardListViewModel.cs" />

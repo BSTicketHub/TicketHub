@@ -77,7 +77,7 @@
                         <p id="totalTickets">商品件數:</p>
                         <p id="totalPrice">銷售總金額:</p>
                         <div class="mt-5 text-right">
-                            <input class="btn w-50 btn-cust" value="確認結帳" />
+                            <input id="payBill" type="button" class="btn w-50 btn-cust" value="確認結帳" />
                         </div>
                     </div>
                 </div>
@@ -226,7 +226,7 @@
                                 StockCheck(this);
                                 // update local storage cart data
                                 //catchInLocal(this);
-                                
+
                             }
                         })
 
@@ -357,7 +357,7 @@
             // call service return bool
             // if true
             let getCartData = JSON.parse(localStorage.getItem('Cart'));
-            getCartData = getCartData.map(function(x){
+            getCartData = getCartData.map(function (x) {
                 if (x.id == id) {
                     x.amount = amount;
                 }
@@ -380,10 +380,39 @@
                     total: i.children[5].innerText
                 }
                 array.push(obj);
-                console.log(array);
+                @*console.log(array);*@
             }
             addTicket(array);
         })
+
+        document.querySelector('#payBill').addEventListener('click', function () {
+
+            let GetCar = localStorage.getItem("Cart");
+            let GetCarObj = JSON.parse(GetCar);
+            let IdArray = [];
+            let AmountArray = [];
+            for (let i of GetCarObj) {
+                IdArray.push(i.id)
+                AmountArray.push(i.amount)
+            }
+            var data = JSON.stringify({ UserId: "@ViewBag.UserId", id: IdArray, amount: AmountArray });
+
+            fetch('../ProductCart/CreateOrder', {
+                method: 'POST',
+                body: data,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            }).then(function (response) {
+                console.log(response);
+                return response.json();
+            }).catch(function (err) {
+                console.log("錯誤", err);
+            });
+        })
+
+
     }
+    
 
 </script>
