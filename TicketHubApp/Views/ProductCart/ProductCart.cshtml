@@ -129,7 +129,7 @@
             let cartData = JSON.parse(localStorage.getItem('Cart'))
 
             for (let item of cartData) {
-                console.log(item);
+                @*console.log(item);*@
                 let carthtml = `
             <div class="cart-item">
                 <a href="">
@@ -173,11 +173,8 @@
         for (let item of data) {
             let amount = +item.amount;
             counter = counter + amount;
-            console.log(counter);
         }
 
-        //console.log(counter);
-        // document.getElementById("cartCounter").innerText = counter;
         document.getElementsByClassName("cartCounter")[0].innerText = counter;
         document.getElementsByClassName("cartCounter")[1].innerText = counter;
     }
@@ -196,6 +193,11 @@
 
 
     window.onload = function () {
+        // update navbar cart issue
+        UpdateCartData();
+        // update navbar cart number
+        UpcartCounter();
+
 
         function AjaxFunction() {
             $.ajax({
@@ -212,7 +214,7 @@
                     for (let i of numlist) {
 
                         i.addEventListener('change', function (e) {
-                            let num = e.target.value
+                            let num = e.target.value;
                             let unitPrice = e.target.closest('.row').childNodes[7].innerText;
                             e.target.closest('.row').childNodes[11].innerText = unitPrice * num;
                             if (num < 1) {
@@ -220,12 +222,11 @@
                                 e.target.closest('.row').childNodes[11].innerText = unitPrice * e.target.value;
 
                             } else {
+                                //check stock enough or not
+                                StockCheck(this);
                                 // update local storage cart data
-                                catchInLocal(this);
-                                // update navbar cart issue
-                                UpdateCartData();
-                                // update navbar cart number
-                                UpcartCounter();
+                                //catchInLocal(this);
+                                
                             }
                         })
 
@@ -253,24 +254,45 @@
         }
         AjaxFunction();
 
-        fetch('../ProductCart/GetIssueData', {
-            method: 'POST',
-            body: GetCart,
-            headers: {
-                'Content-Type': 'application/json',
+        function StockCheck(input) {
+            var id = String(input.parentElement.parentElement.querySelector("i").getAttribute("issueid"));
+            var amount = parseInt(input.value);
+            var data = `[{ "id": "${id}", "amount": ${amount} }]`;
+            fetch('../ProductCart/GetIssueData', {
+                method: 'POST',
+                body: data,
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            }).then(function (response) {
+                //處理RESPONSE
+                console.log(response);
+                return response.json();
+            }).then(function (data) {
+                let dataJ = JSON.parse(data);
+                var stock = 0;
+                stock = parseInt(dataJ[0].IssuesAmount) - parseInt(dataJ[0].OrderDetailAmount);
+                if (input.value > stock) {
+                    alert("庫存不足");
+                    input.value = stock;
+                };
+                catchInLocal(id, input.value);
+                // update navbar cart issue
+                UpdateCartData();
+                // update navbar cart number
+                UpcartCounter();
 
-            }
-        }).then(function (response) {
-            //處理RESPONSE
-            console.log(response);
-            return response.json();
-        }).then(function (data) {
-            console.log(data);
-            return data;
-        }).catch(function (err) {
-            //錯誤處理
-            console.log('錯誤', err);
-        });
+                let num = input.value;
+                let unitPrice = input.closest('.row').childNodes[7].innerText;
+                input.closest('.row').childNodes[11].innerText = unitPrice * num;
+
+            @*return data;*@
+            }).catch(function (err) {
+                //錯誤處理
+                console.log('錯誤', err);
+            });
+
+        }
 
 
         function addIssue(productCartArray) {
@@ -331,10 +353,7 @@
             @*upDateNewLocal();*@
         };
 
-        function catchInLocal(input) {
-            var id = String(input.parentElement.parentElement.querySelector("i").getAttribute("issueid"));
-            var amount = parseInt(input.value);
-
+        function catchInLocal(id, amount) {
             // call service return bool
             // if true
             let getCartData = JSON.parse(localStorage.getItem('Cart'));
