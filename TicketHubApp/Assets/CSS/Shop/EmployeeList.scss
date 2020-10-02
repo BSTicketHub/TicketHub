@@ -1,58 +1,6 @@
-﻿@import "../_variables.scss";
-
-thead {
-    background-color: $shop-color-4;
-}
-
-.btnList {
-    font-size: 12px;
-
-    .grayBtn {
-        background-color: #9f9f9f;
-        color: #fff;
-        border: 1px solid #9f9f9f;
-        border-radius: 2px;
-        padding: 5px 12px;
-
-        &:hover {
-            background-color: #fff;
-            color: #9f9f9f;
-            cursor: pointer;
-            font-weight: bold;
-            border-width: 1px;
-        }
-
-        &:focus {
-            outline: none;
-            box-shadow: none;
-        }
-
-        &:active {
-            background-color: #9f9f9f;
-            color: #fff;
-        }
-    }
-}
-
-.redBtn {
-    background-color: $shop-color-5;
-    color: #fff;
-    border: 1px solid $shop-color-5;
-    border-radius: 2px;
-    padding: 1px 2px;
-
-    &:hover {
-        background-color: #fff;
-        color: $shop-color-5;
-    }
-
-    &:focus {
-        outline: none;
-        box-shadow: none;
-    }
-
-    &:active {
-        background-color: $shop-color-5;
-        color: #fff;
+﻿
+.employeeList{
+    thead {
+        background-color: $shop-color-4;
     }
 }

@@ -1,4 +1,12 @@
-﻿// 圖片讀取
+﻿var message = "@ViewBag.Message";
+if (message) {
+    window.alert(message)
+}
+
+var curCity = "@TempData["City"]";
+var curDist = "@TempData["Dinstrict"]";
+
+// 圖片讀取
 function readURL(input) {
     if (input.files && input.files[0]) {
         var imageTagID = input.getAttribute("targetID");

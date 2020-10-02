@@ -2,7 +2,6 @@
 function compileTag() {
     var showtag = document.querySelectorAll(".showTag span");
     showtag.forEach(function (span) {
-        console.log(span)
         var value = span.innerText;
         var tag = value.charAt(0);
         switch (tag) {
@@ -27,23 +26,5 @@ function compileTag() {
                 span.innerText = value.slice(0);
                 break;
         }
-
-
-        //if (tag == '#') {
-        //    span.classList.add("tag", "tag-red");
-        //} else if (tag == '$') {
-        //    span.classList.add("tag", "tag-green");
-        //} else if (tag == '%') {
-        //    span.classList.add("tag", "tag-blue");
-        //} else if (tag == '^') {
-        //    span.classList.add("tag", "tag-orange");
-        //} else {
-        //    span.classList.add("tag", "border", "border-secondary");
-        //    span.innerText = value;
-        //    return true;
-        //}
-        //span.innerText = value.slice(1);
-
-
     })
 }

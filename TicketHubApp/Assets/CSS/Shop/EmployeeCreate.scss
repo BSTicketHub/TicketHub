@@ -1,24 +1,6 @@
 ﻿
-.blueBtn {
-    background-color: #2a94db;
-    color: #fff;
-    border: 1px solid #2a94db;
-    border-radius: 2px;
-    padding: 3px 10px;
-    font-size: 14px;
-
-    &:hover {
-        background-color: #fff;
-        color: #2a94db;
-    }
-
-    &:focus {
-        outline: none;
-        box-shadow: none;
-    }
-
-    &:active {
-        background-color: #2a94db;
-        color: #fff;
+.employCreate{
+    .blueBtn {
+        font-size: 14px;
     }
 }

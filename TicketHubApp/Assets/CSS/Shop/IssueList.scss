@@ -1,0 +1,43 @@
+﻿
+.IssueList {
+    .tableBlock {
+        overflow: auto;
+        height: 300px;
+    }
+
+    .table {
+        font-size: 12px;
+
+        thead {
+            height: 0px;
+
+            th {
+                padding: 10px;
+            }
+        }
+
+        tbody {
+            tr {
+                td {
+                    background-color: #eaeaea;
+                    color: #444;
+                    padding: 10px;
+                    border-color: #fff;
+                    border-width: 2px;
+
+                    img {
+                        height: 40px;
+                    }
+                }
+
+                &:hover td {
+                    background-color: #fff;
+                    color: #26bcc7;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    
+}

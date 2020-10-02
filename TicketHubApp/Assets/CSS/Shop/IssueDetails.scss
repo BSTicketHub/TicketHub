@@ -1,47 +1,34 @@
-﻿.blueBtn {
-    background-color: #2a94db;
-    color: #fff;
-    border: 1px solid #2a94db;
-    border-radius: 2px;
-    padding: 5px 10px;
-    opacity: 0;
-    font-size: 20px;
-    &:hover {
-        background-color: #fff;
-        color: #2a94db;
+﻿.issueDetail{
+    .blueBtn {
+        padding: 5px 10px;
+        opacity: 0;
+        font-size: 20px;
     }
-    &:focus {
-        outline: none;
-        box-shadow: none;
+
+    #datatable_filter input {
+        border-radius: 5px;
     }
-    &:active {
-        background-color: #2a94db;
-        color: #fff;
+
+    .ticket{
+        border: 1px solid lightgray;
     }
-}
 
-#datatable_filter input {
-    border-radius: 5px;
-}
-
-.ticket{
-    border: 1px solid lightgray;
-}
-
-#mask {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: rgba(0,0,0,0.4);
-    opacity: 0;
-    margin: 32px 16px;
-    &:hover{
-        opacity: 1;
-        button{
+    #mask {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: rgba(0,0,0,0.4);
+        opacity: 0;
+        margin: 32px 16px;
+        &:hover{
             opacity: 1;
+            button{
+                opacity: 1;
+            }
         }
     }
+
 }
