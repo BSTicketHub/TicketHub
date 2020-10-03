@@ -1,5 +1,12 @@
 ﻿@model TicketHubApp.Models.ViewModels.ShopViewModel
 
+<nav aria-label="breadcrumb" class="shadow">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="~/Shop/Index">商家管理系統</a></li>
+        <li class="breadcrumb-item active" aria-current="page">商家資訊</li>
+    </ol>
+</nav>
+
 @using (Html.BeginForm("ShopInfo", "Shop", FormMethod.Post, new { encType = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()

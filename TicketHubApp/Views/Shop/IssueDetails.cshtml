@@ -1,5 +1,13 @@
 ﻿@model TicketHubApp.Models.ViewModels.ShopIssueViewModel
 
+<nav aria-label="breadcrumb" class="shadow">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="~/Shop/Index">商家管理系統</a></li>
+        <li class="breadcrumb-item"><a href="~/Shop/IssueList">商品管理</a></li>
+        <li class="breadcrumb-item active" aria-current="page">票券資訊</li>
+    </ol>
+</nav>
+
 <div class="container issueDetail">
     <div class="row">
         <div class="col-12 bg-white shadow p-3 border position-relative d-flex justify-content-center">
@@ -29,7 +37,7 @@
 
 @section topCSS{
     <script>
-        var issueid = "@ViewBag.IssueId";
+        var issueid = "@Model.Id";
     </script>
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">

@@ -47,3 +47,19 @@ button, .blueBtn {
 .btnList {
     font-size: 12px;
 }
+
+.breadcrumb {
+    font-size: 14px;
+    background-color: $shop-color-5;
+    padding: 8px 16px;
+
+    a {
+        color: #6c757d;
+        &:hover {
+            color: $paper-white;
+        }
+    }
+    .active {
+        color: #d5d5d5;
+    }
+}

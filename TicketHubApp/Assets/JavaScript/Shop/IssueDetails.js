@@ -1,9 +1,11 @@
 ﻿// data table ajax json api
 $(document).ready(function () {
+    console.log(`${issueid}`)
     $('#datatable').DataTable({
         "ajax": {
-            "url": "getIssueDetailApi",
-            "data": { "Id": issueid }
+            "url": "../getIssueDetailApi",
+            "type": "POST",
+            "data": { "Id": `${issueid}` }
         },
         "scrollX": true,
         "stateSave": true,

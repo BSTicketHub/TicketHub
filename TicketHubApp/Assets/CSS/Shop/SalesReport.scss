@@ -1,8 +1,9 @@
 ﻿
 .SalesReport {
-    .p{
+    p {
         margin: 0;
     }
+
     .StoreReport {
         .searchBtn {
             background-color: #2a94db;
@@ -36,61 +37,44 @@
             color: #a1a7ab;
         }
 
+        .report-title {
+            background-color: $shop-color-4;
+            color: white;
+            font-weight: bold;
+        }
     }
 
 
     .ticket {
-        position: relative;
-        box-sizing: border-box;
         width: 300px;
-        height: 150px;
-        padding: 10px;
-        border-radius: 10px;
-        background-color: rgb(127, 156, 172);
-        box-shadow: 1px 1px 5px 0px;
+        height: 60px;
+        padding: 0px;
 
-        &:after {
-            content: '';
-            position: absolute;
-            top: 2px;
-            height: 146px;
-            width: 6px;
-            right: -5px;
-            background: radial-gradient(circle, transparent, transparent 50%, rgb(127, 156, 172) 50%, rgb(127, 156, 172) 100%) -3px -8px/16px 16px repeat-y;
-        }
 
-        &:before {
-            content: '';
-            position: absolute;
-            top: 2px;
-            height: 146px;
-            width: 6px;
-            left: -5px;
-            background: radial-gradient(circle, transparent, transparent 50%, rgb(127, 156, 172) 50%, rgb(127, 156, 172) 100%) -7px -8px/16px 16px repeat-y;
+        .ticket-icon {
+            width: 60px;
+            background-color: rgb(127, 156, 172);
+
+            .iconify {
+                width: 40px;
+                height: 40px;
+                /*padding-bottom: 5px;*/
+            }
         }
 
         .ticket-content {
-            box-sizing: border-box;
-            height: 100%;
-            width: 100%;
-            border: 1px dashed rgb(243, 249, 249);
-            color: rgb(243, 249, 249);
-            background-color: rgb(127, 156, 172);
+            background-color: rgba(127, 156, 172, .5);
+            border-left: 1px dashed rgb(243, 249, 249);
+            color: #fff;
 
             .ticket-title {
-                color: rgb(127, 156, 172);
-                font-size: 24px;
+                font-size: 18px;
                 font-weight: 900;
-                background-color: rgb(243, 249, 249);
-            }
-
-            .iconify {
-                width: 50px;
-                height: 50px;
             }
 
             .counter {
-                font-size: 50px;
+                font-size: 28px;
+                line-height: 28px;
             }
         }
     }
@@ -99,6 +83,8 @@
     .chartHeader {
         border-color: #26bcc7 !important;
         border-width: 2px !important;
+        font-weight: 800;
+        color: dimgray;
 
         button {
             border: 1px solid #4da9db;
@@ -109,6 +95,7 @@
             width: 30px;
             height: 24px;
             font-size: 14px;
+            border-radius: 0;
 
             &:hover {
                 color: #fff;
@@ -136,7 +123,7 @@
 
     .topTable {
         p {
-            background-color: #4caf50;
+            background-color: $shop-color-4;
             position: relative;
             color: #fff;
             top: -30px;
@@ -148,12 +135,9 @@
             font-size: 12px;
 
             th {
-                color: #4caf50;
+                color: $shop-color-5;
                 border: none;
             }
         }
     }
 }
-
-
-
