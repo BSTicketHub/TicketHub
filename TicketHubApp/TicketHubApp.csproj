@@ -467,6 +467,7 @@
     <Content Include="Assets\Images\Platform\bmw01.jpg" />
     <Content Include="Assets\Images\Platform\logo.png" />
     <Content Include="Assets\JavaScript\Common\buzz.js" />
+    <Content Include="Assets\JavaScript\Common\cart.js" />
     <Content Include="Assets\JavaScript\Common\iconify.min.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.min.js" />
