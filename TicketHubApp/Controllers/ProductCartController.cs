@@ -22,10 +22,10 @@ namespace TicketHubApp.Controllers
             {
                 var currentUserId = User.Identity.GetUserId();
                 ViewBag.UserID = currentUserId;
-                
+
             }
             return View();
-            
+
         }
 
         [HttpPost]
@@ -36,7 +36,7 @@ namespace TicketHubApp.Controllers
             using (var _context = new TicketHubContext())
             {
                 var list = new List<ProductCartViewModel>();
-                foreach(var m in model)
+                foreach (var m in model)
                 {
                     var count = Decimal.Parse(m.amount);
                     //型別要與ProductCartAjaxViewModel相同才能比較
@@ -79,8 +79,8 @@ namespace TicketHubApp.Controllers
                     UserId = model.UserId,
                     OrderDetails = new List<OrderDetail>()
                 };
-                
-                for(var i = 0; i < model.id.Count; i++)
+
+                for (var i = 0; i < model.id.Count; i++)
                 {
                     var price = _context.Issue.Find(model.id[i]).DiscountPrice;
                     OrderDetail od = new OrderDetail()
@@ -93,13 +93,34 @@ namespace TicketHubApp.Controllers
                     order.OrderDetails.Add(od);
                 }
 
-                _context.Order.Add(order);
+                for (var j = 0; j< model.id.Count; j++){
+                    for (var i = 0; i < model.amount[j]; i++)
+                    {
+                        Ticket ticket = new Ticket()
+                        {
+                            DeliveredDate = DateTime.Now,
+                            Exchanged = false,
+                            ExchangedDate = null,
+                            Voided = false,
+                            VoidedDate = null,
+                            UserId = model.UserId,
+                            IssueId = model.id[j],
+                            OrderId = order.Id
+                        };
+                        _context.Ticket.Add(ticket);
+                    }
+                }
+                    _context.Order.Add(order);
 
-                _context.SaveChanges();
+                    _context.SaveChanges();
+
+                return Content("123");
+
             }
 
-            return Content("123");
         }
+
+
     }
 
 }
