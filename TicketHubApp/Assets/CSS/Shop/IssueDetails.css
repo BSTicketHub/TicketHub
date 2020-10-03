@@ -1,28 +1,15 @@
-﻿.blueBtn {
-  background-color: #2a94db;
-  color: #fff;
-  border: 1px solid #2a94db;
-  border-radius: 2px;
+﻿.issueDetail .blueBtn {
   padding: 5px 10px;
   opacity: 0;
   font-size: 20px; }
-  .blueBtn:hover {
-    background-color: #fff;
-    color: #2a94db; }
-  .blueBtn:focus {
-    outline: none;
-    box-shadow: none; }
-  .blueBtn:active {
-    background-color: #2a94db;
-    color: #fff; }
 
-#datatable_filter input {
+.issueDetail #datatable_filter input {
   border-radius: 5px; }
 
-.ticket {
+.issueDetail .ticket {
   border: 1px solid lightgray; }
 
-#mask {
+.issueDetail #mask {
   content: "";
   position: absolute;
   top: 0;
@@ -32,7 +19,7 @@
   background: rgba(0, 0, 0, 0.4);
   opacity: 0;
   margin: 32px 16px; }
-  #mask:hover {
+  .issueDetail #mask:hover {
     opacity: 1; }
-    #mask:hover button {
+    .issueDetail #mask:hover button {
       opacity: 1; }

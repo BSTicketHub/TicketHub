@@ -1,0 +1,131 @@
+﻿
+.createIssue {
+    .showimg {
+        width: 277px;
+        height: 250px;
+        object-fit: cover;
+    }
+
+    .upLoadImg {
+        height: 280px;
+    }
+
+    .description {
+        font-size: 14px;
+    }
+
+    .form-control {
+        &:focus {
+            box-shadow: none;
+            border: 2px solid #26bcc7;
+            color: #26bcc7;
+        }
+    }
+
+    .modal-body {
+        background-color: #eaeaea;
+    }
+
+    .modal-xl {
+        max-width: 900px;
+    }
+
+    .hint {
+        background-color: #ff8499;
+        color: #fff;
+        font-weight: bolder;
+        border-radius: 2px;
+        padding: 1px 3px;
+        margin: 0 10px;
+    }
+
+    .hintTag {
+        font-size: 10px;
+    }
+
+    .ball {
+        margin-right: 10px;
+        display: inline-block;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        opacity: .7;
+
+        &:hover {
+            opacity: 1;
+            cursor: pointer;
+        }
+
+        &:focus {
+            /*border: 2px solid #000;*/
+            outline: none;
+        }
+    }
+
+    .red {
+        background-color: $shop-color-11;
+    }
+
+    .green {
+        background-color: $green-35821e;
+    }
+
+    .blue {
+        background-color: $blue-305ba5;
+    }
+
+    .orange {
+        background-color: $orange-ff961f;
+    }
+
+    .gray {
+        background-color: dimgray;
+    }
+
+    .tagString {
+        visibility: hidden;
+        position: absolute;
+    }
+
+    .showTag {
+        height: 70px;
+        span{
+            position: relative;
+            &:hover{
+                cursor: pointer;
+                &:after{
+                    display: inline;
+                }
+            }
+
+            &:after{
+                content: "X";
+                position: absolute;
+                background-color: rgba(0,0,0,0.6);
+                border-radius: 10px;
+                color: red;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                margin: auto;
+                text-align: center;
+                line-height: 1.8rem;
+                display: none;
+            }
+        }
+    }
+
+    input[type=checkbox] {
+        display: none;
+    }
+
+    input[type=checkbox]:checked + label {
+        border: 2px solid #000;
+    }
+
+    .message{
+        font-size: 12px;
+        color: red;
+    }
+}

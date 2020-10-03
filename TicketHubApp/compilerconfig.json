@@ -122,5 +122,21 @@
   {
     "outputFile": "Assets/CSS/Home/About.css",
     "inputFile": "Assets/CSS/Home/About.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/Shop/ShopCommon.css",
+    "inputFile": "Assets/CSS/Shop/ShopCommon.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/Shop/CreateIssue.css",
+    "inputFile": "Assets/CSS/Shop/CreateIssue.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/Shop/IssueList.css",
+    "inputFile": "Assets/CSS/Shop/IssueList.scss"
+  },
+  {
+    "outputFile": "Assets/CSS/Shop/Shop.css",
+    "inputFile": "Assets/CSS/Shop/Shop.scss"
   }
 ]

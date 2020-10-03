@@ -1,23 +1,8 @@
-﻿.form-control:focus {
+﻿.shopInfo .form-control:focus {
   box-shadow: none; }
 
-button {
-  background-color: #2a94db;
-  color: #fff;
-  border: 1px solid #2a94db;
-  border-radius: 2px;
-  padding: 3px 10px; }
-  button:hover {
-    background-color: #fff;
-    color: #2a94db; }
-  button:focus {
-    outline: none; }
-  button:active {
-    background-color: #2a94db;
-    color: #fff; }
-
-.kkColor {
+.shopInfo .kkColor {
   color: #26bec9; }
 
-.errorSize {
+.shopInfo .errorSize {
   font-size: 12px; }

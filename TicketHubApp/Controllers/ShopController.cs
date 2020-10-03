@@ -53,7 +53,7 @@ namespace TicketHubApp.Controllers
         {
             var categoryList = new TagService().GenCategory();
             ViewBag.CategoryList = categoryList;
-
+            ViewBag.WishIssue = new List<Guid>();
             return View();
         }
 
@@ -63,7 +63,7 @@ namespace TicketHubApp.Controllers
         {
             var categoryList = new TagService().GenCategory();
             ViewBag.CategoryList = categoryList;
-
+            ViewBag.WishIssue = new List<Guid>();
             if (ModelState.IsValid)
             {
                 var service = new ShopIssueService();
@@ -85,7 +85,7 @@ namespace TicketHubApp.Controllers
         {
             var categoryList = new TagService().GenCategory();
             ViewBag.CategoryList = categoryList;
-
+            ViewBag.WishIssue = new List<Guid>();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -105,7 +105,7 @@ namespace TicketHubApp.Controllers
         {
             var categoryList = new TagService().GenCategory();
             ViewBag.CategoryList = categoryList;
-
+            ViewBag.WishIssue = new List<Guid>();
             if (ModelState.IsValid)
             {
                 var service = new ShopIssueService();

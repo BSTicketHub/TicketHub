@@ -75,7 +75,7 @@
                     <div class="card-body">
                         <h4 id="price" class="card-title">TWD @Model.DiscountPrice</h4>
                         <p class="originprice">原價 @Model.OriginalPrice</p>
-                        <a href="#" class="btn btn-info cartbtn w-100 text-center addcart">加入購物車</a>
+                        <button class="btn btn-info cartbtn w-100 text-center addcart" onclick="UpcartCounter()">加入購物車</button>
                     </div>
                 </div>
             </div>
@@ -98,6 +98,21 @@
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbOibXZPeCKpq5tbdQZD0B5By6Z3MkQHc&callback=initMap"></script>
 }
 <script>
+    UpdateCartData();
+
+    let showCart = document.getElementsByClassName("showCart")[0];
+    showCart.style.display = "none";
+    let open_display = document.getElementsByClassName("open")[0];
+
+
+    function shopCart() {
+        showCart.style.display = "block";
+    }
+
+    function shopCartMove() {
+        showCart.style.display = "none";
+    }
+
     //購物車更新數量
     function UpcartCounter() {
         let data = JSON.parse(localStorage.getItem('Cart'));
@@ -117,37 +132,40 @@
     }
 
     //最新推出Card 事件
-    $(".addCart").click(function (e) {
-        var id = $(this).parent().parent().parent().find("#chart_id").val();
-        var title = $(this).parent().parent().parent().find("#Title").text();
-        var details = $(this).parent().parent().parent().find("#details").text();
-        var discountPrice = Number($(this).parent().parent().parent().find("#DiscountPrice").text().replace("$", ""));
-        var amount = Number($(this).parent().parent().parent().find("#cartcount").val());
-
-
-        let cartItem = {
-            id: id,
-            title: title,
-            details: details,
-            price: discountPrice,
-            amount: amount
-        }
-
-        if (localStorage.getItem('Cart') == null) {
-            localStorage.setItem('Cart', JSON.stringify([cartItem]))
-        } else {
-            let cart = JSON.parse(localStorage.getItem('Cart'))
-            if (cart.filter(x => x.id == cartItem.id).length > 0) {
-                cart[cart.indexOf(cart.filter(x => x.id == cartItem.id)[0])].amount += cartItem.amount
-            } else {
-                cart.push(cartItem);
+    function addNewCart() {
+        $(".addCart").click(function (e) {
+            var id = `${$(this).parent().parent().parent().find("#chart_id").val()}`;
+            var title = $(this).parent().parent().parent().find("#Title").text();
+            var details = $(this).parent().parent().parent().find("#details").text();
+            var discountPrice = Number($(this).parent().parent().parent().find("#DiscountPrice").text().replace("$", ""));
+            var amount = Number($(this).parent().parent().parent().find("#cartcount").val());
+            let imgSrc = $(this).parent().parent().parent().parent().find("img").attr("src");
+            let cartItem = {
+                id: id,
+                title: title,
+                details: details,
+                price: discountPrice,
+                amount: amount,
+                img: `${imgSrc}`
             }
-            localStorage.setItem('Cart', JSON.stringify(cart))
-        }
 
-        UpcartCounter();
-        UpdateCartData()
-    })
+            if (localStorage.getItem('Cart') == null) {
+                localStorage.setItem('Cart', JSON.stringify([cartItem]))
+            } else {
+                let cart = JSON.parse(localStorage.getItem('Cart'))
+                if (cart.filter(x => x.id == cartItem.id).length > 0) {
+                    cart[cart.indexOf(cart.filter(x => x.id == cartItem.id)[0])].amount += cartItem.amount
+                } else {
+                    cart.push(cartItem);
+                }
+                localStorage.setItem('Cart', JSON.stringify(cart))
+            }
+            UpcartCounter();
+            UpdateCartData()
+        })
+        add();
+        sub();
+    }
 
     //購物車顯示事件
     function UpdateCartData() {
@@ -170,7 +188,7 @@
                         <h3 class="ellipsisw-200">
                             <a href="" id="puttitle" class="ellipsis">${item.title}</a>
                         </h3>
-                        <div class="product-option ellipsis">${item.details}</div>
+                        <!--div class="product-option ellipsis">${item.details}</div-->
                     </div>
                     <div class="text-tag"></div>
                     <div>數量 x <span class="text-tag putamout" id="putamout">${item.amount}</span></div>
