@@ -365,11 +365,11 @@
     <Content Include="Assets\CSS\ProductDescription.min.css">
       <DependentUpon>ProductDescription.css</DependentUpon>
     </Content>
-    <Content Include="Assets\CSS\Shop\CreateProduct.css">
-      <DependentUpon>CreateProduct.scss</DependentUpon>
+    <Content Include="Assets\CSS\Shop\CreateIssue.css">
+      <DependentUpon>CreateIssue.scss</DependentUpon>
     </Content>
-    <Content Include="Assets\CSS\Shop\CreateProduct.min.css">
-      <DependentUpon>CreateProduct.css</DependentUpon>
+    <Content Include="Assets\CSS\Shop\CreateIssue.min.css">
+      <DependentUpon>CreateIssue.css</DependentUpon>
     </Content>
     <Content Include="Assets\CSS\Shop\EmployeeCreate.css">
       <DependentUpon>EmployeeCreate.scss</DependentUpon>
@@ -383,23 +383,17 @@
     <Content Include="Assets\CSS\Shop\EmployeeList.min.css">
       <DependentUpon>EmployeeList.css</DependentUpon>
     </Content>
-    <Content Include="Assets\CSS\Shop\HomePage.css">
-      <DependentUpon>HomePage.scss</DependentUpon>
-    </Content>
-    <Content Include="Assets\CSS\Shop\HomePage.min.css">
-      <DependentUpon>HomePage.css</DependentUpon>
-    </Content>
     <Content Include="Assets\CSS\Shop\IssueDetails.css">
       <DependentUpon>IssueDetails.scss</DependentUpon>
     </Content>
     <Content Include="Assets\CSS\Shop\IssueDetails.min.css">
       <DependentUpon>IssueDetails.css</DependentUpon>
     </Content>
-    <Content Include="Assets\CSS\Shop\productList.css">
-      <DependentUpon>productList.scss</DependentUpon>
+    <Content Include="Assets\CSS\Shop\IssueList.css">
+      <DependentUpon>IssueList.scss</DependentUpon>
     </Content>
-    <Content Include="Assets\CSS\Shop\productList.min.css">
-      <DependentUpon>productList.css</DependentUpon>
+    <Content Include="Assets\CSS\Shop\IssueList.min.css">
+      <DependentUpon>IssueList.css</DependentUpon>
     </Content>
     <Content Include="Assets\CSS\Shop\SalesReport.css">
       <DependentUpon>SalesReport.scss</DependentUpon>
@@ -407,17 +401,23 @@
     <Content Include="Assets\CSS\Shop\SalesReport.min.css">
       <DependentUpon>SalesReport.css</DependentUpon>
     </Content>
+    <Content Include="Assets\CSS\Shop\Shop.css">
+      <DependentUpon>Shop.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Shop\Shop.min.css">
+      <DependentUpon>Shop.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Shop\ShopCommon.css">
+      <DependentUpon>ShopCommon.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\Shop\ShopCommon.min.css">
+      <DependentUpon>ShopCommon.css</DependentUpon>
+    </Content>
     <Content Include="Assets\CSS\Shop\ShopInfo.css">
       <DependentUpon>ShopInfo.scss</DependentUpon>
     </Content>
     <Content Include="Assets\CSS\Shop\ShopInfo.min.css">
       <DependentUpon>ShopInfo.css</DependentUpon>
-    </Content>
-    <Content Include="Assets\CSS\Shop\ShopLayout.css">
-      <DependentUpon>ShopLayout.scss</DependentUpon>
-    </Content>
-    <Content Include="Assets\CSS\Shop\ShopLayout.min.css">
-      <DependentUpon>ShopLayout.css</DependentUpon>
     </Content>
     <Content Include="Assets\CSS\Common\owl.carousel.min.css" />
     <Content Include="Assets\CSS\Common\owl.theme.default.css" />
@@ -467,6 +467,7 @@
     <Content Include="Assets\Images\Platform\bmw01.jpg" />
     <Content Include="Assets\Images\Platform\logo.png" />
     <Content Include="Assets\JavaScript\Common\buzz.js" />
+    <Content Include="Assets\JavaScript\Common\cart.js" />
     <Content Include="Assets\JavaScript\Common\iconify.min.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.js" />
     <Content Include="Assets\JavaScript\Common\JsBarcode.all.min.js" />
@@ -493,8 +494,11 @@
     <Content Include="Assets\JavaScript\Platform\PlatformMemberIndex.js" />
     <Content Include="Assets\JavaScript\ProductCart\ProductCart.js" />
     <Content Include="Assets\JavaScript\Product\ProductDescription.js" />
-    <Content Include="Assets\JavaScript\Shop\createProduct.js" />
-    <Content Include="Assets\JavaScript\Shop\HomePage.js" />
+    <Content Include="Assets\JavaScript\Shop\CreateIssue.js" />
+    <Content Include="Assets\JavaScript\Shop\EmployeeCreate.js" />
+    <Content Include="Assets\JavaScript\Shop\IssueDetails.js" />
+    <Content Include="Assets\JavaScript\Shop\IssueList.js" />
+    <Content Include="Assets\JavaScript\Shop\SalesReport.js" />
     <Content Include="Assets\JavaScript\Shop\ShopInfo.js" />
     <Content Include="Assets\JavaScript\Shop\ShopList.js" />
     <Content Include="Assets\Images\ticket_test_Img.jpg" />
@@ -722,14 +726,11 @@
     <Content Include="Assets\CSS\tempCSS\fontawesome-webfont.eot" />
     <Content Include="Assets\CSS\tempCSS\fontawesome-webfont.ttf" />
     <Content Include="Assets\CSS\TicketList.scss" />
-    <Content Include="Assets\CSS\Shop\ShopLayout.scss" />
-    <Content Include="Assets\CSS\Shop\CreateProduct.scss" />
+    <Content Include="Assets\CSS\Shop\CreateIssue.scss" />
     <Content Include="Assets\CSS\Common\Ticket.scss" />
-    <Content Include="Assets\CSS\Shop\productList.scss" />
-    <Content Include="Assets\CSS\Shop\HomePage.scss" />
+    <Content Include="Assets\CSS\Shop\IssueList.scss" />
     <Content Include="Assets\CSS\Shop\ShopInfo.scss" />
     <Content Include="Assets\CSS\Shop\SalesReport.scss" />
-    <Content Include="Assets\CSS\Shop\TicketDeatail.scss" />
     <Content Include="Assets\CSS\Platform\Platform_Layout.scss" />
     <Content Include="Assets\CSS\tempCSS\home.scss" />
     <Content Include="Assets\CSS\Home\Home.scss" />
@@ -753,6 +754,8 @@
     <Content Include="Assets\CSS\Platform\Platform_CreateUser.scss" />
     <Content Include="Assets\CSS\Platform\Platform_GetTicketsBelongToThisUser.scss" />
     <Content Include="Assets\CSS\Common\_tag.scss" />
+    <Content Include="Assets\CSS\Shop\ShopCommon.scss" />
+    <Content Include="Assets\CSS\Shop\Shop.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

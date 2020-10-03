@@ -52,16 +52,16 @@ namespace TicketHubApp.Services
                                 OriginalPrice = i.OriginalPrice,
                                 ImgPath = i.ImgPath
                             },
-                MyOrder = from od in _context.OrderDetail
-                          join o in order on od.OrderId equals o.Id
-                          where o.Id == od.OrderId && userId == o.UserId
+                MyOrder = from o in order
+                          where userId == o.UserId
                           select new CustomerOrderViewModel
                           {
                               Id = o.Id,
                               OrderDate = o.OrderedDate.ToString(),
                               UserId = userId,
                               OrderIssue = from i in issue
-                                           where i.Id == od.IssueId
+                                           join od in _context.OrderDetail on i.Id equals od.IssueId
+                                           where i.Id == od.IssueId && o.Id == od.OrderId
                                            select new ShopIssueViewModel
                                            {
                                                DiscountPrice = i.DiscountPrice,
@@ -73,24 +73,26 @@ namespace TicketHubApp.Services
                 MyTicket = from i in issue
                            join t in ticket on i.Id equals t.IssueId
                            where t.Exchanged == false && t.Voided == false && t.UserId == userId
+                           group i by new { i.Id, i.ImgPath, i.ClosedDate, i.Title} into g
                            select new TicketViewModel
                            {
-                               IssueTitle = i.Title,
-                               VoidedDate = i.ClosedDate.ToString(),
-                               ImgPath = i.ImgPath,
+                               IssueTitle = g.Key.Title,
+                               VoidedDate = g.Key.ClosedDate.ToString(),
+                               ImgPath = g.Key.ImgPath,
                                TicketDetail = from o in order
+                                              join t in ticket on o.Id equals t.OrderId
                                               where o.Id == t.OrderId
                                               select new TicketDetailViewModel
                                               {
-                                                  IssueId = i.Id,
-                                                  ImgPath = i.ImgPath,
-                                                  IssueTitle = i.Title,
+                                                  IssueId = g.Key.Id,
+                                                  ImgPath = g.Key.ImgPath,
+                                                  IssueTitle = g.Key.Title,
                                                   OrderDate = o.OrderedDate.ToString(),
                                                   OrderId = o.Id,
                                                   OrderMaker = user.UserName,
-                                                  CloseDate = i.ClosedDate.ToString(),
+                                                  CloseDate = g.Key.ClosedDate.ToString(),
                                                   TicketId = from t in ticket
-                                                             where t.UserId == userId && t.IssueId == i.Id
+                                                             where t.UserId == userId && t.IssueId == g.Key.Id
                                                              select t.Id
                                               }
                            },

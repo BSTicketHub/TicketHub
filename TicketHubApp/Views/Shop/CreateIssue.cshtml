@@ -4,7 +4,7 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="container createProduct">
+    <div class="container createIssue">
         <div class="row">
             <div class="col-12">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -49,21 +49,27 @@
                         </div>
                         <div class="form-group col-12">
                             <label class="mr-2">票券標籤</label>
-                            <span class="hint">Hint : </span>
-                            <span class="hintTag">#紅色</span>
-                            <span class="tag tag-red">紅色</span>
-                            <span class="hintTag">$綠色</span>
-                            <span class="tag tag-green">綠色</span>
-                            <span class="hintTag">$藍色</span>
-                            <span class="tag tag-blue">藍色</span>
-                            <span class="hintTag">$橘色</span>
-                            <span class="tag tag-orange">橘色</span>
-                            <span class="hintTag">灰色</span>
-                            <span class="tag border border-secondary">灰色</span>
-                            <div>
-                                @Html.EditorFor(model => model.TagString, new { htmlAttributes = new { @class = "form-control form-control-sm", @placeholder = "請輸入欲新增標籤", @id = "tagInput" } })
-                                <div id="showTag" class="d-flex flex-wrap showTag m-1"></div>
+                            <div class="pl-0 d-flex">
+                                <div class="col-4 pl-0">
+                                    <input type="checkbox" id="redball" name="" value="#">
+                                    <label for="redball" tabindex=0 class="ball red ml-3"></label>
+                                    <input type="checkbox" id="greenball" name="" value="$">
+                                    <label for="greenball" tabindex=0 class="ball green"></label>
+                                    <input type="checkbox" id="blueball" name="" value="%">
+                                    <label for="blueball" tabindex=0 class="ball blue"></label>
+                                    <input type="checkbox" id="orangeball" name="" value="^">
+                                    <label for="orangeball" tabindex=0 class="ball orange"></label>
+                                    <input type="checkbox" id="grayball" name="" value="">
+                                    <label for="grayball" tabindex=0 class="ball gray"></label>
+                                    <input class="form-control form-control-sm my-1" placeholder="請輸入欲新增標籤" id="tagInput" />
+                                    <p class="position-absolute message ml-2" id="tagMessage"></p>
+                                </div>
+                                <div class="col-8 pr-0">
+                                    <div id="showTag" class="d-flex flex-wrap showTag m-1 border"></div>
+                                    @Html.EditorFor(model => model.TagString, new { htmlAttributes = new { @class = "form-control form-control-sm tagString", @placeholder = "請輸入欲新增標籤", @id= "tagString" } })
+                                </div>
                             </div>
+                        
                         </div>
                     </div>
                 </div>
@@ -110,35 +116,27 @@
 
 @section endJS{
     <script src="~/Assets/JavaScript/Common/ticket.js"></script>
+    <script src="~/Assets/JavaScript/Shop/CreateIssue.js"></script>
     <script>
-        var tagList;
+        var tagList = [];
+        var tagString = "";
         $(document).ready(function () {
             $("#tagInput").keydown(function (event) {
                 if (event.keyCode == 13) {
                     event.preventDefault();
-                    tagList = $("#tagInput").val().split(' ');
-                    var showtag = document.getElementById("showTag");
-                    showTag(tagList, showtag);
+                    fetchTag();
                     return false;
                 }
             });
         });
-
-        function showTag(tagList, parent) {
-            parent.innerHTML = null;
-            tagList.forEach(function (value) {
-                let span = document.createElement("span");
-                span.innerText = value;
-                parent.append(span);
-            })
-            compileTag();
-        }
     </script>
-    <script src="~/Assets/JavaScript/Shop/createProduct.js"></script>
+
+    <script>
+    </script>
 }
 
 
 @section topCSS{
-    <link href="~/Assets/CSS/Shop/CreateProduct.min.css" rel="stylesheet" />
+    <link href="~/Assets/CSS/Shop/Shop.min.css" rel="stylesheet" />
     <link href="~/Assets/CSS/Common/Ticket.min.css" rel="stylesheet" />
 }

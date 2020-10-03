@@ -124,3 +124,102 @@ function fetchChart(data, chart) {
         }
     });
 }
+
+
+
+
+// sales report
+let search = document.getElementById("search");
+let strRepo = document.getElementById("startDate").value;
+let endRepo = document.getElementById("endDate").value;
+
+function updateReport(json) {
+    document.getElementById("TotalSales").innerText = parseFloat(json[0]);
+    document.getElementById("TotalAmount").innerText = parseInt(json[1], 10);
+    document.getElementById("TotalCutsom").innerText = parseInt(json[2], 10);
+}
+
+search.addEventListener("click", () => { fetchData(strRepo, endRepo, updateReport) });
+
+// today's sales and customer
+// convert JavaScript date format to c# datetime
+Date.prototype.Format = function (fmt) {
+    var o = {
+        "M+": this.getMonth() + 1, //月份
+        "d+": this.getDate(), //日
+        "H+": this.getHours(), //小時
+        "m+": this.getMinutes(), //分
+        "s+": this.getSeconds(), //秒
+        "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+        "S": this.getMilliseconds() //毫秒
+    };
+    if (/(y+)/.test(fmt)) {
+        fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    }
+    for (var k in o) {
+        if (new RegExp("(" + k + ")").test(fmt)) {
+            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        }
+    }
+    return fmt;
+}
+var timeNow = new Date().Format("yyyy-MM-dd");
+
+function todaysReport(json) {
+    document.getElementById("todaySales").setAttribute("data-target", parseInt(json[0]));
+    document.getElementById("todayAmount").setAttribute("data-target", parseInt(json[1]));
+}
+
+fetchData(timeNow, timeNow, todaysReport);
+
+
+// ajax get report function, input: start date/ end date/ success function(data)
+async function fetchData(startDate, endDate, updateData) {
+    $.ajax({
+        type: 'POST',
+        url: 'getReportApi',
+        data: { duration: [startDate, endDate] },
+        success: function (json) {
+            updateData(json);
+        }
+    });
+}
+
+
+
+// top 5
+fetchTop5Issue();
+fetchTop5Customer();
+function top5Table(json, tbody) {
+    for (var item of json) {
+        let tr = document.createElement("tr");
+        let td_t = document.createElement("td");
+        let td_a = document.createElement("td");
+        let td_s = document.createElement("td");
+        td_t.innerText = item.Name;
+        td_a.innerText = item.IssueAmount;
+        td_s.innerText = item.TotalRevenue;
+        tr.append(td_t, td_a, td_s);
+        tbody.append(tr);
+    }
+}
+async function fetchTop5Issue() {
+    $.ajax({
+        type: 'POST',
+        url: 'TopIssueApi',
+        success: function (json) {
+            let tbody = document.getElementById("top5Issue");
+            top5Table(json, tbody);
+        }
+    });
+}
+async function fetchTop5Customer() {
+    $.ajax({
+        type: 'POST',
+        url: 'TopCustomerApi',
+        success: function (json) {
+            let tbody = document.getElementById("top5Custom");
+            top5Table(json, tbody);
+        }
+    });
+}

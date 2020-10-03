@@ -1,13 +1,12 @@
 ﻿@model TicketHubApp.Models.ViewModels.ShopIssueViewModel
 
-<div class="container ticketDetail">
+<div class="container issueDetail">
     <div class="row">
         <div class="col-12 bg-white shadow p-3 border position-relative d-flex justify-content-center">
             @Html.Partial("_Ticket", Model)
             <div id="mask" class="d-flex justify-content-center align-items-center rounded">
-                <button class="btn blueBtn rounded" id="modify">編輯票券</button>
+                <button class=" blueBtn rounded" id="modify">編輯票券</button>
             </div>
-            
         </div>
         <div class="col-12 bg-white shadow py-3 my-3">
             <table id="datatable" class="display">
@@ -29,37 +28,17 @@
 </div>
 
 @section topCSS{
+    <script>
+        var issueid = "@ViewBag.IssueId";
+    </script>
+
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
-
     <link href="~/Assets/CSS/Common/Ticket.min.css" rel="stylesheet" />
-    
-    <link href="~/Assets/CSS/Shop/IssueDetails.min.css" rel="stylesheet" />
-
+    <link href="~/Assets/CSS/Shop/Shop.min.css" rel="stylesheet" />
 }
 
 @section endJS{
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
-
-    <script>
-        // data table ajax json api
-        $(document).ready(function () {
-            $('#datatable').DataTable({
-                "ajax": {
-                    "url": 'getIssueDetailApi',
-                    "data": { "Id": "@ViewBag.IssueId" }
-                    },
-                "scrollX": true,
-                "stateSave": true,
-                scrollY: 250
-            });
-        });
-
-        // modify button click event
-        document.getElementById("modify").addEventListener("click", function () {
-            window.location.assign("EditIssue" + "?id=" + "@ViewBag.IssueId");
-        });
-
-    </script>
-    
+    <script src="~/Assets/JavaScript/Shop/IssueDetails.js"></script>
     <script src="~/Assets/JavaScript/Common/ticket.js"></script>
 } 

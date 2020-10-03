@@ -33,7 +33,7 @@ namespace TicketHubDataLibrary.Migrations
             string[] userNames = new string[] { "admin", "platform", "manager", "employee", "cust" };
             GenUsers(userManager, roleManager, userNames);
 
-            GenShop(context);
+            //GenShop(context);
             GenIssue(context, userManager);
         }
 
