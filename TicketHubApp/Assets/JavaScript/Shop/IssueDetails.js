@@ -3,7 +3,7 @@ $(document).ready(function () {
     console.log(`${issueid}`)
     $('#datatable').DataTable({
         "ajax": {
-            "url": "../getIssueDetailApi",
+            "url": "/../Shop/getIssueDetailApi",
             "type": "POST",
             "data": { "Id": `${issueid}` }
         },
