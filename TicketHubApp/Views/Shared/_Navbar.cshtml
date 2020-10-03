@@ -63,13 +63,11 @@
                             吃到飽
                         </a>
                         <div class="dropdown-menu text-sm-9 border-0 shadow" aria-labelledby="navbarDropdown">
-                            <a href="" class="dropdown-item hov-color-cust">燒肉</a>
+                            <a href="" class="dropdown-item hov-color-cust">@Html.ActionLink("燒肉", "TicketList", "Customer", new { input = "燒肉" }, new { @class = "dropdown-item hov-color-cust" })</a>
                             <div class="dropdown-divider"></div>
-                            <a href="" class="dropdown-item hov-color-cust">火鍋</a>
+                            <a href="" class="dropdown-item hov-color-cust">@Html.ActionLink("火鍋", "TicketList", "Customer", new { input = "火鍋" }, new { @class = "dropdown-item hov-color-cust" })</a>
                             <div class="dropdown-divider"></div>
-                            <a href="" class="dropdown-item hov-color-cust">熱炒</a>
-                            <div class="dropdown-divider"></div>
-                            <a href="" class="dropdown-item hov-color-cust">超值餐廳</a>
+                            <a href="" class="dropdown-item hov-color-cust">@Html.ActionLink("熱炒", "TicketList", "Customer", new { input = "熱炒" }, new { @class = "dropdown-item hov-color-cust" })</a>
                         </div>
                     </li>
                 }
