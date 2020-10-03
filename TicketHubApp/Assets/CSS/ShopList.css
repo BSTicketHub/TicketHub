@@ -11,6 +11,10 @@
 
 .container .row .restaurant-area .restaurant-list .restaurant {
   height: 250px; }
+  .container .row .restaurant-area .restaurant-list .restaurant.hover {
+    -webkit-box-shadow: 0px 0px 23px 4px #26bec9;
+    -moz-box-shadow: 0px 0px 23px 4px #26bec9;
+    box-shadow: 0px 0px 23px 4px #26bec9; }
   .container .row .restaurant-area .restaurant-list .restaurant .img-area {
     width: 30%;
     height: 100%; }

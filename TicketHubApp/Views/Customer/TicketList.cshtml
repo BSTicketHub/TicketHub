@@ -371,7 +371,7 @@
                     copied.querySelector('.issue').append(favorite);
                 }
 
-                copied.querySelector('a').href = `/ProductDescription/ProductDescription/${selectedIssue[i].Id}`
+                copied.querySelector('a').href = `/Home/Product/${selectedIssue[i].Id}`
                 copied.querySelector('.soldNumber').innerText = `已售數量 : ${selectedIssue[i].SalesAmount}`
                 copied.querySelector('.city').innerText = selectedIssue[i].City + " / " + selectedIssue[i].District;
                 copied.querySelector('.ticketListOldPrice').innerText = "TWD " + selectedIssue[i].OriginalPrice;
