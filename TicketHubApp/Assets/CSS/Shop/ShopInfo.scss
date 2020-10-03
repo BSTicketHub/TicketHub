@@ -1,36 +1,16 @@
 ﻿
-.form-control {
-    &:focus {
-        box-shadow: none;
-    }
-}
-
-button {
-    background-color: #2a94db;
-    color: #fff;
-    border: 1px solid #2a94db;
-    border-radius: 2px;
-    padding: 3px 10px;
-
-    &:hover {
-        background-color: #fff;
-        color: #2a94db;
+.shopInfo{
+    .form-control {
+        &:focus {
+            box-shadow: none;
+        }
     }
 
-    &:focus {
-        outline: none;
+    .kkColor {
+        color: $kkday;
     }
 
-    &:active {
-        background-color: #2a94db;
-        color: #fff;
+    .errorSize{
+        font-size: 12px;
     }
-}
-
-.kkColor {
-    color: #26bec9;
-}
-
-.errorSize{
-    font-size: 12px;
 }

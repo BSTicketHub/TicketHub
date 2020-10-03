@@ -1,0 +1,47 @@
+﻿.createIssue .showimg {
+  width: 277px;
+  height: 250px;
+  object-fit: cover; }
+
+.createIssue .upLoadImg {
+  height: 280px; }
+
+.createIssue .description {
+  font-size: 14px; }
+
+.createIssue .form-control:focus {
+  box-shadow: none;
+  border: 2px solid #26bcc7;
+  color: #26bcc7; }
+
+.createIssue .modal-body {
+  background-color: #eaeaea; }
+
+.createIssue .modal-xl {
+  max-width: 900px; }
+
+.createIssue .hint {
+  background-color: #ff8499;
+  color: #fff;
+  font-weight: bolder;
+  border-radius: 2px;
+  padding: 1px 3px;
+  margin: 0 10px; }
+
+.createIssue .hintTag {
+  font-size: 10px; }
+
+.createIssue .ball {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  opacity: .6; }
+  .createIssue .ball:hover {
+    opacity: 1;
+    cursor: pointer; }
+  .createIssue .ball:focus {
+    border: 2px solid black; }
+
+.createIssue .red {
+  background-color: red; }
