@@ -104,6 +104,7 @@
     </div>
 </template>
 <script src="https://kit.fontawesome.com/bff1bb511a.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
 
     //導航欄購物車
@@ -409,6 +410,11 @@
             }).catch(function (err) {
                 console.log("錯誤", err);
             });
+
+            localStorage.removeItem("Cart");
+            swal("訂單已完成", "success");
+
+            location.reload()
         })
 
 
