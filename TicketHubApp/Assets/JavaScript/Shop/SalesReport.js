@@ -168,6 +168,7 @@ var timeNow = new Date().Format("yyyy-MM-dd");
 function todaysReport(json) {
     document.getElementById("todaySales").setAttribute("data-target", parseInt(json[0]));
     document.getElementById("todayAmount").setAttribute("data-target", parseInt(json[1]));
+    document.getElementById("todayCustomer").setAttribute("data-target", parseInt(json[2]));
 }
 
 fetchData(timeNow, timeNow, todaysReport);

@@ -91,7 +91,12 @@ namespace TicketHubApp.Services
                 Guid Shopid = _context.ShopEmployee.FirstOrDefault((x) => x.UserId == _userid).ShopId;
                 var tagRepo = new GenericRepository<Tag>(_context);
 
-                List<string> tagList = input.TagString.Split(' ').ToList();
+                List<string> tagList = new List<string>();
+                if (input.TagString != null)
+                {
+                    tagList = input.TagString.Split(' ').ToList();
+                }
+
                 // 新增 Tag table
                 foreach (var item in tagList)
                 {

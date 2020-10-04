@@ -203,6 +203,13 @@ namespace TicketHubApp.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPost]
+        public ActionResult getIssueDetailApi(string Id)
+        {
+            var service = new ShopIssueService();
+            var jsonData = service.GetIssueDetailsApi(Guid.Parse(Id));
+            return Json(jsonData, JsonRequestBehavior.AllowGet);
+        }
 
         public ActionResult IssueDetails(string id)
         {
@@ -219,13 +226,6 @@ namespace TicketHubApp.Controllers
 
             ViewBag.IssueId = result.Id.ToString();
             return View(result);
-        }
-
-        public ActionResult getIssueDetailApi(string Id)
-        {
-            var service = new ShopIssueService();
-            var jsonData = service.GetIssueDetailsApi(Guid.Parse(Id));
-            return Json(jsonData, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult EmployeeList()
