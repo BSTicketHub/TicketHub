@@ -1,0 +1,12 @@
+﻿@*@model TicketHubApp.Models.ViewModels.ShopViewModel*@
+@model TicketHubApp.Models.ViewModels.ShopIssueViewModel
+
+@if (ViewBag.WishIssue != null && ViewBag.WishIssue.Contains(Model.Id))
+{
+    <span issueid="@Model.Id" class="iconify position-absolute wishHeart" data-icon="bi:heart-fill" data-inline="false" onclick="controlFromFavorite(this)"></span>
+}
+else if (ViewBag.WishIssue != null)
+{
+    <span issueid="@Model.Id" class="iconify position-absolute wishHeart" data-icon="bi:heart" data-inline="false" onclick="controlFromFavorite(this)"></span>
+}
+
