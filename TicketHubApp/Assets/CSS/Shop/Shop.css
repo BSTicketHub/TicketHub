@@ -29,6 +29,22 @@
     background-color: #ff8499;
     color: #fff; }
 
+.grayBtn {
+  background-color: #adadad;
+  color: #fff;
+  border: 1px solid #adadad;
+  border-radius: 2px;
+  padding: 3px 10px; }
+  .grayBtn:hover {
+    background-color: #fff;
+    color: #adadad; }
+  .grayBtn:focus {
+    outline: none;
+    box-shadow: none; }
+  .grayBtn:active {
+    background-color: #adadad;
+    color: #fff; }
+
 .btnList {
   font-size: 12px; }
 
@@ -45,6 +61,9 @@
 
 .SalesReport p {
   margin: 0; }
+
+.SalesReport .StoreReport .searchBlock {
+  background-color: rgba(127, 156, 172, 0.3); }
 
 .SalesReport .StoreReport .searchBtn {
   background-color: #2a94db;
@@ -73,7 +92,7 @@
   color: #a1a7ab; }
 
 .SalesReport .StoreReport .report-title {
-  background-color: #ff9dad;
+  background-color: rgba(127, 156, 172, 0.5);
   color: white;
   font-weight: bold; }
 
@@ -86,8 +105,7 @@
     background-color: #7f9cac; }
     .SalesReport .ticket .ticket-icon .iconify {
       width: 40px;
-      height: 40px;
-      /*padding-bottom: 5px;*/ }
+      height: 40px; }
   .SalesReport .ticket .ticket-content {
     background-color: rgba(127, 156, 172, 0.5);
     border-left: 1px dashed #f3f9f9;
@@ -185,7 +203,6 @@
     opacity: 1;
     cursor: pointer; }
   .createIssue .ball:focus {
-    /*border: 2px solid #000;*/
     outline: none; }
 
 .createIssue .red {
@@ -292,8 +309,16 @@
 .employCreate .blueBtn {
   font-size: 14px; }
 
+.employCreate .grayBtn:hover {
+  background-color: #adadad;
+  color: #fff;
+  cursor: auto; }
+
 .employeeList thead {
   background-color: #ff9dad; }
+
+.employeeList .darkGray {
+  color: #6c6c6c; }
 
 .shopInfo .form-control:focus {
   box-shadow: none; }

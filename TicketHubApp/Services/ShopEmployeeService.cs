@@ -10,26 +10,30 @@ using TicketHubDataLibrary.Models;
 using Microsoft.AspNet.Identity.Owin;
 using TicketHubDataLibrary;
 using TicketHubApp.Interfaces;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace TicketHubApp.Services
 {
     public class ShopEmployeeService
     {
-        private TicketHubContext _context = new TicketHubContext();
-
+        private TicketHubContext _context;
+        public ShopEmployeeService() : this(new TicketHubContext()) { }
+        public ShopEmployeeService(TicketHubContext context)
+        {
+            _context = context;
+        }
         private readonly string _userid = HttpContext.Current.User.Identity.GetUserId();
 
         public List<ShopEmployeeViewModel> GetEmployeeList()
         {
             var result = new List<ShopEmployeeViewModel>();
-            TicketHubContext context = new TicketHubContext();
 
-            var shopid = context.ShopEmployee.Where((x) => x.UserId == _userid).FirstOrDefault().ShopId;
+            var shopid = _context.ShopEmployee.Where((x) => x.UserId == _userid).FirstOrDefault().ShopId;
 
-            var temp = (from u in context.Users
+            var temp = (from u in _context.Users
                         from ur in u.Roles
-                        join r in context.Roles on ur.RoleId equals r.Id
-                        join e in context.ShopEmployee on u.Id equals e.UserId
+                        join r in _context.Roles on ur.RoleId equals r.Id
+                        join e in _context.ShopEmployee on u.Id equals e.UserId
                         where e.ShopId == shopid
                         select new
                         {
@@ -38,7 +42,7 @@ namespace TicketHubApp.Services
                             Email = u.Email,
                             Gender = u.Sex,
                             Phone = u.PhoneNumber,
-                            RoleId = r.Id
+                            RoleName = r.Name
                         }).ToList();
 
             var group = from t in temp
@@ -50,35 +54,45 @@ namespace TicketHubApp.Services
                             Email = g.Key.Email,
                             Gender = g.Key.Gender,
                             Phone = g.Key.Phone,
-                            RoleName = (g.Min(m => int.Parse(m.RoleId)) == 3) ? "經理" : "員工"
+                            RoleName = g.Any(x => x.RoleName == RoleName.SHOP_MANAGER) ? "經理" : "員工"
                         };
 
             result = group.ToList();
             return result;
         }
 
-        public OperationResult DeleteEmployee(string id, AppIdentityUserManager userManager)
+        public OperationResult DeleteEmployee(string id)
         {
             var result = new OperationResult();
             try
             {
-                TicketHubContext context = new TicketHubContext();
+                var userStore = new UserStore<TicketHubUser>(_context);
+                var userManager = new UserManager<TicketHubUser>(userStore);
+                var emp = _context.ShopEmployee.Where((s) => s.UserId == id).FirstOrDefault();
+                var empCount = _context.ShopEmployee.Where(s => s.ShopId == emp.ShopId).Count();
 
-                var emp = context.ShopEmployee.Where((s) => s.UserId == id).FirstOrDefault();
-                context.ShopEmployee.Remove(emp);
-                context.SaveChanges();
-
-                var user = userManager.FindById(id);
-                var roleId = user.Roles.Select(x => x.RoleId).ToList();
-
-                foreach (var item in roleId)
+                if(empCount > 1)
                 {
-                    if (item == "3" || item == "4")
+                    _context.ShopEmployee.Remove(emp);
+                    _context.SaveChanges();
+
+                    var user = userManager.FindById(id);
+                    var roleId = user.Roles.Select(x => x.RoleId).ToList();
+
+                    foreach (var item in roleId)
                     {
-                        userManager.RemoveFromRole(id, item);
+                        if (item == "3" || item == "4")
+                        {
+                            userManager.RemoveFromRole(id, item);
+                        }
                     }
+                    result.Success = true;
                 }
-                result.Success = true;
+                else
+                {
+                    result.Message = "員工不得少於一位";
+                    result.Success = false;
+                }
             }
             catch (Exception ex)
             {
@@ -88,19 +102,20 @@ namespace TicketHubApp.Services
             return result;
         }
 
-        public OperationResult createEmployee(string account, AppIdentityUserManager userManager)
+        public OperationResult createEmployee(string account)
         {
             var result = new OperationResult();
             try
             {
-                var context = new TicketHubContext();
-                var employeeRepo = new GenericRepository<ShopEmployee>(context);
+                var userStore = new UserStore<TicketHubUser>(_context);
+                var userManager = new UserManager<TicketHubUser>(userStore);
+                var employeeRepo = new GenericRepository<ShopEmployee>(_context);
 
-                var shopid = context.ShopEmployee.Where((x) => x.UserId == _userid).FirstOrDefault().ShopId;
+                var shopid = _context.ShopEmployee.Where((x) => x.UserId == _userid).FirstOrDefault().ShopId;
                 var userid = userManager.FindByEmail(account).Id;
                 var entity = new ShopEmployee() { ShopId = shopid, UserId = userid };
                 employeeRepo.Create(entity);
-                context.SaveChanges();
+                _context.SaveChanges();
 
                 userManager.AddToRole(userid, RoleName.SHOP_EMPLOYEE);
 
@@ -114,11 +129,13 @@ namespace TicketHubApp.Services
             return result;
         }
 
-        public IResult CreateEmployeeWithRole(string account, AppIdentityUserManager userManager, string role = RoleName.SHOP_EMPLOYEE)
+        public IResult CreateEmployeeWithRole(string account, string role = RoleName.SHOP_EMPLOYEE)
         {
             var result = new OperationResult();
             try
             {
+                var userStore = new UserStore<TicketHubUser>(_context);
+                var userManager = new UserManager<TicketHubUser>(userStore);
                 var repository = new GenericRepository<ShopEmployee>(_context);
                 var shopId = repository.GetAll().Where(x => x.UserId == _userid).FirstOrDefault().ShopId;
                 var userId = userManager.FindByEmail(account).Id;
