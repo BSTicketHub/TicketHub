@@ -3,6 +3,7 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -74,7 +75,7 @@ namespace TicketHubApp.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return RedirectToAction("Login");
+                return View("Login", viewModel);
             }
 
             //註冊
@@ -177,9 +178,10 @@ namespace TicketHubApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ShopLogin(LoginViewModel viewModel, string returnUrl)
         {
+            viewModel.LoginType = RoleGroup.SHOP;
             if (!ModelState.IsValid)
             {
-                return RedirectToAction("Login");
+                return View("Login", viewModel);
             }
 
             return await SignIn(viewModel, RoleGroup.SHOP, returnUrl);
@@ -212,6 +214,7 @@ namespace TicketHubApp.Controllers
 
         private async Task<ActionResult> SignIn(LoginViewModel viewModel, string roleGroup, string returnUrl)
         {
+            viewModel.LoginType = roleGroup;
             var user = UserManager.FindByEmail(viewModel.Email);
             if (user != null)
             {
@@ -240,6 +243,10 @@ namespace TicketHubApp.Controllers
                 if (!isUserInRole)
                 {
                     ModelState.AddModelError("", "Check your account or password.");
+                    if (roleGroup == RoleGroup.PLATFORM)
+                    {
+                        return View("LoginPlatform", viewModel);
+                    }
                     return View("Login", viewModel);
                 }
 
