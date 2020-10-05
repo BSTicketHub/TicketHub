@@ -1,10 +1,13 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TicketHubApp.Models.ViewModels;
 using TicketHubApp.Services;
+using TicketHubDataLibrary;
+using TicketHubDataLibrary.Models;
 
 namespace TicketHubApp.Controllers
 {
@@ -52,13 +55,6 @@ namespace TicketHubApp.Controllers
             return Json(RecommenItems, JsonRequestBehavior.AllowGet); //把HomeCardService 物件轉JSON，給前端抓資料
         }
 
-
-
-        public ActionResult PageUnfound()
-        {
-            return View();
-        }
-
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -86,6 +82,45 @@ namespace TicketHubApp.Controllers
                 return RedirectToRoute("SearchTicket", new { input = SearchContent });
             }
             return Content("");
+        }
+
+        [HttpGet]
+        [Authorize]
+        public ActionResult ShopApply()
+        {
+            //if(User.IsInRole(RoleName.SHOP_MANAGER) || User.IsInRole(RoleName.SHOP_MANAGER))
+            //{
+            //    InfoViewModel viewModel = new InfoViewModel {
+            //        IconName = "mdi:alert-circle",
+            //        Title = "Already has shop!",
+            //        Content = "Sorry! You are already a shop manager or employee.",
+            //    };
+            //    return new InfoViewService().CommonInfoHomeView(viewModel);
+            //}
+            return View();
+        }
+        [HttpPost]
+        [Authorize]
+        public ActionResult ShopApply(ShopApplyViewModel viewModel)
+        {
+            var context = new TicketHubContext();
+
+            var service = new ShopService(context);
+            using (var transaction = context.Database.BeginTransaction())
+            {
+                var createShopResult = service.CreateShop(viewModel);
+                var userId = User.Identity.GetUserId();
+                var addRoleResult = service.AddEmployeeWithRole(userId, viewModel.ShopName, RoleName.SHOP_MANAGER);
+
+                if (createShopResult.Success && addRoleResult.Success)
+                {
+                    transaction.Commit();
+                    return new InfoViewService().CommonSuccess("Shop Apply", "Shop already applied, please wait for administrator confirmed.");
+                }
+
+                transaction.Rollback();
+            }
+            return View(viewModel);
         }
     }
 }

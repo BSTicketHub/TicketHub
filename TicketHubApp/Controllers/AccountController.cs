@@ -210,36 +210,6 @@ namespace TicketHubApp.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [HttpGet]
-        [Authorize]
-        public ActionResult ShopApply()
-        {
-            return View();
-        }
-        [HttpPost]
-        [Authorize]
-        public ActionResult ShopApply(ShopApplyViewModel viewModel)
-        {
-            var context = new TicketHubContext();
-
-            var service = new ShopService(context);
-            using (var transaction = context.Database.BeginTransaction())
-            {
-                var createShopResult = service.CreateShop(viewModel);
-                var userId = User.Identity.GetUserId();
-                var addRoleResult = service.AddEmployeeWithRole(userId, viewModel.ShopName, RoleName.SHOP_MANAGER);
-
-                if (createShopResult.Success && addRoleResult.Success)
-                {
-                    transaction.Commit();
-                    return new InfoViewService().CommonSuccess("Shop Apply", "Shop already applied, please wait for administrator confirmed.");
-                }
-
-                transaction.Rollback();
-            }
-            return View(viewModel);
-        }
-
         private async Task<ActionResult> SignIn(LoginViewModel viewModel, string roleGroup, string returnUrl)
         {
             var user = UserManager.FindByEmail(viewModel.Email);

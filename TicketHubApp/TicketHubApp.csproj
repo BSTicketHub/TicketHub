@@ -810,7 +810,7 @@
     <Content Include="Views\ProductCart\_ProductCartPartial.cshtml" />
     <Content Include="Views\Platform\CreateUser.cshtml" />
     <Content Include="Views\Platform\ReviewShops.cshtml" />
-    <Content Include="Views\Account\ShopApply.cshtml" />
+    <Content Include="Views\Home\ShopApply.cshtml" />
     <Content Include="Views\Shared\InfoHome.cshtml" />
   </ItemGroup>
   <ItemGroup>
