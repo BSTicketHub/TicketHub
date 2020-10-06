@@ -114,12 +114,12 @@ $colors9: $cust-color-9, $shop-color-9, $platform-color-9;
 
 
 // fb messenger
-.fb_dialog_content iframe{
-    bottom: 80px;
-    right: 0;
+/*.fb_dialog_content iframe{
+    bottom: 80px !important;
+    right: 0 !important;
 }
 
-.fb-customerchat iframe{
-    bottom: 135px;
-    max-height: calc(100% - 150px);
-}
+.fb-customerchat iframe {
+    bottom: 135px !important;
+    max-height: calc(100% - 150px) !important;
+}*/

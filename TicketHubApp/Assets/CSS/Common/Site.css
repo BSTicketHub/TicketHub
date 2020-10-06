@@ -576,14 +576,15 @@ a {
   text-align: right;
   /* white-space: nowrap; */ }
 
-.fb_dialog_content iframe {
-  bottom: 80px;
-  right: 0; }
+/*.fb_dialog_content iframe{
+    bottom: 80px !important;
+    right: 0 !important;
+}
 
 .fb-customerchat iframe {
-  bottom: 135px;
-  max-height: calc(100% - 150px); }
-
+    bottom: 135px !important;
+    max-height: calc(100% - 150px) !important;
+}*/
 .footbg {
   background-color: #333333;
   color: white;
