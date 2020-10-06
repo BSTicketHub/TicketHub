@@ -58,11 +58,13 @@ namespace TicketHubApp.Services
                     name = context.Users.Where(x => x.Id == userid).FirstOrDefault().UserName;
                     break;
                 default:
+                    src = context.Users.Find(userid).AvatarPath;
+                    name = context.Users.Find(userid).UserName;
                     break;
             }
 
-            src = (src == null) ? "https://i.imgur.com/ZM5EvHg.png" : context.Users.Find(userid).AvatarPath;
-            name = (name == null) ? "No Name" : context.Users.Find(userid).UserName;
+            src = (src == null) ? "https://i.imgur.com/ZM5EvHg.png" : src;
+            name = (name == null) ? "No Name" : name;
             result = new List<string>() { src, name };
             return result;
         }
