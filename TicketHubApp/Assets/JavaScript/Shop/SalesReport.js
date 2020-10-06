@@ -1,4 +1,5 @@
-﻿window.onload = function () {
+﻿
+window.onload = function () {
 
 
     switchWeekMonth(weekVisitBtn, monthVisitBtn, "-30px", visitChart, 'week');
@@ -14,7 +15,7 @@
 
 function todaysCounting() {
     let counters = document.querySelectorAll('.counter');
-    const speed = 200; // The lower the slower
+    const speed = 100; // The lower the slower
 
     counters.forEach(counter => {
         const updateCount = () => {
@@ -22,7 +23,7 @@ function todaysCounting() {
             const count = +counter.innerText;
 
             // Lower inc to slow and higher to slow
-            const inc = target / speed;
+            const inc = Math.ceil(target / speed);
 
             // Check if target is reached
             if (count < target) {
@@ -51,14 +52,14 @@ function setLabel(mode) {
         for (let i = 11; i >= 0; i--) {
             let tempDateTime = new Date(curYear, curMonth - i);
             let tempYear = tempDateTime.getFullYear();
-            let tempMonth = tempDateTime.getMonth();
-            Labels.push(`${tempYear}-${tempMonth + 1}`);
+            let tempMonth = tempDateTime.getMonth() + 1;
+            Labels.push(`${tempYear}-${tempMonth}`);
         }
     } else if (mode == 'week') {
         for (let i = 6; i >= 0; i--) {
             let tempDateTime = new Date(curYear, curMonth, curDate - i);
             let tempYear = tempDateTime.getFullYear();
-            let tempMonth = tempDateTime.getMonth();
+            let tempMonth = tempDateTime.getMonth() + 1;
             let tempDate = tempDateTime.getDate();
             Labels.push(`${tempYear}-${tempMonth}-${tempDate}`);
         }
@@ -129,7 +130,7 @@ function switchWeekMonth(switchNode, brotherNode, position, chart, mode) {
 function fetchChart(data, chart) {
     $.ajax({
         type: 'POST',
-        url: 'chartApi',
+        url: '/../Shop/chartApi',
         data: { Labels: data, Type: chart.id },
         success: function (json) {
             chart.data.datasets[0].data = json;
@@ -189,7 +190,7 @@ function todaysReport(json) {
 async function fetchData(startDate, endDate, updateData) {
     $.ajax({
         type: 'POST',
-        url: 'getReportApi',
+        url: '/../Shop/getReportApi',
         data: { duration: [startDate, endDate] },
         success: function (json) {
             updateData(json);
@@ -217,7 +218,7 @@ function top5Table(json, tbody) {
 async function fetchTop5Issue() {
     $.ajax({
         type: 'POST',
-        url: 'TopIssueApi',
+        url: '/../Shop/TopIssueApi',
         success: function (json) {
             let tbody = document.getElementById("top5Issue");
             top5Table(json, tbody);
@@ -227,7 +228,7 @@ async function fetchTop5Issue() {
 async function fetchTop5Customer() {
     $.ajax({
         type: 'POST',
-        url: 'TopCustomerApi',
+        url: '/../Shop/TopCustomerApi',
         success: function (json) {
             let tbody = document.getElementById("top5Custom");
             top5Table(json, tbody);

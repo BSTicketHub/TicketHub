@@ -110,8 +110,21 @@ namespace TicketHubApp.Services
             var result = new int[Label.Count];
             foreach(var item in Label)
             {
-                var date = DateTime.Parse(item).AddMonths(1).ToString();
-                var duration = new List<string> { date, date };
+                var date = DateTime.Parse(item);
+                DateTime startDate;
+                DateTime endDate;
+                if (Label.Count < 10)
+                {
+                    startDate = date.Date;
+                    endDate = date.AddDays(1).AddSeconds(-1);
+                }
+                else
+                {
+                    startDate = date.Date;
+                    endDate = date.Date.AddMonths(1).AddSeconds(-1);
+                }
+
+                var duration = new List<string> { startDate.ToString(), endDate.ToString() };
                 var temp = getSalesReport(duration);
                 var data = (Type == 0) ? temp[2] : temp[0];
                 result[Label.IndexOf(item)] = Decimal.ToInt32(Convert.ToDecimal(data));
