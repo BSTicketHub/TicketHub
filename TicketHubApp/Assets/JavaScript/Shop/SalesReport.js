@@ -1,28 +1,46 @@
-﻿// 今日訂單數 & 今日銷售金額 & 今日票券數
-let counters = document.querySelectorAll('.counter');
-const speed = 200; // The lower the slower
+﻿
+window.onload = function () {
 
-counters.forEach(counter => {
-    const updateCount = () => {
-        const target = +counter.getAttribute('data-target');
-        const count = +counter.innerText;
 
-        // Lower inc to slow and higher to slow
-        const inc = target / speed;
+    switchWeekMonth(weekVisitBtn, monthVisitBtn, "-30px", visitChart, 'week');
+    switchWeekMonth(weekMoneyBtn, monthMoneyBtn, "-30px", moneyChart, 'week');
 
-        // Check if target is reached
-        if (count < target) {
-            // Add inc to count and output in counter
-            counter.innerText = count + inc;
-            // Call function every ms
-            setTimeout(updateCount, 1);
-        } else {
-            counter.innerText = target;
-        }
-    };
+    fetchData(timeNow, timeNow, todaysReport);
 
-    updateCount();
-});
+    fetchTop5Issue();
+    fetchTop5Customer();
+
+    setSalesReport();
+}
+
+// 今日訂單數 & 今日銷售金額 & 今日票券數
+
+function todaysCounting() {
+    let counters = document.querySelectorAll('.counter');
+    const speed = 100; // The lower the slower
+
+    counters.forEach(counter => {
+        const updateCount = () => {
+            const target = +counter.getAttribute('data-target');
+            const count = +counter.innerText;
+
+            // Lower inc to slow and higher to slow
+            const inc = Math.ceil(target / speed);
+
+            // Check if target is reached
+            if (count < target) {
+                // Add inc to count and output in counter
+                counter.innerText = count + inc;
+                // Call function every ms
+                setTimeout(updateCount, 1);
+            } else {
+                counter.innerText = target;
+            }
+        };
+
+        updateCount();
+    });
+}
 
 
 // 造訪人數圖表 & 銷售金額圖表
@@ -36,14 +54,14 @@ function setLabel(mode) {
         for (let i = 11; i >= 0; i--) {
             let tempDateTime = new Date(curYear, curMonth - i);
             let tempYear = tempDateTime.getFullYear();
-            let tempMonth = tempDateTime.getMonth();
-            Labels.push(`${tempYear}-${tempMonth + 1}`);
+            let tempMonth = tempDateTime.getMonth() + 1;
+            Labels.push(`${tempYear}-${tempMonth}`);
         }
     } else if (mode == 'week') {
         for (let i = 6; i >= 0; i--) {
             let tempDateTime = new Date(curYear, curMonth, curDate - i);
             let tempYear = tempDateTime.getFullYear();
-            let tempMonth = tempDateTime.getMonth();
+            let tempMonth = tempDateTime.getMonth() + 1;
             let tempDate = tempDateTime.getDate();
             Labels.push(`${tempYear}-${tempMonth}-${tempDate}`);
         }
@@ -110,13 +128,11 @@ function switchWeekMonth(switchNode, brotherNode, position, chart, mode) {
 }
 
 // 初始化
-switchWeekMonth(weekVisitBtn, monthVisitBtn, "-30px", visitChart, 'week');
-switchWeekMonth(weekMoneyBtn, monthMoneyBtn, "-30px", moneyChart, 'week');
 
 function fetchChart(data, chart) {
     $.ajax({
         type: 'POST',
-        url: 'chartApi',
+        url: '/../Shop/chartApi',
         data: { Labels: data, Type: chart.id },
         success: function (json) {
             chart.data.datasets[0].data = json;
@@ -125,13 +141,15 @@ function fetchChart(data, chart) {
     });
 }
 
-
-
-
 // sales report
-let search = document.getElementById("search");
-let strRepo = document.getElementById("startDate").value;
-let endRepo = document.getElementById("endDate").value;
+function setSalesReport() {
+    let search = document.getElementById("search");
+    search.addEventListener("click", () => {
+        let strRepo = document.getElementById("startDate").value;
+        let endRepo = document.getElementById("endDate").value;
+        fetchData(strRepo, endRepo, updateReport)
+    });
+}
 
 function updateReport(json) {
     document.getElementById("TotalSales").innerText = parseFloat(json[0]);
@@ -139,7 +157,6 @@ function updateReport(json) {
     document.getElementById("TotalCutsom").innerText = parseInt(json[2], 10);
 }
 
-search.addEventListener("click", () => { fetchData(strRepo, endRepo, updateReport) });
 
 // today's sales and customer
 // convert JavaScript date format to c# datetime
@@ -169,16 +186,17 @@ function todaysReport(json) {
     document.getElementById("todaySales").setAttribute("data-target", parseInt(json[0]));
     document.getElementById("todayAmount").setAttribute("data-target", parseInt(json[1]));
     document.getElementById("todayCustomer").setAttribute("data-target", parseInt(json[2]));
+
+    todaysCounting();
 }
 
-fetchData(timeNow, timeNow, todaysReport);
 
 
 // ajax get report function, input: start date/ end date/ success function(data)
 async function fetchData(startDate, endDate, updateData) {
     $.ajax({
         type: 'POST',
-        url: 'getReportApi',
+        url: '/../Shop/getReportApi',
         data: { duration: [startDate, endDate] },
         success: function (json) {
             updateData(json);
@@ -189,8 +207,7 @@ async function fetchData(startDate, endDate, updateData) {
 
 
 // top 5
-fetchTop5Issue();
-fetchTop5Customer();
+
 function top5Table(json, tbody) {
     for (var item of json) {
         let tr = document.createElement("tr");
@@ -207,7 +224,7 @@ function top5Table(json, tbody) {
 async function fetchTop5Issue() {
     $.ajax({
         type: 'POST',
-        url: 'TopIssueApi',
+        url: '/../Shop/TopIssueApi',
         success: function (json) {
             let tbody = document.getElementById("top5Issue");
             top5Table(json, tbody);
@@ -217,7 +234,7 @@ async function fetchTop5Issue() {
 async function fetchTop5Customer() {
     $.ajax({
         type: 'POST',
-        url: 'TopCustomerApi',
+        url: '/../Shop/TopCustomerApi',
         success: function (json) {
             let tbody = document.getElementById("top5Custom");
             top5Table(json, tbody);

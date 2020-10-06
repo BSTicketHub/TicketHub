@@ -111,3 +111,15 @@ $colors9: $cust-color-9, $shop-color-9, $platform-color-9;
 }
 
 @import "./_cart.scss";
+
+
+// fb messenger
+/*.fb_dialog_content iframe{
+    bottom: 80px !important;
+    right: 0 !important;
+}
+
+.fb-customerchat iframe {
+    bottom: 135px !important;
+    max-height: calc(100% - 150px) !important;
+}*/

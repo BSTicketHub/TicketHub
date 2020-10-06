@@ -9,7 +9,7 @@
 
 @using (Html.BeginForm())
 {
-    @*@Html.AntiForgeryToken()*@
+    @Html.AntiForgeryToken()
 
     <div class="container employCreate">
         <div class="row justify-content-center">
@@ -54,7 +54,7 @@
                     </div>
                 </div>
                 <div class="btnList p-0">
-                    <button id="submit" class="btn blueBtn" type="button">新增員工</button>
+                    <button id="submit" class="btn grayBtn" type="button">新增員工</button>
                     <span id="message" class="text-danger ml-3"></span>
                 </div>
             </div>

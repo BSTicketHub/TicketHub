@@ -5,6 +5,10 @@
     }
 
     .StoreReport {
+        .searchBlock {
+            background-color: rgba(127, 156, 172, .3);
+        }
+
         .searchBtn {
             background-color: #2a94db;
             color: #fff;
@@ -38,7 +42,7 @@
         }
 
         .report-title {
-            background-color: $shop-color-4;
+            background-color: rgba(127, 156, 172, .5);
             color: white;
             font-weight: bold;
         }
@@ -58,7 +62,6 @@
             .iconify {
                 width: 40px;
                 height: 40px;
-                /*padding-bottom: 5px;*/
             }
         }
 

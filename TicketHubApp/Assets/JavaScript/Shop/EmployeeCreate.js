@@ -8,7 +8,8 @@ function fetchData() {
         success: function (json) {
             if (json.Email != null) {
                 setUserInfo(json.Email, json.UserName, json.PhoneNumber, json.Sex);
-
+                document.getElementById("submit").classList.remove('grayBtn');
+                document.getElementById("submit").classList.add('blueBtn');
             } else {
                 document.getElementById("message").innerText = "Error : " + json;
             }

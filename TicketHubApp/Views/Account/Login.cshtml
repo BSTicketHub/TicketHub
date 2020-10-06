@@ -3,9 +3,12 @@
 @{
     ViewBag.Title = "Login";
     Layout = "~/Views/Account/_LoginLayout.cshtml";
+
+    var shopActive = Model != null && Model.LoginType == "Shop" ? "active" : "";
+    var custActive = shopActive == "active" ? "" : "active";
 }
 
-<div id="cust" class="login-card row flex-column flex-md-row my-3 my-md-5 active">
+<div id="cust" class="login-card row flex-column flex-md-row my-3 my-md-5 @custActive">
     <div class="col-12 col-md-10 ticketStub tickets d-flex flex-column flex-md-row py-2">
         <div class="col-12 col-md-6 coupon-img text-center d-flex flex-column justify-content-center">
             <h1>Get More Discount!</h1>
@@ -61,7 +64,7 @@
 @using (Html.BeginForm("ShopLogin", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    <div id="shop" class="login-card row flex-column flex-md-row my-3 my-md-5">
+    <div id="shop" class="login-card row flex-column flex-md-row my-3 my-md-5 @shopActive">
         <div class="col-12 col-md-10 ticketStub tickets d-flex flex-column flex-md-row py-2">
             <div class="col-12 col-md-6 coupon-img text-center d-flex flex-column justify-content-center">
                 <h1>Get More Discount!</h1>

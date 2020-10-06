@@ -82,6 +82,15 @@
 }
 
 @section endJS{
+    <script>
+        var message = "@ViewBag.Message";
+        if (message) {
+        window.alert(message)
+        }
+
+        var curCity = "@TempData["City"]";
+        var curDist = "@TempData["Dinstrict"]";
+    </script>
     <script src="~/Assets/JavaScript/Shop/ShopInfo.js"></script>
 }
 

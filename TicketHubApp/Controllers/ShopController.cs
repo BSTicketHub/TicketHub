@@ -27,7 +27,7 @@ namespace TicketHubApp.Controllers
             return View("SalesReport");
         }
 
-        public ActionResult IssueList(int? orderValue)
+        public ActionResult IssueList()
         {
             return View();
         }
@@ -35,7 +35,8 @@ namespace TicketHubApp.Controllers
         //for api
         public ActionResult getIssueApi(int order, bool closed)
         {
-            var service = new ShopIssueService();
+            var context = new TicketHubContext();
+            var service = new ShopIssueService(context);
             var viewModel = service.GetIssueListApi(order, closed).Items;
             string result = JsonConvert.SerializeObject(viewModel);
 
@@ -44,7 +45,8 @@ namespace TicketHubApp.Controllers
 
         public ActionResult closeIssueApi(string Id)
         {
-            var service = new ShopIssueService();
+            var context = new TicketHubContext();
+            var service = new ShopIssueService(context);
             var result = service.closeIssueAPi(Guid.Parse(Id));
             return Json(result.Success, JsonRequestBehavior.AllowGet);
         }
@@ -66,7 +68,8 @@ namespace TicketHubApp.Controllers
             ViewBag.WishIssue = new List<Guid>();
             if (ModelState.IsValid)
             {
-                var service = new ShopIssueService();
+                var context = new TicketHubContext();
+                var service = new ShopIssueService(context);
                 var result = service.CreateIssue(shopissueVM);
                 if (result.Success)
                 {
@@ -90,7 +93,8 @@ namespace TicketHubApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var service = new ShopIssueService();
+            var context = new TicketHubContext();
+            var service = new ShopIssueService(context);
             ShopIssueViewModel shopissueVM = service.GetIssue(Guid.Parse(id));
             if (shopissueVM == null)
             {
@@ -108,7 +112,8 @@ namespace TicketHubApp.Controllers
             ViewBag.WishIssue = new List<Guid>();
             if (ModelState.IsValid)
             {
-                var service = new ShopIssueService();
+                var context = new TicketHubContext();
+                var service = new ShopIssueService(context);
                 var result = service.UpdateIssue(shopissueVM);
                 if (result.Success)
                 {
@@ -174,6 +179,7 @@ namespace TicketHubApp.Controllers
         public ActionResult getReportApi(List<string> duration)
         {
             var service = new ShopReportService();
+
             var result = service.getSalesReport(duration);
 
             return Json(result, JsonRequestBehavior.AllowGet);
@@ -206,7 +212,8 @@ namespace TicketHubApp.Controllers
         [HttpPost]
         public ActionResult getIssueDetailApi(string Id)
         {
-            var service = new ShopIssueService();
+            var context = new TicketHubContext();
+            var service = new ShopIssueService(context);
             var jsonData = service.GetIssueDetailsApi(Guid.Parse(Id));
             return Json(jsonData, JsonRequestBehavior.AllowGet);
         }
@@ -217,7 +224,8 @@ namespace TicketHubApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var service = new ShopIssueService();
+            var context = new TicketHubContext();
+            var service = new ShopIssueService(context);
             var result = service.GetIssue(Guid.Parse(id));
             if (result == null)
             {
@@ -230,19 +238,26 @@ namespace TicketHubApp.Controllers
 
         public ActionResult EmployeeList()
         {
-            var service = new ShopEmployeeService();
-            var result = service.GetEmployeeList();
-            return View(result);
+            return View();
         }
 
+        [HttpGet]
+        public ActionResult getEmployeeListApi()
+        {
+            var context = new TicketHubContext();
+            var service = new ShopEmployeeService(context);
+            var result = service.GetEmployeeList();
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpDelete]
         public ActionResult deleteEmployeeApi(string id)
         {
-            AppIdentityUserManager userManeger = HttpContext.GetOwinContext().Get<AppIdentityUserManager>();
+            var context = new TicketHubContext();
+            var service = new ShopEmployeeService(context);
+            var result = service.DeleteEmployee(id);
 
-            var service = new ShopEmployeeService();
-            var result = service.DeleteEmployee(id, userManeger);
-
-            return RedirectToAction("EmployeeList");
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
@@ -252,12 +267,12 @@ namespace TicketHubApp.Controllers
         }
 
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public ActionResult EmployeeCreate(string account)
         {
-            var userManager = HttpContext.GetOwinContext().Get<AppIdentityUserManager>();
-            var service = new ShopEmployeeService();
-            var result = service.createEmployee(account, userManager);
+            var context = new TicketHubContext();
+            var service = new ShopEmployeeService(context);
+            var result = service.createEmployee(account);
             if (result.Success)
             {
                 return RedirectToAction("EmployeeList");
