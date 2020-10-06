@@ -20,6 +20,7 @@ namespace TicketHubApp.Models.ViewModels
         public string Password { get; set; }
         public bool RememberMe { get; set; }
         public bool IsSignUp { get; set; }
+        public string LoginType { get; set; } = "";
     }
 
     public class ForgotPasswordViewModel
