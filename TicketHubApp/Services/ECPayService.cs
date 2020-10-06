@@ -1,5 +1,4 @@
-﻿using ECPayLibrary.Model;
-using Microsoft.Ajax.Utilities;
+﻿using Microsoft.Ajax.Utilities;
 using Microsoft.Owin;
 using System;
 using System.Collections.Generic;
@@ -9,10 +8,11 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using TicketHubApp.Model;
 using TicketHubApp.Models.ViewModels;
 using TicketHubDataLibrary.Models;
 
-namespace ECPayLibrary.Service
+namespace TicketHubApp.Service
 {
     class ECPayService
     {

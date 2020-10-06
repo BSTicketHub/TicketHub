@@ -1,5 +1,4 @@
-﻿using ECPayLibrary.Service;
-using EllipticCurve;
+﻿using EllipticCurve;
 using Microsoft.AspNet.Identity;
 using Newtonsoft.Json;
 using System;
@@ -11,6 +10,7 @@ using System.Web;
 using System.Web.Mvc;
 using TicketHubApp.Models.ViewModels;
 using TicketHubDataLibrary.Models;
+using TicketHubApp.Service;
 
 namespace TicketHubApp.Controllers
 {
