@@ -1,7 +1,15 @@
 ﻿
+<nav aria-label="breadcrumb" class="shadow">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="~/Shop/Index">商家管理系統</a></li>
+        <li class="breadcrumb-item"><a href="~/Shop/EmployeeList">員工管理</a></li>
+        <li class="breadcrumb-item active" aria-current="page">新增員工</li>
+    </ol>
+</nav>
+
 @using (Html.BeginForm())
 {
-    @*@Html.AntiForgeryToken()*@
+    @Html.AntiForgeryToken()
 
     <div class="container employCreate">
         <div class="row justify-content-center">
@@ -46,7 +54,7 @@
                     </div>
                 </div>
                 <div class="btnList p-0">
-                    <button id="submit" class="btn blueBtn" type="button">新增員工</button>
+                    <button id="submit" class="btn grayBtn" type="button">新增員工</button>
                     <span id="message" class="text-danger ml-3"></span>
                 </div>
             </div>

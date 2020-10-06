@@ -337,7 +337,7 @@
                 ttContent.querySelector(".ordate").innerHTML = timeNow;
                 ttContent.querySelector(".unit").innerText = "張數: " + productTicketArray[tt].amount;
                 ttContent.querySelector(".totlPrice").innerHTML = productTicketArray[tt].total;
-                //ttContent.querySelector(".ticketName").setAttribute("issueId", productTicketArray[tt].Id);
+                ttContent.querySelector(".ticketName").setAttribute("issueId", productTicketArray[tt].issueid);
                 payDetail.append(ttContent);
 
                 countTK += Number(productTicketArray[tt].amount);
@@ -379,11 +379,15 @@
             console.log(caseValue);
             let array = [];
             for (let i of caseValue) {
+                for (let i of document.querySelectorAll('#shoppingCart .number')) {
+                    i.disabled = "true";
+                }
                 let obj = {
                     img: i.children[1].children[0].currentSrc,
                     title: i.children[2].children[0].innerText,
                     amount: i.children[4].children[0].value,
-                    total: i.children[5].innerText
+                    total: i.children[5].innerText,
+                    issueid: i.children[6].children[0].getAttribute('issueid')
                 }
                 array.push(obj);
                 @*console.log(array);*@
@@ -393,11 +397,27 @@
 
         document.querySelector('#payBill').addEventListener('click', function () {
 
-            let GetCar = localStorage.getItem("Cart");
-            let GetCarObj = JSON.parse(GetCar);
+            @*let GetCar = localStorage.getItem("Cart");
+            let GetCarObj = JSON.parse(GetCar);*@
+            let countDetail = document.querySelectorAll(".countDetail");
+            for (let i of countDetail) {
+                
+                let IssuesId = i.id;
+                let IssuesAmount = i.Amount;
+                let IssuesMoney = i.price;
+            }
+
+            console.log(IssuesId);
+            console.log(IssuesAmount);
+            console.log(IssuesMoney);
+
+
+            // 資料應該要往上抓，不應該從local
+            // 找一個地方安置id
+
             let IdArray = [];
             let AmountArray = [];
-            for (let i of GetCarObj) {
+            for (let i of UpItem) {
                 IdArray.push(i.id)
                 AmountArray.push(i.amount)
             }
@@ -426,6 +446,6 @@
 
 
     }
-    
+
 
 </script>

@@ -1,10 +1,4 @@
-﻿var message = "@ViewBag.Message";
-if (message) {
-    window.alert(message)
-}
-
-var curCity = "@TempData["City"]";
-var curDist = "@TempData["Dinstrict"]";
+﻿
 
 // 圖片讀取
 function readURL(input) {

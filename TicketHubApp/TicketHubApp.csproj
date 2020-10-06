@@ -498,6 +498,7 @@
     <Content Include="Assets\JavaScript\Product\ProductDescription.js" />
     <Content Include="Assets\JavaScript\Shop\CreateIssue.js" />
     <Content Include="Assets\JavaScript\Shop\EmployeeCreate.js" />
+    <Content Include="Assets\JavaScript\Shop\EmployeeList.js" />
     <Content Include="Assets\JavaScript\Shop\IssueDetails.js" />
     <Content Include="Assets\JavaScript\Shop\IssueList.js" />
     <Content Include="Assets\JavaScript\Shop\SalesReport.js" />
@@ -816,9 +817,10 @@
     <Content Include="Views\ProductCart\_ProductCartPartial.cshtml" />
     <Content Include="Views\Platform\CreateUser.cshtml" />
     <Content Include="Views\Platform\ReviewShops.cshtml" />
-    <Content Include="Views\Account\ShopApply.cshtml" />
+    <Content Include="Views\Home\ShopApply.cshtml" />
     <Content Include="Views\Shared\InfoHome.cshtml" />
     <Content Include="Views\ProductCart\PostToECPay.cshtml" />
+    <Content Include="Views\Home\_wishCard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

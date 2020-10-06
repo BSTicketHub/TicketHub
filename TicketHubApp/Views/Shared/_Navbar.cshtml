@@ -54,7 +54,7 @@
                             <div class="dropdown-divider"></div>
                             <a href="" class="dropdown-item hov-color-cust">@Html.ActionLink("下午茶", "TicketList", "Customer", new { input = "下午茶" }, new { @class = "dropdown-item hov-color-cust" })</a>
                             <div class="dropdown-divider"></div>
-                            <a href="" class="dropdown-item hov-color-cust">素食餐廳</a>
+                            <a href="" class="dropdown-item hov-color-cust">@Html.ActionLink("素食餐廳", "TicketList", "Customer", new { input = "素食" }, new { @class = "dropdown-item hov-color-cust" })</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown active d-flex align-items-center pb-0">
@@ -63,17 +63,15 @@
                             吃到飽
                         </a>
                         <div class="dropdown-menu text-sm-9 border-0 shadow" aria-labelledby="navbarDropdown">
-                            <a href="" class="dropdown-item hov-color-cust">燒肉</a>
+                            <a href="" class="dropdown-item hov-color-cust">@Html.ActionLink("燒肉", "TicketList", "Customer", new { input = "燒肉" }, new { @class = "dropdown-item hov-color-cust" })</a>
                             <div class="dropdown-divider"></div>
-                            <a href="" class="dropdown-item hov-color-cust">火鍋</a>
+                            <a href="" class="dropdown-item hov-color-cust">@Html.ActionLink("火鍋", "TicketList", "Customer", new { input = "火鍋" }, new { @class = "dropdown-item hov-color-cust" })</a>
                             <div class="dropdown-divider"></div>
-                            <a href="" class="dropdown-item hov-color-cust">熱炒</a>
-                            <div class="dropdown-divider"></div>
-                            <a href="" class="dropdown-item hov-color-cust">超值餐廳</a>
+                            <a href="" class="dropdown-item hov-color-cust">@Html.ActionLink("熱炒", "TicketList", "Customer", new { input = "熱炒" }, new { @class = "dropdown-item hov-color-cust" })</a>
                         </div>
                     </li>
                 }
-                @Html.Action("GenLoginPartial", "Menu", new { pageType = pageType })
+                @Html.Action("GenLoginPartial", "Menu", new { pageType = PageType.CUSTOMER })
             </ul>
 
             @if (pageType == "home" || pageType == "customer")
@@ -106,3 +104,32 @@
 <!-- ------ -->
 <button id="btnScroll" class="@pageType">▲<span>Top</span></button>
 <!-- ------ -->
+<!-- Fb Messenger  -->
+<!-- Load Facebook SDK for JavaScript -->
+<!--<div id="fb-root"></div>
+<script>
+    window.fbAsyncInit = function () {
+        FB.init({
+            xfbml: true,
+            version: 'v8.0'
+        });
+    };
+
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/zh_TW/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>-->
+
+<!-- Your Chat Plugin code -->
+<!--<div class="fb-customerchat"
+     attribution=setup_tool
+     page_id="106075074603628"
+     theme_color="#fcc16d"
+     greeting_dialog_display="fade" 
+     greeting_dialog_delay="50"
+     logged_in_greeting="歡迎與我們聯絡"
+     logged_out_greeting="歡迎與我們聯絡">
+</div>-->

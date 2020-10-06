@@ -106,52 +106,52 @@
                 </div>*@
             @*<div class="row">
                 <div class="col-12">*@
-                    <div class="foodCard mx-auto">
-                        <div class="pricing-wrap">
-                            <div class="img-wrap img-topbg">
-                            </div>
-                            <div class="img-wrap img-left">
-                                <img src="https://imgur.com/xGJoBEI.jpg" class="w-75" alt="">
-                            </div>
-                            <h4 class="mb-5"><span>將最好的推薦給您</span><hr></h4>
-                            <div class="img-wrap img-right">
-                                <img src="https://imgur.com/9wJmM5s.jpg" class="w-100" alt="">
-                            </div>
-                        </div>
-                        <div class="row pb-4">
-                            <div class="col-10 mx-auto">
-                                <div class="carousel-autoplay owl-carousel owl-theme">
-                                    <div class="item">
-                                        <a href="" target="">
-                                            <img class="img-md2" data-src="" alt="臺灣美食行動Go"
-                                                 src="https://imgur.com/KJmbsd2.jpg">
-                                        </a>
-                                    </div>
-                                    <div class="item">
-                                        <a href="" target="">
-                                            <img class="img-md2" data-src="" alt="消費享回饋"
-                                                 src="https://imgur.com/eky304T.jpg">
-                                        </a>
-                                    </div>
-                                    <div class="item">
-                                        <a href="" target="">
-                                            <img class="img-md2" data-src="" alt="宅配+APP結帳再打75折"
-                                                 src="https://imgur.com/PxbxcoB.jpg">
-                                        </a>
-                                    </div>
-                                    <div class="item">
-                                        <a href="" target="">
-                                            <img class="img-md2" data-src="" alt="假日特賣會"
-                                                 src="https://imgur.com/VpIaAc9.jpg">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+            <div class="foodCard mx-auto">
+                <div class="pricing-wrap">
+                    <div class="img-wrap img-topbg">
                     </div>
-                @*</div>
-            </div>*@
+                    <div class="img-wrap img-left">
+                        <img src="https://imgur.com/xGJoBEI.jpg" class="w-75" alt="">
+                    </div>
+                    <h4 class="mb-5"><span>將最好的推薦給您</span><hr></h4>
+                    <div class="img-wrap img-right">
+                        <img src="https://imgur.com/9wJmM5s.jpg" class="w-100" alt="">
+                    </div>
+                </div>
+                <div class="row pb-4">
+                    <div class="col-10 mx-auto">
+                        <div class="carousel-autoplay owl-carousel owl-theme">
+                            <div class="item">
+                                <a href="" target="">
+                                    <img class="img-md2" data-src="" alt="臺灣美食行動Go"
+                                         src="https://imgur.com/KJmbsd2.jpg">
+                                </a>
+                            </div>
+                            <div class="item">
+                                <a href="" target="">
+                                    <img class="img-md2" data-src="" alt="消費享回饋"
+                                         src="https://imgur.com/eky304T.jpg">
+                                </a>
+                            </div>
+                            <div class="item">
+                                <a href="" target="">
+                                    <img class="img-md2" data-src="" alt="宅配+APP結帳再打75折"
+                                         src="https://imgur.com/PxbxcoB.jpg">
+                                </a>
+                            </div>
+                            <div class="item">
+                                <a href="" target="">
+                                    <img class="img-md2" data-src="" alt="假日特賣會"
+                                         src="https://imgur.com/VpIaAc9.jpg">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            @*</div>
+                </div>*@
         </div>
         <div class="col-lg-4 col-md-5 col-12 mx-auto mt-2">
             <div class="rounded border shadow p-2">
@@ -210,10 +210,11 @@
 
     <div class="row justify-content-center">
         <div class="col-4 text-center">
-            <button class="btn btn-success btn-block" id="showMore" onclick="fetchData()">顯示更多票劵</button>
+            <button class="btn btn-info btn-block" id="showMore" onclick="fetchData()">顯示更多票劵</button>
         </div>
     </div>
     <br />
+
 </div>
 
 @section endJS{
@@ -244,57 +245,59 @@
                     let imageSrc = (item.ImgPath == null) ? "" : item.ImgPath;
 
                     let html = `
-                        <div class="col-md-4 col-sm-12">
-                        <div class="product-item rounded border overflow-hidden mx-2 mt-4">
-                        <a href="../Home/Product/${item.Id}" target="">
-                            <div class="product-img img-h-md lazyload-img">
-                                <img src="${imageSrc}" alt="${item.Title}">
-                            </div>
-                        </a>
-                        <div class="product-detail p-2">
-                            <input type="hidden" id="chart_id" value="${item.Id}">
-                            <div class="d-flex justify-content-between align-items-center mb-1">
-                                <h3 class="text-md-1 mb-0" id="Title">${item.Title}</h3>
-
-                            </div>
-                            <div class="text-muted mb-1 text-overflow-2" id="details" style="font-size:14px; height: 2.4rem;">${item.Memo}</div>
-                            <div class="showTag " style="height: 28px;">
-                                ${ genTag(item.TagList)}
-                            </div>
-
-                            <div class="d-flex justify-content-end">
-                                <span class="text-line-through text-sm-9 text-muted align-self-end">
-                                    $${item.OriginalPrice}
-                                </span>
-                                <span class="currentPrice text-md-3" id="DiscountPrice">
-                                    $${item.DiscountPrice}
-                                </span>
-                            </div>
-                            <div class="text-muted text-right text-sm-9">售${item.Amount}份</div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-7">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <button class="btn btn-secondary sub_button" id="">
-                                                <span class="iconify" data-icon="ant-design:minus-outlined" data-inline="false"></span>
-                                            </button>
+                                    <div class="col-md-4 col-sm-12">
+                                    <div class="product-item rounded border overflow-hidden mx-2 mt-4">
+                                    <a href="../Home/Product/${item.Id}" target="">
+                                        <div class="product-img img-h-md lazyload-img">
+                                            <img src="${imageSrc}" alt="${item.Title}">
                                         </div>
-                                        <input type="number" id="cartcount" class="form-control cartcount" value="1">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-secondary add_button" id="">
-                                                <span class="iconify" data-icon="codicon:add" data-inline="false"></span>
-                                            </button>
+                                    </a>
+                                    <div class="product-detail p-2">
+                                        <input type="hidden" id="chart_id" value="${item.Id}">
+                                        <div class="d-flex justify-content-between align-items-center mb-1">
+                                            <h3 class="text-md-1 mb-0" id="Title">${item.Title}</h3>
+                                            <a href="" class="whish-btn hov-color-shop text-md-6">
+                                                <span class="iconify" data-icon="eva:heart-outline" data-inline="false"></span>
+                                            </a>
+                                        </div>
+                                        <div class="text-muted mb-1 text-overflow-2" id="details" style="font-size:14px; height: 2.4rem;">${item.Memo}</div>
+                                        <div class="showTag " style="height: 28px;">
+                                            ${ genTag(item.TagList)}
+                                        </div>
+
+                                        <div class="d-flex justify-content-end">
+                                            <span class="text-line-through text-sm-9 text-muted align-self-end">
+                                                $${item.OriginalPrice}
+                                            </span>
+                                            <span class="currentPrice text-md-3" id="DiscountPrice">
+                                                $${item.DiscountPrice}
+                                            </span>
+                                        </div>
+                                        <div class="text-muted text-right text-sm-9">售${item.Amount}份</div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-7">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <button class="btn btn-secondary sub_button" id="">
+                                                            <span class="iconify" data-icon="ant-design:minus-outlined" data-inline="false"></span>
+                                                        </button>
+                                                    </div>
+                                                    <input type="number" id="cartcount" class="form-control cartcount" value="1">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-secondary add_button" id="">
+                                                            <span class="iconify" data-icon="codicon:add" data-inline="false"></span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-5">
+                                                <button class="btn btn-cust w-100 addCart">加入購買</button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-5">
-                                    <button class="btn btn-cust w-100 addCart">加入購買</button>
-                                </div>
                             </div>
-                        </div>
-                </div>
-                </div> `
+                            </div> `
                     card.innerHTML += html;
                     window.scrollTo(100, scrollPosition);
                 }
@@ -335,4 +338,7 @@
             return html;
         }
     </script>
+
+    <script src="~/Assets/JavaScript/Common/buzz.js"></script>
+    
 }

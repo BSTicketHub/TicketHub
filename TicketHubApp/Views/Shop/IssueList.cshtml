@@ -1,4 +1,11 @@
-﻿@model IEnumerable<TicketHubApp.Models.ViewModels.ShopIssueViewModel>
+﻿
+<nav aria-label="breadcrumb" class="shadow">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="~/Shop/Index">商家管理系統</a></li>
+        <li class="breadcrumb-item"><a href="~/Shop/IssueList">商品管理</a></li>
+        <li class="breadcrumb-item active" aria-current="page">票券列表</li>
+    </ol>
+</nav>
 
 <div class="container IssueList">
     <div class="row">
@@ -47,7 +54,7 @@
                 </template>
             </div>
         </div>
-        <div class="col-12 bg-white shadow p-3 mt-5">
+        <div class="col-12 bg-white shadow p-3 my-5">
             <div>
                 <p>歷史票券</p>
             </div>
@@ -89,6 +96,7 @@
                 </table>
             </div>
         </div>
+    
     </div>
 </div>
 

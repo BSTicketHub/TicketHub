@@ -27,7 +27,6 @@ async function fetchData(orderValue, parentId, closed, template) {
 }
 
 function genTable(list, parentId, template) {
-    console.log(template)
     let tbody = document.getElementById(parentId);
     tbody.innerHTML = "";
     var templateEle = document.getElementById(template);
