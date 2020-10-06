@@ -214,6 +214,34 @@
         </div>
     </div>
     <br />
+
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v8.0'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/zh_TW/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+    <!-- Your Chat Plugin code -->
+    <div class="fb-customerchat"
+         attribution=setup_tool
+         page_id="106075074603628"
+         theme_color="#26bec9"
+         logged_in_greeting="立即與我們聯絡"
+         logged_out_greeting="立即與我們聯絡">
+    </div>
+
 </div>
 
 @section endJS{
@@ -244,59 +272,59 @@
                     let imageSrc = (item.ImgPath == null) ? "" : item.ImgPath;
 
                     let html = `
-                            <div class="col-md-4 col-sm-12">
-                            <div class="product-item rounded border overflow-hidden mx-2 mt-4">
-                            <a href="../Home/Product/${item.Id}" target="">
-                                <div class="product-img img-h-md lazyload-img">
-                                    <img src="${imageSrc}" alt="${item.Title}">
-                                </div>
-                            </a>
-                            <div class="product-detail p-2">
-                                <input type="hidden" id="chart_id" value="${item.Id}">
-                                <div class="d-flex justify-content-between align-items-center mb-1">
-                                    <h3 class="text-md-1 mb-0" id="Title">${item.Title}</h3>
-                                    <a href="" class="whish-btn hov-color-shop text-md-6">
-                                        <span class="iconify" data-icon="eva:heart-outline" data-inline="false"></span>
+                                    <div class="col-md-4 col-sm-12">
+                                    <div class="product-item rounded border overflow-hidden mx-2 mt-4">
+                                    <a href="../Home/Product/${item.Id}" target="">
+                                        <div class="product-img img-h-md lazyload-img">
+                                            <img src="${imageSrc}" alt="${item.Title}">
+                                        </div>
                                     </a>
-                                </div>
-                                <div class="text-muted mb-1 text-overflow-2" id="details" style="font-size:14px; height: 2.4rem;">${item.Memo}</div>
-                                <div class="showTag " style="height: 28px;">
-                                    ${ genTag(item.TagList)}
-                                </div>
+                                    <div class="product-detail p-2">
+                                        <input type="hidden" id="chart_id" value="${item.Id}">
+                                        <div class="d-flex justify-content-between align-items-center mb-1">
+                                            <h3 class="text-md-1 mb-0" id="Title">${item.Title}</h3>
+                                            <a href="" class="whish-btn hov-color-shop text-md-6">
+                                                <span class="iconify" data-icon="eva:heart-outline" data-inline="false"></span>
+                                            </a>
+                                        </div>
+                                        <div class="text-muted mb-1 text-overflow-2" id="details" style="font-size:14px; height: 2.4rem;">${item.Memo}</div>
+                                        <div class="showTag " style="height: 28px;">
+                                            ${ genTag(item.TagList)}
+                                        </div>
 
-                                <div class="d-flex justify-content-end">
-                                    <span class="text-line-through text-sm-9 text-muted align-self-end">
-                                        $${item.OriginalPrice}
-                                    </span>
-                                    <span class="currentPrice text-md-3" id="DiscountPrice">
-                                        $${item.DiscountPrice}
-                                    </span>
-                                </div>
-                                <div class="text-muted text-right text-sm-9">售${item.Amount}份</div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-7">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <button class="btn btn-secondary sub_button" id="">
-                                                    <span class="iconify" data-icon="ant-design:minus-outlined" data-inline="false"></span>
-                                                </button>
+                                        <div class="d-flex justify-content-end">
+                                            <span class="text-line-through text-sm-9 text-muted align-self-end">
+                                                $${item.OriginalPrice}
+                                            </span>
+                                            <span class="currentPrice text-md-3" id="DiscountPrice">
+                                                $${item.DiscountPrice}
+                                            </span>
+                                        </div>
+                                        <div class="text-muted text-right text-sm-9">售${item.Amount}份</div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-7">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <button class="btn btn-secondary sub_button" id="">
+                                                            <span class="iconify" data-icon="ant-design:minus-outlined" data-inline="false"></span>
+                                                        </button>
+                                                    </div>
+                                                    <input type="number" id="cartcount" class="form-control cartcount" value="1">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-secondary add_button" id="">
+                                                            <span class="iconify" data-icon="codicon:add" data-inline="false"></span>
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <input type="number" id="cartcount" class="form-control cartcount" value="1">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-secondary add_button" id="">
-                                                    <span class="iconify" data-icon="codicon:add" data-inline="false"></span>
-                                                </button>
+                                            <div class="col-5">
+                                                <button class="btn btn-cust w-100 addCart">加入購買</button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-5">
-                                        <button class="btn btn-cust w-100 addCart">加入購買</button>
-                                    </div>
-                                </div>
                             </div>
-                    </div>
-                    </div> `
+                            </div> `
                     card.innerHTML += html;
                     window.scrollTo(100, scrollPosition);
                 }
@@ -340,4 +368,20 @@
 
     <script src="~/Assets/JavaScript/Common/buzz.js"></script>
 
+
+
+    @*<script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: 'your-app-id',
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v8.0'
+            });
+        };
+    </script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>*@
+
+
+    
 }
