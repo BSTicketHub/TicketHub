@@ -80,6 +80,11 @@
                             <input id="payBill" type="button" class="btn w-50 btn-cust" value="確認結帳" />
                         </div>
                     </div>
+                    @using (Html.BeginForm("PostToECPay", "ProductCart", FormMethod.Post, new { id = "ECPayForm"}))
+                    {
+                        <input class="hidden-id" type="hidden" name="Id" value=""/>
+                        <input class="hidden-amount" type="hidden" name="Amount" value="" />
+                    }
                 </div>
             </div>
             <hr>
@@ -406,7 +411,9 @@
                 },
             }).then(function (response) {
                 console.log(response);
-                return response.json();
+                document.querySelector('.hidden-id').value = IdArray.join('#');
+                document.querySelector('.hidden-amount').value = AmountArray.join('#');
+                document.getElementById('ECPayForm').submit();
             }).catch(function (err) {
                 console.log("錯誤", err);
             });
@@ -414,7 +421,7 @@
             localStorage.removeItem("Cart");
             swal("訂單已完成", "success");
 
-            location.reload()
+            //location.reload()
         })
 
 
