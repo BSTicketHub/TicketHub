@@ -18,7 +18,12 @@ namespace TicketHubApp.Services
 {
     public class ShopIssueService
     {
-        private TicketHubContext _context = new TicketHubContext();
+        private TicketHubContext _context;
+        public ShopIssueService() : this(new TicketHubContext()) { }
+        public ShopIssueService(TicketHubContext context)
+        {
+            _context = context;
+        }
 
         private readonly string _userid = HttpContext.Current.User.Identity.GetUserId();
 
@@ -255,12 +260,12 @@ namespace TicketHubApp.Services
             return result;
         }
 
-        public ShopIssueViewModel GetIssue(Guid Id)
+        public ShopIssueViewModel GetIssue(Guid issueid)
         {
             var issueRepo = new GenericRepository<Issue>(_context);
-            var item = issueRepo.GetAll().First((x) => x.Id == Id);
+            var item = issueRepo.GetAll().First((x) => x.Id == issueid);
 
-            var tempString = from it in _context.IssueTag
+            var tagList = from it in _context.IssueTag
                              join t in _context.Tag on it.TagId equals t.Id
                              where it.IssueId == item.Id
                              select t.Name;
@@ -280,20 +285,20 @@ namespace TicketHubApp.Services
                 IssuerId = item.IssuerId,
                 Status = (item.ClosedDate <= DateTime.Now) ? "已下架" :
                             (item.ReleasedDate < DateTime.Now) ? "未上架" : "上架",
-                TagList = tempString.ToList(),
-                TagString = string.Join(" ", tempString),
+                TagList = tagList.ToList(),
+                TagString = string.Join(" ", tagList),
                 Category = item.Category
             };
             return entity;
         }
 
-        public DataTableViewModel GetIssueDetailsApi(Guid id)
+        public DataTableViewModel GetIssueDetailsApi(Guid issueid)
         {
             var issueDetail = new ShopIssueDetailViewModel();
 
             var ttt = from tic in _context.Ticket
                       join us in _context.Users on tic.UserId equals us.Id
-                      where tic.IssueId == id
+                      where tic.IssueId == issueid
                       select new { tic.User.UserName, tic.User.PhoneNumber, tic.Exchanged, tic.OrderId };
             var aaa = from t3 in ttt
                       group t3 by new { t3.UserName, t3.PhoneNumber, t3.OrderId } into g
@@ -324,13 +329,13 @@ namespace TicketHubApp.Services
             return table;
         }
 
-        public OperationResult closeIssueAPi(Guid id)
+        public OperationResult closeIssueAPi(Guid issueid)
         {
             var result = new OperationResult();
             try
             {
                 var issueRepo = new GenericRepository<Issue>(_context);
-                Issue issue = _context.Issue.Where(x => x.Id == id).FirstOrDefault();
+                Issue issue = _context.Issue.Where(x => x.Id == issueid).FirstOrDefault();
                 if (issue == null)
                 {
                     result.Success = false;

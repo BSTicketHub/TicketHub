@@ -1,6 +1,14 @@
 ﻿
-.employCreate{
+.employCreate {
     .blueBtn {
         font-size: 14px;
+    }
+
+    .grayBtn {
+        &:hover {
+            background-color: $line-gray;
+            color: #fff;
+            cursor:auto;
+        }
     }
 }

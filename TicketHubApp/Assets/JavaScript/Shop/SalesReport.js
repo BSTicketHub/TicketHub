@@ -1,28 +1,43 @@
-﻿// 今日訂單數 & 今日銷售金額 & 今日票券數
-let counters = document.querySelectorAll('.counter');
-const speed = 200; // The lower the slower
+﻿window.onload = function () {
 
-counters.forEach(counter => {
-    const updateCount = () => {
-        const target = +counter.getAttribute('data-target');
-        const count = +counter.innerText;
 
-        // Lower inc to slow and higher to slow
-        const inc = target / speed;
+    switchWeekMonth(weekVisitBtn, monthVisitBtn, "-30px", visitChart, 'week');
+    switchWeekMonth(weekMoneyBtn, monthMoneyBtn, "-30px", moneyChart, 'week');
 
-        // Check if target is reached
-        if (count < target) {
-            // Add inc to count and output in counter
-            counter.innerText = count + inc;
-            // Call function every ms
-            setTimeout(updateCount, 1);
-        } else {
-            counter.innerText = target;
-        }
-    };
+    fetchData(timeNow, timeNow, todaysReport);
 
-    updateCount();
-});
+    fetchTop5Issue();
+    fetchTop5Customer();
+}
+
+// 今日訂單數 & 今日銷售金額 & 今日票券數
+
+function todaysCounting() {
+    let counters = document.querySelectorAll('.counter');
+    const speed = 200; // The lower the slower
+
+    counters.forEach(counter => {
+        const updateCount = () => {
+            const target = +counter.getAttribute('data-target');
+            const count = +counter.innerText;
+
+            // Lower inc to slow and higher to slow
+            const inc = target / speed;
+
+            // Check if target is reached
+            if (count < target) {
+                // Add inc to count and output in counter
+                counter.innerText = count + inc;
+                // Call function every ms
+                setTimeout(updateCount, 1);
+            } else {
+                counter.innerText = target;
+            }
+        };
+
+        updateCount();
+    });
+}
 
 
 // 造訪人數圖表 & 銷售金額圖表
@@ -110,8 +125,6 @@ function switchWeekMonth(switchNode, brotherNode, position, chart, mode) {
 }
 
 // 初始化
-switchWeekMonth(weekVisitBtn, monthVisitBtn, "-30px", visitChart, 'week');
-switchWeekMonth(weekMoneyBtn, monthMoneyBtn, "-30px", moneyChart, 'week');
 
 function fetchChart(data, chart) {
     $.ajax({
@@ -124,9 +137,6 @@ function fetchChart(data, chart) {
         }
     });
 }
-
-
-
 
 // sales report
 let search = document.getElementById("search");
@@ -169,9 +179,10 @@ function todaysReport(json) {
     document.getElementById("todaySales").setAttribute("data-target", parseInt(json[0]));
     document.getElementById("todayAmount").setAttribute("data-target", parseInt(json[1]));
     document.getElementById("todayCustomer").setAttribute("data-target", parseInt(json[2]));
+
+    todaysCounting();
 }
 
-fetchData(timeNow, timeNow, todaysReport);
 
 
 // ajax get report function, input: start date/ end date/ success function(data)
@@ -189,8 +200,7 @@ async function fetchData(startDate, endDate, updateData) {
 
 
 // top 5
-fetchTop5Issue();
-fetchTop5Customer();
+
 function top5Table(json, tbody) {
     for (var item of json) {
         let tr = document.createElement("tr");

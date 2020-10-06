@@ -496,6 +496,7 @@
     <Content Include="Assets\JavaScript\Product\ProductDescription.js" />
     <Content Include="Assets\JavaScript\Shop\CreateIssue.js" />
     <Content Include="Assets\JavaScript\Shop\EmployeeCreate.js" />
+    <Content Include="Assets\JavaScript\Shop\EmployeeList.js" />
     <Content Include="Assets\JavaScript\Shop\IssueDetails.js" />
     <Content Include="Assets\JavaScript\Shop\IssueList.js" />
     <Content Include="Assets\JavaScript\Shop\SalesReport.js" />
