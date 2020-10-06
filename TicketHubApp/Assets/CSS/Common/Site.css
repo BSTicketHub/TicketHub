@@ -576,6 +576,14 @@ a {
   text-align: right;
   /* white-space: nowrap; */ }
 
+.fb_dialog_content iframe {
+  bottom: 80px;
+  right: 0; }
+
+.fb-customerchat iframe {
+  bottom: 135px;
+  max-height: calc(100% - 150px); }
+
 .footbg {
   background-color: #333333;
   color: white;
