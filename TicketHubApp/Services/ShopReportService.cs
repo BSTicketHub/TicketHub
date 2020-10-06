@@ -30,8 +30,8 @@ namespace TicketHubApp.Services
                        where i.ShopId == shopid
                        select new { TotalSales = od.Amount * od.Price, TotalAmount = od.Amount, o.UserId, o.OrderedDate };
 
-            var st = (String.IsNullOrEmpty(duration[0])) ? DateTime.MinValue : DateTime.Parse(duration[0]);
-            var en = (String.IsNullOrEmpty(duration[1])) ? DateTime.MaxValue : DateTime.Parse(duration[1]);
+            var st = (String.IsNullOrEmpty(duration[0])) ? DateTime.MinValue : DateTime.Parse(duration[0]).Date;
+            var en = (String.IsNullOrEmpty(duration[1])) ? DateTime.MaxValue : DateTime.Parse(duration[1]).Date.AddDays(1).AddSeconds(-1);
 
             temp = temp.Where(d => (d.OrderedDate >= st) && (d.OrderedDate <= en));
 
@@ -113,15 +113,15 @@ namespace TicketHubApp.Services
                 var date = DateTime.Parse(item);
                 DateTime startDate;
                 DateTime endDate;
-                if (Label.Count < 10)
+                if (Label.Count > 10)
                 {
                     startDate = date.Date;
-                    endDate = date.Date.AddDays(1).AddSeconds(-1);
+                    endDate = date.Date.AddMonths(1).AddSeconds(-1);
                 }
                 else
                 {
                     startDate = date.Date;
-                    endDate = date.Date.AddMonths(1).AddSeconds(-1);
+                    endDate = date.Date;
                 }
 
                 var duration = new List<string> { startDate.ToString(), endDate.ToString() };

@@ -9,6 +9,8 @@ window.onload = function () {
 
     fetchTop5Issue();
     fetchTop5Customer();
+
+    setSalesReport();
 }
 
 // 今日訂單數 & 今日銷售金額 & 今日票券數
@@ -140,9 +142,14 @@ function fetchChart(data, chart) {
 }
 
 // sales report
-let search = document.getElementById("search");
-let strRepo = document.getElementById("startDate").value;
-let endRepo = document.getElementById("endDate").value;
+function setSalesReport() {
+    let search = document.getElementById("search");
+    search.addEventListener("click", () => {
+        let strRepo = document.getElementById("startDate").value;
+        let endRepo = document.getElementById("endDate").value;
+        fetchData(strRepo, endRepo, updateReport)
+    });
+}
 
 function updateReport(json) {
     document.getElementById("TotalSales").innerText = parseFloat(json[0]);
@@ -150,7 +157,6 @@ function updateReport(json) {
     document.getElementById("TotalCutsom").innerText = parseInt(json[2], 10);
 }
 
-search.addEventListener("click", () => { fetchData(strRepo, endRepo, updateReport) });
 
 // today's sales and customer
 // convert JavaScript date format to c# datetime
