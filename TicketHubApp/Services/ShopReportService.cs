@@ -116,7 +116,7 @@ namespace TicketHubApp.Services
                 if (Label.Count < 10)
                 {
                     startDate = date.Date;
-                    endDate = date.AddDays(1).AddSeconds(-1);
+                    endDate = date.Date.AddDays(1).AddSeconds(-1);
                 }
                 else
                 {

@@ -179,6 +179,9 @@ namespace TicketHubApp.Controllers
         public ActionResult getReportApi(List<string> duration)
         {
             var service = new ShopReportService();
+
+            duration[0] = DateTime.Parse(duration[0]).Date.ToString();
+            duration[1] = DateTime.Parse(duration[1]).Date.AddDays(1).AddSeconds(-1).ToString();
             var result = service.getSalesReport(duration);
 
             return Json(result, JsonRequestBehavior.AllowGet);
