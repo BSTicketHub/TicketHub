@@ -392,27 +392,24 @@
 
         document.querySelector('#payBill').addEventListener('click', function () {
 
-            @*let GetCar = localStorage.getItem("Cart");
-            let GetCarObj = JSON.parse(GetCar);*@
-            let countDetail = document.querySelectorAll(".countDetail");
+            let GetCar = localStorage.getItem("Cart");
+            let GetCarObj = JSON.parse(GetCar);
+            @*let countDetail = document.querySelectorAll(".countDetail");
             for (let i of countDetail) {
                 
                 let IssuesId = i.id;
                 let IssuesAmount = i.Amount;
                 let IssuesMoney = i.price;
-            }
+            }*@
 
-            console.log(IssuesId);
-            console.log(IssuesAmount);
-            console.log(IssuesMoney);
-
+        
 
             // 資料應該要往上抓，不應該從local
             // 找一個地方安置id
 
             let IdArray = [];
             let AmountArray = [];
-            for (let i of UpItem) {
+            for (let i of GetCarObj) {
                 IdArray.push(i.id)
                 AmountArray.push(i.amount)
             }
