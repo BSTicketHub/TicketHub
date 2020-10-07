@@ -54,11 +54,13 @@ function deleteCartItem(id) {
 function UpcartCounter() {
     let data = JSON.parse(localStorage.getItem('Cart'));
     let counter = 0;
-    // 顯示加總數
-    for (let item of data) {
-        let amount = +item.amount;
-        counter = counter + amount;
+    if (data != null) {
+        for (let item of data) {
+            let amount = +item.amount;
+            counter = counter + amount;
+        }
     }
+    // 顯示加總數
     document.getElementsByClassName("cartCounter")[0].innerText = counter;
     document.getElementsByClassName("cartCounter")[1].innerText = counter;
 }
