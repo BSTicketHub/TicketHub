@@ -43,7 +43,7 @@ function genTable(list, parentId, template) {
         td[3].innerText = item.Id;
         td[4].innerText = item.DiscountPrice;
         td[5].innerText = item.Status;
-        td[6].innerHTML = item.ReleasedDate;
+        td[6].innerHTML = item.ReleasedDate.replace(/T/, " ").slice(0, -3);
         td[7].innerText = item.SalesAmount;
         td[8].innerText = item.SalesPrice;
         var clone = document.importNode(templateEle.content, true);
