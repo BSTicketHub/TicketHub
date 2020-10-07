@@ -250,7 +250,7 @@ namespace TicketHubApp.Services
                     Id = item.Id,
                     DiscountPrice = item.DiscountPrice,
                     Status = (item.ClosedDate <= DateTime.Now) ? "已下架" :
-                            (item.ReleasedDate < DateTime.Now) ? "未上架" : "上架",
+                            (item.ReleasedDate > DateTime.Now) ? "未上架" : "上架",
                     ReleasedDate = item.ReleasedDate,
                     SalesAmount = (int)item.SalesCount,
                     SalesPrice = item.SalesPrice
@@ -284,7 +284,7 @@ namespace TicketHubApp.Services
                 ClosedDate = (DateTime)item.ClosedDate,
                 IssuerId = item.IssuerId,
                 Status = (item.ClosedDate <= DateTime.Now) ? "已下架" :
-                            (item.ReleasedDate < DateTime.Now) ? "未上架" : "上架",
+                            (item.ReleasedDate > DateTime.Now) ? "未上架" : "上架",
                 TagList = tagList.ToList(),
                 TagString = string.Join(" ", tagList),
                 Category = item.Category
