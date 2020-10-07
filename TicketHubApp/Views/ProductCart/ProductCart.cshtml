@@ -397,8 +397,8 @@
 
         document.querySelector('#payBill').addEventListener('click', function () {
 
-            @*let GetCar = localStorage.getItem("Cart");
-            let GetCarObj = JSON.parse(GetCar);*@
+            let GetCar = localStorage.getItem("Cart");
+            let GetCarObj = JSON.parse(GetCar);
 
             //let countDetail = document.querySelectorAll(".countDetail");
             //for (let i of countDetail) {
@@ -418,7 +418,7 @@
 
             let IdArray = [];
             let AmountArray = [];
-            for (let i of UpItem) {
+            for (let i of GetCarObj) {
                 IdArray.push(i.id)
                 AmountArray.push(i.amount)
             }
