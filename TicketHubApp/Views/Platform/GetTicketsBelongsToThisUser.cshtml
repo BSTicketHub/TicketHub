@@ -12,7 +12,7 @@
     <table id="ticketTable" class="table table-bordered table-hover" style="width:100%">
         <thead>
             <tr class="text-nowrap">
-                <th >票券ID</th>
+                <th>票券ID</th>
                 <th>票券名稱</th>
                 <th>票券價格</th>
                 <th>票券所屬商家名稱</th>
@@ -25,13 +25,13 @@
         </thead>
     </table>
 </div>
+@section endJS{
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" />
 
-<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
-<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" />
-
-<script>
+    <script>
     $(document).ready(function () {
         $('#ticketTable').DataTable({
             "ajax": '../GetTicketsByUserJson/@ViewBag.id',
@@ -44,4 +44,5 @@
             ],
         });
     });
-</script>
+    </script>
+}

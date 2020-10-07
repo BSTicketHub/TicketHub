@@ -59,7 +59,6 @@ namespace TicketHubApp.Controllers
                        new SideMenuItem{ IconName = "si-glyph:store", MenuTitle = "商家管理", Href = "#ShopManagement",
                             SubMenuItems = new List<SideMenuItem>{
                                 new SideMenuItem { IconName = "la:store-solid", MenuTitle = "商家列表", Href = "/Platform/ShopList" },
-                                new SideMenuItem { IconName = "ic:baseline-add-business", MenuTitle = "新增商家", Href = "#" },
                                 new SideMenuItem { IconName = "mdi:briefcase-check", MenuTitle = "審核商家", Href = "/Platform/ReviewShops"},
                             }
                        },
