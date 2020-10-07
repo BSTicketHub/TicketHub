@@ -32,14 +32,12 @@ export function CreatePage(firstPage) {
         imageId;
 
     function readFile(input) {
-        console.log(input.files)
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function (e) {
                 $('.upload-demo').addClass('ready');
                 $('#imgChoppingArea').modal('show');
-                console.log(e.target.result
-                )
+
                 rawImg = e.target.result;
             }
             reader.readAsDataURL(input.files[0]);
@@ -797,14 +795,14 @@ export function CreatePage(firstPage) {
                             type: "post",
                             data: { Id: response.Id, input: url },
                             success: function () {
+                                createBuzz("大頭貼更換成功", "success")
                             },
                             error: function () {
                                 createBuzz("發生錯誤，請聯繫客服人員", "danger")
                             },
                             complete: function () {
-                                createBuzz("大頭貼更換成功", "success")
                                 document.querySelector('.profile-logo.mx-1').src = url;
-                                document.querySelector('.profile-logo.mr-2').src = url;
+                                document.querySelector('.userImg').src = url;
                                 userImg.style.backgroundImage = `url('${url}')`
                                 $('#imgChoppingArea').modal('hide');
                                 document.querySelector('.loading-page').style.visibility = "hidden";

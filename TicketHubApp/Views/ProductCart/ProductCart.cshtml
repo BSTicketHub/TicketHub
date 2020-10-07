@@ -80,6 +80,11 @@
                             <input id="payBill" type="button" class="btn w-50 btn-cust" value="確認結帳" />
                         </div>
                     </div>
+                    @using (Html.BeginForm("PostToECPay", "ProductCart", FormMethod.Post, new { id = "ECPayForm"}))
+                    {
+                        <input class="hidden-id" type="hidden" name="Id" value=""/>
+                        <input class="hidden-amount" type="hidden" name="Amount" value="" />
+                    }
                 </div>
             </div>
             <hr>
@@ -394,15 +399,19 @@
 
             let GetCar = localStorage.getItem("Cart");
             let GetCarObj = JSON.parse(GetCar);
-            @*let countDetail = document.querySelectorAll(".countDetail");
-            for (let i of countDetail) {
-                
-                let IssuesId = i.id;
-                let IssuesAmount = i.Amount;
-                let IssuesMoney = i.price;
-            }*@
 
-        
+            //let countDetail = document.querySelectorAll(".countDetail");
+            //for (let i of countDetail) {
+                
+            //    let IssuesId = i.id;
+            //    let IssuesAmount = i.Amount;
+            //    let IssuesMoney = i.price;
+            //}
+
+            //console.log(IssuesId);
+            //console.log(IssuesAmount);
+            //console.log(IssuesMoney);
+
 
             // 資料應該要往上抓，不應該從local
             // 找一個地方安置id
@@ -423,7 +432,9 @@
                 },
             }).then(function (response) {
                 console.log(response);
-                return response.json();
+                document.querySelector('.hidden-id').value = IdArray.join('#');
+                document.querySelector('.hidden-amount').value = AmountArray.join('#');
+                document.getElementById('ECPayForm').submit();
             }).catch(function (err) {
                 console.log("錯誤", err);
             });
@@ -431,7 +442,7 @@
             localStorage.removeItem("Cart");
             swal("訂單已完成", "success");
 
-            location.reload()
+            //location.reload()
         })
 
 
