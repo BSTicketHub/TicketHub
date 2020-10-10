@@ -308,7 +308,8 @@ namespace TicketHubApp.Services
                     Title = item.Title,
                     OriginalPrice = item.OriginalPrice,
                     DiscountPrice = item.DiscountPrice,
-                    DiscountRatio = item.DiscountRatio
+                    DiscountRatio = item.DiscountRatio,
+                    Amount = item.Amount
                 };
 
                 result.Items.Add(p);
