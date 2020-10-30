@@ -143,6 +143,10 @@
     <Compile Include="Migrations\202009261133516_IssueAlterCategoryColumn.designer.cs">
       <DependentUpon>202009261133516_IssueAlterCategoryColumn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010301507074_Reset.cs" />
+    <Compile Include="Migrations\202010301507074_Reset.designer.cs">
+      <DependentUpon>202010301507074_Reset.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActionLog.cs" />
     <Compile Include="Models\Category.cs" />
@@ -215,6 +219,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009261133516_IssueAlterCategoryColumn.resx">
       <DependentUpon>202009261133516_IssueAlterCategoryColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010301507074_Reset.resx">
+      <DependentUpon>202010301507074_Reset.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
