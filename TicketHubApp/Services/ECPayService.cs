@@ -79,7 +79,7 @@ namespace TicketHubApp.Service
             PostCollection.Add("TotalAmount", model.TotalAmount.ToString());
             PostCollection.Add("TradeDesc", model.TradeDesc);
             PostCollection.Add("ItemName", model.ItemName);
-            PostCollection.Add("ReturnURL", "http://tickethub-dev.azurewebsites.net//ProductCart/GetResultFromECPAY");//廠商通知付款結果API
+            PostCollection.Add("ReturnURL", "http://tickethub-dev.azurewebsites.net/ProductCart/GetResultFromECPAY");//廠商通知付款結果API
             PostCollection.Add("ClientBackURL", "http://tickethub-dev.azurewebsites.net/");
             PostCollection.Add("ChoosePayment", model.ChoosePayment);
             PostCollection.Add("EncryptType", "1");//固定

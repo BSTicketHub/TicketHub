@@ -44,7 +44,7 @@ namespace TicketHubApp.Services
             {
                 foreach (var i in search)
                 {
-                    result = result.Where(x => x.City.Contains(i) || x.District.Contains(i) || x.Title.Contains(i) || i.Contains(x.Category));
+                    result = result.Where(x => x.City.Contains(i) || x.District.Contains(i) || x.Title.Contains(i) || x.Category.Contains(i));
                 }
                 return result;
             }

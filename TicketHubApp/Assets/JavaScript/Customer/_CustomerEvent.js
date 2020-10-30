@@ -690,7 +690,7 @@ export function CreatePage(firstPage) {
 
                 let imgArea = document.createElement('div');
                 imgArea.classList.add('img-area', 'h-100');
-                imgArea.style.backgroundImage = "url('https://picsum.photos/400/300/?random=1')"
+                imgArea.style.backgroundImage = `url('${ticketDetail[0].ImgPath}')`
                 imgArea.style.backgroundSize = "cover";
 
                 let textArea = document.createElement('div');

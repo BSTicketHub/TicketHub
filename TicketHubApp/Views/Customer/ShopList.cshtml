@@ -6,6 +6,7 @@
     var model = Json.Encode(Model);
     var ajaxUrl = Json.Encode(Url.Action("ToggleFavoriteShopList", "Customer"));
     var searchStringJson = Json.Encode(ViewBag.SearchString);
+    var a = Json.Encode(Url.Content("../Assets/Images/shop_logo.jpg"));
 }
 
 @Styles.Render("~/bundles/css/ShopList")
@@ -94,13 +95,7 @@
         }
 
         let model = @Html.Raw(model)
-            console.log(model)
-        @*let geometry = [];
-        for (let i of @Html.Raw(geometryJson)) {
-            i = i.split(' ')
-            let obj = { lat: Number(i[0]), lng: Number(i[1])};
-            geometry.push(obj);
-        }*@
+            console.log(@Html.Raw(a));
 
         function initMap() {
             var taipei = {
@@ -119,7 +114,7 @@
                 let obj = { lat: Number(geometry[0]), lng: Number(geometry[1]) }
                 let marker = new google.maps.Marker({
                     position: obj,
-                    map: map,
+                    map: map
                 })
 
                 let infoWindow = new google.maps.InfoWindow({
@@ -156,7 +151,6 @@
                 });
 
                 infoWindow.addListener('click', function () {
-                    console.log("123")
                     let shop = document.querySelector(`#${i.id}`);
                     shop.scrollIntoView()
 
