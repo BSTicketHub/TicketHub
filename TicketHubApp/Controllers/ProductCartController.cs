@@ -118,7 +118,7 @@ namespace TicketHubApp.Controllers
                     }
                     _context.Order.Add(order);
 
-                    //_context.SaveChanges();
+                    _context.SaveChanges();
 
                     return Content("123");
                 }

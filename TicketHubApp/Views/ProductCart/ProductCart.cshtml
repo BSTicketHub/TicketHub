@@ -80,9 +80,9 @@
                             <input id="payBill" type="button" class="btn w-50 btn-cust" value="確認結帳" />
                         </div>
                     </div>
-                    @using (Html.BeginForm("PostToECPay", "ProductCart", FormMethod.Post, new { id = "ECPayForm"}))
+                    @using (Html.BeginForm("PostToECPay", "ProductCart", FormMethod.Post, new { id = "ECPayForm" }))
                     {
-                        <input class="hidden-id" type="hidden" name="Id" value=""/>
+                        <input class="hidden-id" type="hidden" name="Id" value="" />
                         <input class="hidden-amount" type="hidden" name="Amount" value="" />
                     }
                 </div>
@@ -176,9 +176,11 @@
         let counter = 0;
         //console.log(data);
         // 顯示加總數
-        for (let item of data) {
+        if (data != null) {
+            for (let item of data) {
             let amount = +item.amount;
             counter = counter + amount;
+            }
         }
 
         document.getElementsByClassName("cartCounter")[0].innerText = counter;
@@ -402,7 +404,7 @@
 
             //let countDetail = document.querySelectorAll(".countDetail");
             //for (let i of countDetail) {
-                
+
             //    let IssuesId = i.id;
             //    let IssuesAmount = i.Amount;
             //    let IssuesMoney = i.price;

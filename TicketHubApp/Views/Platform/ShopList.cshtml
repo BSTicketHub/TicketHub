@@ -21,21 +21,23 @@
     </table>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+@section endJS{
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 
-<script>
-    $(document).ready(function () {
-        $('#shopTable').DataTable({
-            "ajax": '../Platform/GetShopsJson',
-            "scrollX": true,
-            "stateSave": true,
+    <script>
+        $(document).ready(function () {
+            $('#shopTable').DataTable({
+                "ajax": '../Platform/GetShopsJson',
+                "scrollX": true,
+                "stateSave": true,
+            });
         });
-    });
 
-    $("#shopTable").on("click", "tr", function () {
-        let id = this.firstChild.innerText;
-        window.location.href = "/Platform/ShopDetail/" + id;
-    });
-</script>
+        $("#shopTable").on("click", "tr", function () {
+            let id = this.firstChild.innerText;
+            window.location.href = "/Platform/ShopDetail/" + id;
+        });
+    </script>
+}

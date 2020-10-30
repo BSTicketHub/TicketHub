@@ -133,7 +133,7 @@ namespace TicketHubApp.Services
                                         select t.Name).ToList()
                          };
             var now = DateTime.Now;
-            //issues = issues.Where(x => (x.ReleasedDate <= now) && (x.ClosedDate >= now));
+            issues = issues.Where(x => (x.ReleasedDate < now) && (x.ClosedDate > now));
             issues = issues.Where(x => (x.Amount - x.SalesAmount) > 0);
             var cardList = issues.OrderByDescending(x => x.ReleasedDate).Skip(count).Take(numOfEachTimes);
 
@@ -308,7 +308,8 @@ namespace TicketHubApp.Services
                     Title = item.Title,
                     OriginalPrice = item.OriginalPrice,
                     DiscountPrice = item.DiscountPrice,
-                    DiscountRatio = item.DiscountRatio
+                    DiscountRatio = item.DiscountRatio,
+                    Amount = item.Amount
                 };
 
                 result.Items.Add(p);

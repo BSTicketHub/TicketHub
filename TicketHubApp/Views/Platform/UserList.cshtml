@@ -1,4 +1,4 @@
-﻿<link rel="stylesheet" type="text/css" href="~/Assets/CSS/Platform/Platform_UserList.min.css"/>
+﻿<link rel="stylesheet" type="text/css" href="~/Assets/CSS/Platform/Platform_UserList.min.css" />
 
 <nav aria-label="breadcrumb" class="shadow">
     <ol class="breadcrumb">
@@ -20,67 +20,69 @@
         </thead>
     </table>
 </div>
+@section endJS{
 
-<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
-<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" />
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" />
 
-<script>
-    $(document).ready(function () {
-        console.log($('#userTable'));
-        $('#userTable').DataTable({
-            "ajax": '../Platform/GetUsersJson',
-            "scrollX": true,
-            "stateSave": true,
-            "columns": [
-                { "width": "20%" },
-                { "width": "20%" },
-                { "width": "10%" },
-                { "width": "10%" },
-            ]
+    <script>
+        $(document).ready(function () {
+            console.log($('#userTable'));
+            $('#userTable').DataTable({
+                "ajax": '../Platform/GetUsersJson',
+                "scrollX": true,
+                "stateSave": true,
+                "columns": [
+                    { "width": "20%" },
+                    { "width": "20%" },
+                    { "width": "10%" },
+                    { "width": "10%" },
+                ]
+            });
         });
-    });
 
 
-    $("#userTable").on("mouseenter", "tr", function () {
+        $("#userTable").on("mouseenter", "tr", function () {
 
-        let id = this.firstChild.innerText;
-        let div = document.createElement('div');
-        let detail = document.createElement('a');
-        let cancelOrRestore = document.createElement('a');
+            let id = this.firstChild.innerText;
+            let div = document.createElement('div');
+            let detail = document.createElement('a');
+            let cancelOrRestore = document.createElement('a');
 
-        detail.innerText = "細節";
-        detail.setAttribute('class', 'btn-sm btn-success');
-        detail.setAttribute('href', `/Platform/UserDetail/${id}`);
-        detail.setAttribute('style', 'margin:3px');
-    
-        let td = this.querySelector('td:last-child');
-        td.setAttribute('style', 'position:relative;');
-        div.setAttribute('style', 'display:flex; position:absolute;bottom:0px;left:15px');
+            detail.innerText = "細節";
+            detail.setAttribute('class', 'btn-sm btn-success');
+            detail.setAttribute('href', `/Platform/UserDetail/${id}`);
+            detail.setAttribute('style', 'margin:3px');
 
-        if (td.innerText == "正常") {
-            cancelOrRestore.innerText = "註銷";
-            cancelOrRestore.setAttribute('class', 'btn-sm btn-danger');
-            cancelOrRestore.setAttribute('href', `/Platform/DeleteUser/${id}`);
-            cancelOrRestore.setAttribute('style', 'margin:3px');
-        }
-        else {
-            cancelOrRestore.innerText = "回復";
-            cancelOrRestore.setAttribute('class', 'btn-sm btn-primary');
-            cancelOrRestore.setAttribute('href', `/Platform/RestoreUser/${id}`);
-            cancelOrRestore.setAttribute('style', 'margin:3px');
-        }
+            let td = this.querySelector('td:last-child');
+            td.setAttribute('style', 'position:relative;');
+            div.setAttribute('style', 'display:flex; position:absolute;bottom:0px;left:15px');
 
-        div.appendChild(detail);
-        div.appendChild(cancelOrRestore);
+            if (td.innerText == "正常") {
+                cancelOrRestore.innerText = "註銷";
+                cancelOrRestore.setAttribute('class', 'btn-sm btn-danger');
+                cancelOrRestore.setAttribute('href', `/Platform/DeleteUser/${id}`);
+                cancelOrRestore.setAttribute('style', 'margin:3px');
+            }
+            else {
+                cancelOrRestore.innerText = "回復";
+                cancelOrRestore.setAttribute('class', 'btn-sm btn-primary');
+                cancelOrRestore.setAttribute('href', `/Platform/RestoreUser/${id}`);
+                cancelOrRestore.setAttribute('style', 'margin:3px');
+            }
 
-        td.append(div);   
-    });
+            div.appendChild(detail);
+            div.appendChild(cancelOrRestore);
 
-    $("#userTable").on("mouseleave", "tr", function () {
+            td.append(div);
+        });
 
-        let lastdiv = this.querySelector('td:last-child div:last-child');
-        lastdiv.remove();
-    });
-</script>
+        $("#userTable").on("mouseleave", "tr", function () {
+
+            let lastdiv = this.querySelector('td:last-child div:last-child');
+            lastdiv.remove();
+        });
+    </script>
+} 

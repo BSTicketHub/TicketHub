@@ -23,53 +23,55 @@
     </table>
 </div>
 
-<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
-<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" />
+@section endJS{
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" />
 
-<script>
-    $(document).ready(function () {
-        $('#reviewShopsTable').DataTable({
-            "ajax": {
-                "type": "GET",
-                "url": "../Platform/GetShopsToBeReviewdJson",
-            },
-            "scrollX": true,
-            "stateSave": true,
+    <script>
+        $(document).ready(function () {
+            $('#reviewShopsTable').DataTable({
+                "ajax": {
+                    "type": "GET",
+                    "url": "../Platform/GetShopsToBeReviewdJson",
+                },
+                "scrollX": true,
+                "stateSave": true,
+            });
         });
-    });
 
-    $("#reviewShopsTable").on("mouseenter", "tr", function () {
-        let id = this.firstChild.innerText;
-        let div = document.createElement('div');
-        let accept = document.createElement('a');
-        let reject = document.createElement('a');
+        $("#reviewShopsTable").on("mouseenter", "tr", function () {
+            let id = this.firstChild.innerText;
+            let div = document.createElement('div');
+            let accept = document.createElement('a');
+            let reject = document.createElement('a');
 
-        accept.innerHTML = '<span class="iconify" data-icon="mdi:check-bold" data-inline="false"></span>';
-      
-        accept.setAttribute('class', 'btn-sm btn-success');
-        accept.setAttribute('href', `/Platform/AcceptShopRegister/${id}`); 
-        accept.setAttribute('style', 'margin:3px');
+            accept.innerHTML = '<span class="iconify" data-icon="mdi:check-bold" data-inline="false"></span>';
 
-        let td = this.querySelector('td:last-child');
-        td.setAttribute('style', 'position:relative;');
-        
-        reject.innerHTML = '<span class="iconify" data-icon="maki:cross-11" data-inline="false"></span>';
-        reject.setAttribute('class', 'btn-sm btn-danger');
-        reject.setAttribute('href', `#`);
+            accept.setAttribute('class', 'btn-sm btn-success');
+            accept.setAttribute('href', `/Platform/AcceptShopRegister/${id}`);
+            accept.setAttribute('style', 'margin:3px');
+
+            let td = this.querySelector('td:last-child');
+            td.setAttribute('style', 'position:relative;');
+
+            reject.innerHTML = '<span class="iconify" data-icon="maki:cross-11" data-inline="false"></span>';
+            reject.setAttribute('class', 'btn-sm btn-danger');
+            reject.setAttribute('href', `#`);
 
 
-        div.appendChild(accept);
-        div.appendChild(reject);
+            div.appendChild(accept);
+            div.appendChild(reject);
 
-        td.append(div);
+            td.append(div);
 
-    });
+        });
 
-    $("#reviewShopsTable").on("mouseleave", "tr", function () {
+        $("#reviewShopsTable").on("mouseleave", "tr", function () {
 
-        let lastdiv = this.querySelector('td:last-child div:last-child');
-        lastdiv.remove();
-    });
-</script>
+            let lastdiv = this.querySelector('td:last-child div:last-child');
+            lastdiv.remove();
+        });
+    </script>
+}

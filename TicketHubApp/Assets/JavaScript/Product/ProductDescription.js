@@ -1,5 +1,17 @@
-﻿//中文主解
+﻿
+document.querySelector('#descriptionAdd').addEventListener('click', function () {
+    UpcartCounter();
+    let getCartData = JSON.parse(localStorage.getItem('Cart'));
+    console.log(getCartData);
+    getCartData = getCartData.map(function (x) {
+        if (x.id == id) {
+            x.amount = amount;
+        }
+        return x;
+    });
+    localStorage.setItem("Cart", JSON.stringify(getCartData));
 
+});
 
 function initMap() {
     var coordinate;
